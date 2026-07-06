@@ -1,0 +1,37 @@
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/admin',
+          '/admin/',
+          '/scanner',
+          '/scanner/',
+          '/login',
+          '/login/',
+          '/check-in',
+          '/check-in/',
+          '/api/',
+        ],
+      },
+      {
+        // Explicitly allow Googlebot to index all public pages
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: [
+          '/admin',
+          '/scanner',
+          '/login',
+          '/check-in',
+          '/api/',
+        ],
+      },
+    ],
+    sitemap: 'https://conference.jklu.edu.in/sitemap.xml',
+    host: 'https://conference.jklu.edu.in',
+  };
+}

@@ -1,0 +1,160 @@
+import { NextResponse } from 'next/server';
+import { adminDb } from '@/lib/firebaseAdmin';
+import { FieldValue } from 'firebase-admin/firestore';
+
+const escapeForSheets = (val: string) => {
+  if (typeof val === 'string' && val.startsWith('+')) return `'${val}`;
+  return val || 'N/A';
+};
+
+async function pushToSheet(webhookUrl: string, payload: object): Promise<{ success: boolean; error?: string }> {
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      if (attempt > 1) await new Promise(r => setTimeout(r, attempt * 2000));
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000);
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      const result = await res.json().catch(() => ({ success: false, error: 'Non-JSON response' }));
+      if (result.success === false) {
+        if (attempt === 3) return { success: false, error: result.error || 'Apps Script returned success:false' };
+        continue;
+      }
+      return { success: true };
+    } catch (err: any) {
+      if (attempt === 3) return { success: false, error: err.name === 'AbortError' ? 'Timeout (>15s)' : err.message };
+    }
+  }
+  return { success: false, error: 'Unknown error' };
+}
+
+export async function POST(req: Request) {
+  try {
+    const excelWebhook = process.env.EXCEL_SYNC_WEBHOOK_URL;
+    if (!excelWebhook) {
+      return NextResponse.json({ error: 'EXCEL_SYNC_WEBHOOK_URL is not configured on the server.' }, { status: 500 });
+    }
+
+    // Fetch all registrations and filter in-memory (avoids composite index requirement)
+    const allSnap = await adminDb
+      .collection('registrations')
+      .orderBy('registeredAt', 'asc')
+      .get();
+
+    const snap = {
+      empty: false,
+      docs: allSnap.docs.filter(d => d.data().sheetSynced !== true),
+    };
+    snap.empty = snap.docs.length === 0;
+
+    if (snap.empty) {
+      return NextResponse.json({ synced: 0, failed: 0, message: 'All registrations are already synced.' });
+    }
+
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let syncedCount = 0;
+    let failedCount = 0;
+    let lastDateGroup = '';
+    const failures: string[] = [];
+
+    // Get total count for sequential numbering
+    const countSnap = await adminDb.collection('registrations').count().get();
+    const totalCount = countSnap.data().count;
+    // Sequential number starts from (total - unsynced + 1) as a best estimate
+    let rowIndex = totalCount - snap.docs.length + 1;
+
+    for (const docSnap of snap.docs) {
+      const reg = docSnap.data();
+      const regId = docSnap.id;
+
+      // Compute date fields from registeredAt timestamp (converted to IST using UTC methods)
+      const dbDate = reg.registeredAt?.toDate() ?? new Date();
+      const istDate = new Date(dbDate.getTime() + (5.5 * 60 * 60 * 1000));
+      const day = istDate.getUTCDate();
+      const month = months[istDate.getUTCMonth()];
+      const year = istDate.getUTCFullYear().toString().slice(-2);
+      const dateOfPayment = reg.dateOfPayment || `${day}-${month}-${year}`;
+      const dateGroup = `${day}-${month}`;
+
+      // Insert a date separator row when the date changes
+      if (lastDateGroup && lastDateGroup !== dateGroup) {
+        await pushToSheet(excelWebhook, {
+          isSeparator: true,
+          id: dateGroup,
+          name: '', email: '', phone: '', paperId: '', registeredAt: '',
+          category: '', affiliation: '', country: '',
+          paperTitle: '', needAccommodation: '',
+          pincode: '', region: '', city: '', state: '',
+          receivedAmount: 0,
+          dateOfPayment: '', dateGroup: dateGroup,
+          paymentId: '', orderId: '', settlementId: '',
+        });
+      }
+      lastDateGroup = dateGroup;
+
+      const payload = {
+        id: String(rowIndex),
+        name: reg.name || 'N/A',
+        email: reg.email || 'N/A',
+        phone: escapeForSheets(reg.phone || reg.mobile || ''),
+        paperId: reg.paperId || 'N/A',
+        paperTitle: reg.paperTitle || 'N/A',
+        affiliation: reg.affiliation || 'N/A',
+        category: reg.category || 'attendee',
+        country: reg.country || 'India',
+        needAccommodation: reg.needAccommodation || 'No',
+        registeredAt: dbDate.toISOString(),
+        pincode: reg.pincode || 'N/A',
+        region: reg.region || 'N/A',
+        city: reg.city || 'N/A',
+        state: reg.region || 'N/A',
+        receivedAmount: reg.receivedAmount ?? 1500,
+        dateOfPayment,
+        dateGroup,
+        paymentId: reg.paymentId || 'N/A',
+        orderId: reg.orderId || 'N/A',
+        settlementId: reg.settlementId || 'Pending',
+      };
+
+      const result = await pushToSheet(excelWebhook, payload);
+
+      if (result.success) {
+        // Mark registration as synced
+        await adminDb.collection('registrations').doc(regId).update({
+          sheetSynced: true,
+          sheetSyncedAt: FieldValue.serverTimestamp(),
+        });
+        syncedCount++;
+        rowIndex++;
+      } else {
+        failedCount++;
+        failures.push(`${reg.name} (${regId}): ${result.error}`);
+        console.error(`Sheet sync failed for ${regId}:`, result.error);
+      }
+    }
+
+    // Log the sync action in auditLogs
+    await adminDb.collection('auditLogs').add({
+      timestamp: FieldValue.serverTimestamp(),
+      action: 'SHEET_SYNC',
+      performedBy: 'Admin (Manual Sync)',
+      targetEntity: 'registrations',
+      details: `Manual sheet sync: ${syncedCount} synced, ${failedCount} failed.${failures.length ? ' Failures: ' + failures.join('; ') : ''}`,
+    });
+
+    return NextResponse.json({
+      synced: syncedCount,
+      failed: failedCount,
+      failures,
+      message: `${syncedCount} registration(s) synced to sheet.${failedCount > 0 ? ` ${failedCount} failed — check System Errors.` : ''}`,
+    });
+  } catch (error: any) {
+    console.error('Sync sheet error:', error);
+    return NextResponse.json({ error: error.message || 'Sync failed' }, { status: 500 });
+  }
+}

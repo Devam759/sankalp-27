@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display&family=Outfit:wght@100..900&family=Roboto:wght@300;400;500;700&family=Russo+One&family=Tiro+Devanagari+Hindi&display=swap");
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Vanilla Extract";
+  src: url("/fonts/Vanillaextract-1GZ84.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vanilla Extract";
+  src: url("/fonts/Vanillaextractital-Rpdel.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --color-brand-orange: #D97706;
+  --color-brand-blue: #0B1B3D;
+  --color-brand-ink: #0F172A;
+  --color-brand-cloud: #F8FAFC;
+  --color-brand-pink: #64748B;
+
+  --color-admin-bg: #F8FAFC;
+  --color-admin-surface: #ffffff;
+  --color-admin-accent: #D97706;
+  --color-admin-text: #0F172A;
+  --color-admin-muted: #64748b;
+  --color-admin-border: #e2e8f0;
+
+  --color-primary: #0B1B3D;
+  --color-primary-dark: #071126;
+
+  --color-secondary: #475569;
+  --color-secondary-dark: #334155;
+
+  --color-accent: #D97706;
+  --color-accent-dark: #B45309;
+
+  --color-dark: #0F172A;
+  --color-dark-lighter: #1E293B;
+
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-sans: "Outfit", "Google Sans", system-ui, sans-serif;
+  --font-adminHeading: "Outfit", system-ui, sans-serif;
+  --font-adminBody: "Outfit", system-ui, sans-serif;
+  --font-vanilla: "Outfit", sans-serif;
+  --font-bricks: "Outfit", sans-serif;
+  --font-diary: "Outfit", sans-serif;
+  --font-devanagari: "Tiro Devanagari Hindi", serif;
+
+  --shadow-brand-orange: 0 0 40px rgba(217, 119, 6, 0.15);
+  --shadow-brand-blue: 0 0 40px rgba(11, 27, 61, 0.15);
+
+  --shadow-comic-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-comic: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-comic-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-solid-orange: 0 8px 16px -2px rgba(217, 119, 6, 0.08);
+  --shadow-solid-blue: 0 8px 16px -2px rgba(11, 27, 61, 0.08);
+  --shadow-solid-cloud: 0 8px 16px -2px rgba(248, 250, 252, 0.08);
+  --shadow-solid-ink: 0 8px 16px -2px rgba(15, 23, 42, 0.08);
+}
+
+
+
+html {
+  background-color: var(--color-brand-ink);
+}
+
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  color: var(--color-brand-ink);
+  background-color: var(--color-brand-cloud);
+  min-height: 100vh;
+  font-family: var(--font-sans);
+}
+
+
+
+
+.glass-card {
+  @apply bg-brand-cloud/5 backdrop-blur-md border border-brand-cloud/15 rounded-md shadow-xl;
+}
+
+.btn-primary {
+  @apply bg-brand-orange hover:bg-accent-dark text-brand-ink font-bold py-2.5 px-6 rounded-md transition-all duration-300 shadow-brand-orange hover:shadow-lg hover:scale-[1.02] active:scale-[0.98];
+}
+
+.btn-accent {
+  @apply bg-brand-orange hover:bg-accent-dark text-brand-ink font-bold py-2.5 px-6 rounded-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+}
+
+.btn-blue {
+  @apply bg-brand-blue hover:bg-secondary-dark text-brand-cloud font-bold py-2.5 px-6 rounded-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+}
+
+/* Comic / Neo-Brutalist Action Buttons — used across feedback, admin, eventsfeedback pages */
+.comic-btn-primary {
+  @apply bg-brand-orange hover:bg-accent-dark text-brand-ink font-black py-3 px-6 border-2 border-brand-ink shadow-comic-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#030404] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-100 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-md uppercase tracking-wider text-xs;
+}
+
+.comic-btn-orange {
+  @apply bg-brand-orange hover:bg-accent-dark text-brand-ink font-black py-3 px-6 border-2 border-brand-ink shadow-comic-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#030404] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-100 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-md text-xs uppercase tracking-wider;
+}
+
+.comic-btn-green {
+  @apply bg-emerald-500 hover:bg-emerald-600 text-white font-black py-3 px-6 border-2 border-brand-ink shadow-comic-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#030404] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-100 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-md text-xs uppercase tracking-wider;
+}
+
+.comic-btn-red {
+  @apply bg-red-500 hover:bg-red-600 text-white font-black py-3 px-6 border-2 border-brand-ink shadow-comic-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#030404] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-100 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-md text-xs uppercase tracking-wider;
+}
+
+.comic-btn-blue {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-black py-3 px-6 border-2 border-brand-ink shadow-comic-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#030404] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-100 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-md text-xs uppercase tracking-wider;
+}
+
+.input-field {
+  @apply bg-brand-cloud/5 border border-brand-cloud/20 rounded-md px-4 py-2.5 text-brand-cloud placeholder:text-brand-cloud/40 focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-brand-blue/50 transition-all;
+}
+
+.page-eyebrow {
+  @apply text-brand-orange font-bold tracking-[0.2em] uppercase text-xs mb-3 block;
+}
+
+.page-title {
+  @apply font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-brand-cloud;
+}
+
+.page-subtitle {
+  @apply text-brand-cloud/60 text-lg md:text-xl max-w-2xl;
+}
+
+.section-heading {
+  @apply font-display text-3xl md:text-4xl font-bold text-brand-cloud uppercase tracking-wide;
+}
+
+.nav-link {
+  @apply text-sm font-semibold text-brand-cloud/70 hover:text-brand-orange transition-colors;
+}
+
+.nav-link-active {
+  @apply text-brand-orange;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Noise & Grain Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.045;
+  z-index: 9999;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 1023px) {
+  .noise-overlay {
+    display: none;
+  }
+}
+
+/* Halftone dot pattern background */
+.bg-halftone {
+  background-image: radial-gradient(var(--color-brand-cloud)/12% 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.bg-halftone-orange {
+  background-image: radial-gradient(var(--color-brand-orange)/15% 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+.bg-halftone-blue {
+  background-image: radial-gradient(var(--color-brand-blue)/15% 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+/* Comic Book / Pop Art / Neo-Brutalist Styles */
+.border-comic {
+  border: 4px solid var(--color-brand-ink);
+}
+
+.border-comic-thin {
+  border: 2px solid var(--color-brand-ink);
+}
+
+/* Comic Solid Black Drop Shadows (now in @theme) */
+
+/* Comic Action Starburst */
+.comic-starburst {
+  clip-path: polygon(50% 0%, 63% 13%, 82% 5%, 83% 25%, 99% 21%, 91% 42%, 100% 59%, 86% 70%, 90% 89%, 71% 88%, 65% 100%, 50% 87%, 35% 100%, 29% 88%, 10% 89%, 14% 70%, 0% 59%, 9% 42%, 1% 21%, 17% 25%, 18% 5%, 37% 13%);
+}
+
+/* Halftone dot pattern backgrounds (Comic Print Style) */
+.bg-halftone-black {
+  background-image: radial-gradient(var(--color-brand-ink)/18% 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+.bg-halftone-cloud {
+  background-image: radial-gradient(var(--color-brand-cloud)/15% 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+/* Comic Card & Button Hover Animations */
+.comic-interactive {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comic-interactive:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 4px 4px 0px 0px var(--color-brand-ink);
+}
+
+.comic-interactive:active {
+  transform: translate(6px, 6px);
+  box-shadow: 1px 1px 0px 0px var(--color-brand-ink);
+}
+
+/* Comic Speech Bubble */
+.comic-bubble {
+  position: relative;
+  background: var(--color-brand-cloud);
+  color: var(--color-brand-ink);
+  border: 3px solid var(--color-brand-ink);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0px 0px var(--color-brand-ink);
+}
+
+.comic-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 24px;
+  border-width: 12px 12px 0;
+  border-style: solid;
+  border-color: var(--color-brand-cloud) transparent;
+  display: block;
+  width: 0;
+}
+
+.comic-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 22px;
+  border-width: 13px 14px 0;
+  border-style: solid;
+  border-color: var(--color-brand-ink) transparent;
+  display: block;
+  width: 0;
+  z-index: -1;
+}
+
+/* Outline Text Utility */
+.text-outline-orange {
+  -webkit-text-stroke: 2px var(--color-brand-orange);
+  color: transparent;
+}
+
+.text-outline-blue {
+  -webkit-text-stroke: 2px var(--color-brand-blue);
+  color: transparent;
+}
+
+.text-outline-cloud {
+  -webkit-text-stroke: 2px var(--color-brand-cloud);
+  color: transparent;
+}
+
+.text-outline-ink {
+  -webkit-text-stroke: 2px var(--color-brand-ink);
+  color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-orange);
+  border: 3px solid var(--color-brand-ink);
+  box-shadow: inset 1px 1px 0px var(--color-brand-cloud);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-blue);
+}
+
+/* Animated Fluid Marble Background */
+.fluid-bg {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  overflow: hidden;
+  z-index: 0;
+  background-color: #fffde6;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.fluid-blob {
+  position: absolute;
+  border-radius: 50%;
+  animation: moveBlob 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+.fluid-blob-1 {
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(circle, rgba(255, 154, 0, 0.6) 0%, transparent 70%);
+  top: 0;
+  left: 0;
+  animation-duration: 25s;
+}
+
+.fluid-blob-2 {
+  width: 90vw;
+  height: 90vw;
+  background: radial-gradient(circle, rgba(255, 154, 0, 0.6) 0%, transparent 70%);
+  bottom: 0;
+  right: 0;
+  animation-duration: 28s;
+  animation-delay: -5s;
+}
+
+.fluid-blob-3 {
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(13, 33, 221, 0.4) 0%, transparent 70%);
+  top: 20%;
+  left: 30%;
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+@keyframes moveBlob {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(15vw, -10vh) scale(1.1) rotate(45deg); }
+  66% { transform: translate(-10vw, 15vh) scale(0.9) rotate(-30deg); }
+  100% { transform: translate(5vw, 5vh) scale(1.2) rotate(15deg); }
+}html.hide-navbar #main-navbar { opacity: 0 !important; pointer-events: none !important; transform: translateY(-100%) !important; }
+
+/* Remove all box shadows inside internal team portals for a cleaner, flatter layout */
+.internal-team-portal [class*="shadow"] {
+  box-shadow: none !important;
+}
+

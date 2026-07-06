@@ -1,0 +1,94 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions for role checks
+    function getRole(uid) {
+      return get(/databases/$(database)/documents/roles/$(uid)).data.role;
+    }
+    
+    function isAdmin() {
+      return request.auth != null && getRole(request.auth.uid) == 'admin';
+    }
+    
+    function isScanner() {
+      return request.auth != null && getRole(request.auth.uid) == 'scanner';
+    }
+
+    // Roles collection rules
+    match /roles/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if isAdmin();
+    }
+
+    // Registrations collection
+    match /registrations/{id} {
+      allow read: if isAdmin() || isScanner();
+      // All registrations are created server-side via Admin SDK which bypasses rules.
+      // Disallow direct client creates to prevent fake paid-registration injection.
+      allow create: if false;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Pending Registrations collection
+    match /pendingRegistrations/{id} {
+      allow read, write: if false; // Only Admin SDK can read/write
+    }
+
+    // Notifications/Announcements collections
+    match /notifications/{id} {
+      allow read, update, delete: if request.auth != null;
+      allow create: if request.auth != null && isAdmin();
+    }
+    
+    match /announcements/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Scan logs collection
+    match /scanLogs/{id} {
+      allow read: if isAdmin() || isScanner();
+      allow write: if isAdmin() || isScanner();
+    }
+
+    // Events (public schedule)
+    match /events/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Audit logs collection
+    match /auditLogs/{id} {
+      allow read, update, delete: if isAdmin();
+      // Only authenticated users can create audit log entries.
+      // Server-side routes use the Admin SDK (bypasses rules); client-side uses Firebase Auth sessions.
+      allow create: if request.auth != null;
+    }
+
+    // Settings
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Scanner Accounts collection
+    match /scannerAccounts/{id} {
+      allow read: if request.auth != null && (request.auth.uid == id || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // Coupons collection
+    match /coupons/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // Contact Messages collection (public anonymous submissions allowed)
+    match /contact_messages/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}

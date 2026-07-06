@@ -1,0 +1,138 @@
+# dependencies
+/node_modules
+/.pnp
+/.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+/build
+
+# production
+/dist
+
+# misc
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.eslintcache
+.stylelintcache
+
+# env files (NEVER COMMIT)
+.env
+.env.*
+.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+*.env
+
+# Secrets and Keys
+*.key
+*.cert
+*.pfx
+*.pem
+serviceAccountKey.json
+*-adminsdk-*.json
+firebase-adminsdk.json
+credentials.json
+service-account.json
+.cashfree/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Firebase
+.firebase/
+*-debug.log
+firebase-debug.log
+firestore-debug.log
+pubsub-debug.log
+ui-debug.log
+.runtimeconfig.json
+
+# IDEs
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Project specific
+public/old-site/
+public/Aarambh_2026_Tech.pdf
+credentials.txt
+users_test.json
+/scratch/
+/graphify-out/
+tsc-errors.txt
+
+# Antigravity / AI tools
+.gemini/
+.antigravity/
+implementation_plan.md
+task.md
+walkthrough.md
+
+# API Keys & Spreadsheets
+*.csv
+*.xlsx
+*.xls
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/fallback-*.html
+**/public/sw.js.map
+
+# Large media files
+/public/teaser.mp4
+/public/file.txt
+
+# Raw photos and processing files
+raw_gallery*.html
+compress.cjs
+/scripts/
+remove-bg.cjs
+remove-bg.js
+page_history.txt
+photos_temp.json
+**/*.JPG
+
+# Generated Credentials File
+/public/credentials.txt
+/volunteer credentials.txt
+/admin, scanner, feedback credentials.txt
+/team login credentials.txt
+/public/Final Team Wise List.xlsx
+
+# System & Temporary Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.bak
+*.tmp
+*.temp
+*~
+~*
+/venv/
+

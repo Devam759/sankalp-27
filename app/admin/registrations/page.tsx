@@ -1,0 +1,927 @@
+'use client';
+
+import React, { useEffect, useState, useMemo } from 'react';
+import { collection, onSnapshot, query, orderBy, doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../../../lib/firebase';
+import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
+import { Modal } from '../../../components/admin/Modal';
+import { logAdminAction } from '../../../lib/audit';
+
+// ============================================================================
+// BESPOKE CUSTOM GEOMETRIC SVG ICONS (Gradient-free, Sharp, Heavy-mitre)
+// ============================================================================
+
+const CustomUsersIcon = ({ className = '', size = 20 }: { className?: string; size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="square" 
+    strokeLinejoin="miter" 
+    className={className}
+  >
+    <rect x="3" y="14" width="7" height="7" />
+    <circle cx="6.5" cy="7.5" r="3.5" />
+    <rect x="14" y="14" width="7" height="7" />
+    <circle cx="17.5" cy="7.5" r="3.5" />
+  </svg>
+);
+
+const CustomDownloadIcon = ({ className = '', size = 18 }: { className?: string; size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="square" 
+    strokeLinejoin="miter" 
+    className={className}
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
+
+const CustomSheetIcon = ({ className = '', size = 16 }: { className?: string; size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="square" 
+    strokeLinejoin="miter" 
+    className={className}
+  >
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <polyline points="14 2 14 8 20 8" />
+    <line x1="16" y1="13" x2="8" y2="13" />
+    <line x1="16" y1="17" x2="8" y2="17" />
+    <polyline points="10 9 9 9 8 9" />
+  </svg>
+);
+
+const CustomEyeIcon = ({ className = '', size = 18 }: { className?: string; size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="square" 
+    strokeLinejoin="miter" 
+    className={className}
+  >
+    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+
+const CustomSearchIcon = ({ className = '', size = 18 }: { className?: string; size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="square" 
+    strokeLinejoin="miter" 
+    className={className}
+  >
+    <circle cx="10" cy="10" r="6" />
+    <line x1="14.5" y1="14.5" x2="21" y2="21" />
+  </svg>
+);
+
+const CustomFilterIcon = ({ className = '', size = 18 }: { className?: string; size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="square" 
+    strokeLinejoin="miter" 
+    className={className}
+  >
+    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+  </svg>
+);
+
+const CustomMailIcon = ({ className = '', size = 16 }: { className?: string; size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="square" 
+    strokeLinejoin="miter" 
+    className={className}
+  >
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
+  </svg>
+);
+
+// ============================================================================
+// REGISTRATIONS VIEW Component
+// ============================================================================
+
+export default function Registrations() {
+  const [registrations, setRegistrations] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedReg, setSelectedReg] = useState<any>(null);
+
+  // Filters State
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'entered' | 'pending' | 'declined'>('all');
+  const [emailFilter, setEmailFilter] = useState<'all' | 'sent' | 'unsent'>('all');
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
+  const [syncState, setSyncState] = useState<'idle' | 'syncing' | 'done' | 'error'>('idle');
+  const [syncMessage, setSyncMessage] = useState('');
+  const [emailSendingState, setEmailSendingState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [emailSendingMessage, setEmailSendingMessage] = useState('');
+  const [serviceEnabled, setServiceEnabled] = useState(true);
+
+  // 1. Fetch Registrations Data& Sorting
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortField, setSortField] = useState('registeredAt');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  const itemsPerPage = 50;
+
+  useEffect(() => {
+    const unsub = onSnapshot(query(collection(db, 'registrations'), orderBy('registeredAt', 'desc')), (snap) => {
+      const allRegs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      // Filter out empty test entries that somehow got created without a name
+      const validRegs = allRegs.filter((reg: any) => reg.name && reg.name.trim() !== '');
+      setRegistrations(validRegs);
+      setLoading(false);
+    });
+    return () => unsub();
+  }, []);
+
+  const handleSort = (field: string) => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortOrder('asc');
+    }
+  };
+
+  // 1. Apply search and dropdown filters
+  const filteredRegistrations = useMemo(() => {
+    return registrations.filter((reg) => {
+      const matchesSearch = 
+        (reg.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (reg.paperId || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (reg.paperTitle || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (reg.email || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (reg.affiliation || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (reg.phone || '').toLowerCase().includes(searchQuery.toLowerCase());
+
+      const matchesStatus = 
+        statusFilter === 'all' ||
+        (statusFilter === 'entered' && reg.hasEntered) ||
+        (statusFilter === 'pending' && !reg.hasEntered && reg.status !== 'declined') ||
+        (statusFilter === 'declined' && reg.status === 'declined');
+
+      const matchesEmail = 
+        emailFilter === 'all' ||
+        (emailFilter === 'sent' && reg.emailSent) ||
+        (emailFilter === 'unsent' && !reg.emailSent);
+
+      return matchesSearch && matchesStatus && matchesEmail;
+    });
+  }, [registrations, searchQuery, statusFilter, emailFilter]);
+
+  // Reset pagination on search query or filter change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, statusFilter, emailFilter]);
+
+  // 2. Apply sorting
+  const sortedRegistrations = useMemo(() => {
+    const sorted = [...filteredRegistrations].sort((a, b) => {
+      let valA = a[sortField];
+      let valB = b[sortField];
+
+      if (sortField === 'registeredAt') {
+        valA = valA?.toMillis() || 0;
+        valB = valB?.toMillis() || 0;
+      } else if (typeof valA === 'string') {
+        valA = valA.toLowerCase();
+        valB = (valB || '').toLowerCase();
+      }
+
+      if (valA < valB) return sortOrder === 'asc' ? -1 : 1;
+      if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
+      return 0;
+    });
+    return sorted;
+  }, [filteredRegistrations, sortField, sortOrder]);
+
+  // 3. Paginate
+  const paginatedRegistrations = sortedRegistrations.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const totalPages = Math.ceil(sortedRegistrations.length / itemsPerPage);
+
+  // Calculate Today's Registrations
+  const todaysRegistrationsCount = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return registrations.filter(reg => {
+      if (!reg.registeredAt) return false;
+      const regDate = reg.registeredAt.toDate();
+      return regDate >= today;
+    }).length;
+  }, [registrations]);
+
+  // CSV export fully synced with Aman's columns
+  const exportCSV = async () => {
+    const headers = [
+      'Registration Index', 
+      'Participant Name', 
+      'Email', 
+      'Phone Number', 
+      'Category',
+      'Institution / Affiliation',
+      'Country',
+      'Paper ID', 
+      'Paper Title', 
+      'Need Accommodation',
+      'City',
+      'State',
+      'Pincode', 
+      'Payment Amount', 
+      'Received Amount', 
+      'Date Of Payment', 
+      'Payment ID (UTR)', 
+      'Settlement ID', 
+      'Transaction ID (Order)'
+    ];
+
+    const formatSinglePhone = (phone: string): string => {
+      if (!phone) return '';
+      if (phone.includes(':') || phone.includes('|')) return phone;
+      const digits = phone.replace(/\D/g, '');
+      if (digits.length >= 10) {
+        return `+91 ${digits.slice(-10)}`;
+      }
+      return phone;
+    };
+
+    const rows = sortedRegistrations.map((r, index) => {
+      const pin = r.pincode || 'N/A';
+      const state = r.region || r.state || 'N/A';
+      const city = r.city || 'N/A';
+      const country = r.country || 'India';
+      const formattedDate = r.dateOfPayment || (r.registeredAt ? r.registeredAt.toDate().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' }).replace(/ /g, '-') : 'N/A');
+      const payAmount = r.paymentAmount ? `₹ ${r.paymentAmount}` : 'N/A';
+      const recAmount = r.receivedAmount ? `₹ ${r.receivedAmount}` : 'N/A';
+
+      return [
+        `"${index + 1}"`,
+        `"${r.name || ''}"`,
+        `"${r.email || ''}"`,
+        `"${formatSinglePhone(r.phone || '')}"`,
+        `"${r.category || 'attendee'}"`,
+        `"${r.affiliation || 'N/A'}"`,
+        `"${country}"`,
+        `"${r.paperId || 'N/A'}"`,
+        `"${(r.paperTitle || 'N/A').replace(/"/g, '""')}"`,
+        `"${r.needAccommodation || 'No'}"`,
+        `"${city}"`,
+        `"${state}"`,
+        `"${pin}"`,
+        `"${payAmount}"`,
+        `"${recAmount}"`,
+        `"${formattedDate}"`,
+        `"${r.paymentId || 'N/A'}"`,
+        `"${r.settlementId || 'N/A'}"`,
+        `"${r.orderId || 'N/A'}"`
+      ];
+    });
+
+    const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `registrations_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    await logAdminAction('EXPORT_REGISTRATIONS', 'registrations', `Exported ${registrations.length} registrations to CSV`);
+  };
+
+  const handleSyncSheet = async () => {
+    setSyncState('syncing');
+    setSyncMessage('Syncing to Google Sheet...');
+    try {
+      const res = await fetch('/api/admin/sync-sheet', { method: 'POST' });
+      const result = await res.json();
+      if (!res.ok) {
+        setSyncState('error');
+        setSyncMessage(result.error || 'Sync failed');
+      } else {
+        setSyncState('done');
+        setSyncMessage(result.message);
+      }
+    } catch (err: any) {
+      setSyncState('error');
+      setSyncMessage(err.message || 'Network error');
+    } finally {
+      setTimeout(() => { setSyncState('idle'); setSyncMessage(''); }, 6000);
+    }
+  };
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const docRef = doc(db, 'settings', 'settlementReconciler');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setServiceEnabled(docSnap.data().enabled !== false);
+        } else {
+          await setDoc(docRef, { enabled: true, updatedAt: serverTimestamp() });
+          setServiceEnabled(true);
+        }
+      } catch (err) {
+        console.error('Failed to fetch settlement settings:', err);
+      }
+    };
+    fetchSettings();
+  }, []);
+
+  const handleToggleService = async () => {
+    const newValue = !serviceEnabled;
+    setServiceEnabled(newValue);
+    try {
+      const docRef = doc(db, 'settings', 'settlementReconciler');
+      await setDoc(docRef, {
+        enabled: newValue,
+        updatedAt: serverTimestamp(),
+        updatedBy: 'Admin Console'
+      }, { merge: true });
+      await logAdminAction(
+        'SETTLEMENT_TOGGLE',
+        'settings/settlementReconciler',
+        `Daily settlement reconciler service toggled ${newValue ? 'ON' : 'OFF'}`
+      );
+    } catch (err) {
+      console.error('Failed to update service status:', err);
+      setServiceEnabled(!newValue);
+    }
+  };
+
+  const unsentCount = useMemo(() => {
+    return registrations.filter(reg => !reg.emailSent).length;
+  }, [registrations]);
+
+  const handleSendUnsentEmails = async () => {
+    if (confirm(`Are you sure you want to send confirmation emails to all ${unsentCount} unsent users?`)) {
+      setEmailSendingState('sending');
+      setEmailSendingMessage(`Sending emails to ${unsentCount} users...`);
+      try {
+        const res = await fetch('/api/admin/resend-emails', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sendAllUnsent: true })
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          setEmailSendingState('error');
+          setEmailSendingMessage(result.error || 'Failed to send emails.');
+        } else {
+          setEmailSendingState('done');
+          setEmailSendingMessage(result.message);
+        }
+      } catch (err: any) {
+        setEmailSendingState('error');
+        setEmailSendingMessage(err.message || 'Network error');
+      } finally {
+        setTimeout(() => {
+          setEmailSendingState('idle');
+          setEmailSendingMessage('');
+        }, 6000);
+      }
+    }
+  };
+
+  return (
+    <div className="space-y-8 ">
+      {/* Live Counter Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-admin-surface border-4 border-brand-ink p-8 rounded-md shadow-[6px_6px_0px_0px_#030404] flex flex-col items-center justify-center text-center">
+          <h2 className="text-xs font-black text-admin-muted uppercase tracking-widest mb-1.5">Total Registrations</h2>
+          <p className="font-adminHeading text-6xl font-black text-brand-ink">
+            {loading ? '-' : registrations.length}
+          </p>
+          {filteredRegistrations.length !== registrations.length && (
+            <p className="text-[10px] uppercase font-black tracking-wide text-brand-orange mt-2 bg-brand-orange/15 px-3 py-1 border-2 border-brand-ink rounded-md">
+              Filtered matches: {filteredRegistrations.length}
+            </p>
+          )}
+        </div>
+        
+        <div className="bg-brand-orange/10 border-4 border-brand-ink p-8 rounded-md shadow-[6px_6px_0px_0px_#030404] flex flex-col items-center justify-center text-center">
+          <h2 className="text-xs font-black text-brand-orange uppercase tracking-widest mb-1.5">Today&apos;s Registrations</h2>
+          <p className="font-adminHeading text-6xl font-black text-brand-orange">
+            {loading ? '-' : todaysRegistrationsCount}
+          </p>
+        </div>
+      </div>
+
+      {/* Main Title & Action header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h1 className="font-adminHeading text-3xl font-black uppercase tracking-tight text-brand-ink">Registration Data</h1>
+          <p className="text-admin-muted font-bold text-xs uppercase tracking-wider mt-1">Student orientation portal listings</p>
+        </div>
+        <div className="flex flex-wrap items-center gap-3">
+          {unsentCount > 0 && (
+            <button
+              onClick={handleSendUnsentEmails}
+              disabled={loading || emailSendingState === 'sending'}
+              className={`comic-btn-orange flex items-center gap-2 ${
+                emailSendingState === 'sending' ? 'opacity-70 cursor-not-allowed' : ''
+              }`}
+            >
+              {emailSendingState === 'sending' ? (
+                <svg className="animate-spin" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              ) : (
+                <CustomMailIcon size={16} />
+              )}
+              {emailSendingState === 'sending' ? 'Sending...' : `Send Unsent Emails (${unsentCount})`}
+            </button>
+          )}
+          <a 
+            href="https://docs.google.com/spreadsheets/d/1Pfh7eZaknrvPEqcTjwgK1ludGjsT_OOA-KUnubzYxMc/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="comic-btn-green"
+          >
+            <CustomSheetIcon size={16} /> Google Sheet
+          </a>
+          <button
+            onClick={handleSyncSheet}
+            disabled={loading || syncState === 'syncing'}
+            className={`comic-btn-blue flex items-center gap-2 ${
+              syncState === 'syncing' ? 'opacity-70 cursor-not-allowed' : ''
+            }`}
+          >
+            {syncState === 'syncing' ? (
+              <svg className="animate-spin" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            ) : (
+              <CustomSheetIcon size={16} />
+            )}
+            {syncState === 'syncing' ? 'Syncing...' : 'Sync to Sheet'}
+          </button>
+          <button
+            onClick={handleToggleService}
+            className={`flex items-center gap-2 ${
+              serviceEnabled ? 'comic-btn-green' : 'comic-btn-red'
+            }`}
+          >
+            <span>Daily Reconciler: {serviceEnabled ? 'ON' : 'OFF'}</span>
+          </button>
+          <button 
+            onClick={exportCSV}
+            disabled={loading || registrations.length === 0}
+            className="comic-btn-orange"
+          >
+            <CustomDownloadIcon size={16} /> Export CSV
+          </button>
+        </div>
+      </div>
+
+      {/* Sync status feedback banner */}
+      {syncState !== 'idle' && (
+        <div className={`border-4 border-brand-ink rounded-md px-5 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_#030404] ${
+          syncState === 'syncing' ? 'bg-blue-100 text-blue-900' :
+          syncState === 'done' ? 'bg-green-100 text-green-900' :
+          'bg-red-100 text-red-900'
+        }`}>
+          {syncMessage}
+        </div>
+      )}
+
+      {/* Email sending status feedback banner */}
+      {emailSendingState !== 'idle' && (
+        <div className={`border-4 border-brand-ink rounded-md px-5 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_#030404] ${
+          emailSendingState === 'sending' ? 'bg-blue-100 text-blue-900' :
+          emailSendingState === 'done' ? 'bg-green-100 text-green-900' :
+          'bg-red-100 text-red-900'
+        }`}>
+          {emailSendingMessage}
+        </div>
+      )}
+
+      {/* Mobile Filter Toggle Button */}
+      <div className="md:hidden mt-4">
+        <button 
+          onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
+          className="w-full bg-brand-cloud border-4 border-brand-ink p-4 rounded-md shadow-[4px_4px_0px_0px_#030404] flex items-center justify-between text-brand-ink active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer focus:outline-none"
+        >
+          <div className="flex items-center gap-2">
+            <CustomFilterIcon size={16} />
+            <span className="font-adminHeading text-sm font-black uppercase tracking-widest mt-1">Search & Filters</span>
+          </div>
+          <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+            {isMobileFiltersOpen ? 'Hide' : 'Show'}
+          </span>
+        </button>
+      </div>
+
+      {/* Structured Filters Option Bar */}
+      <div className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out md:grid-rows-[1fr] md:opacity-100 md:mt-6 ${isMobileFiltersOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
+        <div className="overflow-hidden">
+          <div className="bg-white border-4 border-brand-ink p-6 rounded-md shadow-[4px_4px_0px_0px_#030404] flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+        <div className="flex-1 relative">
+          <CustomSearchIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-ink/40" size={16} />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-brand-cloud/40 border-2 border-brand-ink rounded-md py-3 pl-11 pr-4 text-sm text-brand-ink font-bold placeholder:text-brand-ink/40 shadow-inner focus:outline-none focus:border-brand-orange focus:bg-white transition-all uppercase tracking-wider"
+            placeholder="Search Name, Application Number, or Email..."
+          />
+        </div>
+        
+        <div className="flex items-center gap-3 min-w-[280px]">
+          <div className="p-2.5 border-2 border-brand-ink bg-brand-cloud text-brand-ink rounded-md hidden xs:block">
+            <CustomFilterIcon size={16} />
+          </div>
+          <select
+            value={statusFilter}
+            onChange={(e: any) => setStatusFilter(e.target.value)}
+            className="w-full bg-white border-2 border-brand-ink rounded-md py-3 px-4 text-xs text-brand-ink font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#030404] focus:outline-none cursor-pointer hover:bg-brand-cloud transition-colors"
+          >
+            <option value="all">Filter: All Status</option>
+            <option value="entered">Checked-In</option>
+            <option value="pending">Pending Check-In</option>
+            <option value="declined">Declined / Blocked</option>
+          </select>
+
+          <select
+            value={emailFilter}
+            onChange={(e: any) => setEmailFilter(e.target.value)}
+            className="w-full bg-white border-2 border-brand-ink rounded-md py-3 px-4 text-xs text-brand-ink font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#030404] focus:outline-none cursor-pointer hover:bg-brand-cloud transition-colors"
+          >
+            <option value="all">Email: All</option>
+            <option value="sent">Email: Sent</option>
+            <option value="unsent">Email: Unsent</option>
+          </select>
+        </div>
+      </div>
+      </div>
+      </div>
+
+      {/* Main Table Segment */}
+      {loading ? (
+        <SkeletonTable rows={10} />
+      ) : (
+        <div className="bg-white border-4 border-brand-ink rounded-md shadow-[6px_6px_0px_0px_#030404] overflow-hidden flex flex-col">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse whitespace-nowrap">
+              <thead>
+                <tr className="bg-brand-cloud border-b-2 border-brand-ink text-brand-ink text-[10px] font-black uppercase tracking-widest">
+                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('name')}>
+                    Name {sortField === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  </th>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('category')}>
+                    Category {sortField === 'category' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  </th>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('paperId')}>
+                    Paper ID {sortField === 'paperId' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  </th>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('email')}>
+                    Contact Details {sortField === 'email' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  </th>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('registeredAt')}>
+                    Registration Time {sortField === 'registeredAt' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  </th>
+                  <th className="p-4">Checked-In</th>
+                  <th className="p-4 text-right">Details</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-brand-ink/10">
+                {paginatedRegistrations.map((reg) => (
+                  <tr key={reg.id} className="hover:bg-brand-cloud/45 transition-colors text-xs font-bold text-brand-ink">
+                    <td className="p-4 font-black">{reg.name}</td>
+                    <td className="p-4 text-brand-ink/90 font-mono text-[10px] uppercase">{reg.category || 'attendee'}</td>
+                    <td className="p-4 text-brand-ink/90 font-mono text-[10px]">{reg.paperId || 'N/A'}</td>
+                    <td className="p-4 text-brand-ink/90">
+                      <div className="font-semibold text-xs lowercase">{reg.email}</div>
+                      <div className="text-[10px] text-admin-muted font-bold mt-0.5">{reg.phone}</div>
+                    </td>
+                    <td className="p-4 text-admin-muted">
+                      {reg.registeredAt ? reg.registeredAt.toDate().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : ''}
+                    </td>
+                    <td className="p-4">
+                      <span className={`inline-block px-2.5 py-1 border-2 border-brand-ink rounded-md text-[9px] font-black uppercase tracking-wider ${
+                        reg.hasEntered 
+                          ? 'bg-green-100 text-green-700 border-green-700' 
+                          : (reg.status === 'declined' ? 'bg-red-100 text-red-700 border-red-700' : 'bg-yellow-100 text-yellow-700 border-yellow-700')
+                      }`}>
+                        {reg.hasEntered ? 'Yes' : (reg.status === 'declined' ? 'Declined' : 'No')}
+                      </span>
+                    </td>
+                    <td className="p-4 text-right">
+                      <button 
+                        onClick={() => setSelectedReg(reg)} 
+                        className="p-2 border-2 border-transparent hover:border-brand-ink hover:bg-brand-cloud text-brand-ink rounded-md transition-all cursor-pointer focus:outline-none"
+                      >
+                        <CustomEyeIcon size={16} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+                {paginatedRegistrations.length === 0 && (
+                  <tr>
+                    <td colSpan={7} className="p-8 text-center text-admin-muted font-black text-xs uppercase tracking-wider">
+                      No matching registration logs found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="p-4 border-t-2 border-brand-ink flex justify-between items-center bg-brand-cloud">
+              <span className="text-xs font-black uppercase text-admin-muted">
+                Page {currentPage} of {totalPages}
+              </span>
+              <div className="flex gap-2">
+                <button 
+                  disabled={currentPage === 1} 
+                  onClick={() => {
+                    setCurrentPage(p => p - 1);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="px-4 py-2 border-2 border-brand-ink rounded-md bg-white text-xs font-black uppercase text-brand-ink hover:bg-brand-cloud disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                >
+                  Prev
+                </button>
+                <button 
+                  disabled={currentPage === totalPages} 
+                  onClick={() => {
+                    setCurrentPage(p => p + 1);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="px-4 py-2 border-2 border-brand-ink rounded-md bg-white text-xs font-black uppercase text-brand-ink hover:bg-brand-cloud disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Custom Overhauled Modal Details */}
+      <Modal isOpen={!!selectedReg} onClose={() => setSelectedReg(null)} title="Registration Details">
+        {selectedReg && (
+          <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2 text-brand-ink">
+            <div className="grid grid-cols-2 gap-4 text-xs font-bold uppercase tracking-wide">
+              {/* Participant Details */}
+              <div className="col-span-2 border-b-2 border-brand-ink pb-2">
+                <p className="text-xs font-black text-brand-orange uppercase tracking-widest">Participant Credentials</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Full Name</p>
+                <p className="font-black text-sm text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.name}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Registration Category</p>
+                <p className="font-black text-sm text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md uppercase">{selectedReg.category || 'attendee'}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Email Address</p>
+                <p className="font-black text-xs text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md break-all lowercase">{selectedReg.email}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Phone Number</p>
+                <p className="font-black text-sm text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.phone}</p>
+              </div>
+              
+              {/* Conference Paper details */}
+              <div className="col-span-2 border-t-2 border-brand-ink pt-4 mt-2">
+                <p className="text-xs font-black text-brand-orange uppercase tracking-widest">Paper Information</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Paper ID</p>
+                <p className="font-black text-sm text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.paperId || 'N/A'}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Accommodation Needed</p>
+                <p className="font-black text-sm text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.needAccommodation || 'No'}</p>
+              </div>
+              <div className="col-span-2">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Paper Title</p>
+                <p className="font-black text-sm text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md leading-relaxed">{selectedReg.paperTitle || 'N/A'}</p>
+              </div>
+
+              {/* Institution details */}
+              <div className="col-span-2 border-t-2 border-brand-ink pt-4 mt-2">
+                <p className="text-xs font-black text-brand-orange uppercase tracking-widest">Institution & Address</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Institution / Affiliation</p>
+                <p className="font-black text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.affiliation || 'N/A'}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Country</p>
+                <p className="font-black text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.country || 'India'}</p>
+              </div>
+
+              {/* Residential Details */}
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">City / State</p>
+                <p className="font-black text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.city || 'N/A'}, {selectedReg.region || 'N/A'}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Pincode</p>
+                <p className="font-black text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">{selectedReg.pincode || 'N/A'}</p>
+              </div>
+
+              {/* Transaction & Payment Details */}
+              <div className="col-span-2 border-t-2 border-brand-ink pt-4 mt-2">
+                <p className="text-xs font-black text-brand-orange uppercase tracking-widest">Payment & Transaction Details</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Payment Amount</p>
+                <p className="font-black text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">
+                  {selectedReg.paymentAmount ? `₹ ${selectedReg.paymentAmount}` : '₹ 2,500'}
+                </p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Received Amount</p>
+                <p className="font-black text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">
+                  {selectedReg.receivedAmount ? `₹ ${selectedReg.receivedAmount}` : '₹ 2,500'}
+                </p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Date Of Payment</p>
+                <p className="font-black text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md">
+                  {selectedReg.dateOfPayment || (selectedReg.registeredAt ? selectedReg.registeredAt.toDate().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' }).replace(/ /g, '-') : 'N/A')}
+                </p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">UTR No.</p>
+                <p className="font-black text-xs text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md break-all">{selectedReg.paymentId || 'N/A'}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Bank Reference No.</p>
+                <p className="font-black text-xs text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md break-all">{selectedReg.paymentId || 'N/A'}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Settlement ID</p>
+                <p className="font-black text-xs text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md break-all">{selectedReg.settlementId || 'Pending'}</p>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] font-black text-admin-muted mb-1">Transaction ID</p>
+                <p className="font-black text-xs text-brand-ink bg-brand-cloud/45 p-2.5 border-2 border-brand-ink rounded-md break-all">{selectedReg.orderId || 'N/A'}</p>
+              </div>
+
+              {/* Security Credentials */}
+              <div className="col-span-2 border-t-2 border-brand-ink pt-4 mt-2">
+                <p className="text-xs font-black text-brand-orange uppercase tracking-widest">Security Credentials</p>
+              </div>
+              <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-brand-cloud/45 p-4 border-2 border-brand-ink rounded-md">
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-[10px] font-black text-admin-muted mb-1">Registration ID</p>
+                    <p className="font-mono font-black text-[11px] text-brand-ink bg-white p-2.5 border-2 border-brand-ink rounded-md break-all select-all shadow-inner">
+                      {selectedReg.id}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-admin-muted mb-1.5 uppercase tracking-wider font-adminBody">Entry Status</p>
+                    <select
+                      value={selectedReg.hasEntered ? 'approved' : (selectedReg.status === 'declined' ? 'declined' : 'not entered')}
+                      onChange={async (e) => {
+                        const newStatus = e.target.value;
+                        const regRef = doc(db, 'registrations', selectedReg.id);
+                        
+                        try {
+                          if (newStatus === 'approved') {
+                            await updateDoc(regRef, {
+                              hasEntered: true,
+                              status: 'approved',
+                              enteredAt: serverTimestamp(),
+                              enteredBy: 'ADMIN_MANUAL'
+                            });
+                            await logAdminAction('MANUAL_ENTRY_APPROVE', `registrations/${selectedReg.id}`, `Manually approved check-in for ${selectedReg.name}`);
+                          } else if (newStatus === 'declined') {
+                            await updateDoc(regRef, {
+                              hasEntered: false,
+                              status: 'declined',
+                              enteredAt: null,
+                              enteredBy: null
+                            });
+                            await logAdminAction('MANUAL_ENTRY_DECLINE', `registrations/${selectedReg.id}`, `Manually declined check-in for ${selectedReg.name}`);
+                          } else {
+                            await updateDoc(regRef, {
+                              hasEntered: false,
+                              status: 'not entered',
+                              enteredAt: null,
+                              enteredBy: null
+                            });
+                            await logAdminAction('MANUAL_ENTRY_RESET', `registrations/${selectedReg.id}`, `Manually reset check-in state to pending for ${selectedReg.name}`);
+                          }
+                          
+                          setSelectedReg((prev: any) => ({
+                            ...prev,
+                            hasEntered: newStatus === 'approved',
+                            status: newStatus
+                          }));
+                          
+                          alert(`Successfully updated entry status to ${newStatus.toUpperCase()}`);
+                        } catch (err: any) {
+                          console.error("Failed to update status:", err);
+                          alert("Failed to update status: " + err.message);
+                        }
+                      }}
+                      className="bg-white text-brand-ink border-2 border-brand-ink font-adminHeading uppercase tracking-wider text-[10px] rounded-md py-1.5 px-3 shadow-[2px_2px_0px_0px_#030404] transition-all active:translate-x-[0.5px] active:translate-y-[0.5px] active:shadow-[1px_1px_0px_0px_#030404] cursor-pointer outline-none focus:ring-2 focus:ring-brand-ink/20 font-black"
+                    >
+                      <option value="not entered">Not Entered (Pending)</option>
+                      <option value="approved">Approved (Checked-In)</option>
+                      <option value="declined">Declined (Blocked)</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p className="text-[10px] font-black text-admin-muted mb-2 uppercase tracking-wider">Verification QR Code</p>
+                  <img 
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${selectedReg.id}`} 
+                    alt="Registration QR Code" 
+                    className="w-32 h-32 bg-white border-2 border-brand-ink p-1 rounded-md shadow-[3px_3px_0px_0px_#030404]"
+                  />
+                </div>
+              </div>
+              
+              {/* Receipt & Email Actions */}
+              <div className="col-span-2 border-t-2 border-brand-ink pt-6 mt-2 flex flex-col sm:flex-row justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={async () => {
+                    if (confirm(`Resend confirmation email to ${selectedReg.name} (${selectedReg.email})?`)) {
+                      try {
+                        const res = await fetch('/api/admin/resend-emails', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ ids: [selectedReg.id] })
+                        });
+                        const result = await res.json();
+                        if (res.ok) {
+                          alert('Email sent successfully!');
+                          // Update selectedReg to reflect success in Modal UI
+                          setSelectedReg((prev: any) => ({ ...prev, emailSent: true }));
+                        } else {
+                          alert(`Failed to send email: ${result.error}`);
+                        }
+                      } catch (err: any) {
+                        alert(`Network error: ${err.message}`);
+                      }
+                    }
+                  }}
+                  className="comic-btn-blue w-full sm:w-auto"
+                >
+                  <CustomMailIcon size={14} /> Send / Resend Email
+                </button>
+                <a 
+                  href={`/api/receipt?id=${selectedReg.id}`}
+                  download
+                  className="comic-btn-orange w-full sm:w-auto"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download Receipt PDF
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
+    </div>
+  );
+}
