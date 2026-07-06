@@ -19,7 +19,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
       {
-        // Explicitly allow Googlebot to index all public pages
         userAgent: 'Googlebot',
         allow: '/',
         disallow: [
@@ -31,7 +30,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://conference.jklu.edu.in/sitemap.xml',
-    host: 'https://conference.jklu.edu.in',
+    sitemap: 'https://aarambh.jklu.edu.in/sitemap.xml',
+    host: 'https://aarambh.jklu.edu.in',
   };
 }

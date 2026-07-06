@@ -31,12 +31,10 @@ export default function GlobalError({
       }
     }
 
-    // We only want to log the error once per mount
     if (logged) return;
     
     console.error("Global Error Boundary Caught Exception:", error);
     
-    // Fire and forget: send to backend logger
     fetch('/api/log-error', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -55,43 +53,39 @@ export default function GlobalError({
   }, [error, logged]);
 
   return (
-    <div className="min-h-screen bg-brand-cloud flex flex-col items-center justify-center p-6 text-center">
-      <div className="bg-white p-8 md:p-12 rounded-lg border-4 border-brand-ink shadow-[8px_8px_0px_0px_#030404] max-w-lg w-full flex flex-col items-center">
-        
-        {/* Bespoke Alert Icon */}
-        <div className="w-20 h-20 rounded-full border-4 border-brand-ink bg-brand-pink text-white flex items-center justify-center mb-6 shadow-[4px_4px_0px_0px_#030404] rotate-[-5deg]">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter">
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-            <polygon points="12 2 22 20 2 20 12 2" />
+    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-center text-white font-sans">
+      <div className="bg-slate-900 p-8 md:p-12 rounded-lg border border-slate-800 max-w-lg w-full flex flex-col items-center shadow-2xl">
+        <div className="w-16 h-16 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mb-6">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
           </svg>
         </div>
 
-        <h1 className="font-adminHeading text-3xl md:text-4xl font-black uppercase tracking-tight text-brand-ink mb-4">
-          System Crash
+        <h1 className="text-2xl font-bold tracking-tight mb-4">
+          System Error
         </h1>
         
-        <p className="text-brand-ink/80 font-bold text-sm md:text-base leading-relaxed mb-8">
-          A critical error was encountered while rendering this page. The system administrators have been automatically notified.
+        <p className="text-slate-400 text-sm leading-relaxed mb-8">
+          A critical error was encountered. The technical team has been automatically notified.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full">
           <button
             onClick={() => reset()}
-            className="flex-1 px-6 py-4 border-4 border-brand-ink bg-brand-orange text-brand-ink font-black uppercase tracking-widest hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#030404] active:translate-y-0 active:shadow-none transition-all focus:outline-none"
+            className="flex-1 px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded transition-all active:scale-95"
           >
             Try Again
           </button>
           
           <Link 
             href="/"
-            className="flex-1 px-6 py-4 border-4 border-brand-ink bg-white text-brand-ink font-black uppercase tracking-widest hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#030404] active:translate-y-0 active:shadow-none transition-all focus:outline-none"
+            className="flex-1 px-6 py-3 border border-slate-700 hover:border-slate-500 text-white font-semibold rounded hover:bg-slate-800 transition-all active:scale-95"
           >
             Go Home
           </Link>
         </div>
-
-
       </div>
     </div>
   );

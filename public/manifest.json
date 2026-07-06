@@ -1,16 +1,16 @@
 {
-  "name": "Aarambh 2026",
-  "short_name": "Aarambh'26",
-  "description": "The ultimate convergence of technology, culture, and innovation at JK Lakshmipat University.",
+  "name": "Sankalp 2027",
+  "short_name": "Sankalp'27",
+  "description": "The official student portal of JK Lakshmipat University.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#030404",
   "theme_color": "#FF9A00",
   "icons": [
     {
-      "src": "/logos/aarambh_logo_removebg.webp",
+      "src": "/logos/jklu_logo.png",
       "sizes": "any",
-      "type": "image/webp"
+      "type": "image/png"
     }
   ]
 }

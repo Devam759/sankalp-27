@@ -44,25 +44,25 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
     console.warn('PDF Left Logo (JKLU) load failed:', error);
   }
 
-  // 2. Right Logo: AARAMBH Main Logo (Transparent removebg PNG variant)
-  let aarambhScaledWidth = 0;
-  let aarambhScaledHeight = 0;
-  let aarambhLogoImage;
+  // 2. Right Logo: Sankalp Main Logo (Transparent removebg PNG variant)
+  let sankalpScaledWidth = 0;
+  let sankalpScaledHeight = 0;
+  let sankalpLogoImage;
   try {
-    const aarambhLogoPath = path.join(
+    const sankalpLogoPath = path.join(
       process.cwd(), 
       'public', 
       'logos',
-      'Aarambh_new_logo.png'
+      'sankalp_logo.png'
     );
-    const aarambhLogoBytes = await fs.readFile(aarambhLogoPath);
-    aarambhLogoImage = await pdfDoc.embedPng(aarambhLogoBytes);
+    const sankalpLogoBytes = await fs.readFile(sankalpLogoPath);
+    sankalpLogoImage = await pdfDoc.embedPng(sankalpLogoBytes);
     const targetHeight = 35;
-    const scaleFactor = targetHeight / aarambhLogoImage.height;
-    aarambhScaledWidth = aarambhLogoImage.width * scaleFactor;
-    aarambhScaledHeight = aarambhLogoImage.height * scaleFactor;
+    const scaleFactor = targetHeight / sankalpLogoImage.height;
+    sankalpScaledWidth = sankalpLogoImage.width * scaleFactor;
+    sankalpScaledHeight = sankalpLogoImage.height * scaleFactor;
   } catch (error) {
-    console.warn('PDF Right Logo (Aarambh) load failed:', error);
+    console.warn('PDF Right Logo (Sankalp) load failed:', error);
   }
 
   // Draw Left Logo (JKLU Logo) directly on white background
@@ -75,13 +75,13 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
     });
   }
 
-  // Draw Right Logo (AARAMBH Logo) directly on white background
-  if (aarambhLogoImage) {
-    page.drawImage(aarambhLogoImage, {
-      x: width - 40 - aarambhScaledWidth,
+  // Draw Right Logo (Sankalp Logo) directly on white background
+  if (sankalpLogoImage) {
+    page.drawImage(sankalpLogoImage, {
+      x: width - 40 - sankalpScaledWidth,
       y: height - 90,
-      width: aarambhScaledWidth,
-      height: aarambhScaledHeight,
+      width: sankalpScaledWidth,
+      height: sankalpScaledHeight,
     });
   }
 
@@ -408,16 +408,16 @@ export async function sendSystemErrorEmail(performedBy: string, targetEntity: st
     const transporter = await getTransporter();
 
     const mailOptions = {
-      from: `"Aarambh System Monitor" <${process.env.SMTP_FROM || ''}>`,
+      from: `"Sankalp System Monitor" <${process.env.SMTP_FROM || ''}>`,
       to: 'devamgupta@jklu.edu.in',
-      subject: `🚨 [Aarambh Error] SYSTEM_ERROR Alert`,
+      subject: `🚨 [Sankalp Error] SYSTEM_ERROR Alert`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #ef4444; color: white; padding: 20px; text-align: center;">
             <h2 style="margin: 0; font-size: 20px; text-transform: uppercase; letter-spacing: 1px;">🚨 System Error Detected</h2>
           </div>
           <div style="padding: 25px; background-color: #ffffff; color: #333333; line-height: 1.6;">
-            <p>An automated system error has been logged in the Aarambh event registration portal.</p>
+            <p>An automated system error has been logged in the Sankalp event registration portal.</p>
             <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; width: 120px; color: #666;">Source:</td>
@@ -436,7 +436,7 @@ export async function sendSystemErrorEmail(performedBy: string, targetEntity: st
             <pre style="background: #f8fafc; padding: 15px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: 'Courier New', Courier, monospace; font-size: 12px; white-space: pre-wrap; word-break: break-all; margin: 0;">${details}</pre>
           </div>
           <div style="background-color: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #777777; border-top: 1px solid #e2e8f0;">
-            This is an automated alert from the Aarambh Event Management Portal.
+            This is an automated alert from the Sankalp Event Management Portal.
           </div>
         </div>
       `

@@ -36,14 +36,14 @@ async function generateFallbackSchedulePDF(batchName: string): Promise<Uint8Arra
   
   page.drawText('JK Lakshmipat University', { x: 50, y: 350, size: 18, color: rgb(0.01, 0.01, 0.01) });
   page.drawText(`Official Schedule: ${batchName}`, { x: 50, y: 310, size: 22, color: rgb(1, 0.6, 0) });
-  page.drawText('Orientation Program — Aarambh 2026', { x: 50, y: 280, size: 12, color: rgb(0.4, 0.4, 0.4) });
+  page.drawText('Orientation Program — Sankalp 2027', { x: 50, y: 280, size: 12, color: rgb(0.4, 0.4, 0.4) });
   
   page.drawText('Schedule Outline:', { x: 50, y: 220, size: 14, color: rgb(0.1, 0.1, 0.1) });
   page.drawText('• Day 1: Reporting, Registration and Welcome Inaugural Session', { x: 50, y: 190, size: 10 });
   page.drawText('• Day 2: Academic Orientation & Campus Tours', { x: 50, y: 170, size: 10 });
   page.drawText('• Day 3: Ice-breaking Activities & Club Introductions', { x: 50, y: 150, size: 10 });
   page.drawText('• Day 4-7: Skill Workshops, Guest Lectures & Cultural Rehearsals', { x: 50, y: 130, size: 10 });
-  page.drawText('• Day 8: Convocation & Aarambh Gala Event Night', { x: 50, y: 110, size: 10 });
+  page.drawText('• Day 8: Convocation & Sankalp Gala Event Night', { x: 50, y: 110, size: 10 });
   
   page.drawLine({ start: { x: 50, y: 70 }, end: { x: 550, y: 70 }, thickness: 1, color: rgb(0.8, 0.8, 0.8) });
   page.drawText('This is a system-generated schedule document.', { x: 50, y: 55, size: 8, color: rgb(0.5, 0.5, 0.5) });
@@ -160,12 +160,12 @@ export async function sendCheckInEmail(
   let logoAttachment: any = null;
   let jkluAttachment: any = null;
   try {
-    const logoPath = path.join(process.cwd(), 'public', 'logos', 'Aarambh_new_logo.png');
+    const logoPath = path.join(process.cwd(), 'public', 'logos', 'sankalp_logo.png');
     const logoBytes = await fs.readFile(logoPath);
     logoAttachment = {
-      filename: 'Aarambh_new_logo.png',
+      filename: 'sankalp_logo.png',
       content: logoBytes,
-      cid: 'aarambh_logo'
+      cid: 'sankalp_logo'
     };
 
     const jkluPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.png');
@@ -209,7 +209,7 @@ export async function sendCheckInEmail(
                 <img src="cid:jklu_logo" alt="JKLU Logo" style="max-height: 55px; width: auto; display: block;" />
               </td>
               <td align="center" valign="middle" style="padding-left: 20px; border-left: 1px solid rgba(0,0,0,0.1);">
-                <img src="cid:aarambh_logo" alt="Aarambh '26 Logo" style="max-height: 70px; width: auto; display: block;" />
+                <img src="cid:sankalp_logo" alt="Sankalp '27 Logo" style="max-height: 70px; width: auto; display: block;" />
               </td>
             </tr>
           </table>
@@ -234,18 +234,18 @@ export async function sendCheckInEmail(
           </p>
           
           <p>We look forward to seeing you!</p>
-          <p>Best regards,<br/><strong>AARAMBH Team</strong></p>
+          <p>Best regards,<br/><strong>SANKALP Team</strong></p>
         </div>
         <div class="footer">
           <div class="social-icons">
-            <a href="https://www.instagram.com/aarambh_jklu?igsh=NmZzYjFrcDNtejMw">Instagram</a> &bull; 
+            <a href="https://www.instagram.com/jklujaipur/">Instagram</a> &bull; 
             <a href="https://www.linkedin.com/school/jklujaipur/">LinkedIn</a> &bull; 
             <a href="https://x.com/jklujaipur">X (Twitter)</a> &bull; 
             <a href="https://www.facebook.com/share/1Hsdb57Jcf/">Facebook</a>
           </div>
           <p style="margin-bottom: 5px;">JK Lakshmipat University, Jaipur</p>
           <p style="margin-top: 0;"><a href="https://aarambh.jklu.edu.in" class="footer-link">aarambh.jklu.edu.in</a></p>
-          <p style="margin-top: 15px; font-size: 11px; opacity: 0.7;">&copy; 2026 Aarambh Event Management System</p>
+          <p style="margin-top: 15px; font-size: 11px; opacity: 0.7;">&copy; 2027 Sankalp Event Management System</p>
         </div>
       </div>
     </body>
@@ -253,7 +253,7 @@ export async function sendCheckInEmail(
   `;
 
   const mailOptions: any = {
-    from: `"Aarambh Team" <${process.env.SMTP_FROM || ''}>`,
+    from: `"Sankalp Team" <${process.env.SMTP_FROM || ''}>`,
     to: toEmail,
     subject: "Check-In Confirmation – Batch Details & Schedule",
     html: htmlContent,

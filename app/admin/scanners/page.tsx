@@ -59,7 +59,7 @@ export default function ScannerAccounts() {
         return `SCAN-${String(num).padStart(4, '0')}`;
       };
 
-      const generatedEmail = `scanner_${Date.now()}@aarambh.com`;
+      const generatedEmail = `scanner_${Date.now()}@sankalp.com`;
       const generatedPassword = generateSecurePassword(8);
       
       // Initialize a secondary app to create a user without signing out the admin

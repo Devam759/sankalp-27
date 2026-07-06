@@ -178,7 +178,7 @@ export default function Announcements() {
             <input 
               type="text" required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})}
               className="w-full bg-admin-bg border border-admin-border rounded-lg py-2 px-4 focus:outline-none focus:border-admin-accent"
-              placeholder="E.g., Welcome to Aarambh 2026!"
+              placeholder="E.g., Welcome to Sankalp 2027!"
             />
           </div>
           
