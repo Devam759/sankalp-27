@@ -5,14 +5,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Call for Papers', href: '#call-for-papers' },
-    { name: 'Committee', href: '#committee' },
-    { name: 'Registration', href: '#registration' },
-    { name: 'Publication', href: '#publication' },
-    { name: 'Venue', href: '#venue' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/#about' },
+    { name: 'Call for Papers', href: '/call-for-papers' },
+    { name: 'Committee', href: '/#committee' },
+    { name: 'Submission & Publication', href: '/submission' },
+    { name: 'Registration', href: '/#registration' },
+    { name: 'Venue', href: '/#venue' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (

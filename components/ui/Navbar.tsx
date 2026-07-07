@@ -11,17 +11,14 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Important Dates', href: '#important-dates' },
-    { name: 'Tracks', href: '#tracks' },
-    { name: 'Committee', href: '#committee' },
-    { name: 'Call for Papers', href: '#call-for-papers' },
-    { name: 'Submission', href: '#submission' },
-    { name: 'Publication', href: '#publication' },
-    { name: 'Registration', href: '#registration' },
-    { name: 'Venue', href: '#venue' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/#about' },
+    { name: 'Important Dates', href: '/#important-dates' },
+    { name: 'Committee', href: '/#committee' },
+    { name: 'Call for Papers', href: '/call-for-papers' },
+    { name: 'Submission', href: '/submission' },
+    { name: 'Registration', href: '/#registration' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   useEffect(() => {
@@ -42,7 +39,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
-        <Link href="#home" className="flex items-center gap-2 z-50 relative group">
+        <Link href="/" className="flex items-center gap-2 z-50 relative group">
           <Image 
             src="/logos/jklu_logo.svg" 
             alt="JKLU Logo" 

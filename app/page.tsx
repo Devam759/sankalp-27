@@ -2,16 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Download, FileText, ExternalLink, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
+import { FileText, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
-import TrackAccordion from '@/components/ui/TrackAccordion';
 import { 
   conferenceDates, 
   keyFeatures, 
-  conferenceTracks, 
-  submissionSteps, 
   committeeMembers, 
   registrationFees 
 } from '@/constants/conferenceData';
@@ -60,16 +58,16 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+            <Link href="/submission" className="bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
               <FileText size={20} />
               Submit Paper
-            </button>
-            <button className="bg-brand-blue hover:bg-blue-900 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+            </Link>
+            <Link href="/#registration" className="bg-brand-blue hover:bg-blue-900 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
               Register Now
-            </button>
-            <a href="#call-for-papers" className="bg-white hover:bg-slate-50 text-brand-blue border border-brand-blue font-bold py-3 px-8 rounded-lg shadow-sm hover:shadow-md transition-all">
+            </Link>
+            <Link href="/call-for-papers" className="bg-white hover:bg-slate-50 text-brand-blue border border-brand-blue font-bold py-3 px-8 rounded-lg shadow-sm hover:shadow-md transition-all">
               Call for Papers
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -163,17 +161,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* TRACKS */}
-      <Section id="tracks" title="Conference Tracks" subtitle="SANKALP 2027 invites original research contributions across the following major tracks.">
-        <div className="max-w-4xl mx-auto mt-8">
-          {conferenceTracks.map((track, i) => (
-            <TrackAccordion key={track.id} track={track} index={i} />
-          ))}
-        </div>
-      </Section>
-
       {/* COMMITTEE */}
-      <Section id="committee" bgWhite title="Conference Committee">
+      <Section id="committee" title="Conference Committee">
         <div className="max-w-5xl mx-auto space-y-12">
           
           {/* Patrons */}
@@ -219,76 +208,12 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* CALL FOR PAPERS & SUBMISSION */}
-      <Section id="call-for-papers" title="Call for Papers & Submission">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-200 mb-12">
-            <p className="text-slate-700 leading-relaxed mb-6">
-              Researchers, academicians, industry professionals, and scholars are invited to submit original and unpublished research papers aligned with the conference themes. All submissions will undergo a rigorous peer-review process by the Technical Program Committee.
-            </p>
-            <div className="bg-slate-50 p-6 rounded-xl mb-8">
-              <h4 className="font-bold text-brand-blue mb-4">Submission Guidelines</h4>
-              <ul className="space-y-2 text-sm text-slate-600 list-disc pl-5">
-                <li>Papers must be original and not under review elsewhere</li>
-                <li>Submissions should follow the conference template</li>
-                <li>Accepted papers must be presented during the conference</li>
-                <li>At least one author of each accepted paper must register</li>
-              </ul>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <button className="flex items-center gap-2 bg-brand-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-900 transition-colors">
-                <Download size={18} />
-                Download Template
-              </button>
-              <button className="flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-colors">
-                <ExternalLink size={18} />
-                Paper Submission Portal
-              </button>
-            </div>
-          </div>
-
-          <h3 id="submission" className="text-2xl font-bold text-center text-brand-blue mb-8">Submission Process</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {submissionSteps.map((step) => (
-              <div key={step.step} className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center font-bold text-xl shrink-0">
-                  {step.step}
-                </div>
-                <div>
-                  <h4 className="font-bold text-brand-blue text-lg mb-2">{step.title}</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* PUBLICATION & REGISTRATION */}
-      <Section id="publication" bgWhite title="Publication & Registration">
+      {/* REGISTRATION & VENUE */}
+      <Section id="registration" bgWhite title="Registration & Venue">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           
-          {/* Publication */}
-          <div>
-            <h3 className="text-2xl font-bold text-brand-blue mb-6">Publication Details</h3>
-            <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 h-full">
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Selected high-quality papers presented at SANKALP 2027 will be considered for publication in:
-              </p>
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 mb-6 flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-brand-blue shrink-0">
-                  <FileText size={24} />
-                </div>
-                <span className="font-bold text-brand-ink">Springer Lecture Notes Series <span className="text-brand-orange font-normal text-sm ml-2">(Tentative)</span></span>
-              </div>
-              <p className="text-slate-600 text-sm">
-                Extended versions of selected papers may also be recommended for Scopus/SCI-indexed journals (tentative).
-              </p>
-            </div>
-          </div>
-
           {/* Registration */}
-          <div id="registration">
+          <div>
             <h3 className="text-2xl font-bold text-brand-blue mb-6">Registration Fees</h3>
             <div className="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200">
               <table className="w-full text-left border-collapse">
@@ -315,27 +240,19 @@ export default function Home() {
             </div>
           </div>
 
-        </div>
-      </Section>
-
-      {/* VENUE & CONTACT */}
-      <Section id="venue" title="About Venue & Contact">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          
-          {/* Venue */}
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-            <h3 className="text-2xl font-bold text-brand-blue mb-2">JK Lakshmipat University</h3>
-            <p className="text-slate-500 font-medium mb-6">Jaipur, India</p>
-            <p className="text-slate-700 leading-relaxed mb-8">
-              Located in the vibrant city of Jaipur, JKLU offers a modern academic environment with state-of-the-art infrastructure, research facilities, innovation labs, and collaborative learning spaces.
-            </p>
-            <div className="w-full h-48 bg-slate-100 rounded-xl flex items-center justify-center border border-dashed border-slate-300">
-              <span className="text-slate-400 font-medium">[ Map Placeholder ]</span>
+          {/* Venue & Contact */}
+          <div className="space-y-8" id="venue">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+              <h3 className="text-2xl font-bold text-brand-blue mb-2">JK Lakshmipat University</h3>
+              <p className="text-slate-500 font-medium mb-6">Jaipur, India</p>
+              <p className="text-slate-700 leading-relaxed mb-8">
+                Located in the vibrant city of Jaipur, JKLU offers a modern academic environment with state-of-the-art infrastructure, research facilities, innovation labs, and collaborative learning spaces.
+              </p>
+              <div className="w-full h-48 bg-slate-100 rounded-xl flex items-center justify-center border border-dashed border-slate-300">
+                <span className="text-slate-400 font-medium">[ Map Placeholder ]</span>
+              </div>
             </div>
-          </div>
 
-          {/* Contact & Sponsors */}
-          <div className="space-y-8">
             <div id="contact" className="bg-brand-blue text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
               <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-brand-orange/20 rounded-full blur-xl"></div>
               <h3 className="text-xl font-bold mb-6">Contact Information</h3>
@@ -346,7 +263,7 @@ export default function Home() {
                 <p><strong>Website:</strong> [conference website URL]</p>
               </div>
             </div>
-
+            
             <div>
               <h4 className="text-lg font-bold text-brand-blue mb-4">Sponsors & Partners</h4>
               <div className="grid grid-cols-2 gap-4">
