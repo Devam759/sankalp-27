@@ -44,12 +44,16 @@ This repository contains the source code for the **Sankalp 2027 International Co
    ```
    Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-## Production Build
-To create an optimized production build:
-```bash
-npm run build
-npm start
-```
+## Production Build & Deployment (Vercel)
+This project is configured to be hosted on **Vercel** while keeping the database, authentication, and storage managed by **Firebase**.
+
+### Deploying to Vercel
+1. Import your GitHub repository into your Vercel Dashboard.
+2. Under **Environment Variables**, add all the variables from your `.env.local` file.
+3. **Important for Firebase Admin**: Since `service-account.json` is not committed to GitHub, you must encode its contents and add it as an environment variable in Vercel:
+   - Create an environment variable named `FIREBASE_SERVICE_ACCOUNT`.
+   - Paste the **entire JSON string** of your `service-account.json` file into the value field. The backend will automatically parse this JSON string to initialize the Firebase Admin SDK securely.
+4. Click **Deploy**. Vercel will automatically detect the Next.js framework, run `npm run build`, and host your site globally!
 
 ## Security & Best Practices
 - Never expose `NEXT_PUBLIC_` variables unless they are safe for the client.

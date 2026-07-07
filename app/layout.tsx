@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sankalp.jklu.edu.in'),
@@ -52,6 +53,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased bg-brand-cloud text-brand-ink min-h-screen">
         {children}
+        <Analytics />
       </body>
     </html>
   )
