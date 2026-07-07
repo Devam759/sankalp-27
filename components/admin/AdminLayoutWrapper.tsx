@@ -72,7 +72,7 @@ export default function AdminLayoutWrapper({ children }: { children: React.React
       <main className="flex-1 w-full md:w-[calc(100%-16rem)] pt-24 md:pt-0 overflow-y-auto relative">
         <header className="sticky top-0 z-30 bg-admin-surface px-4 md:px-8 h-16 hidden md:flex items-center justify-end border-b-2 border-brand-ink">
           <span className="hidden md:inline text-xs font-black text-admin-muted uppercase tracking-widest">
-            Admin Portal
+            Admin Dashboard
           </span>
         </header>
 

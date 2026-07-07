@@ -10,23 +10,24 @@ export default {
     extend: {
       colors: {
         brand: {
-          orange: '#FF9A00',
-          blue: '#0D21DD',
+          orange: '#f5821e',
+          blue: '#184176',
           ink: '#030404',
           cloud: '#F5F1E5',
-          pink: '#FF2E93',
+          lightBlue: '#215798',
         },
         primary: {
-          DEFAULT: '#FF9A00',
-          dark: '#E68A00',
+          DEFAULT: '#f5821e',
+          dark: '#d16e18',
         },
         secondary: {
-          DEFAULT: '#0D21DD',
-          dark: '#0A1AB8',
+          DEFAULT: '#184176',
+          dark: '#112f55',
+          light: '#215798',
         },
         accent: {
-          DEFAULT: '#FF9A00',
-          dark: '#E68A00',
+          DEFAULT: '#f5821e',
+          dark: '#d16e18',
         },
         dark: {
           DEFAULT: '#030404',
@@ -35,17 +36,10 @@ export default {
         admin: {
           bg: '#F5F1E5',
           surface: '#ffffff',
-          accent: '#FF9A00',
+          accent: '#f5821e',
           text: '#030404',
           muted: '#64748b',
           border: '#e2e8f0'
-        },
-        brand: {
-          orange: '#FF9A00',
-          blue: '#0D21DD',
-          black: '#030404',
-          white: '#F5F1E5',
-          pink: '#FF2E93',
         }
       },
       fontFamily: {
@@ -59,13 +53,13 @@ export default {
         diary: ['"Architects Daughter"', '"Gochi Hand"', 'cursive'],
       },
       backgroundImage: {
-        'brand-gradient': 'linear-gradient(135deg, #FF9A00 0%, #0D21DD 100%)',
-        'brand-gradient-soft': 'linear-gradient(135deg, rgba(255,154,0,0.15) 0%, rgba(13,33,221,0.15) 100%)',
+        'brand-gradient': 'linear-gradient(135deg, #f5821e 0%, #184176 100%)',
+        'brand-gradient-soft': 'linear-gradient(135deg, rgba(245,130,30,0.15) 0%, rgba(24,65,118,0.15) 100%)',
         'glass-gradient': 'linear-gradient(to bottom right, rgba(245, 241, 229, 0.08), rgba(245, 241, 229, 0.03))',
       },
       boxShadow: {
-        'brand-orange': '0 0 40px rgba(255, 154, 0, 0.25)',
-        'brand-blue': '0 0 40px rgba(13, 33, 221, 0.25)',
+        'brand-orange': '0 0 40px rgba(245, 130, 30, 0.25)',
+        'brand-blue': '0 0 40px rgba(24, 65, 118, 0.25)',
       },
     },
   },

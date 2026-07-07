@@ -18,16 +18,16 @@
 }
 
 @theme {
-  --color-brand-orange: #D97706;
-  --color-brand-blue: #0B1B3D;
-  --color-brand-ink: #0F172A;
-  --color-brand-cloud: #F8FAFC;
-  --color-brand-pink: #64748B;
+  --color-brand-orange: #f5821e;
+  --color-brand-blue: #184176;
+  --color-brand-ink: #030404;
+  --color-brand-cloud: #F5F1E5;
 
-  --color-admin-bg: #F8FAFC;
+
+  --color-admin-bg: #F5F1E5;
   --color-admin-surface: #ffffff;
-  --color-admin-accent: #D97706;
-  --color-admin-text: #0F172A;
+  --color-admin-accent: #f5821e;
+  --color-admin-text: #030404;
   --color-admin-muted: #64748b;
   --color-admin-border: #e2e8f0;
 

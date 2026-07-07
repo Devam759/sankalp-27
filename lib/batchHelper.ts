@@ -36,14 +36,14 @@ async function generateFallbackSchedulePDF(batchName: string): Promise<Uint8Arra
   
   page.drawText('JK Lakshmipat University', { x: 50, y: 350, size: 18, color: rgb(0.01, 0.01, 0.01) });
   page.drawText(`Official Schedule: ${batchName}`, { x: 50, y: 310, size: 22, color: rgb(1, 0.6, 0) });
-  page.drawText('Orientation Program — Sankalp 2027', { x: 50, y: 280, size: 12, color: rgb(0.4, 0.4, 0.4) });
+  page.drawText('International Conference — Sankalp 2027', { x: 50, y: 280, size: 12, color: rgb(0.4, 0.4, 0.4) });
   
-  page.drawText('Schedule Outline:', { x: 50, y: 220, size: 14, color: rgb(0.1, 0.1, 0.1) });
-  page.drawText('• Day 1: Reporting, Registration and Welcome Inaugural Session', { x: 50, y: 190, size: 10 });
-  page.drawText('• Day 2: Academic Orientation & Campus Tours', { x: 50, y: 170, size: 10 });
-  page.drawText('• Day 3: Ice-breaking Activities & Club Introductions', { x: 50, y: 150, size: 10 });
-  page.drawText('• Day 4-7: Skill Workshops, Guest Lectures & Cultural Rehearsals', { x: 50, y: 130, size: 10 });
-  page.drawText('• Day 8: Convocation & Sankalp Gala Event Night', { x: 50, y: 110, size: 10 });
+  // Example dummy generic schedule items
+  page.drawText('• Day 1: Registration and Inaugural Session', { x: 50, y: 190, size: 10 });
+  page.drawText('• Day 2: Keynote Speeches & Paper Presentations', { x: 50, y: 170, size: 10 });
+  page.drawText('• Day 3: Panel Discussions & Networking Events', { x: 50, y: 150, size: 10 });
+  page.drawText('• Day 4-7: Special Topic Workshops & Research Tracks', { x: 50, y: 130, size: 10 });
+  page.drawText('• Day 8: Valedictory Session & Sankalp Gala Dinner', { x: 50, y: 110, size: 10 });
   
   page.drawLine({ start: { x: 50, y: 70 }, end: { x: 550, y: 70 }, thickness: 1, color: rgb(0.8, 0.8, 0.8) });
   page.drawText('This is a system-generated schedule document.', { x: 50, y: 55, size: 8, color: rgb(0.5, 0.5, 0.5) });
@@ -244,7 +244,7 @@ export async function sendCheckInEmail(
             <a href="https://www.facebook.com/share/1Hsdb57Jcf/">Facebook</a>
           </div>
           <p style="margin-bottom: 5px;">JK Lakshmipat University, Jaipur</p>
-          <p style="margin-top: 0;"><a href="https://aarambh.jklu.edu.in" class="footer-link">aarambh.jklu.edu.in</a></p>
+          <p style="margin-top: 0;"><a href="https://sankalp.jklu.edu.in" class="footer-link">sankalp.jklu.edu.in</a></p>
           <p style="margin-top: 15px; font-size: 11px; opacity: 0.7;">&copy; 2027 Sankalp Event Management System</p>
         </div>
       </div>

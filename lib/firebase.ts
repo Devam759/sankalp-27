@@ -3,6 +3,7 @@ import { getAuth, Auth } from 'firebase/auth';
 import { initializeFirestore, persistentLocalCache, Firestore } from 'firebase/firestore';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import { initializeAppCheck, ReCaptchaV3Provider, CustomProvider } from 'firebase/app-check';
+import { getAnalytics, isSupported, Analytics } from 'firebase/analytics';
 
 export const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,6 +12,7 @@ export const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 /** True when real Firebase web config is present in env (not placeholders). */
@@ -48,6 +50,7 @@ if (storage) {
 }
 
 export let appCheck: any = null;
+export let analytics: Analytics | null = null;
 
 if (app) {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
@@ -71,6 +74,14 @@ if (app) {
     } else {
       console.warn("Skipping App Check client initialization: NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing.");
     }
+
+    // Initialize Analytics
+    isSupported().then((supported) => {
+      if (supported) {
+        analytics = getAnalytics(app);
+        console.log("Firebase Analytics initialized successfully.");
+      }
+    });
   } else {
     // Server-side initialization (Node.js environment)
     // Only use the debug token in non-production environments.

@@ -30,7 +30,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://aarambh.jklu.edu.in/sitemap.xml',
-    host: 'https://aarambh.jklu.edu.in',
+    sitemap: 'https://sankalp.jklu.edu.in/sitemap.xml',
+    host: 'https://sankalp.jklu.edu.in',
   };
 }

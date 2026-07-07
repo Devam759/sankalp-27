@@ -1,14 +1,14 @@
-# Sankalp '27 — JK Lakshmipat University Student Orientation & Welcome Portal
+# Sankalp '27 — JK Lakshmipat University International Conference Website
 
-> Sankalp 2027 is the official New Student Orientation and Welcome Program of JK Lakshmipat University (JKLU), Jaipur.
+> Sankalp 2027 is the official International Conference of JK Lakshmipat University (JKLU), Jaipur.
 
-This portal manages check-in operations, administrative dashboards, and student registers for the orientation program.
+This platform manages check-in operations, administrative dashboards, and delegate registers for the international conference.
 
-## Portal Entrypoints
+## Platform Entrypoints
 
-- [Home](https://aarambh.jklu.edu.in/): Hold page for Sankalp 2027.
-- [Admin Panel](https://aarambh.jklu.edu.in/admin): Authorized admin dashboard for registrations, check-in validation, and system logs.
-- [Scanner Portal](https://aarambh.jklu.edu.in/scanner): Ticket validator and instant check-in registry validator dashboard for check-in desks.
+- [Home](https://sankalp.jklu.edu.in/): Hold page for Sankalp 2027.
+- [Admin Panel](https://sankalp.jklu.edu.in/admin): Authorized admin dashboard for registrations, check-in validation, and system logs.
+- [Scanner Dashboard](https://sankalp.jklu.edu.in/scanner): Ticket validator and instant check-in registry validator dashboard for check-in desks.
 
 ## Key Facts
 

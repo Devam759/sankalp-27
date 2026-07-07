@@ -91,7 +91,7 @@ export default function LoginPage() {
               ICATS 2026
             </span>
             <span className="font-semibold text-xs tracking-widest uppercase text-slate-500 font-sans leading-none mt-2">
-              Management Portal
+              Management Platform
             </span>
           </div>
           <div className="w-12 h-1 bg-amber-600 mx-auto rounded" />

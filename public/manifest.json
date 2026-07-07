@@ -1,7 +1,7 @@
 {
-  "name": "Sankalp 2027",
-  "short_name": "Sankalp'27",
-  "description": "The official student portal of JK Lakshmipat University.",
+  "name": "Sankalp '27",
+  "short_name": "Sankalp '27",
+  "description": "The official website of the Sankalp International Conference at JK Lakshmipat University.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#030404",

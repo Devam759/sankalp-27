@@ -417,7 +417,7 @@ export async function sendSystemErrorEmail(performedBy: string, targetEntity: st
             <h2 style="margin: 0; font-size: 20px; text-transform: uppercase; letter-spacing: 1px;">🚨 System Error Detected</h2>
           </div>
           <div style="padding: 25px; background-color: #ffffff; color: #333333; line-height: 1.6;">
-            <p>An automated system error has been logged in the Sankalp event registration portal.</p>
+            <p>An automated system error has been logged in the Sankalp event registration platform.</p>
             <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; width: 120px; color: #666;">Source:</td>
@@ -436,7 +436,7 @@ export async function sendSystemErrorEmail(performedBy: string, targetEntity: st
             <pre style="background: #f8fafc; padding: 15px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: 'Courier New', Courier, monospace; font-size: 12px; white-space: pre-wrap; word-break: break-all; margin: 0;">${details}</pre>
           </div>
           <div style="background-color: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #777777; border-top: 1px solid #e2e8f0;">
-            This is an automated alert from the Sankalp Event Management Portal.
+            This is an automated alert from the Sankalp Event Management Platform.
           </div>
         </div>
       `

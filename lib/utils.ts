@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
  * Format: JKLU/<Course>/<Year>/<Serial>
  */
 export function validateRegistrationNumber(num: string): boolean {
-  // Bypassed for international conference portal as participants come from various organizations
+  // Bypassed for international conference website as participants come from various organizations
   return true;
 }
 

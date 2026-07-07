@@ -2,33 +2,33 @@ import './globals.css'
 import type { Metadata, Viewport } from 'next'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aarambh.jklu.edu.in'),
+  metadataBase: new URL('https://sankalp.jklu.edu.in'),
   alternates: {
-    canonical: 'https://aarambh.jklu.edu.in',
+    canonical: 'https://sankalp.jklu.edu.in',
   },
   title: {
     default: "Sankalp '27 | JK Lakshmipat University",
     template: "%s | Sankalp '27"
   },
-  description: "Official welcome portal for Sankalp 2027 at JK Lakshmipat University, Jaipur.",
+  description: "Official website for the Sankalp 2027 International Conference at JK Lakshmipat University, Jaipur.",
   manifest: '/manifest.json',
   keywords: [
-    "Sankalp", "Sankalp 2027", "Sankalp '27", "JKLU", "JK Lakshmipat University", "Jaipur"
+    "Sankalp", "Sankalp 2027", "Sankalp '27", "JKLU", "JK Lakshmipat University", "Jaipur", "International Conference", "Conference"
   ],
   authors: [{ name: "JKLU Tech Team" }],
   creator: "JKLU Tech Team",
   openGraph: {
     title: "Sankalp '27 | JK Lakshmipat University",
-    description: "Official welcome portal for Sankalp 2027 at JK Lakshmipat University, Jaipur.",
-    url: 'https://aarambh.jklu.edu.in',
-    siteName: "Sankalp '27 Portal",
+    description: "Official website for the Sankalp 2027 International Conference at JK Lakshmipat University, Jaipur.",
+    url: 'https://sankalp.jklu.edu.in',
+    siteName: "Sankalp '27 Website",
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: "Sankalp '27 | JK Lakshmipat University",
-    description: "Official welcome portal for Sankalp 2027 at JK Lakshmipat University, Jaipur.",
+    description: "Official website for the Sankalp 2027 International Conference at JK Lakshmipat University, Jaipur.",
   },
   robots: {
     index: true,
@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased bg-slate-900 text-white min-h-screen">
+      <body className="antialiased bg-brand-cloud text-brand-ink min-h-screen">
         {children}
       </body>
     </html>

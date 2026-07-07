@@ -48,7 +48,7 @@ export function ScannerSessionProvider({ children }: { children: React.ReactNode
           router.push('/login');
         }
       } catch (err) {
-        console.error("Scanner portal authorization guard error:", err);
+        console.error("Scanner dashboard authorization guard error:", err);
         router.push('/login');
       }
     });
