@@ -6,7 +6,7 @@ export default function Footer() {
 
   const quickLinks = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/#about' },
+    { name: 'About', href: '/about' },
     { name: 'Call for Papers', href: '/call-for-papers' },
     { name: 'Committee', href: '/#committee' },
     { name: 'Submission & Publication', href: '/submission' },
@@ -17,7 +17,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-brand-blue text-white pt-16 pb-8 border-t-4 border-brand-orange">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
           {/* Brand Column */}

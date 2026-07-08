@@ -44,6 +44,19 @@ export const viewport: Viewport = {
   maximumScale: 1,
 }
 
+import { Merriweather, Source_Sans_3 } from 'next/font/google'
+
+const merriweather = Merriweather({ 
+  weight: ['300', '400', '700', '900'],
+  subsets: ['latin'],
+  variable: '--font-playfair', // keep variable name same so tailwind config doesn't need to change
+})
+
+const sourceSans = Source_Sans_3({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
 export default function RootLayout({
   children,
 }: {
@@ -51,7 +64,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased bg-brand-cloud text-brand-ink min-h-screen">
+      <body className={`${merriweather.variable} ${sourceSans.variable} font-sans antialiased bg-brand-blue text-brand-cloud min-h-screen`}>
         {children}
         <Analytics />
       </body>
