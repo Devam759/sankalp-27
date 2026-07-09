@@ -21,10 +21,10 @@
   --color-brand-orange: #f5821e;
   --color-brand-blue: #184176;
   --color-brand-ink: #030404;
-  --color-brand-cloud: #F5F1E5;
+  --color-brand-cloud: #ffffff;
 
 
-  --color-admin-bg: #F5F1E5;
+  --color-admin-bg: #ffffff;
   --color-admin-surface: #ffffff;
   --color-admin-accent: #f5821e;
   --color-admin-text: #030404;
@@ -51,6 +51,7 @@
   --font-bricks: "Outfit", sans-serif;
   --font-diary: "Outfit", sans-serif;
   --font-devanagari: "Tiro Devanagari Hindi", serif;
+  --font-serif: "Outfit", system-ui, sans-serif;
 
   --shadow-brand-orange: 0 0 40px rgba(217, 119, 6, 0.15);
   --shadow-brand-blue: 0 0 40px rgba(11, 27, 61, 0.15);
@@ -67,15 +68,15 @@
 
 
 html {
-  background-color: var(--color-brand-ink);
+  background-color: var(--color-brand-cloud);
 }
 
 body {
   margin: 0;
   max-width: 100%;
   overflow-x: hidden;
-  color: var(--color-brand-cloud);
-  background-color: var(--color-brand-blue);
+  color: var(--color-brand-ink);
+  background-color: var(--color-brand-cloud);
   min-height: 100vh;
   font-family: var(--font-sans);
 }

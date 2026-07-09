@@ -502,7 +502,7 @@ export default function AdminScannerView() {
             <div className="space-y-4 mb-6">
               
               {/* Attendee Name & profile detail */}
-              <div className="bg-[#F5F1E5]/40 p-4 border-2 border-brand-ink rounded-md flex flex-col gap-2">
+              <div className="bg-brand-cloud/40 p-4 border-2 border-brand-ink rounded-md flex flex-col gap-2">
                 <div>
                   <span className="text-[8px] font-bold text-admin-muted uppercase tracking-widest block mb-0.5">Attendee Name</span>
                   <span className="font-adminHeading text-xl font-black uppercase text-brand-ink leading-tight block">{scannedData.name}</span>

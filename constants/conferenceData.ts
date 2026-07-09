@@ -10,8 +10,8 @@ export const keyFeatures = [
   { title: 'Distinguished International Keynote Speakers', icon: 'Globe' },
   { title: 'Industry Panels & Expert Roundtables', icon: 'Users' },
   { title: 'Research Paper Presentations', icon: 'FileText' },
-  { title: 'Startup and Innovation Showcase', icon: 'Lightbulb' },
-  { title: 'Networking & Collaboration Opportunities', icon: 'Network' },
+  { title: 'Startup and Innovation Showcase [ATAL INCUBATION]', icon: 'Lightbulb' },
+  { title: 'Networking & Collaboration Opportunities [CGLP]', icon: 'Network' },
   { title: 'Best Paper Awards', icon: 'Award' },
 ];
 
@@ -115,8 +115,8 @@ export const submissionSteps = [
   },
   {
     step: 3,
-    title: 'Registration Form & Payment Link',
-    description: 'In the acceptance email, the registration form and payment link will be provided. Authors must complete the registration form and payment process.',
+    title: 'Online Registration & Payment',
+    description: 'Complete the online registration form on our portal and pay the registration fee securely via the integrated Cashfree payment gateway.',
   },
   {
     step: 4,
@@ -133,13 +133,87 @@ export const committeeMembers = {
     { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU' },
     { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU' },
   ],
-  programChairs: 'Professors of IET',
+  programChairs: 'Professors of IET (Prof. Amit / Prof. Taruna / Prof. Umesh, and Prof. Devika)',
 };
 
 export const registrationFees = [
   { category: 'UG/PG Student and Research Scholar', national: '₹7500', international: 'USD 110' },
   { category: 'Academicians', national: '₹9500', international: 'USD 250' },
   { category: 'Industry Participant', national: '₹12500', international: 'USD 350' },
-  { category: 'Delegates Offline', national: '₹6500', international: 'USD 150' },
-  { category: 'Delegates Online', national: '₹3500', international: 'USD 100' },
+  { category: 'Delegates (Offline)', national: '₹6500', international: 'USD 150' },
+  { category: 'Delegates (Online)', national: '₹3500', international: 'USD 100' },
 ];
+
+export const speakers = {
+  plenary: [
+    {
+      name: 'Prof. Ravi Vatrapu',
+      role: 'Professor',
+      affiliation: 'Toronto Metropolitan University, Toronto, Canada',
+      image: '/Images/footer_image.webp'
+    }
+  ],
+  keynote: [
+    {
+      name: 'Prof. Arun Patil',
+      role: 'Director (L&T)',
+      affiliation: 'Curtin University, Singapore',
+      image: '/Images/footer_image.webp'
+    },
+    {
+      name: 'Prof. Brij Gupta',
+      role: 'Director, Centre for AI and Cyber Security',
+      affiliation: 'Asia University, Taiwan',
+      image: '/Images/footer_image.webp'
+    },
+    {
+      name: 'Dr. Naveen Sivadasan',
+      role: 'Principal Scientist',
+      affiliation: 'TCS Research, IIT Hyderabad',
+      image: '/Images/footer_image.webp'
+    }
+  ]
+};
+
+export const advisoryBoard = {
+  international: [
+    { name: 'Prof. Wassim Haddad', title: 'Professor, Georgia Institute of Technology, US' },
+    { name: 'Prof. Ravi Vatrapu', title: 'Toronto Metropolitan University, Ontario, Canada' },
+    { name: 'Prof. Arun Patil', title: 'Director (L&T), Curtin University, Singapore' },
+    { name: 'Prof. Priyadarsan Patra', title: 'Director, UMMA Board, University of Massachusetts, US' },
+    { name: 'Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
+    { name: 'Prof. Vinod Kumar Shukla', title: 'Associate Dean, Amity University Dubai, UAE' },
+    { name: 'Prof. Valentina Emilia Balas', title: 'Professor, University of Arad, Romania' },
+    { name: 'Prof. Celestine Iwendi', title: 'Professor, University of Greater Manchester, United Kingdom' },
+    { name: 'Prof. Fernando Ortiz-Rodríguez', title: 'Professor, Universidad Autónoma de Tamaulipas, México, North America' },
+    { name: 'Dr. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
+    { name: 'Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
+    { name: 'Dr. Ridoan Karim', title: 'Director, CLARS– Monash University, Malaysia' },
+    { name: 'Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
+    { name: 'Sergey Nersesov', title: 'Associate Professor, Villanova University, Pennsylvania, United States' },
+    { name: 'Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece' }
+  ],
+  national: [
+    { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras' },
+    { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam' },
+    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
+    { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
+    { name: 'Prof. Viraj Kumar', title: 'Visiting Professor, Divecha Centre for Climate Change, IISc, Bengaluru' },
+    { name: 'Prof. K. K. Biswas', title: 'Prof. Emeritus, IIT Delhi, India' },
+    { name: 'Prof. Vikram Goyal', title: 'Department of Computer Science and Engineering, IIIT Delhi' },
+    { name: 'Prof. Kusum Deep', title: 'Emeritus Professor, Maths. Dept, Indian Institute of Technology, Roorkee' },
+    { name: 'Dr. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
+    { name: 'Prof. Gadadhar Sahoo', title: 'Department of Computer Science and Engineering, IIT (ISM) Dhanbad, Jharkhand' },
+    { name: 'Prof. K. V. Arya', title: 'Department of Computer Science and Engineering, IIITM, Gwalior' },
+    { name: 'Mr. S. Balamurugan', title: 'Intelligent Research Consultancy, India Services (iRCS), Coimbatore, Tamil Nadu' },
+    { name: 'Prof. Nishtha Keshwani', title: 'Professor, Central University of Rajasthan, India' },
+    { name: 'Prof. Sunil Kumar Khatri', title: 'Pro Vice Chancellor and Dean (Academics), Amity University, Uttar Pradesh' },
+    { name: 'Prof. Rajesh Kumar', title: 'Professor, Biomedical Engineering, IIT Ropar' },
+    { name: 'Prof. Deepshikha Bhargava', title: 'Dean, Engineering & Technology, Amity University, Greater Noida' },
+    { name: 'Prof. V.S. Rathore', title: 'Professor-CSE & Dean-International, Apex University, Jaipur' },
+    { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },
+    { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India – Gurgaon' },
+    { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi' }
+  ]
+};
+

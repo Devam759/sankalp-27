@@ -13,7 +13,7 @@ export default {
           orange: '#f5821e',
           blue: '#184176',
           ink: '#030404',
-          cloud: '#F5F1E5',
+          cloud: '#ffffff',
           lightBlue: '#215798',
         },
         primary: {
@@ -34,7 +34,7 @@ export default {
           lighter: '#1a1a1a',
         },
         admin: {
-          bg: '#F5F1E5',
+          bg: '#ffffff',
           surface: '#ffffff',
           accent: '#f5821e',
           text: '#030404',
@@ -43,7 +43,7 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['var(--font-playfair)', 'serif'],
+        serif: ['Outfit', 'system-ui', 'sans-serif'],
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {

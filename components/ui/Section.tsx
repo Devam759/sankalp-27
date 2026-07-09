@@ -16,7 +16,7 @@ export default function Section({ id, title, subtitle, children, className = '',
   return (
     <section 
       id={id} 
-      className={`py-20 md:py-28 ${bgWhite ? 'bg-white' : 'bg-transparent'} ${className}`}
+      className={`py-20 md:py-28 ${bgWhite ? 'bg-white' : className.includes('bg-') ? '' : 'bg-transparent'} ${className}`}
     >
       <motion.div 
         initial={{ opacity: 0, y: 30 }}

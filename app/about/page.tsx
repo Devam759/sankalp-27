@@ -21,14 +21,13 @@ export default function About() {
   };
 
   const focusAreas = [
-    { title: "Sustainable AI", desc: "Eco-friendly models & algorithms." },
-    { title: "Data Science", desc: "LLMs & predictive analytics." },
-    { title: "Generative AI", desc: "Multimodal & creative generation." },
-    { title: "Smart Systems", desc: "Edge AI & IoT integration." },
-    { title: "Healthcare AI", desc: "Diagnostics & precision medicine." },
-    { title: "Future Networks", desc: "5G/6G & SDN." },
-    { title: "VLSI Systems", desc: "Neuromorphic & edge chips." },
-    { title: "Digital Transformation", desc: "Smart society & e-governance." }
+    { title: "Sustainable AI", desc: "Intelligent Systems & Responsible Digital Transformation." },
+    { title: "Data Science", desc: "Generative AI & Knowledge Engineering." },
+    { title: "HPC & Emerging Tech", desc: "High Performance Computing, Networks & Emerging Tech." },
+    { title: "Smart Healthcare", desc: "Bioinformatics & Human-Centric AI." },
+    { title: "AI in Education", desc: "K–12 Learning & Future Workforce Development." },
+    { title: "Smart Society", desc: "Governance & Sustainable Innovation." },
+    { title: "VLSI & Embedded", desc: "Semiconductor Technologies & Intelligent Engineering." }
   ];
 
 

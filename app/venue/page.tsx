@@ -118,6 +118,7 @@ export default function VenuePage() {
             src="/Images/footer_image.webp"
             alt="JKLU Campus Banner"
             fill
+            sizes="100vw"
             className="object-cover opacity-45 scale-105"
             priority
           />
@@ -198,6 +199,7 @@ export default function VenuePage() {
               src="/Images/footer_image.webp"
               alt="JK Lakshmipat University Campus"
               fill
+              sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover group-hover:scale-102 transition-transform duration-300"
             />
           </div>

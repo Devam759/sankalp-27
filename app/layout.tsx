@@ -31,6 +31,11 @@ export const metadata: Metadata = {
     title: "Sankalp '27 | JK Lakshmipat University",
     description: "Official website for the Sankalp 2027 International Conference at JK Lakshmipat University, Jaipur.",
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   robots: {
     index: true,
     follow: true,
@@ -64,7 +69,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${merriweather.variable} ${sourceSans.variable} font-sans antialiased bg-brand-blue text-brand-cloud min-h-screen`}>
+      <body className={`${merriweather.variable} ${sourceSans.variable} font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen`}>
         {children}
         <Analytics />
       </body>

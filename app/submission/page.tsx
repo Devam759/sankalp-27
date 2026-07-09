@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import Image from 'next/image';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
@@ -51,10 +51,17 @@ export default function Submission() {
             </div>
             
             <div className="bg-white p-10 md:p-14 border border-slate-200 flex flex-col md:flex-row gap-12 items-center">
-              <div className="shrink-0 w-32 h-40 bg-slate-50 border border-slate-200 flex flex-col items-center justify-center gap-4 shadow-sm relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-2 bg-brand-blue"></div>
-                <BookOpen size={32} className="text-brand-blue" />
-                <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Journal</span>
+              {/* Tilted book image cover */}
+              <div className="shrink-0 w-32 h-44 border border-slate-200 shadow-md relative overflow-hidden rounded-sm group bg-white">
+                <Image 
+                  src="/Images/footer_image.webp" 
+                  alt="Springer Book Cover"
+                  fill
+                  sizes="128px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-brand-blue/10 group-hover:opacity-0 transition-opacity duration-500" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-brand-orange" />
               </div>
               
               <div>
@@ -63,12 +70,12 @@ export default function Submission() {
                 </p>
                 
                 <div className="inline-block border-l-4 border-brand-orange bg-slate-50 px-6 py-4 mb-6">
-                  <span className="font-serif font-bold text-brand-blue text-xl block mb-1">Springer Lecture Notes Series</span>
-                  <span className="text-brand-orange font-bold text-xs uppercase tracking-wider">Tentative</span>
+                  <span className="font-serif font-bold text-brand-blue text-lg block mb-1">Springer Lecture Notes in Computer Science (LNCS) Series</span>
+                  <span className="text-brand-orange font-bold text-xs uppercase tracking-wider">Scopus Indexed – Approval Awaited</span>
                 </div>
                 
                 <p className="text-slate-600 text-sm font-medium">
-                  Extended versions of selected papers may also be recommended for Scopus/SCI-indexed journals (tentative).
+                  Extended versions of selected papers may also be recommended for publication in Scopus/SCI-indexed journals.
                 </p>
               </div>
             </div>

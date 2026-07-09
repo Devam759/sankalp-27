@@ -161,66 +161,40 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-white border-t-4 border-brand-ink py-16 px-6 overflow-hidden select-none">
+    <footer className="relative bg-[#0b0f19] border-t border-white/10 py-16 px-6 overflow-hidden select-none">
       
-      {/* 4-Column Neobrutalist Grid */}
-      <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+      {/* 3-Column Grid */}
+      <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
         
-        {/* COLUMN 1: SANKALP '27 & CONTACT */}
+        {/* COLUMN 1: SANKALP '27 ABOUT */}
         <div className="space-y-6">
           <div>
-            <h4 className="text-brand-ink font-display font-black text-xl uppercase tracking-wider">
+            <h4 className="text-white font-serif font-bold text-xl uppercase tracking-wider">
               SANKALP '27
             </h4>
-            <div className="w-12 h-1 bg-brand-orange mt-2 rounded-full" />
+            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-full" />
           </div>
           
-          <div className="space-y-3 text-xs font-mono text-brand-ink leading-relaxed font-bold">
+          <div className="space-y-3 text-sm font-sans text-slate-400 leading-relaxed font-medium">
             <p>
               International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction.
             </p>
-            <p className="text-brand-ink/80">
+            <p className="text-slate-500">
               Hosted by the Institute of Engineering & Technology (IET), JK Lakshmipat University, Jaipur.
             </p>
-          </div>
-
-          <div className="pt-2 space-y-3">
-            <h5 className="text-brand-ink font-display font-black text-xs uppercase tracking-widest">
-              Contact Information
-            </h5>
-            <ul className="space-y-4 text-xs font-mono text-brand-ink leading-relaxed font-bold">
-              <li className="flex items-start gap-3">
-                <LocationIcon className="text-brand-orange shrink-0 mt-0.5" size={18} />
-                <span>
-                  JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <PhoneIcon className="text-brand-orange shrink-0" size={16} />
-                <a href="tel:+911417107500" className="hover:text-brand-orange transition-colors">
-                  +91 141 7107500
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <EmailIcon className="text-brand-orange shrink-0" size={16} />
-                <a href="mailto:conference@jklu.edu.in" className="hover:text-brand-orange transition-colors">
-                  conference@jklu.edu.in
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
 
         {/* COLUMN 2: QUICK LINKS */}
         <div className="space-y-4">
           <div>
-            <h4 className="text-brand-ink font-display font-black text-sm uppercase tracking-widest">
+            <h4 className="text-white font-serif font-bold text-base uppercase tracking-wider">
               Quick Links
             </h4>
-            <div className="w-12 h-1 bg-brand-orange mt-2 rounded-full" />
+            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-full" />
           </div>
           
-          <ul className="grid grid-cols-1 gap-2 text-xs font-mono text-brand-ink/80 font-bold">
+          <ul className="grid grid-cols-1 gap-2 text-sm font-sans text-slate-400 font-medium">
             <li>
               <Link href="/" className="hover:text-brand-orange transition-colors">
                 Home
@@ -269,65 +243,77 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* COLUMN 3: FOLLOW US */}
-        <div className="space-y-4">
-          <div>
-            <h4 className="text-brand-ink font-display font-black text-sm uppercase tracking-widest">
+        {/* COLUMN 3: CONTACT & FOLLOW US */}
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <h4 className="text-white font-serif font-bold text-base uppercase tracking-wider">
+              Contact Information
+            </h4>
+            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-full" />
+            <ul className="space-y-4 text-sm font-sans text-slate-400 leading-relaxed font-medium pt-2">
+              <li className="flex items-start gap-3">
+                <LocationIcon className="text-brand-orange shrink-0 mt-0.5" size={18} />
+                <span>
+                  JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <PhoneIcon className="text-brand-orange shrink-0" size={16} />
+                <a href="tel:+911417107500" className="hover:text-brand-orange transition-colors">
+                  +91 141 7107500
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <EmailIcon className="text-brand-orange shrink-0" size={16} />
+                <a href="mailto:sankalp@jklu.edu.in" className="hover:text-brand-orange transition-colors">
+                  sankalp@jklu.edu.in
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-3 pt-2">
+            <h4 className="text-white font-serif font-bold text-sm uppercase tracking-wider">
               Follow Us
             </h4>
-            <div className="w-12 h-1 bg-brand-orange mt-2 rounded-full" />
-          </div>
-          
-          <div className="flex gap-3">
-            <a 
-              href="https://www.facebook.com/share/1Hsdb57Jcf/" 
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="w-10 h-10 bg-white border-2 border-brand-ink text-brand-ink hover:bg-brand-blue hover:text-white active:translate-y-1 transition-all rounded-md flex justify-center items-center shadow-[3px_3px_0px_0px_#030404] cursor-pointer"
-            >
-              <FacebookIcon size={18} />
-            </a>
-            <a 
-              href="https://x.com/jklujaipur" 
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X (Twitter)"
-              className="w-10 h-10 bg-white border-2 border-brand-ink text-brand-ink hover:bg-brand-orange hover:text-white active:translate-y-1 transition-all rounded-md flex justify-center items-center shadow-[3px_3px_0px_0px_#030404] cursor-pointer"
-            >
-              <XIcon size={16} />
-            </a>
-            <a 
-              href="https://www.instagram.com/jklu_jaipur/" 
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="w-10 h-10 bg-white border-2 border-brand-ink text-brand-ink hover:bg-brand-orange hover:text-white active:translate-y-1 transition-all rounded-md flex justify-center items-center shadow-[3px_3px_0px_0px_#030404] cursor-pointer"
-            >
-              <InstagramIcon size={18} />
-            </a>
-            <a 
-              href="https://www.linkedin.com/school/jklujaipur/" 
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="w-10 h-10 bg-white border-2 border-brand-ink text-brand-ink hover:bg-brand-blue hover:text-white active:translate-y-1 transition-all rounded-md flex justify-center items-center shadow-[3px_3px_0px_0px_#030404] cursor-pointer"
-            >
-              <LinkedInIcon size={18} />
-            </a>
-          </div>
-        </div>
-
-        {/* COLUMN 4: CAMPUS IMAGE */}
-        <div className="flex justify-start md:justify-end items-center">
-          <div className="relative border-4 border-brand-ink shadow-[6px_6px_0px_0px_#030404] rounded-xl overflow-hidden group w-full max-w-[280px] aspect-[4/3] bg-brand-cloud">
-            <Image
-              src="/Images/footer_image.webp"
-              alt="JKLU Campus View"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 768px) 100vw, 280px"
-            />
+            <div className="flex gap-3">
+              <a 
+                href="https://www.facebook.com/share/1Hsdb57Jcf/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-10 h-10 bg-white/5 border border-white/10 text-slate-300 hover:bg-brand-orange hover:text-white hover:border-brand-orange hover:shadow-md transition-all rounded-md flex justify-center items-center cursor-pointer"
+              >
+                <FacebookIcon size={18} />
+              </a>
+              <a 
+                href="https://x.com/jklujaipur" 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter)"
+                className="w-10 h-10 bg-white/5 border border-white/10 text-slate-300 hover:bg-brand-orange hover:text-white hover:border-brand-orange hover:shadow-md transition-all rounded-md flex justify-center items-center cursor-pointer"
+              >
+                <XIcon size={16} />
+              </a>
+              <a 
+                href="https://www.instagram.com/jklu_jaipur/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 bg-white/5 border border-white/10 text-slate-300 hover:bg-brand-orange hover:text-white hover:border-brand-orange hover:shadow-md transition-all rounded-md flex justify-center items-center cursor-pointer"
+              >
+                <InstagramIcon size={18} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/school/jklujaipur/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-10 h-10 bg-white/5 border border-white/10 text-slate-300 hover:bg-brand-orange hover:text-white hover:border-brand-orange hover:shadow-md transition-all rounded-md flex justify-center items-center cursor-pointer"
+              >
+                <LinkedInIcon size={18} />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -336,13 +322,13 @@ export default function Footer() {
       {/* LOCATION TITLE & MAP CONTAINER */}
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center my-10 space-y-2">
-          <h3 className="text-2xl font-display font-black tracking-widest uppercase text-brand-ink">
+          <h3 className="text-2xl font-serif font-bold tracking-wider uppercase text-white">
             Location
           </h3>
-          <div className="w-24 h-1 bg-brand-orange mx-auto rounded-full" />
+          <div className="w-24 h-[2px] bg-brand-orange mx-auto mt-2" />
         </div>
 
-        <div className="w-full border-4 border-brand-ink shadow-[8px_8px_0px_0px_#030404] rounded-lg overflow-hidden h-80 mb-10 transform hover:scale-[1.002] transition-transform duration-250">
+        <div className="w-full border border-white/10 shadow-sm rounded-lg overflow-hidden h-80 mb-10">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1052887370965!2d75.64772927502109!3d26.83660327669258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4af4fe68f403%3A0x3bf05f95df22b8c4!2sJK%20Lakshmipat%20University!5e0!3m2!1sen!2sin!4v1779876968774!5m2!1sen!2sin"
             width="100%"
@@ -359,13 +345,35 @@ export default function Footer() {
 
 
       {/* FOOTER BOTTOM BAR */}
-      <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-mono text-brand-ink/65">
-        <div className="text-center md:text-left font-bold">
-          © 2027 JKLU – SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-slate-400 border-t border-white/10 pt-8">
+        <div className="flex flex-col gap-2 text-center md:text-left">
+          <div className="font-medium">
+            © 2027 JKLU – SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
+          </div>
+          <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-3 gap-y-1.5 text-xs text-slate-400 font-semibold uppercase tracking-wider">
+            <Link href="/privacy-policy" className="hover:text-brand-orange transition-colors">
+              Privacy Policy
+            </Link>
+            <span>•</span>
+            <Link href="/terms-and-conditions" className="hover:text-brand-orange transition-colors">
+              Terms & Conditions
+            </Link>
+            <span>•</span>
+            <Link href="/refund-policy" className="hover:text-brand-orange transition-colors">
+              Refund Policy
+            </Link>
+            <span>•</span>
+            <Link href="/shipping-policy" className="hover:text-brand-orange transition-colors">
+              Shipping Policy
+            </Link>
+            <span>•</span>
+            <Link href="/contact" className="hover:text-brand-orange transition-colors">
+              Contact Us
+            </Link>
+          </div>
         </div>
         
         <div className="flex items-center gap-6">
-
           <a 
             href="https://jklu.edu.in" 
             target="_blank" 
@@ -378,13 +386,13 @@ export default function Footer() {
               width={819}
               height={916}
               unoptimized
-              className="h-12 w-auto opacity-95 object-contain"
+              className="h-12 w-auto opacity-95 object-contain brightness-0 invert"
               style={{ width: 'auto', height: '48px' }}
             />
           </a>
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 bg-brand-orange text-white border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-brand-orange active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex justify-center items-center cursor-pointer"
+            className="w-10 h-10 bg-brand-orange text-white hover:bg-orange-600 transition-all rounded-md flex justify-center items-center cursor-pointer hover:shadow-md"
             aria-label="Scroll back to top"
             id="scroll-to-top-btn"
           >

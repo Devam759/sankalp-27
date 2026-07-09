@@ -77,7 +77,7 @@ export function ScannerSessionProvider({ children }: { children: React.ReactNode
 
   if (configError) {
     return (
-      <div className="min-h-screen bg-[#F5F1E5] flex items-center justify-center p-6 text-center select-none font-adminBody">
+      <div className="min-h-screen bg-brand-cloud flex items-center justify-center p-6 text-center select-none font-adminBody">
         <div className="max-w-md bg-white border-4 border-brand-ink p-8 shadow-[4px_4px_0px_0px_#030404] rounded-md">
           <ShieldAlert className="text-brand-orange mx-auto mb-4" size={48} />
           <h2 className="font-adminHeading text-2xl font-black text-brand-ink mb-4 uppercase tracking-tight">Firebase Unconfigured</h2>
@@ -95,7 +95,7 @@ export function ScannerSessionProvider({ children }: { children: React.ReactNode
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F5F1E5] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-brand-cloud flex items-center justify-center p-4">
         <div className="text-center space-y-4">
           <Loader2 className="animate-spin text-brand-ink mx-auto" size={48} />
           <p className="text-admin-muted text-xs font-bold uppercase tracking-widest font-adminBody">
