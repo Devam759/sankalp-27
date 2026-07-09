@@ -37,70 +37,46 @@ export default function About() {
       <Navbar />
 
       {/* HERO SECTION - Premium Editorial */}
-      <section className="relative py-24 md:py-32 px-6 overflow-hidden min-h-[60vh] flex items-center bg-brand-cloud border-b border-slate-300">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-blue/5 skew-x-12 transform origin-top-right"></div>
+      <section className="relative py-24 md:py-32 px-6 overflow-hidden min-h-[60vh] flex items-center border-b border-slate-300">
         <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10 relative">
           
-          <motion.div 
-            initial="hidden" 
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="flex flex-col justify-center relative"
-          >
-
-
-            <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-8">
+          <div className="flex flex-col justify-center relative">
+            <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-[2px] bg-brand-orange"></div>
               <span className="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs">
                 About The Conference
               </span>
-            </motion.div>
+            </div>
             
-            <motion.h1 variants={fadeUpVariant} className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-blue leading-[1.2] mb-8 relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-blue leading-[1.2] mb-8">
               Advancing Sustainable AI,<br/>
-              <span className="text-brand-orange relative inline-block">
-                Innovation
-                <span className="absolute -bottom-2 left-0 w-full h-[4px] bg-brand-orange/20"></span>
-              </span><br/>
+              <span className="text-brand-orange">Innovation</span><br/>
               & Future-Ready Tech
-            </motion.h1>
+            </h1>
             
-            <motion.p variants={fadeUpVariant} className="text-base md:text-lg text-slate-700 leading-relaxed max-w-xl font-medium border-l-2 border-brand-orange/30 pl-6">
+            <p className="text-base md:text-lg text-slate-700 leading-relaxed max-w-xl font-medium border-l-2 border-brand-orange/30 pl-6">
               SANKALP 2027 brings together global researchers, academicians, industry experts, innovators, and policymakers to explore the future of intelligent technologies and sustainable digital transformation.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            className="hidden lg:flex justify-end relative h-[500px]"
-          >
-            {/* Overlapping asymmetric image block */}
+          <div className="hidden lg:flex justify-end relative h-[500px]">
             <div className="relative w-full h-full max-h-[500px] w-4/5 ml-auto">
-              {/* Abstract navy background block */}
+              {/* Solid navy background block */}
               <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-brand-blue z-0 border border-brand-orange/20">
                 <div className="absolute inset-4 border border-white/10"></div>
-                {/* Tech pattern */}
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:12px_12px]"></div>
               </div>
               
-
-
               {/* The Image */}
-              <div className="relative z-10 w-full h-[90%] border border-slate-200 shadow-2xl overflow-hidden bg-slate-100 flex items-center justify-center group">
-                <div className="absolute inset-0 bg-brand-blue/20 mix-blend-multiply z-10 group-hover:opacity-0 transition-opacity duration-700"></div>
+              <div className="relative z-10 w-full h-[90%] border border-slate-200 shadow-sm overflow-hidden bg-slate-100 flex items-center justify-center">
                 <Image 
-                  src="/images/sankalp.webp" 
+                  src="/Images/sankalp.webp" 
                   alt="SANKALP 2027 Committee" 
                   fill 
-                  className="object-cover relative z-0 transform group-hover:scale-105 transition-transform duration-1000"
+                  className="object-cover relative z-0 grayscale"
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </section>
@@ -327,7 +303,7 @@ export default function About() {
                >
                  <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200">
                     {/* JKLU Campus Image */}
-                    <Image src="/images/jklu.jpg" alt="JKLU Campus" fill className="object-cover transition-all duration-700 group-hover:scale-105" />
+                    <Image src="/Images/jklu.jpg" alt="JKLU Campus" fill className="object-cover transition-all duration-700 group-hover:scale-105" />
                  </div>
                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-xl tracking-wider text-center w-full">
                     JK Lakshmipat University

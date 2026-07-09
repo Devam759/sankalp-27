@@ -277,128 +277,99 @@ export default function MindsPage() {
         )}
       </AnimatePresence>
 
-      {/* SECTION 1 — TYPOGRAPHIC OPENING */}
-      <section ref={heroRef} className="pt-44 pb-32 px-8 max-w-[1440px] mx-auto w-full">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.9, ease }} className="flex items-center gap-4 mb-16">
-          <div className="w-10 h-[2px] bg-brand-orange" />
-          <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange">The Minds Behind SANKALP</span>
+      {/* SECTION 1 — FORMAL OPENING */}
+      <section ref={heroRef} className="pt-44 pb-24 px-8 max-w-[1440px] mx-auto w-full text-center flex flex-col items-center">
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.9, ease }} className="mb-8 flex items-center justify-center gap-6">
+          <div className="w-12 h-[1px] bg-brand-orange/50" />
+          <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-brand-orange">SANKALP 2027</span>
+          <div className="w-12 h-[1px] bg-brand-orange/50" />
         </motion.div>
-        <motion.h1 initial={{ opacity: 0, y: 40 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1.1, ease, delay: 0.1 }} className="font-serif font-bold text-brand-blue text-[clamp(3rem,8vw,7rem)] leading-[1.05] tracking-tight mb-4 max-w-5xl">
-          A Conference Built<br />
-          <span className="text-brand-orange italic">by Expertise.</span>
+        <motion.h1 initial={{ opacity: 0, y: 40 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1.1, ease, delay: 0.1 }} className="font-serif font-bold text-brand-blue text-5xl md:text-7xl leading-tight tracking-tight mb-8 max-w-4xl mx-auto">
+          Academic &amp; Organizing Committees
         </motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}} transition={{ duration: 1.2, ease, delay: 0.3 }} className="text-slate-600 font-medium text-lg md:text-xl max-w-3xl text-center leading-relaxed">
+          The distinguished researchers, educators, and industry leaders guiding the scientific vision and operational excellence of the conference.
+        </motion.p>
       </section>
 
-      {/* SECTION 2 — EDITORIAL LEADERSHIP PORTRAITS */}
-      <section className="py-0 border-t border-brand-blue/10 bg-[#f7f4ef]">
-        <div className="max-w-[1440px] mx-auto px-8 pt-24 pb-0">
-          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[10px] font-bold tracking-[0.28em] uppercase text-slate-400 mb-4">The People Shaping the Conversation</motion.p>
-          <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-serif font-bold text-brand-blue text-4xl md:text-5xl mb-0 max-w-2xl leading-tight">Guiding SANKALP 2027</motion.h2>
-        </div>
+      {/* SECTION 2 — FORMAL DIRECTORY */}
+      <section className="py-32 border-t border-brand-blue/10 bg-[#f7f4ef]">
+        <div className="max-w-[1440px] mx-auto px-8">
+          <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20 text-center">
+            <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">Conference Governance</motion.p>
+            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-4xl md:text-5xl mb-0 leading-tight">Leadership Committee</motion.h2>
+          </motion.div>
 
-        {/* 1. Chief Patron */}
-        <div className="border-b border-brand-blue/10 mt-16">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-start">
-              <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-4 bg-slate-200 border border-slate-300 aspect-[4/5] relative flex items-center justify-center overflow-hidden">
-                <span className="text-slate-400 font-mono text-xs tracking-widest">PORTRAIT</span>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-orange" />
-              </motion.div>
-              <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-8 flex flex-col justify-end pl-0 lg:pl-16 pt-10 lg:pt-0 pb-12">
-                <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-6">Chief Patron</span>
-                <h3 className="font-serif font-bold text-brand-blue text-[clamp(2rem,4vw,4rem)] leading-none mb-4">{committeeMembers.chiefPatron.name}</h3>
-                <p className="text-slate-600 text-lg leading-relaxed max-w-lg italic border-l-2 border-brand-orange/30 pl-6">"Providing foundational leadership and institutional vision for SANKALP 2027."</p>
-              </motion.div>
+          <div className="flex flex-col gap-16">
+            
+            {/* Top Tier: Patrons */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { role: 'Chief Patron', name: committeeMembers.chiefPatron.name, title: 'JK Lakshmipat University' },
+                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatron.name, title: 'JK Lakshmipat University' },
+                { role: 'Patron', name: committeeMembers.patron.name, title: committeeMembers.patron.title },
+              ].map((member, i) => (
+                <motion.div key={`patron-${i}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} 
+                  className="bg-brand-blue rounded flex flex-col items-center text-center p-6 shadow-2xl relative group transform transition-transform duration-500 hover:-translate-y-2">
+                  <div className="absolute inset-0 border border-white/5 rounded pointer-events-none group-hover:border-brand-orange/30 transition-colors duration-500"></div>
+                  <div className="w-full aspect-[4/5] bg-slate-800/50 rounded border border-white/10 mb-6 flex items-center justify-center relative overflow-hidden">
+                    <span className="text-white/20 font-mono text-xs tracking-widest z-10">PORTRAIT</span>
+                    <div className="absolute inset-0 bg-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                  <h3 className="font-serif font-bold text-white text-xl md:text-2xl uppercase tracking-wide mb-2">{member.name}</h3>
+                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange mb-2 block">{member.role}</span>
+                  {member.title && <p className="text-white/50 font-medium text-[10px] uppercase tracking-widest">{member.title}</p>}
+                </motion.div>
+              ))}
             </div>
-          </div>
-        </div>
 
-        {/* 2. Chief Co-Patron */}
-        <div className="border-b border-brand-blue/10 bg-white">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-start">
-              <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-8 flex flex-col justify-end pr-0 lg:pr-16 pt-10 lg:pt-0 pb-12 order-2 lg:order-1">
-                <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-6">Chief Co-Patron</span>
-                <h3 className="font-serif font-bold text-brand-blue text-[clamp(2rem,4vw,4rem)] leading-none mb-4">{committeeMembers.chiefCoPatron.name}</h3>
-                <p className="text-slate-600 text-lg leading-relaxed max-w-lg italic border-l-2 border-brand-orange/30 pl-6">"Guiding strategic initiatives and academic excellence for the conference."</p>
-              </motion.div>
-              <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-4 bg-slate-200 border border-slate-300 aspect-[4/5] relative flex items-center justify-center overflow-hidden order-1 lg:order-2">
-                <span className="text-slate-400 font-mono text-xs tracking-widest">PORTRAIT</span>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-orange" />
-              </motion.div>
+            {/* Second Tier: Chairs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
+              {[
+                { role: committeeMembers.chairs[0].role, name: committeeMembers.chairs[0].name, title: committeeMembers.chairs[0].title },
+                { role: committeeMembers.chairs[1].role, name: committeeMembers.chairs[1].name, title: committeeMembers.chairs[1].title },
+              ].map((member, i) => (
+                <motion.div key={`chair-${i}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} 
+                  className="bg-brand-blue rounded flex flex-col items-center text-center p-6 shadow-2xl relative group transform transition-transform duration-500 hover:-translate-y-2">
+                  <div className="absolute inset-0 border border-white/5 rounded pointer-events-none group-hover:border-brand-orange/30 transition-colors duration-500"></div>
+                  <div className="w-full aspect-[4/5] bg-slate-800/50 rounded border border-white/10 mb-6 flex items-center justify-center relative overflow-hidden">
+                    <span className="text-white/20 font-mono text-xs tracking-widest z-10">PORTRAIT</span>
+                    <div className="absolute inset-0 bg-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                  <h3 className="font-serif font-bold text-white text-xl md:text-2xl uppercase tracking-wide mb-2">{member.name}</h3>
+                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange mb-2 block">{member.role}</span>
+                  {member.title && <p className="text-white/50 font-medium text-[10px] uppercase tracking-widest">{member.title}</p>}
+                </motion.div>
+              ))}
             </div>
-          </div>
-        </div>
 
-        {/* 3. Patron */}
-        <div className="border-b border-brand-blue/10">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-start">
-              <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-4 bg-slate-200 border border-slate-300 aspect-[4/5] relative flex items-center justify-center overflow-hidden">
-                <span className="text-slate-400 font-mono text-xs tracking-widest">PORTRAIT</span>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-orange" />
-              </motion.div>
-              <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-8 flex flex-col justify-end pl-0 lg:pl-16 pt-10 lg:pt-0 pb-12">
-                <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-6">Patron</span>
-                <h3 className="font-serif font-bold text-brand-blue text-[clamp(2rem,4vw,4rem)] leading-none mb-4">{committeeMembers.patron.name}</h3>
-                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-8">{committeeMembers.patron.title}</p>
-                <p className="text-slate-600 text-lg leading-relaxed max-w-lg italic border-l-2 border-brand-orange/30 pl-6">"Driving JK Lakshmipat University's commitment to research, innovation, and global collaboration."</p>
-              </motion.div>
+            {/* Third Tier: Program Chairs */}
+            <div className="pt-12 border-t border-brand-blue/10">
+              <div className="text-center mb-10">
+                <span className="text-xs font-bold tracking-[0.28em] uppercase text-slate-400">Program Chairs</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  { name: 'Prof. Amit', title: 'Professor of IET, JKLU' },
+                  { name: 'Prof. Taruna', title: 'Professor of IET, JKLU' },
+                  { name: 'Prof. Umesh', title: 'Professor of IET, JKLU' },
+                  { name: 'Prof. Devika', title: 'Professor of IET, JKLU' }
+                ].map((member, i) => (
+                  <motion.div key={`prog-${i}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} 
+                    className="bg-brand-blue rounded flex flex-col items-center text-center p-5 shadow-xl relative group transform transition-transform duration-500 hover:-translate-y-1">
+                    <div className="absolute inset-0 border border-white/5 rounded pointer-events-none group-hover:border-brand-orange/30 transition-colors duration-500"></div>
+                    <div className="w-full aspect-[4/5] bg-slate-800/50 rounded border border-white/10 mb-5 flex items-center justify-center relative overflow-hidden">
+                      <span className="text-white/20 font-mono text-[10px] tracking-widest z-10">PORTRAIT</span>
+                      <div className="absolute inset-0 bg-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <h3 className="font-serif font-bold text-white text-lg uppercase tracking-wide mb-1">{member.name}</h3>
+                    <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-brand-orange mb-1 block">Program Chair</span>
+                    <p className="text-white/50 font-medium text-[9px] uppercase tracking-widest">{member.title}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
 
-        {/* 4. Conference Chair */}
-        <div className="border-b border-brand-blue/10 bg-white">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-start">
-              <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-8 flex flex-col justify-end pr-0 lg:pr-16 pt-10 lg:pt-0 pb-12 order-2 lg:order-1">
-                <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-6">Conference Chair</span>
-                <h3 className="font-serif font-bold text-brand-blue text-[clamp(2rem,4vw,4rem)] leading-none mb-4">{committeeMembers.chairs[0].name}</h3>
-                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-8">{committeeMembers.chairs[0].title}</p>
-                <p className="text-slate-600 text-lg leading-relaxed max-w-lg italic border-l-2 border-brand-orange/30 pl-6">"Leading the academic vision and interdisciplinary research direction of SANKALP 2027."</p>
-              </motion.div>
-              <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-4 bg-slate-200 border border-slate-300 aspect-[4/5] relative flex items-center justify-center overflow-hidden order-1 lg:order-2">
-                <span className="text-slate-400 font-mono text-xs tracking-widest">PORTRAIT</span>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-orange" />
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        {/* 5. Conference Convener */}
-        <div className="border-b border-brand-blue/10">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-start">
-              <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-4 bg-slate-200 border border-slate-300 aspect-[4/5] relative flex items-center justify-center overflow-hidden">
-                <span className="text-slate-400 font-mono text-xs tracking-widest">PORTRAIT</span>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-orange" />
-              </motion.div>
-              <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-8 flex flex-col justify-end pl-0 lg:pl-16 pt-10 lg:pt-0 pb-12">
-                <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-6">Conference Convener</span>
-                <h3 className="font-serif font-bold text-brand-blue text-[clamp(2rem,4vw,4rem)] leading-none mb-4">{committeeMembers.chairs[1].name}</h3>
-                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-8">{committeeMembers.chairs[1].title}</p>
-                <p className="text-slate-600 text-lg leading-relaxed max-w-lg italic border-l-2 border-brand-orange/30 pl-6">"Orchestrating SANKALP's global outreach and operational excellence."</p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        {/* 6. Program Chairs */}
-        <div className="border-b border-brand-blue/10 bg-white">
-          <div className="max-w-[1440px] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-start">
-              <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-8 flex flex-col justify-end pr-0 lg:pr-16 pt-10 lg:pt-0 pb-12 order-2 lg:order-1">
-                <span className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-6">Program Chairs</span>
-                <h3 className="font-serif font-bold text-brand-blue text-[clamp(2rem,4vw,4rem)] leading-none mb-4">Professors of IET</h3>
-                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-8">Prof. Amit, Prof. Taruna, Prof. Umesh, Prof. Devika</p>
-                <p className="text-slate-600 text-lg leading-relaxed max-w-lg italic border-l-2 border-brand-orange/30 pl-6">"Ensuring rigorous academic evaluation and program curation."</p>
-              </motion.div>
-              <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:col-span-4 bg-slate-200 border border-slate-300 aspect-[4/5] relative flex items-center justify-center overflow-hidden order-1 lg:order-2">
-                <span className="text-slate-400 font-mono text-xs tracking-widest">PORTRAIT</span>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-orange" />
-              </motion.div>
-            </div>
           </div>
         </div>
       </section>
@@ -477,132 +448,7 @@ export default function MindsPage() {
         `}} />
       </section>
 
-      {/* SECTION 5 — HOW QUALITY IS MAINTAINED */}
-      <section className="py-32 bg-white border-b border-brand-blue/10">
-        <div className="max-w-[1440px] mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-4">
-              <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="lg:sticky lg:top-32">
-                <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">The Research Standards</motion.p>
-                <motion.h2 variants={fadeUp} className="font-serif font-bold text-4xl text-brand-blue leading-tight mb-8">How Quality Is<br />Maintained</motion.h2>
-                <motion.p variants={fadeUp} className="text-slate-600 leading-relaxed font-medium">SANKALP 2027 maintains the editorial standards of the world's leading academic publishing houses. Every paper accepted here has passed through a rigorous, multi-stage evaluation.</motion.p>
-              </motion.div>
-            </div>
-            <div className="lg:col-span-8 flex flex-col divide-y divide-slate-100">
-              {qualitySteps.map((step, i) => (
-                <motion.div key={step.id} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.9, ease }} className="py-10 group">
-                  <div className="flex items-start gap-8">
-                    <span className="font-mono font-black text-[56px] leading-none text-brand-blue/8 group-hover:text-brand-orange/20 transition-colors duration-700 shrink-0 pt-1">{step.id}</span>
-                    <div>
-                      <h3 className="font-serif font-bold text-2xl text-brand-blue mb-3">{step.title}</h3>
-                      <p className="text-slate-600 leading-relaxed font-medium mb-4">{step.body}</p>
-                      <div className="flex items-center gap-3">
-                        <div className="w-4 h-[1.5px] bg-brand-orange" />
-                        <span className="text-[10px] font-bold tracking-widest uppercase text-brand-orange">{step.who}</span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
-
-
-
-      {/* SECTION 8 — FULL DIRECTORY */}
-      <section className="py-32 bg-white border-t border-brand-blue/10">
-        <div className="max-w-[1440px] mx-auto px-8">
-          <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20">
-            <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">Complete Membership</motion.p>
-            <motion.h2 variants={fadeUp} className="font-serif font-bold text-4xl md:text-5xl text-brand-blue leading-tight">Academic Leadership Directory</motion.h2>
-          </motion.div>
-
-          {/* International Advisory Board */}
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, ease }} className="mb-20">
-            <div className="flex items-center gap-4 mb-8 border-b border-brand-blue/10 pb-4">
-              <div className="w-6 h-[2px] bg-brand-orange" />
-              <h3 className="font-bold text-xs tracking-[0.22em] uppercase text-brand-blue">International Advisory Board</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-5">
-              {advisoryBoard.international.map((m, i) => (
-                <div key={i} className="flex flex-col py-3 border-b border-slate-100 group hover:border-brand-orange transition-colors">
-                  <span className="font-serif font-bold text-brand-blue text-lg leading-tight group-hover:text-brand-orange transition-colors">{m.name}</span>
-                  <span className="text-slate-500 text-xs mt-1 leading-snug">{m.title}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* National Advisory Board */}
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, ease }} className="mb-20">
-            <div className="flex items-center gap-4 mb-8 border-b border-brand-blue/10 pb-4">
-              <div className="w-6 h-[2px] bg-brand-orange" />
-              <h3 className="font-bold text-xs tracking-[0.22em] uppercase text-brand-blue">National Advisory Board</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-5">
-              {advisoryBoard.national.map((m, i) => (
-                <div key={i} className="flex flex-col py-3 border-b border-slate-100 group hover:border-brand-orange transition-colors">
-                  <span className="font-serif font-bold text-brand-blue text-lg leading-tight group-hover:text-brand-orange transition-colors">{m.name}</span>
-                  <span className="text-slate-500 text-xs mt-1 leading-snug">{m.title}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* TPC */}
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, ease }} className="mb-20">
-            <div className="flex items-center gap-4 mb-8 border-b border-brand-blue/10 pb-4">
-              <div className="w-6 h-[2px] bg-brand-orange" />
-              <h3 className="font-bold text-xs tracking-[0.22em] uppercase text-brand-blue">Technical Program Committee</h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse min-w-[700px]">
-                <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50">
-                    <th className="py-3 px-4 text-[10px] font-bold tracking-widest uppercase text-slate-400">Name</th>
-                    <th className="py-3 px-4 text-[10px] font-bold tracking-widest uppercase text-slate-400">Institution</th>
-                    <th className="py-3 px-4 text-[10px] font-bold tracking-widest uppercase text-slate-400">Country</th>
-                    <th className="py-3 px-4 text-[10px] font-bold tracking-widest uppercase text-slate-400">Domain</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {technicalProgramCommittee.map((m, i) => (
-                    <tr key={i} className="hover:bg-slate-50 transition-colors">
-                      <td className="py-4 px-4 font-serif font-bold text-brand-blue">{m.name}</td>
-                      <td className="py-4 px-4 text-slate-600 text-sm">{m.institution}</td>
-                      <td className="py-4 px-4 text-slate-500 text-sm">{m.country}</td>
-                      <td className="py-4 px-4"><span className="text-[10px] font-bold tracking-widest uppercase text-brand-orange">{m.area}</span></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </motion.div>
-
-          {/* Track Chairs */}
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, ease }}>
-            <div className="flex items-center gap-4 mb-8 border-b border-brand-blue/10 pb-4">
-              <div className="w-6 h-[2px] bg-brand-orange" />
-              <h3 className="font-bold text-xs tracking-[0.22em] uppercase text-brand-blue">Track Chairs</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-brand-blue/10">
-              {trackChairs.map((t, i) => (
-                <div key={i} className="border-r border-b border-brand-blue/10 p-6">
-                  <span className="text-[10px] font-mono text-slate-400 block mb-2">Track {String(i + 1).padStart(2, '0')}</span>
-                  <h4 className="font-serif font-bold text-brand-blue text-base mb-4 leading-tight">{t.track}</h4>
-                  <div className="flex flex-col gap-1">
-                    <div className="flex gap-3 items-baseline"><span className="text-[9px] font-bold tracking-widest uppercase text-brand-orange w-14 shrink-0">Chair</span><span className="text-slate-700 font-semibold text-sm">{t.chair}</span></div>
-                    <div className="flex gap-3 items-baseline"><span className="text-[9px] font-bold tracking-widest uppercase text-slate-400 w-14 shrink-0">Co-Chair</span><span className="text-slate-500 text-sm">{t.coChair}</span></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       <Footer />
     </main>

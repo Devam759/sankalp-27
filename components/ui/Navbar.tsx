@@ -4,12 +4,13 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -17,7 +18,7 @@ export default function Navbar() {
     { name: 'Call for Papers', href: '/call-for-papers' },
     { name: 'Submission', href: '/submission' },
     { name: 'Registration', href: '/registration' },
-    { name: 'Committee', href: '/#committee' },
+    { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Contact', href: '/#contact' },
   ];
@@ -61,7 +62,11 @@ export default function Navbar() {
       }`}
     >
       {/* Top Orange Banner Strip: Call for Sponsors */}
-      <div className="bg-brand-orange text-white py-2 px-4 text-center text-[10px] sm:text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1 sm:gap-2">
+      <div 
+        className={`bg-brand-orange text-white px-4 text-center text-[10px] sm:text-xs font-bold uppercase tracking-wider flex flex-wrap items-center justify-center gap-1 sm:gap-2 transition-all duration-300 overflow-hidden ${
+          isScrolled ? 'max-h-0 py-0 opacity-0 pointer-events-none' : 'max-h-20 py-2 opacity-100'
+        }`}
+      >
         <span>Call for Sponsors: Partner with SANKALP 2027</span>
         <a 
           href="mailto:sankalp@jklu.edu.in?subject=SANKALP 2027 Sponsorship Inquiry"
@@ -93,18 +98,26 @@ export default function Navbar() {
           </Link>
 
           {/* Centre: Navigation Links */}
-          <div className="hidden lg:flex items-center justify-center gap-8">
+          <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative group text-sm font-semibold tracking-wide transition-colors whitespace-nowrap text-white hover:text-brand-orange`}
+                  onClick={(e) => {
+                    // Optional programmatic routing if Link fails
+                    if (!link.href.startsWith('/#')) {
+                       router.push(link.href);
+                    }
+                  }}
+                  className={`relative group px-1 py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded-sm ${
+                    isActive ? 'text-brand-orange' : 'text-white hover:text-brand-orange'
+                  }`}
                 >
                   {link.name}
                   <span
-                    className={`absolute -bottom-1.5 left-0 h-0.5 bg-brand-orange transition-all duration-300 ease-out ${
+                    className={`absolute bottom-1 left-0 h-[2px] bg-brand-orange transition-all duration-300 ease-out ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
@@ -142,20 +155,30 @@ export default function Navbar() {
       {/* Mobile Slide Menu */}
       <div 
         className={`fixed inset-0 bg-brand-blue z-40 transition-transform duration-300 ease-in-out lg:hidden pt-28 px-6 flex flex-col ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
         }`}
       >
         <div className="flex flex-col gap-6 text-lg">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className="text-white font-semibold border-b border-brand-orange/20 pb-4 hover:text-brand-orange transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            return (
+              <Link 
+                key={link.name} 
+                href={link.href}
+                className={`font-semibold border-b pb-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded-sm ${
+                  isActive ? 'text-brand-orange border-brand-orange/50' : 'text-white border-brand-orange/20 hover:text-brand-orange'
+                }`}
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  if (!link.href.startsWith('/#')) {
+                     router.push(link.href);
+                  }
+                }}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
           <div className="flex flex-col gap-3 mt-4">
             <Link 
               href="/registration" 
