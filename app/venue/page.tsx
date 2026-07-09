@@ -192,51 +192,106 @@ export default function VenuePage() {
       </section>
 
       {/* SECTION 2: ABOUT THE VENUE */}
-      <section id="about-section" className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div className="relative border-4 border-brand-ink shadow-[8px_8px_0px_0px_#030404] rounded-xl overflow-hidden aspect-[4/3] bg-white group">
+      <section id="about-section" className="relative py-24 px-6 overflow-hidden bg-gradient-to-br from-amber-50/15 via-brand-cloud to-white border-y border-slate-100">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white group">
             <Image
               src="/Images/footer_image.webp"
               alt="JK Lakshmipat University Campus"
               fill
               sizes="(max-width: 1024px) 100vw, 600px"
-              className="object-cover group-hover:scale-102 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
+            <div className="absolute top-4 left-4 bg-brand-ink/80 backdrop-blur-md text-white border border-white/10 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide shadow-md flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+              JK Lakshmipat University • Jaipur, Rajasthan • Host Venue
+            </div>
           </div>
 
           <div className="space-y-8">
-            <div className="space-y-2">
+            <div className="space-y-3">
               <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Host Institution</span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-blue uppercase tracking-tight">
-                About The Venue
-              </h2>
-              <div className="w-16 h-1.5 bg-brand-orange rounded-full" />
+              <div className="space-y-1">
+                <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-brand-ink tracking-tight">
+                  JK Lakshmipat University
+                </h2>
+                <p className="text-xl sm:text-2xl font-serif font-black text-brand-blue uppercase tracking-tight leading-tight">
+                  A World-Class Venue for Innovation & Research
+                </p>
+              </div>
+              <div className="w-16 h-1 bg-brand-orange rounded-full" />
             </div>
 
-            <p className="text-slate-700 leading-relaxed font-medium text-sm sm:text-base">
-              JK Lakshmipat University (JKLU), Jaipur, is a leading multidisciplinary university committed to innovation, research excellence, entrepreneurship, and industry collaboration. The university provides world-class academic infrastructure, modern laboratories, collaborative learning spaces, incubation facilities, and a sustainable green campus, making it an ideal venue for an international research conference.
+            <p className="text-slate-600 leading-relaxed text-sm sm:text-base max-w-xl">
+              JK Lakshmipat University (JKLU), Jaipur, is a premier institution distinguished by its advanced research ecosystem, vibrant innovation culture, and strong industry engagement. Featuring a sustainable, eco-friendly campus, state-of-the-art research laboratories, and collaborative learning environments, JKLU serves as a dynamic hub for academia and industry, providing an ideal venue for high-impact international conferences.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-slate-100">
               {[
-                { title: 'Smart Campus', icon: Cpu },
-                { title: 'Research Laboratories', icon: Layers },
-                { title: 'Modern Auditorium', icon: Building },
-                { title: 'High-Speed Wi-Fi', icon: Wifi },
-                { title: 'Innovation & Incubation Centre', icon: Compass },
-                { title: 'Green Sustainable Campus', icon: Leaf }
-              ].map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 p-4 bg-white border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] rounded-lg hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_#030404] transition-all"
-                  >
-                    <IconComponent className="text-brand-orange shrink-0" size={20} />
-                    <span className="font-bold text-xs sm:text-sm text-brand-ink">{item.title}</span>
-                  </div>
-                );
-              })}
+                { value: '20+ Acres', label: 'Green Campus' },
+                { value: '15+', label: 'Research Labs' },
+                { value: '100+', label: 'Industry Partners' },
+                { value: 'Innovation', label: 'Driven Learning' }
+              ].map((stat, idx) => (
+                <div key={idx} className="space-y-1">
+                  <div className="text-lg sm:text-xl font-black text-brand-blue font-serif">{stat.value}</div>
+                  <div className="text-xs text-slate-500 font-medium leading-tight">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue/80 border-b border-slate-100 pb-2">
+                  Campus Highlights
+                </h4>
+                <div className="space-y-3">
+                  {[
+                    { title: 'Lush Green Campus', icon: Leaf },
+                    { title: 'Advanced Research Laboratories', icon: Layers },
+                    { title: 'Sustainable & Eco-Friendly Infrastructure', icon: Building }
+                  ].map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-3 p-3 bg-white border border-brand-ink/5 shadow-sm rounded-xl hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
+                          <Icon className="text-brand-orange" size={16} />
+                        </div>
+                        <span className="font-semibold text-xs sm:text-sm text-brand-ink">{item.title}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue/80 border-b border-slate-100 pb-2">
+                  Conference Facilities
+                </h4>
+                <div className="space-y-3">
+                  {[
+                    { title: 'Innovation & Incubation Centre', icon: Compass },
+                    { title: 'Campus-wide High-Speed Wi-Fi', icon: Wifi },
+                    { title: 'Collaborative Learning Spaces', icon: Users }
+                  ].map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-3 p-3 bg-white border border-brand-ink/5 shadow-sm rounded-xl hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
+                          <Icon className="text-brand-orange" size={16} />
+                        </div>
+                        <span className="font-semibold text-xs sm:text-sm text-brand-ink">{item.title}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
