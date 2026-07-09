@@ -217,3 +217,48 @@ export const advisoryBoard = {
   ]
 };
 
+export const technicalProgramCommittee = [
+  { name: 'Prof. Ankit Garg', institution: 'Indian Institute of Technology Delhi', country: 'India', area: 'Machine Learning' },
+  { name: 'Dr. Sarah Mitchell', institution: 'University of Cambridge', country: 'United Kingdom', area: 'Sustainable AI' },
+  { name: 'Dr. Hiroshi Tanaka', institution: 'University of Tokyo', country: 'Japan', area: 'Generative AI' },
+  { name: 'Prof. Elena Rodriguez', institution: 'Technical University of Madrid', country: 'Spain', area: 'Smart Health' },
+  { name: 'Dr. James Chen', institution: 'National University of Singapore', country: 'Singapore', area: 'Data Science' },
+  { name: 'Prof. Rajesh Kumar', institution: 'IIT Ropar', country: 'India', area: 'Biomedical Engineering' },
+];
+
+export const trackChairs = [
+  { track: 'Sustainable AI', chair: 'Dr. Amit Kumar', coChair: 'Dr. Sneha Sharma' },
+  { track: 'Data Science & Generative AI', chair: 'Prof. Taruna Gautam', coChair: 'Dr. Vikram Singh' },
+  { track: 'High Performance Computing', chair: 'Dr. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
+  { track: 'Smart Healthcare', chair: 'Prof. Devika Bhatnagar', coChair: 'Dr. Suresh Reddy' },
+  { track: 'AI in Education', chair: 'Dr. Ramesh Chandra', coChair: 'Dr. Kavita Jain' },
+  { track: 'Smart Society', chair: 'Prof. Anil Sharma', coChair: 'Dr. Meera Patel' },
+  { track: 'VLSI & Intelligent Engineering', chair: 'Dr. Rajesh Verma', coChair: 'Dr. Prakash Iyer' },
+];
+
+export const organizingSubCommittees = [
+  {
+    name: 'Publication Committee',
+    members: ['Dr. Ankur Verma (Chair)', 'Dr. Neha Gupta', 'Mr. Ravi Shankar']
+  },
+  {
+    name: 'Registration Committee',
+    members: ['Dr. Priti Sharma (Chair)', 'Ms. Ananya Das', 'Mr. Vikas Singh']
+  },
+  {
+    name: 'Sponsorship Committee',
+    members: ['Mr. Sanjay Kedia (Chair)', 'Dr. Rakesh Meena', 'Ms. Snehal Patel']
+  },
+  {
+    name: 'Hospitality Committee',
+    members: ['Dr. Mamta Bhatia (Chair)', 'Mr. Rajesh Kumar', 'Ms. Jyoti Rao']
+  },
+  {
+    name: 'Web & Design Committee',
+    members: ['Mr. Devam (Chair)', 'Mr. Kartik', 'Mr. Yash']
+  },
+  {
+    name: 'Media & Communications Committee',
+    members: ['Ms. Shilpa Sharma (Chair)', 'Mr. Vivek Joshi', 'Ms. Aditi Singh']
+  }
+];
