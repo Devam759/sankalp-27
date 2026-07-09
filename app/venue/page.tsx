@@ -240,57 +240,33 @@ export default function VenuePage() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue/80 border-b border-slate-100 pb-2">
-                  Campus Highlights
-                </h4>
-                <div className="space-y-3">
-                  {[
-                    { title: 'Lush Green Campus', icon: Leaf },
-                    { title: 'Advanced Research Laboratories', icon: Layers },
-                    { title: 'Sustainable & Eco-Friendly Infrastructure', icon: Building }
-                  ].map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 p-3 bg-white border border-brand-ink/5 shadow-sm rounded-xl hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
-                          <Icon className="text-brand-orange" size={16} />
-                        </div>
-                        <span className="font-semibold text-xs sm:text-sm text-brand-ink">{item.title}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue/80 border-b border-slate-100 pb-2">
-                  Conference Facilities
-                </h4>
-                <div className="space-y-3">
-                  {[
-                    { title: 'Innovation & Incubation Centre', icon: Compass },
-                    { title: 'Campus-wide High-Speed Wi-Fi', icon: Wifi },
-                    { title: 'Collaborative Learning Spaces', icon: Users }
-                  ].map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 p-3 bg-white border border-brand-ink/5 shadow-sm rounded-xl hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
-                          <Icon className="text-brand-orange" size={16} />
-                        </div>
-                        <span className="font-semibold text-xs sm:text-sm text-brand-ink">{item.title}</span>
-                      </div>
-                    );
-                  })}
-                </div>
+            <div className="space-y-6 pt-8">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                Why JKLU?
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                {[
+                  { num: '01', title: 'Lush Green Campus', desc: 'A serene 30-acre campus offering a vibrant, nature-integrated learning environment.' },
+                  { num: '02', title: 'Advanced Research Laboratories', desc: 'State-of-the-art facilities hosting modern instrumentation and active research groups.' },
+                  { num: '03', title: 'Innovation & Incubation Centre', desc: 'A dedicated startup ecosystem fostering entrepreneurship and technological translation.' },
+                  { num: '04', title: 'Campus-wide High-Speed Wi-Fi', desc: 'Seamless high-bandwidth connectivity enabling global research and real-time collaboration.' },
+                  { num: '05', title: 'Collaborative Learning Spaces', desc: 'Flexible, student-centric classrooms designed for peer learning and creative dialogue.' },
+                  { num: '06', title: 'Sustainable Infrastructure', desc: 'Eco-conscious design featuring solar energy systems, water recycling, and zero-waste initiatives.' }
+                ].map((item, idx) => (
+                  <div key={idx} className="group flex gap-4 items-start border-t border-slate-100/80 pt-4">
+                    <div className="font-serif text-3xl sm:text-4xl font-black text-transparent [-webkit-text-stroke:1px_#cbd5e1] group-hover:[-webkit-text-stroke:1px_#f5821e] transition-all duration-300 select-none leading-none shrink-0">
+                      {item.num}
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-bold text-sm sm:text-base text-brand-ink leading-tight">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
