@@ -16,6 +16,7 @@ export default function Navbar() {
     { name: 'About', href: '/about' },
     { name: 'Call for Papers', href: '/call-for-papers' },
     { name: 'Submission', href: '/submission' },
+    { name: 'Registration', href: '/registration' },
     { name: 'Committee', href: '/#committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Contact', href: '/#contact' },
