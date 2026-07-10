@@ -3,8 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, Variants } from 'framer-motion';
-import { FileText, Calendar, MapPin, ChevronRight, Check } from 'lucide-react';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
+import { FileText, Calendar, MapPin, ChevronRight, Check, X } from 'lucide-react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
@@ -608,104 +608,148 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Interactive Advisory Boards */}
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { id: 'international', label: 'International Advisory Board' },
-                { id: 'national', label: 'National Advisory Board' },
-                { id: 'internal', label: 'Internal Committees' }
-              ].map((board, i) => {
-                const isOpen = activeAdvisory === board.id;
-                return (
-                  <motion.button
-                    key={board.id}
-                    onClick={() => setActiveAdvisory(isOpen ? null : board.id)}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
-                    className={`p-6 text-center text-sm font-bold uppercase tracking-wider border-2 transition-all flex flex-col items-center justify-center gap-2 w-full ${
-                      isOpen
-                        ? 'border-brand-orange bg-brand-orange text-white shadow-md'
-                        : board.id === 'national'
-                          ? 'border-brand-orange/30 bg-brand-orange/5 text-brand-orange hover:bg-brand-orange/10'
-                          : 'border-brand-blue/30 bg-brand-blue/5 text-brand-blue hover:bg-brand-blue/10'
-                    }`}
-                  >
-                    <span>{board.label}</span>
-                    <span className="text-[10px] lowercase font-normal opacity-70">
-                      {isOpen ? 'click to collapse' : 'click to expand'}
-                    </span>
-                  </motion.button>
-                );
-              })}
+          {/* Interactive Advisory Boards - Premium Gallery */}
+          <div className="mt-20 border-t border-brand-blue/10 pt-16 -mx-8 px-8 sm:mx-0 sm:px-0">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12">
+              <div>
+                <h3 className="font-serif font-bold text-3xl text-brand-blue mb-2">Advisory Boards</h3>
+                <p className="text-slate-500 font-medium text-sm">A premium showcase of our research leadership.</p>
+              </div>
             </div>
 
-            {/* Expanded List Panel */}
-            {activeAdvisory && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="border border-slate-200 bg-slate-50/50 p-8 md:p-10 shadow-inner text-left"
-              >
-                <h4 className="text-lg font-serif font-bold text-brand-blue mb-6 uppercase tracking-wider border-b border-slate-200 pb-3">
-                  {activeAdvisory === 'international' && 'International Advisory Board'}
-                  {activeAdvisory === 'national' && 'National Advisory Board'}
-                  {activeAdvisory === 'internal' && 'Internal Conference Committees'}
-                </h4>
+            {/* The 3 Cards Gallery */}
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 w-full group/gallery" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {[
+                { id: 'international', title: 'International Advisory Board', subtitle: 'Global research leaders', number: '01' },
+                { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India', number: '02' },
+                { id: 'internal', title: 'Internal Committees', subtitle: 'Organizing pillars at JKLU', number: '03' }
+              ].map((board, i) => (
+                <motion.div
+                  key={board.id}
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: Math.min(i * 0.1, 1), duration: 0.8, ease: "easeOut" }}
+                  onClick={() => setActiveAdvisory(activeAdvisory === board.id ? null : board.id)}
+                  className={`shrink-0 w-[85vw] sm:w-[360px] aspect-[4/5] relative group/card snap-center overflow-hidden border cursor-pointer transition-all duration-500 hover:shadow-2xl ${
+                    activeAdvisory === board.id 
+                      ? 'border-brand-orange bg-[#0a0a0a]' 
+                      : 'border-brand-blue/10 bg-[#101010]'
+                  }`}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br transition-opacity duration-700 ${
+                    activeAdvisory === board.id
+                      ? 'from-brand-orange/20 to-[#0a0a0a] opacity-100'
+                      : 'from-brand-blue/60 to-[#0a0a0a] opacity-90 group-hover/card:opacity-100'
+                  }`} />
+                  
+                  <div className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${
+                    activeAdvisory === board.id ? 'opacity-10' : 'opacity-[0.03] group-hover/card:opacity-10'
+                  }`} style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
 
-                {activeAdvisory === 'international' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {advisoryBoard.international.map((member, idx) => (
-                      <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 transition-colors shadow-sm">
-                        <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
-                        <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {activeAdvisory === 'national' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {advisoryBoard.national.map((member, idx) => (
-                      <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 transition-colors shadow-sm">
-                        <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
-                        <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {activeAdvisory === 'internal' && (
-                  <div className="space-y-6 max-w-3xl">
-                    <div className="bg-white p-6 border border-slate-100 shadow-sm space-y-4">
-                      <div>
-                        <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Chair</span>
-                        <span className="font-serif font-bold text-brand-blue text-base">Prof. Tapas Kumar</span>
-                        <span className="text-slate-500 text-xs block font-medium">Dean IET, JKLU</span>
-                      </div>
-                      <hr className="border-slate-100" />
-                      <div>
-                        <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Convener</span>
-                        <span className="font-serif font-bold text-brand-blue text-base">Prof. Sonali Vyas</span>
-                        <span className="text-slate-500 text-xs block font-medium">Head – Centre for Global Learning, JKLU</span>
-                      </div>
-                      <hr className="border-slate-100" />
-                      <div>
-                        <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Program Chairs</span>
-                        <span className="font-serif font-bold text-brand-blue text-base">Prof. Amit / Prof. Taruna / Prof. Umesh, and Prof. Devika</span>
-                        <span className="text-slate-500 text-xs block font-medium">Professors of Institute of Engineering & Technology (IET), JKLU</span>
+                  <div className="absolute inset-0 flex flex-col justify-between p-8 z-10">
+                    <div className="flex justify-between items-start">
+                      <span className={`font-mono font-black text-5xl transition-colors duration-500 ${
+                        activeAdvisory === board.id ? 'text-brand-orange' : 'text-white/20 group-hover/card:text-brand-orange/80'
+                      }`}>{board.number}</span>
+                    </div>
+                    
+                    <div className={`${activeAdvisory === board.id ? '-translate-y-2' : 'group-hover/card:-translate-y-2'} transition-transform duration-500`}>
+                      <h3 className="font-serif font-bold text-2xl text-white leading-tight mb-4 uppercase">{board.title}</h3>
+                      <div className={`h-[2px] transition-all duration-500 mb-4 ${
+                        activeAdvisory === board.id ? 'bg-brand-orange w-16' : 'bg-white/20 w-8 group-hover/card:bg-brand-orange group-hover/card:w-16'
+                      }`} />
+                      <p className="text-white/60 text-xs font-medium tracking-wide uppercase leading-relaxed">{board.subtitle}</p>
+                      
+                      <div className={`text-[10px] lowercase font-normal opacity-70 mt-6 text-brand-orange transition-opacity ${
+                        activeAdvisory === board.id ? 'opacity-100' : 'opacity-0 group-hover/card:opacity-100'
+                      }`}>
+                        {activeAdvisory === board.id ? 'Click to close' : 'Click to view members'}
                       </div>
                     </div>
-                    <p className="text-slate-500 text-xs leading-relaxed font-medium italic">
-                      Note: The Internal Organizing Committees comprise faculty members, research teams, and administrative support staff from the Institute of Engineering & Technology (IET) and Centre for Global Learning (CGLP) at JK Lakshmipat University.
-                    </p>
                   </div>
-                )}
-              </motion.div>
-            )}
+                </motion.div>
+              ))}
+            </div>
+            <style dangerouslySetInnerHTML={{__html: `
+              .group\\/gallery::-webkit-scrollbar { display: none; }
+            `}} />
+
+            {/* Modal Overlay for Expanded List Panel */}
+            <AnimatePresence>
+              {activeAdvisory && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-[#0b101e]/80 backdrop-blur-sm"
+                  onClick={() => setActiveAdvisory(null)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                    transition={{ duration: 0.3 }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="bg-[#f7f4ef] w-full max-w-5xl max-h-[85vh] rounded shadow-2xl flex flex-col overflow-hidden relative"
+                  >
+                    {/* Modal Header */}
+                    <div className="bg-[#0b101e] p-6 md:p-8 flex justify-between items-center shrink-0 border-b border-brand-orange/20">
+                      <div>
+                        <h4 className="text-xl md:text-2xl font-serif font-bold text-white uppercase tracking-wider">
+                          {activeAdvisory === 'international' && 'International Advisory Board'}
+                          {activeAdvisory === 'national' && 'National Advisory Board'}
+                          {activeAdvisory === 'internal' && 'Internal Conference Committees'}
+                        </h4>
+                        <p className="text-brand-orange text-xs font-bold uppercase tracking-widest mt-2">SANKALP 2027</p>
+                      </div>
+                      <button onClick={() => setActiveAdvisory(null)} className="text-white/50 hover:text-brand-orange transition-colors p-2 bg-white/5 rounded-full">
+                        <X size={24} />
+                      </button>
+                    </div>
+
+                    {/* Modal Content - Scrollable */}
+                    <div className="p-6 md:p-10 overflow-y-auto bg-[#f7f4ef]">
+                      {activeAdvisory === 'internal' ? (
+                        <div className="space-y-6 max-w-4xl mx-auto">
+                          <div className="bg-white p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                            <div>
+                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Chair</span>
+                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Tapas Kumar</span>
+                              <span className="text-slate-500 text-xs block font-medium">Dean IET, JKLU</span>
+                            </div>
+                            <hr className="border-slate-100" />
+                            <div>
+                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Convener</span>
+                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Sonali Vyas</span>
+                              <span className="text-slate-500 text-xs block font-medium">Head – Centre for Global Learning, JKLU</span>
+                            </div>
+                            <hr className="border-slate-100" />
+                            <div>
+                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Program Chairs</span>
+                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Amit / Prof. Taruna / Prof. Umesh, and Prof. Devika</span>
+                              <span className="text-slate-500 text-xs block font-medium">Professors of Institute of Engineering & Technology (IET), JKLU</span>
+                            </div>
+                          </div>
+                          <p className="text-slate-500 text-xs leading-relaxed font-medium italic">
+                            Note: The Internal Organizing Committees comprise faculty members, research teams, and administrative support staff from the Institute of Engineering & Technology (IET) and Centre for Global Learning (CGLP) at JK Lakshmipat University.
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {(activeAdvisory === 'international' ? advisoryBoard.international : advisoryBoard.national).map((member, idx) => (
+                            <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
+                              <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
+                              <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
         </div>
