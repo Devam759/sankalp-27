@@ -1,101 +1,201 @@
 'use client';
 
 import React from 'react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 
 export default function ContactPage() {
+  const organizingHeads = [
+    { name: "Prof. Tapas Kumar", title: "Conference Chair", phone: "+91 141 7107500", email: "tapaskumar@jklu.edu.in" },
+    { name: "Prof. Sonali Vyas", title: "Conference Convener", phone: "+91 141 7107501", email: "sonalivyas@jklu.edu.in" },
+  ];
+
+  const subCommittees = [
+    { department: "Registration", name: "Dr. Priti Sharma", email: "sankalp@jklu.edu.in", phone: "+91 98765 43210" },
+    { department: "Publication", name: "Dr. Ankur Verma", email: "sankalp@jklu.edu.in", phone: "+91 98765 43211" },
+    { department: "Sponsorship", name: "Mr. Sanjay Kedia", email: "sankalp@jklu.edu.in", phone: "+91 98765 43214" },
+    { department: "Hospitality", name: "Dr. Mamta Bhatia", email: "sankalp@jklu.edu.in", phone: "+91 98765 43213" },
+    { department: "Media & Comms", name: "Ms. Shilpa Sharma", email: "sankalp@jklu.edu.in", phone: "+91 141 7107525" }
+  ];
+
+  const trackChairs = [
+    { track: "Sustainable AI", name: "Dr. Amit Kumar", email: "amitkumar@jklu.edu.in" },
+    { track: "Data Science", name: "Prof. Taruna Gautam", email: "tarunagautam@jklu.edu.in" },
+    { track: "HPC & Edge", name: "Dr. Umesh Gupta", email: "umeshgupta@jklu.edu.in" },
+    { track: "Smart Healthcare", name: "Prof. Devika Bhatnagar", email: "devikabhatnagar@jklu.edu.in" },
+  ];
+
   return (
-    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-24 flex flex-col selection:bg-brand-orange selection:text-white">
+    <div className="w-full min-h-screen bg-[#f7f4ef] text-[#184176] font-sans selection:bg-[#f5821e] selection:text-white">
       <Navbar />
 
-      {/* Header Section */}
-      <section className="py-12 md:py-16 px-6 bg-brand-cloud border-b border-slate-300">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-[2px] bg-brand-orange"></div>
-            <span className="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs">
-              Get In Touch
-            </span>
-          </div>
-          <h1 className="text-3xl md:text-4xl font-serif font-bold text-brand-blue mb-4">
+      <div className="pt-32 pb-28 px-6 max-w-5xl mx-auto relative z-10">
+        
+        <header className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-serif text-[#184176] tracking-tight mb-4">
             Contact Us
           </h1>
-          <p className="text-slate-600 text-sm md:text-base font-medium">
-            Have questions about registrations, paper submissions, or the venue? Reach out to us.
-          </p>
-        </div>
-      </section>
+          <div className="w-16 h-[2px] bg-[#f5821e] mx-auto" />
+        </header>
 
-      {/* Content Section */}
-      <section className="py-16 px-6 flex-grow bg-brand-cloud">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Main Grid Layout */}
+        <div className="space-y-16">
+          
+          {/* Campus Address Card */}
+          <div className="bg-white border border-[#184176]/10 p-8 md:p-10 shadow-sm rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div className="space-y-3">
+              <h3 className="text-2xl font-serif text-[#184176] tracking-tight">
+                SANKALP 2027
+              </h3>
+              <p className="text-[#184176]/70 leading-relaxed max-w-xl text-sm md:text-base">
+                Welcome to the official contact directory of the SANKALP 2027 International Conference. For any queries regarding papers, registration, or sponsorships, reach out to our team heads below.
+              </p>
+            </div>
             
-            {/* Left: Contact Info Categories */}
-            <div className="space-y-8">
+            <div className="w-full md:w-auto p-6 bg-[#f7f4ef]/50 border border-[#184176]/5 rounded-sm flex items-start gap-4 text-sm">
+              <MapPin size={24} className="text-[#f5821e] shrink-0" />
               <div>
-                <h3 className="text-lg font-serif font-bold text-brand-blue mb-2">General & Convener Queries</h3>
-                <div className="text-slate-700 space-y-1 text-sm md:text-base font-medium">
-                  <p className="font-bold">Prof. Sonali Vyas</p>
-                  <p className="text-xs text-slate-500 font-mono uppercase">Conference Convener</p>
-                  <p>Head – Centre for Global Learning, JKLU</p>
-                  <p><strong>Email:</strong> <a href="mailto:sankalp@jklu.edu.in" className="text-brand-orange hover:underline font-semibold">sankalp@jklu.edu.in</a></p>
-                  <p><strong>Phone:</strong> +91 141 7107500</p>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-serif font-bold text-brand-blue mb-2">Registration & Payment Support</h3>
-                <div className="text-slate-700 space-y-1 text-sm md:text-base font-medium">
-                  <p>For transaction issues, duplicate charges, billing invoices, or category upgrades:</p>
-                  <p><strong>Email:</strong> <a href="mailto:sankalp@jklu.edu.in" className="text-brand-orange hover:underline font-semibold">sankalp@jklu.edu.in</a></p>
-                  <p><strong>Phone:</strong> +91 141 7107500</p>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-serif font-bold text-brand-blue mb-2">Paper Submissions & Program Committee</h3>
-                <div className="text-slate-700 space-y-1 text-sm md:text-base font-medium">
-                  <p>For questions regarding reviewers, acceptance letters, camera-ready papers, and journal proceedings:</p>
-                  <p><strong>Email:</strong> <a href="mailto:sankalp@jklu.edu.in" className="text-brand-orange hover:underline font-semibold">sankalp@jklu.edu.in</a></p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Institutional Details & Physical Address */}
-            <div className="bg-white/50 border-2 border-brand-ink/10 p-6 md:p-8 rounded-sm space-y-6">
-              <div>
-                <h3 className="text-lg font-serif font-bold text-brand-blue mb-3">Institutional Address</h3>
-                <div className="text-slate-700 text-sm md:text-base font-mono space-y-1 leading-relaxed">
-                  <p className="font-sans font-bold text-brand-ink">Institute of Engineering & Technology (IET)</p>
-                  <p className="font-sans text-brand-ink">JK Lakshmipat University</p>
-                  <p>Near Mahindra SEZ, Ajmer Road,</p>
-                  <p>Jaipur, Rajasthan – 302026, India</p>
-                </div>
-              </div>
-
-              <div className="border-t border-slate-200 pt-6">
-                <h3 className="text-sm font-serif font-bold text-brand-blue uppercase tracking-widest mb-2">Office Hours</h3>
-                <p className="text-xs text-slate-600 leading-relaxed font-mono">
-                  Monday to Friday: 09:00 AM – 05:00 PM (IST)<br />
-                  Saturday & Sunday: Closed
-                </p>
-              </div>
-
-              <div className="border-t border-slate-200 pt-6">
-                <h3 className="text-sm font-serif font-bold text-brand-blue uppercase tracking-widest mb-2">Website</h3>
-                <p className="text-sm font-mono text-slate-700">
-                  <a href="https://sankalp.jklu.edu.in" className="text-brand-orange hover:underline font-semibold">sankalp.jklu.edu.in</a>
+                <h4 className="text-[#184176] font-semibold tracking-wide mb-1 uppercase text-xs">Campus Address</h4>
+                <p className="text-[#184176]/80 leading-relaxed max-w-xs md:max-w-sm">
+                  JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026
                 </p>
               </div>
             </div>
-
           </div>
-        </div>
-      </section>
 
+          {/* Organizing Heads */}
+          <div>
+            <div className="text-center mb-10 pt-4">
+              <h2 className="text-2xl font-serif text-[#184176] tracking-tight mb-3">
+                Organizing Heads
+              </h2>
+              <div className="w-12 h-[1px] bg-[#184176]/30 mx-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {organizingHeads.map((head, index) => (
+                <div key={index} className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group">
+                  <div className="p-6 border-b border-[#184176]/5 group-hover:border-[#f5821e]/30 transition-colors">
+                    <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">{head.title}</span>
+                    <h3 className="font-serif text-lg text-[#184176]">
+                      {head.name}
+                    </h3>
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col justify-center space-y-4">
+                    <div className="flex items-center gap-3">
+                      <Phone size={16} className="text-[#184176]/40" />
+                      <div>
+                        <span className="text-[10px] text-[#184176]/50 uppercase tracking-wide block leading-none mb-1">Phone</span>
+                        <a href={`tel:${head.phone.replace(/\s+/g, '')}`} className="text-sm font-medium text-[#184176] hover:text-[#f5821e] transition-colors">
+                          {head.phone}
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Mail size={16} className="text-[#184176]/40" />
+                      <div>
+                        <span className="text-[10px] text-[#184176]/50 uppercase tracking-wide block leading-none mb-1">Email</span>
+                        <a href={`mailto:${head.email}`} className="text-sm font-medium text-[#184176] hover:text-[#f5821e] transition-colors break-all">
+                          {head.email}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sub-Committees */}
+          <div>
+            <div className="text-center mb-10 pt-6">
+              <h2 className="text-2xl font-serif text-[#184176] tracking-tight mb-3">
+                Sub-Committees
+              </h2>
+              <div className="w-12 h-[1px] bg-[#184176]/30 mx-auto" />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {subCommittees.map((contact, index) => (
+                <div key={index} className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group">
+                  <div className="p-6 border-b border-[#184176]/5 group-hover:border-[#f5821e]/30 transition-colors">
+                    <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">{contact.department}</span>
+                    <h3 className="font-serif text-lg text-[#184176]">
+                      {contact.name}
+                    </h3>
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col justify-center space-y-4">
+                    {contact.phone && (
+                      <div className="flex items-center gap-3">
+                        <Phone size={16} className="text-[#184176]/40" />
+                        <div>
+                          <span className="text-[10px] text-[#184176]/50 uppercase tracking-wide block leading-none mb-1">Phone</span>
+                          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-sm font-medium text-[#184176] hover:text-[#f5821e] transition-colors">
+                            {contact.phone}
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex items-center gap-3">
+                      <Mail size={16} className="text-[#184176]/40" />
+                      <div>
+                        <span className="text-[10px] text-[#184176]/50 uppercase tracking-wide block leading-none mb-1">Email</span>
+                        <a href={`mailto:${contact.email}`} className="text-sm font-medium text-[#184176] hover:text-[#f5821e] transition-colors break-all">
+                          {contact.email}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Track Chairs */}
+          <div>
+            <div className="text-center mb-10 pt-6">
+              <h2 className="text-2xl font-serif text-[#184176] tracking-tight mb-3">
+                Track Chairs
+              </h2>
+              <div className="w-12 h-[1px] bg-[#184176]/30 mx-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {trackChairs.map((chair, index) => (
+                <div key={index} className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group">
+                  <div className="p-6 border-b border-[#184176]/5 group-hover:border-[#f5821e]/30 transition-colors">
+                    <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">Track Chair</span>
+                    <h3 className="font-serif text-lg text-[#184176]">
+                      {chair.track}
+                    </h3>
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col justify-center space-y-4">
+                    <div className="mb-1">
+                      <span className="text-[10px] text-[#184176]/50 uppercase tracking-wide block leading-none mb-1">Chairperson</span>
+                      <span className="text-sm font-medium text-[#184176]">{chair.name}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Mail size={16} className="text-[#184176]/40" />
+                      <div>
+                        <span className="text-[10px] text-[#184176]/50 uppercase tracking-wide block leading-none mb-1">Email</span>
+                        <a href={`mailto:${chair.email}`} className="text-sm font-medium text-[#184176] hover:text-[#f5821e] transition-colors break-all">
+                          {chair.email}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
       <Footer />
-    </main>
+    </div>
   );
 }
