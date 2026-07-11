@@ -113,7 +113,7 @@ export default function VenuePage() {
       category: 'Luxury Hotel',
       bottomText: 'Preferred by International Guests',
       location: 'Jaipur, Rajasthan',
-      src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80', 
+      src: '/Images/oberoi_rajvilas.jpg', 
       link: 'https://www.oberoihotels.com/' 
     },
     { 
@@ -146,28 +146,99 @@ export default function VenuePage() {
       category: 'Delegate Recommended',
       bottomText: 'Near Conference Venue',
       location: 'Jaipur, Rajasthan',
-      src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=600&q=80', 
+      src: '/Images/four_points.jpg', 
       link: 'https://www.marriott.com/' 
     }
   ];
 
   // Attractions
   const attractions = [
-    { name: 'Hawa Mahal', distance: '25 km', desc: 'The iconic Palace of Winds featuring intricate honeycomb sandstone lattice windows.', src: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=600&q=80' },
-    { name: 'Amer Fort', distance: '34 km', desc: 'A majestic UNESCO World Heritage fortress overlooking Maota Lake with spectacular murals.', src: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=600&q=80' },
-    { name: 'Jal Mahal', distance: '30 km', desc: 'A breathtaking palace resting silently in the center of the serene Man Sagar Lake.', src: 'https://images.unsplash.com/photo-1477584322813-ac2386df21a2?auto=format&fit=crop&w=600&q=80' },
-    { name: 'City Palace', distance: '24 km', desc: 'The magnificent royal residence blending traditional Rajasthani and Mughal architectural styles.', src: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=600&q=80' },
-    { name: 'Albert Hall Museum', distance: '23 km', desc: 'The oldest state museum displaying exceptional industrial art and ancient treasures.', src: 'https://images.unsplash.com/photo-1616428789508-3d607e4d8fb8?auto=format&fit=crop&w=600&q=80' },
-    { name: 'Nahargarh Fort', distance: '29 km', desc: 'A historic hilltop fort offering absolute panoramic sunset views over the Pink City.', src: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80' }
+    { 
+      name: 'Hawa Mahal', 
+      distance: '25 km', 
+      duration: '1–2 Hours',
+      category: 'Royal Palace',
+      desc: 'The iconic Palace of Winds featuring intricate honeycomb sandstone lattice windows.', 
+      src: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=600&q=80',
+      mapLink: 'https://maps.google.com/?q=Hawa+Mahal+Jaipur'
+    },
+    { 
+      name: 'Amer Fort', 
+      distance: '34 km', 
+      duration: '2–3 Hours',
+      category: 'UNESCO World Heritage',
+      desc: 'A majestic UNESCO World Heritage fortress overlooking Maota Lake with spectacular murals.', 
+      src: '/Images/amer_fort.png',
+      mapLink: 'https://maps.google.com/?q=Amer+Fort+Jaipur'
+    },
+    { 
+      name: 'Jal Mahal', 
+      distance: '30 km', 
+      duration: '1 Hour',
+      category: 'Historic Monument',
+      desc: 'A breathtaking palace resting silently in the center of the serene Man Sagar Lake.', 
+      src: '/Images/jal_mahal.png',
+      mapLink: 'https://maps.google.com/?q=Jal+Mahal+Jaipur'
+    },
+    { 
+      name: 'City Palace', 
+      distance: '24 km', 
+      duration: '2–3 Hours',
+      category: 'Royal Palace',
+      desc: 'The magnificent royal residence blending traditional Rajasthani and Mughal architectural styles.', 
+      src: '/Images/city_palace_v2.png',
+      mapLink: 'https://maps.google.com/?q=City+Palace+Jaipur'
+    },
+    { 
+      name: 'Albert Hall Museum', 
+      distance: '23 km', 
+      duration: '1.5–2 Hours',
+      category: 'Museum',
+      desc: 'The oldest state museum displaying exceptional industrial art and ancient treasures.', 
+      src: '/Images/albert_hall.jpg',
+      mapLink: 'https://maps.google.com/?q=Albert+Hall+Museum+Jaipur'
+    },
+    { 
+      name: 'Nahargarh Fort', 
+      distance: '29 km', 
+      duration: '1.5–2 Hours',
+      category: 'Hill Fort',
+      desc: 'A historic hilltop fort offering absolute panoramic sunset views over the Pink City.', 
+      src: '/Images/nahargarh_fort.png',
+      mapLink: 'https://maps.google.com/?q=Nahargarh+Fort+Jaipur'
+    }
   ];
 
   // FAQs
   const faqs = [
-    { q: 'Where is the venue located?', a: 'SANKALP\'27 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The location is easily accessible by taxis and cabs.' },
-    { q: 'Is parking available?', a: 'Yes, secure and spacious on-campus parking is available free of charge for all registered delegates, speakers, and attendees.' },
-    { q: 'Are hotels available nearby?', a: 'Yes, we have multiple recommended hotels ranging from luxury resorts to budget stays within reasonable transit distance from the campus. Taxi booking facilities are easily available.' },
-    { q: 'Is Wi-Fi available?', a: 'High-speed Wi-Fi access will be provided to all attendees throughout the campus academic blocks, conference halls, and networking spaces.' },
-    { q: 'Is the campus wheelchair accessible?', a: 'Yes, JKLU campus features wheelchair accessible pathways, entrance ramps, elevators in multi-story blocks, and dedicated assistance layout.' }
+    { 
+      q: 'Where is the conference venue located?', 
+      a: "SANKALP'27 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services." 
+    },
+    { 
+      q: 'Is parking available on campus?', 
+      a: 'Yes, secure and spacious parking zones are available on campus free of charge for all registered delegates, speakers, and attendees throughout the conference.' 
+    },
+    { 
+      q: 'Is campus-wide Wi-Fi available?', 
+      a: 'Complimentary high-speed Wi-Fi access will be provided to all registered attendees across all academic halls, seminar rooms, and dining areas on campus.' 
+    },
+    { 
+      q: 'Is the venue wheelchair accessible?', 
+      a: 'Yes, the JKLU campus features fully wheelchair-accessible pathways, entry ramps, elevators in all multi-story academic blocks, and dedicated assistance layout.' 
+    },
+    { 
+      q: 'How can I reach the venue from Jaipur Airport?', 
+      a: 'Jaipur International Airport (JAI) is approximately 25 km (around 45 minutes) from the venue. Pre-paid airport taxis, Uber, and Ola cabs are readily available at the terminal exit.' 
+    },
+    { 
+      q: 'Will food and refreshments be available during the conference?', 
+      a: 'Yes, complimentary catered lunches, coffee/tea, and evening refreshments will be served during designated networking breaks to all registered delegates.' 
+    },
+    { 
+      q: 'Who should I contact for travel-related assistance?', 
+      a: "For travel, transit, or accommodation support, please contact our logistics helpdesk at sankalp@jklu.edu.in or visit the assistance counter in the main academic lobby." 
+    }
   ];
 
   return (
@@ -794,37 +865,64 @@ export default function VenuePage() {
       {/* SECTION 9: NEARBY ATTRACTIONS */}
       <section className="py-24 bg-white border-y-4 border-brand-ink px-6">
         <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center space-y-2">
+          <div className="text-center space-y-3">
             <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Explore Jaipur</span>
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Nearby Attractions
+              Discover Jaipur
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
+            <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+              Explore Jaipur's rich cultural heritage and iconic landmarks during your visit to SANKALP'27.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {attractions.map((att, index) => (
               <div
                 key={index}
-                className="bg-brand-cloud border-4 border-brand-ink shadow-[6px_6px_0px_0px_#030404] rounded-xl overflow-hidden flex flex-col justify-between hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_#030404] transition-all"
+                className="bg-white border border-slate-200 shadow-sm rounded-[18px] overflow-hidden flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 group"
               >
-                <div className="relative aspect-[16/10] bg-brand-cloud">
+                <div className="relative aspect-[16/10] bg-brand-cloud overflow-hidden">
                   <Image
                     src={att.src}
                     alt={att.name}
                     fill
-                    className="object-cover border-b-2 border-brand-ink"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute bottom-3 left-3 bg-brand-orange border border-brand-ink px-2.5 py-0.5 text-[10px] font-bold font-mono text-white uppercase shadow-[1.5px_1.5px_0px_0px_#030404] flex items-center gap-1">
-                    <MapPin size={10} /> {att.distance}
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <div className="p-6 space-y-3 flex-grow flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <h3 className="font-serif font-bold text-xl text-brand-blue">{att.name}</h3>
-                    <p className="text-xs text-slate-700 leading-relaxed font-mono font-bold">{att.desc}</p>
+                <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{att.category}</span>
+                      <h3 className="font-serif font-bold text-xl text-brand-blue">{att.name}</h3>
+                    </div>
+
+                    <div className="space-y-1 text-xs text-slate-500 border-y border-slate-100 py-2">
+                      <div className="flex items-center gap-1.5">
+                        <MapPin size={13} className="text-brand-orange shrink-0" />
+                        <span>Distance: <span className="font-medium text-slate-700">{att.distance}</span></span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Clock size={13} className="text-brand-orange shrink-0" />
+                        <span>Visit Duration: <span className="font-medium text-slate-700">{att.duration}</span></span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">{att.desc}</p>
+                  </div>
+
+                  <div className="pt-2">
+                    <a
+                      href={att.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-brand-orange/80 transition-colors gap-1 group-hover:translate-x-0.5 transition-transform"
+                    >
+                      View on Google Maps <ArrowRight size={13} />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -835,12 +933,15 @@ export default function VenuePage() {
 
       {/* SECTION 10: FREQUENTLY ASKED QUESTIONS */}
       <section className="py-24 px-6 max-w-4xl mx-auto space-y-12">
-        <div className="text-center space-y-2">
-          <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Help Desk</span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-blue uppercase tracking-tight">
+        <div className="text-center space-y-3">
+          <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Help & Support</span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
             Frequently Asked Questions
           </h2>
           <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+            Find quick answers to common questions about the venue, travel, facilities, accommodation, and your visit to SANKALP'27.
+          </p>
         </div>
 
         <div className="space-y-4">
@@ -849,21 +950,40 @@ export default function VenuePage() {
             return (
               <div
                 key={index}
-                className="bg-white border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] rounded-lg overflow-hidden transition-all duration-300"
+                className={`bg-white border transition-all duration-300 rounded-[16px] overflow-hidden shadow-sm ${
+                  isOpen 
+                    ? 'border-[#E6E8EC] border-l-4 border-l-brand-orange' 
+                    : 'border-[#E6E8EC] hover:border-brand-orange hover:bg-[#FFFDF8]'
+                }`}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center p-5 text-left font-bold text-brand-ink hover:text-brand-orange transition-colors cursor-pointer select-none text-sm sm:text-base gap-4"
+                  className="w-full flex justify-between items-center p-6 text-left font-semibold text-brand-ink cursor-pointer select-none text-sm sm:text-base gap-4 group"
                 >
                   <span>{faq.q}</span>
-                  {isOpen ? <ChevronUp size={20} className="shrink-0 text-brand-orange" /> : <ChevronDown size={20} className="shrink-0" />}
+                  <ChevronDown
+                    size={20}
+                    className={`shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 text-brand-orange' : 'text-slate-400 group-hover:text-brand-orange'
+                    }`}
+                  />
                 </button>
 
-                {isOpen && (
-                  <div className="px-5 pb-5 border-t-2 border-brand-ink/5 pt-4 text-xs sm:text-sm font-mono text-slate-700 font-bold leading-relaxed">
-                    {faq.a}
-                  </div>
-                )}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 pt-2 text-slate-600 leading-relaxed font-sans text-xs sm:text-sm">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
