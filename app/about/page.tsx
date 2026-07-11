@@ -72,7 +72,7 @@ export default function About() {
                   src="/Images/sankalp.webp" 
                   alt="SANKALP 2027 Committee" 
                   fill 
-                  className="object-cover relative z-0 grayscale"
+                  className="object-cover relative z-0"
                 />
               </div>
             </div>
