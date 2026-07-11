@@ -428,6 +428,25 @@ export default function Registration() {
                         alert("Please fill in all required fields.");
                         return;
                       }
+                      
+                      const nameRegex = /^[A-Za-z\s]+$/;
+                      if (!nameRegex.test(formData.name)) {
+                        alert("Please enter a valid name (letters and spaces only).");
+                        return;
+                      }
+
+                      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                      if (!emailRegex.test(formData.email)) {
+                        alert("Please enter a valid email address.");
+                        return;
+                      }
+
+                      const phoneRegex = /^\d{10,15}$/;
+                      if (!phoneRegex.test(formData.phone.replace(/[\s\-\+]/g, ''))) {
+                        alert("Please enter a valid phone number.");
+                        return;
+                      }
+
                       setStep(2);
                     }}
                     className="flex items-center gap-2 bg-brand-orange text-white font-bold py-3 px-6 uppercase text-xs tracking-widest hover:bg-orange-600 transition-colors shadow-sm cursor-pointer"
@@ -836,333 +855,112 @@ export default function Registration() {
       ) : (
         /* NORMAL LANDING PAGE */
         <>
-          {/* HERO SECTION */}
-          <section className="relative py-20 md:py-28 px-6 overflow-hidden min-h-[50vh] flex items-center bg-brand-cloud border-b border-brand-blue/10">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-blue/5 border-l border-brand-blue/10"></div>
+          <section className="bg-white min-h-[70vh] flex flex-col items-center pt-16 pb-24 px-6 relative">
             
-            {/* Subtle grid pattern */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(brand-blue 1px, transparent 1px), linear-gradient(90deg, brand-blue 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl font-bold font-serif mb-10 text-center tracking-wide">
+              <span className="text-slate-700">Registration</span> <span className="text-[#4db6ac]">Fees</span>
+            </h1>
 
-            <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10 relative">
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-2xl mb-16">
+              <button
+                onClick={() => openRegisterForm('student_presenter')}
+                className="bg-white border border-slate-200 text-[#e91e63] font-bold py-3 px-8 rounded hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-2 tracking-wide"
+              >
+                Click Here to Register Yourself <ArrowRight size={18} />
+              </button>
+            </div>
+
+            {/* Section Heading & Policy */}
+            <div className="text-center max-w-3xl mb-10">
+              <h2 className="text-xl md:text-2xl font-bold font-serif text-[#e91e63] mb-6">
+                Conference Registration Fee and Policy
+              </h2>
+              <p className="text-slate-700 font-bold text-sm leading-relaxed max-w-2xl mx-auto">
+                At least one of the author of the paper has to register for the conference. It is mandatory to present the paper in the conference for the inclusion of the paper in the conference proceedings.
+              </p>
+            </div>
+
+            {/* Fee Table */}
+            <div className="w-full max-w-4xl overflow-x-auto mb-16">
+              <table className="w-full border-collapse bg-white text-sm">
+                <thead>
+                  <tr>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700"></th>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700 font-bold" colSpan={2}>For Indian Authors and Delegates</th>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700 font-bold" colSpan={2}>For Foreign Authors and Delegates</th>
+                  </tr>
+                  <tr>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700"></th>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700 font-bold">IEEE Member</th>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700 font-bold">General</th>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700 font-bold">IEEE Member</th>
+                    <th className="border border-slate-300 p-3 bg-white text-slate-700 font-bold">General</th>
+                  </tr>
+                </thead>
+                <tbody className="text-center">
+                  <tr>
+                    <td className="border border-slate-300 p-3 font-bold text-slate-600 bg-white text-left pl-6">UG/PG Student and Research Scholar</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 6,800</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 7,500</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 90</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 110</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 p-3 font-bold text-slate-600 bg-white text-left pl-6">Academicians</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 8,000</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 9,500</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 200</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 250</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 p-3 font-bold text-slate-600 bg-white text-left pl-6">Industry Participant</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 10,000</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 12,500</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 300</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 350</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 p-3 font-bold text-slate-600 bg-white text-left pl-6">Delegates (Offline)</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 5,000</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 6,500</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 100</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 150</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 p-3 font-bold text-slate-600 bg-white text-left pl-6">Delegates (Online)</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 2,500</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">INR 3,500</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 75</td>
+                    <td className="border border-slate-300 p-3 text-slate-500">USD 100</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Payment Details Section */}
+            <div className="w-full max-w-3xl text-center px-4">
+              <h2 className="text-xl md:text-2xl font-bold font-serif text-[#e91e63] mb-6">
+                Payment Details
+              </h2>
+              <p className="text-slate-700 font-bold text-[13px] md:text-sm leading-relaxed mb-8">
+                Note: Payment to be made through NEFT / RTGS in favour of "JK Lakshmipat University" payable at Jaipur.<br/>
+                Please keep the printed details of the fee receipt which will be submitted at the time of physical registration at the conference venue.
+              </p>
               
-              <motion.div 
-                initial="hidden" 
-                animate="visible"
-                variants={staggerContainer}
-                className="flex flex-col justify-center"
-              >
-                <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-8">
-                  <div className="w-10 h-[2px] bg-brand-orange"></div>
-                  <span className="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs">
-                    Registration
-                  </span>
-                </motion.div>
-                
-                <motion.h1 variants={fadeUpVariant} className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-blue leading-[1.2] mb-6">
-                  Conference Registration
-                </motion.h1>
-                
-                <motion.p variants={fadeUpVariant} className="text-base md:text-lg text-slate-700 leading-relaxed max-w-xl font-medium mb-10">
-                  Join SANKALP 2027 by registering as an Author, Delegate, Academician, Research Scholar, or Industry Professional.
-                </motion.p>
-
-                <motion.div variants={fadeUpVariant} className="flex flex-col sm:flex-row gap-6 mb-12">
-                  <div className="border-l-2 border-brand-orange pl-4">
-                    <p className="text-xs font-bold text-slate-400 tracking-widest uppercase mb-1">Conference Dates</p>
-                    <p className="text-brand-blue font-bold">5–6 March 2027</p>
-                  </div>
-                  <div className="border-l-2 border-brand-orange pl-4">
-                    <p className="text-xs font-bold text-slate-400 tracking-widest uppercase mb-1">Mode</p>
-                    <p className="text-brand-blue font-bold">Hybrid Conference</p>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={fadeUpVariant}>
-                  <button onClick={() => openRegisterForm('student_presenter')} className="inline-flex items-center gap-2 bg-brand-orange text-white font-bold py-3.5 px-8 rounded-none hover:bg-orange-600 transition-colors shadow-sm cursor-pointer">
-                    Register Now <ChevronRight size={18} />
-                  </button>
-                </motion.div>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-                className="hidden lg:flex justify-end relative h-[400px]"
-              >
-                {/* Abstract Premium Visual */}
-                <div className="relative w-full h-full max-w-md mx-auto flex items-center justify-center">
-                  <div className="absolute inset-0 border border-brand-blue/20 rotate-3 bg-white shadow-sm"></div>
-                  <div className="absolute inset-0 border border-brand-orange/30 -rotate-2"></div>
-                  <div className="relative z-10 w-full h-full bg-brand-blue p-8 flex flex-col items-center justify-center border border-brand-blue shadow-xl">
-                     <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')]"></div>
-                     <div className="w-48 h-48 relative">
-                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-brand-orange rounded-none"></div>
-                       <div className="absolute bottom-0 left-0 w-4 h-4 border-2 border-white rounded-none"></div>
-                       <div className="absolute bottom-0 right-0 w-4 h-4 border-2 border-white rounded-none"></div>
-                       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-px h-40 bg-white/20 origin-top -rotate-[35deg]"></div>
-                       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-px h-40 bg-white/20 origin-top rotate-[35deg]"></div>
-                       <div className="absolute bottom-2 left-2 w-44 h-px bg-white/20"></div>
-                     </div>
-                     <span className="mt-8 text-white/50 tracking-[0.3em] font-mono text-xs uppercase">Sankalp 2027 Portal</span>
-                  </div>
-                </div>
-              </motion.div>
-
-            </div>
-          </section>
-
-          {/* REGISTRATION INTRODUCTION */}
-          <section className="py-24 bg-white border-b border-slate-200">
-            <div className="max-w-[1000px] mx-auto px-6 lg:px-12 text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-3xl font-serif font-bold text-brand-blue mb-8">Who Can Register?</h2>
-                <div className="w-16 h-[1px] bg-brand-orange mx-auto mb-10"></div>
-                <p className="text-lg text-slate-700 leading-relaxed font-medium mb-6">
-                  SANKALP 2027 welcomes researchers, academicians, students, industry professionals, innovators, and delegates from around the world to participate in this international conference.
-                </p>
-                <p className="text-lg text-slate-700 leading-relaxed font-medium">
-                  Participants may register to present accepted research papers or attend technical sessions, keynote talks, workshops, and networking opportunities.
-                </p>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* REGISTRATION CATEGORIES */}
-          <section id="register" className="py-24 bg-slate-50 border-b border-slate-200">
-            <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-12">
-              
-              <div className="mb-16">
-                <h2 className="text-3xl lg:text-4xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                  Categories
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {categories.map((cat, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: i * 0.1 }}
-                    className="bg-white border border-slate-200 border-t-4 border-t-slate-200 p-8 hover:border-brand-orange hover:border-t-brand-orange transition-colors group flex flex-col h-full shadow-sm"
-                  >
-                    <div className="mb-6">{cat.icon}</div>
-                    <h3 className="text-xl font-bold text-brand-blue mb-3">{cat.title}</h3>
-                    <p className="text-slate-600 mb-6 flex-grow">{cat.desc}</p>
-                    
-                    <div className="pt-6 border-t border-slate-100 mt-auto">
-                      <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Eligibility</p>
-                      <p className="text-sm text-slate-700 font-medium mb-8">{cat.eligibility}</p>
-                      <button 
-                        onClick={() => openRegisterForm(cat.id)}
-                        className="w-full border border-brand-blue text-brand-blue font-bold py-3 px-6 uppercase text-xs tracking-widest hover:bg-brand-blue hover:text-white transition-colors cursor-pointer"
-                      >
-                        Register
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-            </div>
-          </section>
-
-          {/* REGISTRATION PROCESS & FEES */}
-          <section className="py-24 bg-white border-b border-slate-200">
-            <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
-              
-              {/* Left Column: Steps */}
-              <div className="lg:col-span-6 space-y-12">
-                <div>
-                   <h2 className="text-3xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                     Registration Process
-                   </h2>
-                   <div className="w-16 h-1 bg-brand-orange mt-4 rounded-full" />
-                </div>
-                
-                <div className="space-y-6">
-                  {processSteps.map((step, i) => (
-                    <motion.div 
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: i * 0.1 }}
-                      className="flex gap-6 group"
-                    >
-                      <div className="w-10 h-10 border border-brand-orange/30 text-brand-orange flex items-center justify-center font-serif font-bold text-sm shrink-0 group-hover:bg-brand-orange group-hover:text-white transition-all rounded-none">
-                        0{i + 1}
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-brand-blue text-base mb-1.5 leading-snug">{step.title}</h4>
-                        <p className="text-slate-600 text-sm leading-relaxed font-medium">{step.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
+              <div className="border border-slate-200 rounded-xl p-6 md:p-8 text-left bg-white shadow-sm mx-auto">
+                <div className="space-y-2 font-bold text-slate-600 text-sm md:text-base">
+                  <p>Payment Details -RTGS/NEFT Transfer</p>
+                  <p>Account No -[SANKALP Account Number]</p>
+                  <p>Account Name -JK LAKSHMIPAT UNIVERSITY GST</p>
+                  <p>IFSC Code -[SANKALP IFSC Code]</p>
+                  <p>Bank Name -[SANKALP Bank Name]</p>
+                  <p>Address -MAHINDRA SEZ, JAIPUR</p>
                 </div>
               </div>
-
-              {/* Right Column: Fees Table */}
-              <div className="lg:col-span-6 space-y-12">
-                <div>
-                   <h2 className="text-3xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                     Fee Structure
-                   </h2>
-                   <div className="w-16 h-1 bg-brand-orange mt-4 rounded-full" />
-                </div>
-
-                <div className="border border-slate-200 overflow-hidden shadow-sm">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="bg-brand-blue text-white text-xs uppercase tracking-wider font-bold">
-                        <th className="py-4 px-6">Participant Category</th>
-                        <th className="py-4 px-6 text-right">Fee (INR)</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-sm font-sans divide-y divide-slate-100 text-slate-700 bg-white font-medium">
-                      {REGISTRATION_CATEGORIES.map((row, i) => (
-                        <tr key={i} className="hover:bg-slate-50 transition-colors">
-                          <td className="py-4.5 px-6 font-semibold">{row.name}</td>
-                          <td className="py-4.5 px-6 text-right font-mono font-bold text-brand-orange">₹{row.amount.toLocaleString()}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Inclusions Card */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-slate-50 p-8 border border-slate-200 rounded-none"
-                >
-                  <h3 className="font-serif font-bold text-lg text-brand-blue mb-6">Inclusions</h3>
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                    {inclusions.map((inc, i) => (
-                      <div key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
-                        <Check size={16} className="text-brand-orange shrink-0" />
-                        <span>{inc}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-
             </div>
-          </section>
 
-          {/* GUIDELINES */}
-          <section className="py-24 bg-slate-50 border-b border-slate-200">
-            <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              
-              {/* Guidelines list */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="bg-white p-10 border border-slate-200 shadow-sm"
-              >
-                <h3 className="text-2xl font-serif font-bold text-brand-blue mb-8">Important Guidelines</h3>
-                <ul className="space-y-5">
-                  {guidelines.map((guide, i) => (
-                    <li key={i} className="flex items-start gap-4">
-                      <span className="w-1.5 h-1.5 bg-brand-orange shrink-0 mt-2 rounded-none"></span>
-                      <span className="text-slate-700 text-sm leading-relaxed">{guide}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Help Information */}
-              <div className="space-y-8">
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="bg-brand-blue text-white p-10 flex flex-col"
-                >
-                  <h3 className="text-2xl font-serif font-bold mb-8">Need Assistance?</h3>
-                  
-                  <div className="space-y-8 flex-grow">
-                    <div>
-                      <p className="text-brand-orange font-bold text-xs uppercase tracking-widest mb-2">Committee</p>
-                      <p className="font-semibold text-lg">Registration Committee</p>
-                    </div>
-                    
-                    <div className="flex items-start gap-4">
-                      <Mail className="text-brand-orange mt-1 shrink-0" size={20} />
-                      <div>
-                        <p className="text-white/60 font-bold text-xs uppercase tracking-widest mb-1">Email</p>
-                        <p className="font-medium">registration@sankalp.jklu.edu.in</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <Phone className="text-brand-orange mt-1 shrink-0" size={20} />
-                      <div>
-                        <p className="text-white/60 font-bold text-xs uppercase tracking-widest mb-1">Phone</p>
-                        <p className="font-medium">+91-141-7107500</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <Clock className="text-brand-orange mt-1 shrink-0" size={20} />
-                      <div>
-                        <p className="text-white/60 font-bold text-xs uppercase tracking-widest mb-1">Response Time</p>
-                        <p className="font-medium">Within 2 Working Days</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-
-            </div>
-          </section>
-
-          {/* FINAL CTA */}
-          <section className="py-32 bg-brand-blue relative overflow-hidden">
-            <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')] pointer-events-none"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-white/10"></div>
-            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/10"></div>
-            
-            <div className="max-w-[800px] mx-auto px-6 text-center relative z-10">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8">
-                  Ready to Participate in SANKALP 2027?
-                </h2>
-                <p className="text-lg text-brand-cloud/80 leading-relaxed font-medium mb-12">
-                  Become part of an international platform dedicated to advancing research, collaboration, and innovation in Artificial Intelligence and emerging technologies.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <button onClick={() => openRegisterForm('student_presenter')} className="bg-brand-orange text-white font-bold py-4 px-10 uppercase text-sm tracking-widest hover:bg-orange-600 transition-colors shadow-lg cursor-pointer">
-                    Register Now
-                  </button>
-                  <a 
-                    href="https://google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="border border-white/30 text-white font-bold py-4 px-10 uppercase text-sm tracking-widest hover:bg-white hover:text-brand-blue transition-colors cursor-pointer text-center block"
-                  >
-                    Download Brochure
-                  </a>
-                </div>
-              </motion.div>
-            </div>
           </section>
 
           <Footer />
