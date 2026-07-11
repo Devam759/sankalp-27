@@ -20,7 +20,7 @@ export default function Navbar() {
     { name: 'Registration', href: '/registration' },
     { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
-    { name: 'Contact', href: '/#contact' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   const [visible, setVisible] = useState(true);
@@ -98,19 +98,13 @@ export default function Navbar() {
           </Link>
 
           {/* Centre: Navigation Links */}
-          <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-8 relative z-50">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => {
-                    // Optional programmatic routing if Link fails
-                    if (!link.href.startsWith('/#')) {
-                       router.push(link.href);
-                    }
-                  }}
                   className={`relative group px-1 py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded-sm ${
                     isActive ? 'text-brand-orange' : 'text-white hover:text-brand-orange'
                   }`}
@@ -168,12 +162,7 @@ export default function Navbar() {
                 className={`font-semibold border-b pb-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded-sm ${
                   isActive ? 'text-brand-orange border-brand-orange/50' : 'text-white border-brand-orange/20 hover:text-brand-orange'
                 }`}
-                onClick={(e) => {
-                  setMobileMenuOpen(false);
-                  if (!link.href.startsWith('/#')) {
-                     router.push(link.href);
-                  }
-                }}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
               </Link>
