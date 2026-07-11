@@ -27,20 +27,30 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
+  ChevronRight,
   CloudSun,
   Thermometer,
+  Sun,
+  CloudMoon,
+  Cloud,
+  Droplets,
   Coffee,
   Bookmark,
   Users,
   Award,
   Sparkles,
-  Info
+  Info,
+  UserCheck,
+  Lightbulb,
+  Heart,
+  Monitor
 } from 'lucide-react';
 
 export default function VenuePage() {
   const [copied, setCopied] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
-  const [lightboxImage, setLightboxImage] = useState<{ src: string; title: string } | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const copyAddress = () => {
     navigator.clipboard.writeText(
@@ -56,36 +66,89 @@ export default function VenuePage() {
 
   // Gallery items
   const galleryItems = [
-    { title: 'Aerial View', src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80' },
-    { title: 'Main Entrance', src: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80' },
-    { title: 'Academic Block', src: 'https://images.unsplash.com/photo-1498243691581-b148c55361c5?auto=format&fit=crop&w=1200&q=80' },
-    { title: 'Auditorium', src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80' },
-    { title: 'Library', src: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80' },
-    { title: 'Research Labs', src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80' },
-    { title: 'Innovation Centre', src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80' },
-    { title: 'Green Campus', src: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80' }
+    { title: 'Library', src: '/Images/gallery/library.png' },
+    { title: 'Main Academic Building', src: '/Images/gallery/academic_block.png' },
+    { title: 'Innovation', src: '/Images/gallery/innovation_centre.png' },
+    { title: 'Research Laboratories', src: '/Images/gallery/research_labs.png' },
+    { title: 'Main Entrance', src: '/Images/gallery/main_entry.png' },
+    { title: 'Campus Greens & Sports', src: '/Images/gallery/green_campus.png' }
   ];
+
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxIndex === null) return;
+      if (e.key === 'ArrowLeft') {
+        setLightboxIndex(prev => prev === null ? null : (prev === 0 ? galleryItems.length - 1 : prev - 1));
+      } else if (e.key === 'ArrowRight') {
+        setLightboxIndex(prev => prev === null ? null : (prev === galleryItems.length - 1 ? 0 : prev + 1));
+      } else if (e.key === 'Escape') {
+        setLightboxIndex(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex]);
 
   // Facilities items
   const facilities = [
-    { name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.', icon: Layers },
-    { name: 'Conference Hall', desc: 'Main session venue with state-of-the-art acoustics and screen setup.', icon: Building },
-    { name: 'Technical Session Rooms', desc: 'Multiple parallel tracks equipped with advanced presentation systems.', icon: Cpu },
-    { name: 'Networking Lounge', desc: 'Comfortable break-out zones for research collaborations and dialogue.', icon: Users },
-    { name: 'Startup Exhibition Area', desc: 'Showcase of cutting-edge sustainable AI systems and applications.', icon: Sparkles },
-    { name: 'Poster Presentation Zone', desc: 'Spacious corridor with high visibility for selected poster works.', icon: Bookmark },
-    { name: 'Cafeteria', desc: 'Hygienic multi-cuisine options serving fresh beverages and meals.', icon: Coffee },
-    { name: 'Parking', desc: 'Ample on-campus parking spaces for delegates and attendees.', icon: Car },
-    { name: 'Medical Assistance', desc: '24/7 first aid assistance and emergency response team on call.', icon: Award },
-    { name: 'Accessibility Support', desc: 'Wheelchair access ramps, elevators, and dedicated seating layout.', icon: Info }
+    { name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.', icon: UserCheck, emoji: '🟠' },
+    { name: 'Conference Hall', desc: 'Main session venue with state-of-the-art acoustics and screen setup.', icon: Building, emoji: '🧡' },
+    { name: 'Technical Session Rooms', desc: 'Multiple parallel tracks equipped with advanced presentation systems.', icon: Cpu, emoji: '🔶' },
+    { name: 'Networking Lounge', desc: 'Comfortable break-out zones for research collaborations and dialogue.', icon: Users, emoji: '🦊' },
+    { name: 'Startup Exhibition Area', desc: 'Showcase of cutting-edge sustainable AI systems and applications.', icon: Lightbulb, emoji: '💥' },
+    { name: 'Poster Presentation Zone', desc: 'Spacious corridor with high visibility for selected poster works.', icon: Monitor, emoji: '🍁' },
+    { name: 'Cafeteria', desc: 'Hygienic multi-cuisine options serving fresh beverages and meals.', icon: Coffee, emoji: '🍊' },
+    { name: 'Parking', desc: 'Ample on-campus parking spaces for delegates and attendees.', icon: Car, emoji: '🏀' },
+    { name: 'Medical Assistance', desc: '24/7 first aid assistance and emergency response team on call.', icon: Heart, emoji: '🥕' },
+    { name: 'Accessibility Support', desc: 'Wheelchair access ramps, elevators, and dedicated seating layout.', icon: Info, emoji: '🔸' }
   ];
 
   // Accommodation items
   const hotels = [
-    { name: 'The Oberoi Rajvilas', distance: '38 km from JKLU', rating: '5 ★', src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80', link: 'https://www.oberoihotels.com/' },
-    { name: 'ITC Rajputana, Jaipur', distance: '22 km from JKLU', rating: '5 ★', src: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80', link: 'https://www.itchotels.com/' },
-    { name: 'Radisson Blu Jaipur', distance: '28 km from JKLU', rating: '4.5 ★', src: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80', link: 'https://www.radissonhotels.com/' },
-    { name: 'Four Points by Sheraton', distance: '26 km from JKLU', rating: '4.2 ★', src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=600&q=80', link: 'https://www.marriott.com/' }
+    { 
+      name: 'The Oberoi Rajvilas', 
+      distance: '38 km from JK Lakshmipat University', 
+      time: 'Approx. 55 minutes by road',
+      badgeText: '55 min Drive',
+      category: 'Luxury Hotel',
+      bottomText: 'Preferred by International Guests',
+      location: 'Jaipur, Rajasthan',
+      src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80', 
+      link: 'https://www.oberoihotels.com/' 
+    },
+    { 
+      name: 'ITC Rajputana, Jaipur', 
+      distance: '22 km from JK Lakshmipat University', 
+      time: 'Approx. 35 minutes by road',
+      badgeText: '35 min Drive',
+      category: 'Business Hotel',
+      bottomText: 'Ideal for Conference Delegates',
+      location: 'Jaipur, Rajasthan',
+      src: '/Images/itc_rajputana.jpg', 
+      link: 'https://www.itchotels.com/' 
+    },
+    { 
+      name: 'Radisson Blu Jaipur', 
+      distance: '28 km from JK Lakshmipat University', 
+      time: 'Approx. 45 minutes by road',
+      badgeText: '45 min Drive',
+      category: 'Premium Stay',
+      bottomText: 'Business Friendly Accommodation',
+      location: 'Jaipur, Rajasthan',
+      src: '/Images/radisson_blu.jpg', 
+      link: 'https://www.radissonhotels.com/' 
+    },
+    { 
+      name: 'Four Points by Sheraton', 
+      distance: '26 km from JK Lakshmipat University', 
+      time: 'Approx. 40 minutes by road',
+      badgeText: '40 min Drive',
+      category: 'Delegate Recommended',
+      bottomText: 'Near Conference Venue',
+      location: 'Jaipur, Rajasthan',
+      src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=600&q=80', 
+      link: 'https://www.marriott.com/' 
+    }
   ];
 
   // Attractions
@@ -209,14 +272,16 @@ export default function VenuePage() {
           </div>
 
           <div className="space-y-8">
-            <div className="space-y-3">
-              <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Host Institution</span>
-              <div className="space-y-1">
-                <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-brand-ink tracking-tight">
+            <div className="space-y-4">
+              <span className="text-brand-orange font-bold uppercase tracking-widest text-xs block">
+                ABOUT THE VENUE
+              </span>
+              <div className="space-y-2">
+                <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight leading-tight">
                   JK Lakshmipat University
                 </h2>
-                <p className="text-xl sm:text-2xl font-serif font-black text-brand-blue uppercase tracking-tight leading-tight">
-                  A World-Class Venue for Innovation & Research
+                <p className="text-lg sm:text-xl font-medium text-brand-blue tracking-wide">
+                  Where Innovation Meets Research
                 </p>
               </div>
               <div className="w-16 h-1 bg-brand-orange rounded-full" />
@@ -226,144 +291,148 @@ export default function VenuePage() {
               JK Lakshmipat University (JKLU), Jaipur, is a premier institution distinguished by its advanced research ecosystem, vibrant innovation culture, and strong industry engagement. Featuring a sustainable, eco-friendly campus, state-of-the-art research laboratories, and collaborative learning environments, JKLU serves as a dynamic hub for academia and industry, providing an ideal venue for high-impact international conferences.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-slate-100">
-              {[
-                { value: '20+ Acres', label: 'Green Campus' },
-                { value: '15+', label: 'Research Labs' },
-                { value: '100+', label: 'Industry Partners' },
-                { value: 'Innovation', label: 'Driven Learning' }
-              ].map((stat, idx) => (
-                <div key={idx} className="space-y-1">
-                  <div className="text-lg sm:text-xl font-black text-brand-blue font-serif">{stat.value}</div>
-                  <div className="text-xs text-slate-500 font-medium leading-tight">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue/80 border-b border-slate-100 pb-2">
-                  Campus Highlights
-                </h4>
-                <div className="space-y-3">
-                  {[
-                    { title: 'Lush Green Campus', icon: Leaf },
-                    { title: 'Advanced Research Laboratories', icon: Layers },
-                    { title: 'Sustainable & Eco-Friendly Infrastructure', icon: Building }
-                  ].map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 p-3 bg-white border border-brand-ink/5 shadow-sm rounded-xl hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
-                          <Icon className="text-brand-orange" size={16} />
-                        </div>
-                        <span className="font-semibold text-xs sm:text-sm text-brand-ink">{item.title}</span>
+            <div className="space-y-6 pt-8">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                Why JKLU?
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                {[
+                  { num: '01', title: 'Lush Green Campus', desc: 'A serene 30-acre campus offering a vibrant, nature-integrated learning environment.' },
+                  { num: '02', title: 'Advanced Research Laboratories', desc: 'State-of-the-art facilities hosting modern instrumentation and active research groups.' },
+                  { num: '03', title: 'Innovation', desc: 'A dedicated startup ecosystem fostering entrepreneurship and technological translation.' },
+                  { num: '04', title: 'Campus-wide High-Speed Wi-Fi', desc: 'Seamless high-bandwidth connectivity enabling global research and real-time collaboration.' },
+                  { num: '05', title: 'Collaborative Learning Spaces', desc: 'Flexible, student-centric classrooms designed for peer learning and creative dialogue.' },
+                  { num: '06', title: 'Sustainable Infrastructure', desc: 'Eco-conscious design featuring solar energy systems, water recycling, and zero-waste initiatives.' }
+                ].map((item, idx) => (
+                  <div key={idx} className="group flex gap-4 items-start border-t border-slate-100/80 pt-4">
+                    <div className="font-serif text-3xl sm:text-4xl font-black text-transparent [-webkit-text-stroke:1px_#cbd5e1] group-hover:[-webkit-text-stroke:1px_#f5821e] transition-all duration-300 select-none leading-none shrink-0">
+                      {item.num}
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-bold text-sm sm:text-base text-brand-ink leading-tight">
+                        {item.title}
+                      </h4>
+                      <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-20 group-hover:opacity-100 transition-all duration-350 ease-in-out">
+                        <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs pt-1">
+                          {item.desc}
+                        </p>
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-blue/80 border-b border-slate-100 pb-2">
-                  Conference Facilities
-                </h4>
-                <div className="space-y-3">
-                  {[
-                    { title: 'Innovation & Incubation Centre', icon: Compass },
-                    { title: 'Campus-wide High-Speed Wi-Fi', icon: Wifi },
-                    { title: 'Collaborative Learning Spaces', icon: Users }
-                  ].map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 p-3 bg-white border border-brand-ink/5 shadow-sm rounded-xl hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center shrink-0">
-                          <Icon className="text-brand-orange" size={16} />
-                        </div>
-                        <span className="font-semibold text-xs sm:text-sm text-brand-ink">{item.title}</span>
-                      </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Thick Black Line Separator */}
+      <div className="border-t-4 border-brand-ink w-full" />
+
       {/* SECTION 3: CAMPUS GALLERY */}
-      <section className="py-20 bg-white border-y-4 border-brand-ink px-6">
+      <section className="py-24 bg-white border-y border-slate-100 px-6">
         <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center space-y-2">
-            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Visual Tour</span>
+          <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Campus Gallery
+              Explore the Campus
             </h2>
-            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
+            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-full mt-2" />
+            <p className="text-sm text-slate-500 font-medium leading-relaxed mt-4">
+              Explore the spaces that foster innovation, collaboration, and academic excellence at JK Lakshmipat University.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {galleryItems.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => setLightboxImage(item)}
-                className="relative aspect-[4/3] border-4 border-brand-ink shadow-[4px_4px_0px_0px_#030404] rounded-lg overflow-hidden group cursor-zoom-in bg-brand-cloud"
-              >
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-brand-ink/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-white font-bold font-mono text-xs uppercase tracking-widest border border-white px-3 py-1.5 bg-brand-ink/40">
-                    View Large
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+            {galleryItems.map((item, index) => {
+              // Custom span configuration for Bento/Asymmetric layout
+              const bentoClasses = index === 1 // Main Academic Building (2nd item in array)
+                ? 'md:col-span-2 md:row-span-2'
+                : 'md:col-span-1 md:row-span-1';
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => setLightboxIndex(index)}
+                  className={`relative border border-brand-ink/5 shadow-sm rounded-2xl overflow-hidden group cursor-zoom-in bg-brand-cloud ${bentoClasses}`}
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-103 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  {/* Permanent soft gradient at bottom for readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
+                  {/* Hover dark overlay */}
+                  <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                  
+                  {/* Location label inside the card */}
+                  <div className="absolute bottom-5 left-5 z-20">
+                    <p className="text-white font-serif font-bold text-base sm:text-lg tracking-wide">
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
-                <div className="absolute bottom-3 left-3 bg-white border border-brand-ink px-2.5 py-1 text-[10px] font-bold font-mono text-brand-ink uppercase shadow-[1px_1px_0px_0px_#030404]">
-                  {item.title}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* SECTION 4: CONFERENCE FACILITIES */}
-      <section className="py-24 px-6 max-w-7xl mx-auto space-y-12">
-        <div className="text-center space-y-2">
-          <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Amenities</span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-blue uppercase tracking-tight">
-            Conference Facilities
-          </h2>
-          <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
-        </div>
+      <section className="py-28 bg-[#FAFAFB] border-y border-[#E6E8EC]/60 px-6">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center space-y-2">
+            <span className="text-brand-orange font-semibold uppercase tracking-[0.25em] text-[10px] sm:text-xs">ON-CAMPUS EXPERIENCE</span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+              Conference Facilities
+            </h2>
+            <div className="w-8 h-[2px] bg-brand-orange mx-auto rounded-full mt-2" />
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {facilities.map((fac, index) => {
-            const Icon = fac.icon;
-            return (
-              <div
-                key={index}
-                className="bg-white border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] rounded-lg p-5 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[5px_5px_0px_0px_#030404] transition-all"
-              >
-                <div className="space-y-4">
-                  <div className="w-10 h-10 bg-brand-orange/10 border border-brand-ink rounded flex items-center justify-center">
-                    <Icon className="text-brand-orange" size={20} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {facilities.map((fac, index) => {
+              return (
+                <div
+                  key={index}
+                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between group hover:border-brand-orange hover:bg-[#FFFBF9] transition-all duration-300 overflow-hidden"
+                >
+                  {/* Top orange accent line that animates on hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  
+                  <div className="space-y-3 flex-1 flex flex-col justify-between">
+                    <div>
+                      {(() => {
+                        const IconComponent = fac.icon;
+                        return (
+                          <span className="inline-block text-brand-orange mb-3 transform group-hover:scale-110 origin-left transition-transform duration-300">
+                            <IconComponent size={24} />
+                          </span>
+                        );
+                      })()}
+                      <h3 className="font-serif font-bold text-base text-[#1F4E8C] leading-snug group-hover:text-brand-orange transition-colors duration-300">
+                        {fac.name}
+                      </h3>
+                      
+                      {/* Smooth collapsible description container */}
+                      <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out">
+                        <div className="overflow-hidden">
+                          <div className="w-full h-[1px] bg-[#E6E8EC]/85 my-3" />
+                          <p className="text-[13px] text-[#5F6B7A] font-sans leading-relaxed">
+                            {fac.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-semibold tracking-wider text-brand-orange mt-6 inline-flex items-center gap-1 cursor-pointer transition-all duration-300 origin-bottom group-hover:h-0 group-hover:mt-0 group-hover:opacity-0 overflow-hidden">
+                      Learn More &rarr;
+                    </span>
                   </div>
-                  <h3 className="font-bold text-sm text-brand-ink leading-tight">{fac.name}</h3>
-                  <p className="text-xs text-slate-600 font-mono font-bold leading-normal">{fac.desc}</p>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -371,14 +440,21 @@ export default function VenuePage() {
       <section id="map-section" className="py-20 bg-white border-t-4 border-brand-ink px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
-            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Google Maps</span>
+            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">VENUE LOCATION</span>
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Location Map
+              Find the Venue
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
           </div>
 
-          <div className="w-full border-4 border-brand-ink shadow-[8px_8px_0px_0px_#030404] rounded-xl overflow-hidden h-96 mb-10 transform hover:scale-[1.002] transition-transform duration-250">
+          {/* Map Container */}
+          <div className="w-full border border-[#E6E8EC] shadow-md rounded-[18px] overflow-hidden h-96 mb-10 transition-shadow duration-300">
+            {/* 
+              Note: This default iframe embed can be easily replaced in the future with the 
+              Google Maps JavaScript API component. To do so, load the Google Maps API script 
+              and instantiate a Map instance pointing to the lat/long coordinates (26.857, 75.699) 
+              with a custom colored marker.
+            */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1052887370965!2d75.64772927502109!3d26.83660327669258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4af4fe68f403%3A0x3bf05f95df22b8c4!2sJK%20Lakshmipat%20University!5e0!3m2!1sen!2sin!4v1779876968774!5m2!1sen!2sin"
               width="100%"
@@ -392,31 +468,64 @@ export default function VenuePage() {
             />
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center p-6 sm:p-8 bg-brand-cloud border-2 border-brand-ink shadow-[4px_4px_0px_0px_#030404] rounded-lg gap-6">
-            <div className="space-y-2">
-              <span className="text-[10px] font-bold font-mono tracking-widest text-brand-orange uppercase">Full Address</span>
-              <h4 className="font-bold text-base sm:text-lg text-brand-ink leading-tight">JK Lakshmipat University</h4>
-              <p className="text-xs sm:text-sm font-mono text-brand-ink/80 leading-relaxed font-bold">
-                Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India
-              </p>
+          {/* Editorial Venue Information Card with Address, Actions and QR Code */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 p-8 sm:p-10 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] shadow-sm">
+            {/* Left Column: Venue Address & Coordinates */}
+            <div className="md:col-span-5 space-y-6">
+              <div className="space-y-3">
+                <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">VENUE ADDRESS</span>
+                <h4 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">JK Lakshmipat University</h4>
+                <div className="text-sm text-slate-700 leading-relaxed font-sans font-medium space-y-1">
+                  <p>Near Mahindra SEZ</p>
+                  <p>Ajmer Road</p>
+                  <p>Jaipur</p>
+                  <p>Rajasthan 302026</p>
+                  <p>India</p>
+                </div>
+              </div>
+              
+              <div className="space-y-1 pt-4 border-t border-[#E6E8EC]/60">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A99AD] font-sans">Coordinates</span>
+                <p className="text-xs text-[#8A99AD] font-medium font-sans">
+                  26.857° N, 75.699° E
+                </p>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-3 shrink-0 w-full md:w-auto">
+            {/* Middle Column: Action Buttons */}
+            <div className="md:col-span-4 flex flex-col justify-center gap-4 border-t md:border-t-0 md:border-l border-[#E6E8EC]/60 pt-6 md:pt-0 md:pl-8">
               <a
-                href="https://maps.app.goo.gl/3Xp5o5899yqDqFh1A"
+                href="https://www.google.com/maps/search/?api=1&query=JK+Lakshmipat+University+Jaipur"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto text-center bg-brand-orange text-white font-bold py-2.5 px-6 border-2 border-brand-ink shadow-[2px_2px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center justify-center gap-2 cursor-pointer text-xs"
+                className="w-full text-center bg-brand-orange text-white font-bold py-3 px-6 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
               >
-                <ExternalLink size={14} /> Open in Google Maps
+                <ExternalLink size={14} /> Get Directions
               </a>
               <button
                 onClick={copyAddress}
-                className="w-full sm:w-auto bg-white text-brand-ink font-bold py-2.5 px-6 border-2 border-brand-ink shadow-[2px_2px_0px_0px_#030404] hover:bg-slate-50 active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center justify-center gap-2 cursor-pointer text-xs"
+                className="w-full bg-white text-brand-ink font-bold py-3 px-6 border border-[#E6E8EC] hover:bg-[#FFFBF7] hover:border-brand-orange active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm"
               >
                 {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
-                {copied ? 'Address Copied!' : 'Copy Address'}
+                {copied ? 'Address Copied!' : 'Copy Venue Address'}
               </button>
+            </div>
+
+            {/* Right Column: QR Code Navigator */}
+            <div className="md:col-span-3 flex flex-col items-center justify-center text-center border-t md:border-t-0 md:border-l border-[#E6E8EC]/60 pt-6 md:pt-0 md:pl-8 space-y-3">
+              <div className="p-2 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-24 h-24 flex items-center justify-center">
+                <img 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DJK%2BLakshmipat%2BUniversity%2BJaipur" 
+                  alt="Scan to Navigate to JKLU"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[9px] font-bold tracking-wider text-brand-orange uppercase">SCAN TO NAVIGATE</span>
+                <p className="text-[11px] text-[#8A99AD] leading-normal font-medium max-w-[160px] font-sans">
+                  Scan with your mobile device to open the venue location instantly in Google Maps.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -424,12 +533,14 @@ export default function VenuePage() {
 
       {/* SECTION 6: TRAVEL INFORMATION */}
       <section className="py-24 px-6 max-w-7xl mx-auto space-y-12">
-        <div className="text-center space-y-2">
-          <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Getting Here</span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-blue uppercase tracking-tight">
-            Travel Information
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">TRAVEL GUIDE</span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            Getting to the Venue
           </h2>
-          <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
+          <p className="text-[#5F6B7A] text-sm sm:text-base font-sans leading-relaxed">
+            Conveniently connected by air, rail, and road, JK Lakshmipat University is easily accessible for both national and international delegates.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -437,49 +548,71 @@ export default function VenuePage() {
             {
               title: 'By Air',
               icon: Plane,
-              station: 'Jaipur International Airport',
-              distance: 'Approximately 35–40 km',
-              time: '45–60 minutes'
+              distance: '35–40 km',
+              time: '45–60 minutes',
+              hubLabel: 'Airport',
+              hubValue: 'Jaipur International Airport',
+              caption: 'Regular domestic and international connections via Jaipur International Airport.'
             },
             {
               title: 'By Train',
               icon: Train,
-              station: 'Jaipur Junction (JP)',
-              distance: 'Approximately 22 km',
-              time: '35–40 minutes'
+              distance: '22 km',
+              time: '35–40 minutes',
+              hubLabel: 'Station',
+              hubValue: 'Jaipur Junction (JP)',
+              caption: 'Jaipur Junction is well connected to major Indian cities.'
             },
             {
               title: 'By Road',
               icon: Car,
-              station: 'Connected via NH-48 & Ajmer Road',
-              distance: 'Taxi, Uber & Ola cabs available',
-              time: 'Local transit & autos easily found'
+              distance: 'Convenient Access',
+              time: 'Flexible / Taxi',
+              hubLabel: 'Route',
+              hubValue: 'NH-48 & Ajmer Road',
+              caption: 'Convenient access through NH-48 with app-based taxis and local transport available.'
             }
           ].map((travel, index) => {
             const Icon = travel.icon;
             return (
               <div
                 key={index}
-                className="bg-white border-4 border-brand-ink shadow-[6px_6px_0px_0px_#030404] rounded-xl p-6 sm:p-8 space-y-6 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_#030404] transition-all"
+                className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 flex flex-col justify-between group hover:border-brand-orange hover:bg-[#FFFBF7] hover:shadow-md transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-brand-orange text-white border-2 border-brand-ink shadow-[2px_2px_0px_0px_#030404] rounded flex items-center justify-center shrink-0">
-                  <Icon size={24} />
+                <div className="space-y-6">
+                  {/* Icon */}
+                  <div className="text-brand-orange group-hover:text-[#184176] transition-colors duration-300">
+                    <Icon size={24} />
+                  </div>
+
+                  {/* Title */}
+                  <div className="space-y-1">
+                    <h3 className="font-serif font-bold text-xl text-brand-blue">{travel.title}</h3>
+                  </div>
+
+                  {/* Metadata Rows */}
+                  <div className="space-y-4 pt-2 border-t border-[#E6E8EC]/60">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] uppercase tracking-wider text-[#8A99AD] font-semibold font-sans">Distance</span>
+                      <span className="text-[14px] font-medium text-brand-ink leading-tight font-sans">{travel.distance}</span>
+                    </div>
+                    
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] uppercase tracking-wider text-[#8A99AD] font-semibold font-sans">Travel Time</span>
+                      <span className="text-[14px] font-medium text-brand-ink leading-tight font-sans">{travel.time}</span>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] uppercase tracking-wider text-[#8A99AD] font-semibold font-sans">{travel.hubLabel}</span>
+                      <span className="text-[14px] font-medium text-brand-ink leading-tight font-sans">{travel.hubValue}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="font-serif font-bold text-xl text-brand-blue">{travel.title}</h3>
-                  <div className="w-8 h-1 bg-brand-orange rounded" />
-                </div>
-                <div className="space-y-3 font-mono text-xs text-slate-700 font-bold leading-relaxed">
-                  <p className="text-brand-ink font-sans text-sm font-black">{travel.station}</p>
-                  <p className="flex items-center gap-2">
-                    <Compass size={14} className="text-brand-orange shrink-0" />
-                    <span>{travel.distance}</span>
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Clock size={14} className="text-brand-orange shrink-0" />
-                    <span>{travel.time}</span>
-                  </p>
-                </div>
+
+                {/* Muted Caption */}
+                <p className="text-[12px] text-[#8A99AD] italic leading-relaxed pt-6 border-t border-[#E6E8EC]/40 mt-6 font-sans">
+                  "{travel.caption}"
+                </p>
               </div>
             );
           })}
@@ -490,9 +623,9 @@ export default function VenuePage() {
       <section className="py-24 bg-white border-t-4 border-brand-ink px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
-            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Where to Stay</span>
+            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">DELEGATE STAY</span>
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Nearby Accommodation
+              Recommended Hotels
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
           </div>
@@ -501,38 +634,59 @@ export default function VenuePage() {
             {hotels.map((hotel, index) => (
               <div
                 key={index}
-                className="bg-brand-cloud border-2 border-brand-ink shadow-[4px_4px_0px_0px_#030404] rounded-lg overflow-hidden flex flex-col justify-between hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#030404] transition-all"
+                className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] overflow-hidden flex flex-col justify-between group hover:border-brand-orange hover:shadow-md transition-all duration-300"
               >
-                <div className="relative aspect-[4/3] bg-brand-cloud">
+                <div className="relative aspect-[4/3] bg-brand-cloud overflow-hidden">
                   <Image
                     src={hotel.src}
                     alt={hotel.name}
                     fill
-                    className="object-cover border-b-2 border-brand-ink"
+                    className="object-cover group-hover:scale-103 transition-transform duration-300"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  <div className="absolute top-2.5 right-2.5 bg-white border border-brand-ink px-2 py-0.5 text-[10px] font-bold font-mono text-brand-ink uppercase shadow-[1.5px_1.5px_0px_0px_#030404]">
-                    {hotel.rating}
+                  {/* Soft dark gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                  
+                  {/* Clean rounded distance/time badge */}
+                  <div className="absolute top-3.5 right-3.5 bg-[#E6E8EC]/90 backdrop-blur-sm text-[#1F4E8C] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full shadow-sm z-20">
+                    {hotel.badgeText}
                   </div>
                 </div>
 
-                <div className="p-5 flex-grow flex flex-col justify-between gap-4">
-                  <div className="space-y-1">
-                    <h3 className="font-bold text-sm sm:text-base text-brand-ink leading-tight">{hotel.name}</h3>
-                    <p className="text-xs font-mono font-bold text-slate-600 flex items-center gap-1.5">
-                      <MapPin size={12} className="text-brand-orange" />
-                      {hotel.distance}
-                    </p>
+                <div className="p-6 flex-grow flex flex-col justify-between gap-5">
+                  <div className="space-y-4">
+                    <div className="space-y-1.5">
+                      <h3 className="font-serif font-semibold text-[17px] text-brand-ink leading-snug">{hotel.name}</h3>
+                      <span className="inline-block bg-[#E6E8EC]/60 text-[#1F4E8C] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                        {hotel.category}
+                      </span>
+                    </div>
+                    
+                    <div className="space-y-1.5 text-[13px] text-[#5F6B7A] font-sans">
+                      <p className="flex items-center gap-1.5 font-medium text-brand-ink">
+                        <MapPin size={13} className="text-brand-orange shrink-0" />
+                        <span>{hotel.location}</span>
+                      </p>
+                      <p className="pl-[19px] leading-relaxed text-slate-500 font-medium">{hotel.distance}</p>
+                      <p className="pl-[19px] leading-relaxed text-slate-500 font-medium">{hotel.time}</p>
+                    </div>
                   </div>
 
-                  <a
-                    href={hotel.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full text-center bg-brand-orange text-white font-bold py-2 border-2 border-brand-ink shadow-[2px_2px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded flex items-center justify-center gap-2 cursor-pointer text-xs"
-                  >
-                    Book Now <ArrowRight size={12} />
-                  </a>
+                  <div className="space-y-4">
+                    <a
+                      href={hotel.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full text-center border border-[#E6E8EC] text-brand-ink hover:text-brand-orange group-hover:border-brand-orange hover:border-brand-orange font-bold py-2.5 transition-all duration-300 rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs bg-white shadow-sm"
+                    >
+                      Visit Hotel Website &rarr;
+                    </a>
+
+                    {/* Muted line at the bottom */}
+                    <p className="text-[11px] text-[#8A99AD] italic border-t border-[#E6E8EC]/40 pt-3 text-center font-sans">
+                      {hotel.bottomText}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -541,38 +695,99 @@ export default function VenuePage() {
       </section>
 
       {/* SECTION 8: WEATHER */}
-      <section className="py-20 px-6 max-w-3xl mx-auto">
-        <div className="bg-brand-blue text-white border-4 border-brand-ink shadow-[8px_8px_0px_0px_#030404] rounded-xl p-6 sm:p-10 space-y-6 relative overflow-hidden">
-          <div className="absolute right-0 bottom-0 opacity-10 translate-x-12 translate-y-12">
-            <CloudSun size={240} className="text-white" />
-          </div>
-
-          <div className="flex items-center gap-3 relative z-10">
-            <CloudSun className="text-brand-orange" size={28} />
-            <h3 className="font-serif font-black text-xl sm:text-2xl tracking-wide uppercase">March Weather</h3>
-          </div>
-
-          <div className="w-16 h-1 bg-brand-orange rounded-full relative z-10" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10 font-mono text-xs sm:text-sm font-bold text-white/95">
-            <div className="space-y-2 p-4 bg-white/5 border border-white/10 rounded">
-              <span className="text-[10px] font-sans tracking-widest text-brand-orange uppercase">Average Temperature</span>
-              <p className="text-lg sm:text-xl font-sans font-black flex items-center gap-1.5 text-white">
-                <Thermometer size={18} className="text-brand-orange" />
-                18°C – 30°C
-              </p>
-            </div>
-            <div className="space-y-2 p-4 bg-white/5 border border-white/10 rounded">
-              <span className="text-[10px] font-sans tracking-widest text-brand-orange uppercase">Conditions</span>
-              <p className="text-sm font-sans font-black text-white leading-relaxed">
-                Pleasant mornings and warm afternoons. Clean skies.
-              </p>
-            </div>
-          </div>
-
-          <p className="text-xs sm:text-sm font-medium leading-relaxed border-l-2 border-brand-orange pl-4 text-white/80 relative z-10">
-            <strong>Recommendation:</strong> Light cotton clothing is recommended for daytime travel. A light jacket might be pleasant for late evening sessions.
+      <section className="py-24 px-6 max-w-7xl mx-auto space-y-12">
+        {/* Section Header */}
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">PLAN YOUR VISIT</span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            Weather During the Conference
+          </h2>
+          <p className="text-[#5F6B7A] text-sm sm:text-base font-sans leading-relaxed">
+            March offers pleasant weather in Jaipur, providing comfortable conditions for conference sessions, networking events, and campus activities.
           </p>
+        </div>
+
+        {/* Weather Card */}
+        <div className="bg-brand-blue text-white rounded-[18px] p-8 sm:p-10 space-y-8 relative overflow-hidden shadow-md">
+          {/* Subtle abstract dot grid background */}
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
+
+          {/* Large Minimalist Weather Illustration Watermark */}
+          <div className="absolute -right-12 -bottom-12 opacity-[0.08] pointer-events-none z-0 text-white select-none">
+            <svg width="320" height="320" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+              {/* Cloud Outline */}
+              <path d="M25 65h40a15 15 0 000-30h-3.5A20 20 0 0025 45v1a10 10 0 000 19z" />
+              {/* Sun Arc / Halos behind the cloud */}
+              <path d="M45 28a16 16 0 0113-13M32 24a20 20 0 018-8" />
+              {/* Wind / Accent lines */}
+              <line x1="15" y1="50" x2="5" y2="50" strokeWidth="0.75" />
+              <line x1="18" y1="58" x2="10" y2="58" strokeWidth="0.75" />
+              <line x1="22" y1="42" x2="12" y2="42" strokeWidth="0.75" />
+              {/* Tiny accent dots / stars */}
+              <circle cx="72" cy="20" r="1" fill="currentColor" stroke="none" />
+              <circle cx="82" cy="35" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="15" cy="25" r="1" fill="currentColor" stroke="none" />
+              <circle cx="78" cy="55" r="0.75" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 relative z-10 font-sans">
+            {/* Card 1: Conference Month */}
+            <div className="space-y-4 p-6 bg-white/5 border border-white/10 rounded-[12px] flex flex-col justify-between">
+              <div className="space-y-2">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange">CONFERENCE MONTH</span>
+                <p className="text-xl font-bold flex items-center gap-1.5 text-white">
+                  <CloudSun size={18} className="text-brand-orange" />
+                  March 2027
+                </p>
+                <p className="text-lg font-bold flex items-center gap-1.5 text-white/95">
+                  <Thermometer size={18} className="text-brand-orange" />
+                  18°C – 30°C
+                </p>
+              </div>
+              <p className="text-xs text-white/70 leading-relaxed pt-2 border-t border-white/5 font-medium">
+                Comfortable daytime temperatures with pleasant evenings.
+              </p>
+            </div>
+
+            {/* Card 2: Weather Conditions */}
+            <div className="space-y-4 p-6 bg-white/5 border border-white/10 rounded-[12px]">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange block">WEATHER CONDITIONS</span>
+              <ul className="space-y-2.5 text-sm text-white/90 font-medium">
+                <li className="flex items-center gap-2.5">
+                  <Sun size={14} className="text-brand-orange shrink-0" />
+                  <span>Warm afternoons</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CloudSun size={14} className="text-brand-orange shrink-0" />
+                  <span>Pleasant mornings</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CloudMoon size={14} className="text-brand-orange shrink-0" />
+                  <span>Comfortable evenings</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Cloud size={14} className="text-brand-orange shrink-0" />
+                  <span>Mostly clear skies</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Droplets size={14} className="text-brand-orange shrink-0" />
+                  <span>Low probability of rainfall</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Information Bar: Travel Tips */}
+          <div className="pt-6 border-t border-white/10 relative z-10 space-y-4">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange block">TRAVEL TIPS</span>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-xs sm:text-sm text-white/80 leading-relaxed font-sans list-disc list-inside">
+              <li>Light cotton clothing is recommended during the day.</li>
+              <li>Carry a light jacket for evening sessions.</li>
+              <li>Comfortable walking shoes are recommended for exploring the campus.</li>
+              <li>Sunscreen and sunglasses are advisable during outdoor activities.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -690,35 +905,61 @@ export default function VenuePage() {
 
       {/* LIGHTBOX MODAL */}
       <AnimatePresence>
-        {lightboxImage && (
+        {lightboxIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-50 bg-brand-ink/90 flex items-center justify-center p-6 cursor-zoom-out"
+            onClick={() => setLightboxIndex(null)}
+            className="fixed inset-0 z-50 bg-brand-ink/95 flex items-center justify-center p-4 cursor-zoom-out"
           >
             <motion.div
-              initial={{ scale: 0.9 }}
+              initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="relative max-w-5xl max-h-[85vh] w-full aspect-[4/3] border-4 border-brand-ink shadow-[8px_8px_0px_0px_#030404] rounded-lg overflow-hidden bg-brand-cloud"
+              exit={{ scale: 0.95 }}
+              className="relative max-w-5xl max-h-[85vh] w-full aspect-[4/3] rounded-2xl overflow-hidden bg-brand-ink flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={lightboxImage.src}
-                alt={lightboxImage.title}
+                src={galleryItems[lightboxIndex].src}
+                alt={galleryItems[lightboxIndex].title}
                 fill
                 className="object-contain"
               />
-              <div className="absolute bottom-4 left-4 bg-white border border-brand-ink px-3 py-1.5 text-xs font-bold font-mono text-brand-ink uppercase shadow-[2px_2px_0px_0px_#030404]">
-                {lightboxImage.title}
+              
+              {/* Image Title */}
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide border border-white/10 shadow-lg text-center">
+                {galleryItems[lightboxIndex].title}
               </div>
+
+              {/* Close Button */}
               <button
-                onClick={() => setLightboxImage(null)}
-                className="absolute top-4 right-4 bg-brand-orange text-white border-2 border-brand-ink shadow-[2px_2px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md w-8 h-8 flex items-center justify-center font-bold cursor-pointer"
+                onClick={() => setLightboxIndex(null)}
+                className="absolute top-5 right-5 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all rounded-full w-10 h-10 flex items-center justify-center font-bold cursor-pointer border border-white/10 shadow-md"
               >
                 ✕
+              </button>
+
+              {/* Prev Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex(prev => prev === null ? null : (prev === 0 ? galleryItems.length - 1 : prev - 1));
+                }}
+                className="absolute left-5 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all rounded-full w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md"
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex(prev => prev === null ? null : (prev === galleryItems.length - 1 ? 0 : prev + 1));
+                }}
+                className="absolute right-5 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all rounded-full w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md"
+              >
+                <ChevronRight size={24} />
               </button>
             </motion.div>
           </motion.div>

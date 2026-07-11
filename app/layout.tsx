@@ -69,6 +69,33 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const handler = (event) => {
+                  try {
+                    const isExtensionError = 
+                      (event.filename && event.filename.includes('chrome-extension://')) ||
+                      (event.message && (event.message.includes('MetaMask') || event.message.includes('extension'))) ||
+                      (event.reason && (
+                        (event.reason.stack && event.reason.stack.includes('chrome-extension://')) ||
+                        (event.reason.message && (event.reason.message.includes('MetaMask') || event.reason.message.includes('extension')))
+                      ));
+                    
+                    if (isExtensionError) {
+                      event.stopImmediatePropagation();
+                    }
+                  } catch (e) {}
+                };
+                window.addEventListener('error', handler, true);
+                window.addEventListener('unhandledrejection', handler, true);
+              })();
+            `
+          }}
+        />
+      </head>
       <body className={`${merriweather.variable} ${sourceSans.variable} font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen`}>
         {children}
         <Analytics />
