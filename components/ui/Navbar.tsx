@@ -16,7 +16,6 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Call for Papers', href: '/call-for-papers' },
-    { name: 'Submission', href: '/submission' },
     { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Sponsors', href: '/sponsors' },
@@ -130,7 +129,7 @@ export default function Navbar() {
               Register
             </Link>
             <Link
-              href="/submission"
+              href="/call-for-papers#submission"
               className="bg-brand-orange text-white px-5 py-2.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-colors shadow-sm"
             >
               Submit Paper
@@ -178,7 +177,7 @@ export default function Navbar() {
               Register
             </Link>
             <Link 
-              href="/submission" 
+              href="/call-for-papers#submission" 
               className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center shadow-lg hover:bg-orange-500 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
