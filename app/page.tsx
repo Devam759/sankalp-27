@@ -289,16 +289,18 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* CONFERENCE HIGHLIGHTS — BENTO REDESIGN */}
+      {/* CONFERENCE HIGHLIGHTS — STRICT 3-COLOR PALETTE */}
       <section className="relative overflow-hidden bg-brand-blue">
-        {/* Diagonal grid texture */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(245,130,30,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px' }}
+        
+        {/* Diagonal grid texture (White on Blue) */}
+        <div className="absolute inset-0 pointer-events-none opacity-20"
+          style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}
         />
-        {/* Glowing top bar */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-orange shadow-[0_0_20px_rgba(245,130,30,0.6)]" />
+        
+        {/* Top bar (Orange) */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-orange" />
 
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-20 md:py-28">
+        <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-32 z-10">
 
           {/* Section header */}
           <motion.div
@@ -306,72 +308,77 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-20"
           >
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-10 h-[2px] bg-brand-orange" />
+              <div className="w-12 h-[2px] bg-brand-orange" />
               <span className="text-brand-orange text-[10px] font-bold tracking-[0.3em] uppercase">What to Expect</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <h2 className="text-5xl md:text-6xl font-serif font-bold text-white leading-[1.05]">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] tracking-tight">
                 Conference<br />
                 <span className="text-brand-orange">Highlights</span>
               </h2>
-              <p className="text-slate-400 max-w-md text-sm leading-relaxed font-medium md:text-right">
+              <p className="text-white max-w-md text-sm leading-relaxed font-medium md:text-right">
                 A world-class platform uniting researchers, academics, industry leaders and innovators to shape the future of technology.
               </p>
             </div>
           </motion.div>
 
-          {/* BENTO GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+          {/* STRICT PALETTE BENTO GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-            {/* Feature 1: Keynote — wide card */}
+            {/* Feature 1: Keynote — wide card (White) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.0 }}
-              className="md:col-span-2 xl:col-span-1 relative group bg-white/[0.03] border border-white/10 p-8 overflow-hidden hover:bg-white/[0.07] transition-all duration-400 cursor-default"
+              className="md:col-span-2 xl:col-span-1 relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="absolute inset-x-0 bottom-0 h-[2px] bg-brand-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <div className="text-xs font-mono font-bold text-brand-orange mb-6 tracking-widest block uppercase group-hover:text-white transition-colors duration-300">
-                [ 01 ] keynote
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="text-[10px] font-mono font-bold text-white tracking-[0.2em] uppercase bg-brand-orange px-3 py-1.5 border-none">
+                    [ 01 ] keynote
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold text-brand-blue mb-3 leading-snug">Distinguished International Keynote Speakers</h3>
+                <p className="text-brand-blue text-sm leading-relaxed">World-renowned researchers and practitioners delivering visionary talks on AI, sustainability, and emerging technologies.</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 leading-snug">Distinguished International Keynote Speakers</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">World-renowned researchers and practitioners delivering visionary talks on AI, sustainability, and emerging technologies.</p>
             </motion.div>
 
-            {/* Feature 2: Industry panels */}
+            {/* Feature 2: Industry panels (White) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="relative group bg-white/[0.03] border border-white/10 p-8 overflow-hidden hover:bg-white/[0.07] transition-all duration-400 cursor-default"
+              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="absolute inset-x-0 bottom-0 h-[2px] bg-brand-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <div className="text-xs font-mono font-bold text-brand-orange mb-6 tracking-widest block uppercase group-hover:text-white transition-colors duration-300">
-                [ 02 ] panel
+              <div className="relative z-10">
+                <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase mb-8 block">
+                  [ 02 ] panel
+                </div>
+                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Industry Panels & Expert Roundtables</h3>
+                <p className="text-brand-blue text-sm leading-relaxed">Deep-dive panel sessions bridging academia and industry on the most pressing technology challenges.</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 leading-snug">Industry Panels & Expert Roundtables</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Deep-dive panel sessions bridging academia and industry on the most pressing technology challenges.</p>
             </motion.div>
 
-            {/* Feature 3: Research papers */}
+            {/* Feature 3: Research papers (White) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.14 }}
-              className="relative group bg-white/[0.03] border border-white/10 p-8 overflow-hidden hover:bg-white/[0.07] transition-all duration-400 cursor-default"
+              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="absolute inset-x-0 bottom-0 h-[2px] bg-brand-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <div className="text-xs font-mono font-bold text-brand-orange mb-6 tracking-widest block uppercase group-hover:text-white transition-colors duration-300">
-                [ 03 ] research
+              <div className="relative z-10">
+                <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase mb-8 block">
+                  [ 03 ] research
+                </div>
+                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Research Paper Presentations</h3>
+                <p className="text-brand-blue text-sm leading-relaxed">Present your original research to a global audience of peers, reviewers, and industry professionals.</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 leading-snug">Research Paper Presentations</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Present your original research to a global audience of peers, reviewers, and industry professionals.</p>
             </motion.div>
 
             {/* Feature 4: Startup — HIGHLIGHTED orange card */}
@@ -380,84 +387,70 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.20 }}
-              className="relative group bg-brand-orange border border-brand-orange p-8 overflow-hidden cursor-default"
+              className="relative group bg-brand-orange border-2 border-brand-orange hover:border-white rounded-none p-8 overflow-hidden cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="absolute top-4 right-4 text-[10px] font-bold text-white/60 uppercase tracking-widest">Atal Incubation</div>
-              <div className="text-xs font-mono font-bold text-white/80 mb-6 tracking-widest block uppercase">
-                [ 04 ] showcase
+              <div className="relative z-10">
+                <div className="flex justify-between items-center mb-8">
+                  <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase bg-white px-3 py-1.5 border-none">
+                    [ 04 ] showcase
+                  </div>
+                  <div className="text-[10px] font-bold text-white uppercase tracking-widest">Atal Incubation</div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 leading-snug">Startup & Innovation Showcase</h3>
+                <p className="text-white text-sm leading-relaxed">Pitch your startup ideas, demos and innovations to investors, mentors and a global innovation community.</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 leading-snug">Startup & Innovation Showcase</h3>
-              <p className="text-white/75 text-sm leading-relaxed">Pitch your startup ideas, demos and innovations to investors, mentors and a global innovation community.</p>
             </motion.div>
 
-            {/* Feature 5: Networking */}
+            {/* Feature 5: Networking (White) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.26 }}
-              className="relative group bg-white/[0.03] border border-white/10 p-8 overflow-hidden hover:bg-white/[0.07] transition-all duration-400 cursor-default"
+              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="absolute inset-x-0 bottom-0 h-[2px] bg-brand-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <div className="absolute top-4 right-4 text-[10px] font-bold text-white/30 uppercase tracking-widest">CGLP</div>
-              <div className="text-xs font-mono font-bold text-brand-orange mb-6 tracking-widest block uppercase group-hover:text-white transition-colors duration-300">
-                [ 05 ] exchange
+              <div className="relative z-10">
+                <div className="flex justify-between items-center mb-8">
+                  <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase block">
+                    [ 05 ] exchange
+                  </div>
+                  <div className="text-[10px] font-bold text-brand-orange uppercase tracking-widest">CGLP</div>
+                </div>
+                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Networking & Collaboration</h3>
+                <p className="text-brand-blue text-sm leading-relaxed">Build lasting academic and industry connections through curated networking sessions and collaboration opportunities.</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 leading-snug">Networking & Collaboration</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Build lasting academic and industry connections through curated networking sessions and collaboration opportunities.</p>
             </motion.div>
 
-            {/* Feature 6: Best Paper + publication — tall card */}
+            {/* Feature 6: Best Paper + publication — tall card (White) */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.32 }}
-              className="relative group bg-white/[0.03] border border-white/10 p-8 overflow-hidden hover:bg-white/[0.07] transition-all duration-400 cursor-default flex flex-col justify-between"
+              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="absolute inset-x-0 bottom-0 h-[2px] bg-brand-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <div>
-                <div className="text-xs font-mono font-bold text-brand-orange mb-6 tracking-widest block uppercase group-hover:text-white transition-colors duration-300">
+              <div className="relative z-10">
+                <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase mb-8 block">
                   [ 06 ] award
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 leading-snug">Best Paper Awards</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">Outstanding research recognized with awards across all tracks, celebrating excellence and impact.</p>
+                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Best Paper Awards</h3>
+                <p className="text-brand-blue text-sm leading-relaxed">Outstanding research recognized with awards across all tracks, celebrating excellence and impact.</p>
               </div>
               {/* Publication badge inside */}
-              <div className="mt-8 border-t border-white/10 pt-6 flex items-center gap-3">
-                <div className="w-9 h-9 bg-brand-orange/20 flex items-center justify-center font-mono text-xs font-bold text-brand-orange">
+              <div className="mt-8 border-t border-brand-blue/10 pt-6 flex items-center gap-4 relative z-10">
+                <div className="w-10 h-10 bg-brand-orange flex items-center justify-center font-mono text-sm font-bold text-white rounded-none">
                   P
                 </div>
                 <div>
-                  <span className="text-white text-xs font-bold block">Springer LNCS Series</span>
-                  <span className="text-slate-500 text-[10px] uppercase tracking-wider">Scopus Indexed · Approval Awaited</span>
+                  <span className="text-brand-blue text-xs font-bold block mb-0.5">Springer LNCS Series</span>
+                  <span className="text-brand-orange text-[9px] font-bold uppercase tracking-widest">Scopus Indexed</span>
                 </div>
               </div>
             </motion.div>
 
           </div>
 
-          {/* Bottom stats bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-12 border-t border-white/10 pt-10 grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            {[
-              { value: '7', label: 'Research Tracks', sub: 'Multidisciplinary themes' },
-              { value: '4+', label: 'Speakers', sub: 'International keynotes & plenary' },
-              { value: '5–6', label: 'March 2027', sub: 'Hybrid — Jaipur & Online' },
-              { value: 'LNCS', label: 'Publication', sub: 'Springer · Scopus Indexed' },
-            ].map((stat, i) => (
-              <div key={i} className="group">
-                <div className="text-3xl font-serif font-bold text-brand-orange mb-1">{stat.value}</div>
-                <div className="text-white text-sm font-bold mb-0.5">{stat.label}</div>
-                <div className="text-slate-500 text-[11px] uppercase tracking-wider">{stat.sub}</div>
-              </div>
-            ))}
-          </motion.div>
+
 
         </div>
       </section>
