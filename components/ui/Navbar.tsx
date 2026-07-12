@@ -20,6 +20,7 @@ export default function Navbar() {
     { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Sponsors', href: '/sponsors' },
+    { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },
   ];
 

@@ -49,7 +49,7 @@ import {
 
 export default function VenuePage() {
   const [copied, setCopied] = useState(false);
-  const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
+
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const copyAddress = () => {
@@ -60,9 +60,7 @@ export default function VenuePage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const toggleFAQ = (index: number) => {
-    setActiveFAQ(activeFAQ === index ? null : index);
-  };
+
 
   // Gallery items
   const galleryItems = [
@@ -209,37 +207,7 @@ export default function VenuePage() {
     }
   ];
 
-  // FAQs
-  const faqs = [
-    { 
-      q: 'Where is the conference venue located?', 
-      a: "SANKALP'27 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services." 
-    },
-    { 
-      q: 'Is parking available on campus?', 
-      a: 'Yes, secure and spacious parking zones are available on campus free of charge for all registered delegates, speakers, and attendees throughout the conference.' 
-    },
-    { 
-      q: 'Is campus-wide Wi-Fi available?', 
-      a: 'Complimentary high-speed Wi-Fi access will be provided to all registered attendees across all academic halls, seminar rooms, and dining areas on campus.' 
-    },
-    { 
-      q: 'Is the venue wheelchair accessible?', 
-      a: 'Yes, the JKLU campus features fully wheelchair-accessible pathways, entry ramps, elevators in all multi-story academic blocks, and dedicated assistance layout.' 
-    },
-    { 
-      q: 'How can I reach the venue from Jaipur Airport?', 
-      a: 'Jaipur International Airport (JAI) is approximately 25 km (around 45 minutes) from the venue. Pre-paid airport taxis, Uber, and Ola cabs are readily available at the terminal exit.' 
-    },
-    { 
-      q: 'Will food and refreshments be available during the conference?', 
-      a: 'Yes, complimentary catered lunches, coffee/tea, and evening refreshments will be served during designated networking breaks to all registered delegates.' 
-    },
-    { 
-      q: 'Who should I contact for travel-related assistance?', 
-      a: "For travel, transit, or accommodation support, please contact our logistics helpdesk at sankalp@jklu.edu.in or visit the assistance counter in the main academic lobby." 
-    }
-  ];
+
 
   return (
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-20">
@@ -392,8 +360,7 @@ export default function VenuePage() {
         </div>
       </section>
 
-      {/* Thick Black Line Separator */}
-      <div className="border-t-4 border-brand-ink w-full" />
+
 
       {/* SECTION 3: CAMPUS GALLERY */}
       <section className="py-24 bg-white border-y border-slate-100 px-6">
@@ -491,7 +458,7 @@ export default function VenuePage() {
       </section>
 
       {/* SECTION 5: LOCATION */}
-      <section id="map-section" className="py-20 bg-white border-t-4 border-brand-ink px-6">
+      <section id="map-section" className="py-20 bg-white border-t border-[#E6E8EC]/60 px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
@@ -548,7 +515,15 @@ export default function VenuePage() {
                     rel="noopener noreferrer"
                     className="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
                   >
-                    <ExternalLink size={14} /> Get Directions
+                    <ExternalLink size={14} /> Open in Google Maps
+                  </a>
+                  <a
+                    href="https://maps.apple.com/?q=JK+Lakshmipat+University+Jaipur&ll=26.836603,75.647729"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full text-center bg-brand-blue text-white font-bold py-3 px-4 hover:bg-[#184176] active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
+                  >
+                    <ExternalLink size={14} /> Open in Apple Maps
                   </a>
                   <button
                     onClick={copyAddress}
@@ -559,18 +534,34 @@ export default function VenuePage() {
                   </button>
                 </div>
 
-                {/* QR Code */}
-                <div className="sm:col-span-5 flex flex-col items-center text-center space-y-2">
-                  <div className="p-1.5 bg-white border border-[#E6E8EC] rounded-lg shadow-sm w-20 h-20 flex items-center justify-center">
-                    <img 
-                      src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DJK%2BLakshmipat%2BUniversity%2BJaipur" 
-                      alt="Scan to Navigate to JKLU"
-                      className="w-full h-full object-contain"
-                    />
+                {/* QR Codes */}
+                <div className="sm:col-span-5 flex flex-col items-center gap-3">
+                  <div className="flex gap-5">
+                    {/* Google Maps QR */}
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="p-1.5 bg-white border border-[#E6E8EC] rounded-lg shadow-sm w-20 h-20 flex items-center justify-center">
+                        <img 
+                          src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DJK%2BLakshmipat%2BUniversity%2BJaipur" 
+                          alt="Scan for Google Maps"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <span className="text-[9px] font-bold tracking-wider text-brand-orange uppercase">Google Maps</span>
+                    </div>
+
+                    {/* Apple Maps QR */}
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="p-1.5 bg-white border border-[#E6E8EC] rounded-lg shadow-sm w-20 h-20 flex items-center justify-center">
+                        <img 
+                          src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fmaps.apple.com%2F%3Fq%3DJK%2BLakshmipat%2BUniversity%2BJaipur%26ll%3D26.836603%2C75.647729" 
+                          alt="Scan for Apple Maps"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <span className="text-[9px] font-bold tracking-wider text-brand-blue uppercase">Apple Maps</span>
+                    </div>
                   </div>
-                  <div className="space-y-0.5">
-                    <span className="text-[8px] font-bold tracking-wider text-brand-orange uppercase">SCAN TO NAVIGATE</span>
-                  </div>
+                  <span className="text-[9px] font-extrabold tracking-widest text-slate-400 uppercase mt-1">Scan to Navigate</span>
                 </div>
               </div>
             </div>
@@ -666,7 +657,7 @@ export default function VenuePage() {
       </section>
 
       {/* SECTION 7: NEARBY ACCOMMODATION */}
-      <section className="py-24 bg-white border-t-4 border-brand-ink px-6">
+      <section className="py-24 bg-white border-t border-[#E6E8EC]/60 px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
@@ -836,7 +827,7 @@ export default function VenuePage() {
       </section>
 
       {/* SECTION 9: NEARBY ATTRACTIONS */}
-      <section className="py-24 bg-white border-y-4 border-brand-ink px-6">
+      <section className="py-24 bg-white border-y border-[#E6E8EC]/60 px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
@@ -903,66 +894,10 @@ export default function VenuePage() {
         </div>
       </section>
 
-      {/* SECTION 10: FREQUENTLY ASKED QUESTIONS */}
-      <section className="py-24 px-6 max-w-4xl mx-auto space-y-12">
-        <div className="text-center space-y-3">
-          <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-            Frequently Asked Questions
-          </h2>
-          <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
-          <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            Find quick answers to common questions about the venue, travel, facilities, accommodation, and your visit to SANKALP'27.
-          </p>
-        </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = activeFAQ === index;
-            return (
-              <div
-                key={index}
-                className={`bg-white border transition-all duration-300 rounded-[16px] overflow-hidden shadow-sm ${
-                  isOpen 
-                    ? 'border-[#E6E8EC] border-l-4 border-l-brand-orange' 
-                    : 'border-[#E6E8EC] hover:border-brand-orange hover:bg-[#FFFDF8]'
-                }`}
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center p-6 text-left font-semibold text-brand-ink cursor-pointer select-none text-sm sm:text-base gap-4 group"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    size={20}
-                    className={`shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180 text-brand-orange' : 'text-slate-400 group-hover:text-brand-orange'
-                    }`}
-                  />
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 pt-2 text-slate-600 leading-relaxed font-sans text-xs sm:text-sm">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
-      </section>
 
       {/* SECTION 11: CALL TO ACTION */}
-      <section className="py-24 bg-brand-blue text-white border-t-4 border-brand-ink text-center px-6 relative overflow-hidden">
+      <section className="py-24 bg-brand-blue text-white text-center px-6 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
           <div className="space-y-2">
