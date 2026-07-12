@@ -344,9 +344,6 @@ export default function VenuePage() {
 
           <div className="space-y-8">
             <div className="space-y-4">
-              <span className="text-brand-orange font-bold uppercase tracking-widest text-xs block">
-                ABOUT THE VENUE
-              </span>
               <div className="space-y-2">
                 <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight leading-tight">
                   JK Lakshmipat University
@@ -371,23 +368,21 @@ export default function VenuePage() {
                   { num: '01', title: 'Lush Green Campus', desc: 'A serene 30-acre campus offering a vibrant, nature-integrated learning environment.' },
                   { num: '02', title: 'Advanced Research Laboratories', desc: 'State-of-the-art facilities hosting modern instrumentation and active research groups.' },
                   { num: '03', title: 'Innovation', desc: 'A dedicated startup ecosystem fostering entrepreneurship and technological translation.' },
-                  { num: '04', title: 'Campus-wide High-Speed Wi-Fi', desc: 'Seamless high-bandwidth connectivity enabling global research and real-time collaboration.' },
+                  { num: '04', title: 'High-Speed Wi-Fi', desc: 'Seamless high-bandwidth connectivity enabling global research and real-time collaboration.' },
                   { num: '05', title: 'Collaborative Learning Spaces', desc: 'Flexible, student-centric classrooms designed for peer learning and creative dialogue.' },
                   { num: '06', title: 'Sustainable Infrastructure', desc: 'Eco-conscious design featuring solar energy systems, water recycling, and zero-waste initiatives.' }
                 ].map((item, idx) => (
-                  <div key={idx} className="group flex gap-4 items-start border-t border-slate-100/80 pt-4">
-                    <div className="font-serif text-3xl sm:text-4xl font-black text-transparent [-webkit-text-stroke:1px_#cbd5e1] group-hover:[-webkit-text-stroke:1px_#f5821e] transition-all duration-300 select-none leading-none shrink-0">
+                  <div key={idx} className="flex gap-4 items-start border-t border-slate-100/80 pt-4">
+                    <div className="font-serif text-3xl sm:text-4xl font-black text-transparent [-webkit-text-stroke:1px_#f5821e] select-none leading-none shrink-0">
                       {item.num}
                     </div>
                     <div className="space-y-1">
                       <h4 className="font-bold text-sm sm:text-base text-brand-ink leading-tight">
                         {item.title}
                       </h4>
-                      <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-20 group-hover:opacity-100 transition-all duration-350 ease-in-out">
-                        <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs pt-1">
-                          {item.desc}
-                        </p>
-                      </div>
+                      <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs pt-1">
+                        {item.desc}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -455,7 +450,6 @@ export default function VenuePage() {
       <section className="py-28 bg-[#FAFAFB] border-y border-[#E6E8EC]/60 px-6">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-2">
-            <span className="text-brand-orange font-semibold uppercase tracking-[0.25em] text-[10px] sm:text-xs">ON-CAMPUS EXPERIENCE</span>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               Conference Facilities
             </h2>
@@ -467,38 +461,27 @@ export default function VenuePage() {
               return (
                 <div
                   key={index}
-                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between group hover:border-brand-orange hover:bg-[#FFFBF9] transition-all duration-300 overflow-hidden"
+                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between"
                 >
-                  {/* Top orange accent line that animates on hover */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                  
                   <div className="space-y-3 flex-1 flex flex-col justify-between">
                     <div>
                       {(() => {
                         const IconComponent = fac.icon;
                         return (
-                          <span className="inline-block text-brand-orange mb-3 transform group-hover:scale-110 origin-left transition-transform duration-300">
+                          <span className="inline-block text-brand-orange mb-3">
                             <IconComponent size={24} />
                           </span>
                         );
                       })()}
-                      <h3 className="font-serif font-bold text-base text-[#1F4E8C] leading-snug group-hover:text-brand-orange transition-colors duration-300">
+                      <h3 className="font-serif font-bold text-base text-[#1F4E8C] leading-snug">
                         {fac.name}
                       </h3>
                       
-                      {/* Smooth collapsible description container */}
-                      <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out">
-                        <div className="overflow-hidden">
-                          <div className="w-full h-[1px] bg-[#E6E8EC]/85 my-3" />
-                          <p className="text-[13px] text-[#5F6B7A] font-sans leading-relaxed">
-                            {fac.desc}
-                          </p>
-                        </div>
-                      </div>
+                      <div className="w-full h-[1px] bg-[#E6E8EC]/85 my-3" />
+                      <p className="text-[13px] text-[#5F6B7A] font-sans leading-relaxed">
+                        {fac.desc}
+                      </p>
                     </div>
-                    <span className="text-[11px] font-semibold tracking-wider text-brand-orange mt-6 inline-flex items-center gap-1 cursor-pointer transition-all duration-300 origin-bottom group-hover:h-0 group-hover:mt-0 group-hover:opacity-0 overflow-hidden">
-                      Learn More &rarr;
-                    </span>
                   </div>
                 </div>
               );
@@ -511,7 +494,6 @@ export default function VenuePage() {
       <section id="map-section" className="py-20 bg-white border-t-4 border-brand-ink px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
-            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">VENUE LOCATION</span>
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Find the Venue
             </h2>
@@ -519,83 +501,77 @@ export default function VenuePage() {
           </div>
 
           {/* Map Container */}
-          <div className="w-full border border-[#E6E8EC] shadow-md rounded-[18px] overflow-hidden h-96 mb-10 transition-shadow duration-300">
-            {/* 
-              Note: This default iframe embed can be easily replaced in the future with the 
-              Google Maps JavaScript API component. To do so, load the Google Maps API script 
-              and instantiate a Map instance pointing to the lat/long coordinates (26.857, 75.699) 
-              with a custom colored marker.
-            */}
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1052887370965!2d75.64772927502109!3d26.83660327669258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4af4fe68f403%3A0x3bf05f95df22b8c4!2sJK%20Lakshmipat%20University!5e0!3m2!1sen!2sin!4v1779876968774!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="JK Lakshmipat University Map Location"
-              id="jklu-venue-map-iframe"
-            />
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Left Column: Map */}
+            <div className="lg:col-span-7 border border-[#E6E8EC] shadow-md rounded-[18px] overflow-hidden h-[450px] lg:h-auto min-h-[350px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1052887370965!2d75.64772927502109!3d26.83660327669258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4af4fe68f403%3A0x3bf05f95df22b8c4!2sJK%20Lakshmipat%20University!5e0!3m2!1sen!2sin!4v1779876968774!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="JK Lakshmipat University Map Location"
+                id="jklu-venue-map-iframe"
+              />
+            </div>
 
-          {/* Editorial Venue Information Card with Address, Actions and QR Code */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 p-8 sm:p-10 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] shadow-sm">
-            {/* Left Column: Venue Address & Coordinates */}
-            <div className="md:col-span-5 space-y-6">
-              <div className="space-y-3">
-                <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">VENUE ADDRESS</span>
-                <h4 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">JK Lakshmipat University</h4>
-                <div className="text-sm text-slate-700 leading-relaxed font-sans font-medium space-y-1">
-                  <p>Near Mahindra SEZ</p>
-                  <p>Ajmer Road</p>
-                  <p>Jaipur</p>
-                  <p>Rajasthan 302026</p>
-                  <p>India</p>
+            {/* Right Column: Address and Actions card */}
+            <div className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-10 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] shadow-sm gap-8">
+              {/* Address & Coordinates */}
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">VENUE ADDRESS</span>
+                  <h4 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">JK Lakshmipat University</h4>
+                  <div className="text-sm text-slate-700 leading-relaxed font-sans font-medium space-y-1">
+                    <p>Near Mahindra SEZ, Ajmer Road</p>
+                    <p>Jaipur, Rajasthan 302026, India</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-1 pt-4 border-t border-[#E6E8EC]/60">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A99AD] font-sans">Coordinates</span>
+                  <p className="text-xs text-[#8A99AD] font-medium font-sans">
+                    26.857° N, 75.699° E
+                  </p>
                 </div>
               </div>
-              
-              <div className="space-y-1 pt-4 border-t border-[#E6E8EC]/60">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A99AD] font-sans">Coordinates</span>
-                <p className="text-xs text-[#8A99AD] font-medium font-sans">
-                  26.857° N, 75.699° E
-                </p>
-              </div>
-            </div>
 
-            {/* Middle Column: Action Buttons */}
-            <div className="md:col-span-4 flex flex-col justify-center gap-4 border-t md:border-t-0 md:border-l border-[#E6E8EC]/60 pt-6 md:pt-0 md:pl-8">
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=JK+Lakshmipat+University+Jaipur"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center bg-brand-orange text-white font-bold py-3 px-6 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
-              >
-                <ExternalLink size={14} /> Get Directions
-              </a>
-              <button
-                onClick={copyAddress}
-                className="w-full bg-white text-brand-ink font-bold py-3 px-6 border border-[#E6E8EC] hover:bg-[#FFFBF7] hover:border-brand-orange active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm"
-              >
-                {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
-                {copied ? 'Address Copied!' : 'Copy Venue Address'}
-              </button>
-            </div>
+              {/* Action Buttons & QR Code Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 pt-6 border-t border-[#E6E8EC]/60 items-center">
+                {/* Actions */}
+                <div className="sm:col-span-7 flex flex-col gap-3">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=JK+Lakshmipat+University+Jaipur"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
+                  >
+                    <ExternalLink size={14} /> Get Directions
+                  </a>
+                  <button
+                    onClick={copyAddress}
+                    className="w-full bg-white text-brand-ink font-bold py-3 px-4 border border-[#E6E8EC] hover:bg-[#FFFBF7] hover:border-brand-orange active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm"
+                  >
+                    {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
+                    {copied ? 'Address Copied!' : 'Copy Venue Address'}
+                  </button>
+                </div>
 
-            {/* Right Column: QR Code Navigator */}
-            <div className="md:col-span-3 flex flex-col items-center justify-center text-center border-t md:border-t-0 md:border-l border-[#E6E8EC]/60 pt-6 md:pt-0 md:pl-8 space-y-3">
-              <div className="p-2 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-24 h-24 flex items-center justify-center">
-                <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DJK%2BLakshmipat%2BUniversity%2BJaipur" 
-                  alt="Scan to Navigate to JKLU"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="space-y-1">
-                <span className="text-[9px] font-bold tracking-wider text-brand-orange uppercase">SCAN TO NAVIGATE</span>
-                <p className="text-[11px] text-[#8A99AD] leading-normal font-medium max-w-[160px] font-sans">
-                  Scan with your mobile device to open the venue location instantly in Google Maps.
-                </p>
+                {/* QR Code */}
+                <div className="sm:col-span-5 flex flex-col items-center text-center space-y-2">
+                  <div className="p-1.5 bg-white border border-[#E6E8EC] rounded-lg shadow-sm w-20 h-20 flex items-center justify-center">
+                    <img 
+                      src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DJK%2BLakshmipat%2BUniversity%2BJaipur" 
+                      alt="Scan to Navigate to JKLU"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="space-y-0.5">
+                    <span className="text-[8px] font-bold tracking-wider text-brand-orange uppercase">SCAN TO NAVIGATE</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -605,7 +581,6 @@ export default function VenuePage() {
       {/* SECTION 6: TRAVEL INFORMATION */}
       <section className="py-24 px-6 max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">TRAVEL GUIDE</span>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
             Getting to the Venue
           </h2>
@@ -619,8 +594,8 @@ export default function VenuePage() {
             {
               title: 'By Air',
               icon: Plane,
-              distance: '35–40 km',
-              time: '45–60 minutes',
+              distance: '35-40 km',
+              time: '45-60 minutes',
               hubLabel: 'Airport',
               hubValue: 'Jaipur International Airport',
               caption: 'Regular domestic and international connections via Jaipur International Airport.'
@@ -629,7 +604,7 @@ export default function VenuePage() {
               title: 'By Train',
               icon: Train,
               distance: '22 km',
-              time: '35–40 minutes',
+              time: '35-40 minutes',
               hubLabel: 'Station',
               hubValue: 'Jaipur Junction (JP)',
               caption: 'Jaipur Junction is well connected to major Indian cities.'
@@ -694,7 +669,6 @@ export default function VenuePage() {
       <section className="py-24 bg-white border-t-4 border-brand-ink px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
-            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">DELEGATE STAY</span>
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Recommended Hotels
             </h2>
@@ -769,7 +743,6 @@ export default function VenuePage() {
       <section className="py-24 px-6 max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">PLAN YOUR VISIT</span>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
             Weather During the Conference
           </h2>
@@ -813,7 +786,7 @@ export default function VenuePage() {
                 </p>
                 <p className="text-lg font-bold flex items-center gap-1.5 text-white/95">
                   <Thermometer size={18} className="text-brand-orange" />
-                  18°C – 30°C
+                  18°C - 30°C
                 </p>
               </div>
               <p className="text-xs text-white/70 leading-relaxed pt-2 border-t border-white/5 font-medium">
@@ -866,7 +839,6 @@ export default function VenuePage() {
       <section className="py-24 bg-white border-y-4 border-brand-ink px-6">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-3">
-            <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Explore Jaipur</span>
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Discover Jaipur
             </h2>
@@ -934,7 +906,6 @@ export default function VenuePage() {
       {/* SECTION 10: FREQUENTLY ASKED QUESTIONS */}
       <section className="py-24 px-6 max-w-4xl mx-auto space-y-12">
         <div className="text-center space-y-3">
-          <span className="text-brand-orange font-bold uppercase tracking-widest text-xs">Help & Support</span>
           <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
             Frequently Asked Questions
           </h2>
@@ -995,7 +966,6 @@ export default function VenuePage() {
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
           <div className="space-y-2">
-            <span className="text-brand-orange font-bold tracking-widest text-xs sm:text-sm uppercase">Join SANKALP'27</span>
             <h2 className="text-3xl sm:text-5xl font-serif font-black uppercase tracking-tight">
               Join Us at SANKALP'27
             </h2>

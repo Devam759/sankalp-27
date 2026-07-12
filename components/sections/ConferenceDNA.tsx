@@ -235,7 +235,7 @@ export default function ConferenceDNA() {
           className="mt-20 pt-8 border-t border-brand-blue/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
         >
           <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">
-            SANKALP 2027 — JK Lakshmipat University, Jaipur
+            SANKALP 2027 - JK Lakshmipat University, Jaipur
           </span>
           <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-300">
             International Conference on Sustainable Technologies &amp; AI

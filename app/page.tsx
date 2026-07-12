@@ -208,7 +208,7 @@ export default function Home() {
               A premier JKLU International Conference uniting researchers, academics, industry leaders and students across six frontier domains: Sustainable AI, Next-Gen Knowledge, Automation, Learning, Prediction and emerging technologies.
             </p>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Driving the resolve — the <em>sankalp</em> — to shape a future of intelligent, ethical, and impactful innovation.
+              Driving the resolve, the <em>sankalp</em>, to shape a future of intelligent, ethical, and impactful innovation.
             </p>
           </motion.div>
 

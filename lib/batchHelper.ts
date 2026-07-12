@@ -36,7 +36,7 @@ async function generateFallbackSchedulePDF(batchName: string): Promise<Uint8Arra
   
   page.drawText('JK Lakshmipat University', { x: 50, y: 350, size: 18, color: rgb(0.01, 0.01, 0.01) });
   page.drawText(`Official Schedule: ${batchName}`, { x: 50, y: 310, size: 22, color: rgb(1, 0.6, 0) });
-  page.drawText('International Conference — Sankalp 2027', { x: 50, y: 280, size: 12, color: rgb(0.4, 0.4, 0.4) });
+  page.drawText('International Conference - Sankalp 2027', { x: 50, y: 280, size: 12, color: rgb(0.4, 0.4, 0.4) });
   
   // Example dummy generic schedule items
   page.drawText('• Day 1: Registration and Inaugural Session', { x: 50, y: 190, size: 10 });

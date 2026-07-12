@@ -153,7 +153,7 @@ const institutions = [
 ];
 
 const qualitySteps = [
-  { id: '01', title: 'Double-Blind Peer Review', body: 'Every submission is evaluated anonymously by at minimum two independent domain experts. Neither the author nor the reviewer knows the other identity — a standard upheld by Nature, IEEE, and Springer.', who: 'Technical Program Committee' },
+  { id: '01', title: 'Double-Blind Peer Review', body: 'Every submission is evaluated anonymously by at minimum two independent domain experts. Neither the author nor the reviewer knows the other identity, a standard upheld by Nature, IEEE, and Springer.', who: 'Technical Program Committee' },
   { id: '02', title: 'Technical Evaluation', body: 'Beyond correctness, papers are assessed on novelty, impact, reproducibility, and academic rigour. This ensures SANKALP upholds the standards of its indexing partners.', who: 'Track Chairs & Program Chairs' },
   { id: '03', title: 'Track-Level Curation', body: 'Subject-matter experts curate sessions within each of the 7 research domains, ensuring thematic depth, topical relevance, and a meaningful discourse for specialists.', who: 'Track Leadership' },
   { id: '04', title: 'Publication Standards', body: 'Accepted manuscripts undergo formatting compliance review against international publication guidelines before final proceedings submission to indexing and publishing partners.', who: 'Publication Committee' },
