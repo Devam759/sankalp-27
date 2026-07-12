@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { collection, addDoc, updateDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
+import { db, auth } from '../../lib/firebase';
 import { Html5Qrcode } from 'html5-qrcode';
 import { Check, X, User, AlertCircle, Mail, Phone, ShieldCheck, MapPin } from 'lucide-react';
 import { useScannerSession } from '../../components/scanner/ScannerSessionProvider';
@@ -267,9 +267,13 @@ export default function ScannerView() {
         if (scannedData.hasEntered) {
           setStatus({ type: 'error', message: 'ALREADY ENTERED' });
         } else {
+          const token = await auth.currentUser?.getIdToken();
           const res = await fetch('/api/check-in/approve', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
               registrationID: scannedData.id,
               scannerId: scannerAccount.scannerId,

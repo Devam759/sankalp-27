@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { collection, onSnapshot, query, orderBy, doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db, auth } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
@@ -883,9 +883,13 @@ export default function Registrations() {
                   onClick={async () => {
                     if (confirm(`Resend confirmation email to ${selectedReg.name} (${selectedReg.email})?`)) {
                       try {
+                        const token = await auth.currentUser?.getIdToken();
                         const res = await fetch('/api/admin/resend-emails', {
                           method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
+                          headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                          },
                           body: JSON.stringify({ ids: [selectedReg.id] })
                         });
                         const result = await res.json();
@@ -905,9 +909,47 @@ export default function Registrations() {
                 >
                   <CustomMailIcon size={14} /> Send / Resend Email
                 </button>
-                <a 
-                  href={`/api/receipt?id=${selectedReg.id}`}
-                  download
+                <button
+                  type="button"
+                  onClick={async () => {
+                    try {
+                      const token = await auth.currentUser?.getIdToken();
+                      const res = await fetch(`/api/receipt?id=${selectedReg.id}`, {
+                        headers: {
+                          'Authorization': `Bearer ${token}`
+                        }
+                      });
+                      if (!res.ok) {
+                        const err = await res.json();
+                        alert(`Failed to download receipt: ${err.error || 'Unknown error'}`);
+                        return;
+                      }
+                      
+                      const blob = await res.blob();
+                      const url = window.URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      
+                      // Extract filename from Content-Disposition if present
+                      const disposition = res.headers.get('content-disposition');
+                      let filename = `Receipt_${selectedReg.id}.pdf`;
+                      if (disposition && disposition.indexOf('filename=') !== -1) {
+                        const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                        const matches = filenameRegex.exec(disposition);
+                        if (matches != null && matches[1]) {
+                          filename = matches[1].replace(/['"]/g, '');
+                        }
+                      }
+                      
+                      a.download = filename;
+                      document.body.appendChild(a);
+                      a.click();
+                      window.URL.revokeObjectURL(url);
+                      document.body.removeChild(a);
+                    } catch (error: any) {
+                      alert(`Network error: ${error.message}`);
+                    }
+                  }}
                   className="comic-btn-orange w-full sm:w-auto"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter">
@@ -916,7 +958,7 @@ export default function Registrations() {
                     <line x1="12" y1="15" x2="12" y2="3" />
                   </svg>
                   Download Receipt PDF
-                </a>
+                </button>
               </div>
             </div>
           </div>

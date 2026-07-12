@@ -2,10 +2,12 @@ import { NextResponse } from 'next/server';
 import { adminDb } from '../../../lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { sendSystemErrorEmail } from '../../../lib/registrationHelper';
+import { sanitizeObject } from '../../../lib/security';
 
 export async function POST(req: Request) {
   try {
-    const data = await req.json();
+    const rawData = await req.json();
+    const data = sanitizeObject(rawData);
     const { message, stack, path, userAgent, type = 'Frontend Exception' } = data;
 
     if (!adminDb) {

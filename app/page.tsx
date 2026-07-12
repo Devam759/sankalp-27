@@ -19,6 +19,7 @@ import {
 
 export default function Home() {
   const [activeAdvisory, setActiveAdvisory] = React.useState<string | null>(null);
+  const [loadingDone, setLoadingDone] = React.useState(true); // Animation skipped, default to true
 
   const heroImages = [
     '/Images/hero/DJI_0060.JPG.webp',
@@ -61,7 +62,15 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white">
+    <>
+      <main
+        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white"
+        style={{
+          opacity: loadingDone ? 1 : 0,
+          transform: loadingDone ? 'translateY(0)' : 'translateY(8px)',
+          transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1)',
+        }}
+      >
       <Navbar />
 
       {/* ═══════════════════════════════════════════════════════════
@@ -675,81 +684,6 @@ export default function Home() {
               .group\\/gallery::-webkit-scrollbar { display: none; }
             `}} />
 
-            {/* Modal Overlay for Expanded List Panel */}
-            <AnimatePresence>
-              {activeAdvisory && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-[#0b101e]/80 backdrop-blur-sm"
-                  onClick={() => setActiveAdvisory(null)}
-                >
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                    transition={{ duration: 0.3 }}
-                    onClick={(e) => e.stopPropagation()}
-                    className="bg-[#f7f4ef] w-full max-w-5xl max-h-[85vh] rounded shadow-2xl flex flex-col overflow-hidden relative"
-                  >
-                    {/* Modal Header */}
-                    <div className="bg-[#0b101e] p-6 md:p-8 flex justify-between items-center shrink-0 border-b border-brand-orange/20">
-                      <div>
-                        <h4 className="text-xl md:text-2xl font-serif font-bold text-white uppercase tracking-wider">
-                          {activeAdvisory === 'international' && 'International Advisory Board'}
-                          {activeAdvisory === 'national' && 'National Advisory Board'}
-                          {activeAdvisory === 'internal' && 'Internal Conference Committees'}
-                        </h4>
-                        <p className="text-brand-orange text-xs font-bold uppercase tracking-widest mt-2">SANKALP 2027</p>
-                      </div>
-                      <button onClick={() => setActiveAdvisory(null)} className="text-white/50 hover:text-brand-orange transition-colors p-2 bg-white/5 rounded-full">
-                        <X size={24} />
-                      </button>
-                    </div>
-
-                    {/* Modal Content - Scrollable */}
-                    <div className="p-6 md:p-10 overflow-y-auto bg-[#f7f4ef]">
-                      {activeAdvisory === 'internal' ? (
-                        <div className="space-y-6 max-w-4xl mx-auto">
-                          <div className="bg-white p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
-                            <div>
-                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Chair</span>
-                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Tapas Kumar</span>
-                              <span className="text-slate-500 text-xs block font-medium">Dean IET, JKLU</span>
-                            </div>
-                            <hr className="border-slate-100" />
-                            <div>
-                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Convener</span>
-                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Sonali Vyas</span>
-                              <span className="text-slate-500 text-xs block font-medium">Head – Centre for Global Learning, JKLU</span>
-                            </div>
-                            <hr className="border-slate-100" />
-                            <div>
-                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Program Chairs</span>
-                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Amit / Prof. Taruna / Prof. Umesh, and Prof. Devika</span>
-                              <span className="text-slate-500 text-xs block font-medium">Professors of Institute of Engineering & Technology (IET), JKLU</span>
-                            </div>
-                          </div>
-                          <p className="text-slate-500 text-xs leading-relaxed font-medium italic">
-                            Note: The Internal Organizing Committees comprise faculty members, research teams, and administrative support staff from the Institute of Engineering & Technology (IET) and Centre for Global Learning (CGLP) at JK Lakshmipat University.
-                          </p>
-                        </div>
-                      ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {(activeAdvisory === 'international' ? advisoryBoard.international : advisoryBoard.national).map((member, idx) => (
-                            <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
-                              <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
-                              <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
         </div>
@@ -858,5 +792,81 @@ export default function Home() {
 
       <Footer />
     </main>
+            {/* Modal Overlay for Expanded List Panel */}
+            <AnimatePresence>
+              {activeAdvisory && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-[#0b101e]/80 backdrop-blur-sm"
+                  onClick={() => setActiveAdvisory(null)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                    transition={{ duration: 0.3 }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="bg-[#f7f4ef] w-full max-w-5xl max-h-[85vh] rounded shadow-2xl flex flex-col overflow-hidden relative"
+                  >
+                    {/* Modal Header */}
+                    <div className="bg-[#0b101e] p-6 md:p-8 flex justify-between items-center shrink-0 border-b border-brand-orange/20">
+                      <div>
+                        <h4 className="text-xl md:text-2xl font-serif font-bold text-white uppercase tracking-wider">
+                          {activeAdvisory === 'international' && 'International Advisory Board'}
+                          {activeAdvisory === 'national' && 'National Advisory Board'}
+                          {activeAdvisory === 'internal' && 'Internal Conference Committees'}
+                        </h4>
+                        <p className="text-brand-orange text-xs font-bold uppercase tracking-widest mt-2">SANKALP 2027</p>
+                      </div>
+                      <button onClick={() => setActiveAdvisory(null)} className="text-white/50 hover:text-brand-orange transition-colors p-2 bg-white/5 rounded-full">
+                        <X size={24} />
+                      </button>
+                    </div>
+
+                    {/* Modal Content - Scrollable */}
+                    <div className="p-6 md:p-10 overflow-y-auto bg-[#f7f4ef]">
+                      {activeAdvisory === 'internal' ? (
+                        <div className="space-y-6 max-w-4xl mx-auto">
+                          <div className="bg-white p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                            <div>
+                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Chair</span>
+                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Tapas Kumar</span>
+                              <span className="text-slate-500 text-xs block font-medium">Dean IET, JKLU</span>
+                            </div>
+                            <hr className="border-slate-100" />
+                            <div>
+                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Convener</span>
+                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Sonali Vyas</span>
+                              <span className="text-slate-500 text-xs block font-medium">Head – Centre for Global Learning, JKLU</span>
+                            </div>
+                            <hr className="border-slate-100" />
+                            <div>
+                              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Program Chairs</span>
+                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Amit / Prof. Taruna / Prof. Umesh, and Prof. Devika</span>
+                              <span className="text-slate-500 text-xs block font-medium">Professors of Institute of Engineering & Technology (IET), JKLU</span>
+                            </div>
+                          </div>
+                          <p className="text-slate-500 text-xs leading-relaxed font-medium italic">
+                            Note: The Internal Organizing Committees comprise faculty members, research teams, and administrative support staff from the Institute of Engineering & Technology (IET) and Centre for Global Learning (CGLP) at JK Lakshmipat University.
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {(activeAdvisory === 'international' ? advisoryBoard.international : advisoryBoard.national).map((member, idx) => (
+                            <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
+                              <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
+                              <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+    </>
   );
 }

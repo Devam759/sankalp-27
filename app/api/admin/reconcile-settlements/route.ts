@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
+import { verifyAuthRole } from '@/lib/serverAuth';
 
 async function performReconciliation(isManual: boolean) {
   const isProd = (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').replace(/['"]/g, '').trim().toUpperCase() === 'PRODUCTION';
@@ -176,6 +177,8 @@ export async function GET(req: Request) {
 // POST method for manual triggers from the Admin Dashboard
 export async function POST(req: Request) {
   try {
+    const authContext = await verifyAuthRole(req, ['admin']);
+
     const body = await req.json().catch(() => ({}));
     const isManual = body.manual !== false; // defaults to manual true
     

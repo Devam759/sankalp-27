@@ -3,10 +3,15 @@ import { after } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { getStudentBatchDetails, sendCheckInEmail } from '@/lib/batchHelper';
+import { verifyAuthRole } from '@/lib/serverAuth';
+import { sanitizeObject } from '@/lib/security';
 
 export async function POST(req: Request) {
   try {
-    const { registrationID, scannerId, volunteerName } = await req.json();
+    const authContext = await verifyAuthRole(req, ['admin', 'scanner']);
+
+    const rawData = await req.json();
+    const { registrationID, scannerId, volunteerName } = sanitizeObject(rawData);
 
     if (!registrationID) {
       return NextResponse.json({ error: 'Missing registrationID' }, { status: 400 });

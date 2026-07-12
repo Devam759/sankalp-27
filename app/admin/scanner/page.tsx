@@ -303,9 +303,13 @@ export default function AdminScannerView() {
         if (scannedData.hasEntered) {
           setStatus({ type: 'error', message: 'ALREADY ENTERED' });
         } else {
+          const token = await auth.currentUser?.getIdToken();
           const res = await fetch('/api/check-in/approve', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
               registrationID: scannedData.id,
               scannerId: 'ADMIN',

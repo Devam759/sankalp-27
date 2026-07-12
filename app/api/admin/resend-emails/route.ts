@@ -2,11 +2,15 @@ import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { generatePDF, sendEmail } from '@/lib/registrationHelper';
+import { verifyAuthRole } from '@/lib/serverAuth';
+import { sanitizeObject } from '@/lib/security';
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json().catch(() => ({}));
-    const { ids, sendAllUnsent } = body;
+    const authContext = await verifyAuthRole(req, ['admin']);
+
+    const rawBody = await req.json().catch(() => ({}));
+    const { ids, sendAllUnsent } = sanitizeObject(rawBody);
 
     let targetDocs: any[] = [];
 

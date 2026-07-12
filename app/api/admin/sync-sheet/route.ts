@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
+import { verifyAuthRole } from '@/lib/serverAuth';
 
 const escapeForSheets = (val: string) => {
   if (typeof val === 'string' && val.startsWith('+')) return `'${val}`;
@@ -35,6 +36,8 @@ async function pushToSheet(webhookUrl: string, payload: object): Promise<{ succe
 
 export async function POST(req: Request) {
   try {
+    const authContext = await verifyAuthRole(req, ['admin']);
+
     const excelWebhook = process.env.EXCEL_SYNC_WEBHOOK_URL;
     if (!excelWebhook) {
       return NextResponse.json({ error: 'EXCEL_SYNC_WEBHOOK_URL is not configured on the server.' }, { status: 500 });

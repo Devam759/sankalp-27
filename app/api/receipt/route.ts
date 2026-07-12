@@ -2,9 +2,12 @@ import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { generatePDF } from '@/lib/registrationHelper';
 import { isRateLimited } from '@/lib/security';
+import { verifyAuthRole } from '@/lib/serverAuth';
 
 export async function GET(req: Request) {
   try {
+    const authContext = await verifyAuthRole(req, ['admin']);
+
     const rawIp = req.headers.get('x-forwarded-for') || '127.0.0.1';
     const ip = rawIp.split(',')[0].trim(); // Take only the first (leftmost) IP — prevent x-forwarded-for spoofing
     

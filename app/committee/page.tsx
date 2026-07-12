@@ -374,6 +374,64 @@ export default function MindsPage() {
         </div>
       </section>
 
+      {/* SECTION 2.5 — ADVISORY BOARDS */}
+      <section className="py-32 border-t border-brand-blue/10 bg-white">
+        <div className="max-w-[1440px] mx-auto px-8">
+          <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20 text-center">
+            <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">Global Network</motion.p>
+            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-4xl md:text-5xl mb-0 leading-tight">Advisory Boards</motion.h2>
+          </motion.div>
+
+          {/* International Advisory Board */}
+          <div className="mb-20">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-10 h-[2px] bg-brand-orange" />
+              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">International Advisory Board</h3>
+              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {advisoryBoard.international.map((member, i) => (
+                <motion.div 
+                  key={`intl-${i}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 4) * 0.1, duration: 0.5 }}
+                  className="bg-[#f7f4ef] p-6 border border-brand-blue/5 hover:border-brand-orange/30 hover:shadow-md transition-all group"
+                >
+                  <h4 className="font-bold text-brand-blue text-base mb-2 group-hover:text-brand-orange transition-colors">{member.name}</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* National Advisory Board */}
+          <div>
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-10 h-[2px] bg-brand-orange" />
+              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">National Advisory Board</h3>
+              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {advisoryBoard.national.map((member, i) => (
+                <motion.div 
+                  key={`natl-${i}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 4) * 0.1, duration: 0.5 }}
+                  className="bg-[#f7f4ef] p-6 border border-brand-blue/5 hover:border-brand-orange/30 hover:shadow-md transition-all group"
+                >
+                  <h4 className="font-bold text-brand-blue text-base mb-2 group-hover:text-brand-orange transition-colors">{member.name}</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 3 — INSTITUTION WALL */}
       <section className="py-32 bg-brand-blue text-white overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-8">
