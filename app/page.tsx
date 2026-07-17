@@ -683,58 +683,17 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* REGISTRATION & VENUE */}
-      <Section id="registration" title="Registration & Venue">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* CONFERENCE VENUE */}
+      <Section id="venue" title="Conference Venue">
+        <div className="max-w-[1000px] mx-auto space-y-8">
           
-          {/* Registration */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <h3 className="text-2xl font-serif font-bold text-brand-blue mb-6">Registration Fees</h3>
-            <div className="overflow-hidden border border-brand-blue/20 bg-brand-blue/5">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-brand-blue text-white">
-                    <th className="p-4 font-semibold text-sm border-b border-brand-blue/50">Category</th>
-                    <th className="p-4 font-semibold text-sm border-b border-brand-blue/50">National</th>
-                    <th className="p-4 font-semibold text-sm border-b border-brand-blue/50">International</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-brand-blue/10">
-                  {registrationFees.map((fee, i) => (
-                    <motion.tr
-                      key={i}
-                      initial={{ opacity: 0, x: -16 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.35, delay: i * 0.07, ease: "easeOut" }}
-                      className="hover:bg-brand-blue/10 transition-colors"
-                    >
-                      <td className="p-4 text-sm font-bold text-brand-blue">{fee.category}</td>
-                      <td className="p-4 text-sm text-brand-orange font-bold">{fee.national}</td>
-                      <td className="p-4 text-sm text-brand-orange font-bold">{fee.international}</td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
-              <div className="p-4 bg-brand-orange text-xs text-white border-t border-brand-orange/20 font-semibold">
-                * Registration fees are tentative and subject to final confirmation.
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Venue & Contact */}
-          <div className="space-y-6 flex flex-col justify-between" id="venue">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="bg-brand-orange p-8 border border-brand-orange text-white"
+              className="bg-brand-orange p-8 border border-brand-orange text-white flex flex-col justify-center"
             >
               <h3 className="text-xl font-serif font-bold text-white mb-1">JK Lakshmipat University</h3>
               <p className="text-brand-blue text-sm font-black uppercase tracking-wider mb-6">Jaipur, India</p>
@@ -743,33 +702,13 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Campus Image Showcase */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.97 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="relative h-44 border border-slate-200 shadow-sm rounded-lg overflow-hidden group"
-            >
-              <Image
-                src="/Images/footer_image.webp"
-                alt="JKLU Campus"
-                fill
-                sizes="(max-width: 768px) 100vw, 500px"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/60 to-transparent flex items-end p-4">
-                <span className="text-white font-sans font-bold text-xs tracking-wider uppercase">JKLU Campus, Jaipur</span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
               id="contact"
-              className="bg-brand-blue p-8 text-white"
+              className="bg-brand-blue p-8 text-white flex flex-col justify-center"
             >
               <h3 className="text-xl font-serif font-bold mb-6">Contact Information</h3>
               <div className="space-y-3 text-slate-300 text-sm font-medium">
@@ -780,6 +719,26 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+
+          {/* Campus Image Showcase */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="relative h-64 border border-slate-200 shadow-sm rounded-lg overflow-hidden group w-full"
+          >
+            <Image
+              src="/Images/footer_image.webp"
+              alt="JKLU Campus"
+              fill
+              sizes="(max-width: 1000px) 100vw, 1000px"
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/60 to-transparent flex items-end p-4">
+              <span className="text-white font-sans font-bold text-xs tracking-wider uppercase">JKLU Campus, Jaipur</span>
+            </div>
+          </motion.div>
 
         </div>
       </Section>

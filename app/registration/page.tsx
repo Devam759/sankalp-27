@@ -193,7 +193,7 @@ export default function Registration() {
       if (res.ok && data.valid) {
         setCouponValid(true);
         setFinalAmount(data.amount);
-        setCouponMessage(`Coupon applied successfully! Discounted amount: ₹${data.amount}`);
+        setCouponMessage(`Coupon applied successfully! Discounted amount: ₹${data.amount} + 18% GST`);
       } else {
         setCouponValid(false);
         setFinalAmount(null);
@@ -477,7 +477,7 @@ export default function Registration() {
                       <option value="">-- Select Category --</option>
                       {REGISTRATION_CATEGORIES.map((cat) => (
                         <option key={cat.id} value={cat.id}>
-                          {cat.name} (₹{cat.amount.toLocaleString()})
+                          {cat.name} (₹{cat.amount.toLocaleString()} + 18% GST)
                         </option>
                       ))}
                     </select>
@@ -736,7 +736,7 @@ export default function Registration() {
                 <div className="border-t border-slate-100 pt-6 space-y-4">
                   <div className="flex justify-between items-baseline text-sm">
                     <span className="text-slate-500">Base Registration Fee:</span>
-                    <span className="font-semibold">₹{getSelectedCategoryAmount().toLocaleString()}</span>
+                    <span className="font-semibold">₹{getSelectedCategoryAmount().toLocaleString()} + 18% GST</span>
                   </div>
                   {couponValid && finalAmount !== null && (
                     <div className="flex justify-between items-baseline text-sm text-green-600 font-semibold">
@@ -747,7 +747,8 @@ export default function Registration() {
                   <div className="flex justify-between items-baseline border-t border-slate-200 pt-4">
                     <span className="text-brand-blue font-bold text-lg font-serif">Final Amount (INR):</span>
                     <span className="text-2xl font-mono font-bold text-brand-orange">
-                      ₹{(finalAmount !== null ? finalAmount : getSelectedCategoryAmount()).toLocaleString()}
+                      ₹{(finalAmount !== null ? finalAmount : getSelectedCategoryAmount()).toLocaleString()} + 18% GST
+                      <div className="text-xs font-normal text-slate-500 mt-1">GST will be charged additionally at 18%</div>
                     </span>
                   </div>
                 </div>
