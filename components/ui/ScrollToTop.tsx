@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -32,20 +32,20 @@ export function ScrollToTop() {
     });
   };
 
-  const buttonVariants = {
+  const buttonVariants: Variants = {
     initial: { opacity: 0, y: 15, scale: 0.9 },
     animate: { opacity: 1, y: 0, scale: 1 },
     exit: { opacity: 0, y: 15, scale: 0.9 },
     hover: { scale: 1.05 }
   };
 
-  const arrowVariants = {
+  const arrowVariants: Variants = {
     initial: { y: 0 },
     hover: { 
       y: -4,
       transition: {
         repeat: Infinity,
-        repeatType: "reverse" as const,
+        repeatType: "reverse",
         duration: 0.6,
         ease: "easeInOut"
       }
