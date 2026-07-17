@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { FileText, Calendar, MapPin, ChevronRight, Check, X } from 'lucide-react';
+import { FileText, Calendar, MapPin, ChevronRight, Check, X, Building2, Landmark, Mail, Globe, Plane, Award } from 'lucide-react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
@@ -246,7 +246,7 @@ export default function Home() {
             </h3>
             <ul className="space-y-5 flex-grow">
               {[
-                'Call for Papers opens on 15 July 2026',
+                'Call for Papers opens on 1 August 2026',
                 'Full paper submission deadline: 31 October 2026',
                 'Conference mode: Hybrid',
                 'Registration details announced'
@@ -348,11 +348,7 @@ export default function Home() {
               className="md:col-span-2 xl:col-span-1 relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="text-[10px] font-mono font-bold text-white tracking-[0.2em] uppercase bg-brand-orange px-3 py-1.5 border-none">
-                    [ 01 ] keynote
-                  </div>
-                </div>
+
                 <h3 className="text-2xl font-bold text-brand-blue mb-3 leading-snug">Distinguished International Keynote Speakers</h3>
                 <p className="text-brand-blue text-sm leading-relaxed">World-renowned researchers and practitioners delivering visionary talks on AI, sustainability, and emerging technologies.</p>
               </div>
@@ -367,9 +363,7 @@ export default function Home() {
               className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative z-10">
-                <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase mb-8 block">
-                  [ 02 ] panel
-                </div>
+
                 <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Industry Panels & Expert Roundtables</h3>
                 <p className="text-brand-blue text-sm leading-relaxed">Deep-dive panel sessions bridging academia and industry on the most pressing technology challenges.</p>
               </div>
@@ -384,9 +378,7 @@ export default function Home() {
               className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative z-10">
-                <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase mb-8 block">
-                  [ 03 ] research
-                </div>
+
                 <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Research Paper Presentations</h3>
                 <p className="text-brand-blue text-sm leading-relaxed">Present your original research to a global audience of peers, reviewers, and industry professionals.</p>
               </div>
@@ -401,11 +393,8 @@ export default function Home() {
               className="relative group bg-brand-orange border-2 border-brand-orange hover:border-white rounded-none p-8 overflow-hidden cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative z-10">
-                <div className="flex justify-between items-center mb-8">
-                  <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase bg-white px-3 py-1.5 border-none">
-                    [ 04 ] showcase
-                  </div>
-                  <div className="text-[10px] font-bold text-white uppercase tracking-widest">Atal Incubation</div>
+                <div className="flex justify-end mb-6">
+                  <span className="text-[10px] font-bold text-white uppercase tracking-widest bg-white/15 px-3.5 py-1.5 rounded-sm">Atal Incubation</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 leading-snug">Startup & Innovation Showcase</h3>
                 <p className="text-white text-sm leading-relaxed">Pitch your startup ideas, demos and innovations to investors, mentors and a global innovation community.</p>
@@ -421,11 +410,8 @@ export default function Home() {
               className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative z-10">
-                <div className="flex justify-between items-center mb-8">
-                  <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase block">
-                    [ 05 ] exchange
-                  </div>
-                  <div className="text-[10px] font-bold text-brand-orange uppercase tracking-widest">CGLP</div>
+                <div className="flex justify-end mb-6">
+                  <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest bg-brand-orange/10 px-3.5 py-1.5 rounded-sm">CGLP</span>
                 </div>
                 <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Networking & Collaboration</h3>
                 <p className="text-brand-blue text-sm leading-relaxed">Build lasting academic and industry connections through curated networking sessions and collaboration opportunities.</p>
@@ -441,9 +427,7 @@ export default function Home() {
               className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative z-10">
-                <div className="text-[10px] font-mono font-bold text-brand-orange tracking-[0.2em] uppercase mb-8 block">
-                  [ 06 ] award
-                </div>
+
                 <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Best Paper Awards</h3>
                 <p className="text-brand-blue text-sm leading-relaxed">Outstanding research recognized with awards across all tracks, celebrating excellence and impact.</p>
               </div>
@@ -729,60 +713,190 @@ export default function Home() {
 
       {/* CONFERENCE VENUE */}
       <Section id="venue" title="Conference Venue">
-        <div className="max-w-[1000px] mx-auto space-y-8">
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-[1200px] mx-auto space-y-10">
+
+          {/* ── Hero Campus Image ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="relative h-[340px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl group"
+          >
+            <Image
+              src="/Images/hero/DJI_0060.JPG.webp"
+              alt="JK Lakshmipat University Campus, Jaipur"
+              fill
+              sizes="100vw"
+              className="object-cover scale-[1.04] group-hover:scale-100 transition-transform duration-[2000ms] ease-out"
+              priority
+            />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/85 via-[#0b1220]/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1220]/40 to-transparent" />
+
+            {/* Bottom caption */}
+            <div className="absolute bottom-0 inset-x-0 p-8 md:p-12 flex items-end justify-between gap-6">
+              <div>
+                <motion.p
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="text-brand-orange text-xs font-bold uppercase tracking-[0.2em] mb-3"
+                >
+                  Conference Venue · SANKALP 2027
+                </motion.p>
+                <motion.h3
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className="text-white font-serif font-bold text-2xl md:text-4xl leading-tight"
+                >
+                  JK Lakshmipat University<br className="hidden md:block" />
+                  <span className="text-white/70 text-xl md:text-3xl font-normal"> — Jaipur, India</span>
+                </motion.h3>
+              </div>
+
+              {/* Year badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="hidden md:flex flex-col items-center justify-center w-24 h-24 rounded-full border-2 border-brand-orange/60 bg-white/10 backdrop-blur-md shrink-0"
+              >
+                <span className="text-brand-orange font-mono font-black text-2xl leading-none">27</span>
+                <span className="text-white/70 text-[9px] font-bold uppercase tracking-widest mt-1">SANKALP</span>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* ── Content Grid ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            {/* About University */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="bg-brand-orange p-8 border border-brand-orange text-white flex flex-col justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="lg:col-span-1 bg-gradient-to-br from-brand-blue to-[#0d1f3c] text-white rounded-2xl p-8 flex flex-col justify-between shadow-xl shadow-brand-blue/20"
             >
-              <h3 className="text-xl font-serif font-bold text-white mb-1">JK Lakshmipat University</h3>
-              <p className="text-brand-blue text-sm font-black uppercase tracking-wider mb-6">Jaipur, India</p>
-              <p className="text-white/90 text-sm leading-relaxed mb-4">
-                Located in the vibrant city of Jaipur, JKLU offers a modern academic environment with state-of-the-art infrastructure, research facilities, innovation labs, and collaborative learning spaces.
-              </p>
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-brand-orange/20 flex items-center justify-center mb-6">
+                  <Building2 size={20} className="text-brand-orange" />
+                </div>
+                <h3 className="text-xl font-serif font-bold leading-snug mb-4">JK Lakshmipat University</h3>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  A leading institution dedicated to innovation, interdisciplinary learning, and industry engagement — offering world-class conference facilities and a collaborative environment for international gatherings.
+                </p>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <a
+                  href="https://www.jklu.edu.in"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 text-xs font-bold text-brand-orange hover:text-white transition-colors group"
+                >
+                  Visit JKLU Website
+                  <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
             </motion.div>
 
+            {/* About Jaipur */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              id="contact"
-              className="bg-brand-blue p-8 text-white flex flex-col justify-center"
+              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+              className="lg:col-span-1 bg-white border border-slate-100 rounded-2xl p-8 flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-500"
             >
-              <h3 className="text-xl font-serif font-bold mb-6">Contact Information</h3>
-              <div className="space-y-3 text-slate-300 text-sm font-medium">
-                <p><strong className="text-white">SANKALP 2027 Conference</strong></p>
-                <p>JK Lakshmipat University, Jaipur, India</p>
-                <p><strong>Email:</strong> sankalp@jklu.edu.in</p>
-                <p><strong>Website:</strong> sankalp.jklu.edu.in</p>
+              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-6">
+                <Landmark size={20} className="text-brand-orange" />
+              </div>
+              <h3 className="text-xl font-serif font-bold text-brand-blue leading-snug mb-4">About Jaipur</h3>
+              <p className="text-slate-600 text-sm leading-relaxed flex-grow">
+                Known as the <strong className="text-brand-blue">Pink City of India</strong>, Jaipur is a distinguished center of culture, heritage, and innovation. As host city of SANKALP 2027, it offers delegates iconic landmarks, world-class hospitality, and excellent connectivity.
+              </p>
+
+              {/* Highlight chips */}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {[
+                  { icon: Landmark, label: 'UNESCO Heritage' },
+                  { icon: Plane, label: 'Great Connectivity' },
+                  { icon: Award, label: 'Rich Culture' },
+                  { icon: Building2, label: 'Premium Stays' },
+                ].map((chip, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-[10px] font-bold text-brand-blue uppercase tracking-wider hover:bg-brand-orange/5 hover:border-brand-orange/30 transition-colors cursor-default"
+                  >
+                    <chip.icon size={11} className="text-brand-orange" />
+                    {chip.label}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Conference Secretariat */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+              className="lg:col-span-1 bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-500 flex flex-col"
+            >
+              {/* Header strip */}
+              <div className="bg-brand-orange px-8 py-5 flex items-center min-h-[80px]">
+                <h3 className="text-white font-serif font-bold text-xl">Conference Secretariat</h3>
+              </div>
+
+              <div className="p-8 space-y-6 flex-grow">
+                <a
+                  href="https://maps.google.com/?q=JK+Lakshmipat+University+Jaipur"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 group-hover:bg-brand-blue group-hover:border-brand-blue transition-colors">
+                    <MapPin size={16} className="text-brand-blue group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-brand-blue group-hover:text-brand-orange transition-colors leading-snug">
+                      JK Lakshmipat University,<br />Jaipur, Rajasthan, India
+                    </p>
+                  </div>
+                </a>
+
+                <a href="mailto:sankalp@jklu.edu.in" className="flex items-start gap-4 group">
+                  <div className="w-9 h-9 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 group-hover:bg-brand-orange group-hover:border-brand-orange transition-colors">
+                    <Mail size={16} className="text-brand-orange group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-brand-blue group-hover:text-brand-orange transition-colors">
+                      sankalp@jklu.edu.in
+                    </p>
+                  </div>
+                </a>
+
+              </div>
+
+              <div className="px-8 pb-8">
+                <a
+                  href="https://maps.google.com/?q=JK+Lakshmipat+University+Jaipur"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brand-blue text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-orange transition-colors duration-300"
+                >
+                  <MapPin size={14} />
+                  View on Google Maps
+                </a>
               </div>
             </motion.div>
           </div>
-
-          {/* Campus Image Showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="relative h-64 border border-slate-200 shadow-sm rounded-lg overflow-hidden group w-full"
-          >
-            <Image
-              src="/Images/footer_image.webp"
-              alt="JKLU Campus"
-              fill
-              sizes="(max-width: 1000px) 100vw, 1000px"
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/60 to-transparent flex items-end p-4">
-              <span className="text-white font-sans font-bold text-xs tracking-wider uppercase">JKLU Campus, Jaipur</span>
-            </div>
-          </motion.div>
 
         </div>
       </Section>
