@@ -614,17 +614,17 @@ export default function Home() {
           <div className="mt-20 border-t border-brand-blue/10 pt-16 -mx-8 px-8 sm:mx-0 sm:px-0">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12">
               <div>
-                <h3 className="font-serif font-bold text-3xl text-brand-blue mb-2">Advisory Boards</h3>
-                <p className="text-slate-500 font-medium text-sm">A premium showcase of our research leadership.</p>
+                <h3 className="font-serif font-bold text-3xl text-brand-blue mb-2">Organising Committee & Advisory Boards</h3>
+                <p className="text-slate-500 font-medium text-sm">A premium showcase of our conference leadership and advisors.</p>
               </div>
             </div>
 
             {/* The 3 Cards Gallery */}
             <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 w-full group/gallery" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              {[
+               {[
                 { id: 'international', title: 'International Advisory Board', subtitle: 'Global research leaders', number: '01' },
                 { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India', number: '02' },
-                { id: 'internal', title: 'Internal Committees', subtitle: 'Organizing pillars at JKLU', number: '03' }
+                { id: 'internal', title: 'Organising Committee', subtitle: 'Organizing pillars at JKLU', number: '03' }
               ].map((board, i) => (
                 <motion.div
                   key={board.id}
@@ -809,7 +809,7 @@ export default function Home() {
                         <h4 className="text-xl md:text-2xl font-serif font-bold text-white uppercase tracking-wider">
                           {activeAdvisory === 'international' && 'International Advisory Board'}
                           {activeAdvisory === 'national' && 'National Advisory Board'}
-                          {activeAdvisory === 'internal' && 'Internal Conference Committees'}
+                          {activeAdvisory === 'internal' && 'Organising Committee'}
                         </h4>
                         <p className="text-brand-orange text-xs font-bold uppercase tracking-widest mt-2">SANKALP 2027</p>
                       </div>
@@ -842,7 +842,7 @@ export default function Home() {
                             </div>
                           </div>
                           <p className="text-slate-500 text-xs leading-relaxed font-medium italic">
-                            Note: The Internal Organizing Committees comprise faculty members, research teams, and administrative support staff from the Institute of Engineering & Technology (IET) and Centre for Global Learning (CGLP) at JK Lakshmipat University.
+                            Note: The Organising Committee comprises faculty members, research teams, and administrative support staff from the Institute of Engineering & Technology (IET) and Centre for Global Learning (CGLP) at JK Lakshmipat University.
                           </p>
                         </div>
                       ) : (

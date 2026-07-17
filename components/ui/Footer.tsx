@@ -127,22 +127,6 @@ const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?
   </svg>
 );
 
-const ArrowUpIcon = ({ size = 18, className = '' }: { size?: number; className?: string }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="3.2" 
-    strokeLinecap="square" 
-    strokeLinejoin="miter" 
-    className={className}
-  >
-    <polyline points="18 15 12 9 6 15" />
-  </svg>
-);
-
 const HeartIcon = ({ size = 14, className = '' }: { size?: number; className?: string }) => (
   <svg 
     width={size} 
@@ -156,10 +140,6 @@ const HeartIcon = ({ size = 14, className = '' }: { size?: number; className?: s
 );
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="relative bg-[#0b0f19] border-t border-white/10 py-16 px-6 overflow-hidden select-none">
       
@@ -395,14 +375,6 @@ export default function Footer() {
               style={{ width: 'auto', height: '48px' }}
             />
           </a>
-          <button
-            onClick={scrollToTop}
-            className="w-10 h-10 bg-brand-orange text-white hover:bg-orange-600 transition-all rounded-md flex justify-center items-center cursor-pointer hover:shadow-md"
-            aria-label="Scroll back to top"
-            id="scroll-to-top-btn"
-          >
-            <ArrowUpIcon size={20} />
-          </button>
         </div>
       </div>
 

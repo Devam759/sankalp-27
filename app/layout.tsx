@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/react'
+import { ScrollToTop } from '@/components/ui/ScrollToTop'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sankalp.jklu.edu.in'),
@@ -98,6 +99,7 @@ export default function RootLayout({
       </head>
       <body className={`${merriweather.variable} ${sourceSans.variable} font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen`}>
         {children}
+        <ScrollToTop />
         <Analytics />
       </body>
     </html>
