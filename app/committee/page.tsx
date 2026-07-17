@@ -230,7 +230,13 @@ function DomainModal({ domain, onClose }: { domain: Domain; onClose: () => void 
         {/* Expert Grid — scrollable */}
         <div className="flex-1 overflow-y-auto px-8 md:px-12 py-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {domain.experts.map((expert, idx) => (
+            {[...domain.experts]
+              .sort((a, b) => {
+                const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                return nameA.localeCompare(nameB);
+              })
+              .map((expert, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 16 }}
@@ -351,9 +357,9 @@ export default function MindsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
                   { name: 'Prof. Amit', title: 'Professor of IET, JKLU' },
+                  { name: 'Prof. Devika', title: 'Professor of IET, JKLU' },
                   { name: 'Prof. Taruna', title: 'Professor of IET, JKLU' },
-                  { name: 'Prof. Umesh', title: 'Professor of IET, JKLU' },
-                  { name: 'Prof. Devika', title: 'Professor of IET, JKLU' }
+                  { name: 'Prof. Umesh', title: 'Professor of IET, JKLU' }
                 ].map((member, i) => (
                   <motion.div key={`prog-${i}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} 
                     className="bg-brand-blue rounded flex flex-col items-center text-center p-5 shadow-xl relative group transform transition-transform duration-500 hover:-translate-y-1">
@@ -390,7 +396,11 @@ export default function MindsPage() {
               <div className="flex-1 h-[1px] bg-brand-blue/10" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {advisoryBoard.international.map((member, i) => (
+              {[...advisoryBoard.international].sort((a, b) => {
+                const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                return nameA.localeCompare(nameB);
+              }).map((member, i) => (
                 <motion.div 
                   key={`intl-${i}`}
                   initial={{ opacity: 0, y: 16 }}
@@ -414,7 +424,11 @@ export default function MindsPage() {
               <div className="flex-1 h-[1px] bg-brand-blue/10" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {advisoryBoard.national.map((member, i) => (
+              {[...advisoryBoard.national].sort((a, b) => {
+                const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                return nameA.localeCompare(nameB);
+              }).map((member, i) => (
                 <motion.div 
                   key={`natl-${i}`}
                   initial={{ opacity: 0, y: 16 }}

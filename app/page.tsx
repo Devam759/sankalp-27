@@ -462,7 +462,11 @@ export default function Home() {
           {/* Plenary Speaker */}
           <div className="flex flex-col items-center">
             <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.25em] mb-6">Plenary Speaker</span>
-            {speakers.plenary.map((speaker, i) => (
+            {[...speakers.plenary].sort((a, b) => {
+              const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+              const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+              return nameA.localeCompare(nameB);
+            }).map((speaker, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -495,7 +499,11 @@ export default function Home() {
               <span className="text-[10px] font-bold text-brand-blue uppercase tracking-[0.25em]">Keynote Speakers</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {speakers.keynote.map((speaker, i) => (
+              {[...speakers.keynote].sort((a, b) => {
+                const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                return nameA.localeCompare(nameB);
+              }).map((speaker, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -837,7 +845,7 @@ export default function Home() {
                             <hr className="border-slate-100" />
                             <div>
                               <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Program Chairs</span>
-                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Amit / Prof. Taruna / Prof. Umesh, and Prof. Devika</span>
+                              <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Amit / Prof. Devika / Prof. Taruna, and Prof. Umesh</span>
                               <span className="text-slate-500 text-xs block font-medium">Professors of Institute of Engineering & Technology (IET), JKLU</span>
                             </div>
                           </div>
@@ -847,12 +855,18 @@ export default function Home() {
                         </div>
                       ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {(activeAdvisory === 'international' ? advisoryBoard.international : advisoryBoard.national).map((member, idx) => (
-                            <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
-                              <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
-                              <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
-                            </div>
-                          ))}
+                          {[...(activeAdvisory === 'international' ? advisoryBoard.international : advisoryBoard.national)]
+                            .sort((a, b) => {
+                              const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                              const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                              return nameA.localeCompare(nameB);
+                            })
+                            .map((member, idx) => (
+                              <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
+                                <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
+                                <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
+                              </div>
+                            ))}
                         </div>
                       )}
                     </div>
