@@ -242,12 +242,7 @@ export default function Footer() {
                   JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <PhoneIcon className="text-brand-orange shrink-0" size={16} />
-                <a href="tel:+911417107500" className="hover:text-brand-orange transition-colors">
-                  +91 141 7107500
-                </a>
-              </li>
+
               <li className="flex items-center gap-3">
                 <EmailIcon className="text-brand-orange shrink-0" size={16} />
                 <a href="mailto:sankalp@jklu.edu.in" className="hover:text-brand-orange transition-colors">

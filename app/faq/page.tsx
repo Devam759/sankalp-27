@@ -146,7 +146,7 @@ export default function FAQPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+          <div className="max-w-md mx-auto pt-4">
             <div className="p-6 bg-white border border-[#E6E8EC] rounded-2xl flex flex-col items-center text-center space-y-3">
               <div className="p-3 bg-brand-orange/10 rounded-full text-brand-orange">
                 <Mail size={24} />
@@ -155,17 +155,6 @@ export default function FAQPage() {
               <p className="text-xs text-slate-500 max-w-[200px]">For registrations, paper submissions, and official letters.</p>
               <a href="mailto:sankalp@jklu.edu.in" className="text-sm font-bold text-brand-orange hover:underline">
                 sankalp@jklu.edu.in
-              </a>
-            </div>
-
-            <div className="p-6 bg-white border border-[#E6E8EC] rounded-2xl flex flex-col items-center text-center space-y-3">
-              <div className="p-3 bg-brand-orange/10 rounded-full text-brand-orange">
-                <Phone size={24} />
-              </div>
-              <h3 className="font-bold text-brand-ink text-sm sm:text-base">Logistics Support</h3>
-              <p className="text-xs text-slate-500 max-w-[200px]">For accommodation, route, and transit support.</p>
-              <a href="tel:+911417107500" className="text-sm font-bold text-brand-orange hover:underline">
-                +91 141 7107500
               </a>
             </div>
           </div>

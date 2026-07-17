@@ -86,7 +86,6 @@ export default function ShippingPolicy() {
               <p>JK Lakshmipat University</p>
               <p>Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India</p>
               <p><strong>Email:</strong> <a href="mailto:sankalp@jklu.edu.in" className="text-brand-orange hover:underline">sankalp@jklu.edu.in</a></p>
-              <p><strong>Phone:</strong> +91 141 7107500</p>
             </div>
           </div>
 

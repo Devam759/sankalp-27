@@ -237,7 +237,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
   });
 
   // Footer Content
-  page.drawText('JK Lakshmipat University · www.jklu.edu.in · +91-141-5117000', {
+  page.drawText('JK Lakshmipat University · www.jklu.edu.in', {
     x: 40,
     y: 65,
     size: 7.5,

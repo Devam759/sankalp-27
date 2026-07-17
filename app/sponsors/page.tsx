@@ -386,7 +386,7 @@ export default function SponsorsPage() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a 
-              href="mailto:amit.sinhal@jklu.edu.in?subject=SANKALP 2027 Sponsorship Kit Request"
+              href="mailto:sankalp@jklu.edu.in?subject=SANKALP 2027 Sponsorship Kit Request"
               className="w-full sm:w-auto text-center bg-brand-orange text-white font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md cursor-pointer text-sm"
             >
               Request Sponsorship Kit
@@ -429,8 +429,8 @@ export default function SponsorsPage() {
               <div className="space-y-4 text-sm text-slate-700 font-sans font-medium">
                 <div className="flex items-center gap-3">
                   <Mail size={16} className="text-brand-orange shrink-0" />
-                  <a href="mailto:amit.sinhal@jklu.edu.in" className="hover:text-brand-orange transition-colors">
-                    amit.sinhal@jklu.edu.in
+                  <a href="mailto:sankalp@jklu.edu.in" className="hover:text-brand-orange transition-colors">
+                    sankalp@jklu.edu.in
                   </a>
                 </div>
 
