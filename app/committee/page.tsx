@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, useInView, Variants, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
-import { committeeMembers, advisoryBoard, technicalProgramCommittee, trackChairs } from '@/constants/conferenceData';
+import { committeeMembers, advisoryBoard, technicalProgramCommittee, trackChairs, organizingSubCommittees } from '@/constants/conferenceData';
 
 /* ─── Animation presets ─────────────────────────────────────── */
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -285,11 +286,6 @@ export default function MindsPage() {
 
       {/* SECTION 1 — FORMAL OPENING */}
       <section ref={heroRef} className="pt-44 pb-24 px-8 max-w-[1440px] mx-auto w-full text-center flex flex-col items-center">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.9, ease }} className="mb-8 flex items-center justify-center gap-6">
-          <div className="w-12 h-[1px] bg-brand-orange/50" />
-          <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-brand-orange">SANKALP 2027</span>
-          <div className="w-12 h-[1px] bg-brand-orange/50" />
-        </motion.div>
         <motion.h1 initial={{ opacity: 0, y: 40 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1.1, ease, delay: 0.1 }} className="font-serif font-bold text-brand-blue text-5xl md:text-7xl leading-tight tracking-tight mb-8 max-w-4xl mx-auto">
           Academic &amp; Organizing Committees
         </motion.h1>
@@ -298,93 +294,188 @@ export default function MindsPage() {
         </motion.p>
       </section>
 
-      {/* SECTION 2 — FORMAL DIRECTORY */}
-      <section className="py-32 border-t border-brand-blue/10 bg-[#f7f4ef]">
+      {/* SECTION 2 — LEADERSHIP COMMITTEE */}
+      <section className="py-32 bg-[#f7f4ef] overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-8">
+
+          {/* Section Header */}
           <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20 text-center">
-            <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">Conference Governance</motion.p>
-            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-4xl md:text-5xl mb-0 leading-tight">Leadership Committee</motion.h2>
+            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-4xl md:text-6xl leading-tight mb-5">
+              Leadership Committee
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+              The distinguished academics and institutional leaders who guide the vision, governance, and academic excellence of SANKALP 2027.
+            </motion.p>
           </motion.div>
 
-          <div className="flex flex-col gap-16">
-            
-            {/* Top Tier: Patrons */}
+          {/* ── Tier 1: Patrons ── */}
+          <div className="mb-24">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-8 h-[2px] bg-brand-orange" />
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">Patrons</span>
+              <div className="flex-1 h-px bg-slate-200" />
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { role: 'Chief Patron', name: committeeMembers.chiefPatron.name, title: 'JK Lakshmipat University' },
-                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatron.name, title: 'JK Lakshmipat University' },
-                { role: 'Patron', name: committeeMembers.patron.name, title: committeeMembers.patron.title },
+                { role: 'Chief Patron', name: 'Chancellor', institution: 'JK Lakshmipat University', image: '/Images/committee_chancellor.png' },
+                { role: 'Chief Co-Patron', name: 'Pro Chancellor', institution: 'JK Lakshmipat University', image: '/Images/committee_prochancellor.png' },
+                { role: 'Patron', name: 'Prof. Vijay Shekhar Chellaboina', institution: 'Vice Chancellor, JKLU', image: '/Images/committee_vc.png' },
               ].map((member, i) => (
-                <motion.div key={`patron-${i}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} 
-                  className="bg-brand-blue rounded flex flex-col items-center text-center p-6 shadow-2xl relative group transform transition-transform duration-500 hover:-translate-y-2">
-                  <div className="absolute inset-0 border border-white/5 rounded pointer-events-none group-hover:border-brand-orange/30 transition-colors duration-500"></div>
-                  <div className="w-full aspect-[4/5] bg-slate-800/50 rounded border border-white/10 mb-6 flex items-center justify-center relative overflow-hidden">
-                    <span className="text-white/20 font-mono text-xs tracking-widest z-10">PORTRAIT</span>
-                    <div className="absolute inset-0 bg-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
-                  <h3 className="font-serif font-bold text-white text-xl md:text-2xl uppercase tracking-wide mb-2">{member.name}</h3>
-                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange mb-2 block">{member.role}</span>
-                  {member.title && <p className="text-white/50 font-medium text-[10px] uppercase tracking-widest">{member.title}</p>}
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Second Tier: Chairs */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
-              {[
-                { role: committeeMembers.chairs[0].role, name: committeeMembers.chairs[0].name, title: committeeMembers.chairs[0].title },
-                { role: committeeMembers.chairs[1].role, name: committeeMembers.chairs[1].name, title: committeeMembers.chairs[1].title },
-              ].map((member, i) => (
-                <motion.div key={`chair-${i}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} 
-                  className="bg-brand-blue rounded flex flex-col items-center text-center p-6 shadow-2xl relative group transform transition-transform duration-500 hover:-translate-y-2">
-                  <div className="absolute inset-0 border border-white/5 rounded pointer-events-none group-hover:border-brand-orange/30 transition-colors duration-500"></div>
-                  <div className="w-full aspect-[4/5] bg-slate-800/50 rounded border border-white/10 mb-6 flex items-center justify-center relative overflow-hidden">
-                    <span className="text-white/20 font-mono text-xs tracking-widest z-10">PORTRAIT</span>
-                    <div className="absolute inset-0 bg-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
-                  <h3 className="font-serif font-bold text-white text-xl md:text-2xl uppercase tracking-wide mb-2">{member.name}</h3>
-                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-brand-orange mb-2 block">{member.role}</span>
-                  {member.title && <p className="text-white/50 font-medium text-[10px] uppercase tracking-widest">{member.title}</p>}
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Third Tier: Program Chairs */}
-            <div className="pt-12 border-t border-brand-blue/10">
-              <div className="text-center mb-10">
-                <span className="text-xs font-bold tracking-[0.28em] uppercase text-slate-400">Program Chairs</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  { name: 'Prof. Amit', title: 'Professor of IET, JKLU' },
-                  { name: 'Prof. Devika', title: 'Professor of IET, JKLU' },
-                  { name: 'Prof. Taruna', title: 'Professor of IET, JKLU' },
-                  { name: 'Prof. Umesh', title: 'Professor of IET, JKLU' }
-                ].map((member, i) => (
-                  <motion.div key={`prog-${i}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} 
-                    className="bg-brand-blue rounded flex flex-col items-center text-center p-5 shadow-xl relative group transform transition-transform duration-500 hover:-translate-y-1">
-                    <div className="absolute inset-0 border border-white/5 rounded pointer-events-none group-hover:border-brand-orange/30 transition-colors duration-500"></div>
-                    <div className="w-full aspect-[4/5] bg-slate-800/50 rounded border border-white/10 mb-5 flex items-center justify-center relative overflow-hidden">
-                      <span className="text-white/20 font-mono text-[10px] tracking-widest z-10">PORTRAIT</span>
-                      <div className="absolute inset-0 bg-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <motion.div
+                  key={`patron-${i}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  className="group bg-white rounded-3xl p-10 flex flex-col items-center text-center shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-slate-100/80 hover:shadow-[0_24px_60px_rgba(15,38,92,0.08)] hover:-translate-y-1.5 transition-all duration-500"
+                >
+                  {/* Portrait Container */}
+                  <div className="relative mb-8">
+                    {/* Ring decoration */}
+                    <div className="absolute -inset-[10px] rounded-full border border-slate-100 group-hover:border-brand-orange/40 transition-colors duration-500" />
+                    <div className="absolute -inset-[5px] rounded-full border border-brand-orange/20 group-hover:border-brand-orange/80 transition-colors duration-500" />
+                    
+                    {/* Image frame */}
+                    <div className="w-44 h-44 rounded-full overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={176}
+                        height={176}
+                        className="object-cover w-full h-full"
+                      />
                     </div>
-                    <h3 className="font-serif font-bold text-white text-lg uppercase tracking-wide mb-1">{member.name}</h3>
-                    <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-brand-orange mb-1 block">Program Chair</span>
-                    <p className="text-white/50 font-medium text-[9px] uppercase tracking-widest">{member.title}</p>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+
+                  {/* Details */}
+                  <div className="flex-1 flex flex-col items-center">
+                    <span className="text-brand-orange text-[10px] font-bold uppercase tracking-[0.25em] mb-2 block">{member.role}</span>
+                    <h3 className="font-serif font-bold text-brand-blue text-xl leading-tight mb-2 group-hover:text-brand-orange transition-colors duration-300 min-h-[44px] flex items-center justify-center">
+                      {member.name}
+                    </h3>
+                    <p className="text-slate-500 text-xs font-medium leading-relaxed max-w-[220px]">
+                      {member.institution}
+                    </p>
+                  </div>
+
+                  {/* Bottom elegant bar decoration */}
+                  <div className="mt-8 w-12 h-[2px] bg-slate-100 group-hover:w-24 group-hover:bg-brand-orange transition-all duration-500" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-slate-200/80 mb-20" />
+
+          {/* ── Tier 2: Conference Chairs ── */}
+          <div className="mb-24">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-8 h-[2px] bg-brand-orange" />
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">Conference Chairs</span>
+              <div className="flex-1 h-px bg-slate-200" />
             </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full">
+              {[
+                { role: committeeMembers.chairs[0].role, name: committeeMembers.chairs[0].name, institution: committeeMembers.chairs[0].title, image: '/Images/committee_chair_male.png' },
+                { role: committeeMembers.chairs[1].role, name: committeeMembers.chairs[1].name, institution: committeeMembers.chairs[1].title, image: '/Images/committee_chair_female.png' },
+              ].map((member, i) => (
+                <motion.div
+                  key={`chair-${i}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  className="group bg-white rounded-3xl p-10 flex items-center gap-8 shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-slate-100/80 hover:shadow-[0_24px_60px_rgba(15,38,92,0.08)] hover:-translate-y-1.5 transition-all duration-500"
+                >
+                  {/* Portrait */}
+                  <div className="relative shrink-0">
+                    <div className="absolute -inset-[8px] rounded-full border border-brand-orange/10 group-hover:border-brand-orange/50 transition-colors duration-500" />
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={128}
+                        height={128}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Info */}
+                  <div className="text-left flex-1">
+                    <span className="text-brand-orange text-[10px] font-bold uppercase tracking-[0.25em] block mb-2">{member.role}</span>
+                    <h3 className="font-serif font-bold text-brand-blue text-xl leading-tight mb-2 group-hover:text-brand-orange transition-colors duration-300">
+                      {member.name}
+                    </h3>
+                    <p className="text-slate-500 text-xs font-medium leading-relaxed font-sans">
+                      {member.institution}
+                    </p>
+                    <div className="mt-5 w-10 h-[2px] bg-slate-100 group-hover:w-20 group-hover:bg-brand-orange transition-all duration-500" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          {/* Divider */}
+          <div className="border-t border-slate-200 mb-20" />
+
+          {/* ── Tier 3: Program Chairs ── */}
+          <div>
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-6 h-[2px] bg-brand-orange" />
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">Program Chairs</span>
+              <div className="flex-1 h-px bg-slate-200" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { name: 'Prof. Amit Kumar', track: 'Sustainable AI', image: '/Images/committee_prog_male1.png' },
+                { name: 'Prof. Devika Bhatnagar', track: 'Smart Healthcare', image: '/Images/committee_prog_female1.png' },
+                { name: 'Prof. Taruna Gautam', track: 'Data & GenAI', image: '/Images/committee_prog_female1.png' },
+                { name: 'Prof. Umesh Gupta', track: 'HPC & Networks', image: '/Images/committee_prog_male1.png' },
+              ].map((member, i) => (
+                <motion.div
+                  key={`prog-${i}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.55, ease }}
+                  className="group bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center text-center hover:shadow-[0_8px_40px_rgba(15,38,92,0.08)] hover:-translate-y-1.5 transition-all duration-500"
+                >
+                  <div className="relative mb-6">
+                    <div className="absolute -inset-[6px] rounded-full border border-dashed border-slate-200 group-hover:border-brand-orange/40 transition-colors duration-500" />
+                    <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-white shadow-md group-hover:border-brand-orange/50 transition-colors duration-500">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={112}
+                        height={112}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-600"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="font-serif font-bold text-brand-blue text-base leading-snug mb-2 group-hover:text-brand-orange transition-colors duration-400">{member.name}</h3>
+                  <span className="text-brand-orange text-[9px] font-bold uppercase tracking-[0.2em] block mb-2">Program Chair</span>
+                  <p className="text-slate-500 text-xs font-medium leading-relaxed">{member.track}</p>
+                  <p className="text-slate-300 text-[10px] mt-1 font-semibold">IET · JKLU</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 
+
       {/* SECTION 2.5 — ADVISORY BOARDS */}
+
       <section className="py-32 border-t border-brand-blue/10 bg-white">
         <div className="max-w-[1440px] mx-auto px-8">
           <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20 text-center">
-            <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">Global Network</motion.p>
             <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-4xl md:text-5xl mb-0 leading-tight">Advisory Boards</motion.h2>
           </motion.div>
 
@@ -443,6 +534,69 @@ export default function MindsPage() {
               ))}
             </div>
           </div>
+
+          {/* Technical Program Committee */}
+          <div className="mt-24 mb-24">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-10 h-[2px] bg-brand-orange" />
+              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">Technical Program Committee</h3>
+              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {technicalProgramCommittee.map((member, i) => (
+                <motion.div 
+                  key={`tpc-${i}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
+                  className="bg-[#f7f4ef]/60 p-6 border border-brand-blue/5 rounded-2xl hover:border-brand-orange/30 hover:shadow-md transition-all group flex flex-col justify-between"
+                >
+                  <div>
+                    <h4 className="font-bold text-brand-blue text-base mb-1.5 group-hover:text-brand-orange transition-colors">{member.name}</h4>
+                    <p className="text-slate-500 text-xs font-medium leading-relaxed mb-3">{member.institution}, {member.country}</p>
+                  </div>
+                  <span className="inline-block text-[9px] font-bold text-brand-orange bg-brand-orange/5 px-2.5 py-1 rounded uppercase tracking-wider self-start">
+                    {member.area}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Organizing Sub-Committees */}
+          <div>
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-10 h-[2px] bg-brand-orange" />
+              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">Organizing Sub-Committees</h3>
+              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {organizingSubCommittees.map((committee, i) => (
+                <motion.div 
+                  key={`osc-${i}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
+                  className="bg-[#f7f4ef]/60 p-6 border border-brand-blue/5 rounded-2xl hover:border-brand-orange/30 hover:shadow-md transition-all group"
+                >
+                  <h4 className="font-serif font-bold text-brand-blue text-lg mb-4 group-hover:text-brand-orange transition-colors border-b border-brand-blue/5 pb-2">
+                    {committee.name}
+                  </h4>
+                  <ul className="space-y-2">
+                    {committee.members.map((member, mIdx) => (
+                      <li key={mIdx} className="text-slate-600 text-xs font-medium flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
+                        <span>{member}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 

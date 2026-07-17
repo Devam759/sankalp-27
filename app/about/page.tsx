@@ -41,12 +41,7 @@ export default function About() {
         <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10 relative">
           
           <div className="flex flex-col justify-center relative">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-[2px] bg-brand-orange"></div>
-              <span className="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs">
-                About The Conference
-              </span>
-            </div>
+
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-blue leading-[1.2] mb-8">
               Advancing Sustainable AI,<br/>
@@ -129,13 +124,13 @@ export default function About() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-                    <h4 className="text-brand-orange font-bold text-sm tracking-widest uppercase mb-4">The Objective</h4>
+                    <p className="leading-relaxed text-base font-semibold text-brand-blue mb-2">Objective</p>
                     <p className="leading-relaxed text-base">
                       The conference aims to bring together distinguished academicians, researchers, industry leaders, innovators, policymakers, and students from across the world to discuss advancements in emerging technologies, sustainable innovation, and intelligent future-ready systems.
                     </p>
                   </motion.div>
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
-                    <h4 className="text-brand-orange font-bold text-sm tracking-widest uppercase mb-4">The Impact</h4>
+                    <p className="leading-relaxed text-base font-semibold text-brand-blue mb-2">Impact</p>
                     <p className="leading-relaxed text-base">
                       Serving as a global platform for intellectual exchange, SANKALP 2027 encourages research collaboration, knowledge sharing, and exploration of technology-driven solutions addressing contemporary global challenges.
                     </p>

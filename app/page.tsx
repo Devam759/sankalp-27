@@ -321,10 +321,6 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-20"
           >
-            <div className="flex items-center gap-4 mb-5">
-              <div className="w-12 h-[2px] bg-brand-orange" />
-              <span className="text-brand-orange text-[10px] font-bold tracking-[0.3em] uppercase">What to Expect</span>
-            </div>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] tracking-tight">
                 Conference<br />
@@ -736,45 +732,31 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#0b1220]/40 to-transparent" />
 
             {/* Bottom caption */}
-            <div className="absolute bottom-0 inset-x-0 p-8 md:p-12 flex items-end justify-between gap-6">
-              <div>
-                <motion.p
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                  className="text-brand-orange text-xs font-bold uppercase tracking-[0.2em] mb-3"
-                >
-                  Conference Venue · SANKALP 2027
-                </motion.p>
-                <motion.h3
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-white font-serif font-bold text-2xl md:text-4xl leading-tight"
-                >
-                  JK Lakshmipat University<br className="hidden md:block" />
-                  <span className="text-white/70 text-xl md:text-3xl font-normal"> — Jaipur, India</span>
-                </motion.h3>
-              </div>
-
-              {/* Year badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+            <div className="absolute bottom-0 inset-x-0 p-8 md:p-12 z-10">
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="hidden md:flex flex-col items-center justify-center w-24 h-24 rounded-full border-2 border-brand-orange/60 bg-white/10 backdrop-blur-md shrink-0"
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-brand-orange text-xs font-bold uppercase tracking-[0.2em] mb-3"
               >
-                <span className="text-brand-orange font-mono font-black text-2xl leading-none">27</span>
-                <span className="text-white/70 text-[9px] font-bold uppercase tracking-widest mt-1">SANKALP</span>
-              </motion.div>
+                Conference Venue · SANKALP 2027
+              </motion.p>
+              <motion.h3
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="text-white font-serif font-bold text-2xl md:text-4xl leading-tight"
+              >
+                JK Lakshmipat University<br className="hidden md:block" />
+                <span className="text-white/70 text-xl md:text-3xl font-normal"> — Jaipur, India</span>
+              </motion.h3>
             </div>
           </motion.div>
 
           {/* ── Content Grid ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
             {/* About University */}
             <motion.div
@@ -838,62 +820,6 @@ export default function Home() {
                     {chip.label}
                   </span>
                 ))}
-              </div>
-            </motion.div>
-
-            {/* Conference Secretariat */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-              className="lg:col-span-1 bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-500 flex flex-col"
-            >
-              {/* Header strip */}
-              <div className="bg-brand-orange px-8 py-5 flex items-center min-h-[80px]">
-                <h3 className="text-white font-serif font-bold text-xl">Conference Secretariat</h3>
-              </div>
-
-              <div className="p-8 space-y-6 flex-grow">
-                <a
-                  href="https://maps.google.com/?q=JK+Lakshmipat+University+Jaipur"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 group-hover:bg-brand-blue group-hover:border-brand-blue transition-colors">
-                    <MapPin size={16} className="text-brand-blue group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-brand-blue group-hover:text-brand-orange transition-colors leading-snug">
-                      JK Lakshmipat University,<br />Jaipur, Rajasthan, India
-                    </p>
-                  </div>
-                </a>
-
-                <a href="mailto:sankalp@jklu.edu.in" className="flex items-start gap-4 group">
-                  <div className="w-9 h-9 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 group-hover:bg-brand-orange group-hover:border-brand-orange transition-colors">
-                    <Mail size={16} className="text-brand-orange group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-brand-blue group-hover:text-brand-orange transition-colors">
-                      sankalp@jklu.edu.in
-                    </p>
-                  </div>
-                </a>
-
-              </div>
-
-              <div className="px-8 pb-8">
-                <a
-                  href="https://maps.google.com/?q=JK+Lakshmipat+University+Jaipur"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brand-blue text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-orange transition-colors duration-300"
-                >
-                  <MapPin size={14} />
-                  View on Google Maps
-                </a>
               </div>
             </motion.div>
           </div>
