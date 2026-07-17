@@ -142,13 +142,6 @@ export default function Home() {
             </h1>
           </motion.div>
 
-          {/* Sanskrit name + meaning — from logo */}
-          <motion.div variants={itemVariants} className="mb-5">
-            <p className="text-brand-orange/80 text-sm font-semibold tracking-[0.12em] italic">
-              सङ्कल्प &nbsp;·&nbsp; <span className="not-italic text-white/50 text-xs tracking-widest uppercase">Resolution · Intent · Commitment</span>
-            </p>
-          </motion.div>
-
           {/* Official tagline — exactly as on the logo */}
           <motion.div variants={itemVariants} className="mb-10">
             <p className="text-white/65 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
