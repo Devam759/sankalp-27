@@ -150,7 +150,8 @@ export const speakers = {
       name: 'Prof. Ravi Vatrapu',
       role: 'Professor',
       affiliation: 'Toronto Metropolitan University, Toronto, Canada',
-      image: '/Images/footer_image.webp'
+      image: '/Images/footer_image.webp',
+      linkedin: 'https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'
     }
   ],
   keynote: [
@@ -158,19 +159,22 @@ export const speakers = {
       name: 'Prof. Arun Patil',
       role: 'Director (L&T)',
       affiliation: 'Curtin University, Singapore',
-      image: '/Images/footer_image.webp'
+      image: '/Images/footer_image.webp',
+      linkedin: 'https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'
     },
     {
       name: 'Prof. Brij Gupta',
       role: 'Director, Centre for AI and Cyber Security',
       affiliation: 'Asia University, Taiwan',
-      image: '/Images/footer_image.webp'
+      image: '/Images/footer_image.webp',
+      linkedin: 'https://www.linkedin.com/in/bbgupta/'
     },
     {
       name: 'Dr. Naveen Sivadasan',
       role: 'Principal Scientist',
       affiliation: 'TCS Research, IIT Hyderabad',
-      image: '/Images/footer_image.webp'
+      image: '/Images/footer_image.webp',
+      linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2'
     }
   ]
 };

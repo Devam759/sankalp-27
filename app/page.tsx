@@ -17,6 +17,24 @@ import {
   advisoryBoard
 } from '@/constants/conferenceData';
 
+const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?: string }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 export default function Home() {
   const [activeAdvisory, setActiveAdvisory] = React.useState<string | null>(null);
   const [loadingDone, setLoadingDone] = React.useState(true); // Animation skipped, default to true
@@ -476,7 +494,20 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <h4 className="text-2xl font-serif font-bold text-brand-blue mb-1">{speaker.name}</h4>
+                  <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
+                    <h4 className="text-2xl font-serif font-bold text-brand-blue">{speaker.name}</h4>
+                    {speaker.linkedin && (
+                      <a 
+                        href={speaker.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                        aria-label={`${speaker.name} LinkedIn Profile`}
+                      >
+                        <LinkedInIcon size={20} />
+                      </a>
+                    )}
+                  </div>
                   <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-4">{speaker.role}</p>
                   <p className="text-slate-600 text-sm font-medium leading-relaxed">{speaker.affiliation}</p>
                 </div>
@@ -513,7 +544,20 @@ export default function Home() {
                       className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
                     />
                   </div>
-                  <h4 className="text-lg font-serif font-bold text-brand-blue mb-1">{speaker.name}</h4>
+                  <div className="flex items-center justify-center gap-2 mb-1.5 w-full">
+                    <h4 className="text-lg font-serif font-bold text-brand-blue">{speaker.name}</h4>
+                    {speaker.linkedin && (
+                      <a 
+                        href={speaker.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-[#0a66c2] hover:text-[#004182] transition-colors p-1 shrink-0"
+                        aria-label={`${speaker.name} LinkedIn Profile`}
+                      >
+                        <LinkedInIcon size={16} />
+                      </a>
+                    )}
+                  </div>
                   <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-3">{speaker.role}</p>
                   <p className="text-slate-600 text-xs font-medium leading-relaxed">{speaker.affiliation}</p>
                 </motion.div>
