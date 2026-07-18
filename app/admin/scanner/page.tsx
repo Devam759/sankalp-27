@@ -6,7 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { auth, db } from '../../../lib/firebase';
 import { Html5Qrcode } from 'html5-qrcode';
-import { Check, X, User, AlertCircle, Mail, Phone, Loader2 } from 'lucide-react';
+
 
 export default function AdminScannerView() {
   const router = useRouter();
@@ -377,7 +377,7 @@ export default function AdminScannerView() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center space-y-4">
-          <Loader2 className="animate-spin text-brand-ink mx-auto" size={48} />
+          <div className="w-12 h-12 border-4 border-t-brand-ink border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin mx-auto" />
           <p className="text-admin-muted text-xs font-bold uppercase tracking-widest font-adminBody">
             Verifying Admin Scanner Access...
           </p>
@@ -400,7 +400,6 @@ export default function AdminScannerView() {
             status.type === 'success' ? 'bg-green-50 text-green-800 border-green-700' :
             status.type === 'error' ? 'bg-red-50 text-red-800 border-red-700' : 'bg-white text-brand-ink'
           }`}>
-            {status.type === 'success' ? <Check size={20} className="stroke-[3]" /> : <AlertCircle size={20} className="stroke-[3]" />}
             <span className="font-bold uppercase text-xs tracking-widest leading-none font-adminBody">{status.message}</span>
           </div>
         )}
@@ -419,9 +418,6 @@ export default function AdminScannerView() {
             {/* Stopped Camera Placeholder overlay */}
             {!cameraActive && (
               <div className="absolute inset-0 h-full w-full flex flex-col items-center justify-center p-6 text-center bg-brand-cloud z-20">
-                <div className="p-3 border-2 border-brand-ink bg-white text-brand-ink rounded-md shadow-[2px_2px_0px_0px_#030404] mb-3 animate-in zoom-in-75">
-                  <AlertCircle className="text-brand-orange" size={24} />
-                </div>
                 <h3 className="font-adminHeading text-lg font-black uppercase text-brand-ink">Camera Stopped</h3>
               </div>
             )}
@@ -429,7 +425,6 @@ export default function AdminScannerView() {
             {/* Error Placeholder overlay */}
             {cameraActive && cameraError && (
               <div className="absolute inset-0 h-full w-full flex flex-col items-center justify-center p-8 text-center bg-white z-20">
-                <AlertCircle className="text-brand-orange mb-2" size={32} />
                 <p className="text-[10px] font-bold text-brand-ink uppercase tracking-widest font-adminBody">Camera Access Blocked</p>
               </div>
             )}
@@ -494,10 +489,10 @@ export default function AdminScannerView() {
                 {/* Dismiss Cross Button */}
                 <button
                   onClick={dismissDossier}
-                  className="p-1.5 bg-white hover:bg-brand-cloud text-brand-ink border-2 border-brand-ink rounded-md shadow-[2px_2px_0px_0px_#030404] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] cursor-pointer flex items-center justify-center"
+                  className="p-1.5 bg-white hover:bg-brand-cloud text-brand-ink border-2 border-brand-ink rounded-md shadow-[2px_2px_0px_0px_#030404] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] cursor-pointer flex items-center justify-center font-black text-sm"
                   title="Close Dossier"
                 >
-                  <X size={16} className="stroke-[3]" />
+                  ✕
                 </button>
               </div>
             </div>
@@ -538,7 +533,6 @@ export default function AdminScannerView() {
               {/* Already Checked In Detail Alert */}
               {scannedData.hasEntered && (
                 <div className="bg-red-50 text-red-900 border-2 border-red-700 p-3.5 rounded-md flex gap-2.5 items-start">
-                  <AlertCircle size={16} className="text-red-700 flex-shrink-0 mt-0.5 stroke-[3]" />
                   <div className="text-[10px] font-bold uppercase tracking-wide font-adminBody leading-relaxed">
                     <p className="font-extrabold text-red-800">Warning: Already Entered</p>
                     <p className="text-[8px] text-red-700/80 mt-0.5">
@@ -559,14 +553,14 @@ export default function AdminScannerView() {
                 onClick={() => handleAction(false)}
                 className="bg-white hover:bg-brand-cloud text-brand-ink border-2 border-brand-ink font-adminHeading uppercase tracking-wider text-xs shadow-[3px_3px_0px_0px_#030404] rounded-md py-3.5 transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] cursor-pointer flex items-center justify-center gap-2"
               >
-                <X size={14} className="stroke-[3]" /> Decline
+                Decline
               </button>
               <button 
                 disabled={processingAction || scannedData.hasEntered}
                 onClick={() => handleAction(true)}
                 className="bg-brand-orange hover:bg-brand-orange/95 text-brand-ink border-2 border-brand-ink font-adminHeading uppercase tracking-wider text-xs shadow-[3px_3px_0px_0px_#030404] rounded-md py-3.5 transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_0px_#030404] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2"
               >
-                <Check size={14} className="stroke-[3]" /> Approve
+                Approve
               </button>
             </div>
           </div>

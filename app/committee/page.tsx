@@ -203,7 +203,7 @@ function DomainModal({ domain, onClose }: { domain: Domain; onClose: () => void 
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         onClick={onClose}
-        className="fixed inset-0 z-50 bg-brand-blue/60 backdrop-blur-sm"
+        className="fixed inset-0 z-50 bg-brand-blue/90"
       />
 
       {/* Modal panel */}
@@ -333,11 +333,11 @@ export default function MindsPage() {
                   {/* Portrait Container */}
                   <div className="relative mb-8">
                     {/* Ring decoration */}
-                    <div className="absolute -inset-[10px] rounded-full border border-slate-100 group-hover:border-brand-orange/40 transition-colors duration-500" />
-                    <div className="absolute -inset-[5px] rounded-full border border-brand-orange/20 group-hover:border-brand-orange/80 transition-colors duration-500" />
+                    <div className="absolute -inset-[10px] rounded-3xl border border-slate-100 group-hover:border-brand-orange/40 transition-colors duration-500" />
+                    <div className="absolute -inset-[5px] rounded-3xl border border-brand-orange/20 group-hover:border-brand-orange/80 transition-colors duration-500" />
                     
                     {/* Image frame */}
-                    <div className="w-44 h-44 rounded-full overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105">
+                    <div className="w-44 h-44 rounded-3xl overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105">
                       <Image
                         src={member.image}
                         alt={member.name}
@@ -392,8 +392,8 @@ export default function MindsPage() {
                 >
                   {/* Portrait */}
                   <div className="relative shrink-0">
-                    <div className="absolute -inset-[8px] rounded-full border border-brand-orange/10 group-hover:border-brand-orange/50 transition-colors duration-500" />
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105">
+                    <div className="absolute -inset-[8px] rounded-2xl border border-brand-orange/10 group-hover:border-brand-orange/50 transition-colors duration-500" />
+                    <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105">
                       <Image
                         src={member.image}
                         alt={member.name}
@@ -447,8 +447,8 @@ export default function MindsPage() {
                   className="group bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center text-center hover:shadow-[0_8px_40px_rgba(15,38,92,0.08)] hover:-translate-y-1.5 transition-all duration-500"
                 >
                   <div className="relative mb-6">
-                    <div className="absolute -inset-[6px] rounded-full border border-dashed border-slate-200 group-hover:border-brand-orange/40 transition-colors duration-500" />
-                    <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-white shadow-md group-hover:border-brand-orange/50 transition-colors duration-500">
+                    <div className="absolute -inset-[6px] rounded-2xl border border-dashed border-slate-200 group-hover:border-brand-orange/40 transition-colors duration-500" />
+                    <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-white shadow-md group-hover:border-brand-orange/50 transition-colors duration-500">
                       <Image
                         src={member.image}
                         alt={member.name}
@@ -587,7 +587,7 @@ export default function MindsPage() {
                   <ul className="space-y-2">
                     {committee.members.map((member, mIdx) => (
                       <li key={mIdx} className="text-slate-600 text-xs font-medium flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-sm bg-brand-orange shrink-0" />
                         <span>{member}</span>
                       </li>
                     ))}

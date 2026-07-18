@@ -414,7 +414,7 @@ export default function Sidebar() {
       {/* Sidebar Overlay for Mobile */}
       {isOpen && (
         <div 
-          className="md:hidden fixed inset-0 bg-[#030404]/40 backdrop-blur-sm z-40"
+          className="md:hidden fixed inset-0 bg-[#030404]/60 z-40"
           onClick={() => setIsOpen(false)}
         />
       )}

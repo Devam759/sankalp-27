@@ -4,23 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
-import { 
-  ChevronRight, 
-  GraduationCap, 
-  BookOpen, 
-  Building2, 
-  Users, 
-  Check,
-  PenTool,
-  Mail,
-  Download,
-  Phone,
-  Clock,
-  ArrowLeft,
-  Loader2,
-  Lock,
-  ArrowRight
-} from 'lucide-react';
+
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import { load } from '@cashfreepayments/cashfree-js';
@@ -68,43 +52,7 @@ export default function Registration() {
     }
   };
 
-  const categories = [
-    {
-      id: "student_presenter",
-      title: "Student Presenter",
-      desc: "For UG, PG, and PhD scholars presenting an accepted paper.",
-      eligibility: "Requires valid student ID.",
-      icon: <GraduationCap size={24} className="text-brand-orange" />
-    },
-    {
-      id: "academic_presenter",
-      title: "Academic Presenter",
-      desc: "For faculty members and academicians presenting an accepted paper.",
-      eligibility: "Institutional affiliation required.",
-      icon: <BookOpen size={24} className="text-brand-orange" />
-    },
-    {
-      id: "industry_presenter",
-      title: "Industry Presenter",
-      desc: "For corporate and industry professionals presenting an accepted paper.",
-      eligibility: "Corporate ID required.",
-      icon: <Building2 size={24} className="text-brand-orange" />
-    },
-    {
-      id: "attendee",
-      title: "Attendee / Delegate",
-      desc: "For individuals attending the conference sessions without a paper.",
-      eligibility: "Open to all delegates.",
-      icon: <Users size={24} className="text-brand-orange" />
-    },
-    {
-      id: "foreign_delegate",
-      title: "Foreign Delegate",
-      desc: "For international participants (presenters and attendees).",
-      eligibility: "International passport / ID required.",
-      icon: <PenTool size={24} className="text-brand-orange" />
-    }
-  ];
+
 
   const processSteps = [
     { title: "Paper Acceptance", desc: "Receive formal notification of paper acceptance from the review committee." },
@@ -420,7 +368,7 @@ export default function Registration() {
                     onClick={() => setIsFormOpen(false)}
                     className="flex items-center gap-2 text-slate-500 font-bold uppercase text-xs tracking-wider cursor-pointer"
                   >
-                    <ArrowLeft size={16} /> Cancel
+                    ← Cancel
                   </button>
                   <button
                     onClick={() => {
@@ -451,7 +399,7 @@ export default function Registration() {
                     }}
                     className="flex items-center gap-2 bg-brand-orange text-white font-bold py-3 px-6 uppercase text-xs tracking-widest hover:bg-orange-600 transition-colors shadow-sm cursor-pointer"
                   >
-                    Next Step <ArrowRight size={16} />
+                    Next Step →
                   </button>
                 </div>
               </div>
@@ -523,7 +471,7 @@ export default function Registration() {
                     onClick={() => setStep(1)}
                     className="flex items-center gap-2 text-slate-500 font-bold uppercase text-xs tracking-wider cursor-pointer"
                   >
-                    <ArrowLeft size={16} /> Back
+                    ← Back
                   </button>
                   <button
                     onClick={() => {
@@ -539,7 +487,7 @@ export default function Registration() {
                     }}
                     className="flex items-center gap-2 bg-brand-orange text-white font-bold py-3 px-6 uppercase text-xs tracking-widest hover:bg-orange-600 transition-colors shadow-sm cursor-pointer"
                   >
-                    Next Step <ArrowRight size={16} />
+                    Next Step →
                   </button>
                 </div>
               </div>
@@ -586,8 +534,8 @@ export default function Registration() {
                           className="w-full border border-slate-200 p-3 text-sm focus:outline-none focus:border-brand-orange bg-slate-50 font-mono"
                         />
                         {loading && (
-                          <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                            <Loader2 size={16} className="animate-spin text-brand-orange" />
+                          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-brand-orange font-bold animate-pulse">
+                            Loading...
                           </div>
                         )}
                       </div>
@@ -656,7 +604,7 @@ export default function Registration() {
                     onClick={() => setStep(2)}
                     className="flex items-center gap-2 text-slate-500 font-bold uppercase text-xs tracking-wider cursor-pointer"
                   >
-                    <ArrowLeft size={16} /> Back
+                    ← Back
                   </button>
                   <button
                     onClick={() => {
@@ -668,7 +616,7 @@ export default function Registration() {
                     }}
                     className="flex items-center gap-2 bg-brand-orange text-white font-bold py-3 px-6 uppercase text-xs tracking-widest hover:bg-orange-600 transition-colors shadow-sm cursor-pointer"
                   >
-                    Next Step <ArrowRight size={16} />
+                    Next Step →
                   </button>
                 </div>
               </div>
@@ -722,7 +670,7 @@ export default function Registration() {
                       disabled={couponLoading}
                       className="bg-brand-blue text-white px-6 font-bold text-xs uppercase tracking-widest hover:bg-blue-900 transition-colors shadow-sm disabled:opacity-50 cursor-pointer flex items-center justify-center min-w-[100px]"
                     >
-                      {couponLoading ? <Loader2 size={16} className="animate-spin" /> : 'Apply'}
+                      {couponLoading ? '...' : 'Apply'}
                     </button>
                   </div>
                   {couponMessage && (
@@ -759,22 +707,14 @@ export default function Registration() {
                     disabled={loading}
                     className="flex items-center gap-2 text-slate-500 font-bold uppercase text-xs tracking-wider cursor-pointer disabled:opacity-50"
                   >
-                    <ArrowLeft size={16} /> Back
+                    ← Back
                   </button>
                   <button
                     onClick={startCheckout}
                     disabled={loading}
                     className="flex items-center justify-center gap-2 bg-brand-orange text-white font-bold py-3.5 px-8 uppercase text-xs tracking-widest hover:bg-orange-600 transition-colors shadow-md cursor-pointer disabled:opacity-50 min-w-[180px]"
                   >
-                    {loading ? (
-                      <>
-                        <Loader2 size={16} className="animate-spin" /> Processing...
-                      </>
-                    ) : (
-                      <>
-                        <Lock size={14} /> Pay & Confirm
-                      </>
-                    )}
+                    {loading ? 'Processing...' : 'Pay & Confirm'}
                   </button>
                 </div>
               </div>
@@ -787,8 +727,8 @@ export default function Registration() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="text-center py-10 space-y-8"
               >
-                <div className="w-20 h-20 bg-green-100 text-green-600 rounded-none flex items-center justify-center mx-auto border-2 border-green-200">
-                  <Check size={40} className="stroke-[3]" />
+                <div className="w-20 h-20 bg-green-100 text-green-600 rounded-none flex items-center justify-center mx-auto border-2 border-green-200 font-black text-4xl select-none">
+                  ✓
                 </div>
                 
                 <div className="space-y-3">
@@ -869,7 +809,7 @@ export default function Registration() {
                 onClick={() => openRegisterForm('student_presenter')}
                 className="bg-white border border-slate-200 text-[#e91e63] font-bold py-3 px-8 rounded hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-2 tracking-wide"
               >
-                Click Here to Register Yourself <ArrowRight size={18} />
+                Click Here to Register Yourself →
               </button>
             </div>
 

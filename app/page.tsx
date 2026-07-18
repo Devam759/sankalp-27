@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import { FileText, Calendar, MapPin, ChevronRight, Check, X, Building2, Landmark, Mail, Globe, Plane, Award } from 'lucide-react';
+
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
@@ -56,6 +56,37 @@ export default function Home() {
     }, 6000); // 6 seconds per slide
     return () => clearInterval(timer);
   }, [heroImages.length]);
+
+  const [timeLeft, setTimeLeft] = React.useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isExpired: false
+  });
+
+  React.useEffect(() => {
+    const targetDate = new Date("March 5, 2027 09:00:00").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isExpired: true });
+      } else {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        setTimeLeft({ days, hours, minutes, seconds, isExpired: false });
+      }
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
 
   const containerVariants: Variants = {
@@ -147,7 +178,7 @@ export default function Home() {
           ─────────────────────────────────────────────────────────────── */}
           <motion.div variants={itemVariants} className="mb-6">
             {/* Logo placeholder — swap <div> for <Image> once file is added */}
-            <div className="w-24 h-24 rounded-sm border border-white/15 bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto" aria-label="SANKALP Conference Logo (placeholder)">
+            <div className="w-24 h-24 rounded-sm border border-white/15 bg-white/10 flex items-center justify-center mx-auto" aria-label="SANKALP Conference Logo (placeholder)">
               <span className="text-white/30 text-[9px] font-bold uppercase tracking-widest text-center leading-tight px-2">SANKALP<br/>LOGO</span>
             </div>
           </motion.div>
@@ -160,48 +191,28 @@ export default function Home() {
             </h1>
           </motion.div>
 
-          {/* Official tagline — exactly as on the logo */}
           <motion.div variants={itemVariants} className="mb-10">
             <p className="text-white/65 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
-              Sustainable AI · Next Gen Knowledge<br className="hidden md:block" />
-              Automation · Learning and Prediction
+              <span className="text-brand-orange font-bold">S</span>ustainable <span className="text-brand-orange font-bold">A</span>I · <span className="text-brand-orange font-bold">N</span>ext Gen <span className="text-brand-orange font-bold">K</span>nowledge<br className="hidden md:block" />
+              <span className="text-brand-orange font-bold">A</span>utomation · <span className="text-brand-orange font-bold">L</span>earning and <span className="text-brand-orange font-bold">P</span>rediction
             </p>
           </motion.div>
 
-          {/* Date / Venue pills */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 mb-10">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 px-5 py-2.5 text-white text-xs font-semibold tracking-widest uppercase rounded-sm">
-              <Calendar size={13} className="text-brand-orange" />
-              5 – 6 March 2027
-            </div>
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 px-5 py-2.5 text-white text-xs font-semibold tracking-widest uppercase rounded-sm">
-              <MapPin size={13} className="text-brand-orange" />
-              Jaipur, India · Hybrid Mode
-            </div>
-          </motion.div>
-
-        </motion.div>
-
-        {/* ── Bottom stat bar ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
-          className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-brand-blue/60 backdrop-blur-md"
-        >
-          <div className="max-w-5xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-white/10">
+          {/* Countdown timer */}
+          <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 mb-10">
             {[
-              { value: "5+",      label: "Keynote Speakers" },
-              { value: "20+",     label: "Technical Sessions" },
-              { value: "Mar '27", label: "Conference Date" },
-              { value: "Hybrid",  label: "Presentation Mode" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center justify-center px-4 py-2 text-center">
-                <span className="text-brand-orange text-xl font-black font-sans leading-none mb-1">{stat.value}</span>
-                <span className="text-white/55 text-[10px] font-semibold tracking-widest uppercase">{stat.label}</span>
+              { value: timeLeft.isExpired ? "00" : String(timeLeft.days).padStart(2, '0'), label: "Days" },
+              { value: timeLeft.isExpired ? "00" : String(timeLeft.hours).padStart(2, '0'), label: "Hours" },
+              { value: timeLeft.isExpired ? "00" : String(timeLeft.minutes).padStart(2, '0'), label: "Minutes" },
+              { value: timeLeft.isExpired ? "00" : String(timeLeft.seconds).padStart(2, '0'), label: "Seconds" },
+            ].map((unit) => (
+              <div key={unit.label} className="flex flex-col items-center justify-center bg-brand-blue border border-white/10 w-18 h-18 rounded-md shadow-lg">
+                <span className="text-brand-orange text-2xl font-black font-sans leading-none mb-1 tracking-wider">{unit.value}</span>
+                <span className="text-white/60 text-[8px] font-semibold tracking-widest uppercase">{unit.label}</span>
               </div>
             ))}
-          </div>
+          </motion.div>
+
         </motion.div>
 
       </section>
@@ -259,7 +270,7 @@ export default function Home() {
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: "easeOut" }}
                   className="flex items-start gap-3"
                 >
-                  <span className="text-brand-blue mt-1"><Check size={16} /></span>
+                  <span className="text-brand-blue mt-1 font-bold select-none">✓</span>
                   <span className="text-white text-sm leading-relaxed font-semibold">{info}</span>
                 </motion.li>
               ))}
@@ -465,7 +476,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="max-w-2xl bg-white border border-slate-200 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm hover:shadow-md transition-shadow text-center md:text-left w-full"
               >
-                <div className="relative w-32 h-32 rounded-full border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
+                <div className="relative w-32 h-32 rounded-2xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={speaker.image}
                     alt={speaker.name}
@@ -516,7 +527,7 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                   className="bg-white border border-slate-200 p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="relative w-24 h-24 rounded-full border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm mb-6">
+                  <div className="relative w-24 h-24 rounded-2xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm mb-6">
                     <Image
                       src={speaker.image}
                       alt={speaker.name}
@@ -566,7 +577,7 @@ export default function Home() {
                     : 'bg-brand-blue/5 border-brand-blue/20 hover:bg-brand-blue hover:text-white'
                 }`}
               >
-                <div className="relative w-16 h-16 rounded-full border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
+                <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src="/Images/footer_image.webp"
                     alt={member.name}
@@ -595,7 +606,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
                 className="bg-brand-blue text-white p-6 border border-brand-blue hover:bg-brand-blue/90 transition-shadow flex items-center gap-4 text-left group"
               >
-                <div className="relative w-16 h-16 rounded-full border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
+                <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src="/Images/footer_image.webp"
                     alt={chair.name}
@@ -620,7 +631,7 @@ export default function Home() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="bg-brand-orange text-white p-6 border border-brand-orange flex items-center justify-center gap-4 hover:bg-brand-orange/90 transition-shadow group"
           >
-            <div className="relative w-12 h-12 rounded-full border border-brand-blue/20 overflow-hidden shrink-0 bg-white shadow-sm">
+            <div className="relative w-12 h-12 rounded-xl border border-brand-blue/20 overflow-hidden shrink-0 bg-white shadow-sm">
               <Image
                 src="/Images/footer_image.webp"
                 alt="Program Chairs"
@@ -767,10 +778,7 @@ export default function Home() {
               className="lg:col-span-1 bg-gradient-to-br from-brand-blue to-[#0d1f3c] text-white rounded-2xl p-8 flex flex-col justify-between shadow-xl shadow-brand-blue/20"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-brand-orange/20 flex items-center justify-center mb-6">
-                  <Building2 size={20} className="text-brand-orange" />
-                </div>
-                <h3 className="text-xl font-serif font-bold leading-snug mb-4">JK Lakshmipat University</h3>
+                <h3 className="text-xl font-serif font-bold leading-snug mb-4 mt-2">JK Lakshmipat University</h3>
                 <p className="text-white/70 text-sm leading-relaxed">
                   A leading institution dedicated to innovation, interdisciplinary learning, and industry engagement — offering world-class conference facilities and a collaborative environment for international gatherings.
                 </p>
@@ -782,8 +790,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="flex items-center gap-2 text-xs font-bold text-brand-orange hover:text-white transition-colors group"
                 >
-                  Visit JKLU Website
-                  <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  Visit JKLU Website →
                 </a>
               </div>
             </motion.div>
@@ -796,10 +803,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
               className="lg:col-span-1 bg-white border border-slate-100 rounded-2xl p-8 flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-500"
             >
-              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-6">
-                <Landmark size={20} className="text-brand-orange" />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-brand-blue leading-snug mb-4">About Jaipur</h3>
+              <h3 className="text-xl font-serif font-bold text-brand-blue leading-snug mb-4 mt-2">About Jaipur</h3>
               <p className="text-slate-600 text-sm leading-relaxed flex-grow">
                 Known as the <strong className="text-brand-blue">Pink City of India</strong>, Jaipur is a distinguished center of culture, heritage, and innovation. As host city of SANKALP 2027, it offers delegates iconic landmarks, world-class hospitality, and excellent connectivity.
               </p>
@@ -807,16 +811,15 @@ export default function Home() {
               {/* Highlight chips */}
               <div className="mt-6 flex flex-wrap gap-2">
                 {[
-                  { icon: Landmark, label: 'UNESCO Heritage' },
-                  { icon: Plane, label: 'Great Connectivity' },
-                  { icon: Award, label: 'Rich Culture' },
-                  { icon: Building2, label: 'Premium Stays' },
+                  { label: 'UNESCO Heritage' },
+                  { label: 'Great Connectivity' },
+                  { label: 'Rich Culture' },
+                  { label: 'Premium Stays' },
                 ].map((chip, i) => (
                   <span
                     key={i}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-[10px] font-bold text-brand-blue uppercase tracking-wider hover:bg-brand-orange/5 hover:border-brand-orange/30 transition-colors cursor-default"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-bold text-brand-blue uppercase tracking-wider hover:bg-brand-orange/5 hover:border-brand-orange/30 transition-colors cursor-default"
                   >
-                    <chip.icon size={11} className="text-brand-orange" />
                     {chip.label}
                   </span>
                 ))}
@@ -836,7 +839,7 @@ export default function Home() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-[#0b101e]/80 backdrop-blur-sm"
+                  className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-[#0b101e]/95"
                   onClick={() => setActiveAdvisory(null)}
                 >
                   <motion.div
@@ -857,8 +860,8 @@ export default function Home() {
                         </h4>
                         <p className="text-brand-orange text-xs font-bold uppercase tracking-widest mt-2">SANKALP 2027</p>
                       </div>
-                      <button onClick={() => setActiveAdvisory(null)} className="text-white/50 hover:text-brand-orange transition-colors p-2 bg-white/5 rounded-full">
-                        <X size={24} />
+                      <button onClick={() => setActiveAdvisory(null)} className="text-white/50 hover:text-brand-orange transition-colors p-2 bg-white/5 rounded-md font-bold text-xs tracking-wider uppercase">
+                        Close
                       </button>
                     </div>
 

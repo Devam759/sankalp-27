@@ -6,7 +6,7 @@ import { db } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
-import { Plus, Trash2, ShieldAlert, Power, PowerOff, AlertCircle } from 'lucide-react';
+
 import { initializeApp, deleteApp, getApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from '../../../lib/firebase';
@@ -136,13 +136,12 @@ export default function ScannerAccounts() {
               : 'bg-admin-accent hover:bg-yellow-500 text-black'
           }`}
         >
-          <Plus size={20} /> Add Scanner
+          Add Scanner
         </button>
       </div>
 
       {scanners.length >= 5 && (
         <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg flex items-center gap-3">
-          <AlertCircle size={20} />
           <p className="text-sm font-medium">Scanner limit reached (5/5 accounts). Delete an account to add a new one.</p>
         </div>
       )}
@@ -168,7 +167,7 @@ export default function ScannerAccounts() {
                     <td className="p-4 font-medium">{scanner.scannerId}</td>
                     <td className="p-4">{scanner.volunteerName}</td>
                     <td className="p-4">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                      <span className={`px-2.5 py-1 rounded-md text-xs font-semibold ${
                         scanner.status === 'Active' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'
                       }`}>
                         {scanner.status || 'Active'}
@@ -180,17 +179,17 @@ export default function ScannerAccounts() {
                     <td className="p-4 flex items-center justify-end gap-3">
                       <button 
                         onClick={() => handleToggleStatus(scanner)}
-                        className="text-admin-muted hover:text-admin-text transition-colors"
+                        className="text-admin-muted hover:text-admin-text transition-colors font-bold text-xs uppercase tracking-wider"
                         title={scanner.status === 'Active' ? 'Deactivate' : 'Reactivate'}
                       >
-                        {scanner.status === 'Active' ? <PowerOff size={18} /> : <Power size={18} />}
+                        {scanner.status === 'Active' ? 'Deactivate' : 'Activate'}
                       </button>
                       <button 
                         onClick={() => { setSelectedScanner(scanner); setIsDeleteOpen(true); }}
-                        className="text-red-500/70 hover:text-red-500 transition-colors"
+                        className="text-red-500/70 hover:text-red-500 transition-colors font-bold text-xs uppercase tracking-wider"
                         title="Delete Account"
                       >
-                        <Trash2 size={18} />
+                        Delete
                       </button>
                     </td>
                   </tr>
@@ -235,7 +234,6 @@ export default function ScannerAccounts() {
       <Modal isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)} title="Delete Scanner Account">
         <div className="space-y-6">
           <div className="flex items-center gap-4 text-red-500 bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-            <ShieldAlert size={24} />
             <p className="text-sm">Are you sure you want to delete the account for <strong>{selectedScanner?.volunteerName}</strong>? This action cannot be undone.</p>
           </div>
           <div className="flex justify-end gap-3">

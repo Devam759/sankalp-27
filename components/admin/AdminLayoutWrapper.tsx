@@ -6,7 +6,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '../../lib/firebase';
 import Sidebar from './Sidebar';
-import { Loader2 } from 'lucide-react';
 
 export default function AdminLayoutWrapper({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -61,7 +60,7 @@ export default function AdminLayoutWrapper({ children }: { children: React.React
   if (loading) {
     return (
       <div className="min-h-screen bg-admin-bg flex items-center justify-center">
-        <Loader2 className="animate-spin text-admin-accent" size={48} />
+        <div className="w-12 h-12 border-4 border-t-admin-accent border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin" />
       </div>
     );
   }

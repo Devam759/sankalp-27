@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from '../../../lib/firebase';
-import { AlertCircle, Search, Check, X } from 'lucide-react';
+
 import { useScannerSession } from '../../../components/scanner/ScannerSessionProvider';
 
 export default function ScanRecordsView() {
@@ -109,9 +109,8 @@ export default function ScanRecordsView() {
               placeholder="Search by name or ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-brand-cloud/45 border-2 border-brand-ink rounded-md px-3.5 py-1.5 pl-9 text-xs font-bold text-brand-ink placeholder:text-admin-muted/65 focus:outline-none focus:bg-white transition-all shadow-[2px_2px_0px_0px_#030404]"
+              className="w-full bg-brand-cloud/45 border-2 border-brand-ink rounded-md px-3.5 py-1.5 text-xs font-bold text-brand-ink placeholder:text-admin-muted/65 focus:outline-none focus:bg-white transition-all shadow-[2px_2px_0px_0px_#030404]"
             />
-            <Search className="absolute left-3 top-2 text-admin-muted/70" size={14} />
           </div>
         </div>
 
@@ -143,7 +142,6 @@ export default function ScanRecordsView() {
                           ? 'text-green-600 border-green-600/30 bg-green-50 shadow-green-600/40' 
                           : 'text-brand-orange border-brand-orange/30 bg-brand-orange/5 shadow-brand-orange/40'
                       }`}>
-                        {isAccepted ? <Check size={10} className="stroke-[3]" /> : <X size={10} className="stroke-[3]" />}
                         {isAccepted ? 'Approved' : 'Declined'}
                       </span>
                     </td>
@@ -159,7 +157,6 @@ export default function ScanRecordsView() {
               {filteredLogs.length === 0 && (
                 <tr>
                   <td colSpan={5} className="py-12 text-center text-admin-muted">
-                    <AlertCircle className="mx-auto mb-2 text-admin-muted/30" size={32} />
                     <span className="text-[10px] font-black uppercase tracking-wider block text-brand-ink/50">No verification records found</span>
                     <span className="text-[8px] font-bold uppercase tracking-wider block text-admin-muted/60 mt-1">
                       {searchQuery ? 'Try refining your search keyword' : 'Check-in scanning logs will show up here'}

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { MapPin } from 'lucide-react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 
@@ -54,7 +53,6 @@ export default function ContactPage() {
             </div>
             
             <div className="w-full md:w-auto p-6 bg-[#f7f4ef]/50 border border-[#184176]/5 rounded-sm flex items-start gap-4 text-sm">
-              <MapPin size={24} className="text-[#f5821e] shrink-0" />
               <div>
                 <h4 className="text-[#184176] font-semibold tracking-wide mb-1 uppercase text-xs">Campus Address</h4>
                 <p className="text-[#184176]/80 leading-relaxed max-w-xs md:max-w-sm">

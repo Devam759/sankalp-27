@@ -152,7 +152,7 @@ export default function Footer() {
             <h4 className="text-white font-serif font-bold text-xl uppercase tracking-wider">
               SANKALP '27
             </h4>
-            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-full" />
+            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-sm" />
           </div>
           
           <div className="space-y-3 text-sm font-sans text-slate-400 leading-relaxed font-medium">
@@ -171,7 +171,7 @@ export default function Footer() {
             <h4 className="text-white font-serif font-bold text-base uppercase tracking-wider">
               Quick Links
             </h4>
-            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-full" />
+            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-sm" />
           </div>
           
           <ul className="grid grid-cols-1 gap-2 text-sm font-sans text-slate-400 font-medium">
@@ -201,7 +201,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/submission" className="hover:text-brand-orange transition-colors">
+              <Link href="/call-for-papers" className="hover:text-brand-orange transition-colors">
                 Submission & Publication
               </Link>
             </li>
@@ -234,7 +234,7 @@ export default function Footer() {
             <h4 className="text-white font-serif font-bold text-base uppercase tracking-wider">
               Contact Information
             </h4>
-            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-full" />
+            <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-sm" />
             <ul className="space-y-4 text-sm font-sans text-slate-400 leading-relaxed font-medium pt-2">
               <li className="flex items-start gap-3">
                 <LocationIcon className="text-brand-orange shrink-0 mt-0.5" size={18} />
