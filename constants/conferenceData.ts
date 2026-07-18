@@ -126,12 +126,15 @@ export const submissionSteps = [
 ];
 
 export const committeeMembers = {
-  chiefPatron: { role: 'Chief Patron', name: 'Chancellor' },
-  chiefCoPatron: { role: 'Chief Co-Patron', name: 'Pro Chancellor' },
-  patron: { role: 'Patron', name: 'Prof. Vijay Shekhar Chellaboina', title: 'VC, JKLU' },
+  chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: 'Chancellor, JKLU', image: '/Images/committee/chancellor_real.png' },
+  chiefCoPatrons: [
+    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/raghupati_singhania_real.jpg' },
+    { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/harsh_pati_singhania_real.png' }
+  ],
+  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc_real.png' },
   chairs: [
-    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU' },
-    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU' },
+    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar_real.png' },
+    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas_real.png' },
   ],
   programChairs: 'Professors of IET (Prof. Amit / Prof. Devika / Prof. Taruna, and Prof. Umesh)',
 };
@@ -149,8 +152,9 @@ export const speakers = {
     {
       name: 'Prof. Ravi Vatrapu',
       role: 'Professor',
-      affiliation: 'Toronto Metropolitan University, Toronto, Canada',
-      image: '/Images/footer_image.webp',
+      university: 'Toronto Metropolitan University',
+      location: 'Toronto, Canada',
+      image: '/Images/speakers/arun_patil_real.png',
       linkedin: 'https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'
     }
   ],
@@ -158,22 +162,25 @@ export const speakers = {
     {
       name: 'Prof. Arun Patil',
       role: 'Director (L&T)',
-      affiliation: 'Curtin University, Singapore',
-      image: '/Images/footer_image.webp',
+      university: 'Curtin University',
+      location: 'Singapore',
+      image: '/Images/speakers/ravi_vatrapu_real.png',
       linkedin: 'https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'
     },
     {
       name: 'Prof. Brij Gupta',
       role: 'Director, Centre for AI and Cyber Security',
-      affiliation: 'Asia University, Taiwan',
-      image: '/Images/footer_image.webp',
+      university: 'Asia University',
+      location: 'Taiwan',
+      image: '/Images/speakers/brij_gupta_real.png',
       linkedin: 'https://www.linkedin.com/in/bbgupta/'
     },
     {
       name: 'Dr. Naveen Sivadasan',
       role: 'Principal Scientist',
-      affiliation: 'TCS Research, IIT Hyderabad',
-      image: '/Images/footer_image.webp',
+      university: 'TCS Research',
+      location: 'IIT Hyderabad',
+      image: '/Images/speakers/naveen_sivadasan_real.png',
       linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2'
     }
   ]
@@ -231,10 +238,10 @@ export const technicalProgramCommittee = [
 ];
 
 export const trackChairs = [
-  { track: 'Sustainable AI', chair: 'Dr. Amit Kumar', coChair: 'Dr. Sneha Sharma' },
-  { track: 'Data Science & Generative AI', chair: 'Prof. Taruna Gautam', coChair: 'Dr. Vikram Singh' },
+  { track: 'Sustainable AI', chair: 'Dr. Amit Kumar Sinhal', coChair: 'Dr. Sneha Sharma' },
+  { track: 'Data Science & Generative AI', chair: 'Prof. Taruna Sunil', coChair: 'Dr. Vikram Singh' },
   { track: 'High Performance Computing', chair: 'Dr. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
-  { track: 'Smart Healthcare', chair: 'Prof. Devika Bhatnagar', coChair: 'Dr. Suresh Reddy' },
+  { track: 'Smart Healthcare', chair: 'Prof. Devika Kataria', coChair: 'Dr. Suresh Reddy' },
   { track: 'AI in Education', chair: 'Dr. Ramesh Chandra', coChair: 'Dr. Kavita Jain' },
   { track: 'Smart Society', chair: 'Prof. Anil Sharma', coChair: 'Dr. Meera Patel' },
   { track: 'VLSI & Intelligent Engineering', chair: 'Dr. Rajesh Verma', coChair: 'Dr. Prakash Iyer' },

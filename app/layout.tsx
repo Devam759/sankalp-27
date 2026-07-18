@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sankalp.jklu.edu.in'),
@@ -72,31 +73,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const handler = (event) => {
-                  try {
-                    const isExtensionError = 
-                      (event.filename && event.filename.includes('chrome-extension://')) ||
-                      (event.message && (event.message.includes('MetaMask') || event.message.includes('extension'))) ||
-                      (event.reason && (
-                        (event.reason.stack && event.reason.stack.includes('chrome-extension://')) ||
-                        (event.reason.message && (event.reason.message.includes('MetaMask') || event.reason.message.includes('extension')))
-                      ));
-                    
-                    if (isExtensionError) {
-                      event.stopImmediatePropagation();
-                    }
-                  } catch (e) {}
-                };
-                window.addEventListener('error', handler, true);
-                window.addEventListener('unhandledrejection', handler, true);
-              })();
-            `
-          }}
-        />
+        <Script id="extension-error-handler" strategy="beforeInteractive">
+          {`
+            (function() {
+              const handler = (event) => {
+                try {
+                  const isExtensionError = 
+                    (event.filename && event.filename.includes('chrome-extension://')) ||
+                    (event.message && (event.message.includes('MetaMask') || event.message.includes('extension'))) ||
+                    (event.reason && (
+                      (event.reason.stack && event.reason.stack.includes('chrome-extension://')) ||
+                      (event.reason.message && (event.reason.message.includes('MetaMask') || event.reason.message.includes('extension')))
+                    ));
+                  
+                  if (isExtensionError) {
+                    event.stopImmediatePropagation();
+                  }
+                } catch (e) {}
+              };
+              window.addEventListener('error', handler, true);
+              window.addEventListener('unhandledrejection', handler, true);
+            })();
+          `}
+        </Script>
       </head>
       <body className={`${merriweather.variable} ${sourceSans.variable} font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen`}>
         {children}

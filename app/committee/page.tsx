@@ -40,7 +40,7 @@ const domains: Domain[] = [
     full: 'Sustainable AI, Intelligent Systems & Responsible Digital Transformation',
     description: 'Research at the intersection of artificial intelligence, ecological responsibility, and ethical deployment of autonomous systems.',
     experts: [
-      { name: 'Dr. Amit Kumar', role: 'Track Chair', institution: 'JKLU', country: 'India', interests: ['Green AI', 'Responsible AI', 'Intelligent Systems'] },
+      { name: 'Dr. Amit Kumar Sinhal', role: 'Track Chair', institution: 'JKLU', country: 'India', interests: ['Green AI', 'Responsible AI', 'Intelligent Systems'] },
       { name: 'Dr. Sneha Sharma', role: 'Co-Chair', institution: 'JKLU', country: 'India', interests: ['Digital Transformation', 'AI Ethics'] },
       { name: 'Dr. Sarah Mitchell', role: 'TPC Member', institution: 'University of Cambridge', country: 'United Kingdom', interests: ['Sustainable AI', 'Explainability', 'Green Computing'] },
       { name: 'Prof. Wassim Haddad', role: 'International Advisor', institution: 'Georgia Institute of Technology', country: 'United States', interests: ['Nonlinear Control', 'Intelligent Systems', 'Thermodynamics'] },
@@ -55,7 +55,7 @@ const domains: Domain[] = [
     full: 'Data Science, Generative AI & Knowledge Engineering',
     description: 'Cutting-edge research on generative models, foundation models, large language models, and next-generation data intelligence.',
     experts: [
-      { name: 'Prof. Taruna Gautam', role: 'Track Chair', institution: 'JKLU', country: 'India', interests: ['Data Science', 'Machine Learning', 'Generative AI'] },
+      { name: 'Prof. Taruna Sunil', role: 'Track Chair', institution: 'JKLU', country: 'India', interests: ['Data Science', 'Machine Learning', 'Generative AI'] },
       { name: 'Dr. Vikram Singh', role: 'Co-Chair', institution: 'JKLU', country: 'India', interests: ['Knowledge Engineering', 'NLP', 'Cognitive Computing'] },
       { name: 'Dr. Hiroshi Tanaka', role: 'TPC Member', institution: 'University of Tokyo', country: 'Japan', interests: ['Generative AI', 'Foundation Models', 'LLMs'] },
       { name: 'Dr. James Chen', role: 'TPC Member', institution: 'National University of Singapore', country: 'Singapore', interests: ['Data Science', 'Predictive Modelling', 'Business Intelligence'] },
@@ -87,7 +87,7 @@ const domains: Domain[] = [
     full: 'Smart Healthcare, Bioinformatics & Human-Centric AI',
     description: 'Applying artificial intelligence to precision medicine, wearable diagnostics, bioinformatics, and human-centred healthcare systems.',
     experts: [
-      { name: 'Prof. Devika Bhatnagar', role: 'Track Chair', institution: 'JKLU', country: 'India', interests: ['Healthcare AI', 'Clinical Decision Support', 'Medical Imaging'] },
+      { name: 'Prof. Devika Kataria', role: 'Track Chair', institution: 'JKLU', country: 'India', interests: ['Healthcare AI', 'Clinical Decision Support', 'Medical Imaging'] },
       { name: 'Dr. Suresh Reddy', role: 'Co-Chair', institution: 'JKLU', country: 'India', interests: ['Bioinformatics', 'Genomics', 'Precision Medicine'] },
       { name: 'Prof. Elena Rodriguez', role: 'TPC Member', institution: 'Technical University of Madrid', country: 'Spain', interests: ['Smart Health', 'AI Diagnostics', 'Wearables'] },
       { name: 'Prof. Rajesh Kumar', role: 'TPC Member', institution: 'IIT Ropar', country: 'India', interests: ['Biomedical Engineering', 'Signal Processing', 'Neural Engineering'] },
@@ -336,11 +336,12 @@ export default function MindsPage() {
               <div className="flex-1 h-px bg-slate-100" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { role: 'Chief Patron', name: 'Chancellor', institution: 'JK Lakshmipat University', image: '/Images/committee_chancellor.png' },
-                { role: 'Chief Co-Patron', name: 'Pro Chancellor', institution: 'JK Lakshmipat University', image: '/Images/committee_prochancellor.png' },
-                { role: 'Patron', name: 'Prof. Vijay Shekhar Chellaboina', institution: 'Vice Chancellor, JKLU', image: '/Images/committee_vc.png' },
+                { role: 'Chief Patron', name: committeeMembers.chiefPatron.name, institution: committeeMembers.chiefPatron.title, image: committeeMembers.chiefPatron.image },
+                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[0].name, institution: committeeMembers.chiefCoPatrons[0].title, image: committeeMembers.chiefCoPatrons[0].image },
+                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[1].name, institution: committeeMembers.chiefCoPatrons[1].title, image: committeeMembers.chiefCoPatrons[1].image },
+                { role: 'Patron', name: committeeMembers.patron.name, institution: committeeMembers.patron.title, image: committeeMembers.patron.image },
               ].map((member, i) => (
                 <motion.div
                   key={`patron-${i}`}
@@ -353,18 +354,24 @@ export default function MindsPage() {
                   {/* Portrait Container */}
                   <div className="relative mb-8">
                     {/* Ring decoration */}
-                    <div className="absolute -inset-[10px] rounded-full border border-slate-100 group-hover:border-brand-orange/40 transition-colors duration-500" />
-                    <div className="absolute -inset-[5px] rounded-full border border-brand-orange/20 group-hover:border-brand-orange/80 transition-colors duration-500" />
+                    <div className="absolute -inset-[10px] rounded-3xl border border-slate-100 group-hover:border-brand-orange/40 transition-colors duration-500" />
+                    <div className="absolute -inset-[5px] rounded-3xl border border-brand-orange/20 group-hover:border-brand-orange/80 transition-colors duration-500" />
                     
                     {/* Image frame */}
-                    <div className="w-44 h-44 rounded-full overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        width={176}
-                        height={176}
-                        className="object-cover w-full h-full"
-                      />
+                    <div className="w-44 h-44 rounded-3xl overflow-hidden border-2 border-white shadow-lg relative z-10 transition-transform duration-500 group-hover:scale-105 bg-slate-100 flex items-center justify-center">
+                      {member.image ? (
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          width={176}
+                          height={176}
+                          className="object-cover w-full h-full"
+                        />
+                      ) : (
+                        <span className="text-slate-400 font-serif font-bold text-3xl">
+                          {member.name.split(' ').filter(Boolean).slice(-2).map(w => w[0]).join('').toUpperCase()}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -399,8 +406,8 @@ export default function MindsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full">
               {[
-                { role: committeeMembers.chairs[0].role, name: committeeMembers.chairs[0].name, institution: committeeMembers.chairs[0].title, image: '/Images/committee_chair_male.png' },
-                { role: committeeMembers.chairs[1].role, name: committeeMembers.chairs[1].name, institution: committeeMembers.chairs[1].title, image: '/Images/committee_chair_female.png' },
+                { role: committeeMembers.chairs[0].role, name: committeeMembers.chairs[0].name, institution: committeeMembers.chairs[0].title, image: committeeMembers.chairs[0].image },
+                { role: committeeMembers.chairs[1].role, name: committeeMembers.chairs[1].name, institution: committeeMembers.chairs[1].title, image: committeeMembers.chairs[1].image },
               ].map((member, i) => (
                 <motion.div
                   key={`chair-${i}`}
@@ -453,10 +460,10 @@ export default function MindsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { name: 'Prof. Amit Kumar', track: 'Sustainable AI', image: '/Images/committee_prog_male1.png' },
-                { name: 'Prof. Devika Bhatnagar', track: 'Smart Healthcare', image: '/Images/committee_prog_female1.png' },
-                { name: 'Prof. Taruna Gautam', track: 'Data & GenAI', image: '/Images/committee_prog_female1.png' },
-                { name: 'Prof. Umesh Gupta', track: 'HPC & Networks', image: '/Images/committee_prog_male1.png' },
+                { name: 'Prof. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal_real.png' },
+                { name: 'Prof. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria_real.png' },
+                { name: 'Prof. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil_real.png' },
+                { name: 'Prof. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta_real.png' },
               ].map((member, i) => (
                 <motion.div
                   key={`prog-${i}`}
