@@ -285,35 +285,55 @@ export default function MindsPage() {
       </AnimatePresence>
 
       {/* SECTION 1 — FORMAL OPENING */}
-      <section ref={heroRef} className="pt-44 pb-24 px-8 max-w-[1440px] mx-auto w-full text-center flex flex-col items-center">
-        <motion.h1 initial={{ opacity: 0, y: 40 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1.1, ease, delay: 0.1 }} className="font-serif font-bold text-brand-blue text-5xl md:text-7xl leading-tight tracking-tight mb-8 max-w-4xl mx-auto">
+      <section ref={heroRef} className="pt-36 pb-20 px-8 max-w-[1440px] mx-auto w-full text-center flex flex-col items-center">
+
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
+          animate={heroInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1.0, ease, delay: 0.15 }}
+          className="font-serif font-bold text-brand-blue text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight mb-5 max-w-3xl mx-auto"
+        >
           Academic &amp; Organizing Committees
         </motion.h1>
-        <motion.p initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}} transition={{ duration: 1.2, ease, delay: 0.3 }} className="text-slate-600 font-medium text-lg md:text-xl max-w-3xl text-center leading-relaxed">
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={heroInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.9, ease, delay: 0.3 }}
+          className="w-16 h-[2px] bg-brand-orange mb-6 origin-center"
+        />
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={heroInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1.1, ease, delay: 0.38 }}
+          className="text-slate-500 font-medium text-base md:text-lg max-w-2xl text-center leading-relaxed"
+        >
           The distinguished researchers, educators, and industry leaders guiding the scientific vision and operational excellence of the conference.
         </motion.p>
       </section>
 
       {/* SECTION 2 — LEADERSHIP COMMITTEE */}
-      <section className="py-32 bg-[#f7f4ef] overflow-hidden">
+      <section className="py-24 bg-white border-t border-slate-100 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-8">
 
           {/* Section Header */}
-          <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20 text-center">
-            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-4xl md:text-6xl leading-tight mb-5">
+          <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-16 text-center">
+            <motion.div variants={fadeUp} className="w-8 h-[2px] bg-brand-orange mx-auto mb-5" />
+            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-2xl sm:text-3xl md:text-4xl leading-tight mb-4">
               Leadership Committee
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed">
+            <motion.p variants={fadeUp} className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">
               The distinguished academics and institutional leaders who guide the vision, governance, and academic excellence of SANKALP 2027.
             </motion.p>
           </motion.div>
 
           {/* ── Tier 1: Patrons ── */}
-          <div className="mb-24">
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-8 h-[2px] bg-brand-orange" />
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">Patrons</span>
-              <div className="flex-1 h-px bg-slate-200" />
+          <div className="mb-20">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-6 h-[1.5px] bg-brand-orange" />
+              <span className="text-[9px] font-bold tracking-[0.32em] uppercase text-slate-400">Patrons</span>
+              <div className="flex-1 h-px bg-slate-100" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -328,7 +348,7 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
-                  className="group bg-white rounded-3xl p-10 flex flex-col items-center text-center shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-slate-100/80 hover:shadow-[0_24px_60px_rgba(15,38,92,0.08)] hover:-translate-y-1.5 transition-all duration-500"
+                  className="group bg-white rounded-3xl p-10 flex flex-col items-center text-center shadow-[0_4px_25px_rgba(0,0,0,0.05)] border border-slate-100 hover:shadow-[0_24px_60px_rgba(15,38,92,0.10)] hover:-translate-y-1.5 transition-all duration-500"
                 >
                   {/* Portrait Container */}
                   <div className="relative mb-8">
@@ -367,14 +387,14 @@ export default function MindsPage() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-slate-200/80 mb-20" />
+          <div className="border-t border-slate-100 mb-16" />
 
           {/* ── Tier 2: Conference Chairs ── */}
-          <div className="mb-24">
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-8 h-[2px] bg-brand-orange" />
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">Conference Chairs</span>
-              <div className="flex-1 h-px bg-slate-200" />
+          <div className="mb-20">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-6 h-[1.5px] bg-brand-orange" />
+              <span className="text-[9px] font-bold tracking-[0.32em] uppercase text-slate-400">Conference Chairs</span>
+              <div className="flex-1 h-px bg-slate-100" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full">
@@ -388,7 +408,7 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
-                  className="group bg-white rounded-3xl p-10 flex items-center gap-8 shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-slate-100/80 hover:shadow-[0_24px_60px_rgba(15,38,92,0.08)] hover:-translate-y-1.5 transition-all duration-500"
+                  className="group bg-white rounded-3xl p-10 flex items-center gap-8 shadow-[0_4px_25px_rgba(0,0,0,0.05)] border border-slate-100 hover:shadow-[0_24px_60px_rgba(15,38,92,0.10)] hover:-translate-y-1.5 transition-all duration-500"
                 >
                   {/* Portrait */}
                   <div className="relative shrink-0">
@@ -421,14 +441,14 @@ export default function MindsPage() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-slate-200 mb-20" />
+          <div className="border-t border-slate-100 mb-16" />
 
           {/* ── Tier 3: Program Chairs ── */}
           <div>
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-6 h-[2px] bg-brand-orange" />
-              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">Program Chairs</span>
-              <div className="flex-1 h-px bg-slate-200" />
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-6 h-[1.5px] bg-brand-orange" />
+              <span className="text-[9px] font-bold tracking-[0.32em] uppercase text-slate-400">Program Chairs</span>
+              <div className="flex-1 h-px bg-slate-100" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -444,7 +464,7 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.55, ease }}
-                  className="group bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center text-center hover:shadow-[0_8px_40px_rgba(15,38,92,0.08)] hover:-translate-y-1.5 transition-all duration-500"
+                  className="group bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_40px_rgba(15,38,92,0.10)] hover:-translate-y-1.5 transition-all duration-500"
                 >
                   <div className="relative mb-6">
                     <div className="absolute -inset-[6px] rounded-full border border-dashed border-slate-200 group-hover:border-brand-orange/40 transition-colors duration-500" />
@@ -473,18 +493,19 @@ export default function MindsPage() {
 
       {/* SECTION 2.5 — ADVISORY BOARDS */}
 
-      <section className="py-32 border-t border-brand-blue/10 bg-white">
+      <section className="py-24 border-t border-slate-100 bg-[#f8f6f2]">
         <div className="max-w-[1440px] mx-auto px-8">
-          <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20 text-center">
-            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-4xl md:text-5xl mb-0 leading-tight">Advisory Boards</motion.h2>
+          <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-16 text-center">
+            <motion.div variants={fadeUp} className="w-8 h-[2px] bg-brand-orange mx-auto mb-5" />
+            <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-2xl sm:text-3xl md:text-4xl leading-tight">Advisory Boards</motion.h2>
           </motion.div>
 
           {/* International Advisory Board */}
-          <div className="mb-20">
+          <div className="mb-16">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-10 h-[2px] bg-brand-orange" />
-              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">International Advisory Board</h3>
-              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+              <div className="w-6 h-[1.5px] bg-brand-orange" />
+              <h3 className="font-serif font-semibold text-lg text-brand-blue tracking-wide">International Advisory Board</h3>
+              <div className="flex-1 h-px bg-slate-200" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {[...advisoryBoard.international].sort((a, b) => {
@@ -498,9 +519,9 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 4) * 0.1, duration: 0.5 }}
-                  className="bg-[#f7f4ef] p-6 border border-brand-blue/5 hover:border-brand-orange/30 hover:shadow-md transition-all group"
+                  className="bg-white p-5 border border-slate-200/80 rounded-xl hover:border-brand-orange/40 hover:shadow-sm transition-all group"
                 >
-                  <h4 className="font-bold text-brand-blue text-base mb-2 group-hover:text-brand-orange transition-colors">{member.name}</h4>
+                  <h4 className="font-bold text-brand-blue text-sm mb-1.5 group-hover:text-brand-orange transition-colors leading-snug">{member.name}</h4>
                   <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
                 </motion.div>
               ))}
@@ -510,9 +531,9 @@ export default function MindsPage() {
           {/* National Advisory Board */}
           <div>
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-10 h-[2px] bg-brand-orange" />
-              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">National Advisory Board</h3>
-              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+              <div className="w-6 h-[1.5px] bg-brand-orange" />
+              <h3 className="font-serif font-semibold text-lg text-brand-blue tracking-wide">National Advisory Board</h3>
+              <div className="flex-1 h-px bg-slate-200" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {[...advisoryBoard.national].sort((a, b) => {
@@ -526,9 +547,9 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 4) * 0.1, duration: 0.5 }}
-                  className="bg-[#f7f4ef] p-6 border border-brand-blue/5 hover:border-brand-orange/30 hover:shadow-md transition-all group"
+                  className="bg-white p-5 border border-slate-200/80 rounded-xl hover:border-brand-orange/40 hover:shadow-sm transition-all group"
                 >
-                  <h4 className="font-bold text-brand-blue text-base mb-2 group-hover:text-brand-orange transition-colors">{member.name}</h4>
+                  <h4 className="font-bold text-brand-blue text-sm mb-1.5 group-hover:text-brand-orange transition-colors leading-snug">{member.name}</h4>
                   <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
                 </motion.div>
               ))}
@@ -536,13 +557,13 @@ export default function MindsPage() {
           </div>
 
           {/* Technical Program Committee */}
-          <div className="mt-24 mb-24">
+          <div className="mt-20 mb-20">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-10 h-[2px] bg-brand-orange" />
-              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">Technical Program Committee</h3>
-              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+              <div className="w-6 h-[1.5px] bg-brand-orange" />
+              <h3 className="font-serif font-semibold text-lg text-brand-blue tracking-wide">Technical Program Committee</h3>
+              <div className="flex-1 h-px bg-slate-200" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {technicalProgramCommittee.map((member, i) => (
                 <motion.div 
                   key={`tpc-${i}`}
@@ -550,13 +571,13 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
-                  className="bg-[#f7f4ef]/60 p-6 border border-brand-blue/5 rounded-2xl hover:border-brand-orange/30 hover:shadow-md transition-all group flex flex-col justify-between"
+                  className="bg-white p-5 border border-slate-200/80 rounded-xl hover:border-brand-orange/40 hover:shadow-sm transition-all group flex flex-col justify-between"
                 >
                   <div>
-                    <h4 className="font-bold text-brand-blue text-base mb-1.5 group-hover:text-brand-orange transition-colors">{member.name}</h4>
+                    <h4 className="font-bold text-brand-blue text-sm mb-1 group-hover:text-brand-orange transition-colors leading-snug">{member.name}</h4>
                     <p className="text-slate-500 text-xs font-medium leading-relaxed mb-3">{member.institution}, {member.country}</p>
                   </div>
-                  <span className="inline-block text-[9px] font-bold text-brand-orange bg-brand-orange/5 px-2.5 py-1 rounded uppercase tracking-wider self-start">
+                  <span className="inline-block text-[9px] font-bold text-brand-orange bg-brand-orange/8 border border-brand-orange/15 px-2.5 py-1 rounded-full uppercase tracking-wider self-start">
                     {member.area}
                   </span>
                 </motion.div>
@@ -567,11 +588,11 @@ export default function MindsPage() {
           {/* Organizing Sub-Committees */}
           <div>
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-10 h-[2px] bg-brand-orange" />
-              <h3 className="font-serif font-bold text-2xl text-brand-blue uppercase tracking-wide">Organizing Sub-Committees</h3>
-              <div className="flex-1 h-[1px] bg-brand-blue/10" />
+              <div className="w-6 h-[1.5px] bg-brand-orange" />
+              <h3 className="font-serif font-semibold text-lg text-brand-blue tracking-wide">Organizing Sub-Committees</h3>
+              <div className="flex-1 h-px bg-slate-200" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {organizingSubCommittees.map((committee, i) => (
                 <motion.div 
                   key={`osc-${i}`}
@@ -579,15 +600,15 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
-                  className="bg-[#f7f4ef]/60 p-6 border border-brand-blue/5 rounded-2xl hover:border-brand-orange/30 hover:shadow-md transition-all group"
+                  className="bg-white p-5 border border-slate-200/80 rounded-xl hover:border-brand-orange/40 hover:shadow-sm transition-all group"
                 >
-                  <h4 className="font-serif font-bold text-brand-blue text-lg mb-4 group-hover:text-brand-orange transition-colors border-b border-brand-blue/5 pb-2">
+                  <h4 className="font-serif font-semibold text-brand-blue text-sm mb-3 group-hover:text-brand-orange transition-colors border-b border-slate-100 pb-2.5">
                     {committee.name}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {committee.members.map((member, mIdx) => (
                       <li key={mIdx} className="text-slate-600 text-xs font-medium flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
+                        <div className="w-1 h-1 rounded-full bg-brand-orange/70 shrink-0" />
                         <span>{member}</span>
                       </li>
                     ))}
@@ -604,7 +625,7 @@ export default function MindsPage() {
       <section className="py-32 bg-brand-blue text-white overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-8">
           <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-16">
-            <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">Where Our Expertise Comes From</motion.p>
+            <motion.div variants={fadeUp} className="w-8 h-[2px] bg-brand-orange mb-6" />
             <motion.h2 variants={fadeUp} className="font-serif font-bold text-4xl md:text-5xl text-white leading-tight max-w-3xl">SANKALP draws from an ecosystem of over 30 globally recognised institutions.</motion.h2>
           </motion.div>
           <div className="border-t border-white/10 pt-12">
@@ -628,7 +649,7 @@ export default function MindsPage() {
       <section className="py-32 bg-[#101010] text-white border-b border-brand-blue/10 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-8 mb-16">
           <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.p variants={fadeUp} className="text-[10px] font-bold tracking-[0.28em] uppercase text-brand-orange mb-4">The Expertise Behind SANKALP</motion.p>
+            <motion.div variants={fadeUp} className="w-8 h-[2px] bg-brand-orange mb-6" />
             <motion.h2 variants={fadeUp} className="font-serif font-bold text-4xl md:text-5xl leading-tight max-w-2xl">A Premium Showcase of Research Leadership.</motion.h2>
           </motion.div>
         </div>
