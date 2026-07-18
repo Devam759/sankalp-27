@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
-import { Download, ExternalLink } from 'lucide-react';
+
 
 import TrackAccordion from '@/components/ui/TrackAccordion';
 import { conferenceTracks } from '@/constants/conferenceData';
@@ -43,15 +43,13 @@ export default function CallForPapers() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-brand-blue text-white border border-brand-blue px-6 py-3 font-bold hover:bg-blue-900 transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer"
               >
-                <Download size={16} />
                 Download Template
               </a>
               <a 
                 href="mailto:sankalp@jklu.edu.in?subject=SANKALP 2027 Paper Submission"
                 className="flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 font-bold hover:bg-orange-600 transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer"
               >
-                <ExternalLink size={16} />
-                Submit Paper
+                Submit Paper ↗
               </a>
             </div>
           </div>

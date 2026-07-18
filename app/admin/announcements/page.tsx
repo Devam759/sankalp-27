@@ -6,7 +6,7 @@ import { db, auth } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
-import { Plus, Trash2, Pin, Eye, EyeOff, ShieldAlert } from 'lucide-react';
+
 
 // Basic Markdown parser for preview (HTML escaped to prevent XSS)
 function parseMarkdown(text: string) {
@@ -107,7 +107,7 @@ export default function Announcements() {
           onClick={() => { setFormData({ title: '', body: '' }); setIsModalOpen(true); }}
           className="bg-admin-accent hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors"
         >
-          <Plus size={20} /> Compose
+          Compose
         </button>
       </div>
 
@@ -130,7 +130,7 @@ export default function Announcements() {
                 {announcements.map((ann) => (
                   <tr key={ann.id} className="hover:bg-white/5 transition-colors group">
                     <td className="p-4 font-medium">
-                      {ann.isPinned && <Pin size={14} className="inline mr-2 text-admin-accent" />}
+                      {ann.isPinned && <span className="inline-block mr-2 px-1.5 py-0.5 text-[9px] font-bold bg-admin-accent/20 text-admin-accent rounded uppercase tracking-wider">Pinned</span>}
                       {ann.title}
                     </td>
                     <td className="p-4 text-sm text-admin-muted">
@@ -143,16 +143,16 @@ export default function Announcements() {
                     </td>
                     <td className="p-4">
                       <button onClick={() => handleToggle(ann.id, 'isVisible', ann.isVisible)} className={`px-2 py-1 rounded text-xs flex items-center gap-1 ${ann.isVisible ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
-                        {ann.isVisible ? <><Eye size={12} /> Yes</> : <><EyeOff size={12} /> No</>}
+                        {ann.isVisible ? 'Yes' : 'No'}
                       </button>
                     </td>
                     <td className="p-4 flex items-center justify-end gap-3">
                       <button 
                         onClick={() => { setSelectedAnnouncement(ann); setIsDeleteOpen(true); }}
-                        className="text-red-500/70 hover:text-red-500 transition-colors"
+                        className="text-red-500/70 hover:text-red-500 transition-colors font-bold text-xs uppercase tracking-wider"
                         title="Delete Announcement"
                       >
-                        <Trash2 size={18} />
+                        Delete
                       </button>
                     </td>
                   </tr>
@@ -213,7 +213,6 @@ export default function Announcements() {
       <Modal isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)} title="Delete Announcement">
         <div className="space-y-6">
           <div className="flex items-center gap-4 text-red-500 bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-            <ShieldAlert size={24} />
             <p className="text-sm">Are you sure you want to delete <strong>{selectedAnnouncement?.title}</strong>? This cannot be undone.</p>
           </div>
           <div className="flex justify-end gap-3">

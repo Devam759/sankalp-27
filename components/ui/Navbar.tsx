@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
@@ -16,7 +15,6 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Call for Papers', href: '/call-for-papers' },
-    { name: 'Submission', href: '/submission' },
     { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Sponsors', href: '/sponsors' },
@@ -27,6 +25,7 @@ export default function Navbar() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    setIsScrolled(window.scrollY > 20);
     let lastScrollY = window.scrollY;
 
     const handleScroll = () => {
@@ -60,7 +59,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 transform ${
         isNavbarVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}
+      } ${mobileMenuOpen ? 'h-screen' : 'h-auto'}`}
     >
       {/* Top Orange Banner Strip: Call for Sponsors */}
       <div 
@@ -130,7 +129,7 @@ export default function Navbar() {
               Register
             </Link>
             <Link
-              href="/submission"
+              href="/call-for-papers"
               className="bg-brand-orange text-white px-5 py-2.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-colors shadow-sm"
             >
               Submit Paper
@@ -139,10 +138,10 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden text-white p-2 z-50 hover:text-brand-orange transition-colors"
+            className="lg:hidden text-white p-2 z-50 hover:text-brand-orange transition-colors font-bold text-xs tracking-wider"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {mobileMenuOpen ? 'CLOSE' : 'MENU'}
           </button>
         </div>
       </div>
@@ -178,7 +177,7 @@ export default function Navbar() {
               Register
             </Link>
             <Link 
-              href="/submission" 
+              href="/call-for-papers" 
               className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center shadow-lg hover:bg-orange-500 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >

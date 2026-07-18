@@ -2,53 +2,33 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Download, 
-  Mail, 
-  Globe, 
-  MapPin, 
-  Check, 
-  Award, 
-  Users, 
-  Target, 
-  Layers, 
-  Briefcase, 
-  FileText, 
-  ExternalLink,
-  ChevronRight
-} from 'lucide-react';
+
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 
 export default function SponsorsPage() {
   const whySponsor = [
     {
-      icon: Globe,
       title: "Global Brand Visibility",
       desc: "Gain exposure to an international audience of researchers, industry leaders, and key policymakers shaping the technology landscape."
     },
     {
-      icon: Target,
       title: "Thought Leadership",
       desc: "Associate your brand with cutting-edge discourse and key advancements in Sustainable AI and emerging technologies."
     },
     {
-      icon: Users,
       title: "Strategic Networking",
       desc: "Secure direct access to key decision-makers, potential research partners, and global technology experts."
     },
     {
-      icon: Briefcase,
       title: "Talent Pipeline Access",
       desc: "Connect directly with top-tier student talent across JKLU's interdisciplinary engineering, AI, data science, and design programs."
     },
     {
-      icon: Layers,
       title: "Innovation Ecosystem",
       desc: "Position your organization at the center of India's growing AI and technological innovation landscape."
     },
     {
-      icon: Award,
       title: "CSR & Research Support",
       desc: "Demonstrate your organization's commitment to higher education, impactful research, and sustainable technological development."
     }
@@ -168,7 +148,7 @@ export default function SponsorsPage() {
                 download="SANKALP_2027_Sponsorship_Proposal.docx"
                 className="bg-brand-orange text-white font-bold py-3 px-6 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center gap-2 cursor-pointer text-xs shadow-sm"
               >
-                <Download size={14} /> Download Proposal
+                Download Proposal
               </a>
               <a 
                 href="#contact"
@@ -196,16 +176,12 @@ export default function SponsorsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whySponsor.map((item, idx) => {
-              const IconComponent = item.icon;
               return (
                 <div 
                   key={idx} 
                   className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-8 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <span className="inline-block text-brand-orange mb-2">
-                      <IconComponent size={24} />
-                    </span>
                     <h3 className="font-serif font-bold text-lg text-[#1F4E8C] leading-snug">
                       {item.title}
                     </h3>
@@ -265,7 +241,7 @@ export default function SponsorsPage() {
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs text-slate-500 font-medium leading-relaxed font-sans">
                       {cat.bullets.slice(0, 6).map((bullet, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
-                          <Check size={12} className="text-brand-orange shrink-0 mt-0.5" />
+                          <span className="text-brand-orange shrink-0 font-bold select-none">✓</span>
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -318,22 +294,22 @@ export default function SponsorsPage() {
                     
                     {/* Platinum Column */}
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.plat === 'string' ? row.plat : (row.plat ? <Check size={16} className="text-brand-orange mx-auto" /> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.plat === 'string' ? row.plat : (row.plat ? <span className="text-brand-orange font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
                     </td>
                     
                     {/* Gold Column */}
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.gold === 'string' ? row.gold : (row.gold ? <Check size={16} className="text-[#1F4E8C] mx-auto" /> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.gold === 'string' ? row.gold : (row.gold ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
                     </td>
                     
                     {/* Silver Column */}
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.silv === 'string' ? row.silv : (row.silv ? <Check size={16} className="text-[#1F4E8C] mx-auto" /> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.silv === 'string' ? row.silv : (row.silv ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
                     </td>
                     
                     {/* Bronze Column */}
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.bronz === 'string' ? row.bronz : (row.bronz ? <Check size={16} className="text-[#1F4E8C] mx-auto" /> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.bronz === 'string' ? row.bronz : (row.bronz ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
                     </td>
                   </tr>
                 ))}
@@ -377,7 +353,7 @@ export default function SponsorsPage() {
             <h2 className="text-3xl sm:text-5xl font-serif font-bold uppercase tracking-tight">
               Become a Sponsor
             </h2>
-            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-full" />
+            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
           <p className="text-base sm:text-lg text-white/90 max-w-xl mx-auto leading-relaxed font-medium">
@@ -428,28 +404,28 @@ export default function SponsorsPage() {
 
               <div className="space-y-4 text-sm text-slate-700 font-sans font-medium">
                 <div className="flex items-center gap-3">
-                  <Mail size={16} className="text-brand-orange shrink-0" />
+                  <span className="text-brand-orange font-bold text-xs uppercase tracking-wider shrink-0 w-16">Email:</span>
                   <a href="mailto:sankalp@jklu.edu.in" className="hover:text-brand-orange transition-colors">
                     sankalp@jklu.edu.in
                   </a>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-brand-orange shrink-0 mt-0.5" />
+                  <span className="text-brand-orange font-bold text-xs uppercase tracking-wider shrink-0 w-16 mt-0.5">Address:</span>
                   <span className="leading-relaxed">
                     Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3 pt-2">
-                  <Globe size={16} className="text-[#8A99AD] shrink-0" />
+                  <span className="text-[#8A99AD] font-bold text-xs uppercase tracking-wider shrink-0 w-16">Website:</span>
                   <a 
                     href="https://www.jklu.edu.in" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="text-xs text-[#8A99AD] hover:text-brand-orange transition-colors flex items-center gap-1"
                   >
-                    www.jklu.edu.in <ExternalLink size={12} />
+                    www.jklu.edu.in ↗
                   </a>
                 </div>
               </div>

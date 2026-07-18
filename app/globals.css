@@ -84,9 +84,6 @@ body {
 
 
 
-.glass-card {
-  @apply bg-brand-cloud/5 backdrop-blur-md border border-brand-cloud/15 rounded-md shadow-xl;
-}
 
 .btn-primary {
   @apply bg-brand-orange hover:bg-accent-dark text-brand-ink font-bold py-2.5 px-6 rounded-md transition-all duration-300 shadow-brand-orange hover:shadow-lg hover:scale-[1.02] active:scale-[0.98];

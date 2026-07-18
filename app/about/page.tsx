@@ -241,7 +241,7 @@ export default function About() {
              className="relative z-10 w-full max-w-2xl aspect-square flex items-center justify-center"
            >
               {/* Central Core */}
-              <div className="w-32 h-32 rounded-full bg-brand-orange flex items-center justify-center z-20 shadow-[0_0_40px_rgba(245,130,30,0.5)] border-4 border-brand-blue">
+              <div className="w-32 h-32 rounded-3xl bg-brand-orange flex items-center justify-center z-20 shadow-[0_0_40px_rgba(245,130,30,0.5)] border-4 border-brand-blue">
                 <span className="text-brand-blue font-bold text-center text-sm leading-tight tracking-widest uppercase">Research<br/>Core</span>
               </div>
 
@@ -262,12 +262,12 @@ export default function About() {
                     }}
                   >
                     {/* Node Dot */}
-                    <div className="w-4 h-4 rounded-full bg-white border-2 border-brand-orange relative z-10 group-hover:scale-150 transition-transform cursor-pointer">
+                    <div className="w-4 h-4 rounded-sm bg-white border-2 border-brand-orange relative z-10 group-hover:scale-150 transition-transform cursor-pointer">
                       {/* Connecting line to center */}
                       <div className="absolute top-1/2 right-full w-24 h-px bg-brand-orange/30 -translate-y-1/2 pointer-events-none" style={{ transform: `translateY(-50%) rotate(${angle}deg)` }}></div>
                     </div>
                     {/* Label */}
-                    <div className="bg-brand-blue/90 backdrop-blur border border-white/10 px-4 py-2 opacity-80 group-hover:opacity-100 group-hover:border-brand-orange transition-all whitespace-nowrap shadow-xl">
+                    <div className="bg-brand-blue border border-white/10 px-4 py-2 opacity-80 group-hover:opacity-100 group-hover:border-brand-orange transition-all whitespace-nowrap shadow-xl">
                       <span className="text-white text-xs font-bold tracking-wider uppercase">{area.title}</span>
                     </div>
                   </motion.div>
@@ -305,7 +305,7 @@ export default function About() {
                  </div>
                  
                  {/* Decorative Tape */}
-                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-white/20 backdrop-blur-md rotate-3 shadow-sm border border-white/30"></div>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-white/45 rotate-3 shadow-sm border border-white/40"></div>
                </motion.div>
             </div>
 

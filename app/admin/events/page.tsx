@@ -6,7 +6,7 @@ import { db } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
-import { Plus, Trash2, Edit2, ShieldAlert, Power, PowerOff } from 'lucide-react';
+
 
 export default function EventManagement() {
   const [events, setEvents] = useState<any[]>([]);
@@ -107,7 +107,7 @@ export default function EventManagement() {
           onClick={() => handleOpenModal()}
           className="bg-admin-accent hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded-lg flex items-center gap-2 transition-colors"
         >
-          <Plus size={20} /> Add Event
+          Add Event
         </button>
       </div>
 
@@ -137,7 +137,7 @@ export default function EventManagement() {
                     </td>
                     <td className="p-4 text-sm">{evt.venue}</td>
                     <td className="p-4">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                      <span className={`px-2.5 py-1 rounded-md text-xs font-semibold ${
                         evt.isActive ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'
                       }`}>
                         {evt.isActive ? 'Active' : 'Draft'}
@@ -146,24 +146,24 @@ export default function EventManagement() {
                     <td className="p-4 flex items-center justify-end gap-3">
                       <button 
                         onClick={() => handleToggleStatus(evt)}
-                        className="text-admin-muted hover:text-white transition-colors"
+                        className="text-admin-muted hover:text-white transition-colors font-bold text-xs uppercase tracking-wider"
                         title={evt.isActive ? 'Deactivate' : 'Reactivate'}
                       >
-                        {evt.isActive ? <PowerOff size={18} /> : <Power size={18} />}
+                        {evt.isActive ? 'Deactivate' : 'Activate'}
                       </button>
                       <button 
                         onClick={() => handleOpenModal(evt)}
-                        className="text-admin-muted hover:text-white transition-colors"
+                        className="text-admin-muted hover:text-white transition-colors font-bold text-xs uppercase tracking-wider"
                         title="Edit Event"
                       >
-                        <Edit2 size={18} />
+                        Edit
                       </button>
                       <button 
                         onClick={() => { setSelectedEvent(evt); setIsDeleteOpen(true); }}
-                        className="text-red-500/70 hover:text-red-500 transition-colors"
+                        className="text-red-500/70 hover:text-red-500 transition-colors font-bold text-xs uppercase tracking-wider"
                         title="Delete Event"
                       >
-                        <Trash2 size={18} />
+                        Delete
                       </button>
                     </td>
                   </tr>
@@ -249,7 +249,6 @@ export default function EventManagement() {
       <Modal isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)} title="Delete Event">
         <div className="space-y-6">
           <div className="flex items-center gap-4 text-red-500 bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-            <ShieldAlert size={24} />
             <p className="text-sm">Are you sure you want to delete <strong>{selectedEvent?.title}</strong>? This cannot be undone.</p>
           </div>
           <div className="flex justify-end gap-3">

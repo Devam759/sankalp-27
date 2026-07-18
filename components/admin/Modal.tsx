@@ -29,7 +29,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-[#030404]/40 backdrop-blur-sm" onClick={onClose} />
+      <div className="fixed inset-0 bg-[#030404]/70" onClick={onClose} />
       
       {/* Modal Dialog */}
       <div className="relative bg-admin-surface border-4 border-brand-ink rounded-md w-full max-w-lg shadow-[8px_8px_0px_0px_#030404] overflow-hidden flex flex-col max-h-[90vh]">

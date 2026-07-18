@@ -4,7 +4,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from '../../../lib/firebase';
 import { SkeletonCard } from '../../../components/admin/SkeletonLoader';
-import { Search as SearchIcon, Users, Calendar, Bell, FileText } from 'lucide-react';
+
 import Link from 'next/link';
 
 export default function GlobalSearch() {
@@ -84,13 +84,12 @@ export default function GlobalSearch() {
       </div>
 
       <div className="relative mb-12">
-        <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-admin-muted" size={24} />
         <input 
           type="text" 
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
           placeholder="Search by name, email, event title, or action..."
-          className="w-full bg-admin-surface border-2 border-admin-border rounded-2xl py-4 pl-14 pr-6 text-lg focus:outline-none focus:border-admin-accent transition-colors shadow-lg"
+          className="w-full bg-admin-surface border-2 border-admin-border rounded-2xl py-4 px-6 text-lg focus:outline-none focus:border-admin-accent transition-colors shadow-lg"
         />
       </div>
 
@@ -104,7 +103,6 @@ export default function GlobalSearch() {
           <div className="space-y-8">
             {!hasResults && (
               <div className="text-center py-12 bg-admin-surface rounded-xl border border-admin-border text-admin-muted">
-                <SearchIcon size={48} className="mx-auto mb-4 opacity-50" />
                 <p>No results found for &quot;{searchTerm}&quot;</p>
               </div>
             )}
@@ -112,7 +110,7 @@ export default function GlobalSearch() {
             {results.regs.length > 0 && (
               <section className="bg-admin-surface border border-admin-border rounded-xl p-6">
                 <h2 className="font-bold text-lg mb-4 flex items-center gap-2 border-b border-admin-border pb-2">
-                  <Users className="text-admin-accent" /> Registrations
+                  Registrations
                 </h2>
                 <div className="space-y-3">
                   {results.regs.map(r => (
@@ -131,7 +129,7 @@ export default function GlobalSearch() {
             {results.evts.length > 0 && (
               <section className="bg-admin-surface border border-admin-border rounded-xl p-6">
                 <h2 className="font-bold text-lg mb-4 flex items-center gap-2 border-b border-admin-border pb-2">
-                  <Calendar className="text-admin-accent" /> Events
+                  Events
                 </h2>
                 <div className="space-y-3">
                   {results.evts.map(e => (
@@ -150,7 +148,7 @@ export default function GlobalSearch() {
             {results.anns.length > 0 && (
               <section className="bg-admin-surface border border-admin-border rounded-xl p-6">
                 <h2 className="font-bold text-lg mb-4 flex items-center gap-2 border-b border-admin-border pb-2">
-                  <Bell className="text-admin-accent" /> Announcements
+                  Announcements
                 </h2>
                 <div className="space-y-3">
                   {results.anns.map(a => (
@@ -169,7 +167,7 @@ export default function GlobalSearch() {
             {results.logs.length > 0 && (
               <section className="bg-admin-surface border border-admin-border rounded-xl p-6">
                 <h2 className="font-bold text-lg mb-4 flex items-center gap-2 border-b border-admin-border pb-2">
-                  <FileText className="text-admin-accent" /> Audit Logs
+                  Audit Logs
                 </h2>
                 <div className="space-y-3">
                   {results.logs.map(l => (

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function ScrollToTop() {
@@ -66,8 +65,8 @@ export function ScrollToTop() {
           onClick={scrollToTop}
           aria-label="Scroll to top"
           className={cn(
-            "fixed bottom-6 right-6 z-50 p-3.5 rounded-full cursor-pointer",
-            "bg-slate-950/80 backdrop-blur-md border border-brand-orange/30 text-brand-orange",
+            "fixed bottom-6 right-6 z-50 p-3.5 rounded-md cursor-pointer",
+            "bg-slate-950 border border-brand-orange/30 text-brand-orange",
             "shadow-[0_4px_20px_rgba(0,0,0,0.3),_0_0_15px_rgba(245,130,30,0.1)]",
             "hover:border-brand-orange hover:text-brand-cloud hover:bg-brand-orange",
             "hover:shadow-[0_6px_25px_rgba(245,130,30,0.4)]",
@@ -75,8 +74,8 @@ export function ScrollToTop() {
             "transition-colors duration-300 md:bottom-8 md:right-8"
           )}
         >
-          <motion.div variants={arrowVariants}>
-            <ArrowUp className="w-5 h-5 stroke-[2.5]" />
+          <motion.div variants={arrowVariants} className="font-extrabold text-lg leading-none">
+            ↑
           </motion.div>
         </motion.button>
       )}

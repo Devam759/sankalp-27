@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scan, ShieldCheck } from 'lucide-react';
+
 
 export default function CheckIn() {
   return (
-    <div className="min-h-screen py-28 px-8 flex flex-col items-center relative">
-      <div className="hero-glow w-96 h-96 bg-brand-blue/15 top-0 left-0" />
+    <div className="min-h-screen py-28 px-8 flex flex-col items-center relative bg-slate-950 text-white">
+      <div className="hero-glow w-96 h-96 bg-brand-blue/10 top-0 left-0" />
 
       <header className="mb-12 text-center relative z-10">
         <span className="page-eyebrow">Entry System</span>
@@ -16,16 +16,15 @@ export default function CheckIn() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-6xl relative z-10">
         <div className="flex flex-col gap-6">
-          <div className="glass-card aspect-square flex flex-col items-center justify-center border-dashed border-2 border-brand-orange/40 relative overflow-hidden">
+          <div className="bg-slate-900 border-dashed border-2 border-brand-orange/40 aspect-square flex flex-col items-center justify-center relative overflow-hidden rounded-md shadow-lg">
             <div className="absolute inset-0 bg-brand-orange/5 animate-pulse" />
-            <Scan size={64} className="text-brand-orange mb-4 relative z-10" />
             <p className="text-brand-cloud/50 relative z-10">Camera initialization required...</p>
             <button className="btn-primary mt-6 relative z-10">Start Scanner</button>
           </div>
 
-          <div className="glass-card p-6">
+          <div className="bg-slate-900 border border-white/10 p-6 rounded-md shadow-lg">
             <h3 className="text-xl font-display font-bold mb-4 flex items-center gap-2 text-brand-cloud">
-              <ShieldCheck className="text-brand-orange" /> Recent Scans
+              Recent Scans
             </h3>
             <div className="space-y-4">
               <ScanItem name="John Doe" status="Valid" time="2 mins ago" />
@@ -35,12 +34,12 @@ export default function CheckIn() {
         </div>
 
         <div className="flex flex-col gap-8">
-          <div className="glass-card p-8 bg-gradient-to-br from-brand-blue/20 to-brand-orange/10 border-brand-blue/20">
+          <div className="bg-slate-900 border border-brand-orange/20 p-8 rounded-md shadow-lg">
             <h2 className="text-5xl font-display font-extrabold mb-2 text-brand-cloud">1,248</h2>
             <p className="text-brand-cloud/50 uppercase tracking-widest text-sm">Total Check-ins</p>
           </div>
 
-          <div className="glass-card p-6">
+          <div className="bg-slate-900 border border-white/10 p-6 rounded-md shadow-lg">
             <h3 className="text-xl font-display font-bold mb-6 text-brand-cloud">Live Attendance</h3>
             <div className="space-y-6">
               <StatRow label="Main Auditorium" current={450} total={500} color="bg-brand-orange" />
@@ -63,7 +62,7 @@ interface ScanItemProps {
 
 function ScanItem({ name, status, time, color = 'text-brand-orange' }: ScanItemProps) {
   return (
-    <div className="flex justify-between items-center p-3 rounded-xl bg-brand-cloud/5 border border-brand-cloud/10">
+    <div className="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/10">
       <div>
         <p className="font-semibold text-brand-cloud">{name}</p>
         <p className="text-xs text-brand-cloud/50">{time}</p>
@@ -88,7 +87,7 @@ function StatRow({ label, current, total, color }: StatRowProps) {
         <span>{label}</span>
         <span className="text-brand-cloud/50">{current} / {total}</span>
       </div>
-      <div className="h-2 w-full bg-brand-cloud/10 rounded-full overflow-hidden">
+      <div className="h-2 w-full bg-brand-cloud/10 rounded overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${percent}%` }}

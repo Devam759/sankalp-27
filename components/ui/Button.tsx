@@ -11,7 +11,7 @@ export function Button({ variant = 'primary', children, className, ...props }: B
     secondary: 'btn-blue',
     accent: 'btn-accent',
     glass:
-      'glass-card px-6 py-2.5 rounded-md text-brand-cloud font-semibold hover:bg-brand-cloud/10 hover:border-brand-orange/30 transition-all',
+      'bg-transparent border border-white px-6 py-2.5 rounded-md text-white font-semibold hover:bg-white hover:text-brand-blue transition-all',
   };
 
   return (

@@ -55,7 +55,7 @@ export default function GlobalError({
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-center text-white font-sans">
       <div className="bg-slate-900 p-8 md:p-12 rounded-lg border border-slate-800 max-w-lg w-full flex flex-col items-center shadow-2xl">
-        <div className="w-16 h-16 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mb-6">
+        <div className="w-16 h-16 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center mb-6">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
             <line x1="12" y1="9" x2="12" y2="13" />

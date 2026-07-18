@@ -6,46 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
-import {
-  MapPin,
-  Calendar,
-  Compass,
-  ArrowRight,
-  Wifi,
-  Building,
-  Cpu,
-  GraduationCap,
-  Leaf,
-  Layers,
-  Map,
-  Copy,
-  Check,
-  Plane,
-  Train,
-  Car,
-  Clock,
-  ExternalLink,
-  ChevronDown,
-  ChevronUp,
-  ChevronLeft,
-  ChevronRight,
-  CloudSun,
-  Thermometer,
-  Sun,
-  CloudMoon,
-  Cloud,
-  Droplets,
-  Coffee,
-  Bookmark,
-  Users,
-  Award,
-  Sparkles,
-  Info,
-  UserCheck,
-  Lightbulb,
-  Heart,
-  Monitor
-} from 'lucide-react';
+
 
 export default function VenuePage() {
   const [copied, setCopied] = useState(false);
@@ -89,16 +50,16 @@ export default function VenuePage() {
 
   // Facilities items
   const facilities = [
-    { name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.', icon: UserCheck, emoji: '🟠' },
-    { name: 'Conference Hall', desc: 'Main session venue with state-of-the-art acoustics and screen setup.', icon: Building, emoji: '🧡' },
-    { name: 'Technical Session Rooms', desc: 'Multiple parallel tracks equipped with advanced presentation systems.', icon: Cpu, emoji: '🔶' },
-    { name: 'Networking Lounge', desc: 'Comfortable break-out zones for research collaborations and dialogue.', icon: Users, emoji: '🦊' },
-    { name: 'Startup Exhibition Area', desc: 'Showcase of cutting-edge sustainable AI systems and applications.', icon: Lightbulb, emoji: '💥' },
-    { name: 'Poster Presentation Zone', desc: 'Spacious corridor with high visibility for selected poster works.', icon: Monitor, emoji: '🍁' },
-    { name: 'Cafeteria', desc: 'Hygienic multi-cuisine options serving fresh beverages and meals.', icon: Coffee, emoji: '🍊' },
-    { name: 'Parking', desc: 'Ample on-campus parking spaces for delegates and attendees.', icon: Car, emoji: '🏀' },
-    { name: 'Medical Assistance', desc: '24/7 first aid assistance and emergency response team on call.', icon: Heart, emoji: '🥕' },
-    { name: 'Accessibility Support', desc: 'Wheelchair access ramps, elevators, and dedicated seating layout.', icon: Info, emoji: '🔸' }
+    { name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.' },
+    { name: 'Conference Hall', desc: 'Main session venue with state-of-the-art acoustics and screen setup.' },
+    { name: 'Technical Session Rooms', desc: 'Multiple parallel tracks equipped with advanced presentation systems.' },
+    { name: 'Networking Lounge', desc: 'Comfortable break-out zones for research collaborations and dialogue.' },
+    { name: 'Startup Exhibition Area', desc: 'Showcase of cutting-edge sustainable AI systems and applications.' },
+    { name: 'Poster Presentation Zone', desc: 'Spacious corridor with high visibility for selected poster works.' },
+    { name: 'Cafeteria', desc: 'Hygienic multi-cuisine options serving fresh beverages and meals.' },
+    { name: 'Parking', desc: 'Ample on-campus parking spaces for delegates and attendees.' },
+    { name: 'Medical Assistance', desc: '24/7 first aid assistance and emergency response team on call.' },
+    { name: 'Accessibility Support', desc: 'Wheelchair access ramps, elevators, and dedicated seating layout.' }
   ];
 
   // Accommodation items
@@ -265,9 +226,7 @@ export default function VenuePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex items-center justify-center gap-2 text-brand-orange text-sm font-bold"
           >
-            <Calendar size={18} />
             <span>5–6 March 2027</span>
           </motion.div>
 
@@ -281,13 +240,13 @@ export default function VenuePage() {
               href="#map-section"
               className="bg-brand-orange text-white font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center gap-2 cursor-pointer text-sm"
             >
-              <MapPin size={16} /> Get Directions
+              Get Directions
             </a>
             <a
               href="#about-section"
               className="bg-white text-brand-ink font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-slate-100 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center gap-2 cursor-pointer text-sm"
             >
-              <Compass size={16} /> Explore Campus
+              Explore Campus
             </a>
           </motion.div>
         </div>
@@ -304,8 +263,8 @@ export default function VenuePage() {
               sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute top-4 left-4 bg-brand-ink/80 backdrop-blur-md text-white border border-white/10 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide shadow-md flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+            <div className="absolute top-4 left-4 bg-brand-ink text-white border border-white/10 px-3 py-1.5 rounded-md text-[10px] sm:text-xs font-semibold tracking-wide shadow-md flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-sm bg-brand-orange animate-pulse" />
               JK Lakshmipat University • Jaipur, Rajasthan • Host Venue
             </div>
           </div>
@@ -320,7 +279,7 @@ export default function VenuePage() {
                   Where Innovation Meets Research
                 </p>
               </div>
-              <div className="w-16 h-1 bg-brand-orange rounded-full" />
+              <div className="w-16 h-1 bg-brand-orange rounded-sm" />
             </div>
 
             <p className="text-slate-600 leading-relaxed text-sm sm:text-base max-w-xl">
@@ -369,7 +328,7 @@ export default function VenuePage() {
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Explore the Campus
             </h2>
-            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-full mt-2" />
+            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-sm mt-2" />
             <p className="text-sm text-slate-500 font-medium leading-relaxed mt-4">
               Explore the spaces that foster innovation, collaboration, and academic excellence at JK Lakshmipat University.
             </p>
@@ -420,7 +379,7 @@ export default function VenuePage() {
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               Conference Facilities
             </h2>
-            <div className="w-8 h-[2px] bg-brand-orange mx-auto rounded-full mt-2" />
+            <div className="w-8 h-[2px] bg-brand-orange mx-auto rounded-sm mt-2" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -432,14 +391,7 @@ export default function VenuePage() {
                 >
                   <div className="space-y-3 flex-1 flex flex-col justify-between">
                     <div>
-                      {(() => {
-                        const IconComponent = fac.icon;
-                        return (
-                          <span className="inline-block text-brand-orange mb-3">
-                            <IconComponent size={24} />
-                          </span>
-                        );
-                      })()}
+
                       <h3 className="font-serif font-bold text-base text-[#1F4E8C] leading-snug">
                         {fac.name}
                       </h3>
@@ -464,7 +416,7 @@ export default function VenuePage() {
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Find the Venue
             </h2>
-            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
+            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
           {/* Map Container */}
@@ -515,7 +467,7 @@ export default function VenuePage() {
                     rel="noopener noreferrer"
                     className="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
                   >
-                    <ExternalLink size={14} /> Open in Google Maps
+                    Open in Google Maps ↗
                   </a>
                   <a
                     href="https://maps.apple.com/?q=JK+Lakshmipat+University+Jaipur&ll=26.836603,75.647729"
@@ -523,14 +475,13 @@ export default function VenuePage() {
                     rel="noopener noreferrer"
                     className="w-full text-center bg-brand-blue text-white font-bold py-3 px-4 hover:bg-[#184176] active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
                   >
-                    <ExternalLink size={14} /> Open in Apple Maps
+                    Open in Apple Maps ↗
                   </a>
                   <button
                     onClick={copyAddress}
                     className="w-full bg-white text-brand-ink font-bold py-3 px-4 border border-[#E6E8EC] hover:bg-[#FFFBF7] hover:border-brand-orange active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm"
                   >
-                    {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
-                    {copied ? 'Address Copied!' : 'Copy Venue Address'}
+                    {copied ? '✓ Address Copied!' : 'Copy Venue Address'}
                   </button>
                 </div>
 
@@ -584,7 +535,6 @@ export default function VenuePage() {
           {[
             {
               title: 'By Air',
-              icon: Plane,
               distance: '35-40 km',
               time: '45-60 minutes',
               hubLabel: 'Airport',
@@ -593,7 +543,6 @@ export default function VenuePage() {
             },
             {
               title: 'By Train',
-              icon: Train,
               distance: '22 km',
               time: '35-40 minutes',
               hubLabel: 'Station',
@@ -602,7 +551,6 @@ export default function VenuePage() {
             },
             {
               title: 'By Road',
-              icon: Car,
               distance: 'Convenient Access',
               time: 'Flexible / Taxi',
               hubLabel: 'Route',
@@ -610,17 +558,12 @@ export default function VenuePage() {
               caption: 'Convenient access through NH-48 with app-based taxis and local transport available.'
             }
           ].map((travel, index) => {
-            const Icon = travel.icon;
             return (
               <div
                 key={index}
                 className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 flex flex-col justify-between group hover:border-brand-orange hover:bg-[#FFFBF7] hover:shadow-md transition-all duration-300"
               >
                 <div className="space-y-6">
-                  {/* Icon */}
-                  <div className="text-brand-orange group-hover:text-[#184176] transition-colors duration-300">
-                    <Icon size={24} />
-                  </div>
 
                   {/* Title */}
                   <div className="space-y-1">
@@ -663,7 +606,7 @@ export default function VenuePage() {
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Recommended Hotels
             </h2>
-            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
+            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -684,7 +627,7 @@ export default function VenuePage() {
                   <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                   
                   {/* Clean rounded distance/time badge */}
-                  <div className="absolute top-3.5 right-3.5 bg-[#E6E8EC]/90 backdrop-blur-sm text-[#1F4E8C] px-3 py-1 text-[10px] font-bold tracking-wide rounded-full shadow-sm z-20">
+                  <div className="absolute top-3.5 right-3.5 bg-[#E6E8EC] text-[#1F4E8C] px-3 py-1 text-[10px] font-bold tracking-wide rounded-md shadow-sm z-20">
                     {hotel.badgeText}
                   </div>
                 </div>
@@ -700,11 +643,10 @@ export default function VenuePage() {
                     
                     <div className="space-y-1.5 text-[13px] text-[#5F6B7A] font-sans">
                       <p className="flex items-center gap-1.5 font-medium text-brand-ink">
-                        <MapPin size={13} className="text-brand-orange shrink-0" />
                         <span>{hotel.location}</span>
                       </p>
-                      <p className="pl-[19px] leading-relaxed text-slate-500 font-medium">{hotel.distance}</p>
-                      <p className="pl-[19px] leading-relaxed text-slate-500 font-medium">{hotel.time}</p>
+                      <p className="pl-0 leading-relaxed text-slate-500 font-medium">{hotel.distance}</p>
+                      <p className="pl-0 leading-relaxed text-slate-500 font-medium">{hotel.time}</p>
                     </div>
                   </div>
 
@@ -772,11 +714,9 @@ export default function VenuePage() {
               <div className="space-y-2">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange">CONFERENCE MONTH</span>
                 <p className="text-xl font-bold flex items-center gap-1.5 text-white">
-                  <CloudSun size={18} className="text-brand-orange" />
                   March 2027
                 </p>
                 <p className="text-lg font-bold flex items-center gap-1.5 text-white/95">
-                  <Thermometer size={18} className="text-brand-orange" />
                   18°C - 30°C
                 </p>
               </div>
@@ -790,23 +730,23 @@ export default function VenuePage() {
               <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange block">WEATHER CONDITIONS</span>
               <ul className="space-y-2.5 text-sm text-white/90 font-medium">
                 <li className="flex items-center gap-2.5">
-                  <Sun size={14} className="text-brand-orange shrink-0" />
+                  <span className="text-brand-orange shrink-0">•</span>
                   <span>Warm afternoons</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CloudSun size={14} className="text-brand-orange shrink-0" />
+                  <span className="text-brand-orange shrink-0">•</span>
                   <span>Pleasant mornings</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CloudMoon size={14} className="text-brand-orange shrink-0" />
+                  <span className="text-brand-orange shrink-0">•</span>
                   <span>Comfortable evenings</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <Cloud size={14} className="text-brand-orange shrink-0" />
+                  <span className="text-brand-orange shrink-0">•</span>
                   <span>Mostly clear skies</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <Droplets size={14} className="text-brand-orange shrink-0" />
+                  <span className="text-brand-orange shrink-0">•</span>
                   <span>Low probability of rainfall</span>
                 </li>
               </ul>
@@ -833,7 +773,7 @@ export default function VenuePage() {
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Discover Jaipur
             </h2>
-            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-full" />
+            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
             <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
               Explore Jaipur's rich cultural heritage and iconic landmarks during your visit to SANKALP'27.
             </p>
@@ -865,11 +805,9 @@ export default function VenuePage() {
 
                     <div className="space-y-1 text-xs text-slate-500 border-y border-slate-100 py-2">
                       <div className="flex items-center gap-1.5">
-                        <MapPin size={13} className="text-brand-orange shrink-0" />
                         <span>Distance: <span className="font-medium text-slate-700">{att.distance}</span></span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Clock size={13} className="text-brand-orange shrink-0" />
                         <span>Visit Duration: <span className="font-medium text-slate-700">{att.duration}</span></span>
                       </div>
                     </div>
@@ -884,7 +822,7 @@ export default function VenuePage() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-brand-orange/80 transition-colors gap-1 group-hover:translate-x-0.5 transition-transform"
                     >
-                      View on Google Maps <ArrowRight size={13} />
+                      View on Google Maps →
                     </a>
                   </div>
                 </div>
@@ -904,7 +842,7 @@ export default function VenuePage() {
             <h2 className="text-3xl sm:text-5xl font-serif font-black uppercase tracking-tight">
               Join Us at SANKALP'27
             </h2>
-            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-full" />
+            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
           <p className="text-base sm:text-lg text-white/95 max-w-xl mx-auto leading-relaxed font-medium">
@@ -953,14 +891,14 @@ export default function VenuePage() {
               />
               
               {/* Image Title */}
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide border border-white/10 shadow-lg text-center">
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/90 text-white px-5 py-2.5 rounded-md text-xs sm:text-sm font-semibold tracking-wide border border-white/10 shadow-lg text-center">
                 {galleryItems[lightboxIndex].title}
               </div>
 
               {/* Close Button */}
               <button
                 onClick={() => setLightboxIndex(null)}
-                className="absolute top-5 right-5 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all rounded-full w-10 h-10 flex items-center justify-center font-bold cursor-pointer border border-white/10 shadow-md"
+                className="absolute top-5 right-5 bg-slate-900 hover:bg-slate-800 text-white transition-all rounded-md w-10 h-10 flex items-center justify-center font-bold cursor-pointer border border-white/10 shadow-md"
               >
                 ✕
               </button>
@@ -971,9 +909,9 @@ export default function VenuePage() {
                   e.stopPropagation();
                   setLightboxIndex(prev => prev === null ? null : (prev === 0 ? galleryItems.length - 1 : prev - 1));
                 }}
-                className="absolute left-5 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all rounded-full w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md"
+                className="absolute left-5 top-1/2 -translate-y-1/2 bg-slate-900 hover:bg-slate-800 text-white transition-all rounded-md w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md font-bold text-xl"
               >
-                <ChevronLeft size={24} />
+                ←
               </button>
 
               {/* Next Button */}
@@ -982,9 +920,9 @@ export default function VenuePage() {
                   e.stopPropagation();
                   setLightboxIndex(prev => prev === null ? null : (prev === galleryItems.length - 1 ? 0 : prev + 1));
                 }}
-                className="absolute right-5 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all rounded-full w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md"
+                className="absolute right-5 top-1/2 -translate-y-1/2 bg-slate-900 hover:bg-slate-800 text-white transition-all rounded-md w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md font-bold text-xl"
               >
-                <ChevronRight size={24} />
+                →
               </button>
             </motion.div>
           </motion.div>

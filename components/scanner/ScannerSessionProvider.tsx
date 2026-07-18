@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '../../lib/firebase';
-import { Loader2, ShieldAlert } from 'lucide-react';
+
 
 interface ScannerSessionContextType {
   scannerAccount: any;
@@ -79,7 +79,6 @@ export function ScannerSessionProvider({ children }: { children: React.ReactNode
     return (
       <div className="min-h-screen bg-brand-cloud flex items-center justify-center p-6 text-center select-none font-adminBody">
         <div className="max-w-md bg-white border-4 border-brand-ink p-8 shadow-[4px_4px_0px_0px_#030404] rounded-md">
-          <ShieldAlert className="text-brand-orange mx-auto mb-4" size={48} />
           <h2 className="font-adminHeading text-2xl font-black text-brand-ink mb-4 uppercase tracking-tight">Firebase Unconfigured</h2>
           <p className="text-admin-muted text-xs font-bold uppercase mb-6 leading-relaxed">
             {FIREBASE_SETUP_MESSAGE}
@@ -97,7 +96,7 @@ export function ScannerSessionProvider({ children }: { children: React.ReactNode
     return (
       <div className="min-h-screen bg-brand-cloud flex items-center justify-center p-4">
         <div className="text-center space-y-4">
-          <Loader2 className="animate-spin text-brand-ink mx-auto" size={48} />
+          <div className="w-12 h-12 border-4 border-t-brand-ink border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin mx-auto" />
           <p className="text-admin-muted text-xs font-bold uppercase tracking-widest font-adminBody">
             Verifying Scanner Authorization...
           </p>
