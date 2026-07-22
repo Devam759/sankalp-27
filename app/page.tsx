@@ -486,33 +486,41 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="max-w-2xl bg-white border border-slate-200 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm hover:shadow-md transition-shadow text-center md:text-left w-full"
+                className="max-w-2xl bg-white border border-slate-200 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 text-center md:text-left w-full group relative"
               >
-                <div className="relative w-32 h-32 rounded-2xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
+                <div className="relative w-36 h-36 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm transition-transform duration-500 group-hover:scale-[1.03]">
                   <Image
                     src={speaker.image}
                     alt={speaker.name}
                     fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    className="object-cover object-top transition-transform duration-500"
                   />
                 </div>
-                <div>
-                  <div className="flex items-center justify-center md:justify-start gap-2.5 mb-1.5">
-                    <h4 className="text-2xl font-serif font-bold text-brand-blue">{speaker.name}</h4>
+                <div className="flex-grow w-full">
+                  <div className="relative pr-12">
+                    <h4 className="text-2xl font-serif font-bold text-brand-blue transition-colors duration-300 group-hover:text-brand-orange mb-1.5">{speaker.name}</h4>
                     {speaker.linkedin && (
-                      <a 
-                        href={speaker.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
-                        aria-label={`${speaker.name} LinkedIn Profile`}
-                      >
-                        <LinkedInIcon size={20} />
-                      </a>
+                      <div className="absolute top-1/2 -translate-y-1/2 right-0 group/tooltip">
+                        <a 
+                          href={speaker.linkedin} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0a66c2] shadow-sm transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
+                          aria-label={`View ${speaker.name}'s LinkedIn Profile`}
+                        >
+                          <LinkedInIcon size={16} />
+                        </a>
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1.5 px-3 rounded-sm shadow-md z-30 whitespace-nowrap">
+                          View LinkedIn Profile
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b0f19]" />
+                        </div>
+                      </div>
                     )}
                   </div>
+                  
                   <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-4">{speaker.role}</p>
-                  <p className="text-slate-600 text-sm font-medium leading-relaxed">{speaker.affiliation}</p>
+                  <p className="text-slate-600 text-sm font-semibold leading-relaxed">{speaker.university}</p>
+                  <p className="text-slate-500 text-xs font-medium leading-relaxed mt-1">{speaker.location}</p>
                 </div>
               </motion.div>
             ))}
@@ -523,7 +531,7 @@ export default function Home() {
           {/* Keynote Speakers */}
           <div>
             <div className="text-center mb-10">
-              <span className="text-[10px] font-bold text-brand-blue uppercase tracking-[0.25em]">Keynote Speakers</span>
+              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.25em] block">Keynote Speakers</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[...speakers.keynote].sort((a, b) => {
@@ -537,32 +545,40 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white border border-slate-200 p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white border border-slate-200 p-6 pt-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 relative group h-full justify-start"
                 >
-                  <div className="relative w-24 h-24 rounded-2xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm mb-6">
+                  <div className="relative w-24 h-24 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm mb-4 transition-transform duration-500 group-hover:scale-[1.03]">
                     <Image
                       src={speaker.image}
                       alt={speaker.name}
                       fill
-                      className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                      className="object-cover transition-transform duration-500"
                     />
                   </div>
-                  <div className="flex items-center justify-center gap-2 mb-1.5 w-full">
-                    <h4 className="text-lg font-serif font-bold text-brand-blue">{speaker.name}</h4>
-                    {speaker.linkedin && (
+                  <div className="w-full relative">
+                    <h4 className="text-lg font-serif font-bold text-brand-blue mb-1.5 transition-colors duration-300 group-hover:text-brand-orange">{speaker.name}</h4>
+                    <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-3">{speaker.role}</p>
+                    <p className="text-slate-600 text-xs font-semibold leading-relaxed">{speaker.university}</p>
+                    <p className="text-slate-500 text-[11px] font-medium leading-relaxed mt-1">{speaker.location}</p>
+                  </div>
+
+                  {speaker.linkedin && (
+                    <div className="absolute top-6 right-6 group/tooltip">
                       <a 
                         href={speaker.linkedin} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-[#0a66c2] hover:text-[#004182] transition-colors p-1 shrink-0"
-                        aria-label={`${speaker.name} LinkedIn Profile`}
+                        className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0a66c2] shadow-sm transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
+                        aria-label={`View ${speaker.name}'s LinkedIn Profile`}
                       >
                         <LinkedInIcon size={16} />
                       </a>
-                    )}
-                  </div>
-                  <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-3">{speaker.role}</p>
-                  <p className="text-slate-600 text-xs font-medium leading-relaxed">{speaker.affiliation}</p>
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1.5 px-3 rounded-sm shadow-md z-30 whitespace-nowrap">
+                        View LinkedIn Profile
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b0f19]" />
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -575,8 +591,8 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto space-y-12">
           
           {/* Patrons */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[committeeMembers.chiefPatron, committeeMembers.chiefCoPatron, committeeMembers.patron].map((member, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[committeeMembers.chiefPatron, ...committeeMembers.chiefCoPatrons, committeeMembers.patron].map((member, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -584,18 +600,18 @@ export default function Home() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }}
                 className={`p-6 border flex items-start gap-4 group transition-colors ${
-                  i === 2
+                  i === 3
                     ? 'bg-brand-orange/10 border-brand-orange/20 hover:bg-brand-orange hover:text-white'
                     : 'bg-brand-blue/5 border-brand-blue/20 hover:bg-brand-blue hover:text-white'
                 }`}
               >
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
-                    src="/Images/footer_image.webp"
+                    src={('image' in member && (member as any).image) || '/Images/footer_image.webp'}
                     alt={member.name}
                     fill
                     sizes="64px"
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="object-cover transition-all duration-500"
                   />
                 </div>
                 <div>
@@ -620,11 +636,11 @@ export default function Home() {
               >
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
-                    src="/Images/footer_image.webp"
+                    src={chair.image || "/Images/footer_image.webp"}
                     alt={chair.name}
                     fill
                     sizes="64px"
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="object-cover transition-all duration-500"
                   />
                 </div>
                 <div>
@@ -636,27 +652,39 @@ export default function Home() {
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="bg-brand-orange text-white p-6 border border-brand-orange flex items-center justify-center gap-4 hover:bg-brand-orange/90 transition-shadow group"
-          >
-            <div className="relative w-12 h-12 rounded-xl border border-brand-blue/20 overflow-hidden shrink-0 bg-white shadow-sm">
-              <Image
-                src="/Images/footer_image.webp"
-                alt="Program Chairs"
-                fill
-                sizes="48px"
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-              />
-            </div>
-            <div className="text-left">
-              <p className="text-xs font-bold text-brand-blue uppercase tracking-widest">Program Chairs</p>
-              <h4 className="text-lg font-serif font-bold text-white">{committeeMembers.programChairs}</h4>
-            </div>
-          </motion.div>
+          {/* Program Chairs */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'Prof. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal_real.png' },
+              { name: 'Prof. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria_real.png' },
+              { name: 'Prof. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil_real.png' },
+              { name: 'Prof. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta_real.png' },
+            ].map((chair, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                className="bg-brand-orange/10 border border-brand-orange/20 p-6 flex flex-col items-center text-center group rounded-sm shadow-sm hover:bg-brand-orange hover:text-white transition-all duration-300"
+              >
+                <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm mb-4">
+                  <Image
+                    src={chair.image}
+                    alt={chair.name}
+                    fill
+                    sizes="64px"
+                    className="object-cover transition-all duration-500"
+                  />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-brand-orange group-hover:text-white uppercase mb-1 tracking-widest">Program Chair</p>
+                  <h4 className="text-base font-serif font-bold text-brand-blue group-hover:text-white mb-1">{chair.name}</h4>
+                  <p className="text-slate-500 group-hover:text-white/80 text-xs font-semibold">{chair.track}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
           {/* Interactive Advisory Boards - Premium Gallery */}
           <div className="mt-20 border-t border-brand-blue/10 pt-16 -mx-8 px-8 sm:mx-0 sm:px-0">
