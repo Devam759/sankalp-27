@@ -65,17 +65,18 @@ export function ScrollToTop() {
           onClick={scrollToTop}
           aria-label="Scroll to top"
           className={cn(
-            "fixed bottom-6 right-6 z-50 p-3.5 rounded-md cursor-pointer",
-            "bg-slate-950 border border-brand-orange/30 text-brand-orange",
-            "shadow-[0_4px_20px_rgba(0,0,0,0.3),_0_0_15px_rgba(245,130,30,0.1)]",
-            "hover:border-brand-orange hover:text-brand-cloud hover:bg-brand-orange",
-            "hover:shadow-[0_6px_25px_rgba(245,130,30,0.4)]",
-            "focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-slate-950",
-            "transition-colors duration-300 md:bottom-8 md:right-8"
+            "fixed bottom-6 right-6 z-50 p-3.5 rounded-full cursor-pointer",
+            "bg-brand-blue text-white border border-white/20",
+            "shadow-xl shadow-brand-blue/25",
+            "hover:bg-brand-orange hover:border-brand-orange hover:shadow-2xl hover:shadow-brand-orange/30",
+            "focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2",
+            "transition-all duration-300 md:bottom-8 md:right-8"
           )}
         >
-          <motion.div variants={arrowVariants} className="font-extrabold text-lg leading-none">
-            ↑
+          <motion.div variants={arrowVariants} className="flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
           </motion.div>
         </motion.button>
       )}

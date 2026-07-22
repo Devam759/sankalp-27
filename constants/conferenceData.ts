@@ -128,7 +128,7 @@ export const submissionSteps = [
 export const committeeMembers = {
   chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: 'Chancellor, JKLU', image: '/Images/committee/chancellor_real.png' },
   chiefCoPatrons: [
-    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/raghupati_singhania_real.jpg' },
+    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '' },
     { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/harsh_pati_singhania_real.png' }
   ],
   patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc_real.png' },
@@ -273,3 +273,5 @@ export const organizingSubCommittees = [
     members: ['Ms. Shilpa Sharma (Chair)', 'Mr. Vivek Joshi', 'Ms. Aditi Singh']
   }
 ];
+
+
