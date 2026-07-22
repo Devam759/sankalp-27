@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
+  const isHomepage = pathname === '/';
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -22,96 +23,61 @@ export default function Navbar() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const [visible, setVisible] = useState(true);
-
   useEffect(() => {
-    setIsScrolled(window.scrollY > 20);
-    let lastScrollY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 20);
-
-      // Mobile smart-navigation: hide on scroll down, show on scroll up
-      if (window.innerWidth < 1024) {
-        if (currentScrollY > 80) {
-          const isScrollingUp = lastScrollY > currentScrollY;
-          setVisible(isScrollingUp);
-        } else {
-          setVisible(true);
-        }
-      } else {
-        setVisible(true);
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll(); // set initial state
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const isHomepage = pathname === '/';
-  const shouldHaveBg = isScrolled || !isHomepage;
-  const isNavbarVisible = visible || mobileMenuOpen;
+  // On homepage: transparent at top, solid when scrolled
+  // On other pages: always solid
+  const solidBg = scrolled || !isHomepage;
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 transform ${
-        isNavbarVisible ? 'translate-y-0' : '-translate-y-full'
-      } ${mobileMenuOpen ? 'h-screen' : 'h-auto'}`}
-    >
-      {/* Top Orange Banner Strip: Call for Sponsors */}
-      <div 
-        className={`bg-brand-orange text-white px-4 text-center text-[10px] sm:text-xs font-bold uppercase tracking-wider flex flex-wrap items-center justify-center gap-1 sm:gap-2 transition-all duration-300 overflow-hidden ${
-          isScrolled ? 'max-h-0 py-0 opacity-0 pointer-events-none' : 'max-h-20 py-2 opacity-100'
-        }`}
+    <>
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        style={{ backgroundColor: solidBg ? '#184176' : 'transparent' }}
+        className="fixed top-0 left-0 right-0 w-full z-[200] transition-colors duration-300"
       >
-        <span>Call for Sponsors: Partner with SANKALP 2027</span>
-        <a 
-          href="mailto:sankalp@jklu.edu.in?subject=SANKALP 2027 Sponsorship Inquiry"
-          className="underline hover:text-brand-blue transition-colors normal-case ml-1"
+        <div
+          className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between gap-4"
+          style={{ height: '72px' }}
         >
-          Inquire Now &rarr;
-        </a>
-      </div>
-
-      {/* Main Navigation Container */}
-      <div
-        className={`transition-all duration-300 ${
-          shouldHaveBg
-            ? 'bg-brand-blue shadow-lg py-3'
-            : 'bg-transparent py-5'
-        }`}
-      >
-        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex lg:grid lg:grid-cols-3 justify-between items-center h-12">
-
           {/* Left: Logo */}
-          <Link href="/" className="flex items-center shrink-0 z-50">
+          <Link href="/" className="flex items-center shrink-0">
             <Image
-              src="/logos/jklu_logo.svg"
+              src="/logos/white_jklu_logo.png"
               alt="JKLU Logo"
-              width={140}
-              height={45}
-              className="h-10 w-auto object-contain brightness-0 invert"
+              width={180}
+              height={56}
+              priority
+              className="h-12 w-auto object-contain"
             />
           </Link>
 
-          {/* Centre: Navigation Links */}
-          <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-8 relative z-50">
+          {/* Centre: Navigation Links (desktop) */}
+          <div className="hidden lg:flex items-center justify-center w-full gap-5 xl:gap-7 text-center">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+              const isActive =
+                pathname === link.href ||
+                (link.href !== '/' && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative group px-1 py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded-sm ${
-                    isActive ? 'text-brand-orange' : 'text-white hover:text-brand-orange'
+                  className={`relative group py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap ${
+                    isActive
+                      ? 'text-brand-orange'
+                      : 'text-white hover:text-brand-orange'
                   }`}
                 >
                   {link.name}
                   <span
-                    className={`absolute bottom-1 left-0 h-[2px] bg-brand-orange transition-all duration-300 ease-out ${
+                    className={`absolute bottom-0 left-0 h-[2px] bg-brand-orange transition-all duration-300 ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
@@ -120,72 +86,80 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right: CTA Buttons */}
-          <div className="hidden lg:flex shrink-0 justify-end items-center gap-4">
-            <Link
-              href="/registration"
-              className="bg-transparent border border-white text-white px-5 py-2 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-colors shadow-sm"
-            >
-              Register
-            </Link>
-            <Link
-              href="/call-for-papers"
-              className="bg-brand-orange text-white px-5 py-2.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-colors shadow-sm"
-            >
-              Submit Paper
-            </Link>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            className="lg:hidden text-white p-2 z-50 hover:text-brand-orange transition-colors font-bold text-xs tracking-wider"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? 'CLOSE' : 'MENU'}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Slide Menu */}
-      <div 
-        className={`fixed inset-0 bg-brand-blue z-40 transition-transform duration-300 ease-in-out lg:hidden pt-28 px-6 flex flex-col ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
-        }`}
-      >
-        <div className="flex flex-col gap-6 text-lg">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-            return (
-              <Link 
-                key={link.name} 
-                href={link.href}
-                className={`font-semibold border-b pb-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange rounded-sm ${
-                  isActive ? 'text-brand-orange border-brand-orange/50' : 'text-white border-brand-orange/20 hover:text-brand-orange'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
+          {/* Right: CTA buttons + Mobile toggle */}
+          <div className="flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-3">
+              <Link
+                href="/registration"
+                className="h-9 px-5 border border-white/70 text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-white hover:text-brand-blue transition-colors"
               >
-                {link.name}
+                Register
               </Link>
-            );
-          })}
-          <div className="flex flex-col gap-3 mt-4">
-            <Link 
-              href="/registration" 
-              className="border border-white/30 text-white px-6 py-3 rounded-sm font-bold text-center shadow-md hover:bg-white hover:text-brand-blue transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              <Link
+                href="/call-for-papers"
+                className="h-9 px-5 bg-brand-orange text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-orange-500 transition-colors shadow-sm"
+              >
+                Submit Paper
+              </Link>
+            </div>
+
+            {/* Mobile hamburger */}
+            <button
+              className="lg:hidden text-white border border-white/30 rounded px-3 py-1.5 text-xs font-bold tracking-wider hover:bg-white/10 transition-colors"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label="Toggle menu"
             >
-              Register
-            </Link>
-            <Link 
-              href="/call-for-papers" 
-              className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center shadow-lg hover:bg-orange-500 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Submit Paper
-            </Link>
+              {mobileOpen ? 'CLOSE' : 'MENU'}
+            </button>
           </div>
         </div>
-      </div>
-    </nav>
+
+        {/* Bottom border when scrolled */}
+        {solidBg && <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />}
+      </motion.nav>
+
+      {/* Mobile fullscreen menu — rendered outside <nav> to avoid z-index conflicts */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-[199] bg-[#184176] flex flex-col pt-24 px-6 overflow-y-auto lg:hidden">
+          <nav className="flex flex-col gap-5 text-base">
+            {navLinks.map((link) => {
+              const isActive =
+                pathname === link.href ||
+                (link.href !== '/' && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`border-b pb-4 font-semibold transition-colors ${
+                    isActive
+                      ? 'text-brand-orange border-brand-orange/40'
+                      : 'text-white border-white/10 hover:text-brand-orange'
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            <div className="flex flex-col gap-3 pt-4 pb-8">
+              <Link
+                href="/registration"
+                className="border border-white/30 text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-white hover:text-brand-blue transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Register
+              </Link>
+              <Link
+                href="/call-for-papers"
+                className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-orange-500 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Submit Paper
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
+    </>
   );
 }

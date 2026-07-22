@@ -1,0 +1,87 @@
+================================================================================
+SANKALP '27 CONFERENCE PORTAL - DEMO / PLACEHOLDER / MOCK DATA SUMMARY
+================================================================================
+
+This document lists all temporary, demo, mock, and placeholder data used across 
+the codebase. Use this checklist when replacing temporary content with 
+official production assets.
+
+--------------------------------------------------------------------------------
+1. HERO & HOMEPAGE (app/page.tsx)
+--------------------------------------------------------------------------------
+• Logo Placeholder:
+  - Location: Hero Section (Line 180-184)
+  - Content: 24x24 block with text "SANKALP LOGO".
+  - Action Required: Replace with official SANKALP logo image asset (<Image src="/logos/sankalp logo.png" ... />).
+
+• Countdown Target Date:
+  - Location: Hero Countdown (Line 69)
+  - Content: "March 5, 2027 09:00:00".
+  - Action Required: Verify exact event inauguration date & time.
+
+--------------------------------------------------------------------------------
+2. CONFERENCE CONSTANTS & DATA (constants/conferenceData.ts)
+--------------------------------------------------------------------------------
+• Speaker Profile Avatars:
+  - Location: `speakers.plenary` and `speakers.keynote` (Lines 147-180)
+  - Content: Images currently point to temporary placeholder `/Images/footer_image.webp`.
+  - Action Required: Replace with high-res headshot photos for speakers (Prof. Ravi Vatrapu, Prof. Arun Patil, Prof. Brij Gupta, Dr. Naveen Sivadasan).
+
+• Technical Program Committee (TPC) Members:
+  - Location: `technicalProgramCommittee` array (Lines 224-231)
+  - Content: Sample mock members (Prof. Ankit Garg, Dr. Sarah Mitchell, Dr. Hiroshi Tanaka, Prof. Elena Rodriguez, Dr. James Chen, Prof. Rajesh Kumar).
+  - Action Required: Update with final confirmed TPC member list.
+
+• Track Chairs & Co-Chairs:
+  - Location: `trackChairs` array (Lines 233-241)
+  - Content: Sample chair names for 7 tracks (Dr. Amit Kumar, Dr. Sneha Sharma, Prof. Taruna Gautam, Dr. Vikram Singh, Dr. Umesh Gupta, Dr. Anjali Mehta, Prof. Devika Bhatnagar, Dr. Suresh Reddy, Dr. Ramesh Chandra, Dr. Kavita Jain, Prof. Anil Sharma, Dr. Meera Patel, Dr. Rajesh Verma, Dr. Prakash Iyer).
+  - Action Required: Replace with final allocated faculty track chairs.
+
+• Organizing Sub-Committees:
+  - Location: `organizingSubCommittees` array (Lines 243-268)
+  - Content: Draft/sample names for Publication, Registration, Sponsorship, Hospitality, Web & Design, and Media committees.
+  - Action Required: Verify and update with official committee lists.
+
+--------------------------------------------------------------------------------
+3. SPONSORS & PARTNERSHIPS PAGE (app/sponsors/page.tsx)
+--------------------------------------------------------------------------------
+• Temporary Sponsors Proposal Download Link:
+  - Location: Hero CTA (Line 146-152)
+  - Status: Removed references to `/temp_sponsors/SPONSORSHIP PROPOSAL.docx` and redirected to direct mailto query (`mailto:sankalp@jklu.edu.in`).
+  - Action Required: Add final official PDF sponsorship brochure to `/public/docs/` when available.
+
+• Sponsor Category & Partner Logo Placeholders:
+  - Location: Category cards (Lines 230-232) and Logo Grid (Lines 336-344)
+  - Content: Displaying "Your Logo Here" placeholder boxes.
+  - Action Required: Insert official partner/sponsor vector or PNG logos as sponsors are onboarded.
+
+• Sponsorship Committee Lead:
+  - Location: Contact Section (Line 397)
+  - Content: Listed as "Dr. Amit Sinhal".
+  - Action Required: Confirm lead contact details for sponsorship inquiries.
+
+--------------------------------------------------------------------------------
+4. COMMITTEE PAGE EXPERTS MATRIX (app/committee/page.tsx)
+--------------------------------------------------------------------------------
+• Domain Experts Array:
+  - Location: Inline `domains` array (Lines 35-143)
+  - Content: Contains sample track chairs, co-chairs, and TPC members grouped under 7 domain tracks.
+  - Action Required: Sync with `constants/conferenceData.ts` once committee appointments are finalized.
+
+--------------------------------------------------------------------------------
+5. ACCOMMODATION & HOTELS (app/venue/page.tsx)
+--------------------------------------------------------------------------------
+• Hotel Distance & Travel Times:
+  - Location: `hotels` array (Lines 66-100)
+  - Content: Sample nearby hotel listings (The Oberoi Rajvilas, ITC Rajputana, Radisson Blu).
+  - Action Required: Update or add official partner hotels offering negotiated conference delegate rates.
+
+--------------------------------------------------------------------------------
+6. TEST CREDENTIALS & DEMO ACCOUNTS (admin, scanner, feedback credentials.txt)
+--------------------------------------------------------------------------------
+• Development Test Credentials:
+  - Location: Root file `admin, scanner, feedback credentials.txt`
+  - Content: Firebase authentication credentials created during development for admin, scanner (1-5), feedback, and warden accounts.
+  - Action Required: Ensure passwords are changed in production Firebase Console before live launch.
+
+================================================================================

@@ -144,8 +144,7 @@ export default function SponsorsPage() {
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <a 
-                href="/temp_sponsors/SPONSORSHIP PROPOSAL.docx"
-                download="SANKALP_2027_Sponsorship_Proposal.docx"
+                href="mailto:sankalp@jklu.edu.in?subject=SANKALP%202027%20Sponsorship%20Proposal%20Request"
                 className="bg-brand-orange text-white font-bold py-3 px-6 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center gap-2 cursor-pointer text-xs shadow-sm"
               >
                 Download Proposal

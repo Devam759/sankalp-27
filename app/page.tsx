@@ -40,7 +40,6 @@ export default function Home() {
   const [loadingDone, setLoadingDone] = React.useState(true); // Animation skipped, default to true
 
   const heroImages = [
-    '/Images/hero/DJI_0060.JPG.webp',
     '/Images/hero/DJI_0063.JPG.webp',
     '/Images/hero/DJI_0075.JPG.webp',
     '/Images/hero/DJI_0078.JPG.webp',
@@ -112,15 +111,13 @@ export default function Home() {
 
   return (
     <>
-      <main
-        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white"
-        style={{
-          opacity: loadingDone ? 1 : 0,
-          transform: loadingDone ? 'translateY(0)' : 'translateY(8px)',
-          transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1)',
-        }}
-      >
       <Navbar />
+      <motion.main
+        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
+      >
 
       {/* ═══════════════════════════════════════════════════════════
           HERO — Full-bleed cinematic backdrop, editorial centre layout
@@ -161,8 +158,7 @@ export default function Home() {
           <div className="absolute inset-0 opacity-[0.04] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')] z-10 pointer-events-none" />
         </div>
 
-        {/* ── Orange top-rule (matches navbar accent) ── */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-brand-orange z-20" />
+
 
         {/* ── Main centred content ── */}
         <motion.div
@@ -211,6 +207,22 @@ export default function Home() {
                 <span className="text-white/60 text-[8px] font-semibold tracking-widest uppercase">{unit.label}</span>
               </div>
             ))}
+          </motion.div>
+
+          {/* Centralized Hero CTA Buttons */}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/call-for-papers"
+              className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center"
+            >
+              Submit Paper
+            </Link>
+            <Link
+              href="/registration"
+              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 tracking-wide flex items-center justify-center"
+            >
+              Register Now
+            </Link>
           </motion.div>
 
         </motion.div>
@@ -731,7 +743,7 @@ export default function Home() {
             className="relative h-[340px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl group"
           >
             <Image
-              src="/Images/hero/DJI_0060.JPG.webp"
+              src="/Images/hero/DJI_0063.JPG.webp"
               alt="JK Lakshmipat University Campus, Jaipur"
               fill
               sizes="100vw"
@@ -831,7 +843,7 @@ export default function Home() {
       </Section>
 
       <Footer />
-    </main>
+    </motion.main>
             {/* Modal Overlay for Expanded List Panel */}
             <AnimatePresence>
               {activeAdvisory && (
