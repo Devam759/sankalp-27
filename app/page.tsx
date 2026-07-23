@@ -676,6 +676,7 @@ export default function Home() {
                     alt={chair.name}
                     fill
                     sizes="64px"
+                    unoptimized
                     className="object-cover transition-all duration-500"
                   />
                 </div>

@@ -33,23 +33,25 @@ function initFirebaseAdmin() {
       if (fs.existsSync(serviceAccountPath)) {
         const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf8'));
         const app = initializeApp({
-        credential: cert(serviceAccount)
-      });
-      console.log('Firebase Admin SDK initialized successfully via local service-account.json.');
-      return app;
-      } else {
-        // Fallback to Application Default Credentials with explicit Project ID
-        const app = initializeApp({
-          credential: applicationDefault(),
-          projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'conference-portal'
+          credential: cert(serviceAccount)
         });
-        console.log("Firebase Admin SDK initialized using Default Application Credentials (production fallback).");
+        console.log('Firebase Admin SDK initialized successfully via local service-account.json.');
+        return app;
+      } else {
+        // Fallback to Project ID initialization (avoids missing GCP ADC file errors during local dev)
+        const app = initializeApp({
+          projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'sankalp-2027'
+        });
+        console.log("Firebase Admin SDK initialized using Project ID fallback.");
         return app;
       }
     }
   } catch (error) {
-    console.error("Firebase Admin SDK initialization error:", error);
-    throw error;
+    console.warn("Firebase Admin SDK initialization warning:", error);
+    const app = initializeApp({
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'sankalp-2027'
+    });
+    return app;
   }
 }
 

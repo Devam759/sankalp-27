@@ -365,6 +365,7 @@ export default function MindsPage() {
                           alt={member.name}
                           width={224}
                           height={224}
+                          unoptimized
                           className="object-cover w-full h-full"
                         />
                       ) : (
@@ -428,6 +429,7 @@ export default function MindsPage() {
                         alt={member.name}
                         width={176}
                         height={176}
+                        unoptimized
                         className="object-cover w-full h-full"
                       />
                     </div>
@@ -483,6 +485,7 @@ export default function MindsPage() {
                         alt={member.name}
                         width={144}
                         height={144}
+                        unoptimized
                         className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>

@@ -91,9 +91,31 @@ export default function Registration() {
   const [finalAmount, setFinalAmount] = useState<number | null>(null);
   const [successData, setSuccessData] = useState<any>(null);
 
+  const getDesignationForCategory = (catId: string) => {
+    switch (catId) {
+      case 'student_presenter':
+        return 'Student';
+      case 'academic_presenter':
+        return 'Academician / Faculty';
+      case 'industry_presenter':
+        return 'Industry Professional';
+      case 'attendee':
+        return 'Student';
+      case 'foreign_delegate':
+        return 'Academician / Faculty';
+      default:
+        return 'Student';
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(p => ({ ...p, [name]: value }));
+    if (name === 'category') {
+      const autoDesignation = getDesignationForCategory(value);
+      setFormData(p => ({ ...p, category: value, designation: autoDesignation }));
+    } else {
+      setFormData(p => ({ ...p, [name]: value }));
+    }
   };
 
   const handlePincode = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,7 +182,8 @@ export default function Registration() {
   const isPresenter = formData.category.includes('presenter') || formData.category === 'foreign_delegate';
 
   const openForm = (categoryId = 'student_presenter') => {
-    setFormData(p => ({ ...p, category: categoryId }));
+    const autoDesignation = getDesignationForCategory(categoryId);
+    setFormData(p => ({ ...p, category: categoryId, designation: autoDesignation }));
     setStep(1); setIsFormOpen(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -577,10 +600,7 @@ export default function Registration() {
                   className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[10px] font-black tracking-[0.18em] uppercase text-brand-orange bg-brand-orange/8 px-2.5 py-1 rounded-full border border-brand-orange/20">
-                        Presenter
-                      </span>
+                    <div className="flex items-center justify-end mb-3">
                       <span className="font-mono text-xs font-bold text-slate-400">01</span>
                     </div>
 
@@ -608,7 +628,7 @@ export default function Registration() {
                         'Complimentary Lunch & Refreshments'
                       ].map((item) => (
                         <li key={item} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
-                          <span className="w-4 h-4 rounded-full bg-brand-orange/15 text-brand-orange flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
+                          <span className="w-4 h-4 rounded-full bg-slate-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
                             ✓
                           </span>
                           {item}
@@ -619,7 +639,7 @@ export default function Registration() {
 
                   <button
                     onClick={() => openForm('student_presenter')}
-                    className="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-md shadow-brand-orange/25 cursor-pointer text-center"
+                    className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-sm cursor-pointer text-center"
                   >
                     Register Now →
                   </button>
@@ -634,10 +654,7 @@ export default function Registration() {
                   className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[10px] font-black tracking-[0.18em] uppercase text-brand-orange bg-brand-orange/8 px-2.5 py-1 rounded-full border border-brand-orange/20">
-                        Presenter
-                      </span>
+                    <div className="flex items-center justify-end mb-3">
                       <span className="font-mono text-xs font-bold text-slate-400">02</span>
                     </div>
 
@@ -691,10 +708,7 @@ export default function Registration() {
                   className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[10px] font-black tracking-[0.18em] uppercase text-brand-orange bg-brand-orange/8 px-2.5 py-1 rounded-full border border-brand-orange/20">
-                        Presenter
-                      </span>
+                    <div className="flex items-center justify-end mb-3">
                       <span className="font-mono text-xs font-bold text-slate-400">03</span>
                     </div>
 
@@ -753,10 +767,7 @@ export default function Registration() {
                   className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-7 lg:p-8 flex flex-col justify-between hover:border-brand-blue transition-all duration-300"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[10px] font-black tracking-[0.18em] uppercase text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200">
-                        Delegate
-                      </span>
+                    <div className="flex items-center justify-end mb-3">
                       <span className="font-mono text-xs font-bold text-slate-400">04</span>
                     </div>
 
@@ -798,10 +809,7 @@ export default function Registration() {
                   className="bg-brand-blue text-white rounded-2xl shadow-xl p-7 lg:p-8 flex flex-col justify-between hover:shadow-2xl transition-all duration-300"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[10px] font-black tracking-[0.18em] uppercase text-brand-orange bg-brand-orange/15 px-2.5 py-1 rounded-full border border-brand-orange/30">
-                        International
-                      </span>
+                    <div className="flex items-center justify-end mb-3">
                       <span className="font-mono text-xs font-bold text-white/40">05</span>
                     </div>
 

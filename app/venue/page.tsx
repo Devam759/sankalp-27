@@ -83,7 +83,7 @@ export default function VenuePage() {
       category: 'Business Hotel',
       bottomText: 'Ideal for Conference Delegates',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/itc_rajputana.jpg', 
+      src: '/Images/itc-rajputana.jpg', 
       link: 'https://www.itchotels.com/' 
     },
     { 
@@ -94,7 +94,7 @@ export default function VenuePage() {
       category: 'Premium Stay',
       bottomText: 'Business Friendly Accommodation',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/radisson_blu.jpg', 
+      src: '/Images/radisson.jpg', 
       link: 'https://www.radissonhotels.com/' 
     },
     { 

@@ -154,7 +154,7 @@ export const speakers = {
       role: 'Professor',
       university: 'Toronto Metropolitan University',
       location: 'Toronto, Canada',
-      image: '/Images/footer_image.webp',
+      image: '/Images/speakers/ravi_vatrapu.jpg',
       linkedin: 'https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'
     }
   ],
@@ -164,7 +164,7 @@ export const speakers = {
       role: 'Director (L&T)',
       university: 'Curtin University',
       location: 'Singapore',
-      image: '/Images/footer_image.webp',
+      image: '/Images/speakers/arun_patil.jpg',
       linkedin: 'https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'
     },
     {
@@ -180,7 +180,7 @@ export const speakers = {
       role: 'Principal Scientist',
       university: 'TCS Research',
       location: 'IIT Hyderabad',
-      image: '/Images/footer_image.webp',
+      image: '/Images/speakers/naveen_sivadasan.jpg',
       linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2'
     }
   ]
