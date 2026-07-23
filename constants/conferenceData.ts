@@ -1,5 +1,5 @@
 export const conferenceDates = [
-  { label: 'Call for Papers Opens', date: '1 August 2026' },
+  { label: 'Call for Papers Opens', date: '15 July 2026' },
   { label: 'Full Paper Submission Deadline', date: '31 October 2026' },
   { label: 'Notification of Acceptance', date: '30 November 2026' },
   { label: 'Camera Ready Submission', date: '15 January 2027' },

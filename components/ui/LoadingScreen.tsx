@@ -257,7 +257,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: "url('/logos/sankalp logo.jpeg')",
+            backgroundImage: "url('/logos/sankalp_logo.png')",
             backgroundSize: '100% 100%',
             zIndex: 0,
             borderRadius: '4px',
@@ -296,7 +296,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               top: `${(frag.row / ROWS) * 100}%`,
               width: `${100 / COLS}%`,
               height: `${100 / ROWS}%`,
-              backgroundImage: "url('/logos/sankalp logo.jpeg')",
+              backgroundImage: "url('/logos/sankalp_logo.png')",
               backgroundSize: `${COLS * 100}% ${ROWS * 100}%`,
               backgroundPosition: `${(frag.col / (COLS - 1)) * 100}% ${(frag.row / (ROWS - 1)) * 100}%`,
               willChange: 'transform, opacity',

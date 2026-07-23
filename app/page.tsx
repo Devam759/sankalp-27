@@ -165,18 +165,19 @@ export default function Home() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-28 pb-40"
+          className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-16 md:pt-20 pb-36"
         >
-          {/* ── SANKALP LOGO SLOT ──────────────────────────────────────────
-               Replace the placeholder below with:
-               <Image src="/logos/sankalp logo.jpeg" alt="SANKALP Logo" width={100} height={100} className="object-contain" />
-               when ready. The w-24 h-24 block reserves the exact space.
-          ─────────────────────────────────────────────────────────────── */}
-          <motion.div variants={itemVariants} className="mb-6">
-            {/* Logo placeholder — swap <div> for <Image> once file is added */}
-            <div className="w-24 h-24 rounded-sm border border-white/15 bg-white/10 flex items-center justify-center mx-auto" aria-label="SANKALP Conference Logo (placeholder)">
-              <span className="text-white/30 text-[9px] font-bold uppercase tracking-widest text-center leading-tight px-2">SANKALP<br/>LOGO</span>
-            </div>
+          {/* ── SANKALP LOGO SLOT ────────────────────────────────────────── */}
+          <motion.div variants={itemVariants} className="-mt-3 mb-2">
+            <Image
+              src="/logos/sankalp_logo_white.png"
+              alt="SANKALP 2027 Conference Logo"
+              width={420}
+              height={420}
+              priority
+              unoptimized
+              className="w-72 sm:w-96 md:w-[420px] h-auto object-contain filter drop-shadow-[0_6px_28px_rgba(255,255,255,0.22)] transition-transform duration-300 hover:scale-105"
+            />
           </motion.div>
 
           {/* Conference name */}

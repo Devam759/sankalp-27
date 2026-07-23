@@ -48,15 +48,25 @@ export default function Navbar() {
           style={{ height: '72px' }}
         >
           {/* Left: Logo */}
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <Image
+              src="/logos/sankalp_logo_white.png"
+              alt="SANKALP 2027 Logo"
+              width={44}
+              height={44}
+              priority
+              unoptimized
+              className="h-10 w-auto object-contain drop-shadow-md"
+            />
+            <div className="w-px h-7 bg-white/25 hidden sm:block" />
             <Image
               src="/logos/white_jklu_logo.png"
               alt="JKLU Logo"
-              width={180}
-              height={56}
+              width={160}
+              height={50}
               priority
               loading="eager"
-              className="h-12 w-auto object-contain"
+              className="h-10 w-auto object-contain hidden sm:block"
             />
           </Link>
 
