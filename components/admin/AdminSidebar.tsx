@@ -368,6 +368,7 @@ export default function Sidebar() {
     { name: 'Overview', href: '/admin', icon: CustomDashboardIcon },
     { name: 'Registration', href: '/admin/registrations', icon: CustomClipboardIcon },
     { name: 'Ticket Scanner', href: '/admin/scanner', icon: CustomScannerIcon },
+    { name: 'Scanner Accounts', href: '/admin/scanner-accounts', icon: CustomDutyIcon },
     { name: 'Entry Logs', href: '/admin/entry-logs', icon: CustomEntryLogsIcon },
     { name: 'Audit Logs', href: '/admin/audit', icon: CustomAuditIcon },
     { name: 'System Errors', href: '/admin/errors', icon: CustomAlertCircleIcon },

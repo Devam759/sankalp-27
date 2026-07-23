@@ -67,6 +67,7 @@ export default function About() {
                   src="/Images/sankalp.webp" 
                   alt="SANKALP 2027 Committee" 
                   fill 
+                  sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover relative z-0"
                 />
               </div>

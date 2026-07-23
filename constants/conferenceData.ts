@@ -128,7 +128,7 @@ export const submissionSteps = [
 export const committeeMembers = {
   chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: 'Chancellor, JKLU', image: '/Images/committee/chancellor_real.png' },
   chiefCoPatrons: [
-    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/raghupati_singhania_real.jpg' },
+    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee_prochancellor.png' },
     { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/harsh_pati_singhania_real.png' }
   ],
   patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc_real.png' },
@@ -154,7 +154,7 @@ export const speakers = {
       role: 'Professor',
       university: 'Toronto Metropolitan University',
       location: 'Toronto, Canada',
-      image: '/Images/speakers/arun_patil_real.png',
+      image: '/Images/footer_image.webp',
       linkedin: 'https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'
     }
   ],
@@ -164,7 +164,7 @@ export const speakers = {
       role: 'Director (L&T)',
       university: 'Curtin University',
       location: 'Singapore',
-      image: '/Images/speakers/ravi_vatrapu_real.png',
+      image: '/Images/footer_image.webp',
       linkedin: 'https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'
     },
     {
@@ -172,7 +172,7 @@ export const speakers = {
       role: 'Director, Centre for AI and Cyber Security',
       university: 'Asia University',
       location: 'Taiwan',
-      image: '/Images/speakers/brij_gupta_real.png',
+      image: '/Images/footer_image.webp',
       linkedin: 'https://www.linkedin.com/in/bbgupta/'
     },
     {
@@ -180,7 +180,7 @@ export const speakers = {
       role: 'Principal Scientist',
       university: 'TCS Research',
       location: 'IIT Hyderabad',
-      image: '/Images/speakers/naveen_sivadasan_real.png',
+      image: '/Images/footer_image.webp',
       linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2'
     }
   ]

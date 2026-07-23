@@ -25,8 +25,8 @@ These variables must **never** be prefixed with `NEXT_PUBLIC_`. They provide roo
 If any Backend Secret is accidentally committed to source control or exposed on the client, you must rotate the key immediately in the respective provider's console.
 
 ## Infrastructure Security
-- **HTTPS Enforcement**: The Next.js `middleware.ts` forces a 301 redirect to HTTPS for all HTTP traffic in production environments, ensuring encryption in transit.
-- **Traffic Logging**: The middleware logs all `/api/*` traffic and detects anomalous bursts (e.g., >50 requests per minute from a single IP), flagging them as `[SUSPICIOUS TRAFFIC]` in the server console logs for Datadog/Cloud Logging ingestion.
+- **HTTPS Enforcement**: The Next.js `proxy.ts` forces a 301 redirect to HTTPS for all HTTP traffic in production environments, ensuring encryption in transit.
+- **Traffic Logging**: The proxy logs all `/api/*` traffic and detects anomalous bursts (e.g., >50 requests per minute from a single IP), flagging them as `[SUSPICIOUS TRAFFIC]` in the server console logs for Datadog/Cloud Logging ingestion.
 - **Firestore Rules**: Client-side database modifications are strictly protected. For example, `registrations` cannot be created client-side, and `notifications` can only be altered by authenticated Admins.
 
 ## Authentication

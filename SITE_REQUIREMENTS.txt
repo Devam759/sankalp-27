@@ -1,0 +1,166 @@
+================================================================================
+SANKALP 2027 INTERNATIONAL CONFERENCE PORTAL - SITE REQUIREMENTS CHECKLIST
+================================================================================
+
+This document contains a complete inventory of all real production assets, data, 
+images, documents, and credentials required across the entire website.
+Use this checklist to gather and replace sample/placeholder data before launch.
+
+================================================================================
+1. MEDIA & IMAGE ASSETS
+================================================================================
+
+[A] MISSING SITE IMAGES (Currently 404):
+----------------------------------------
+1. `public/Images/itc_rajputana.jpg`
+   - Location: Venue & Accommodation Page (/venue)
+   - Purpose: Hotel card photo for ITC Rajputana, Jaipur.
+   - Recommended specs: JPG format, 4:3 or 16:9 aspect ratio, min width 800px.
+
+2. `public/Images/radisson_blu.jpg`
+   - Location: Venue & Accommodation Page (/venue)
+   - Purpose: Hotel card photo for Radisson Blu Jaipur.
+   - Recommended specs: JPG format, 4:3 or 16:9 aspect ratio, min width 800px.
+
+3. `public/Images/sankalp.webp`
+   - Location: About Page (/about)
+   - Purpose: SANKALP Conference / Committee Showcase image block.
+   - Recommended specs: WEBP or JPG format, 4:3 aspect ratio, min width 800px.
+
+4. `public/Images/jklu.jpg`
+   - Location: About Page (/about)
+   - Purpose: JK Lakshmipat University Campus showcase photo.
+   - Recommended specs: JPG or PNG format, 4:5 or 1:1 aspect ratio, min width 800px.
+
+
+[B] KEYNOTE & PLENARY SPEAKER PHOTOS:
+--------------------------------------
+Location: `public/Images/speakers/` (referenced in `constants/conferenceData.ts`)
+Recommended specs: High-res square headshots (1:1 ratio, min 400x400px).
+
+1. `ravi_vatrapu.jpg` (Prof. Ravi Vatrapu - Toronto Metropolitan University)
+2. `arun_patil.jpg` (Prof. Arun Patil - Director L&T, Curtin University)
+3. `brij_gupta.jpg` (Prof. Brij Gupta - Asia University, Taiwan)
+4. `naveen_sivadasan.jpg` (Dr. Naveen Sivadasan - Principal Scientist, TCS Research)
+
+
+[C] LOGOS & PUBLICATION BRANDING:
+---------------------------------
+1. SANKALP 2027 Official Vector/PNG Logo
+   - Location: Hero section (Homepage) & Navigation Header
+   - Path: `public/logos/sankalp_logo.png`
+
+2. Springer LNCS / Indexing Partner Logos
+   - Location: Call for Papers (/call-for-papers) & Homepage
+   - Purpose: Official indexing / publication partner logos (LNCS / Scopus / IEEE if approved).
+
+
+================================================================================
+2. OFFICIAL DOCUMENTS & DOWNLOADS
+================================================================================
+
+1. Official Paper Formatting Template (Word / LaTeX)
+   - Currently: Points to external placeholder link (`https://google.com`).
+   - Location: Call for Papers (/call-for-papers) & Registration (/registration)
+   - Required: PDF or ZIP template uploaded to `public/docs/SANKALP_2027_Paper_Template.docx`.
+
+2. Official Sponsorship Proposal Brochure PDF
+   - Currently: Mailto trigger (`mailto:sankalp@jklu.edu.in`).
+   - Location: Sponsors Page (/sponsors)
+   - Required: Official PDF brochure uploaded to `public/docs/SANKALP_2027_Sponsorship_Brochure.pdf`.
+
+
+================================================================================
+3. CONFERENCE DATES & DEADLINES
+================================================================================
+
+Current Configured Dates (`constants/conferenceData.ts` & `app/page.tsx`):
+• Call for Papers Opens: 1 August 2026
+• Full Paper Submission Deadline: 31 October 2026
+• Notification of Acceptance: 30 November 2026
+• Camera Ready Submission: 15 January 2027
+• Conference Inauguration & Event Dates: 5–6 March 2027
+• Hero Countdown Timer: Target date set to "March 5, 2027 09:00:00".
+
+Action Required: Verify and confirm all final dates with the Conference Chair.
+
+
+================================================================================
+4. COMMITTEE & FACULTY DATA
+================================================================================
+
+[A] COMMITTEE MEMBERS (`constants/conferenceData.ts`):
+• Chief Patron: Mr. Bharat Hari Singhania (Chancellor, JKLU)
+• Chief Co-Patrons: Dr. Raghupati Singhania & Mr. Harsh Pati Singhania (Pro Chancellors, JKLU)
+• Patron: Prof. Vijaysekhar Chellaboina (VC, JKLU)
+• Conference Chair: Prof. Tapas Kumar (Dean IET, JKLU)
+• Conference Convener: Prof. Sonali Vyas (Head – CGL, JKLU)
+• Program Chairs: Prof. Amit Sinhal, Prof. Devika Kataria, Prof. Taruna Sunil, Prof. Umesh Gupta
+
+[B] TECHNICAL PROGRAM COMMITTEE (TPC) (`constants/conferenceData.ts`):
+• Action Required: Provide final confirmed list of international and national TPC reviewers and track members.
+
+[C] TRACK CHAIRS & CO-CHAIRS (`constants/conferenceData.ts`):
+• Action Required: Provide final allocated faculty chairs for each of the 7 tracks.
+
+[D] ORGANIZING SUB-COMMITTEES (`constants/conferenceData.ts`):
+• Action Required: Verify and confirm names for:
+  - Publication Committee
+  - Registration Committee
+  - Sponsorship Committee
+  - Hospitality Committee
+  - Web & Design Committee
+  - Media & Communications Committee
+
+
+================================================================================
+5. SPONSOR LOGOS & PARTNER DATA
+================================================================================
+
+Location: Sponsors Page (/sponsors)
+Action Required:
+1. Provide high-resolution vector/PNG logos for confirmed conference sponsors:
+   - Platinum Sponsors
+   - Gold Sponsors
+   - Silver Sponsors
+   - Academic / Industry Partners
+2. Confirm Lead Contact Person for Sponsorship inquiries (Currently listed as Dr. Amit Sinhal).
+
+
+================================================================================
+6. PAYMENT & REGISTRATION INTEGRATION
+================================================================================
+
+1. Cashfree Payment Gateway Credentials (`.env.local`):
+   - `CASHFREE_APP_ID`
+   - `CASHFREE_SECRET_KEY`
+   - `CASHFREE_ENVIRONMENT` (SANDBOX / PRODUCTION)
+
+2. Official Bank Account Details (For Direct Bank Transfer / NEFT / RTGS):
+   - Account Name: JK Lakshmipat University - SANKALP 2027
+   - Account Number / IFSC Code / Bank Name & Branch
+   - GSTIN (18% GST Compliance)
+
+
+================================================================================
+7. CONTACT DETAILS & SOCIAL LINKS
+================================================================================
+
+1. Email Address: `sankalp@jklu.edu.in`
+2. Phone / Helpdesk Numbers: Conference Secretariat & Registration desk numbers.
+3. Official Social Media Handles:
+   - LinkedIn Page URL
+   - X (Twitter) Handle
+   - YouTube / Facebook Page URL
+
+
+================================================================================
+8. PRODUCTION SECURITY & ENVIRONMENT VARIABLES (`.env.local`)
+================================================================================
+
+Ensure the following variables are configured for production:
+- Firebase API Keys & Authentication domain
+- Cashfree Merchant Credentials
+- Production Web Domain: `sankalp.jklu.edu.in`
+
+================================================================================

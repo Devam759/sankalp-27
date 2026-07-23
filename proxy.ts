@@ -26,7 +26,7 @@ function getRateLimitResponse(retryAfter: number = 60) {
   );
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || '127.0.0.1';
   const proto = req.headers.get('x-forwarded-proto') || 'http';
@@ -105,7 +105,7 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    // Apply middleware to API routes and pages, ignoring static files and images
+    // Apply proxy to API routes and pages, ignoring static files and images
     '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 };

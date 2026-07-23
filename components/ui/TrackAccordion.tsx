@@ -10,15 +10,27 @@ interface TrackProps {
     topics: string[];
   };
   index: number;
+  isOpen?: boolean;
+  onToggle?: () => void;
 }
 
-export default function TrackAccordion({ track, index }: TrackProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function TrackAccordion({ track, index, isOpen: controlledIsOpen, onToggle }: TrackProps) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+  const isControlled = controlledIsOpen !== undefined;
+  const isOpen = isControlled ? controlledIsOpen : internalIsOpen;
+
+  const handleToggle = () => {
+    if (isControlled) {
+      onToggle?.();
+    } else {
+      setInternalIsOpen(!internalIsOpen);
+    }
+  };
 
   return (
     <div className="mb-4 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden transition-all hover:shadow-md">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
       >
         <div className="flex items-center gap-4">

@@ -493,6 +493,7 @@ export default function Home() {
                     src={speaker.image}
                     alt={speaker.name}
                     fill
+                    sizes="144px"
                     className="object-cover object-top transition-transform duration-500"
                   />
                 </div>
@@ -552,6 +553,7 @@ export default function Home() {
                       src={speaker.image}
                       alt={speaker.name}
                       fill
+                      sizes="96px"
                       className="object-cover transition-transform duration-500"
                     />
                   </div>
@@ -784,15 +786,6 @@ export default function Home() {
 
             {/* Bottom caption */}
             <div className="absolute bottom-0 inset-x-0 p-8 md:p-12 z-10">
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-brand-orange text-xs font-bold uppercase tracking-[0.2em] mb-3"
-              >
-                Conference Venue · SANKALP 2027
-              </motion.p>
               <motion.h3
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -801,7 +794,7 @@ export default function Home() {
                 className="text-white font-serif font-bold text-2xl md:text-4xl leading-tight"
               >
                 JK Lakshmipat University<br className="hidden md:block" />
-                <span className="text-white/70 text-xl md:text-3xl font-normal"> — Jaipur, India</span>
+                <span className="text-white/70 text-xl md:text-3xl font-normal">Jaipur, India</span>
               </motion.h3>
             </div>
           </motion.div>

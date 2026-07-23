@@ -110,7 +110,7 @@ const lineVariants: Variants = {
   visible: { scaleY: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export default function ConferenceDNA() {
+export default function ConferencePillars() {
   const sectionRef = useRef(null);
   const inView = useInView(sectionRef, { once: true, margin: '-80px' });
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import ScannerSidebar from '../../components/scanner/Sidebar';
+import ScannerSidebar from '../../components/scanner/ScannerSidebar';
 import { ScannerSessionProvider } from '../../components/scanner/ScannerSessionProvider';
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
@@ -11,6 +11,12 @@ import TrackAccordion from '@/components/ui/TrackAccordion';
 import { conferenceTracks } from '@/constants/conferenceData';
 
 export default function CallForPapers() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setOpenIndex(prevIndex => (prevIndex === index ? null : index));
+  };
+
   return (
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-24 flex flex-col">
       <Navbar />
@@ -86,7 +92,13 @@ export default function CallForPapers() {
           </div>
           <div className="space-y-4">
             {conferenceTracks.map((track, i) => (
-              <TrackAccordion key={track.id} track={track} index={i} />
+              <TrackAccordion 
+                key={track.id} 
+                track={track} 
+                index={i} 
+                isOpen={openIndex === i}
+                onToggle={() => handleToggle(i)}
+              />
             ))}
           </div>
         </div>
