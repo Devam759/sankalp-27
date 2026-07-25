@@ -221,7 +221,7 @@ export default function About() {
         </div>
 
         {/* Right Navy Orbit Area */}
-        <div className="w-full lg:w-[55%] bg-brand-blue relative flex items-center justify-center p-12 overflow-hidden shadow-inner">
+        <div className="w-full lg:w-[55%] bg-brand-blue relative flex items-center justify-center p-6 sm:p-12 overflow-hidden shadow-inner min-h-[420px] lg:min-h-0">
            {/* Decorative layered circles */}
            <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
              <div className="w-[800px] h-[800px] rounded-full border-[1px] border-white/20 absolute"></div>
@@ -234,17 +234,21 @@ export default function About() {
              whileInView={{ opacity: 1, scale: 1 }}
              viewport={{ once: true }}
              transition={{ duration: 1.2, ease: "easeOut" }}
-             className="relative z-10 w-full max-w-2xl aspect-square flex items-center justify-center"
+             className="relative z-10 flex items-center justify-center"
+             style={{ width: 'min(420px, 80vw)', height: 'min(420px, 80vw)' }}
            >
               {/* Central Core */}
-              <div className="w-32 h-32 rounded-3xl bg-brand-orange flex items-center justify-center z-20 shadow-[0_0_40px_rgba(245,130,30,0.5)] border-4 border-brand-blue">
-                <span className="text-brand-blue font-bold text-center text-sm leading-tight tracking-widest uppercase">Research<br/>Core</span>
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-brand-orange flex items-center justify-center z-20 shadow-[0_0_40px_rgba(245,130,30,0.5)] border-4 border-brand-blue absolute">
+                <span className="text-brand-blue font-bold text-center text-xs sm:text-sm leading-tight tracking-widest uppercase">Research<br/>Core</span>
               </div>
 
               {/* Orbiting Nodes mapping */}
               {focusAreas.map((area, i) => {
-                const angle = (i * 360) / focusAreas.length;
-                const radius = 220; // distance from center
+                const angle = (i * 360) / focusAreas.length - 90;
+                const angleRad = (angle * Math.PI) / 180;
+                const radius = 42; // percentage of container
+                const x = radius * Math.cos(angleRad);
+                const y = radius * Math.sin(angleRad);
                 return (
                   <motion.div 
                     key={i}
@@ -252,19 +256,18 @@ export default function About() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 + (i * 0.1), duration: 0.8 }}
-                    className="absolute flex items-center gap-3 group"
+                    className="absolute flex flex-col items-center gap-1.5 group"
                     style={{
-                      transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
+                      left: `calc(50% + ${x}%)`,
+                      top: `calc(50% + ${y}%)`,
+                      transform: 'translate(-50%, -50%)',
                     }}
                   >
                     {/* Node Dot */}
-                    <div className="w-4 h-4 rounded-sm bg-white border-2 border-brand-orange relative z-10 group-hover:scale-150 transition-transform cursor-pointer">
-                      {/* Connecting line to center */}
-                      <div className="absolute top-1/2 right-full w-24 h-px bg-brand-orange/30 -translate-y-1/2 pointer-events-none" style={{ transform: `translateY(-50%) rotate(${angle}deg)` }}></div>
-                    </div>
+                    <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm bg-white border-2 border-brand-orange relative z-10 group-hover:scale-150 transition-transform cursor-pointer shrink-0"></div>
                     {/* Label */}
-                    <div className="bg-brand-blue border border-white/10 px-4 py-2 opacity-80 group-hover:opacity-100 group-hover:border-brand-orange transition-all whitespace-nowrap shadow-xl">
-                      <span className="text-white text-xs font-bold tracking-wider uppercase">{area.title}</span>
+                    <div className="bg-brand-blue border border-white/10 px-2 py-1 opacity-80 group-hover:opacity-100 group-hover:border-brand-orange transition-all shadow-xl max-w-[80px] sm:max-w-[100px] text-center">
+                      <span className="text-white text-[9px] sm:text-[10px] font-bold tracking-wide uppercase leading-tight">{area.title}</span>
                     </div>
                   </motion.div>
                 );
@@ -283,29 +286,7 @@ export default function About() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
-            {/* Left: Image Block */}
-            <div className="lg:col-span-6 relative">
-               <motion.div 
-                 initial={{ opacity: 0, x: -30 }}
-                 whileInView={{ opacity: 1, x: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ duration: 1 }}
-                 className="relative aspect-[4/5] w-full max-w-lg bg-brand-cloud p-4 pb-16 shadow-2xl rotate-[-2deg] group hover:rotate-0 transition-transform duration-700 mx-auto lg:mx-0 border border-brand-orange/20"
-               >
-                 <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200">
-                    {/* JKLU Campus Image */}
-                    <Image src="/Images/jklu.jpg" alt="JKLU Campus" fill className="object-cover transition-all duration-700 group-hover:scale-105" />
-                 </div>
-                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-xl tracking-wider text-center w-full">
-                    JK Lakshmipat University
-                 </div>
-                 
-                 {/* Decorative Tape */}
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-white/45 rotate-3 shadow-sm border border-white/40"></div>
-               </motion.div>
-            </div>
-
-            {/* Right: Content Cards */}
+            {/* Left: Content Cards (About JKLU & IET) */}
             <div className="lg:col-span-6">
                <div className="flex items-center gap-4 mb-12">
                  <h2 className="text-3xl lg:text-4xl font-serif font-bold text-brand-blue uppercase tracking-wide">
@@ -343,6 +324,25 @@ export default function About() {
                   </p>
                </motion.div>
 
+            </div>
+
+            {/* Right: Straight Image Block (Positioned after IET) */}
+            <div className="lg:col-span-6 relative flex justify-center">
+               <motion.div 
+                 initial={{ opacity: 0, x: 30 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 0.9 }}
+                 className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-14 shadow-2xl mx-auto lg:mx-0 border border-slate-200/80 rounded-sm"
+               >
+                 <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
+                    {/* JKLU Campus Image */}
+                    <Image src="/Images/jklu.jpg" alt="JKLU Campus" fill className="object-cover transition-all duration-700 hover:scale-105" />
+                 </div>
+                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-lg tracking-wider text-center w-full">
+                    JK Lakshmipat University Campus
+                 </div>
+               </motion.div>
             </div>
 
           </div>

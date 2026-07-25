@@ -11,8 +11,6 @@ import Footer from '@/components/ui/Footer';
 export default function VenuePage() {
   const [copied, setCopied] = useState(false);
 
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
   const copyAddress = () => {
     navigator.clipboard.writeText(
       "JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India"
@@ -20,33 +18,6 @@ export default function VenuePage() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-
-
-  // Gallery items
-  const galleryItems = [
-    { title: 'Library', src: '/Images/gallery/library.png' },
-    { title: 'Main Academic Building', src: '/Images/gallery/academic_block.png' },
-    { title: 'Innovation', src: '/Images/gallery/innovation_centre.png' },
-    { title: 'Research Laboratories', src: '/Images/gallery/research_labs.png' },
-    { title: 'Main Entrance', src: '/Images/gallery/main_entry.png' },
-    { title: 'Campus Greens & Sports', src: '/Images/gallery/green_campus.png' }
-  ];
-
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (lightboxIndex === null) return;
-      if (e.key === 'ArrowLeft') {
-        setLightboxIndex(prev => prev === null ? null : (prev === 0 ? galleryItems.length - 1 : prev - 1));
-      } else if (e.key === 'ArrowRight') {
-        setLightboxIndex(prev => prev === null ? null : (prev === galleryItems.length - 1 ? 0 : prev + 1));
-      } else if (e.key === 'Escape') {
-        setLightboxIndex(null);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightboxIndex]);
 
   // Facilities items
   const facilities = [
@@ -72,7 +43,7 @@ export default function VenuePage() {
       category: 'Luxury Hotel',
       bottomText: 'Preferred by International Guests',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/oberoi_rajvilas.jpg', 
+      src: '/Images/hotels/oberoi_rajvilas.webp', 
       link: 'https://www.oberoihotels.com/' 
     },
     { 
@@ -83,7 +54,7 @@ export default function VenuePage() {
       category: 'Business Hotel',
       bottomText: 'Ideal for Conference Delegates',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/itc-rajputana.jpg', 
+      src: '/Images/hotels/itc_rajputana.webp', 
       link: 'https://www.itchotels.com/' 
     },
     { 
@@ -94,7 +65,7 @@ export default function VenuePage() {
       category: 'Premium Stay',
       bottomText: 'Business Friendly Accommodation',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/radisson.jpg', 
+      src: '/Images/hotels/radisson_blu.webp', 
       link: 'https://www.radissonhotels.com/' 
     },
     { 
@@ -105,7 +76,7 @@ export default function VenuePage() {
       category: 'Delegate Recommended',
       bottomText: 'Near Conference Venue',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/four_points.jpg', 
+      src: '/Images/hotels/four_points.webp', 
       link: 'https://www.marriott.com/' 
     }
   ];
@@ -127,7 +98,7 @@ export default function VenuePage() {
       duration: '2–3 Hours',
       category: 'UNESCO World Heritage',
       desc: 'A majestic UNESCO World Heritage fortress overlooking Maota Lake with spectacular murals.', 
-      src: '/Images/amer_fort.png',
+      src: '/Images/jaipur_sightseeing/amer_fort.webp',
       mapLink: 'https://maps.google.com/?q=Amer+Fort+Jaipur'
     },
     { 
@@ -136,7 +107,7 @@ export default function VenuePage() {
       duration: '1 Hour',
       category: 'Historic Monument',
       desc: 'A breathtaking palace resting silently in the center of the serene Man Sagar Lake.', 
-      src: '/Images/jal_mahal.png',
+      src: '/Images/jaipur_sightseeing/jal_mahal.webp',
       mapLink: 'https://maps.google.com/?q=Jal+Mahal+Jaipur'
     },
     { 
@@ -145,7 +116,7 @@ export default function VenuePage() {
       duration: '2–3 Hours',
       category: 'Royal Palace',
       desc: 'The magnificent royal residence blending traditional Rajasthani and Mughal architectural styles.', 
-      src: '/Images/city_palace_v2.png',
+      src: '/Images/jaipur_sightseeing/city_palace.webp',
       mapLink: 'https://maps.google.com/?q=City+Palace+Jaipur'
     },
     { 
@@ -154,7 +125,7 @@ export default function VenuePage() {
       duration: '1.5–2 Hours',
       category: 'Museum',
       desc: 'The oldest state museum displaying exceptional industrial art and ancient treasures.', 
-      src: '/Images/albert_hall.jpg',
+      src: '/Images/jaipur_sightseeing/albert_hall.webp',
       mapLink: 'https://maps.google.com/?q=Albert+Hall+Museum+Jaipur'
     },
     { 
@@ -163,7 +134,7 @@ export default function VenuePage() {
       duration: '1.5–2 Hours',
       category: 'Hill Fort',
       desc: 'A historic hilltop fort offering absolute panoramic sunset views over the Pink City.', 
-      src: '/Images/nahargarh_fort.png',
+      src: '/Images/jaipur_sightseeing/nahargarh_fort.webp',
       mapLink: 'https://maps.google.com/?q=Nahargarh+Fort+Jaipur'
     }
   ];
@@ -171,14 +142,14 @@ export default function VenuePage() {
 
 
   return (
-    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-20">
+    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-0">
       <Navbar />
 
       {/* SECTION 1: HERO SECTION */}
-      <section className="relative h-[80vh] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink">
+      <section className="relative h-[80vh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink pt-20">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/Images/footer_image.webp"
+            src="/Images/campus/DJI_0124.webp"
             alt="JKLU Campus Banner"
             fill
             sizes="100vw"
@@ -189,14 +160,6 @@ export default function VenuePage() {
         </div>
 
         <div className="relative z-10 max-w-4xl px-6 space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block border-2 border-brand-orange text-brand-orange bg-brand-orange/15 px-4 py-1 text-xs sm:text-sm font-bold tracking-widest uppercase rounded-sm"
-          >
-            Venue
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -242,12 +205,6 @@ export default function VenuePage() {
             >
               Get Directions
             </a>
-            <a
-              href="#about-section"
-              className="bg-white text-brand-ink font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-slate-100 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center gap-2 cursor-pointer text-sm"
-            >
-              Explore Campus
-            </a>
           </motion.div>
         </div>
       </section>
@@ -257,16 +214,12 @@ export default function VenuePage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white group">
             <Image
-              src="/Images/footer_image.webp"
+              src="/Images/campus/DJI_0124.webp"
               alt="JK Lakshmipat University Campus"
               fill
               sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute top-4 left-4 bg-brand-ink text-white border border-white/10 px-3 py-1.5 rounded-md text-[10px] sm:text-xs font-semibold tracking-wide shadow-md flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-sm bg-brand-orange animate-pulse" />
-              JK Lakshmipat University • Jaipur, Rajasthan • Host Venue
-            </div>
           </div>
 
           <div className="space-y-8">
@@ -321,57 +274,6 @@ export default function VenuePage() {
 
 
 
-      {/* SECTION 3: CAMPUS GALLERY */}
-      <section className="py-24 bg-white border-y border-slate-100 px-6">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Explore the Campus
-            </h2>
-            <div className="w-16 h-1 bg-brand-orange mx-auto rounded-sm mt-2" />
-            <p className="text-sm text-slate-500 font-medium leading-relaxed mt-4">
-              Explore the spaces that foster innovation, collaboration, and academic excellence at JK Lakshmipat University.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-            {galleryItems.map((item, index) => {
-              // Custom span configuration for Bento/Asymmetric layout
-              const bentoClasses = index === 1 // Main Academic Building (2nd item in array)
-                ? 'md:col-span-2 md:row-span-2'
-                : 'md:col-span-1 md:row-span-1';
-
-              return (
-                <div
-                  key={index}
-                  onClick={() => setLightboxIndex(index)}
-                  className={`relative border border-brand-ink/5 shadow-sm rounded-2xl overflow-hidden group cursor-zoom-in bg-brand-cloud ${bentoClasses}`}
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-103 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  {/* Permanent soft gradient at bottom for readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
-                  {/* Hover dark overlay */}
-                  <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                  
-                  {/* Location label inside the card */}
-                  <div className="absolute bottom-5 left-5 z-20">
-                    <p className="text-white font-serif font-bold text-base sm:text-lg tracking-wide">
-                      {item.title}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 4: CONFERENCE FACILITIES */}
       <section className="py-28 bg-[#FAFAFB] border-y border-[#E6E8EC]/60 px-6">
         <div className="max-w-7xl mx-auto space-y-16">
@@ -409,25 +311,56 @@ export default function VenuePage() {
         </div>
       </section>
 
-      {/* SECTION 5: LOCATION */}
-      <section id="map-section" className="py-20 bg-white border-t border-[#E6E8EC]/60 px-6">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center space-y-2">
+      {/* SECTION 5: LOCATION MAP */}
+      <section id="map-section" className="py-24 bg-[#FAFAFB] px-6">
+        <div className="max-w-7xl mx-auto space-y-10">
+          <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Find the Venue
+              Location &amp; Navigation
             </h2>
+            <p className="text-slate-600 text-sm sm:text-base font-sans leading-relaxed max-w-xl mx-auto">
+              JK Lakshmipat University &middot; Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India
+            </p>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
-          {/* Map Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            {/* Left Column: Map */}
-            <div className="lg:col-span-7 border border-[#E6E8EC] shadow-md rounded-[18px] overflow-hidden h-[450px] lg:h-auto min-h-[350px]">
+          {/* Map Container: 3 Column Layout (Google Maps Left - Iframe Centre - Apple Maps Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            
+            {/* Left Card: Google Maps */}
+            <div className="lg:col-span-3 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-6 flex flex-col justify-between items-center text-center shadow-sm gap-6">
+              <div className="space-y-4 w-full flex flex-col items-center">
+                <span className="text-[#1A73E8] font-black uppercase tracking-widest text-xs">Google Maps</span>
+                <div className="p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-40 h-40 flex items-center justify-center">
+                  <img 
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.app.goo.gl%2FBr41eEjiNpgZaDjA9%3Fg_st%3Daw" 
+                    alt="Scan for Google Maps"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              <a
+                href="https://maps.app.goo.gl/Br41eEjiNpgZaDjA9?g_st=aw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center bg-[#1A73E8] hover:bg-[#1557B0] text-white font-bold py-3 px-4 transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm group"
+              >
+                <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <span>Google Maps</span>
+                <span className="group-hover:translate-x-0.5 transition-transform">↗</span>
+              </a>
+            </div>
+
+            {/* Centre: Google Maps Embed Iframe */}
+            <div className="lg:col-span-6 border border-[#E6E8EC] shadow-md rounded-[18px] overflow-hidden min-h-[420px] h-full bg-white">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1052887370965!2d75.64772927502109!3d26.83660327669258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4af4fe68f403%3A0x3bf05f95df22b8c4!2sJK%20Lakshmipat%20University!5e0!3m2!1sen!2sin!4v1779876968774!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, minHeight: '420px' }}
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -436,86 +369,41 @@ export default function VenuePage() {
               />
             </div>
 
-            {/* Right Column: Address and Actions card */}
-            <div className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-10 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] shadow-sm gap-8">
-              {/* Address & Coordinates */}
-              <div className="space-y-6">
-                <div className="space-y-3">
-                  <span className="text-brand-orange font-bold uppercase tracking-widest text-[10px] sm:text-xs">VENUE ADDRESS</span>
-                  <h4 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">JK Lakshmipat University</h4>
-                  <div className="text-sm text-slate-700 leading-relaxed font-sans font-medium space-y-1">
-                    <p>Near Mahindra SEZ, Ajmer Road</p>
-                    <p>Jaipur, Rajasthan 302026, India</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-1 pt-4 border-t border-[#E6E8EC]/60">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8A99AD] font-sans">Coordinates</span>
-                  <p className="text-xs text-[#8A99AD] font-medium font-sans">
-                    26.857° N, 75.699° E
-                  </p>
+            {/* Right Card: Apple Maps */}
+            <div className="lg:col-span-3 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-6 flex flex-col justify-between items-center text-center shadow-sm gap-6">
+              <div className="space-y-4 w-full flex flex-col items-center">
+                <span className="text-black font-black uppercase tracking-widest text-xs">Apple Maps</span>
+                <div className="p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-40 h-40 flex items-center justify-center">
+                  <img 
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.apple%2Fp%2FV7C2aunFdCLYnJ" 
+                    alt="Scan for Apple Maps"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
               </div>
 
-              {/* Action Buttons & QR Code Row */}
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 pt-6 border-t border-[#E6E8EC]/60 items-center">
-                {/* Actions */}
-                <div className="sm:col-span-7 flex flex-col gap-3">
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=JK+Lakshmipat+University+Jaipur"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 hover:bg-orange-600 active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
-                  >
-                    Open in Google Maps ↗
-                  </a>
-                  <a
-                    href="https://maps.apple.com/?q=JK+Lakshmipat+University+Jaipur&ll=26.836603,75.647729"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full text-center bg-brand-blue text-white font-bold py-3 px-4 hover:bg-[#184176] active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs"
-                  >
-                    Open in Apple Maps ↗
-                  </a>
-                  <button
-                    onClick={copyAddress}
-                    className="w-full bg-white text-brand-ink font-bold py-3 px-4 border border-[#E6E8EC] hover:bg-[#FFFBF7] hover:border-brand-orange active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm"
-                  >
-                    {copied ? '✓ Address Copied!' : 'Copy Venue Address'}
-                  </button>
-                </div>
-
-                {/* QR Codes */}
-                <div className="sm:col-span-5 flex flex-col items-center gap-3">
-                  <div className="flex gap-5">
-                    {/* Google Maps QR */}
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="p-1.5 bg-white border border-[#E6E8EC] rounded-lg shadow-sm w-20 h-20 flex items-center justify-center">
-                        <img 
-                          src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DJK%2BLakshmipat%2BUniversity%2BJaipur" 
-                          alt="Scan for Google Maps"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <span className="text-[9px] font-bold tracking-wider text-brand-orange uppercase">Google Maps</span>
-                    </div>
-
-                    {/* Apple Maps QR */}
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="p-1.5 bg-white border border-[#E6E8EC] rounded-lg shadow-sm w-20 h-20 flex items-center justify-center">
-                        <img 
-                          src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fmaps.apple.com%2F%3Fq%3DJK%2BLakshmipat%2BUniversity%2BJaipur%26ll%3D26.836603%2C75.647729" 
-                          alt="Scan for Apple Maps"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <span className="text-[9px] font-bold tracking-wider text-brand-blue uppercase">Apple Maps</span>
-                    </div>
-                  </div>
-                  <span className="text-[9px] font-extrabold tracking-widest text-slate-400 uppercase mt-1">Scan to Navigate</span>
-                </div>
+              <div className="w-full space-y-2.5">
+                <a
+                  href="https://maps.apple/p/V7C2aunFdCLYnJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center bg-black hover:bg-[#1C1C1E] text-white font-bold py-3 px-4 transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm group"
+                >
+                  <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 170 170">
+                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.02.12-9.92-1.99-14.7-6.35-3.32-3.02-7.17-7.76-11.55-14.24-6.42-9.47-11.39-19.98-14.92-31.54-3.53-11.56-5.3-22.77-5.3-33.62 0-14.86 3.73-27.13 11.19-36.81 7.46-9.68 16.78-14.61 27.97-14.8 5.02 0 10.37 1.25 16.05 3.76 5.68 2.51 9.47 3.86 11.37 4.05 1.76.12 5.56-1.18 11.41-3.9 5.85-2.72 10.97-3.97 15.36-3.76 12.06.67 21.72 5.25 28.98 13.73-10.74 6.52-16 15.69-15.78 27.5.22 9.24 3.78 16.92 10.68 23.03 6.9 6.11 15.17 9.53 24.81 10.26-2.23 6.75-5.2 13.4-8.91 19.95zM119.22 31.62c0-7.37 2.65-14.45 7.95-21.25 5.3-6.8 11.96-10.7 19.98-11.7 0.34 1.79 0.51 3.47 0.51 5.03 0 7.37-2.73 14.54-8.19 21.51-5.46 6.97-12.23 10.87-20.31 11.7-0.11-1.34-0.17-2.69-0.17-4.04z" />
+                  </svg>
+                  <span>Apple Maps</span>
+                  <span className="group-hover:translate-x-0.5 transition-transform">↗</span>
+                </a>
+                <button
+                  onClick={copyAddress}
+                  className="w-full bg-white text-brand-ink font-bold py-2.5 px-4 border border-[#E6E8EC] hover:bg-[#FFFBF7] hover:border-brand-orange active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm"
+                >
+                  {copied ? '✓ Address Copied!' : 'Copy Venue Address'}
+                </button>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -865,69 +753,6 @@ export default function VenuePage() {
           </div>
         </div>
       </section>
-
-      {/* LIGHTBOX MODAL */}
-      <AnimatePresence>
-        {lightboxIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxIndex(null)}
-            className="fixed inset-0 z-50 bg-brand-ink/95 flex items-center justify-center p-4 cursor-zoom-out"
-          >
-            <motion.div
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.95 }}
-              className="relative max-w-5xl max-h-[85vh] w-full aspect-[4/3] rounded-2xl overflow-hidden bg-brand-ink flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={galleryItems[lightboxIndex].src}
-                alt={galleryItems[lightboxIndex].title}
-                fill
-                className="object-contain"
-              />
-              
-              {/* Image Title */}
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/90 text-white px-5 py-2.5 rounded-md text-xs sm:text-sm font-semibold tracking-wide border border-white/10 shadow-lg text-center">
-                {galleryItems[lightboxIndex].title}
-              </div>
-
-              {/* Close Button */}
-              <button
-                onClick={() => setLightboxIndex(null)}
-                className="absolute top-5 right-5 bg-slate-900 hover:bg-slate-800 text-white transition-all rounded-md w-10 h-10 flex items-center justify-center font-bold cursor-pointer border border-white/10 shadow-md"
-              >
-                ✕
-              </button>
-
-              {/* Prev Button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex(prev => prev === null ? null : (prev === 0 ? galleryItems.length - 1 : prev - 1));
-                }}
-                className="absolute left-5 top-1/2 -translate-y-1/2 bg-slate-900 hover:bg-slate-800 text-white transition-all rounded-md w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md font-bold text-xl"
-              >
-                ←
-              </button>
-
-              {/* Next Button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex(prev => prev === null ? null : (prev === galleryItems.length - 1 ? 0 : prev + 1));
-                }}
-                className="absolute right-5 top-1/2 -translate-y-1/2 bg-slate-900 hover:bg-slate-800 text-white transition-all rounded-md w-12 h-12 flex items-center justify-center cursor-pointer border border-white/10 shadow-md font-bold text-xl"
-              >
-                →
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <Footer />
     </main>

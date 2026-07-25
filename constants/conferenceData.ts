@@ -126,15 +126,15 @@ export const submissionSteps = [
 ];
 
 export const committeeMembers = {
-  chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: 'Chancellor, JKLU', image: '/Images/committee/chancellor_real.png' },
+  chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: 'Chancellor, JKLU', image: '/Images/committee/Bharat_Hari_Singhania.webp' },
   chiefCoPatrons: [
-    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee_prochancellor.png' },
-    { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/harsh_pati_singhania_real.png' }
+    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/Raghupati_Singhania.webp' },
+    { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/Harsh_Pati_Singhania.webp' }
   ],
-  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc_real.png' },
+  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc.webp' },
   chairs: [
-    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar_real.png' },
-    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas_real.png' },
+    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
+    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
   ],
   programChairs: 'Professors of IET (Prof. Amit / Prof. Devika / Prof. Taruna, and Prof. Umesh)',
 };
@@ -154,7 +154,7 @@ export const speakers = {
       role: 'Professor',
       university: 'Toronto Metropolitan University',
       location: 'Toronto, Canada',
-      image: '/Images/speakers/ravi_vatrapu.jpg',
+      image: '/Images/speakers/ravi_vatrapu.webp',
       linkedin: 'https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'
     }
   ],
@@ -164,7 +164,7 @@ export const speakers = {
       role: 'Director (L&T)',
       university: 'Curtin University',
       location: 'Singapore',
-      image: '/Images/speakers/arun_patil.jpg',
+      image: '/Images/speakers/arun_patil.webp',
       linkedin: 'https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'
     },
     {
@@ -172,7 +172,7 @@ export const speakers = {
       role: 'Director, Centre for AI and Cyber Security',
       university: 'Asia University',
       location: 'Taiwan',
-      image: '/Images/footer_image.webp',
+      image: '/Images/speakers/brij_gupta.webp',
       linkedin: 'https://www.linkedin.com/in/bbgupta/'
     },
     {
@@ -180,7 +180,7 @@ export const speakers = {
       role: 'Principal Scientist',
       university: 'TCS Research',
       location: 'IIT Hyderabad',
-      image: '/Images/speakers/naveen_sivadasan.jpg',
+      image: '/Images/speakers/naveen_sivadasan.webp',
       linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2'
     }
   ]

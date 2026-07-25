@@ -43,8 +43,8 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['Outfit', 'system-ui', 'sans-serif'],
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['"Plus Jakarta Sans"', 'Outfit', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'brand-gradient': 'linear-gradient(135deg, #f5821e 0%, #184176 100%)',

@@ -555,7 +555,7 @@ export default function Registration() {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease, delay: 0.42 }}
               onClick={() => openForm()}
-              className="group flex items-center gap-3 bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-[0.2em] px-9 py-4 rounded-full shadow-xl shadow-brand-orange/25 hover:shadow-2xl hover:-translate-y-0.5 transition-all cursor-pointer"
+              className="group flex items-center gap-3 bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-[0.2em] px-9 py-4 rounded-sm shadow-xl shadow-brand-orange/25 hover:shadow-2xl hover:-translate-y-0.5 transition-all cursor-pointer"
             >
               Register Now
               <svg className="group-hover:translate-x-0.5 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>

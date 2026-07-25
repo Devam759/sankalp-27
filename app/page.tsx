@@ -40,14 +40,21 @@ export default function Home() {
   const [loadingDone, setLoadingDone] = React.useState(true); // Animation skipped, default to true
 
   const heroImages = [
-    '/Images/hero/DJI_0063.JPG.webp',
-    '/Images/hero/DJI_0075.JPG.webp',
-    '/Images/hero/DJI_0078.JPG.webp',
-    '/Images/hero/DJI_0119.JPG.webp',
-    '/Images/hero/DJI_0124.JPG.webp'
+    '/Images/hero/DJI_0063.webp',
+    '/Images/hero/DJI_0075.webp',
+    '/Images/hero/DJI_0078.webp',
+    '/Images/hero/DJI_0119.webp',
+    '/Images/hero/DJI_0124.webp'
   ];
 
   const [currentHeroIndex, setCurrentHeroIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -165,13 +172,12 @@ export default function Home() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-16 md:pt-20 pb-36"
+          className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-20 sm:pt-24 pb-12 sm:pb-16"
         >
           {/* ── SANKALP LOGO SLOT ────────────────────────────────────────── */}
-          {/* Replace the placeholder below with an <Image> tag when the logo file is added to public/logos/ */}
           <motion.div variants={itemVariants} className="-mt-3 mb-2">
-            <div className="w-72 sm:w-96 md:w-[420px] aspect-[760/600] border border-white/20 rounded flex items-center justify-center" aria-label="SANKALP 2027 Conference Logo placeholder">
-              <span className="text-white/30 text-sm font-bold uppercase tracking-wider">SANKALP LOGO</span>
+            <div className="w-24 sm:w-28 md:w-32 aspect-[760/600] border border-white/20 rounded flex items-center justify-center" aria-label="SANKALP 2027 Conference Logo placeholder">
+              <span className="text-white/30 text-[10px] font-bold uppercase tracking-wider">SANKALP LOGO</span>
             </div>
           </motion.div>
 
@@ -191,18 +197,25 @@ export default function Home() {
           </motion.div>
 
           {/* Countdown timer */}
-          <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 mb-10">
-            {[
-              { value: timeLeft.isExpired ? "00" : String(timeLeft.days).padStart(2, '0'), label: "Days" },
-              { value: timeLeft.isExpired ? "00" : String(timeLeft.hours).padStart(2, '0'), label: "Hours" },
-              { value: timeLeft.isExpired ? "00" : String(timeLeft.minutes).padStart(2, '0'), label: "Minutes" },
-              { value: timeLeft.isExpired ? "00" : String(timeLeft.seconds).padStart(2, '0'), label: "Seconds" },
-            ].map((unit) => (
-              <div key={unit.label} className="flex flex-col items-center justify-center bg-brand-blue border border-white/10 w-18 h-18 rounded-md shadow-lg">
-                <span className="text-brand-orange text-2xl font-black font-sans leading-none mb-1 tracking-wider">{unit.value}</span>
-                <span className="text-white/60 text-[8px] font-semibold tracking-widest uppercase">{unit.label}</span>
-              </div>
-            ))}
+          <motion.div variants={itemVariants} className="mb-8 flex flex-col items-center">
+            <div className="flex items-center gap-1 sm:gap-2">
+              {[
+                { value: timeLeft.isExpired ? "00" : String(timeLeft.days).padStart(2, '0'), label: "Days" },
+                { value: timeLeft.isExpired ? "00" : String(timeLeft.hours).padStart(2, '0'), label: "Hours" },
+                { value: timeLeft.isExpired ? "00" : String(timeLeft.minutes).padStart(2, '0'), label: "Mins" },
+                { value: timeLeft.isExpired ? "00" : String(timeLeft.seconds).padStart(2, '0'), label: "Secs" },
+              ].map((unit, i, arr) => (
+                <React.Fragment key={unit.label}>
+                  <div className="flex flex-col items-center justify-center w-[52px] sm:w-[64px] py-2 sm:py-2.5 rounded-sm bg-white/8 border border-white/15 backdrop-blur-sm shadow-md">
+                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-lg sm:text-2xl">{unit.value}</span>
+                    <span className="text-white/50 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
+                  </div>
+                  {i < arr.length - 1 && (
+                    <span className="text-white/30 text-base sm:text-lg font-black leading-none -mt-3 select-none">:</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
           </motion.div>
 
           {/* Centralized Hero CTA Buttons */}
@@ -242,7 +255,7 @@ export default function Home() {
               <span className="text-white/30 text-[8px] font-bold uppercase tracking-wider text-center leading-tight">LOGO</span>
             </div>
             <h3 className="text-2xl font-serif font-bold mb-1">SANKALP '27</h3>
-            <p className="text-brand-orange text-xs font-semibold tracking-[0.14em] uppercase mb-4">सङ्कल्प · Resolution · Intent · Commitment</p>
+
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
               A premier JKLU International Conference uniting researchers, academics, industry leaders and students across six frontier domains: Sustainable AI, Next-Gen Knowledge, Automation, Learning, Prediction and emerging technologies.
             </p>
@@ -278,7 +291,7 @@ export default function Home() {
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: "easeOut" }}
                   className="flex items-start gap-3"
                 >
-                  <span className="text-brand-blue mt-1 font-bold select-none">✓</span>
+                  <span className="mt-[5px] w-1.5 h-1.5 rounded-sm bg-brand-blue shrink-0" />
                   <span className="text-white text-sm leading-relaxed font-semibold">{info}</span>
                 </motion.li>
               ))}
@@ -490,6 +503,8 @@ export default function Home() {
                     alt={speaker.name}
                     fill
                     sizes="144px"
+                    priority
+                    loading="eager"
                     className="object-cover object-top transition-transform duration-500"
                   />
                 </div>
@@ -550,6 +565,8 @@ export default function Home() {
                       alt={speaker.name}
                       fill
                       sizes="96px"
+                      priority={i === 0}
+                      loading={i === 0 ? 'eager' : 'lazy'}
                       className="object-cover transition-transform duration-500"
                     />
                   </div>
@@ -653,10 +670,10 @@ export default function Home() {
           {/* Program Chairs */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Prof. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal_real.png' },
-              { name: 'Prof. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria_real.png' },
-              { name: 'Prof. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil_real.png' },
-              { name: 'Prof. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta_real.png' },
+              { name: 'Prof. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
+              { name: 'Prof. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
+              { name: 'Prof. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
+              { name: 'Prof. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
             ].map((chair, i) => (
               <motion.div
                 key={i}
@@ -770,7 +787,7 @@ export default function Home() {
             className="relative h-[340px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl group"
           >
             <Image
-              src="/Images/hero/DJI_0063.JPG.webp"
+              src="/Images/hero/DJI_0063.webp"
               alt="JK Lakshmipat University Campus, Jaipur"
               fill
               sizes="100vw"

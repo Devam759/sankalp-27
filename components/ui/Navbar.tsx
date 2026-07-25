@@ -111,11 +111,24 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="lg:hidden text-white border border-white/30 rounded px-3 py-1.5 text-xs font-bold tracking-wider hover:bg-white/10 transition-colors"
+              className="lg:hidden text-white p-2 hover:bg-white/10 transition-colors rounded"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? 'CLOSE' : 'MENU'}
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {mobileOpen ? (
+                  <>
+                    <line x1="4" y1="4" x2="18" y2="18" stroke="white" strokeWidth="2" strokeLinecap="square"/>
+                    <line x1="18" y1="4" x2="4" y2="18" stroke="white" strokeWidth="2" strokeLinecap="square"/>
+                  </>
+                ) : (
+                  <>
+                    <line x1="3" y1="5" x2="19" y2="5" stroke="white" strokeWidth="2" strokeLinecap="square"/>
+                    <line x1="3" y1="11" x2="19" y2="11" stroke="white" strokeWidth="2" strokeLinecap="square"/>
+                    <line x1="3" y1="17" x2="19" y2="17" stroke="white" strokeWidth="2" strokeLinecap="square"/>
+                  </>
+                )}
+              </svg>
             </button>
           </div>
         </div>
@@ -125,47 +138,77 @@ export default function Navbar() {
       </motion.nav>
 
       {/* Mobile fullscreen menu — rendered outside <nav> to avoid z-index conflicts */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[199] bg-[#184176] flex flex-col pt-24 px-6 overflow-y-auto lg:hidden">
-          <nav className="flex flex-col gap-5 text-base">
-            {navLinks.map((link) => {
-              const isActive =
-                pathname === link.href ||
-                (link.href !== '/' && pathname.startsWith(link.href));
-              return (
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed inset-0 z-[199] bg-[#184176] flex flex-col pt-24 px-6 overflow-y-auto lg:hidden"
+          >
+            {/* Subtle decorative top line */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
+              className="absolute top-[72px] left-0 right-0 h-px bg-white/10 origin-left"
+            />
+
+            <nav className="flex flex-col gap-0 text-base">
+              {navLinks.map((link, i) => {
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== '/' && pathname.startsWith(link.href));
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -18 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.32, ease: [0.4, 0, 0.2, 1], delay: 0.08 + i * 0.055 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={`flex items-center justify-between border-b py-4 font-semibold tracking-wide transition-colors ${
+                        isActive
+                          ? 'text-brand-orange border-brand-orange/30'
+                          : 'text-white border-white/10 hover:text-brand-orange'
+                      }`}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {link.name}
+                      <span className={`text-xs ${isActive ? 'text-brand-orange' : 'text-white/20'}`}>›</span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1], delay: 0.08 + navLinks.length * 0.055 }}
+                className="flex flex-col gap-3 pt-6 pb-10"
+              >
                 <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`border-b pb-4 font-semibold transition-colors ${
-                    isActive
-                      ? 'text-brand-orange border-brand-orange/40'
-                      : 'text-white border-white/10 hover:text-brand-orange'
-                  }`}
+                  href="/registration"
+                  className="border border-white/30 text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-white hover:text-brand-blue transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link.name}
+                  Register
                 </Link>
-              );
-            })}
-            <div className="flex flex-col gap-3 pt-4 pb-8">
-              <Link
-                href="/registration"
-                className="border border-white/30 text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-white hover:text-brand-blue transition-colors"
-                onClick={() => setMobileOpen(false)}
-              >
-                Register
-              </Link>
-              <Link
-                href="/call-for-papers"
-                className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-orange-500 transition-colors"
-                onClick={() => setMobileOpen(false)}
-              >
-                Submit Paper
-              </Link>
-            </div>
-          </nav>
-        </div>
-      )}
+                <Link
+                  href="/call-for-papers"
+                  className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-orange-500 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Submit Paper
+                </Link>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
