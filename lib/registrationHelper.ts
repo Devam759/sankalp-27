@@ -53,7 +53,8 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
       process.cwd(), 
       'public', 
       'logos',
-      'sankalp_logo.png'
+      /* SANKALP LOGO SLOT — Replace 'jklu_logo.png' with the new sankalp logo filename when added to public/logos/ */
+      'jklu_logo.png'
     );
     const sankalpLogoBytes = await fs.readFile(sankalpLogoPath);
     sankalpLogoImage = await pdfDoc.embedPng(sankalpLogoBytes);

@@ -160,10 +160,11 @@ export async function sendCheckInEmail(
   let logoAttachment: any = null;
   let jkluAttachment: any = null;
   try {
-    const logoPath = path.join(process.cwd(), 'public', 'logos', 'sankalp_logo.png');
+    /* SANKALP LOGO SLOT — Replace the path and filename below with the new sankalp logo when added to public/logos/ */
+    const logoPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.png');
     const logoBytes = await fs.readFile(logoPath);
     logoAttachment = {
-      filename: 'sankalp_logo.png',
+      filename: 'jklu_logo.png',
       content: logoBytes,
       cid: 'sankalp_logo'
     };
@@ -209,7 +210,7 @@ export async function sendCheckInEmail(
                 <img src="cid:jklu_logo" alt="JKLU Logo" style="max-height: 55px; width: auto; display: block;" />
               </td>
               <td align="center" valign="middle" style="padding-left: 20px; border-left: 1px solid rgba(0,0,0,0.1);">
-                <img src="cid:sankalp_logo" alt="Sankalp '27 Logo" style="max-height: 70px; width: auto; display: block;" />
+                <img src="cid:sankalp_logo" alt="Sankalp '27 Logo Placeholder" style="max-height: 70px; width: auto; display: block;" />
               </td>
             </tr>
           </table>

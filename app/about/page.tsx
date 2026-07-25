@@ -62,14 +62,9 @@ export default function About() {
               </div>
               
               {/* The Image */}
+              {/* SANKALP IMAGE SLOT — Replace the placeholder below with an <Image> tag when a suitable image is added to public/Images/ */}
               <div className="relative z-10 w-full h-[90%] border border-slate-200 shadow-sm overflow-hidden bg-slate-100 flex items-center justify-center">
-                <Image 
-                  src="/Images/sankalp.webp" 
-                  alt="SANKALP 2027 Committee" 
-                  fill 
-                  sizes="(max-width: 1024px) 100vw, 500px"
-                  className="object-cover relative z-0"
-                />
+                <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">SANKALP IMAGE</span>
               </div>
             </div>
           </div>

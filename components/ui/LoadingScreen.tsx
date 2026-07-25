@@ -250,6 +250,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         }}
       >
         {/* Solid image that fades in on sweep to seal fragment gaps */}
+        {/* SANKALP LOGO SLOT — Replace the placeholder below with backgroundImage pointing to the new logo file when added to public/logos/ */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: sweeping ? 1 : 0 }}
@@ -257,12 +258,16 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: "url('/logos/sankalp_logo.png')",
-            backgroundSize: '100% 100%',
+            background: 'linear-gradient(135deg, rgba(245,130,30,0.15) 0%, rgba(24,65,118,0.15) 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             zIndex: 0,
             borderRadius: '4px',
           }}
-        />
+        >
+          <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em' }}>LOGO</span>
+        </motion.div>
 
         {/* Fragment grid */}
         {FRAGMENTS.map((frag) => (
@@ -296,7 +301,8 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               top: `${(frag.row / ROWS) * 100}%`,
               width: `${100 / COLS}%`,
               height: `${100 / ROWS}%`,
-              backgroundImage: "url('/logos/sankalp_logo.png')",
+              /* SANKALP LOGO SLOT — Replace background gradient with backgroundImage pointing to the new logo file when added to public/logos/ */
+              background: 'linear-gradient(135deg, rgba(245,130,30,0.15) 0%, rgba(24,65,118,0.15) 100%)',
               backgroundSize: `${COLS * 100}% ${ROWS * 100}%`,
               backgroundPosition: `${(frag.col / (COLS - 1)) * 100}% ${(frag.row / (ROWS - 1)) * 100}%`,
               willChange: 'transform, opacity',
