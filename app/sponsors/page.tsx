@@ -163,7 +163,13 @@ export default function SponsorsPage() {
       {/* 2. WHY SPONSOR SANKALP'27 */}
       <section className="py-24 bg-white border-b border-slate-100 px-6">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="max-w-3xl space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl space-y-4"
+          >
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               Why Sponsor SANKALP 2027?
             </h2>
@@ -171,14 +177,18 @@ export default function SponsorsPage() {
             <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
               Establish a powerful presence at a leading academic and industry crossroads. Our platform offers strategic avenues to demonstrate leadership and engage directly with global communities.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whySponsor.map((item, idx) => {
               return (
-                <div 
+                <motion.div 
                   key={idx} 
-                  className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-8 flex flex-col justify-between"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: (idx % 3) * 0.1 }}
+                  className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-8 flex flex-col justify-between hover:shadow-md hover:border-brand-orange/40 transition-all duration-300"
                 >
                   <div className="space-y-4">
                     <h3 className="font-serif font-bold text-lg text-[#1F4E8C] leading-snug">
@@ -188,7 +198,7 @@ export default function SponsorsPage() {
                       {item.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -198,7 +208,13 @@ export default function SponsorsPage() {
       {/* 3. SPONSORSHIP CATEGORIES */}
       <section className="py-24 bg-brand-cloud border-b border-slate-100 px-6">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="max-w-3xl space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl space-y-4"
+          >
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               Sponsorship Categories
             </h2>
@@ -206,13 +222,17 @@ export default function SponsorsPage() {
             <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
               Choose from our structured alignment levels, designed to address diverse organizational outreach and communication objectives.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {categories.map((cat, idx) => (
-              <div 
+              <motion.div 
                 key={idx} 
-                className="bg-white border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 flex flex-col justify-between gap-8 shadow-sm"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: (idx % 2) * 0.12 }}
+                className="bg-white border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 flex flex-col justify-between gap-8 shadow-sm hover:shadow-md hover:border-brand-orange/40 transition-all duration-300"
               >
                 <div className="space-y-6">
                   <div className="flex justify-between items-start gap-4">
@@ -256,7 +276,7 @@ export default function SponsorsPage() {
                     Inquire Category &rarr;
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

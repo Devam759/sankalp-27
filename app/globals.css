@@ -369,3 +369,43 @@ body {
   box-shadow: none !important;
 }
 
+/* Premium Card Micro-Interactions & Shimmer Effects */
+.premium-card-hover {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card-hover:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 20px 40px -15px rgba(24, 65, 118, 0.14), 0 0 20px -5px rgba(245, 130, 30, 0.15);
+  border-color: rgba(245, 130, 30, 0.45) !important;
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(25deg);
+  transition: opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+  opacity: 1;
+  animation: shimmerSweep 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes shimmerSweep {
+  0% { left: -60%; }
+  100% { left: 140%; }
+}
+

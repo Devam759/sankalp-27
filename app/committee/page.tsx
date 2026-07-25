@@ -83,7 +83,7 @@ export default function MindsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.5 }}
-                  className="group bg-white rounded-sm p-6 sm:p-7 flex flex-col items-center text-center shadow-sm border border-slate-200 hover:border-brand-orange/50 hover:shadow-md transition-all duration-300"
+                  className="group bg-white rounded-sm p-6 sm:p-7 flex flex-col items-center text-center shadow-sm border border-slate-200 premium-card-hover"
                 >
                   {/* Portrait Container */}
                   <div className="relative mb-5">

@@ -19,6 +19,33 @@ export default function VenuePage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const travelInfo = [
+    {
+      title: 'By Air',
+      distance: '35-40 km',
+      time: '45-60 minutes',
+      hubLabel: 'Airport',
+      hubValue: 'Jaipur International Airport',
+      caption: 'Regular domestic and international connections via Jaipur International Airport.'
+    },
+    {
+      title: 'By Train',
+      distance: '22 km',
+      time: '35-40 minutes',
+      hubLabel: 'Station',
+      hubValue: 'Jaipur Junction (JP)',
+      caption: 'Jaipur Junction is well connected to major Indian cities.'
+    },
+    {
+      title: 'By Road',
+      distance: 'Convenient Access',
+      time: 'Flexible / Taxi',
+      hubLabel: 'Route',
+      hubValue: 'NH-48 & Ajmer Road',
+      caption: 'Convenient access through NH-48 with app-based taxis and local transport available.'
+    }
+  ];
+
   // Facilities items
   const facilities = [
     { name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.' },
@@ -287,9 +314,13 @@ export default function VenuePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {facilities.map((fac, index) => {
               return (
-                <div
+                <motion.div
                   key={index}
-                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.45, delay: (index % 5) * 0.08 }}
+                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between hover:border-brand-orange/40 hover:shadow-md transition-all duration-300"
                 >
                   <div className="space-y-3 flex-1 flex flex-col justify-between">
                     <div>
@@ -304,7 +335,7 @@ export default function VenuePage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -420,35 +451,14 @@ export default function VenuePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: 'By Air',
-              distance: '35-40 km',
-              time: '45-60 minutes',
-              hubLabel: 'Airport',
-              hubValue: 'Jaipur International Airport',
-              caption: 'Regular domestic and international connections via Jaipur International Airport.'
-            },
-            {
-              title: 'By Train',
-              distance: '22 km',
-              time: '35-40 minutes',
-              hubLabel: 'Station',
-              hubValue: 'Jaipur Junction (JP)',
-              caption: 'Jaipur Junction is well connected to major Indian cities.'
-            },
-            {
-              title: 'By Road',
-              distance: 'Convenient Access',
-              time: 'Flexible / Taxi',
-              hubLabel: 'Route',
-              hubValue: 'NH-48 & Ajmer Road',
-              caption: 'Convenient access through NH-48 with app-based taxis and local transport available.'
-            }
-          ].map((travel, index) => {
+          {travelInfo.map((travel, index) => {
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: index * 0.12 }}
                 className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 flex flex-col justify-between group hover:border-brand-orange hover:bg-[#FFFBF7] hover:shadow-md transition-all duration-300"
               >
                 <div className="space-y-6">
@@ -481,7 +491,7 @@ export default function VenuePage() {
                 <p className="text-[12px] text-[#8A99AD] italic leading-relaxed pt-6 border-t border-[#E6E8EC]/40 mt-6 font-sans">
                   "{travel.caption}"
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -499,8 +509,12 @@ export default function VenuePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {hotels.map((hotel, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: (index % 4) * 0.1 }}
                 className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] overflow-hidden flex flex-col justify-between group hover:border-brand-orange hover:shadow-md transition-all duration-300"
               >
                 <div className="relative aspect-[4/3] bg-brand-cloud overflow-hidden">
@@ -554,7 +568,7 @@ export default function VenuePage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

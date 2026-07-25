@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 
@@ -31,18 +32,29 @@ export default function ContactPage() {
 
       <div className="pt-32 pb-28 px-6 max-w-5xl mx-auto relative z-10">
         
-        <header className="text-center mb-16">
+        <motion.header 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h1 className="text-4xl md:text-5xl font-serif text-[#184176] tracking-tight mb-4">
             Contact Us
           </h1>
           <div className="w-16 h-[2px] bg-[#f5821e] mx-auto" />
-        </header>
+        </motion.header>
 
         {/* Main Grid Layout */}
         <div className="space-y-16">
           
           {/* Campus Address Card */}
-          <div className="bg-white border border-[#184176]/10 p-8 md:p-10 shadow-sm rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="bg-white border border-[#184176]/10 p-8 md:p-10 shadow-sm rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+          >
             <div className="space-y-3">
               <h3 className="text-2xl font-serif text-[#184176] tracking-tight">
                 SANKALP 2027
@@ -60,7 +72,7 @@ export default function ContactPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Organizing Heads */}
           <div>
@@ -73,14 +85,21 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               {organizingHeads.map((head, index) => (
-                <div key={index} className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group">
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
+                >
                   <div className="p-6 group-hover:border-[#f5821e]/30 transition-colors">
                     <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">{head.title}</span>
                     <h3 className="font-serif text-lg text-[#184176]">
                       {head.name}
                     </h3>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -96,14 +115,21 @@ export default function ContactPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {subCommittees.map((contact, index) => (
-                <div key={index} className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group">
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.45, delay: (index % 3) * 0.08 }}
+                  className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
+                >
                   <div className="p-6 group-hover:border-[#f5821e]/30 transition-colors">
                     <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">{contact.department}</span>
                     <h3 className="font-serif text-lg text-[#184176]">
                       {contact.name}
                     </h3>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -119,7 +145,14 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {trackChairs.map((chair, index) => (
-                <div key={index} className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group">
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.45, delay: (index % 2) * 0.1 }}
+                  className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
+                >
                   <div className="p-6 group-hover:border-[#f5821e]/30 transition-colors">
                     <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">Track Chair</span>
                     <h3 className="font-serif text-lg text-[#184176] mb-3">
@@ -130,7 +163,7 @@ export default function ContactPage() {
                       <span className="text-sm font-medium text-[#184176]">{chair.name}</span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

@@ -88,9 +88,10 @@ export default function FAQPage() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: (index % 6) * 0.08 }}
                 className={`bg-white border transition-all duration-300 rounded-[16px] overflow-hidden shadow-sm ${
                   isOpen 
                     ? 'border-[#E6E8EC] border-l-4 border-l-brand-orange shadow-md' 

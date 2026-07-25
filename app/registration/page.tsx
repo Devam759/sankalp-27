@@ -294,7 +294,7 @@ export default function Registration() {
                         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return alert('Please enter a valid email.');
                         if (!/^\d{10,15}$/.test(formData.phone.replace(/[\s\-\+]/g, ''))) return alert('Please enter a valid phone number.');
                         setStep(2);
-                      }} className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer">
+                      }} className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer btn-shimmer">
                         Continue
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                       </button>
