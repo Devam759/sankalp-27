@@ -75,8 +75,6 @@ export default function Registration() {
     affiliation: '',
     designation: 'Student',
     category: '',
-    paperId: '',
-    paperTitle: '',
     country: 'India',
     pincode: '',
     city: '',
@@ -179,9 +177,7 @@ export default function Registration() {
     else alert(data.error || 'Payment verification failed.');
   };
 
-  const isPresenter = formData.category.includes('presenter') || formData.category === 'foreign_delegate';
-
-  const openForm = (categoryId = 'student_presenter') => {
+  const openForm = (categoryId = 'attendee') => {
     const autoDesignation = getDesignationForCategory(categoryId);
     setFormData(p => ({ ...p, category: categoryId, designation: autoDesignation }));
     setStep(1); setIsFormOpen(true);
@@ -190,7 +186,7 @@ export default function Registration() {
 
   const resetForm = () => {
     setIsFormOpen(false); setStep(1);
-    setFormData({ name: '', email: '', phone: '', affiliation: '', designation: 'Student', category: '', paperId: '', paperTitle: '', country: 'India', pincode: '', city: '', region: '', needAccommodation: 'No', coupon: '' });
+    setFormData({ name: '', email: '', phone: '', affiliation: '', designation: 'Student', category: '', country: 'India', pincode: '', city: '', region: '', needAccommodation: 'No', coupon: '' });
     setCouponValid(null); setFinalAmount(null); setSuccessData(null);
   };
 
@@ -306,8 +302,8 @@ export default function Registration() {
                   <motion.div key="s2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: 'easeOut' }} className="p-8 md:p-10 space-y-7">
                     <div className="border-b border-slate-100 pb-6">
                       <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 2 of 4</p>
-                      <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Category &amp; Paper Details</h2>
-                      <p className="text-slate-500 text-sm mt-1 font-medium">Select your participation tier and provide paper references if presenting.</p>
+                      <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Registration Tier</h2>
+                      <p className="text-slate-500 text-sm mt-1 font-medium">Select your participant tier for conference access and entry pass.</p>
                     </div>
 
                     <FormField label="Registration Tier *">
@@ -319,22 +315,11 @@ export default function Registration() {
                       </select>
                     </FormField>
 
-                    {formData.category && !isPresenter && (
+                    {formData.category && (
                       <div className="flex items-start gap-3 bg-slate-50 border border-slate-200/80 rounded-xl p-4 text-sm text-slate-600 font-medium">
                         <span className="text-brand-orange font-bold mt-0.5">ℹ</span>
-                        <span>Delegate / attendee categories do not require a paper ID.</span>
+                        <span>Participant registration grants full access to keynotes, technical sessions, conference kit, and dining.</span>
                       </div>
-                    )}
-
-                    {isPresenter && (
-                      <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="space-y-5 pl-5 border-l-2 border-brand-orange">
-                        <FormField label="Paper ID *">
-                          <input type="text" name="paperId" value={formData.paperId} onChange={handleChange} placeholder="e.g. 104" className={`${inputCls} font-mono font-bold`} />
-                        </FormField>
-                        <FormField label="Paper Title *">
-                          <input type="text" name="paperTitle" value={formData.paperTitle} onChange={handleChange} placeholder="e.g. Sustainable AI Architectures for Climate Resilience" className={inputCls} />
-                        </FormField>
-                      </motion.div>
                     )}
 
                     <div className="pt-2 flex justify-between items-center">
@@ -343,7 +328,6 @@ export default function Registration() {
                       </button>
                       <button onClick={() => {
                         if (!formData.category) return alert('Please select a registration category.');
-                        if (isPresenter && (!formData.paperId || !formData.paperTitle)) return alert('Paper ID and Title are required.');
                         setStep(3);
                       }} className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer">
                         Continue
@@ -429,7 +413,6 @@ export default function Registration() {
                         ['Email', formData.email],
                         ['Institution', formData.affiliation],
                         ['Category', REGISTRATION_CATEGORIES.find(c => c.id === formData.category)?.name ?? '—'],
-                        ...(isPresenter ? [['Paper ID', formData.paperId]] : []),
                       ].map(([k, v], i) => (
                         <div key={k} className={`flex items-start justify-between px-5 py-3.5 text-sm ${i % 2 === 0 ? 'bg-slate-50/60' : 'bg-white'}`}>
                           <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 w-28 shrink-0 pt-0.5">{k}</span>

@@ -93,17 +93,26 @@ export default function Navbar() {
           </div>
 
           {/* Right: CTA buttons + Mobile toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 relative z-30 pointer-events-auto">
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/registration"
+<<<<<<< HEAD
                 className="h-9 px-5 border border-white/70 text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-white hover:text-brand-blue transition-colors btn-shimmer"
+=======
+                className="h-9 px-5 border border-white/70 text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-white hover:text-brand-blue transition-colors cursor-pointer relative z-30 pointer-events-auto"
+>>>>>>> c7adbf2 (Decouple participant registration and paper submission into separate workflows)
               >
                 Register
               </Link>
               <Link
+<<<<<<< HEAD
                 href="/call-for-papers"
                 className="h-9 px-5 bg-brand-orange text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-orange-500 transition-colors shadow-sm btn-shimmer"
+=======
+                href="/submit-paper"
+                className="h-9 px-5 bg-brand-orange text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-orange-500 transition-colors shadow-sm cursor-pointer relative z-30 pointer-events-auto"
+>>>>>>> c7adbf2 (Decouple participant registration and paper submission into separate workflows)
               >
                 Submit Paper
               </Link>
@@ -197,6 +206,7 @@ export default function Navbar() {
                 >
                   Register
                 </Link>
+<<<<<<< HEAD
                 <Link
                   href="/call-for-papers"
                   className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-orange-500 transition-colors"
@@ -209,6 +219,29 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+=======
+              );
+            })}
+            <div className="flex flex-col gap-3 pt-4 pb-8">
+              <Link
+                href="/registration"
+                className="border border-white/30 text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-white hover:text-brand-blue transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Register
+              </Link>
+              <Link
+                href="/submit-paper"
+                className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-orange-500 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Submit Paper
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
+>>>>>>> c7adbf2 (Decouple participant registration and paper submission into separate workflows)
     </>
   );
 }

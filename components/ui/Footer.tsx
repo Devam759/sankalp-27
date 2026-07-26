@@ -197,6 +197,16 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/submit-paper" className="hover:text-brand-orange transition-colors text-brand-orange font-semibold">
+                Submit Paper ↗
+              </Link>
+            </li>
+            <li>
+              <Link href="/registration" className="hover:text-brand-orange transition-colors font-semibold">
+                Registration
+              </Link>
+            </li>
+            <li>
               <Link href="/committee" className="hover:text-brand-orange transition-colors">
                 Committee
               </Link>

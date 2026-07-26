@@ -2,7 +2,11 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+<<<<<<< HEAD
 import { motion } from 'framer-motion';
+=======
+import Link from 'next/link';
+>>>>>>> c7adbf2 (Decouple participant registration and paper submission into separate workflows)
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
@@ -58,12 +62,12 @@ export default function CallForPapers() {
               >
                 Download Template
               </a>
-              <a 
-                href="mailto:sankalp@jklu.edu.in?subject=SANKALP 2027 Paper Submission"
+              <Link 
+                href="/submit-paper"
                 className="flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 font-bold hover:bg-orange-600 transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer rounded-sm"
               >
                 Submit Paper ↗
-              </a>
+              </Link>
             </div>
           </motion.div>
 
