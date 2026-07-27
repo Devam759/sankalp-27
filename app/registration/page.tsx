@@ -111,15 +111,18 @@ export default function Registration() {
     if (name === 'category') {
       const autoDesignation = getDesignationForCategory(value);
       setFormData(p => ({ ...p, category: value, designation: autoDesignation }));
+    } else if (name === 'phone') {
+      const numericOnly = value.replace(/\D/g, '').slice(0, 10);
+      setFormData(p => ({ ...p, phone: numericOnly }));
     } else {
       setFormData(p => ({ ...p, [name]: value }));
     }
   };
 
   const handlePincode = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const pin = e.target.value.trim();
+    const pin = e.target.value.replace(/\D/g, '').slice(0, 6);
     setFormData(p => ({ ...p, pincode: pin }));
-    if (pin.length === 6 && /^\d+$/.test(pin) && formData.country.toLowerCase() === 'india') {
+    if (pin.length === 6 && formData.country.toLowerCase() === 'india') {
       setLoading(true);
       try {
         const res = await fetch('/api/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'VERIFY_PINCODE', pincode: pin }) });
@@ -173,7 +176,7 @@ export default function Registration() {
   const verifyPayment = async (orderId: string) => {
     const res = await fetch('/api/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'VERIFY_PAYMENT', order_id: orderId }) });
     const data = await res.json();
-    if (res.ok && data.success) { setSuccessData(data.registration); setStep(5); }
+    if (res.ok && data.success) { setSuccessData(data.registration); setStep(4); }
     else alert(data.error || 'Payment verification failed.');
   };
 
@@ -192,10 +195,9 @@ export default function Registration() {
 
   /* ── Step labels ─────────────────────────────── */
   const steps = [
-    { s: 1, name: 'Profile' },
-    { s: 2, name: 'Category' },
-    { s: 3, name: 'Location' },
-    { s: 4, name: 'Checkout' },
+    { s: 1, name: 'Profile & Tier' },
+    { s: 2, name: 'Location' },
+    { s: 3, name: 'Checkout' },
   ];
 
   return (
@@ -219,7 +221,7 @@ export default function Registration() {
             </button>
 
             {/* Step indicator */}
-            {step < 5 && (
+            {step < 4 && (
               <div className="flex items-center gap-0 mb-10">
                 {steps.map((item, idx) => (
                   <React.Fragment key={item.s}>
@@ -251,9 +253,9 @@ export default function Registration() {
                 {step === 1 && (
                   <motion.div key="s1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: 'easeOut' }} className="p-8 md:p-10 space-y-7">
                     <div className="border-b border-slate-100 pb-6">
-                      <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 1 of 4</p>
+                      <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 1 of 3</p>
                       <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Participant Profile</h2>
-                      <p className="text-slate-500 text-sm mt-1 font-medium">Your contact and institutional credentials.</p>
+                      <p className="text-slate-500 text-sm mt-1 font-medium">Your contact details and selected registration tier.</p>
                     </div>
 
                     <FormField label="Full Name *">
@@ -264,8 +266,8 @@ export default function Registration() {
                       <FormField label="Email Address *">
                         <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="jane.doe@university.edu" className={inputCls} />
                       </FormField>
-                      <FormField label="Mobile Number *">
-                        <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="9876543210" className={inputCls} />
+                      <FormField label="Mobile Number (10 digits) *">
+                        <input type="tel" name="phone" maxLength={10} value={formData.phone} onChange={handleChange} placeholder="9876543210" className={`${inputCls} font-mono`} />
                       </FormField>
                     </div>
 
@@ -273,22 +275,47 @@ export default function Registration() {
                       <input type="text" name="affiliation" value={formData.affiliation} onChange={handleChange} placeholder="JK Lakshmipat University, Jaipur" className={inputCls} />
                     </FormField>
 
-                    <FormField label="Designation *">
-                      <select name="designation" value={formData.designation} onChange={handleChange} className={inputCls}>
-                        <option>Student</option>
-                        <option value="Research Scholar">Research Scholar (PhD)</option>
-                        <option value="Academician / Faculty">Academician / Faculty</option>
-                        <option value="Industry Professional">Industry Professional</option>
-                        <option>Other</option>
-                      </select>
-                    </FormField>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <FormField label="Designation *">
+                        <select name="designation" value={formData.designation} onChange={handleChange} className={inputCls}>
+                          <option>Student</option>
+                          <option value="Research Scholar">Research Scholar (PhD)</option>
+                          <option value="Academician / Faculty">Academician / Faculty</option>
+                          <option value="Industry Professional">Industry Professional</option>
+                          <option>Other</option>
+                        </select>
+                      </FormField>
+
+                      <FormField label="Registration Tier *">
+                        <select name="category" value={formData.category} onChange={handleChange} className={inputCls}>
+                          <option value="">— Select a category —</option>
+                          {REGISTRATION_CATEGORIES.map(cat => (
+                            <option key={cat.id} value={cat.id}>{cat.name} — ₹{cat.amount.toLocaleString()} + GST</option>
+                          ))}
+                        </select>
+                      </FormField>
+                    </div>
 
                     <div className="pt-2 flex justify-end">
                       <button onClick={() => {
-                        if (!formData.name || !formData.email || !formData.phone || !formData.affiliation) return alert('Please fill in all required fields.');
-                        if (!/^[A-Za-z\s.]+$/.test(formData.name)) return alert('Name must contain letters only.');
-                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return alert('Please enter a valid email.');
-                        if (!/^\d{10,15}$/.test(formData.phone.replace(/[\s\-\+]/g, ''))) return alert('Please enter a valid phone number.');
+                        const nameTrimmed = formData.name.trim();
+                        const emailTrimmed = formData.email.trim();
+                        const phoneTrimmed = formData.phone.trim();
+                        const affiliationTrimmed = formData.affiliation.trim();
+
+                        if (!nameTrimmed || !emailTrimmed || !phoneTrimmed || !affiliationTrimmed || !formData.category) {
+                          return alert('Please fill in all required fields.');
+                        }
+                        if (!/^[A-Za-z\s.]+$/.test(nameTrimmed) || nameTrimmed.length < 2) {
+                          return alert('Full name must contain letters and spaces only.');
+                        }
+                        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                        if (!emailRegex.test(emailTrimmed)) {
+                          return alert('Please enter a valid email address (e.g. name@domain.com).');
+                        }
+                        if (!/^\d{10}$/.test(phoneTrimmed)) {
+                          return alert('Mobile number must be exactly 10 numeric digits.');
+                        }
                         setStep(2);
                       }} className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer btn-shimmer">
                         Continue
@@ -301,46 +328,7 @@ export default function Registration() {
                 {step === 2 && (
                   <motion.div key="s2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: 'easeOut' }} className="p-8 md:p-10 space-y-7">
                     <div className="border-b border-slate-100 pb-6">
-                      <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 2 of 4</p>
-                      <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Registration Tier</h2>
-                      <p className="text-slate-500 text-sm mt-1 font-medium">Select your participant tier for conference access and entry pass.</p>
-                    </div>
-
-                    <FormField label="Registration Tier *">
-                      <select name="category" value={formData.category} onChange={handleChange} className={inputCls}>
-                        <option value="">— Select a category —</option>
-                        {REGISTRATION_CATEGORIES.map(cat => (
-                          <option key={cat.id} value={cat.id}>{cat.name} — ₹{cat.amount.toLocaleString()} + GST</option>
-                        ))}
-                      </select>
-                    </FormField>
-
-                    {formData.category && (
-                      <div className="flex items-start gap-3 bg-slate-50 border border-slate-200/80 rounded-xl p-4 text-sm text-slate-600 font-medium">
-                        <span className="text-brand-orange font-bold mt-0.5">ℹ</span>
-                        <span>Participant registration grants full access to keynotes, technical sessions, conference kit, and dining.</span>
-                      </div>
-                    )}
-
-                    <div className="pt-2 flex justify-between items-center">
-                      <button onClick={() => setStep(1)} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back
-                      </button>
-                      <button onClick={() => {
-                        if (!formData.category) return alert('Please select a registration category.');
-                        setStep(3);
-                      }} className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer">
-                        Continue
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-
-                {step === 3 && (
-                  <motion.div key="s3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: 'easeOut' }} className="p-8 md:p-10 space-y-7">
-                    <div className="border-b border-slate-100 pb-6">
-                      <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 3 of 4</p>
+                      <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 2 of 3</p>
                       <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Location &amp; Accommodation</h2>
                       <p className="text-slate-500 text-sm mt-1 font-medium">Your correspondence address and lodging preferences.</p>
                     </div>
@@ -384,12 +372,12 @@ export default function Registration() {
                     </FormField>
 
                     <div className="pt-2 flex justify-between items-center">
-                      <button onClick={() => setStep(2)} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer">
+                      <button onClick={() => setStep(1)} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back
                       </button>
                       <button onClick={() => {
                         if (!formData.city || !formData.region) return alert('Please fill in city and region.');
-                        setStep(4);
+                        setStep(3);
                       }} className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer">
                         Continue
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -398,10 +386,10 @@ export default function Registration() {
                   </motion.div>
                 )}
 
-                {step === 4 && (
-                  <motion.div key="s4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: 'easeOut' }} className="p-8 md:p-10 space-y-7">
+                {step === 3 && (
+                  <motion.div key="s3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.35, ease: 'easeOut' }} className="p-8 md:p-10 space-y-7">
                     <div className="border-b border-slate-100 pb-6">
-                      <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 4 of 4</p>
+                      <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 3 of 3</p>
                       <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Review &amp; Payment</h2>
                       <p className="text-slate-500 text-sm mt-1 font-medium">Confirm your details before completing the secure checkout.</p>
                     </div>
@@ -463,7 +451,7 @@ export default function Registration() {
                     </div>
 
                     <div className="pt-2 flex justify-between items-center">
-                      <button onClick={() => setStep(3)} disabled={loading} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-40">
+                      <button onClick={() => setStep(2)} disabled={loading} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-40">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back
                       </button>
                       <button onClick={startCheckout} disabled={loading}
@@ -476,8 +464,8 @@ export default function Registration() {
                   </motion.div>
                 )}
 
-                {step === 5 && successData && (
-                  <motion.div key="s5" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, ease: 'easeOut' }} className="p-10 md:p-14 text-center space-y-8">
+                {step === 4 && successData && (
+                  <motion.div key="s4" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, ease: 'easeOut' }} className="p-10 md:p-14 text-center space-y-8">
                     <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto border-2 border-emerald-200 shadow-md">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </div>
