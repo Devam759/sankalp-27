@@ -162,7 +162,7 @@ export default function EntryLogs() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-brand-cloud border-2 border-brand-ink rounded-md py-3 pl-11 pr-4 text-sm text-brand-ink font-bold placeholder:text-brand-ink/40 shadow-inner focus:outline-none focus:border-brand-orange focus:bg-white transition-all uppercase tracking-wider"
-            placeholder="Search Attendee Name, Registration ID, or Volunteer..."
+            placeholder="Search Attendee Name, Registration ID, or Operator..."
           />
         </div>
 
@@ -235,7 +235,7 @@ export default function EntryLogs() {
                   <th className="p-4">Timestamp</th>
                   <th className="p-4">Attendee Name</th>
                   <th className="p-4">Registration ID</th>
-                  <th className="p-4">Volunteer / Scanner</th>
+                  <th className="p-4">Operator / Scanner</th>
                   <th className="p-4">Result</th>
                 </tr>
               </thead>

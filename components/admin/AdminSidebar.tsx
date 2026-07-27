@@ -320,6 +320,21 @@ const CustomChevronIcon = ({ isOpen, size = 12, className = '' }: { isOpen: bool
   </svg>
 );
 
+const CustomCalendarIcon = ({ className = '', size = 18 }: { className?: string; size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter" className={className}>
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
+const CustomMegaphoneIcon = ({ className = '', size = 18 }: { className?: string; size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter" className={className}>
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+);
+
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -328,12 +343,6 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  const [pendingComplaintsCount, setPendingComplaintsCount] = useState(0);
-  const [pendingSuggestionsCount, setPendingSuggestionsCount] = useState(0);
-
-  const isFeedbackActive = pathname === '/admin/analytics';
-  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -358,15 +367,11 @@ export default function Sidebar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY, isOpen]);
 
-  useEffect(() => {
-    if (isFeedbackActive) {
-      setIsFeedbackOpen(true);
-    }
-  }, [pathname]);
-
   const navItems = [
     { name: 'Overview', href: '/admin', icon: CustomDashboardIcon },
     { name: 'Registration', href: '/admin/registrations', icon: CustomClipboardIcon },
+    { name: 'Events Schedule', href: '/admin/events', icon: CustomCalendarIcon },
+    { name: 'Announcements', href: '/admin/announcements', icon: CustomMegaphoneIcon },
     { name: 'Ticket Scanner', href: '/admin/scanner', icon: CustomScannerIcon },
     { name: 'Scanner Accounts', href: '/admin/scanner-accounts', icon: CustomDutyIcon },
     { name: 'Entry Logs', href: '/admin/entry-logs', icon: CustomEntryLogsIcon },
@@ -398,10 +403,10 @@ export default function Sidebar() {
       <div className={`md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b-2 border-brand-ink flex items-center justify-between px-4 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <Link href="/admin" className="flex flex-col select-none text-brand-ink">
           <span className="font-black text-sm tracking-widest uppercase text-brand-orange font-sans leading-none">
-            ICATS ADMIN
+            SANKALP ADMIN
           </span>
           <span className="font-bold text-[8px] tracking-widest uppercase text-admin-muted font-sans leading-none mt-0.5">
-            Conference 2026
+            Conference 2027
           </span>
         </Link>
         <button 
@@ -430,10 +435,10 @@ export default function Sidebar() {
         <div className="h-16 flex items-center px-6 border-b-2 border-brand-ink bg-white hidden md:flex">
           <Link href="/admin" className="flex flex-col select-none text-brand-ink">
             <span className="font-black text-base tracking-widest uppercase text-brand-orange font-sans leading-none">
-              ICATS ADMIN
+              SANKALP ADMIN
             </span>
             <span className="font-bold text-[9px] tracking-widest uppercase text-admin-muted font-sans leading-none mt-0.5">
-              Conference 2026
+              Conference 2027
             </span>
           </Link>
         </div>
@@ -441,7 +446,7 @@ export default function Sidebar() {
         {/* Navigation list */}
         <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-2 bg-white">
           {navItems.map((item: any) => {
-            const isActive = pathname === item.href || (item.href !== '/admin' && pathname?.startsWith(item.href) && !pathname.startsWith('/admin/analytics'));
+            const isActive = pathname === item.href || (item.href !== '/admin' && pathname?.startsWith(item.href));
             const Icon = item.icon;
             
             return (
@@ -462,6 +467,7 @@ export default function Sidebar() {
               </Link>
             );
           })}
+
 
 
         </nav>

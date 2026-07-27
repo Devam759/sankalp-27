@@ -85,6 +85,12 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
+    // Paper Submissions collection
+    match /paperSubmissions/{id} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
     // Contact Messages collection (public anonymous submissions allowed)
     match /contact_messages/{id} {
       allow create: if true;

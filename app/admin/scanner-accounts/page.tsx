@@ -125,7 +125,7 @@ export default function ScannerAccounts() {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="font-adminHeading text-3xl font-bold mb-2">Scanner Accounts</h1>
-          <p className="text-admin-muted">Manage volunteer QR scanner access</p>
+          <p className="text-admin-muted">Manage gate QR scanner operator accounts</p>
         </div>
         <button 
           onClick={() => setIsCreateOpen(true)}
@@ -155,7 +155,7 @@ export default function ScannerAccounts() {
               <thead>
                 <tr className="bg-admin-bg/50 border-b border-admin-border text-admin-muted text-sm uppercase tracking-wider">
                   <th className="p-4 font-medium">Scanner ID</th>
-                  <th className="p-4 font-medium">Volunteer Name</th>
+                  <th className="p-4 font-medium">Operator Name</th>
                   <th className="p-4 font-medium">Status</th>
                   <th className="p-4 font-medium">Last Active</th>
                   <th className="p-4 font-medium text-right">Actions</th>
@@ -165,7 +165,7 @@ export default function ScannerAccounts() {
                 {scanners.map((scanner) => (
                   <tr key={scanner.id} className="hover:bg-white/5 transition-colors group">
                     <td className="p-4 font-medium">{scanner.scannerId}</td>
-                    <td className="p-4">{scanner.volunteerName}</td>
+                    <td className="p-4">{scanner.volunteerName || scanner.operatorName}</td>
                     <td className="p-4">
                       <span className={`px-2.5 py-1 rounded-md text-xs font-semibold ${
                         scanner.status === 'Active' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'
@@ -211,14 +211,14 @@ export default function ScannerAccounts() {
       <Modal isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} title="Create Scanner Account">
         <form onSubmit={handleCreate} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-2 text-admin-muted">Assigned Volunteer Name</label>
+            <label className="block text-sm font-medium mb-2 text-admin-muted">Assigned Operator Name</label>
             <input 
               type="text" 
               required
               value={volunteerName}
               onChange={(e) => setVolunteerName(e.target.value)}
               className="w-full bg-admin-bg border border-admin-border rounded-lg py-2 px-4 focus:outline-none focus:border-admin-accent transition-colors"
-              placeholder="e.g. John Doe"
+              placeholder="e.g. Gate 1 Scanner Operator"
             />
           </div>
           <div className="pt-4 flex justify-end gap-3">
@@ -234,7 +234,7 @@ export default function ScannerAccounts() {
       <Modal isOpen={isDeleteOpen} onClose={() => setIsDeleteOpen(false)} title="Delete Scanner Account">
         <div className="space-y-6">
           <div className="flex items-center gap-4 text-red-500 bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-            <p className="text-sm">Are you sure you want to delete the account for <strong>{selectedScanner?.volunteerName}</strong>? This action cannot be undone.</p>
+            <p className="text-sm">Are you sure you want to delete the account for <strong>{selectedScanner?.volunteerName || selectedScanner?.operatorName}</strong>? This action cannot be undone.</p>
           </div>
           <div className="flex justify-end gap-3">
             <button onClick={() => setIsDeleteOpen(false)} className="px-4 py-2 rounded-lg text-admin-muted hover:text-white">Cancel</button>

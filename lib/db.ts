@@ -34,19 +34,12 @@ export const checkInUser = async (userId: string, eventId: string) => {
   });
 };
 
-// Volunteer Assignments
-export const getVolunteerAssignments = async (userId: string) => {
-  const q = query(collection(requireDb(), 'volunteers'), where('userId', '==', userId));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-};
 
-// Feedback
-export { isFirebaseConfigured, FIREBASE_SETUP_MESSAGE };
 
-export const submitFeedback = async (feedbackData: Record<string, unknown>) => {
-  return await addDoc(collection(requireDb(), 'feedback'), {
-    ...feedbackData,
+// Paper Submissions
+export const submitPaperSubmission = async (paperData: Record<string, unknown>) => {
+  return await addDoc(collection(requireDb(), 'paperSubmissions'), {
+    ...paperData,
     submittedAt: serverTimestamp(),
   });
 };
@@ -57,4 +50,5 @@ export const submitContactMessage = async (contactData: Record<string, unknown>)
     submittedAt: serverTimestamp(),
   });
 };
+
 

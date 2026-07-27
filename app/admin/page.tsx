@@ -66,7 +66,7 @@ export default function AdminDashboard() {
       {/* Title Header */}
       <div>
         <h1 className="font-adminHeading text-3xl font-black uppercase tracking-tight text-brand-ink mb-1.5">Overview</h1>
-        <p className="text-admin-muted font-bold text-xs uppercase tracking-wider">Live snapshot of Conference 2026</p>
+        <p className="text-admin-muted font-bold text-xs uppercase tracking-wider">Live snapshot of Conference 2027</p>
       </div>
 
       {/* Quick Statistics Grid */}
