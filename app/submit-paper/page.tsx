@@ -9,7 +9,7 @@ import { conferenceTracks } from '@/constants/conferenceData';
 function FormField({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-[0.18em] mb-2">
+      <label className="block text-xs font-bold text-slate-600 mb-1.5 font-sans">
         {label}
       </label>
       {children}
@@ -27,6 +27,7 @@ export default function SubmitPaperPage() {
   const [formData, setFormData] = useState({
     authorName: '',
     authorEmail: '',
+    countryCode: '+91',
     authorPhone: '',
     affiliation: '',
     country: 'India',
@@ -56,8 +57,10 @@ export default function SubmitPaperPage() {
     setLoading(true);
     try {
       const selectedTrack = conferenceTracks.find(t => t.id === formData.trackId);
+      const fullPhone = `${formData.countryCode} ${formData.authorPhone.trim()}`;
       const payload = {
         ...formData,
+        authorPhone: fullPhone,
         trackTitle: selectedTrack ? selectedTrack.title : 'General',
       };
 
@@ -90,10 +93,7 @@ export default function SubmitPaperPage() {
           
           {/* Header */}
           <div className="text-center mb-10">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-orange bg-brand-orange/10 px-3.5 py-1.5 rounded-full border border-brand-orange/20">
-              Research Call
-            </span>
-            <h1 className="text-3xl md:text-5xl font-serif font-bold text-brand-blue mt-4 mb-3 tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-serif font-bold text-brand-blue mb-3 tracking-tight">
               Submit Research Paper
             </h1>
             <p className="text-slate-600 text-sm md:text-base max-w-xl mx-auto font-medium">
@@ -117,7 +117,7 @@ export default function SubmitPaperPage() {
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     ) : item.s}
                   </div>
-                  <span className={`text-[9px] font-bold uppercase tracking-[0.15em] ${step >= item.s ? 'text-brand-blue' : 'text-slate-300'}`}>{item.name}</span>
+                  <span className={`text-[10px] font-semibold ${step >= item.s ? 'text-brand-blue' : 'text-slate-300'}`}>{item.name}</span>
                 </div>
                 {idx < steps.length - 1 && (
                   <div className={`flex-1 h-[2px] mb-5 mx-1 transition-all ${step > item.s ? 'bg-brand-orange' : 'bg-slate-200'}`} />
@@ -141,7 +141,7 @@ export default function SubmitPaperPage() {
                   className="p-8 md:p-10 space-y-7"
                 >
                   <div className="border-b border-slate-100 pb-6">
-                    <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 1 of 3</p>
+                    <p className="text-xs font-semibold text-brand-orange mb-1">Step 1 of 3</p>
                     <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Corresponding Author Profile</h2>
                     <p className="text-slate-500 text-sm mt-1 font-medium">Primary author contact details for editorial correspondence.</p>
                   </div>
@@ -155,7 +155,17 @@ export default function SubmitPaperPage() {
                       <input type="email" name="authorEmail" value={formData.authorEmail} onChange={handleChange} placeholder="jane.doe@university.edu" className={inputCls} />
                     </FormField>
                     <FormField label="Mobile / WhatsApp Number *">
-                      <input type="tel" name="authorPhone" value={formData.authorPhone} onChange={handleChange} placeholder="9876543210" className={inputCls} />
+                      <div className="flex gap-2">
+                        <input 
+                          type="text" 
+                          name="countryCode" 
+                          value={formData.countryCode} 
+                          onChange={handleChange} 
+                          placeholder="+91" 
+                          className="w-24 border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-800 font-mono font-semibold focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange/40 rounded-xl shrink-0" 
+                        />
+                        <input type="tel" name="authorPhone" value={formData.authorPhone} onChange={handleChange} placeholder="9876543210" className={inputCls} />
+                      </div>
                     </FormField>
                   </div>
 
@@ -181,7 +191,7 @@ export default function SubmitPaperPage() {
                         }
                         setStep(2);
                       }} 
-                      className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer"
+                      className="bg-brand-orange hover:bg-orange-600 text-white text-sm font-semibold px-7 py-3 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer"
                     >
                       Continue to Paper Details
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -201,7 +211,7 @@ export default function SubmitPaperPage() {
                   className="p-8 md:p-10 space-y-7"
                 >
                   <div className="border-b border-slate-100 pb-6">
-                    <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 2 of 3</p>
+                    <p className="text-xs font-semibold text-brand-orange mb-1">Step 2 of 3</p>
                     <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Paper Details &amp; Track</h2>
                     <p className="text-slate-500 text-sm mt-1 font-medium">Select conference track, enter paper title, abstract, and keywords.</p>
                   </div>
@@ -235,7 +245,7 @@ export default function SubmitPaperPage() {
                   </FormField>
 
                   <div className="pt-2 flex justify-between items-center">
-                    <button onClick={() => setStep(1)} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer">
+                    <button onClick={() => setStep(1)} className="text-slate-500 hover:text-brand-blue text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back
                     </button>
                     <button 
@@ -245,7 +255,7 @@ export default function SubmitPaperPage() {
                         if (!formData.abstract.trim()) return alert('Please enter paper abstract.');
                         setStep(3);
                       }} 
-                      className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer"
+                      className="bg-brand-orange hover:bg-orange-600 text-white text-sm font-semibold px-7 py-3 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer"
                     >
                       Continue to Manuscript Upload
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -265,7 +275,7 @@ export default function SubmitPaperPage() {
                   className="p-8 md:p-10 space-y-7"
                 >
                   <div className="border-b border-slate-100 pb-6">
-                    <p className="text-[10px] font-bold tracking-[0.18em] text-brand-orange uppercase mb-1.5">Step 3 of 3</p>
+                    <p className="text-xs font-semibold text-brand-orange mb-1">Step 3 of 3</p>
                     <h2 className="font-serif font-bold text-brand-blue text-2xl md:text-3xl">Co-Authors &amp; Manuscript Link</h2>
                     <p className="text-slate-500 text-sm mt-1 font-medium">Add co-authors and provide paper manuscript file URL or cloud drive link.</p>
                   </div>
@@ -289,14 +299,14 @@ export default function SubmitPaperPage() {
                   </div>
 
                   <div className="pt-2 flex justify-between items-center">
-                    <button onClick={() => setStep(2)} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer">
+                    <button onClick={() => setStep(2)} className="text-slate-500 hover:text-brand-blue text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back
                     </button>
                     
                     <button 
                       onClick={handleSubmit} 
                       disabled={loading}
-                      className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                      className="bg-brand-orange hover:bg-orange-600 text-white text-sm font-semibold px-7 py-3 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer disabled:opacity-50"
                     >
                       {loading ? 'Submitting Paper…' : 'Submit Paper Now ↗'}
                     </button>
@@ -318,7 +328,7 @@ export default function SubmitPaperPage() {
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                    <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-3.5 py-1 rounded-full border border-emerald-200">
                       Submission Received
                     </span>
                     <h2 className="font-serif font-bold text-brand-blue text-3xl mt-3">Paper Submitted Successfully</h2>
@@ -327,19 +337,19 @@ export default function SubmitPaperPage() {
 
                   <div className="bg-[#FCFCFC] border border-slate-200/90 rounded-xl p-6 text-left max-w-lg mx-auto space-y-3 font-medium text-xs text-slate-700">
                     <div className="flex justify-between border-b border-slate-100 pb-2">
-                      <span className="text-slate-400 uppercase tracking-wider font-bold">Paper ID</span>
+                      <span className="text-slate-500 font-semibold">Paper ID</span>
                       <span className="font-mono font-bold text-brand-blue text-sm">{submissionResult.paperId}</span>
                     </div>
                     <div className="flex justify-between border-b border-slate-100 pb-2">
-                      <span className="text-slate-400 uppercase tracking-wider font-bold">Corresponding Author</span>
+                      <span className="text-slate-500 font-semibold">Corresponding Author</span>
                       <span>{submissionResult.authorName}</span>
                     </div>
                     <div className="flex justify-between border-b border-slate-100 pb-2">
-                      <span className="text-slate-400 uppercase tracking-wider font-bold">Track</span>
+                      <span className="text-slate-500 font-semibold">Track</span>
                       <span>{submissionResult.trackTitle}</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 uppercase tracking-wider font-bold block mb-1">Paper Title</span>
+                      <span className="text-slate-500 font-semibold block mb-1">Paper Title</span>
                       <span className="font-semibold text-brand-blue">{submissionResult.paperTitle}</span>
                     </div>
                   </div>
@@ -351,13 +361,13 @@ export default function SubmitPaperPage() {
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <button 
                       onClick={() => window.print()} 
-                      className="bg-white border border-slate-200 text-slate-700 hover:border-brand-orange text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition-all shadow-sm"
+                      className="bg-white border border-slate-200 text-slate-700 hover:border-brand-orange text-xs font-semibold px-6 py-3 rounded-xl transition-all shadow-sm"
                     >
                       Print Receipt
                     </button>
                     <a 
                       href="/call-for-papers" 
-                      className="bg-brand-blue text-white hover:bg-blue-900 text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition-all shadow-sm"
+                      className="bg-brand-blue text-white hover:bg-blue-900 text-xs font-semibold px-6 py-3 rounded-xl transition-all shadow-sm"
                     >
                       Back to Call for Papers
                     </a>

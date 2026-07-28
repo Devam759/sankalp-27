@@ -67,10 +67,12 @@ export default function Registration() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState<'all' | 'presenters' | 'global'>('all');
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    countryCode: '+91',
     phone: '',
     affiliation: '',
     designation: 'Student',
@@ -189,7 +191,7 @@ export default function Registration() {
 
   const resetForm = () => {
     setIsFormOpen(false); setStep(1);
-    setFormData({ name: '', email: '', phone: '', affiliation: '', designation: 'Student', category: '', country: 'India', pincode: '', city: '', region: '', needAccommodation: 'No', coupon: '' });
+    setFormData({ name: '', email: '', countryCode: '+91', phone: '', affiliation: '', designation: 'Student', category: '', country: 'India', pincode: '', city: '', region: '', needAccommodation: 'No', coupon: '' });
     setCouponValid(null); setFinalAmount(null); setSuccessData(null);
   };
 
@@ -266,8 +268,18 @@ export default function Registration() {
                       <FormField label="Email Address *">
                         <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="jane.doe@university.edu" className={inputCls} />
                       </FormField>
-                      <FormField label="Mobile Number (10 digits) *">
-                        <input type="tel" name="phone" maxLength={10} value={formData.phone} onChange={handleChange} placeholder="9876543210" className={`${inputCls} font-mono`} />
+                      <FormField label="Mobile Number *">
+                        <div className="flex gap-2">
+                          <input 
+                            type="text" 
+                            name="countryCode" 
+                            value={formData.countryCode || '+91'} 
+                            onChange={handleChange} 
+                            placeholder="+91" 
+                            className="w-24 border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-800 font-mono font-semibold focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange/40 rounded-xl shrink-0" 
+                          />
+                          <input type="tel" name="phone" maxLength={15} value={formData.phone} onChange={handleChange} placeholder="9876543210" className={`${inputCls} font-mono`} />
+                        </div>
                       </FormField>
                     </div>
 
@@ -313,8 +325,8 @@ export default function Registration() {
                         if (!emailRegex.test(emailTrimmed)) {
                           return alert('Please enter a valid email address (e.g. name@domain.com).');
                         }
-                        if (!/^\d{10}$/.test(phoneTrimmed)) {
-                          return alert('Mobile number must be exactly 10 numeric digits.');
+                        if (!/^\d{6,15}$/.test(phoneTrimmed)) {
+                          return alert('Please enter a valid mobile number (6 to 15 numeric digits).');
                         }
                         setStep(2);
                       }} className="bg-brand-orange hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.18em] px-8 py-3.5 rounded-xl transition-all shadow-md shadow-brand-orange/20 flex items-center gap-2 cursor-pointer btn-shimmer">
@@ -450,6 +462,10 @@ export default function Registration() {
                       </div>
                     </div>
 
+                    <p className="text-xs text-slate-500 font-medium text-center bg-slate-50 border border-slate-200/60 p-3 rounded-xl">
+                      ⚡ Secure online payment via Cashfree Payments (UPI, Cards, Net Banking &amp; Wallets)
+                    </p>
+
                     <div className="pt-2 flex justify-between items-center">
                       <button onClick={() => setStep(2)} disabled={loading} className="text-slate-400 hover:text-brand-blue text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-40">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Back
@@ -495,7 +511,7 @@ export default function Registration() {
         ══════════════════════════════ */
         <>
           {/* ── HERO ─────────────────────────────── */}
-          <section ref={heroRef} className="pt-36 md:pt-44 pb-20 md:pb-28 px-6 md:px-12 max-w-4xl mx-auto w-full text-center flex flex-col items-center">
+          <section ref={heroRef} className="pt-36 md:pt-44 pb-20 md:pb-28 px-6 sm:px-10 md:px-14 lg:px-16 max-w-[1440px] mx-auto w-full text-center flex flex-col items-center">
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -526,7 +542,7 @@ export default function Registration() {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease, delay: 0.42 }}
               onClick={() => openForm()}
-              className="group flex items-center gap-3 bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-[0.2em] px-9 py-4 rounded-sm shadow-xl shadow-brand-orange/25 hover:shadow-2xl hover:-translate-y-0.5 transition-all cursor-pointer"
+              className="group flex items-center gap-3 bg-brand-orange hover:bg-orange-600 text-white font-semibold text-xs uppercase tracking-[0.2em] px-9 py-4 rounded-xl shadow-xl shadow-brand-orange/25 hover:shadow-2xl hover:-translate-y-0.5 transition-all cursor-pointer"
             >
               Register Now
               <svg className="group-hover:translate-x-0.5 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -534,13 +550,13 @@ export default function Registration() {
           </section>
 
           {/* Horizontal rule */}
-          <div className="max-w-[1536px] mx-auto px-6 md:px-12 w-full">
+          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 w-full">
             <div className="h-px bg-slate-200/80" />
           </div>
 
           {/* ── REGISTRATION TIERS ─────────────────── */}
           <section className="py-20 md:py-28 bg-[#f7f4ef]">
-            <div className="max-w-6xl mx-auto px-6 md:px-12">
+            <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
 
               {/* Header */}
               <motion.div
@@ -548,7 +564,7 @@ export default function Registration() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="mb-14 text-center max-w-2xl mx-auto"
+                className="mb-12 text-center max-w-2xl mx-auto"
               >
                 <motion.div variants={fadeUp} className="w-10 h-[2px] bg-brand-orange mb-6 mx-auto rounded-full" />
                 <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">
@@ -559,261 +575,286 @@ export default function Registration() {
                 </motion.p>
               </motion.div>
 
-              {/* Main Presenters Grid (3 Columns) */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-8">
-
-                {/* 1. Student / Scholar */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.65, ease }}
-                  className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div>
-                    <div className="flex items-center justify-end mb-3">
-                      <span className="font-mono text-xs font-bold text-slate-400">01</span>
-                    </div>
-
-                    <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
-                      Student / Research Scholar
-                    </h3>
-                    <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
-                      For students and full-time scholars presenting an accepted paper.
-                    </p>
-
-                    <div className="border-t border-b border-slate-100 py-5 mb-6">
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-slate-400 text-sm font-semibold">₹</span>
-                        <span className="font-mono font-black text-4xl text-brand-blue leading-none">1,500</span>
-                      </div>
-                      <span className="text-slate-400 text-[11px] font-medium block mt-1.5">+ 18% GST applied at checkout</span>
-                    </div>
-
-                    <ul className="space-y-3 mb-8">
-                      {[
-                        'Presentation Certificate',
-                        'IEEE / Scopus Proceedings Inclusion',
-                        'Conference Kit & Swag',
-                        'Technical & Keynote Sessions Access',
-                        'Complimentary Lunch & Refreshments'
-                      ].map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
-                          <span className="w-4 h-4 rounded-full bg-slate-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
-                            ✓
-                          </span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
+              {/* Interactive Category Filter Tabs */}
+              <div className="flex items-center justify-center gap-2 mb-10 flex-wrap">
+                {[
+                  { id: 'all', label: 'All Categories' },
+                  { id: 'presenters', label: 'Paper Presenters' },
+                  { id: 'global', label: 'Attendees & Global Delegates' }
+                ].map((tab) => (
                   <button
-                    onClick={() => openForm('student_presenter')}
-                    className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-sm cursor-pointer text-center"
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id as any)}
+                    className={`px-5 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                      activeTab === tab.id
+                        ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/20'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:border-brand-orange hover:text-brand-orange'
+                    }`}
                   >
-                    Register Now →
+                    {tab.label}
                   </button>
-                </motion.div>
-
-                {/* 2. Academician */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.65, ease, delay: 0.08 }}
-                  className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div>
-                    <div className="flex items-center justify-end mb-3">
-                      <span className="font-mono text-xs font-bold text-slate-400">02</span>
-                    </div>
-
-                    <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
-                      Academician
-                    </h3>
-                    <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
-                      For faculty members and professors presenting research at the conference.
-                    </p>
-
-                    <div className="border-t border-b border-slate-100 py-5 mb-6">
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-slate-400 text-sm font-semibold">₹</span>
-                        <span className="font-mono font-black text-4xl text-brand-blue leading-none">3,000</span>
-                      </div>
-                      <span className="text-slate-400 text-[11px] font-medium block mt-1.5">+ 18% GST applied at checkout</span>
-                    </div>
-
-                    <ul className="space-y-3 mb-8">
-                      {[
-                        'Presentation Certificate',
-                        'IEEE / Scopus Proceedings Inclusion',
-                        'Conference Kit & Swag',
-                        'Technical & Keynote Sessions Access',
-                        'Complimentary Lunch & Refreshments'
-                      ].map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
-                          <span className="w-4 h-4 rounded-full bg-slate-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
-                            ✓
-                          </span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <button
-                    onClick={() => openForm('academic_presenter')}
-                    className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-sm cursor-pointer text-center"
-                  >
-                    Register Now →
-                  </button>
-                </motion.div>
-
-                {/* 3. Industry Professional */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.65, ease, delay: 0.16 }}
-                  className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div>
-                    <div className="flex items-center justify-end mb-3">
-                      <span className="font-mono text-xs font-bold text-slate-400">03</span>
-                    </div>
-
-                    <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
-                      Industry Professional
-                    </h3>
-                    <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
-                      For corporate professionals and practitioners presenting research work.
-                    </p>
-
-                    <div className="border-t border-b border-slate-100 py-5 mb-6">
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-slate-400 text-sm font-semibold">₹</span>
-                        <span className="font-mono font-black text-4xl text-brand-blue leading-none">5,000</span>
-                      </div>
-                      <span className="text-slate-400 text-[11px] font-medium block mt-1.5">+ 18% GST applied at checkout</span>
-                    </div>
-
-                    <ul className="space-y-3 mb-8">
-                      {[
-                        'Presentation Certificate',
-                        'IEEE / Scopus Proceedings Inclusion',
-                        'Conference Kit & Swag',
-                        'Industry Networking & Roundtable',
-                        'Complimentary Lunch & Refreshments'
-                      ].map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
-                          <span className="w-4 h-4 rounded-full bg-slate-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
-                            ✓
-                          </span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <button
-                    onClick={() => openForm('industry_presenter')}
-                    className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-sm cursor-pointer text-center"
-                  >
-                    Register Now →
-                  </button>
-                </motion.div>
-
+                ))}
               </div>
 
-              {/* Secondary Grid (2 Columns: Attendee & Foreign Delegate) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+              {/* Main Presenters Grid (3 Columns) */}
+              {(activeTab === 'all' || activeTab === 'presenters') && (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-8">
 
-                {/* 4. Attendee / Non-Presenter */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.65, ease, delay: 0.22 }}
-                  className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-7 lg:p-8 flex flex-col justify-between hover:border-brand-blue transition-all duration-300"
-                >
-                  <div>
-                    <div className="flex items-center justify-end mb-3">
-                      <span className="font-mono text-xs font-bold text-slate-400">04</span>
-                    </div>
+                  {/* 1. Student / Scholar */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.65, ease }}
+                    className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
+                  >
+                    <div>
+                      <div className="flex items-center justify-end mb-3">
+                        <span className="font-mono text-xs font-bold text-slate-400">01</span>
+                      </div>
 
-                    <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
-                      Attendee / Non-Presenter
-                    </h3>
-                    <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
-                      For delegates attending technical sessions and keynotes without presenting a paper.
-                    </p>
+                      <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
+                        Student / Research Scholar
+                      </h3>
+                      <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
+                        For students and full-time scholars presenting an accepted paper.
+                      </p>
 
-                    <div className="flex items-baseline justify-between border-t border-b border-slate-100 py-4 mb-6">
-                      <div>
+                      <div className="border-t border-b border-slate-100 py-5 mb-6">
                         <div className="flex items-baseline gap-1">
                           <span className="text-slate-400 text-sm font-semibold">₹</span>
-                          <span className="font-mono font-black text-3xl text-brand-blue leading-none">1,000</span>
+                          <span className="font-mono font-black text-4xl text-brand-blue leading-none">1,500</span>
                         </div>
-                        <span className="text-slate-400 text-[11px] font-medium block mt-1">+ 18% GST</span>
+                        <span className="text-slate-400 text-[11px] font-medium block mt-1.5">+ 18% GST applied at checkout</span>
                       </div>
-                      <span className="text-xs text-slate-500 font-semibold bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/60">
-                        Offline Participation
-                      </span>
-                    </div>
-                  </div>
 
-                  <button
-                    onClick={() => openForm('attendee')}
-                    className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 rounded-xl transition-all shadow-sm cursor-pointer text-center"
+                      <ul className="space-y-3 mb-8">
+                        {[
+                          'Presentation Certificate',
+                          'IEEE / Scopus Proceedings Inclusion',
+                          'Conference Kit & Swag',
+                          'Technical & Keynote Sessions Access',
+                          'Complimentary Lunch & Refreshments'
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
+                            <div className="w-4 h-4 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0 mt-0.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
+                            </div>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <button
+                      onClick={() => openForm('student_presenter')}
+                      className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-sm cursor-pointer text-center"
+                    >
+                      Register Now →
+                    </button>
+                  </motion.div>
+
+                  {/* 2. Academician */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.65, ease, delay: 0.08 }}
+                    className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
                   >
-                    Register as Attendee →
-                  </button>
-                </motion.div>
+                    <div>
+                      <div className="flex items-center justify-end mb-3">
+                        <span className="font-mono text-xs font-bold text-slate-400">02</span>
+                      </div>
 
-                {/* 5. Foreign Delegate */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.65, ease, delay: 0.28 }}
-                  className="bg-brand-blue text-white rounded-2xl shadow-xl p-7 lg:p-8 flex flex-col justify-between hover:shadow-2xl transition-all duration-300"
-                >
-                  <div>
-                    <div className="flex items-center justify-end mb-3">
-                      <span className="font-mono text-xs font-bold text-white/40">05</span>
-                    </div>
+                      <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
+                        Academician
+                      </h3>
+                      <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
+                        For faculty members and professors presenting research at the conference.
+                      </p>
 
-                    <h3 className="font-serif font-bold text-white text-xl leading-snug mb-2">
-                      Foreign Delegate
-                    </h3>
-                    <p className="text-white/60 text-xs font-medium leading-relaxed mb-6">
-                      For international authors and delegates participating from outside India.
-                    </p>
-
-                    <div className="flex items-baseline justify-between border-t border-b border-white/10 py-4 mb-6">
-                      <div>
+                      <div className="border-t border-b border-slate-100 py-5 mb-6">
                         <div className="flex items-baseline gap-1">
-                          <span className="text-white/50 text-sm font-semibold">₹</span>
-                          <span className="font-mono font-black text-3xl text-white leading-none">8,000</span>
+                          <span className="text-slate-400 text-sm font-semibold">₹</span>
+                          <span className="font-mono font-black text-4xl text-brand-blue leading-none">3,000</span>
                         </div>
-                        <span className="text-white/40 text-[11px] font-medium block mt-1">+ 18% GST (Approx. $96 USD)</span>
+                        <span className="text-slate-400 text-[11px] font-medium block mt-1.5">+ 18% GST applied at checkout</span>
                       </div>
-                      <span className="text-xs text-brand-orange font-semibold bg-brand-orange/10 px-3 py-1.5 rounded-lg border border-brand-orange/30">
-                        Global Access
-                      </span>
+
+                      <ul className="space-y-3 mb-8">
+                        {[
+                          'Presentation Certificate',
+                          'IEEE / Scopus Proceedings Inclusion',
+                          'Conference Kit & Swag',
+                          'Technical & Keynote Sessions Access',
+                          'Complimentary Lunch & Refreshments'
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
+                            <div className="w-4 h-4 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0 mt-0.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
+                            </div>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
 
-                  <button
-                    onClick={() => openForm('foreign_delegate')}
-                    className="w-full bg-brand-orange hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 rounded-xl transition-all shadow-md cursor-pointer text-center"
+                    <button
+                      onClick={() => openForm('academic_presenter')}
+                      className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-sm cursor-pointer text-center"
+                    >
+                      Register Now →
+                    </button>
+                  </motion.div>
+
+                  {/* 3. Industry Professional */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.65, ease, delay: 0.16 }}
+                    className="bg-white rounded-2xl border border-slate-200/90 shadow-sm flex flex-col justify-between p-7 lg:p-8 hover:border-brand-blue hover:shadow-xl transition-all duration-300 group"
                   >
-                    Register International →
-                  </button>
-                </motion.div>
+                    <div>
+                      <div className="flex items-center justify-end mb-3">
+                        <span className="font-mono text-xs font-bold text-slate-400">03</span>
+                      </div>
 
-              </div>
+                      <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
+                        Industry Professional
+                      </h3>
+                      <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
+                        For corporate professionals and practitioners presenting research work.
+                      </p>
+
+                      <div className="border-t border-b border-slate-100 py-5 mb-6">
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-slate-400 text-sm font-semibold">₹</span>
+                          <span className="font-mono font-black text-4xl text-brand-blue leading-none">5,000</span>
+                        </div>
+                        <span className="text-slate-400 text-[11px] font-medium block mt-1.5">+ 18% GST applied at checkout</span>
+                      </div>
+
+                      <ul className="space-y-3 mb-8">
+                        {[
+                          'Presentation Certificate',
+                          'IEEE / Scopus Proceedings Inclusion',
+                          'Conference Kit & Swag',
+                          'Industry Networking & Roundtable',
+                          'Complimentary Lunch & Refreshments'
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
+                            <div className="w-4 h-4 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0 mt-0.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
+                            </div>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <button
+                      onClick={() => openForm('industry_presenter')}
+                      className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-4 rounded-xl transition-all shadow-sm cursor-pointer text-center"
+                    >
+                      Register Now →
+                    </button>
+                  </motion.div>
+
+                </div>
+              )}
+
+              {/* Secondary Grid (2 Columns: Attendee & Foreign Delegate) */}
+              {(activeTab === 'all' || activeTab === 'global') && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+
+                  {/* 4. Attendee / Non-Presenter */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.65, ease, delay: 0.22 }}
+                    className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-7 lg:p-8 flex flex-col justify-between hover:border-brand-blue transition-all duration-300"
+                  >
+                    <div>
+                      <div className="flex items-center justify-end mb-3">
+                        <span className="font-mono text-xs font-bold text-slate-400">04</span>
+                      </div>
+
+                      <h3 className="font-serif font-bold text-brand-blue text-xl leading-snug mb-2">
+                        Attendee / Non-Presenter
+                      </h3>
+                      <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
+                        For delegates attending technical sessions and keynotes without presenting a paper.
+                      </p>
+
+                      <div className="flex items-baseline justify-between border-t border-b border-slate-100 py-4 mb-6">
+                        <div>
+                          <div className="flex items-baseline gap-1">
+                            <span className="text-slate-400 text-sm font-semibold">₹</span>
+                            <span className="font-mono font-black text-3xl text-brand-blue leading-none">1,000</span>
+                          </div>
+                          <span className="text-slate-400 text-[11px] font-medium block mt-1">+ 18% GST</span>
+                        </div>
+                        <span className="text-xs text-slate-500 font-semibold bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/60">
+                          Offline Participation
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => openForm('attendee')}
+                      className="w-full bg-brand-blue hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 rounded-xl transition-all shadow-sm cursor-pointer text-center"
+                    >
+                      Register as Attendee →
+                    </button>
+                  </motion.div>
+
+                  {/* 5. Foreign Delegate */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.65, ease, delay: 0.28 }}
+                    className="bg-brand-blue text-white rounded-2xl shadow-xl p-7 lg:p-8 flex flex-col justify-between hover:shadow-2xl transition-all duration-300"
+                  >
+                    <div>
+                      <div className="flex items-center justify-end mb-3">
+                        <span className="font-mono text-xs font-bold text-white/40">05</span>
+                      </div>
+
+                      <h3 className="font-serif font-bold text-white text-xl leading-snug mb-2">
+                        Foreign Delegate
+                      </h3>
+                      <p className="text-white/60 text-xs font-medium leading-relaxed mb-6">
+                        For international authors and delegates participating from outside India.
+                      </p>
+
+                      <div className="flex items-baseline justify-between border-t border-b border-white/10 py-4 mb-6">
+                        <div>
+                          <div className="flex items-baseline gap-1">
+                            <span className="text-white/50 text-sm font-semibold">₹</span>
+                            <span className="font-mono font-black text-3xl text-white leading-none">8,000</span>
+                          </div>
+                          <span className="text-white/40 text-[11px] font-medium block mt-1">+ 18% GST (Approx. $96 USD)</span>
+                        </div>
+                        <span className="text-xs text-brand-orange font-semibold bg-brand-orange/10 px-3 py-1.5 rounded-lg border border-brand-orange/30">
+                          Global Access
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => openForm('foreign_delegate')}
+                      className="w-full bg-brand-orange hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-[0.18em] py-3.5 rounded-xl transition-all shadow-md cursor-pointer text-center"
+                    >
+                      Register International →
+                    </button>
+                  </motion.div>
+
+                </div>
+              )}
 
               {/* Subtitle Footer */}
               <motion.p
@@ -832,8 +873,8 @@ export default function Registration() {
 
           {/* ── PROCESS + INCLUSIONS + POLICIES ───── */}
           <section className="py-24 md:py-32 border-t border-slate-200/80">
-            <div className="max-w-[1536px] mx-auto px-6 md:px-12">
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-20 xl:gap-28">
+            <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 xl:gap-24">
 
                 {/* Timeline */}
                 <div>
@@ -867,10 +908,12 @@ export default function Registration() {
                   <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease }} className="bg-white border border-slate-200/90 rounded-2xl p-8 shadow-sm">
                     <h3 className="font-serif font-bold text-brand-blue text-xl mb-1">What's Included</h3>
                     <p className="text-slate-500 text-xs font-semibold uppercase tracking-widest mb-6">In your registration fee</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {inclusions.map((item, i) => (
                         <div key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
-                          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
+                          <div className="w-4 h-4 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center shrink-0">
+                            <div className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
+                          </div>
                           {item}
                         </div>
                       ))}
@@ -893,55 +936,6 @@ export default function Registration() {
                 </div>
 
               </div>
-            </div>
-          </section>
-
-          {/* ── PAYMENT BANK TRANSFER ──────────────── */}
-          <section className="py-24 bg-white border-t border-slate-200/80">
-            <div className="max-w-[1536px] mx-auto px-6 md:px-12">
-
-              <motion.div variants={stagger()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-16">
-                <motion.div variants={fadeUp} className="w-10 h-[2px] bg-brand-orange mb-7 rounded-full" />
-                <motion.h2 variants={fadeUp} className="font-serif font-bold text-brand-blue text-3xl sm:text-4xl leading-tight mb-4">Payment Options</motion.h2>
-                <motion.p variants={fadeUp} className="text-slate-600 text-base md:text-lg max-w-2xl font-medium">
-                  Instant online checkout or traditional NEFT / RTGS bank transfer are both accepted.
-                </motion.p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
-                {/* Online */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease }} className="border border-slate-200/90 rounded-2xl p-7 md:p-8 bg-[#f7f4ef] flex flex-col">
-                  <p className="text-[9px] font-black tracking-[0.22em] text-brand-orange uppercase mb-4">Option A &middot; Recommended</p>
-                  <h3 className="font-serif font-bold text-brand-blue text-xl mb-3">Cashfree Online Gateway</h3>
-                  <p className="text-slate-600 text-sm font-medium leading-relaxed flex-1">
-                    Pay instantly via UPI, Credit / Debit Cards, Net Banking, or Mobile Wallets. Confirmation and QR pass are dispatched within seconds.
-                  </p>
-                  <button onClick={() => openForm()} className="mt-8 inline-flex items-center gap-2 bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-[0.18em] px-7 py-3.5 rounded-xl transition-all shadow-md cursor-pointer self-start">
-                    Pay Online Now →
-                  </button>
-                </motion.div>
-
-                {/* Bank */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease, delay: 0.1 }} className="border border-slate-200/90 rounded-2xl p-7 md:p-8 bg-white">
-                  <p className="text-[9px] font-black tracking-[0.22em] text-brand-blue uppercase mb-4">Option B &middot; Bank Transfer</p>
-                  <h3 className="font-serif font-bold text-brand-blue text-xl mb-5">NEFT / RTGS Details</h3>
-                  <dl className="space-y-3 text-sm font-mono">
-                    {[
-                      ['Beneficiary', 'JK LAKSHMIPAT UNIVERSITY'],
-                      ['Account Type', 'GST / Institutional'],
-                      ['Bank', 'HDFC Bank Ltd.'],
-                      ['IFSC', 'HDFC0003953'],
-                      ['Branch', 'Mahindra SEZ, Jaipur'],
-                    ].map(([k, v]) => (
-                      <div key={k} className="flex justify-between items-baseline border-b border-slate-100 pb-2 last:border-0">
-                        <dt className="text-[10px] uppercase tracking-[0.15em] text-slate-400 font-sans font-bold">{k}</dt>
-                        <dd className="font-bold text-brand-blue text-xs">{v}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </motion.div>
-              </div>
-
             </div>
           </section>
 
