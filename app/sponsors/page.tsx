@@ -413,7 +413,7 @@ export default function SponsorsPage() {
             <div className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 shadow-sm flex flex-col gap-6">
               <div className="space-y-1">
                 <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest block">Sponsorship Team Chair</span>
-                <h3 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">Dr. Amit Sinhal</h3>
+                <h3 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">Prof. Amit Kumar Sinhal</h3>
                 <p className="text-xs text-slate-500 font-medium leading-relaxed font-sans">
                   Institute of Engineering &amp; Technology, JK Lakshmipat University
                 </p>

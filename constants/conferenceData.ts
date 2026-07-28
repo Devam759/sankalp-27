@@ -188,11 +188,11 @@ export const speakers = {
 
 export const advisoryBoard = {
   international: [
-    { name: 'Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
-    { name: 'Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
+    { name: 'Dr. Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
+    { name: 'Mr. Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
     { name: 'Dr. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
     { name: 'Dr. Ridoan Karim', title: 'Director, CLARS– Monash University, Malaysia' },
-    { name: 'Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
+    { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
     { name: 'Prof. Arun Patil', title: 'Director (L&T), Curtin University, Singapore' },
     { name: 'Prof. Celestine Iwendi', title: 'Professor, University of Greater Manchester, United Kingdom' },
     { name: 'Prof. Fernando Ortiz-Rodríguez', title: 'Professor, Universidad Autónoma de Tamaulipas, México, North America' },
@@ -201,13 +201,13 @@ export const advisoryBoard = {
     { name: 'Prof. Valentina Emilia Balas', title: 'Professor, University of Arad, Romania' },
     { name: 'Prof. Vinod Kumar Shukla', title: 'Associate Dean, Amity University Dubai, UAE' },
     { name: 'Prof. Wassim Haddad', title: 'Professor, Georgia Institute of Technology, US' },
-    { name: 'Sergey Nersesov', title: 'Associate Professor, Villanova University, Pennsylvania, United States' },
-    { name: 'Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece' }
+    { name: 'Prof. Sergey Nersesov', title: 'Associate Professor, Villanova University, Pennsylvania, United States' },
+    { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece' }
   ],
   national: [
     { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India – Gurgaon' },
     { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
-    { name: 'Dr. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
+    { name: 'Prof. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
     { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },
     { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi' },
     { name: 'Mr. S. Balamurugan', title: 'Intelligent Research Consultancy, India Services (iRCS), Coimbatore, Tamil Nadu' },
@@ -217,7 +217,7 @@ export const advisoryBoard = {
     { name: 'Prof. K. V. Arya', title: 'Department of Computer Science and Engineering, IIITM, Gwalior' },
     { name: 'Prof. Kusum Deep', title: 'Emeritus Professor, Maths. Dept, Indian Institute of Technology, Roorkee' },
     { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras' },
-    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
+    { name: 'Dr. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
     { name: 'Prof. Nishtha Keshwani', title: 'Professor, Central University of Rajasthan, India' },
     { name: 'Prof. Rajesh Kumar', title: 'Professor, Biomedical Engineering, IIT Ropar' },
     { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam' },
@@ -238,9 +238,9 @@ export const technicalProgramCommittee = [
 ];
 
 export const trackChairs = [
-  { track: 'Sustainable AI', chair: 'Dr. Amit Kumar Sinhal', coChair: 'Dr. Sneha Sharma' },
+  { track: 'Sustainable AI', chair: 'Prof. Amit Kumar Sinhal', coChair: 'Dr. Sneha Sharma' },
   { track: 'Data Science & Generative AI', chair: 'Prof. Taruna Sunil', coChair: 'Dr. Vikram Singh' },
-  { track: 'High Performance Computing', chair: 'Dr. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
+  { track: 'High Performance Computing', chair: 'Prof. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
   { track: 'Smart Healthcare', chair: 'Prof. Devika Kataria', coChair: 'Dr. Suresh Reddy' },
   { track: 'AI in Education', chair: 'Dr. Ramesh Chandra', coChair: 'Dr. Kavita Jain' },
   { track: 'Smart Society', chair: 'Prof. Anil Sharma', coChair: 'Dr. Meera Patel' },

@@ -20,9 +20,9 @@ export default function ContactPage() {
   ];
 
   const trackChairs = [
-    { track: "Sustainable AI", name: "Dr. Amit Kumar Sinhal" },
+    { track: "Sustainable AI", name: "Prof. Amit Kumar Sinhal" },
     { track: "Data Science", name: "Prof. Taruna Sunil" },
-    { track: "HPC & Edge", name: "Dr. Umesh Gupta" },
+    { track: "HPC & Edge", name: "Prof. Umesh Gupta" },
     { track: "Smart Healthcare", name: "Prof. Devika Kataria" },
   ];
 
