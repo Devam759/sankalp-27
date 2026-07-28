@@ -2,11 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-<<<<<<< HEAD
 import { motion } from 'framer-motion';
-=======
 import Link from 'next/link';
->>>>>>> c7adbf2 (Decouple participant registration and paper submission into separate workflows)
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';

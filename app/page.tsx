@@ -221,13 +221,8 @@ export default function Home() {
           {/* Centralized Hero CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4">
             <Link
-<<<<<<< HEAD
-              href="/call-for-papers"
-              className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center btn-shimmer"
-=======
               href="/submit-paper"
               className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
->>>>>>> c7adbf2 (Decouple participant registration and paper submission into separate workflows)
             >
               Submit Paper
             </Link>
