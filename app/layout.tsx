@@ -8,31 +8,53 @@ import Script from 'next/script'
 export const metadata: Metadata = {
   metadataBase: new URL('https://sankalp.jklu.edu.in'),
   alternates: {
-    canonical: 'https://sankalp.jklu.edu.in',
+    canonical: './',
   },
   title: {
-    default: "Sankalp '27 | JK Lakshmipat University",
-    template: "%s | Sankalp '27"
+    default: "Sankalp '27 | International Conference | JK Lakshmipat University",
+    template: "%s | Sankalp '27 - JKLU"
   },
-  description: "Official website for the Sankalp 2027 International Conference at JK Lakshmipat University, Jaipur.",
+  description: "Official portal for Sankalp '27 – International Conference on Sustainable AI, Data Science & Emerging Technologies at JK Lakshmipat University (JKLU), Jaipur.",
   manifest: '/manifest.json',
   keywords: [
-    "Sankalp", "Sankalp 2027", "Sankalp '27", "JKLU", "JK Lakshmipat University", "Jaipur", "International Conference", "Conference"
+    "Sankalp",
+    "Sankalp 2027",
+    "Sankalp '27",
+    "JKLU",
+    "JK Lakshmipat University",
+    "Jaipur International Conference",
+    "Sustainable AI Conference",
+    "Data Science Conference Jaipur",
+    "Springer LNCS Conference",
+    "Scopus Indexed Conference India",
+    "IET JKLU",
+    "Artificial Intelligence Conference 2027"
   ],
-  authors: [{ name: "JKLU Tech Team" }],
-  creator: "JKLU Tech Team",
+  authors: [{ name: "Institute of Engineering & Technology, JKLU", url: "https://jklu.edu.in" }],
+  creator: "JK Lakshmipat University",
+  publisher: "JK Lakshmipat University",
+  category: "Academic Conference",
   openGraph: {
-    title: "Sankalp '27 | JK Lakshmipat University",
-    description: "Official website for the Sankalp 2027 International Conference at JK Lakshmipat University, Jaipur.",
+    title: "Sankalp '27 | International Conference at JK Lakshmipat University",
+    description: "Premier International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction. Organized by IET, JKLU Jaipur.",
     url: 'https://sankalp.jklu.edu.in',
-    siteName: "Sankalp '27 Website",
+    siteName: "Sankalp '27 International Conference",
     locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: '/Images/jklu.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Sankalp 2027 Conference - JK Lakshmipat University',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Sankalp '27 | JK Lakshmipat University",
-    description: "Official website for the Sankalp 2027 International Conference at JK Lakshmipat University, Jaipur.",
+    description: "International Conference on Sustainable AI & Future Tech at JKLU Jaipur.",
+    images: ['/Images/jklu.jpg'],
   },
   icons: {
     icon: '/favicon.ico',
@@ -42,7 +64,14 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  }
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export const viewport: Viewport = {

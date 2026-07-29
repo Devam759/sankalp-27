@@ -1,154 +1,97 @@
-'use client';
+import type { Metadata } from 'next';
+import FaqClient from './FaqClient';
+import JsonLd from '@/components/seo/JsonLd';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
-
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions (FAQ) | Sankalp '27 | JKLU",
+  description: "Find answers to common questions about Sankalp '27 paper submissions, registration fees, travel to JKLU Jaipur, parking, Wi-Fi, and accommodation.",
+  alternates: {
+    canonical: 'https://sankalp.jklu.edu.in/faq',
+  },
+  keywords: [
+    "Sankalp FAQ",
+    "JKLU Conference FAQ",
+    "Sankalp Paper Submission Queries",
+    "Sankalp Registration Questions",
+    "JKLU Campus Facilities FAQ"
+  ],
+  openGraph: {
+    title: "Frequently Asked Questions - SANKALP '27",
+    description: "Answers to key queries about registrations, venue facilities, travel, and accommodation for Sankalp 2027.",
+    url: 'https://sankalp.jklu.edu.in/faq',
+    siteName: "Sankalp '27 Website",
+    type: 'website',
+  },
+};
 
 export default function FAQPage() {
-  const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setActiveFAQ(activeFAQ === index ? null : index);
-  };
-
   const faqs = [
-    { 
-      q: 'Where is the conference venue located?', 
-      a: "SANKALP'27 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services." 
+    {
+      q: 'Where is the conference venue located?',
+      a: "SANKALP'27 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services."
     },
-    { 
-      q: 'Is parking available on campus?', 
-      a: 'Yes, secure and spacious parking zones are available on campus free of charge for all registered delegates, speakers, and attendees throughout the conference.' 
+    {
+      q: 'Is parking available on campus?',
+      a: 'Yes, secure and spacious parking zones are available on campus free of charge for all registered delegates, speakers, and attendees throughout the conference.'
     },
-    { 
-      q: 'Is campus-wide Wi-Fi available?', 
-      a: 'Complimentary high-speed Wi-Fi access will be provided to all registered attendees across all academic halls, seminar rooms, and dining areas on campus.' 
+    {
+      q: 'Is campus-wide Wi-Fi available?',
+      a: 'Complimentary high-speed Wi-Fi access will be provided to all registered attendees across all academic halls, seminar rooms, and dining areas on campus.'
     },
-    { 
-      q: 'Is the venue wheelchair accessible?', 
-      a: 'Yes, the JKLU campus features fully wheelchair-accessible pathways, entry ramps, elevators in all multi-story academic blocks, and dedicated assistance layout.' 
+    {
+      q: 'Is the venue wheelchair accessible?',
+      a: 'Yes, the JKLU campus features fully wheelchair-accessible pathways, entry ramps, elevators in all multi-story academic blocks, and dedicated assistance layout.'
     },
-    { 
-      q: 'How can I reach the venue from Jaipur Airport?', 
-      a: 'Jaipur International Airport (JAI) is approximately 25 km (around 45 minutes) from the venue. Pre-paid airport taxis, Uber, and Ola cabs are readily available at the terminal exit.' 
+    {
+      q: 'How can I reach the venue from Jaipur Airport?',
+      a: 'Jaipur International Airport (JAI) is approximately 25 km (around 45 minutes) from the venue. Pre-paid airport taxis, Uber, and Ola cabs are readily available at the terminal exit.'
     },
-    { 
-      q: 'Will food and refreshments be available during the conference?', 
-      a: 'Yes, complimentary catered lunches, coffee/tea, and evening refreshments will be served during designated networking breaks to all registered delegates.' 
+    {
+      q: 'Will food and refreshments be available during the conference?',
+      a: 'Yes, complimentary catered lunches, coffee/tea, and evening refreshments will be served during designated networking breaks to all registered delegates.'
     },
-    { 
-      q: 'Who should I contact for travel-related assistance?', 
-      a: "For travel, transit, or accommodation support, please contact our logistics helpdesk at sankalp@jklu.edu.in or visit the assistance counter in the main academic lobby." 
+    {
+      q: 'Who should I contact for travel-related assistance?',
+      a: "For travel, transit, or accommodation support, please contact our logistics helpdesk at sankalp@jklu.edu.in or visit the assistance counter in the main academic lobby."
     }
   ];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://sankalp.jklu.edu.in',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'FAQ',
+        item: 'https://sankalp.jklu.edu.in/faq',
+      },
+    ],
+  };
+
   return (
-    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-20">
-      <Navbar />
-
-      {/* Hero Section */}
-      <section className="relative bg-brand-blue text-white py-24 px-6 overflow-hidden">
-        {/* Subtle background graphics */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
-        <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase"
-          >
-            Frequently Asked Questions
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-base sm:text-lg opacity-85 max-w-xl mx-auto"
-          >
-            Find quick answers to common questions about SANKALP'27 registrations, venue facilities, travel, and accommodation.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Accordion FAQ Section */}
-      <section className="py-24 px-6 max-w-4xl mx-auto">
-        <div className="space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = activeFAQ === index;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: (index % 6) * 0.08 }}
-                className={`bg-white border transition-all duration-300 rounded-[16px] overflow-hidden shadow-sm ${
-                  isOpen 
-                    ? 'border-[#E6E8EC] border-l-4 border-l-brand-orange shadow-md' 
-                    : 'border-[#E6E8EC] hover:border-brand-orange hover:bg-[#FFFDF8]'
-                }`}
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center p-6 text-left font-semibold text-brand-ink cursor-pointer select-none text-sm sm:text-base gap-4 group"
-                >
-                  <span className="flex items-center gap-3">
-                    {faq.q}
-                  </span>
-                  <span className="text-slate-400 group-hover:text-brand-orange font-bold text-lg select-none">
-                    {isOpen ? '−' : '+'}
-                  </span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 pt-2 pl-[42px] text-slate-600 leading-relaxed font-sans text-xs sm:text-sm">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Support & Contact Section */}
-      <section className="py-16 bg-[#FAFAFB] border-t border-[#E6E8EC]/60 px-6">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue uppercase tracking-tight">
-              Still Have Questions?
-            </h2>
-            <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">
-              If you couldn't find the answer to your query, feel free to reach out to our logistics and queries team.
-            </p>
-          </div>
-
-          <div className="max-w-md mx-auto pt-4">
-            <div className="p-6 bg-white border border-[#E6E8EC] rounded-2xl flex flex-col items-center text-center space-y-3">
-
-              <h3 className="font-bold text-brand-ink text-sm sm:text-base">Email Queries</h3>
-              <p className="text-xs text-slate-500 max-w-[200px]">For registrations, paper submissions, and official letters.</p>
-              <a href="mailto:sankalp@jklu.edu.in" className="text-sm font-bold text-brand-orange hover:underline">
-                sankalp@jklu.edu.in
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+    <>
+      <JsonLd data={[breadcrumbSchema, faqSchema]} />
+      <FaqClient />
+    </>
   );
 }

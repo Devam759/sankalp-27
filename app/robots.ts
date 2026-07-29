@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = 'https://sankalp.jklu.edu.in';
+
   return {
     rules: [
       {
@@ -8,14 +10,14 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: [
           '/admin',
-          '/admin/',
+          '/admin/*',
           '/scanner',
-          '/scanner/',
+          '/scanner/*',
           '/login',
-          '/login/',
+          '/login/*',
           '/check-in',
-          '/check-in/',
-          '/api/',
+          '/check-in/*',
+          '/api/*',
         ],
       },
       {
@@ -23,14 +25,33 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: [
           '/admin',
+          '/admin/*',
           '/scanner',
+          '/scanner/*',
           '/login',
+          '/login/*',
           '/check-in',
-          '/api/',
+          '/check-in/*',
+          '/api/*',
+        ],
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: [
+          '/admin',
+          '/admin/*',
+          '/scanner',
+          '/scanner/*',
+          '/login',
+          '/login/*',
+          '/check-in',
+          '/check-in/*',
+          '/api/*',
         ],
       },
     ],
-    sitemap: 'https://sankalp.jklu.edu.in/sitemap.xml',
-    host: 'https://sankalp.jklu.edu.in',
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }
