@@ -41,11 +41,23 @@ export default function CallForPapersClient() {
               <h4 className="text-xl font-serif font-bold text-brand-blue mb-4">
                 Submission Guidelines
               </h4>
-              <ul className="space-y-4 text-slate-700 list-disc pl-5 font-medium text-sm md:text-base">
-                <li className="pl-2">Papers must be original and not under review elsewhere.</li>
-                <li className="pl-2">Submissions should follow the official SANKALP conference template formatting.</li>
-                <li className="pl-2">Accepted papers must be presented during the conference by at least one author.</li>
-                <li className="pl-2">At least one author of each accepted paper must register for the conference for the paper to be included in the proceedings.</li>
+              <ul className="space-y-4 text-slate-700 font-medium text-sm md:text-base">
+                <li className="flex items-start gap-3">
+                  <i className="fi fi-rr-check-circle text-brand-orange text-sm shrink-0 mt-1" />
+                  <span>Papers must be original and not under review elsewhere.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <i className="fi fi-rr-check-circle text-brand-orange text-sm shrink-0 mt-1" />
+                  <span>Submissions should follow the official SANKALP conference template formatting.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <i className="fi fi-rr-check-circle text-brand-orange text-sm shrink-0 mt-1" />
+                  <span>Accepted papers must be presented during the conference by at least one author.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <i className="fi fi-rr-check-circle text-brand-orange text-sm shrink-0 mt-1" />
+                  <span>At least one author of each accepted paper must register for the conference for the paper to be included in the proceedings.</span>
+                </li>
               </ul>
             </div>
             
@@ -64,6 +76,12 @@ export default function CallForPapersClient() {
               >
                 Submit Paper ↗
               </Link>
+              <Link 
+                href="/sessions"
+                className="flex items-center justify-center gap-2 bg-slate-100 text-brand-blue border border-slate-300 px-6 py-3 font-bold hover:bg-brand-blue hover:text-white transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer rounded-sm"
+              >
+                View Tracks &amp; Sessions →
+              </Link>
             </div>
           </motion.div>
 
@@ -80,6 +98,7 @@ export default function CallForPapersClient() {
                 src="/Images/campus/DJI_0124.webp" 
                 alt="Research Session"
                 fill
+                priority
                 sizes="(max-width: 1024px) 100vw, 500px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -92,42 +111,6 @@ export default function CallForPapersClient() {
             </div>
           </motion.div>
 
-        </div>
-      </Section>
-
-      {/* Tracks Accordion Section */}
-      <Section id="tracks" title="Conference Tracks & Themes" className="bg-white border-t border-slate-200">
-        <div className="max-w-4xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <p className="text-slate-600 max-w-2xl mx-auto text-base">
-              The conference invites contributions on research articles, case studies, and papers in the following major tracks:
-            </p>
-          </motion.div>
-
-          <div className="space-y-4">
-            {conferenceTracks.map((track, i) => (
-              <motion.div
-                key={track.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-              >
-                <TrackAccordion 
-                  track={track} 
-                  index={i} 
-                  isOpen={openIndex === i}
-                  onToggle={() => handleToggle(i)}
-                />
-              </motion.div>
-            ))}
-          </div>
         </div>
       </Section>
 

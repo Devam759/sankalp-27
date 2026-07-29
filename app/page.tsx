@@ -3,16 +3,29 @@ import HomeClient from './HomeClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Sankalp '27 | International Conference on Sustainable AI | JK Lakshmipat University",
-  description: "Official site for Sankalp '27 – International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction, organized by IET, JK Lakshmipat University, Jaipur.",
+  title: "SANKALP 2027 | SANKALP '27 | International Conference | JKLU Jaipur",
+  description: "Official website for SANKALP 2027 (SANKALP '27) – International Conference on Sustainable AI, Data Science & Next-Gen Knowledge, Automation, Learning & Prediction, organized by IET, JK Lakshmipat University, Jaipur.",
+  keywords: [
+    "sankalp",
+    "sankalp27",
+    "sankalp 2027",
+    "sankalp '27",
+    "sankalp jklu",
+    "sankalp conference",
+    "sankalp jklu conference",
+    "sankalp 2027 jklu",
+    "sankalp jaipur",
+    "sankalp international conference",
+    "iet jklu sankalp"
+  ],
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in',
   },
   openGraph: {
-    title: "Sankalp '27 | International Conference | JKLU Jaipur",
-    description: "Join international researchers, academics, and industry experts at JK Lakshmipat University for Sankalp 2027.",
+    title: "SANKALP 2027 (SANKALP '27) | International Conference | JKLU Jaipur",
+    description: "Join international researchers, academics, and industry experts at JK Lakshmipat University for SANKALP 2027.",
     url: 'https://sankalp.jklu.edu.in',
-    siteName: "Sankalp '27 International Conference",
+    siteName: "SANKALP 2027 (SANKALP '27) International Conference",
     locale: 'en_IN',
     type: 'website',
     images: [
@@ -20,24 +33,46 @@ export const metadata: Metadata = {
         url: 'https://sankalp.jklu.edu.in/Images/jklu.jpg',
         width: 1200,
         height: 630,
-        alt: 'Sankalp 2027 - JK Lakshmipat University',
+        alt: 'SANKALP 2027 - JK Lakshmipat University',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Sankalp '27 | JK Lakshmipat University, Jaipur",
+    title: "SANKALP 2027 (SANKALP '27) | JK Lakshmipat University, Jaipur",
     description: "International Conference on Sustainable AI & Next-Gen Knowledge at JKLU Jaipur.",
     images: ['https://sankalp.jklu.edu.in/Images/jklu.jpg'],
   },
 };
 
 export default function Page() {
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'SANKALP 2027',
+    alternateName: [
+      'sankalp',
+      'sankalp27',
+      'sankalp 2027',
+      "sankalp '27",
+      'sankalp jklu',
+      'sankalp conference',
+      'sankalp jklu conference',
+      'sankalp 2027 jklu'
+    ],
+    url: 'https://sankalp.jklu.edu.in',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://sankalp.jklu.edu.in/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  };
+
   const universitySchema = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     name: 'JK Lakshmipat University',
-    alternateName: 'JKLU',
+    alternateName: ['JKLU', 'JK Lakshmipat University Jaipur'],
     url: 'https://jklu.edu.in',
     logo: 'https://sankalp.jklu.edu.in/Images/jklu.jpg',
     address: {
@@ -59,8 +94,16 @@ export default function Page() {
   const eventSchema = {
     '@context': 'https://schema.org',
     '@type': 'AcademicEvent',
-    name: "Sankalp '27 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction",
-    alternateName: "Sankalp 2027",
+    name: "SANKALP 2027 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction",
+    alternateName: [
+      "sankalp",
+      "sankalp27",
+      "sankalp 2027",
+      "sankalp '27",
+      "sankalp jklu",
+      "sankalp conference",
+      "Sankalp 2027 JKLU"
+    ],
     startDate: '2027-02-19T09:00:00+05:30',
     endDate: '2027-02-20T17:00:00+05:30',
     eventAttendanceMode: 'https://schema.org/MixedEventAttendanceMode',
@@ -106,7 +149,7 @@ export default function Page() {
 
   return (
     <>
-      <JsonLd data={[universitySchema, eventSchema]} />
+      <JsonLd data={[websiteSchema, universitySchema, eventSchema]} />
       <HomeClient />
     </>
   );

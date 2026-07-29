@@ -6,9 +6,16 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 
 export default function ContactClient() {
+  const [copied, setCopied] = React.useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('sankalp@jklu.edu.in');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   const organizingHeads = [
-    { name: "Prof. Tapas Kumar", title: "Conference Chair" },
-    { name: "Prof. Sonali Vyas", title: "Conference Convener" },
+    { name: "Dr. Tapas Kumar", title: "Conference Chair" },
+    { name: "Dr. Sonali Vyas", title: "Conference Convener" },
   ];
 
   const subCommittees = [
@@ -20,147 +27,106 @@ export default function ContactClient() {
   ];
 
   const trackChairs = [
-    { track: "Sustainable AI", name: "Prof. Amit Kumar Sinhal" },
-    { track: "Data Science", name: "Prof. Taruna Sunil" },
-    { track: "HPC & Edge", name: "Prof. Umesh Gupta" },
-    { track: "Smart Healthcare", name: "Prof. Devika Kataria" },
+    { track: "Sustainable AI", name: "Dr. Amit Kumar Sinhal" },
+    { track: "Data Science", name: "Dr. Taruna Sunil" },
+    { track: "HPC & Edge", name: "Dr. Umesh Gupta" },
+    { track: "Smart Healthcare", name: "Dr. Devika Kataria" },
   ];
 
   return (
     <div className="w-full min-h-screen bg-[#f7f4ef] text-[#184176] font-sans selection:bg-[#f5821e] selection:text-white">
       <Navbar />
 
-      <div className="pt-32 pb-28 px-6 max-w-5xl mx-auto relative z-10">
+      <div className="pt-32 pb-28 px-6 md:px-12 max-w-4xl mx-auto relative z-10 flex-grow space-y-12">
         <motion.header 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center space-y-3"
         >
-          <h1 className="text-4xl md:text-5xl font-serif text-[#184176] tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl font-serif font-bold text-brand-blue uppercase tracking-tight">
             Contact Us
           </h1>
-          <div className="w-16 h-[2px] bg-[#f5821e] mx-auto" />
+          <p className="text-slate-600 text-sm sm:text-base font-sans leading-relaxed max-w-xl mx-auto">
+            SANKALP 2027 International Conference &middot; Institute of Engineering &amp; Technology, JKLU
+          </p>
+          <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
         </motion.header>
 
-        <div className="space-y-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-white border border-[#184176]/10 p-8 md:p-10 shadow-sm rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
-          >
-            <div className="space-y-3">
-              <h3 className="text-2xl font-serif text-[#184176] tracking-tight">
-                SANKALP 2027
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="bg-white border border-[#E6E8EC] p-8 sm:p-12 shadow-sm rounded-[18px] space-y-10"
+        >
+          {/* Email Section */}
+          <div className="space-y-4 text-center border-b border-[#E6E8EC]/80 pb-8">
+            <span className="text-[11px] font-bold text-brand-orange uppercase tracking-widest block font-sans">
+              Official Conference Email
+            </span>
+            <div className="inline-flex items-center justify-center gap-3 bg-[#FCFCFC] border border-[#E6E8EC] px-6 py-3.5 rounded-xl shadow-xs flex-wrap sm:flex-nowrap">
+              <i className="fi fi-rr-envelope text-brand-orange text-xl shrink-0" />
+              <a 
+                href="mailto:sankalp@jklu.edu.in"
+                className="text-xl sm:text-2xl font-serif font-bold text-brand-blue hover:text-brand-orange transition-colors tracking-tight"
+              >
+                sankalp@jklu.edu.in
+              </a>
+              <button
+                onClick={copyEmail}
+                title="Copy Email Address"
+                aria-label="Copy Email Address"
+                className="p-2 rounded-lg bg-white border border-[#E6E8EC] hover:border-brand-orange text-slate-500 hover:text-brand-orange transition-all cursor-pointer flex items-center justify-center shadow-2xs ml-1"
+              >
+                {copied ? (
+                  <span className="text-xs font-bold text-emerald-600 px-1">✓ Copied!</span>
+                ) : (
+                  <i className="fi fi-rr-copy text-sm" />
+                )}
+              </button>
+            </div>
+            <p className="text-xs text-slate-500 font-sans max-w-md mx-auto">
+              For paper submissions, registration guidelines, sponsorships, or general conference queries.
+            </p>
+          </div>
+
+          {/* Details Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left font-sans">
+            <div className="space-y-2 p-6 bg-[#FCFCFC] border border-[#E6E8EC] rounded-xl">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#8A99AD] block">
+                Host Institution
+              </span>
+              <h3 className="font-serif font-bold text-base text-brand-blue">
+                Institute of Engineering &amp; Technology
               </h3>
-              <p className="text-[#184176]/70 leading-relaxed max-w-xl text-sm md:text-base">
-                Welcome to the official contact directory of the SANKALP 2027 International Conference. For any queries regarding papers, registration, or sponsorships, reach out to our team heads below.
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                JK Lakshmipat University (JKLU), Jaipur
               </p>
             </div>
-            
-            <div className="w-full md:w-auto p-6 bg-[#f7f4ef]/50 border border-[#184176]/5 rounded-sm flex items-start gap-4 text-sm">
-              <div>
-                <h4 className="text-[#184176] font-semibold tracking-wide mb-1 uppercase text-xs">Campus Address</h4>
-                <p className="text-[#184176]/80 leading-relaxed max-w-xs md:max-w-sm">
-                  JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026
-                </p>
-              </div>
-            </div>
-          </motion.div>
 
-          <div>
-            <div className="text-center mb-10 pt-4">
-              <h2 className="text-2xl font-serif text-[#184176] tracking-tight mb-3">
-                Organizing Heads
-              </h2>
-              <div className="w-12 h-[1px] bg-[#184176]/30 mx-auto" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              {organizingHeads.map((head, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
-                >
-                  <div className="p-6 group-hover:border-[#f5821e]/30 transition-colors">
-                    <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">{head.title}</span>
-                    <h3 className="font-serif text-lg text-[#184176]">
-                      {head.name}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="space-y-2 p-6 bg-[#FCFCFC] border border-[#E6E8EC] rounded-xl">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#8A99AD] block">
+                Conference Venue &amp; Address
+              </span>
+              <h3 className="font-serif font-bold text-base text-brand-blue">
+                JK Lakshmipat University
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India
+              </p>
             </div>
           </div>
 
-          <div>
-            <div className="text-center mb-10 pt-6">
-              <h2 className="text-2xl font-serif text-[#184176] tracking-tight mb-3">
-                Sub-Committees
-              </h2>
-              <div className="w-12 h-[1px] bg-[#184176]/30 mx-auto" />
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {subCommittees.map((contact, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.45, delay: (index % 3) * 0.08 }}
-                  className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
-                >
-                  <div className="p-6 group-hover:border-[#f5821e]/30 transition-colors">
-                    <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">{contact.department}</span>
-                    <h3 className="font-serif text-lg text-[#184176]">
-                      {contact.name}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          {/* Action Buttons */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/venue#map-section"
+              className="bg-white text-brand-ink font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-slate-100 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md cursor-pointer text-xs uppercase tracking-wider"
+            >
+              View Venue &amp; Map
+            </a>
           </div>
-
-          <div>
-            <div className="text-center mb-10 pt-6">
-              <h2 className="text-2xl font-serif text-[#184176] tracking-tight mb-3">
-                Track Chairs
-              </h2>
-              <div className="w-12 h-[1px] bg-[#184176]/30 mx-auto" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {trackChairs.map((chair, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.45, delay: (index % 2) * 0.1 }}
-                  className="bg-white border border-[#184176]/10 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full group"
-                >
-                  <div className="p-6 group-hover:border-[#f5821e]/30 transition-colors">
-                    <span className="text-[10px] uppercase font-semibold text-[#f5821e] tracking-wider block mb-1">Track Chair</span>
-                    <h3 className="font-serif text-lg text-[#184176] mb-3">
-                      {chair.track}
-                    </h3>
-                    <div>
-                      <span className="text-[10px] text-[#184176]/50 uppercase tracking-wide block leading-none mb-1">Chairperson</span>
-                      <span className="text-sm font-medium text-[#184176]">{chair.name}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
       
       <Footer />

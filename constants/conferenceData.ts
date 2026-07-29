@@ -133,10 +133,10 @@ export const committeeMembers = {
   ],
   patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc.webp' },
   chairs: [
-    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
-    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
+    { role: 'Conference Chair', name: 'Dr. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
+    { role: 'Conference Convener', name: 'Dr. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
   ],
-  programChairs: 'Professors of IET (Prof. Amit / Prof. Devika / Prof. Taruna, and Prof. Umesh)',
+  programChairs: 'Professors of IET (Dr. Amit / Dr. Devika / Dr. Taruna, and Dr. Umesh)',
 };
 
 export const registrationFees = [
@@ -238,10 +238,10 @@ export const technicalProgramCommittee = [
 ];
 
 export const trackChairs = [
-  { track: 'Sustainable AI', chair: 'Prof. Amit Kumar Sinhal', coChair: 'Dr. Sneha Sharma' },
-  { track: 'Data Science & Generative AI', chair: 'Prof. Taruna Sunil', coChair: 'Dr. Vikram Singh' },
-  { track: 'High Performance Computing', chair: 'Prof. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
-  { track: 'Smart Healthcare', chair: 'Prof. Devika Kataria', coChair: 'Dr. Suresh Reddy' },
+  { track: 'Sustainable AI', chair: 'Dr. Amit Kumar Sinhal', coChair: 'Dr. Sneha Sharma' },
+  { track: 'Data Science & Generative AI', chair: 'Dr. Taruna Sunil', coChair: 'Dr. Vikram Singh' },
+  { track: 'High Performance Computing', chair: 'Dr. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
+  { track: 'Smart Healthcare', chair: 'Dr. Devika Kataria', coChair: 'Dr. Suresh Reddy' },
   { track: 'AI in Education', chair: 'Dr. Ramesh Chandra', coChair: 'Dr. Kavita Jain' },
   { track: 'Smart Society', chair: 'Prof. Anil Sharma', coChair: 'Dr. Meera Patel' },
   { track: 'VLSI & Intelligent Engineering', chair: 'Dr. Rajesh Verma', coChair: 'Dr. Prakash Iyer' },

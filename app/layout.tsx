@@ -8,37 +8,43 @@ import Script from 'next/script'
 export const metadata: Metadata = {
   metadataBase: new URL('https://sankalp.jklu.edu.in'),
   alternates: {
-    canonical: './',
+    canonical: 'https://sankalp.jklu.edu.in',
   },
   title: {
-    default: "Sankalp '27 | International Conference | JK Lakshmipat University",
-    template: "%s | Sankalp '27 - JKLU"
+    default: "SANKALP 2027 | SANKALP '27 | JKLU International Conference | Jaipur",
+    template: "%s | SANKALP 2027 (SANKALP '27) - JKLU"
   },
-  description: "Official portal for Sankalp '27 – International Conference on Sustainable AI, Data Science & Emerging Technologies at JK Lakshmipat University (JKLU), Jaipur.",
+  description: "Official website for SANKALP 2027 (SANKALP '27) – International Conference on Sustainable AI, Data Science & Next-Gen Technologies at JK Lakshmipat University (JKLU), Jaipur. Call for papers open for Springer LNCS proceedings.",
   manifest: '/manifest.json',
   keywords: [
-    "Sankalp",
-    "Sankalp 2027",
-    "Sankalp '27",
+    "sankalp",
+    "sankalp27",
+    "sankalp 2027",
+    "sankalp '27",
+    "sankalp jklu",
+    "sankalp conference",
+    "sankalp jklu conference",
+    "sankalp 2027 jklu",
+    "sankalp jaipur",
+    "sankalp international conference",
+    "iet jklu sankalp",
     "JKLU",
     "JK Lakshmipat University",
-    "Jaipur International Conference",
+    "Jaipur International Conference 2027",
     "Sustainable AI Conference",
     "Data Science Conference Jaipur",
-    "Springer LNCS Conference",
-    "Scopus Indexed Conference India",
-    "IET JKLU",
-    "Artificial Intelligence Conference 2027"
+    "Springer LNCS Conference India",
+    "Scopus Indexed Conference 2027"
   ],
   authors: [{ name: "Institute of Engineering & Technology, JKLU", url: "https://jklu.edu.in" }],
   creator: "JK Lakshmipat University",
   publisher: "JK Lakshmipat University",
   category: "Academic Conference",
   openGraph: {
-    title: "Sankalp '27 | International Conference at JK Lakshmipat University",
-    description: "Premier International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction. Organized by IET, JKLU Jaipur.",
+    title: "SANKALP 2027 (SANKALP '27) | JKLU International Conference",
+    description: "Premier International Conference on Sustainable AI, Data Science, & Emerging Tech at JK Lakshmipat University, Jaipur.",
     url: 'https://sankalp.jklu.edu.in',
-    siteName: "Sankalp '27 International Conference",
+    siteName: "SANKALP 2027 (SANKALP '27) - JKLU Conference",
     locale: 'en_IN',
     type: 'website',
     images: [
@@ -46,14 +52,14 @@ export const metadata: Metadata = {
         url: '/Images/jklu.jpg',
         width: 1200,
         height: 630,
-        alt: 'Sankalp 2027 Conference - JK Lakshmipat University',
+        alt: 'SANKALP 2027 Conference - JK Lakshmipat University Jaipur',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Sankalp '27 | JK Lakshmipat University",
-    description: "International Conference on Sustainable AI & Future Tech at JKLU Jaipur.",
+    title: "SANKALP 2027 (SANKALP '27) | JK Lakshmipat University",
+    description: "International Conference on Sustainable AI & Next-Gen Knowledge at JKLU Jaipur.",
     images: ['/Images/jklu.jpg'],
   },
   icons: {
@@ -102,6 +108,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Flaticon UIcons CDN */}
+        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css" />
+        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
+        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css" />
+
         <Script id="extension-error-handler" strategy="beforeInteractive">
           {`
             (function() {

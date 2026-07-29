@@ -267,14 +267,17 @@ async function getTransporter() {
   const isProduction = process.env.NODE_ENV === 'production' || 
                        (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').trim().toUpperCase() === 'PRODUCTION';
 
+  const port = parseInt(process.env.SMTP_PORT || '587', 10);
+  const isSecure = process.env.SMTP_SECURE === 'true' || port === 465;
+
   cachedTransporter = nodemailer.createTransport({
     pool: true,             // Enable connection pooling
     maxConnections: 3,      // Max concurrent connections
     maxMessages: 100,       // Max messages on a single connection before closing
-    rateLimit: 1,           // Max messages per second
-    host: process.env.SMTP_HOST || 'smtp.office365.com',
-    port: parseInt(process.env.SMTP_PORT || '587', 10),
-    secure: false,          // true for 465, false for 587 (STARTTLS)
+    rateLimit: 2,           // Max messages per second
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    port: port,
+    secure: isSecure,
     auth: {
       user: process.env.SMTP_USER || '',
       pass: process.env.SMTP_PASS || '',

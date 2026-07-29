@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AtomIcon } from '@/components/ui/Icons';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,6 +17,7 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Call for Papers', href: '/call-for-papers' },
+    { name: 'Sessions', href: '/sessions' },
     { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Sponsors', href: '/sponsors' },
@@ -49,19 +51,18 @@ export default function Navbar() {
         >
           {/* Left: Logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
-            {/* SANKALP LOGO SLOT — Replace the div below with an <Image> tag when the logo file is added to public/logos/ */}
-            <div className="h-10 w-10 border border-white/30 rounded flex items-center justify-center shrink-0" aria-label="SANKALP 2027 Logo placeholder">
-              <span className="text-white/40 text-[7px] font-bold uppercase tracking-wider text-center leading-tight">LOGO</span>
+            <div className="h-10 w-10 border border-white/30 rounded flex items-center justify-center shrink-0 bg-white/10 text-brand-orange" aria-label="SANKALP 2027 Emblem">
+              <AtomIcon size={22} />
             </div>
             <div className="w-px h-7 bg-white/25 hidden sm:block" />
             <Image
               src="/logos/white_jklu_logo.png"
               alt="JKLU Logo"
-              width={160}
-              height={50}
+              width={200}
+              height={60}
               priority
               loading="eager"
-              className="h-10 w-auto object-contain hidden sm:block"
+              className="h-12 md:h-[50px] w-auto object-contain hidden sm:block"
             />
           </Link>
 

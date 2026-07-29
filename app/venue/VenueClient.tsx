@@ -6,6 +6,18 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import { 
+  BadgeIcon, 
+  PresentationIcon, 
+  MonitorIcon, 
+  UsersGroupIcon, 
+  RocketIcon, 
+  PosterIcon, 
+  UtensilsIcon, 
+  ParkingIcon, 
+  MedicalIcon, 
+  AccessibilityIcon 
+} from '@/components/ui/Icons';
 
 export default function VenueClient() {
   const [copied, setCopied] = useState(false);
@@ -18,44 +30,19 @@ export default function VenueClient() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const travelInfo = [
-    {
-      title: 'By Air',
-      distance: '35-40 km',
-      time: '45-60 minutes',
-      hubLabel: 'Airport',
-      hubValue: 'Jaipur International Airport',
-      caption: 'Regular domestic and international connections via Jaipur International Airport.'
-    },
-    {
-      title: 'By Train',
-      distance: '22 km',
-      time: '35-40 minutes',
-      hubLabel: 'Station',
-      hubValue: 'Jaipur Junction (JP)',
-      caption: 'Jaipur Junction is well connected to major Indian cities.'
-    },
-    {
-      title: 'By Road',
-      distance: 'Convenient Access',
-      time: 'Flexible / Taxi',
-      hubLabel: 'Route',
-      hubValue: 'NH-48 & Ajmer Road',
-      caption: 'Convenient access through NH-48 with app-based taxis and local transport available.'
-    }
-  ];
+
 
   const facilities = [
-    { name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.' },
-    { name: 'Conference Hall', desc: 'Main session venue with state-of-the-art acoustics and screen setup.' },
-    { name: 'Technical Session Rooms', desc: 'Multiple parallel tracks equipped with advanced presentation systems.' },
-    { name: 'Networking Lounge', desc: 'Comfortable break-out zones for research collaborations and dialogue.' },
-    { name: 'Startup Exhibition Area', desc: 'Showcase of cutting-edge sustainable AI systems and applications.' },
-    { name: 'Poster Presentation Zone', desc: 'Spacious corridor with high visibility for selected poster works.' },
-    { name: 'Cafeteria', desc: 'Hygienic multi-cuisine options serving fresh beverages and meals.' },
-    { name: 'Parking', desc: 'Ample on-campus parking spaces for delegates and attendees.' },
-    { name: 'Medical Assistance', desc: '24/7 first aid assistance and emergency response team on call.' },
-    { name: 'Accessibility Support', desc: 'Wheelchair access ramps, elevators, and dedicated seating layout.' }
+    { icon: BadgeIcon, name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.' },
+    { icon: PresentationIcon, name: 'Conference Hall', desc: 'Main session venue with state-of-the-art acoustics and screen setup.' },
+    { icon: MonitorIcon, name: 'Technical Session Rooms', desc: 'Multiple parallel tracks equipped with advanced presentation systems.' },
+    { icon: UsersGroupIcon, name: 'Networking Lounge', desc: 'Comfortable break-out zones for research collaborations and dialogue.' },
+    { icon: RocketIcon, name: 'Startup Exhibition Area', desc: 'Showcase of cutting-edge sustainable AI systems and applications.' },
+    { icon: PosterIcon, name: 'Poster Presentation Zone', desc: 'Spacious corridor with high visibility for selected poster works.' },
+    { icon: UtensilsIcon, name: 'Cafeteria', desc: 'Hygienic multi-cuisine options serving fresh beverages and meals.' },
+    { icon: ParkingIcon, name: 'Parking', desc: 'Ample on-campus parking spaces for delegates and attendees.' },
+    { icon: MedicalIcon, name: 'Medical Assistance', desc: '24/7 first aid assistance and emergency response team on call.' },
+    { icon: AccessibilityIcon, name: 'Accessibility Support', desc: 'Wheelchair access ramps, elevators, and dedicated seating layout.' }
   ];
 
   const hotels = [
@@ -231,13 +218,14 @@ export default function VenueClient() {
       </section>
 
       {/* ABOUT THE VENUE */}
-      <section id="about-section" className="relative py-24 px-6 overflow-hidden bg-gradient-to-br from-amber-50/15 via-brand-cloud to-white border-y border-slate-100">
+      <section id="about-section" className="relative py-24 px-6 md:px-12 overflow-hidden bg-gradient-to-br from-amber-50/15 via-brand-cloud to-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white group">
             <Image
               src="/Images/campus/DJI_0124.webp"
               alt="JK Lakshmipat University Campus"
               fill
+              priority
               sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -294,7 +282,7 @@ export default function VenueClient() {
       </section>
 
       {/* FACILITIES */}
-      <section className="py-28 bg-[#FAFAFB] border-y border-[#E6E8EC]/60 px-6">
+      <section className="py-28 bg-[#FAFAFB] border-y border-[#E6E8EC]/60 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-2">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
@@ -305,6 +293,7 @@ export default function VenueClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {facilities.map((fac, index) => {
+              const IconComp = fac.icon;
               return (
                 <motion.div
                   key={index}
@@ -312,13 +301,18 @@ export default function VenueClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ duration: 0.45, delay: (index % 5) * 0.08 }}
-                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between hover:border-brand-orange/40 hover:shadow-md transition-all duration-300"
+                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between hover:border-brand-orange hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="space-y-3 flex-1 flex flex-col justify-between">
+                  <div className="space-y-4 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="font-serif font-bold text-base text-[#1F4E8C] leading-snug">
-                        {fac.name}
-                      </h3>
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-brand-orange shrink-0 flex items-center justify-center">
+                          <IconComp size={18} />
+                        </span>
+                        <h3 className="font-serif font-bold text-base text-[#1F4E8C] leading-snug">
+                          {fac.name}
+                        </h3>
+                      </div>
                       <div className="w-full h-[1px] bg-[#E6E8EC]/85 my-3" />
                       <p className="text-[13px] text-[#5F6B7A] font-sans leading-relaxed">
                         {fac.desc}
@@ -333,15 +327,29 @@ export default function VenueClient() {
       </section>
 
       {/* LOCATION MAP */}
-      <section id="map-section" className="py-24 bg-[#FAFAFB] px-6">
+      <section id="map-section" className="py-24 bg-[#FAFAFB] px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-10">
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               Location &amp; Navigation
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base font-sans leading-relaxed max-w-xl mx-auto">
-              JK Lakshmipat University &middot; Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India
-            </p>
+            <div className="flex items-center justify-center gap-2 max-w-2xl mx-auto">
+              <p className="text-slate-600 text-sm sm:text-base font-sans leading-relaxed">
+                JK Lakshmipat University &middot; Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India
+              </p>
+              <button
+                onClick={copyAddress}
+                title="Copy Venue Address"
+                aria-label="Copy Venue Address"
+                className="p-1.5 rounded-md hover:bg-slate-200/60 text-slate-500 hover:text-brand-orange transition-all shrink-0 cursor-pointer flex items-center justify-center border border-slate-200/60 bg-white shadow-2xs"
+              >
+                {copied ? (
+                  <span className="text-xs font-bold text-emerald-600 px-1">✓ Copied!</span>
+                ) : (
+                  <i className="fi fi-rr-copy text-sm" />
+                )}
+              </button>
+            </div>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
@@ -362,13 +370,17 @@ export default function VenueClient() {
                 href="https://maps.app.goo.gl/Br41eEjiNpgZaDjA9?g_st=aw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-center bg-[#1A73E8] hover:bg-[#1557B0] text-white font-bold py-3 px-4 transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm group"
+                className="w-full text-center bg-white hover:bg-[#F8F9FA] text-[#3C4043] hover:text-[#1A73E8] border border-[#DADCE0] hover:border-[#BDC1C6] font-semibold py-3 px-4 transition-all rounded-xl flex items-center justify-center gap-2.5 cursor-pointer text-xs shadow-xs hover:shadow-md group"
               >
-                <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                <span>Google Maps</span>
-                <span className="group-hover:translate-x-0.5 transition-transform">↗</span>
+                <Image
+                  src="/logos/gmaps logo.webp"
+                  alt="Google Maps Logo"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 shrink-0 object-contain"
+                />
+                <span>Open in Google Maps</span>
+                <span className="group-hover:translate-x-0.5 transition-transform text-[#1A73E8]">↗</span>
               </a>
             </div>
 
@@ -403,82 +415,22 @@ export default function VenueClient() {
                   href="https://maps.apple/p/V7C2aunFdCLYnJ"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center bg-black hover:bg-[#1C1C1E] text-white font-bold py-3 px-4 transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm group"
+                  className="w-full text-center bg-black hover:bg-[#1C1C1E] text-white font-semibold py-3 px-4 transition-all rounded-xl flex items-center justify-center gap-2.5 cursor-pointer text-xs shadow-xs hover:shadow-md border border-white/10 group"
                 >
-                  <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 170 170">
-                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-5.02.12-9.92-1.99-14.7-6.35-3.32-3.02-7.17-7.76-11.55-14.24-6.42-9.47-11.39-19.98-14.92-31.54-3.53-11.56-5.3-22.77-5.3-33.62 0-14.86 3.73-27.13 11.19-36.81 7.46-9.68 16.78-14.61 27.97-14.8 5.02 0 10.37 1.25 16.05 3.76 5.68 2.51 9.47 3.86 11.37 4.05 1.76.12 5.56-1.18 11.41-3.9 5.85-2.72 10.97-3.97 15.36-3.76 12.06.67 21.72 5.25 28.98 13.73-10.74 6.52-16 15.69-15.78 27.5.22 9.24 3.78 16.92 10.68 23.03 6.9 6.11 15.17 9.53 24.81 10.26-2.23 6.75-5.2 13.4-8.91 19.95zM119.22 31.62c0-7.37 2.65-14.45 7.95-21.25 5.3-6.8 11.96-10.7 19.98-11.7 0.34 1.79 0.51 3.47 0.51 5.03 0 7.37-2.73 14.54-8.19 21.51-5.46 6.97-12.23 10.87-20.31 11.7-0.11-1.34-0.17-2.69-0.17-4.04z" />
-                  </svg>
-                  <span>Apple Maps</span>
-                  <span className="group-hover:translate-x-0.5 transition-transform">↗</span>
+                  <i className="fi fi-brands-apple text-base shrink-0" />
+                  <span>Open in Apple Maps</span>
+                  <span className="group-hover:translate-x-0.5 transition-transform text-white/70">↗</span>
                 </a>
-                <button
-                  onClick={copyAddress}
-                  className="w-full bg-white text-brand-ink font-bold py-2.5 px-4 border border-[#E6E8EC] hover:bg-[#FFFBF7] hover:border-brand-orange active:translate-y-[1px] transition-all rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs shadow-sm"
-                >
-                  {copied ? '✓ Address Copied!' : 'Copy Venue Address'}
-                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* TRAVEL INFORMATION */}
-      <section className="py-24 px-6 max-w-7xl mx-auto space-y-12">
-        <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
-            Getting to the Venue
-          </h2>
-          <p className="text-[#5F6B7A] text-sm sm:text-base font-sans leading-relaxed">
-            Conveniently connected by air, rail, and road, JK Lakshmipat University is easily accessible for both national and international delegates.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {travelInfo.map((travel, index) => {
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: index * 0.12 }}
-                className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 flex flex-col justify-between group hover:border-brand-orange hover:bg-[#FFFBF7] hover:shadow-md transition-all duration-300"
-              >
-                <div className="space-y-6">
-                  <div className="space-y-1">
-                    <h3 className="font-serif font-bold text-xl text-brand-blue">{travel.title}</h3>
-                  </div>
-
-                  <div className="space-y-4 pt-2 border-t border-[#E6E8EC]/60">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[10px] uppercase tracking-wider text-[#8A99AD] font-semibold font-sans">Distance</span>
-                      <span className="text-[14px] font-medium text-brand-ink leading-tight font-sans">{travel.distance}</span>
-                    </div>
-                    
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[10px] uppercase tracking-wider text-[#8A99AD] font-semibold font-sans">Travel Time</span>
-                      <span className="text-[14px] font-medium text-brand-ink leading-tight font-sans">{travel.time}</span>
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[10px] uppercase tracking-wider text-[#8A99AD] font-semibold font-sans">{travel.hubLabel}</span>
-                      <span className="text-[14px] font-medium text-brand-ink leading-tight font-sans">{travel.hubValue}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-[12px] text-[#8A99AD] italic leading-relaxed pt-6 border-t border-[#E6E8EC]/40 mt-6 font-sans">
-                  "{travel.caption}"
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
 
       {/* RECOMMENDED HOTELS */}
-      <section className="py-24 bg-white border-t border-[#E6E8EC]/60 px-6">
+      <section className="py-24 bg-white border-t border-[#E6E8EC]/60 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
@@ -495,54 +447,31 @@ export default function VenueClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.45, delay: (index % 4) * 0.1 }}
-                className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] overflow-hidden flex flex-col justify-between group hover:border-brand-orange hover:shadow-md transition-all duration-300"
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 group bg-[#0b1220] flex flex-col justify-end"
               >
-                <div className="relative aspect-[4/3] bg-brand-cloud overflow-hidden">
-                  <Image
-                    src={hotel.src}
-                    alt={hotel.name}
-                    fill
-                    className="object-cover group-hover:scale-103 transition-transform duration-300"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                <Image
+                  src={hotel.src}
+                  alt={hotel.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                
+                {/* Content Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/95 via-[#0b1220]/40 to-transparent flex flex-col justify-end p-5 z-10 space-y-3">
+                  <h3 className="font-serif font-bold text-white text-lg sm:text-xl leading-snug drop-shadow-sm">
+                    {hotel.name}
+                  </h3>
                   
-                  <div className="absolute top-3.5 right-3.5 bg-[#E6E8EC] text-[#1F4E8C] px-3 py-1 text-[10px] font-bold tracking-wide rounded-md shadow-sm z-20">
-                    {hotel.badgeText}
-                  </div>
-                </div>
-
-                <div className="p-6 flex-grow flex flex-col justify-between gap-5">
-                  <div className="space-y-4">
-                    <div className="space-y-1.5">
-                      <h3 className="font-serif font-semibold text-[17px] text-brand-ink leading-snug">{hotel.name}</h3>
-                      <span className="inline-block bg-[#E6E8EC]/60 text-[#1F4E8C] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
-                        {hotel.category}
-                      </span>
-                    </div>
-                    
-                    <div className="space-y-1.5 text-[13px] text-[#5F6B7A] font-sans">
-                      <p className="flex items-center gap-1.5 font-medium text-brand-ink">
-                        <span>{hotel.location}</span>
-                      </p>
-                      <p className="pl-0 leading-relaxed text-slate-500 font-medium">{hotel.distance}</p>
-                      <p className="pl-0 leading-relaxed text-slate-500 font-medium">{hotel.time}</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
+                  <div>
                     <a
                       href={hotel.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full text-center border border-[#E6E8EC] text-brand-ink hover:text-brand-orange group-hover:border-brand-orange hover:border-brand-orange font-bold py-2.5 transition-all duration-300 rounded-[10px] flex items-center justify-center gap-2 cursor-pointer text-xs bg-white shadow-sm"
+                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-white transition-colors gap-1 group-hover:translate-x-0.5 transition-transform"
                     >
-                      Visit Hotel Website &rarr;
+                      Get Directions →
                     </a>
-
-                    <p className="text-[11px] text-[#8A99AD] italic border-t border-[#E6E8EC]/40 pt-3 text-center font-sans">
-                      {hotel.bottomText}
-                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -552,7 +481,7 @@ export default function VenueClient() {
       </section>
 
       {/* WEATHER */}
-      <section className="py-24 px-6 max-w-7xl mx-auto space-y-12">
+      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
             Weather During the Conference
@@ -621,7 +550,7 @@ export default function VenueClient() {
       </section>
 
       {/* DISCOVER JAIPUR */}
-      <section className="py-24 bg-white border-y border-[#E6E8EC]/60 px-6">
+      <section className="py-24 bg-white border-y border-[#E6E8EC]/60 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
@@ -635,59 +564,36 @@ export default function VenueClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {attractions.map((att, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white border border-slate-200 shadow-sm rounded-[18px] overflow-hidden flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 group"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: (index % 3) * 0.1 }}
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 group bg-[#0b1220] flex flex-col justify-end"
               >
-                <div className="relative aspect-[16/10] bg-brand-cloud overflow-hidden">
-                  <Image
-                    src={att.src}
-                    alt={att.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Image
+                  src={att.src}
+                  alt={att.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+
+                {/* Content Gradient Overlay - Name Only */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/25 to-transparent flex items-end p-5 z-10">
+                  <h3 className="font-serif font-bold text-white text-lg sm:text-xl leading-snug drop-shadow-sm">
+                    {att.name}
+                  </h3>
                 </div>
-
-                <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{att.category}</span>
-                      <h3 className="font-serif font-bold text-xl text-brand-blue">{att.name}</h3>
-                    </div>
-
-                    <div className="space-y-1 text-xs text-slate-500 border-y border-slate-100 py-2">
-                      <div className="flex items-center gap-1.5">
-                        <span>Distance: <span className="font-medium text-slate-700">{att.distance}</span></span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span>Visit Duration: <span className="font-medium text-slate-700">{att.duration}</span></span>
-                      </div>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">{att.desc}</p>
-                  </div>
-
-                  <div className="pt-2">
-                    <a
-                      href={att.mapLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-brand-orange/80 transition-colors gap-1 group-hover:translate-x-0.5 transition-transform"
-                    >
-                      View on Google Maps →
-                    </a>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CALL TO ACTION */}
-      <section className="py-24 bg-brand-blue text-white text-center px-6 relative overflow-hidden">
+      <section className="py-24 bg-brand-blue text-white text-center px-6 md:px-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
           <div className="space-y-2">

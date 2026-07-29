@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import CircuitChipLoader from '@/components/ui/CircuitChipLoader';
 
 export default function SponsorsClient() {
   const whySponsor = [
@@ -38,6 +39,7 @@ export default function SponsorsClient() {
     {
       name: "Platinum Sponsor",
       badge: "Title Partner",
+      icon: "fi-rr-gem",
       desc: "Our premium tier offering exclusive title recognition, primary branding, and speaking privileges across the entire conference timeline.",
       bullets: [
         "Exclusive 'Platinum Sponsor' acknowledgment in all communications",
@@ -52,6 +54,7 @@ export default function SponsorsClient() {
     {
       name: "Gold Sponsor",
       badge: "Premium Partner",
+      icon: "fi-rr-trophy",
       desc: "A high-visibility tier featuring plenary speaking opportunities, track chair options, and prominent venue positioning.",
       bullets: [
         "Acknowledgment as 'Gold Sponsor' in all promotional materials",
@@ -66,6 +69,7 @@ export default function SponsorsClient() {
     {
       name: "Silver Sponsor",
       badge: "Featured Partner",
+      icon: "fi-rr-medal",
       desc: "A solid tier supporting essential conference components with standard branding and delegate access packages.",
       bullets: [
         "Acknowledgment as 'Silver Sponsor' in conference materials",
@@ -120,8 +124,21 @@ export default function SponsorsClient() {
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-24 flex flex-col selection:bg-brand-orange selection:text-white">
       <Navbar />
 
+      {/* REVEALING SOON SECTION */}
+      <section className="flex-grow py-20 md:py-32 px-6 md:px-12 flex items-center justify-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl w-full flex flex-col items-center justify-center"
+        >
+          <CircuitChipLoader />
+        </motion.div>
+      </section>
+
+      {/* 
       {/* 1. HERO SECTION */}
-      <section className="relative py-24 md:py-32 px-6 overflow-hidden min-h-[60vh] flex items-center border-b border-slate-200">
+      {/* <section className="relative py-24 md:py-32 px-6 md:px-12 overflow-hidden min-h-[60vh] flex items-center border-b border-slate-200">
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#184176_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto w-full z-10 relative">
@@ -157,10 +174,10 @@ export default function SponsorsClient() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 2. WHY SPONSOR */}
-      <section className="py-24 bg-white border-b border-slate-100 px-6">
+      {/* <section className="py-24 bg-white border-b border-slate-100 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div 
             initial={{ opacity: 0, y: 24 }}
@@ -202,10 +219,10 @@ export default function SponsorsClient() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 3. CATEGORIES */}
-      <section className="py-24 bg-brand-cloud border-b border-slate-100 px-6">
+      {/* <section className="py-24 bg-brand-cloud border-b border-slate-100 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <motion.div 
             initial={{ opacity: 0, y: 24 }}
@@ -236,10 +253,13 @@ export default function SponsorsClient() {
                 <div className="space-y-6">
                   <div className="flex justify-between items-start gap-4">
                     <div className="space-y-1">
-                      <h3 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">
-                        {cat.name}
-                      </h3>
-                      <span className="inline-block bg-[#E6E8EC]/60 text-[#1F4E8C] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                      <div className="flex items-center gap-2.5">
+                        {cat.icon && <i className={`fi ${cat.icon} text-brand-orange text-xl shrink-0`} />}
+                        <h3 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">
+                          {cat.name}
+                        </h3>
+                      </div>
+                      <span className="inline-block bg-[#E6E8EC]/60 text-[#1F4E8C] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mt-1">
                         {cat.badge}
                       </span>
                     </div>
@@ -258,7 +278,7 @@ export default function SponsorsClient() {
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs text-slate-500 font-medium leading-relaxed font-sans">
                       {cat.bullets.slice(0, 6).map((bullet, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
-                          <span className="text-brand-orange shrink-0 font-bold select-none">✓</span>
+                          <i className="fi fi-rr-check text-brand-orange text-xs shrink-0 mt-0.5" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -278,10 +298,10 @@ export default function SponsorsClient() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 4. BENEFITS TABLE */}
-      <section className="py-24 bg-white border-b border-slate-100 px-6">
+      {/* <section className="py-24 bg-white border-b border-slate-100 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="max-w-3xl space-y-4">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
@@ -326,10 +346,10 @@ export default function SponsorsClient() {
             </table>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 5. LOGOS */}
-      <section className="py-24 bg-brand-cloud border-b border-slate-100 px-6">
+      {/* <section className="py-24 bg-brand-cloud border-b border-slate-100 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="max-w-3xl space-y-4 text-center mx-auto">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
@@ -352,10 +372,10 @@ export default function SponsorsClient() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 6. CTA */}
-      <section className="py-24 bg-brand-blue text-white text-center px-6 relative overflow-hidden">
+      {/* <section className="py-24 bg-brand-blue text-white text-center px-6 md:px-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]" />
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
           <div className="space-y-2">
@@ -384,10 +404,10 @@ export default function SponsorsClient() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 7. CONTACT */}
-      <section id="contact" className="py-24 bg-white px-6">
+      {/* <section id="contact" className="py-24 bg-white px-6">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="max-w-3xl space-y-4 text-center mx-auto">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
@@ -403,7 +423,7 @@ export default function SponsorsClient() {
             <div className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-8 sm:p-10 shadow-sm flex flex-col gap-6">
               <div className="space-y-1">
                 <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest block">Sponsorship Team Chair</span>
-                <h3 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">Prof. Amit Kumar Sinhal</h3>
+                <h3 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue leading-tight">Dr. Amit Kumar Sinhal</h3>
                 <p className="text-xs text-slate-500 font-medium leading-relaxed font-sans">
                   Institute of Engineering &amp; Technology, JK Lakshmipat University
                 </p>
@@ -441,7 +461,7 @@ export default function SponsorsClient() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>

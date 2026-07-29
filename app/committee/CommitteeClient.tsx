@@ -171,10 +171,10 @@ export default function CommitteeClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
               {[
-                { name: 'Prof. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
-                { name: 'Prof. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
-                { name: 'Prof. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
-                { name: 'Prof. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
+                { name: 'Dr. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
+                { name: 'Dr. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
+                { name: 'Dr. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
+                { name: 'Dr. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
               ].map((member, i) => (
                 <motion.div
                   key={`prog-${i}`}

@@ -36,6 +36,15 @@ const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?
 export default function HomeClient() {
   const [activeAdvisory, setActiveAdvisory] = React.useState<string | null>(null);
 
+  const jaipurAttractions = [
+    { name: 'Hawa Mahal', src: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=600&q=80' },
+    { name: 'Amer Fort', src: '/Images/jaipur_sightseeing/amer_fort.webp' },
+    { name: 'Jal Mahal', src: '/Images/jaipur_sightseeing/jal_mahal.webp' },
+    { name: 'City Palace', src: '/Images/jaipur_sightseeing/city_palace.webp' },
+    { name: 'Albert Hall Museum', src: '/Images/jaipur_sightseeing/albert_hall.webp' },
+    { name: 'Nahargarh Fort', src: '/Images/jaipur_sightseeing/nahargarh_fort.webp' }
+  ];
+
   const heroImages = [
     '/Images/hero/DJI_0063.webp',
     '/Images/hero/DJI_0075.webp',
@@ -144,7 +153,7 @@ export default function HomeClient() {
               </motion.div>
             );
           })}
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/70 via-brand-blue/55 to-brand-blue/85 z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/55 via-brand-blue/45 to-brand-blue/75 z-10 pointer-events-none" />
           <div className="absolute inset-0 opacity-[0.04] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')] z-10 pointer-events-none" />
         </div>
 
@@ -201,6 +210,12 @@ export default function HomeClient() {
               className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
             >
               Submit Paper
+            </Link>
+            <Link
+              href="/sessions"
+              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
+            >
+              Explore Sessions &amp; Tracks
             </Link>
             <Link
               href="/registration"
@@ -307,13 +322,13 @@ export default function HomeClient() {
         />
         <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-orange" />
 
-        <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-32 z-10">
+        <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 py-14 md:py-20 z-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-20"
+            className="mb-12"
           >
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] tracking-tight">
@@ -609,10 +624,10 @@ export default function HomeClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Prof. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
-              { name: 'Prof. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
-              { name: 'Prof. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
-              { name: 'Prof. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
+              { name: 'Dr. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
+              { name: 'Dr. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
+              { name: 'Dr. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
+              { name: 'Dr. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
             ].map((chair, i) => (
               <motion.div
                 key={i}
@@ -641,19 +656,18 @@ export default function HomeClient() {
             ))}
           </div>
 
-          <div className="mt-20 border-t border-brand-blue/10 pt-16 -mx-8 px-8 sm:mx-0 sm:px-0">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12">
+          <div className="mt-12 border-t border-brand-blue/10 pt-10 -mx-8 px-8 sm:mx-0 sm:px-0">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
               <div>
-                <h3 className="font-serif font-bold text-3xl text-brand-blue mb-2">Organising Committee & Advisory Boards</h3>
-                <p className="text-slate-500 font-medium text-sm">A premium showcase of our conference leadership and advisors.</p>
+                <h3 className="font-serif font-bold text-3xl text-brand-blue mb-2">Advisory Boards</h3>
+                <p className="text-slate-500 font-medium text-sm">A premium showcase of our global and national academic advisors.</p>
               </div>
             </div>
 
-            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 w-full group/gallery" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 w-full group/gallery" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                {[
                 { id: 'international', title: 'International Advisory Board', subtitle: 'Global research leaders', number: '01' },
-                { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India', number: '02' },
-                { id: 'internal', title: 'Organising Committee', subtitle: 'Organizing pillars at JKLU', number: '03' }
+                { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India', number: '02' }
               ].map((board, i) => (
                 <motion.div
                   key={board.id}
@@ -741,60 +755,51 @@ export default function HomeClient() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="lg:col-span-1 bg-gradient-to-br from-brand-blue to-[#0d1f3c] text-white rounded-2xl p-8 flex flex-col justify-between shadow-xl shadow-brand-blue/20"
-            >
-              <div>
-                <h3 className="text-xl font-serif font-bold leading-snug mb-4 mt-2">JK Lakshmipat University</h3>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  A leading institution dedicated to innovation, interdisciplinary learning, and industry engagement — offering world-class conference facilities and a collaborative environment for international gatherings.
-                </p>
-              </div>
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <a
-                  href="https://www.jklu.edu.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 text-xs font-bold text-brand-orange hover:text-white transition-colors group"
-                >
-                  Visit JKLU Website →
-                </a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-              className="lg:col-span-1 bg-white border border-slate-100 rounded-2xl p-8 flex flex-col shadow-sm hover:shadow-lg transition-shadow duration-500"
-            >
-              <h3 className="text-xl font-serif font-bold text-brand-blue leading-snug mb-4 mt-2">About Jaipur</h3>
-              <p className="text-slate-600 text-sm leading-relaxed flex-grow">
-                Known as the <strong className="text-brand-blue">Pink City of India</strong>, Jaipur is a distinguished center of culture, heritage, and innovation. As host city of SANKALP 2027, it offers delegates iconic landmarks, world-class hospitality, and excellent connectivity.
+          {/* AUTOMATIC INFINITE SIGHTSEEING SLIDER */}
+          <div className="pt-6 space-y-6 overflow-hidden">
+            <div className="text-center sm:text-left">
+              <h3 className="font-serif font-bold text-2xl md:text-3xl text-brand-blue">
+                Discover Jaipur &amp; Sightseeing
+              </h3>
+              <p className="text-slate-500 text-xs sm:text-sm font-medium mt-1">
+                Iconic heritage landmarks and cultural attractions around the Pink City.
               </p>
+            </div>
 
-              <div className="mt-6 flex flex-wrap gap-2">
-                {[
-                  { label: 'UNESCO Heritage' },
-                  { label: 'Great Connectivity' },
-                  { label: 'Rich Culture' },
-                  { label: 'Premium Stays' },
-                ].map((chip, i) => (
-                  <span
+            <div className="relative w-full overflow-hidden py-2">
+              <motion.div
+                className="flex gap-6 w-max"
+                animate={{ x: ['0%', '-50%'] }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: 25,
+                    ease: 'linear'
+                  }
+                }}
+              >
+                {[...jaipurAttractions, ...jaipurAttractions].map((att, i) => (
+                  <div
                     key={i}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-bold text-brand-blue uppercase tracking-wider hover:bg-brand-orange/5 hover:border-brand-orange/30 transition-colors cursor-default"
+                    className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 group bg-white"
                   >
-                    {chip.label}
-                  </span>
+                    <Image
+                      src={att.src}
+                      alt={att.name}
+                      fill
+                      sizes="320px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/25 to-transparent flex items-end p-5">
+                      <h4 className="font-serif font-bold text-white text-lg sm:text-xl leading-snug drop-shadow-sm">
+                        {att.name}
+                      </h4>
+                    </div>
+                  </div>
                 ))}
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </Section>
@@ -834,47 +839,20 @@ export default function HomeClient() {
             </div>
 
             <div className="p-6 md:p-10 overflow-y-auto bg-[#f7f4ef]">
-              {activeAdvisory === 'internal' ? (
-                <div className="space-y-6 max-w-4xl mx-auto">
-                  <div className="bg-white p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
-                    <div>
-                      <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Chair</span>
-                      <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Tapas Kumar</span>
-                      <span className="text-slate-500 text-xs block font-medium">Dean IET, JKLU</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[...(activeAdvisory === 'international' ? advisoryBoard.international : advisoryBoard.national)]
+                  .sort((a, b) => {
+                    const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                    const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
+                    return nameA.localeCompare(nameB);
+                  })
+                  .map((member, idx) => (
+                    <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
+                      <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
+                      <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
                     </div>
-                    <hr className="border-slate-100" />
-                    <div>
-                      <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Conference Convener</span>
-                      <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Sonali Vyas</span>
-                      <span className="text-slate-500 text-xs block font-medium">Head – Centre for Global Learning, JKLU</span>
-                    </div>
-                    <hr className="border-slate-100" />
-                    <div>
-                      <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Program Chairs</span>
-                      <span className="font-serif font-bold text-brand-blue text-lg block">Prof. Amit / Prof. Devika / Prof. Taruna, and Prof. Umesh</span>
-                      <span className="text-slate-500 text-xs block font-medium">Professors of Institute of Engineering & Technology (IET), JKLU</span>
-                    </div>
-                  </div>
-                  <p className="text-slate-500 text-xs leading-relaxed font-medium italic">
-                    Note: The Organising Committee comprises faculty members, research teams, and administrative support staff from the Institute of Engineering & Technology (IET) and Centre for Global Learning (CGLP) at JK Lakshmipat University.
-                  </p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[...(activeAdvisory === 'international' ? advisoryBoard.international : advisoryBoard.national)]
-                    .sort((a, b) => {
-                      const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
-                      const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
-                      return nameA.localeCompare(nameB);
-                    })
-                    .map((member, idx) => (
-                      <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
-                        <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
-                        <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
-                      </div>
-                    ))}
-                </div>
-              )}
+                  ))}
+              </div>
             </div>
           </motion.div>
         </motion.div>

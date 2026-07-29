@@ -19,3 +19,10 @@
 * **Canonical Links & OpenGraph Social Cards**:
   * Configure `metadataBase` in root layout to the live production domain URL.
   * Provide explicit per-route `alternates: { canonical: '...' }` tags and high-resolution OpenGraph (`og:image`) and Twitter card metadata for sharing previews on social media and messaging platforms.
+
+## 🎨 UI HEADINGS & TYPOGRAPHY RULES
+
+* **No Eyebrow / Kicker Headings Above Main Titles**:
+  * Never place small uppercase eyebrow/kicker text lines (e.g., `SANKALP '27 Technical Program`, `VENUE OVERVIEW`, etc.) above main section `<h1>` or `<h2>` headings.
+  * Section titles must remain clean, prominent, and direct without cluttered sub-tag overlays above them.
+

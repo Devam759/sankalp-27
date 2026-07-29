@@ -18,42 +18,11 @@ export default function AboutClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-24 flex flex-col selection:bg-brand-orange selection:text-white">
+    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-20 md:pt-24 flex flex-col selection:bg-brand-orange selection:text-white">
       <Navbar />
 
-      {/* HERO SECTION - Premium Editorial */}
-      <section className="relative py-24 md:py-32 px-6 overflow-hidden min-h-[60vh] flex items-center border-b border-slate-300">
-        <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10 relative">
-          
-          <div className="flex flex-col justify-center relative">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-blue leading-[1.2] mb-8">
-              Advancing Sustainable AI,<br/>
-              <span className="text-brand-orange">Innovation</span><br/>
-              & Future-Ready Tech
-            </h1>
-            
-            <p className="text-base md:text-lg text-slate-700 leading-relaxed max-w-xl font-medium border-l-2 border-brand-orange/30 pl-6">
-              SANKALP 2027 brings together global researchers, academicians, industry experts, innovators, and policymakers to explore the future of intelligent technologies and sustainable digital transformation.
-            </p>
-          </div>
-
-          <div className="hidden lg:flex justify-end relative h-[500px]">
-            <div className="relative w-full h-full max-h-[500px] w-4/5 ml-auto">
-              <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-brand-blue z-0 border border-brand-orange/20">
-                <div className="absolute inset-4 border border-white/10"></div>
-              </div>
-              
-              <div className="relative z-10 w-full h-[90%] border border-slate-200 shadow-sm overflow-hidden bg-slate-100 flex items-center justify-center">
-                <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">SANKALP IMAGE</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
       {/* SECTION 1: CONFERENCE OVERVIEW */}
-      <section className="relative py-32 overflow-hidden bg-brand-cloud border-b border-brand-blue/10">
+      <section className="relative py-16 md:py-20 overflow-hidden bg-brand-cloud border-b border-brand-blue/10">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 0.03, x: 0 }}
@@ -64,7 +33,7 @@ export default function AboutClient() {
           SANKALP 2027
         </motion.div>
 
-        <div className="max-w-[1440px] w-full mx-auto relative z-10 px-6 lg:px-12">
+        <div className="max-w-[1440px] w-full mx-auto relative z-10 px-6 md:px-12">
           
           <div className="flex justify-between items-end border-b border-brand-blue/10 pb-8 mb-16">
              <div className="flex gap-4 items-end">
@@ -139,15 +108,13 @@ export default function AboutClient() {
                   </h4>
                   <div className="flex flex-col gap-4">
                     {[
-                      { title: "Global Collaboration", icon: "01" },
-                      { title: "Emerging Technologies", icon: "02" },
-                      { title: "Industry Integration", icon: "03" },
-                      { title: "Future-Ready Systems", icon: "04" }
+                      { title: "Global Collaboration", icon: "fi-rr-globe" },
+                      { title: "Emerging Technologies", icon: "fi-rr-sparkles" },
+                      { title: "Industry Integration", icon: "fi-rr-briefcase" },
+                      { title: "Future-Ready Systems", icon: "fi-rr-cpu" }
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-4 group cursor-default border-b border-white/10 pb-4 last:border-0 last:pb-0">
-                        <span className="text-sm font-mono text-brand-orange">
-                          {item.icon}
-                        </span>
+                        <i className={`fi ${item.icon} text-brand-orange text-base shrink-0`} />
                         <span className="font-medium text-brand-cloud text-base group-hover:text-white transition-colors">
                           {item.title}
                         </span>
@@ -246,7 +213,7 @@ export default function AboutClient() {
       <section className="relative py-32 bg-brand-cloud overflow-hidden border-t border-brand-blue/10">
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')] pointer-events-none"></div>
         
-        <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-12 relative z-10">
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             <div className="lg:col-span-6">

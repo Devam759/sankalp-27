@@ -147,7 +147,7 @@ const AppleMapsIcon = ({ size = 16, className = '' }: { size?: number; className
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0b0f19] border-t border-white/10 pt-16 pb-12 px-6 overflow-hidden select-none">
+    <footer className="relative bg-[#0b0f19] border-t border-white/10 pt-16 pb-12 px-6 md:px-12 overflow-hidden select-none">
       
       {/* 3-Column Main Grid */}
       <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -194,6 +194,11 @@ export default function Footer() {
             <li>
               <Link href="/call-for-papers" className="hover:text-brand-orange transition-colors">
                 Call for Papers
+              </Link>
+            </li>
+            <li>
+              <Link href="/sessions" className="hover:text-brand-orange transition-colors">
+                Sessions
               </Link>
             </li>
             <li>
@@ -263,9 +268,15 @@ export default function Footer() {
                 href="https://www.google.com/maps/search/?api=1&query=JK+Lakshmipat+University,+Jaipur"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/5 hover:bg-brand-orange text-slate-200 hover:text-white border border-white/15 hover:border-brand-orange transition-all duration-200 rounded-md px-3.5 py-2 text-xs font-semibold flex items-center gap-2 shadow-sm group"
+                className="bg-white hover:bg-[#F8F9FA] text-[#3C4043] hover:text-[#1A73E8] border border-[#DADCE0] hover:border-[#BDC1C6] transition-all duration-200 rounded-lg px-3.5 py-2 text-xs font-semibold flex items-center gap-2.5 shadow-xs hover:shadow-md group"
               >
-                <GoogleMapsIcon size={15} className="text-brand-orange group-hover:text-white transition-colors" />
+                <Image
+                  src="/logos/gmaps logo.webp"
+                  alt="Google Maps Logo"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 shrink-0 object-contain"
+                />
                 <span>Google Maps</span>
               </a>
 
@@ -273,9 +284,9 @@ export default function Footer() {
                 href="https://maps.apple.com/?q=JK+Lakshmipat+University+Jaipur"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/5 hover:bg-brand-orange text-slate-200 hover:text-white border border-white/15 hover:border-brand-orange transition-all duration-200 rounded-md px-3.5 py-2 text-xs font-semibold flex items-center gap-2 shadow-sm group"
+                className="bg-black hover:bg-[#1C1C1E] text-white border border-white/20 transition-all duration-200 rounded-lg px-3.5 py-2 text-xs font-semibold flex items-center gap-2.5 shadow-xs hover:shadow-md group"
               >
-                <AppleMapsIcon size={15} className="text-brand-orange group-hover:text-white transition-colors" />
+                <i className="fi fi-brands-apple text-sm shrink-0" />
                 <span>Apple Maps</span>
               </a>
             </div>

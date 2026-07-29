@@ -2,6 +2,15 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  BrainIcon, 
+  DatabaseIcon, 
+  CpuIcon, 
+  PulseIcon, 
+  GraduationCapIcon, 
+  BuildingIcon, 
+  MicrochipIcon 
+} from '@/components/ui/Icons';
 
 interface TrackProps {
   track: {
@@ -13,6 +22,16 @@ interface TrackProps {
   isOpen?: boolean;
   onToggle?: () => void;
 }
+
+const trackIconComponents = [
+  BrainIcon,
+  DatabaseIcon,
+  CpuIcon,
+  PulseIcon,
+  GraduationCapIcon,
+  BuildingIcon,
+  MicrochipIcon
+];
 
 export default function TrackAccordion({ track, index, isOpen: controlledIsOpen, onToggle }: TrackProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
@@ -27,6 +46,8 @@ export default function TrackAccordion({ track, index, isOpen: controlledIsOpen,
     }
   };
 
+  const IconComponent = trackIconComponents[index % trackIconComponents.length];
+
   return (
     <div className="mb-4 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden transition-all hover:shadow-md">
       <button
@@ -35,7 +56,7 @@ export default function TrackAccordion({ track, index, isOpen: controlledIsOpen,
       >
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-lg bg-brand-orange/10 text-brand-orange flex items-center justify-center font-bold shrink-0">
-            {index + 1}
+            <IconComponent size={20} />
           </div>
           <h3 className="text-lg md:text-xl font-bold text-brand-blue pr-4">
             {track.title}

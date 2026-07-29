@@ -10,10 +10,13 @@ async function getEmailTransporter() {
   const isProduction = process.env.NODE_ENV === 'production' || 
                        (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').trim().toUpperCase() === 'PRODUCTION';
 
+  const port = parseInt(process.env.SMTP_PORT || '587', 10);
+  const isSecure = process.env.SMTP_SECURE === 'true' || port === 465;
+
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.office365.com',
-    port: parseInt(process.env.SMTP_PORT || '587', 10),
-    secure: false, // STARTTLS
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    port: port,
+    secure: isSecure,
     auth: {
       user: process.env.SMTP_USER || '',
       pass: process.env.SMTP_PASS || '',

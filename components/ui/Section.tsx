@@ -16,7 +16,7 @@ export default function Section({ id, title, subtitle, children, className = '',
   return (
     <section 
       id={id} 
-      className={`py-20 md:py-28 ${bgWhite ? 'bg-white' : className.includes('bg-') ? '' : 'bg-transparent'} ${className}`}
+      className={`py-12 md:py-16 ${bgWhite ? 'bg-white' : className.includes('bg-') ? '' : 'bg-transparent'} ${className}`}
     >
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -26,7 +26,7 @@ export default function Section({ id, title, subtitle, children, className = '',
         className="max-w-[1440px] w-full mx-auto px-6 md:px-12"
       >
         {(title || subtitle) && (
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-12">
             {title && (
               <h2 className={`text-4xl md:text-5xl font-serif font-bold mb-4 relative inline-block ${className.includes('bg-brand-blue') ? 'text-white' : 'text-brand-blue'}`}>
                 {title}
