@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     canonical: 'https://sankalp.jklu.edu.in',
   },
   title: {
-    default: "SANKALP 2027 | SANKALP '27 | JKLU International Conference | Jaipur",
-    template: "%s | SANKALP 2027 (SANKALP '27) - JKLU"
+    default: "SANKALP 2027 | International Conference | JKLU Jaipur",
+    template: "%s | SANKALP 2027"
   },
-  description: "Official website for SANKALP 2027 (SANKALP '27) – International Conference on Sustainable AI, Data Science & Next-Gen Technologies at JK Lakshmipat University (JKLU), Jaipur. Call for papers open for Springer LNCS proceedings.",
+  description: "Join SANKALP 2027 at JKLU Jaipur—the premier International Conference on Sustainable AI, Data Science & Next-Gen Tech. Submit your research papers today!",
   manifest: '/manifest.json',
   keywords: [
     "sankalp",
@@ -41,10 +41,10 @@ export const metadata: Metadata = {
   publisher: "JK Lakshmipat University",
   category: "Academic Conference",
   openGraph: {
-    title: "SANKALP 2027 (SANKALP '27) | JKLU International Conference",
-    description: "Premier International Conference on Sustainable AI, Data Science, & Emerging Tech at JK Lakshmipat University, Jaipur.",
+    title: "SANKALP 2027 | International Conference | JKLU Jaipur",
+    description: "Join premier researchers at JKLU Jaipur for SANKALP 2027 on Sustainable AI, Data Science & Next-Gen Tech. Submit research papers today!",
     url: 'https://sankalp.jklu.edu.in',
-    siteName: "SANKALP 2027 (SANKALP '27) - JKLU Conference",
+    siteName: "SANKALP 2027 International Conference",
     locale: 'en_IN',
     type: 'website',
     images: [
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "SANKALP 2027 (SANKALP '27) | JK Lakshmipat University",
-    description: "International Conference on Sustainable AI & Next-Gen Knowledge at JKLU Jaipur.",
+    title: "SANKALP 2027 | International Conference | JKLU Jaipur",
+    description: "Join premier researchers at JKLU Jaipur for SANKALP 2027 on Sustainable AI & Next-Gen Knowledge.",
     images: ['/Images/jklu.jpg'],
   },
   icons: {
@@ -108,11 +108,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Flaticon UIcons CDN */}
-        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
-        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css" />
-        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css" />
-        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css" />
 
         <Script id="extension-error-handler" strategy="beforeInteractive">
           {`

@@ -142,14 +142,17 @@ export default function HomeClient() {
                 transition={{ duration: 2.0, ease: "easeInOut" }}
                 className="absolute inset-0"
               >
-                <Image
-                  src={img}
-                  alt="JK Lakshmipat University Campus"
-                  fill
-                  priority={index === 0}
-                  sizes="100vw"
-                  className="object-cover object-center"
-                />
+                {(isActive || index === 0) && (
+                  <Image
+                    src={img}
+                    alt="JK Lakshmipat University Campus"
+                    fill
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    sizes="100vw"
+                    className="object-cover object-center"
+                  />
+                )}
               </motion.div>
             );
           })}
@@ -788,7 +791,8 @@ export default function HomeClient() {
                       src={att.src}
                       alt={att.name}
                       fill
-                      sizes="320px"
+                      loading="lazy"
+                      sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/25 to-transparent flex items-end p-5">

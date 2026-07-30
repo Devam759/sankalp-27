@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
+  },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -19,6 +24,21 @@ const nextConfig = {
       }
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.sankalp.jklu.edu.in',
+          },
+        ],
+        destination: 'https://sankalp.jklu.edu.in/:path*',
+        permanent: true,
+      },
+    ];
+  },
 
   async headers() {
     return [
@@ -30,7 +50,7 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.cashfree.com https://apis.google.com https://www.gstatic.com https://www.google.com https://www.recaptcha.net https://va.vercel-scripts.com; connect-src 'self' https://*.cashfree.com https://*.googleapis.com https://apis.google.com https://*.firebaseio.com wss://*.firebaseio.com https://va.vercel-scripts.com; frame-src 'self' https://*.cashfree.com https://*.google.com https://*.google.co.in https://www.google.com https://www.recaptcha.net https://sankalp-27.firebaseapp.com; img-src 'self' data: https: blob:; media-src 'self' blob: https://storage.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-uicons.flaticon.com; font-src 'self' https://fonts.gstatic.com https://cdn-uicons.flaticon.com data:; object-src 'none';"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.cashfree.com https://apis.google.com https://www.gstatic.com https://www.google.com https://www.recaptcha.net https://va.vercel-scripts.com; connect-src 'self' https://*.cashfree.com https://*.googleapis.com https://apis.google.com https://*.firebaseio.com wss://*.firebaseio.com https://va.vercel-scripts.com; frame-src 'self' https://*.cashfree.com https://*.google.com https://*.google.co.in https://www.google.com https://www.recaptcha.net https://sankalp-27.firebaseapp.com; img-src 'self' data: https: blob:; media-src 'self' blob: https://storage.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; object-src 'none';"
           },
           {
             key: 'Strict-Transport-Security',
@@ -44,6 +64,6 @@ const nextConfig = {
       },
     ];
   },
-}
+};
 
 export default nextConfig;

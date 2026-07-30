@@ -16,7 +16,9 @@ import {
   UtensilsIcon, 
   ParkingIcon, 
   MedicalIcon, 
-  AccessibilityIcon 
+  AccessibilityIcon,
+  CopyIcon,
+  AppleIcon
 } from '@/components/ui/Icons';
 
 export default function VenueClient() {
@@ -346,7 +348,7 @@ export default function VenueClient() {
                 {copied ? (
                   <span className="text-xs font-bold text-emerald-600 px-1">✓ Copied!</span>
                 ) : (
-                  <i className="fi fi-rr-copy text-sm" />
+                  <CopyIcon size={14} className="text-slate-500 hover:text-brand-orange" />
                 )}
               </button>
             </div>
@@ -417,7 +419,7 @@ export default function VenueClient() {
                   rel="noopener noreferrer"
                   className="w-full text-center bg-black hover:bg-[#1C1C1E] text-white font-semibold py-3 px-4 transition-all rounded-xl flex items-center justify-center gap-2.5 cursor-pointer text-xs shadow-xs hover:shadow-md border border-white/10 group"
                 >
-                  <i className="fi fi-brands-apple text-base shrink-0" />
+                  <AppleIcon size={16} className="shrink-0 text-white" />
                   <span>Open in Apple Maps</span>
                   <span className="group-hover:translate-x-0.5 transition-transform text-white/70">↗</span>
                 </a>

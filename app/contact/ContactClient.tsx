@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import { EnvelopeIcon, CopyIcon } from '@/components/ui/Icons';
 
 export default function ContactClient() {
   const [copied, setCopied] = React.useState(false);
@@ -65,7 +66,7 @@ export default function ContactClient() {
               Official Conference Email
             </span>
             <div className="inline-flex items-center justify-center gap-3 bg-[#FCFCFC] border border-[#E6E8EC] px-6 py-3.5 rounded-xl shadow-xs flex-wrap sm:flex-nowrap">
-              <i className="fi fi-rr-envelope text-brand-orange text-xl shrink-0" />
+              <EnvelopeIcon size={22} className="text-brand-orange shrink-0" />
               <a 
                 href="mailto:sankalp@jklu.edu.in"
                 className="text-xl sm:text-2xl font-serif font-bold text-brand-blue hover:text-brand-orange transition-colors tracking-tight"
@@ -81,7 +82,7 @@ export default function ContactClient() {
                 {copied ? (
                   <span className="text-xs font-bold text-emerald-600 px-1">✓ Copied!</span>
                 ) : (
-                  <i className="fi fi-rr-copy text-sm" />
+                  <CopyIcon size={16} className="text-slate-500 hover:text-brand-orange" />
                 )}
               </button>
             </div>

@@ -3,8 +3,8 @@ import HomeClient from './HomeClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "SANKALP 2027 | SANKALP '27 | International Conference | JKLU Jaipur",
-  description: "Official website for SANKALP 2027 (SANKALP '27) – International Conference on Sustainable AI, Data Science & Next-Gen Knowledge, Automation, Learning & Prediction, organized by IET, JK Lakshmipat University, Jaipur.",
+  title: "SANKALP 2027 | International Conference | JKLU Jaipur",
+  description: "Join SANKALP 2027 at JKLU Jaipur—the premier International Conference on Sustainable AI, Data Science & Next-Gen Tech. Submit your research papers today!",
   keywords: [
     "sankalp",
     "sankalp27",
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     canonical: 'https://sankalp.jklu.edu.in',
   },
   openGraph: {
-    title: "SANKALP 2027 (SANKALP '27) | International Conference | JKLU Jaipur",
-    description: "Join international researchers, academics, and industry experts at JK Lakshmipat University for SANKALP 2027.",
+    title: "SANKALP 2027 | International Conference | JKLU Jaipur",
+    description: "Join premier researchers at JKLU Jaipur for SANKALP 2027 on Sustainable AI, Data Science & Next-Gen Tech. Submit research papers today!",
     url: 'https://sankalp.jklu.edu.in',
-    siteName: "SANKALP 2027 (SANKALP '27) International Conference",
+    siteName: "SANKALP 2027 International Conference",
     locale: 'en_IN',
     type: 'website',
     images: [
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "SANKALP 2027 (SANKALP '27) | JK Lakshmipat University, Jaipur",
-    description: "International Conference on Sustainable AI & Next-Gen Knowledge at JKLU Jaipur.",
+    title: "SANKALP 2027 | International Conference | JKLU Jaipur",
+    description: "Join premier researchers at JKLU Jaipur for SANKALP 2027 on Sustainable AI & Next-Gen Knowledge.",
     images: ['https://sankalp.jklu.edu.in/Images/jklu.jpg'],
   },
 };

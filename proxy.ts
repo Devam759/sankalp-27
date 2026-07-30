@@ -28,12 +28,24 @@ function getRateLimitResponse(retryAfter: number = 60) {
 
 export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
+  const host = req.headers.get('host') || '';
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || '127.0.0.1';
   const proto = req.headers.get('x-forwarded-proto') || 'http';
 
-  // 1. Enforce HTTPS in production
-  if (process.env.NODE_ENV === 'production' && proto !== 'https') {
-    return NextResponse.redirect(`https://${req.headers.get('host')}${req.nextUrl.pathname}`, 301);
+  // 1. Redirect www to non-www (301 Permanent Redirect) for SEO URL consolidation
+  if (host.startsWith('www.')) {
+    const canonicalHost = host.replace(/^www\./, '');
+    const url = req.nextUrl.clone();
+    url.hostname = canonicalHost;
+    url.protocol = 'https';
+    return NextResponse.redirect(url, 301);
+  }
+
+  // 2. Enforce HTTPS in production
+  if (process.env.NODE_ENV === 'production' && proto !== 'https' && !host.includes('localhost')) {
+    const url = req.nextUrl.clone();
+    url.protocol = 'https';
+    return NextResponse.redirect(url, 301);
   }
 
   // Define limits
@@ -68,7 +80,7 @@ export function proxy(req: NextRequest) {
 
     requestCounts.set(ip, record);
 
-    // 2. Active Abuse Blocking (Rate Limiting)
+    // Active Abuse Blocking (Rate Limiting)
     if (isRegister && record.register > LIMIT_REGISTER) {
       console.warn(`[BLOCKED] Registration spam detected from IP: ${ip}`);
       return getRateLimitResponse();
@@ -76,8 +88,6 @@ export function proxy(req: NextRequest) {
     
     if (isLogin && record.login > LIMIT_LOGIN) {
       console.warn(`[BLOCKED] Login brute-force detected from IP: ${ip}`);
-      // For pages, we can also return JSON if they fetch, or redirect, but since Next.js app router 
-      // often fetches client components or RSC payloads, a 429 JSON response is safe.
       return getRateLimitResponse();
     }
     
@@ -86,12 +96,12 @@ export function proxy(req: NextRequest) {
       return getRateLimitResponse();
     }
 
-    // 3. Advanced Logging for sensitive API endpoints
+    // Advanced Logging for sensitive API endpoints
     if (isApi && (pathname.includes('check-in') || pathname.includes('admin'))) {
       console.log(`[API TRAFFIC] SENSITIVE ENDPOINT | Method: ${req.method} | Path: ${pathname} | IP: ${ip} | User-Agent: ${req.headers.get('user-agent')}`);
     }
 
-    // 4. Basic Response Headers setup
+    // Basic Response Headers setup
     const response = NextResponse.next();
     response.headers.set('X-Content-Type-Options', 'nosniff');
     response.headers.set('X-Frame-Options', 'DENY');

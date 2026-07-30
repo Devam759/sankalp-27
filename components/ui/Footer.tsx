@@ -145,6 +145,8 @@ const AppleMapsIcon = ({ size = 16, className = '' }: { size?: number; className
   </svg>
 );
 
+import { AppleIcon } from '@/components/ui/Icons';
+
 export default function Footer() {
   return (
     <footer className="relative bg-[#0b0f19] border-t border-white/10 pt-16 pb-12 px-6 md:px-12 overflow-hidden select-none">
@@ -286,7 +288,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="bg-black hover:bg-[#1C1C1E] text-white border border-white/20 transition-all duration-200 rounded-lg px-3.5 py-2 text-xs font-semibold flex items-center gap-2.5 shadow-xs hover:shadow-md group"
               >
-                <i className="fi fi-brands-apple text-sm shrink-0" />
+                <AppleIcon size={16} className="shrink-0 text-white" />
                 <span>Apple Maps</span>
               </a>
             </div>
