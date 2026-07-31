@@ -33,6 +33,23 @@ const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?
   </svg>
 );
 
+function getTimeLeft() {
+  const targetDate = new Date("March 5, 2027 09:00:00").getTime();
+  const now = new Date().getTime();
+  const difference = targetDate - now;
+
+  if (difference <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0, isExpired: true };
+  }
+  return {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+    seconds: Math.floor((difference % (1000 * 60)) / 1000),
+    isExpired: false
+  };
+}
+
 export default function HomeClient() {
   const [activeAdvisory, setActiveAdvisory] = React.useState<string | null>(null);
 
@@ -69,30 +86,11 @@ export default function HomeClient() {
     return () => clearInterval(timer);
   }, [heroImages.length]);
 
-  const [timeLeft, setTimeLeft] = React.useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    isExpired: false
-  });
+  const [timeLeft, setTimeLeft] = React.useState(getTimeLeft);
 
   React.useEffect(() => {
-    const targetDate = new Date("March 5, 2027 09:00:00").getTime();
-
     const updateCountdown = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isExpired: true });
-      } else {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-        setTimeLeft({ days, hours, minutes, seconds, isExpired: false });
-      }
+      setTimeLeft(getTimeLeft());
     };
 
     updateCountdown();
@@ -117,7 +115,7 @@ export default function HomeClient() {
     <>
       <Navbar />
       <main
-        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white animate-[fadeInUp_0.65s_ease-out_both]"
+        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white"
       >
 
       {/* HERO */}
@@ -147,7 +145,7 @@ export default function HomeClient() {
                     priority={index === 0}
                     loading={index === 0 ? 'eager' : 'lazy'}
                     sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                    quality={index === 0 ? 75 : 70}
+                    quality={index === 0 ? 65 : 60}
                     className="object-cover object-center"
                   />
                 )}
@@ -161,27 +159,27 @@ export default function HomeClient() {
         <div
           className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-20 sm:pt-24 pb-12 sm:pb-16"
         >
-          <div className="-mt-3 mb-2 animate-[fadeInUp_0.5s_ease-out_0.15s_both]">
+          <div className="-mt-3 mb-2">
             <div className="w-24 sm:w-28 md:w-32 aspect-[760/600] border border-white/20 rounded flex items-center justify-center" aria-label="SANKALP 2027 Conference Logo placeholder">
               <span className="text-white/60 text-[10px] font-bold uppercase tracking-wider">SANKALP LOGO</span>
             </div>
           </div>
 
-          <div className="mb-3 animate-[fadeInUp_0.5s_ease-out_0.3s_both]">
+          <div className="mb-3">
             <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-sans font-black tracking-[-0.02em] text-white leading-none uppercase">
               SANKALP
               <span className="text-brand-orange"> '27</span>
             </h1>
           </div>
 
-          <div className="mb-10 animate-[fadeInUp_0.5s_ease-out_0.45s_both]">
+          <div className="mb-10">
             <p className="text-white/80 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
               <span className="text-brand-orange font-bold">S</span>ustainable <span className="text-brand-orange font-bold">A</span>I · <span className="text-brand-orange font-bold">N</span>ext Gen <span className="text-brand-orange font-bold">K</span>nowledge<br className="hidden md:block" />
               <span className="text-brand-orange font-bold">A</span>utomation · <span className="text-brand-orange font-bold">L</span>earning and <span className="text-brand-orange font-bold">P</span>rediction
             </p>
           </div>
 
-          <div className="mb-8 flex flex-col items-center animate-[fadeInUp_0.5s_ease-out_0.6s_both]">
+          <div className="mb-8 flex flex-col items-center">
             <div className="flex items-center gap-1 sm:gap-2">
               {[
                 { value: timeLeft.isExpired ? "00" : String(timeLeft.days).padStart(2, '0'), label: "Days" },
@@ -202,10 +200,10 @@ export default function HomeClient() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 animate-[fadeInUp_0.5s_ease-out_0.75s_both]">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/submit-paper"
-              className="bg-brand-orange text-brand-blue px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
+              className="bg-brand-orange text-slate-950 hover:text-white px-8 py-3.5 rounded-sm font-extrabold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
             >
               Submit Paper
             </Link>
