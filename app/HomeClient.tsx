@@ -149,7 +149,8 @@ export default function HomeClient() {
                     fill
                     priority={index === 0}
                     loading={index === 0 ? 'eager' : 'lazy'}
-                    sizes="100vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                    quality={index === 0 ? 75 : 70}
                     className="object-cover object-center"
                   />
                 )}

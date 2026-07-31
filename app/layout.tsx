@@ -84,7 +84,6 @@ export const viewport: Viewport = {
   themeColor: '#0B1B3D',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
 }
 
 import { Merriweather, Source_Sans_3 } from 'next/font/google'
@@ -92,11 +91,13 @@ import { Merriweather, Source_Sans_3 } from 'next/font/google'
 const merriweather = Merriweather({ 
   weight: ['300', '400', '700', '900'],
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-playfair', // keep variable name same so tailwind config doesn't need to change
 })
 
 const sourceSans = Source_Sans_3({
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-inter',
 })
 
@@ -108,6 +109,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link
+          rel="preload"
+          href="/_next/image?url=%2FImages%2Fhero%2FDJI_0063.webp&w=1200&q=75"
+          as="image"
+          type="image/webp"
+          // @ts-ignore
+          fetchpriority="high"
+        />
 
         <Script id="extension-error-handler" strategy="beforeInteractive">
           {`
