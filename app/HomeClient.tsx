@@ -12,7 +12,8 @@ import {
   conferenceDates, 
   committeeMembers, 
   speakers,
-  advisoryBoard
+  advisoryBoard,
+  PAPER_SUBMISSION_LINK
 } from '@/constants/conferenceData';
 
 const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?: string }) => (
@@ -129,26 +130,24 @@ export default function HomeClient() {
             return (
               <motion.div
                 key={img}
-                initial={{ opacity: 0 }}
+                initial={false}
                 animate={{ 
                   opacity: isActive ? 1 : 0,
                   scale: isActive ? 1.03 : 1.0
                 }}
-                transition={{ duration: 2.0, ease: "easeInOut" }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
                 className="absolute inset-0"
               >
-                {(isActive || index === 0) && (
-                  <Image
-                    src={img}
-                    alt="JK Lakshmipat University Campus"
-                    fill
-                    priority={index === 0}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                    quality={75}
-                    className="object-cover object-center"
-                  />
-                )}
+                <Image
+                  src={img}
+                  alt="JK Lakshmipat University Campus"
+                  fill
+                  priority={index === 0}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                  quality={75}
+                  className="object-cover object-center"
+                />
               </motion.div>
             );
           })}
@@ -201,12 +200,14 @@ export default function HomeClient() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/submit-paper"
-              className="bg-brand-orange text-slate-950 hover:text-white px-8 py-3.5 rounded-sm font-extrabold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
+            <a
+              href={PAPER_SUBMISSION_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
             >
-              Submit Paper
-            </Link>
+              Submit Paper ↗
+            </a>
             <Link
               href="/sessions"
               className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"

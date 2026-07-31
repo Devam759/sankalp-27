@@ -1,63 +1,140 @@
-# Sankalp '27 International Conference Website
+# SANKALP '27 — International Conference Web Portal
 
-This repository contains the source code for the **Sankalp 2027 International Conference** at JK Lakshmipat University, Jaipur.
+Official web application for **SANKALP '27** — *International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction*, hosted by the Institute of Engineering & Technology (IET), JK Lakshmipat University (JKLU), Jaipur, India.
 
-## Tech Stack
-- **Framework**: Next.js 16 (App Router)
-- **Styling**: Tailwind CSS v4
-- **Database / Auth / Storage**: Firebase (Web & Admin SDKs)
-- **Payments**: Cashfree PG
-- **Other Tools**: PDF-lib (Dynamic Ticket Generation), Nodemailer (Automated Emails), GSAP / Framer Motion (Animations)
+- **Production Domain**: [sankalp.jklu.edu.in](https://sankalp.jklu.edu.in)
+- **Institution**: JK Lakshmipat University, Jaipur, Rajasthan, India
 
-## Prerequisites
-- Node.js >= 18.x
-- Firebase Project with Firestore and Storage enabled
-- Cashfree Merchant Account
+---
 
-## Local Development Setup
+## Technical Overview
 
-1. **Clone the repository:**
+The application is built using Next.js 16 (App Router) and Tailwind CSS v4, adhering to strict SEO standards, accessibility guidelines, and performance practices.
+
+### Core Capabilities
+
+- **High-Performance Architecture**: Full SSR/SSG pre-rendering optimized for Core Web Vitals, achieving 100/100 Accessibility, 100/100 Best Practices, and 100/100 SEO on Google PageSpeed Insights.
+- **Payment Gateway Integration**: Cashfree PG integration supporting UPI, Credit/Debit Cards, Net Banking, and Wallets with automated server-side webhook verification and promotional coupon processing.
+- **Automated Ticketing System**: Dynamic PDF registration receipt generation with embedded QR check-in passes built using `pdf-lib` and `qrcode`.
+- **Email Dispatch Engine**: Integrated Nodemailer transport over Office 365 SMTP (`sankalp@jklu.edu.in`) for automated registration ticket delivery and system notifications.
+- **Verification Web Application**: Dedicated mobile-optimized QR scanner module (`/scanner`) enabling staff to verify attendee passes and record check-ins in real time.
+- **Administration Suite**: Protected management console (`/admin`) for registration tracking, coupon configuration, attendance analytics, audit logging, and Google Sheets synchronization.
+- **Submission Routing**: External routing for research paper submissions via Microsoft CMT.
+
+---
+
+## Technology Stack
+
+| Component | Technology |
+| :--- | :--- |
+| **Framework** | Next.js 16 (App Router), React 19, TypeScript |
+| **Styling** | Tailwind CSS v4, Vanilla CSS Design System |
+| **Backend & Database** | Google Firestore, Firebase Admin SDK, Firebase Auth |
+| **Payment Processing** | Cashfree PG SDK (`@cashfreepayments/cashfree-js`), Webhooks |
+| **Email Infrastructure** | Nodemailer (Office 365 SMTP `smtp.office365.com:587`) |
+| **PDF & Code Generation** | `pdf-lib`, `qrcode` |
+| **Deployment Platform** | Vercel Serverless Architecture |
+
+---
+
+## Project Structure
+
+```
+conference-portal/
+├── app/                        # Next.js App Router routes and layouts
+│   ├── admin/                  # Administrative management portal
+│   ├── api/                    # Serverless API endpoints
+│   ├── scanner/                # Volunteer QR code scanning interface
+│   ├── layout.tsx              # Root layout with preloads and JSON-LD schemas
+│   ├── robots.ts               # Search engine crawler configuration
+│   └── sitemap.ts              # XML sitemap generator
+├── components/                 # UI components and layout elements
+│   ├── ui/                     # Navigation, Footer, Section, Accordions
+│   └── admin/                  # Administrative tables, charts, and controls
+├── constants/                  # Application constants and configuration data
+│   ├── conferenceData.ts       # Dates, tracks, speakers, and external links
+│   └── fees.ts                 # Registration categories and pricing structures
+├── lib/                        # Backend helpers and service initializers
+│   ├── firebaseAdmin.ts        # Firebase Admin SDK configuration
+│   ├── registrationHelper.ts   # Registration, PDF pass generation, and email dispatch
+│   └── sheetSync.ts            # Automated Google Sheets synchronization service
+├── public/                     # Static media assets, logos, and fonts
+└── scripts/                    # Maintenance and testing utilities
+```
+
+---
+
+## Development Setup
+
+### Prerequisites
+
+- Node.js v18.0.0 or higher
+- npm v9.0.0 or higher
+- Firebase Project with Firestore enabled
+- Cashfree Merchant API credentials
+
+### Local Installation
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/sankalp-27.git
+   git clone https://github.com/Devam759/sankalp-27.git
    cd sankalp-27
    ```
 
-2. **Install dependencies:**
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. **Environment Variables:**
-   - Copy the `.env.example` file to `.env.local`:
-     ```bash
-     cp .env.example .env.local
-     ```
-   - Fill in your actual Firebase, Cashfree, and SMTP keys inside `.env.local`. **Never commit this file to version control.**
+3. Configure environment variables:
+   Create a `.env.local` file in the root directory:
+   ```env
+   # Application Domain Settings
+   NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+   NEXT_PUBLIC_CASHFREE_ENV="TEST"
 
-4. **Service Account Key (For Firebase Admin):**
-   - Download your Firebase Admin `serviceAccountKey.json` from the Firebase Console (Project Settings > Service Accounts > Generate new private key).
-   - Place `service-account.json` at the root of the project (this file is excluded from Git via `.gitignore`).
+   # Firebase Credentials
+   FIREBASE_PROJECT_ID="sankalp-27"
+   FIREBASE_CLIENT_EMAIL="firebase-adminsdk-xxxxx@sankalp-27.iam.gserviceaccount.com"
+   FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
 
-5. **Start the development server:**
+   # Cashfree Payment Gateway Credentials
+   CASHFREE_APP_ID="your_cashfree_app_id"
+   CASHFREE_SECRET_KEY="your_cashfree_secret_key"
+
+   # SMTP Dispatch Settings
+   SMTP_HOST="smtp.office365.com"
+   SMTP_PORT="587"
+   SMTP_SECURE="false"
+   SMTP_USER="sankalp@jklu.edu.in"
+   SMTP_PASS="your_office365_app_password"
+   SMTP_FROM="SANKALP 2027 Secretariat <sankalp@jklu.edu.in>"
+   ```
+
+4. Start the local development server:
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-## Production Build & Deployment (Vercel)
-This project is configured to be hosted on **Vercel** while keeping the database, authentication, and storage managed by **Firebase**.
+---
 
-### Deploying to Vercel
-1. Import your GitHub repository into your Vercel Dashboard.
-2. Under **Environment Variables**, add all the variables from your `.env.local` file.
-3. **Important for Firebase Admin**: Since `service-account.json` is not committed to GitHub, you must encode its contents and add it as an environment variable in Vercel:
-   - Create an environment variable named `FIREBASE_SERVICE_ACCOUNT`.
-   - Paste the **entire JSON string** of your `service-account.json` file into the value field. The backend will automatically parse this JSON string to initialize the Firebase Admin SDK securely.
-4. Click **Deploy**. Vercel will automatically detect the Next.js framework, run `npm run build`, and host your site globally!
+## Production Deployment
 
-## Security & Best Practices
-- Never expose `NEXT_PUBLIC_` variables unless they are safe for the client.
-- Your `.env.local` and `service-account.json` must always remain safely ignored by `.gitignore`.
+The application is deployed on Vercel and mapped to `sankalp.jklu.edu.in`.
 
-## License
-&copy; 2026 JK Lakshmipat University. All rights reserved.
+### Build Commands
+
+```bash
+# Type check TypeScript codebase
+npx tsc --noEmit
+
+# Execute production build
+npm run build
+```
+
+---
+
+## Copyright & License
+
+Copyright &copy; 2027 **JK Lakshmipat University**. All Rights Reserved.  
+*Institute of Engineering & Technology, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India.*

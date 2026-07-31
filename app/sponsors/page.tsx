@@ -3,7 +3,7 @@ import SponsorsClient from './SponsorsClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Sponsors & Industry Partners | Sankalp '27 | JKLU",
+  title: "Sponsors | Sankalp '27 | JKLU",
   description: "Explore sponsorship packages (Platinum, Gold, Silver, Associate) for Sankalp '27 International Conference at JK Lakshmipat University, Jaipur. Connect with global technology leaders and researchers.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/sponsors',

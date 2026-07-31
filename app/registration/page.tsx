@@ -3,7 +3,7 @@ import RegistrationClient from './RegistrationClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Conference Registration & Fees | Sankalp '27 | JKLU",
+  title: "Registration & Fees | Sankalp '27 | JKLU",
   description: "Register online for Sankalp '27 International Conference at JK Lakshmipat University, Jaipur. Transparent pricing tiers for student authors, academicians, industry delegates, and international participants.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/registration',

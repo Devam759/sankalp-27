@@ -3,7 +3,7 @@ import CommitteeClient from './CommitteeClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Organizing Committee & Advisory Board | Sankalp '27 Conference",
+  title: "Organizing Committee | Sankalp '27 | JKLU",
   description: "Meet the leadership, patrons, program chairs, and international/national advisory boards of Sankalp '27 at JK Lakshmipat University, Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/committee',

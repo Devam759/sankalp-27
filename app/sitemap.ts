@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/call-for-papers', priority: 0.9, changeFrequency: 'weekly' },
     { path: '/sessions', priority: 0.9, changeFrequency: 'weekly' },
     { path: '/registration', priority: 0.9, changeFrequency: 'weekly' },
-    { path: '/submit-paper', priority: 0.8, changeFrequency: 'weekly' },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/committee', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/venue', priority: 0.8, changeFrequency: 'monthly' },

@@ -3,7 +3,7 @@ import ContactClient from './ContactClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Contact Directory & Organizers | Sankalp '27 | JKLU",
+  title: "Contact Us | Sankalp '27 | JKLU",
   description: "Official contact directory for Sankalp '27 International Conference. Get in touch with conference chairs, track chairs, registration, publication, and sponsorship committees at JKLU Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/contact',

@@ -3,7 +3,7 @@ import CallForPapersClient from './CallForPapersClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Call for Papers | Sankalp '27 Conference Tracks & Springer LNCS",
+  title: "Call for Papers | Sankalp '27 | JKLU",
   description: "Submit your original research to Sankalp '27 International Conference at JKLU Jaipur. Tracks include Sustainable AI, Data Science, Smart Healthcare, VLSI, and HPC. Springer LNCS Series / Scopus indexing opportunities.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/call-for-papers',

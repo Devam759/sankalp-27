@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AtomIcon } from '@/components/ui/Icons';
+import { PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -49,25 +50,36 @@ export default function Navbar() {
           className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between gap-4"
           style={{ height: '72px' }}
         >
-          {/* Left: Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
-            <div className="h-10 w-10 border border-white/30 rounded flex items-center justify-center shrink-0 bg-white/10 text-brand-orange" aria-label="SANKALP 2027 Emblem">
-              <AtomIcon size={22} />
-            </div>
-            <div className="w-px h-7 bg-white/25 hidden sm:block" />
-            <Image
-              src="/logos/white_jklu_logo.png"
-              alt="JKLU Logo"
-              width={200}
-              height={60}
-              priority
-              loading="eager"
-              className="h-12 md:h-[50px] w-auto object-contain hidden sm:block"
-            />
-          </Link>
+          {/* Left: Emblem (SANKALP Home) + Mobile JKLU Logo */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            <Link href="/" className="flex items-center shrink-0" aria-label="SANKALP 2027 Home">
+              <div className="h-9 w-9 sm:h-10 sm:w-10 border border-white/30 rounded flex items-center justify-center shrink-0 bg-white/10 text-brand-orange hover:bg-white/20 transition-colors">
+                <AtomIcon size={20} />
+              </div>
+            </Link>
+
+            {/* Mobile JKLU Logo */}
+            <a
+              href="https://jklu.edu.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95 lg:hidden"
+              aria-label="JK Lakshmipat University Website"
+            >
+              <Image
+                src="/logos/white_jklu_logo.png"
+                alt="JKLU Logo"
+                width={160}
+                height={48}
+                priority
+                loading="eager"
+                className="h-8 w-auto object-contain"
+              />
+            </a>
+          </div>
 
           {/* Centre: Navigation Links (desktop) */}
-          <div className="hidden lg:flex items-center justify-center w-full gap-5 xl:gap-7 text-center">
+          <div className="hidden lg:flex items-center justify-center w-full gap-4 xl:gap-6 text-center">
             {navLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
@@ -93,21 +105,42 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right: CTA buttons + Mobile toggle */}
+          {/* Right: CTA buttons + Desktop JKLU Logo + Mobile toggle */}
           <div className="flex items-center gap-3 relative z-30 pointer-events-auto">
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/registration"
-                className="h-9 px-5 border border-white/70 text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-white hover:text-brand-blue transition-colors cursor-pointer relative z-30 pointer-events-auto"
+                className="h-9 px-4 border border-white/70 text-white rounded-sm font-bold text-xs uppercase tracking-wider flex items-center justify-center hover:bg-white hover:text-brand-blue transition-colors cursor-pointer relative z-30 pointer-events-auto whitespace-nowrap"
               >
                 Register
               </Link>
-              <Link
-                href="/submit-paper"
-                className="h-9 px-5 bg-brand-orange text-white rounded-sm font-bold text-sm flex items-center justify-center hover:bg-orange-500 transition-colors shadow-sm cursor-pointer relative z-30 pointer-events-auto"
+              <a
+                href={PAPER_SUBMISSION_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-9 px-4 bg-brand-orange text-white rounded-sm font-bold text-xs uppercase tracking-wider flex items-center justify-center hover:bg-orange-500 transition-colors shadow-sm cursor-pointer relative z-30 pointer-events-auto whitespace-nowrap"
               >
-                Submit Paper
-              </Link>
+                Submit Paper ↗
+              </a>
+
+              {/* Desktop Right JKLU Logo */}
+              <a
+                href="https://jklu.edu.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95 ml-1"
+                aria-label="JK Lakshmipat University Website"
+              >
+                <Image
+                  src="/logos/white_jklu_logo.png"
+                  alt="JKLU Logo"
+                  width={180}
+                  height={54}
+                  priority
+                  loading="eager"
+                  className="h-10 md:h-[44px] w-auto object-contain"
+                />
+              </a>
             </div>
 
             {/* Mobile hamburger */}
@@ -193,13 +226,15 @@ export default function Navbar() {
                 >
                   Register
                 </Link>
-                <Link
-                  href="/submit-paper"
+                <a
+                  href={PAPER_SUBMISSION_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-orange-500 transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Submit Paper
-                </Link>
+                  Submit Paper ↗
+                </a>
               </div>
             </nav>
           </motion.div>

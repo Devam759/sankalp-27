@@ -7,7 +7,7 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
 import TrackAccordion from '@/components/ui/TrackAccordion';
-import { conferenceTracks, trackChairs } from '@/constants/conferenceData';
+import { conferenceTracks, trackChairs, PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
 
 export default function SessionsClient() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -74,12 +74,14 @@ export default function SessionsClient() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="flex flex-wrap items-center justify-center gap-4 pt-4"
           >
-            <Link
-              href="/submit-paper"
+            <a
+              href={PAPER_SUBMISSION_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-brand-orange text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-orange-500 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
             >
               Submit Paper ↗
-            </Link>
+            </a>
             <Link
               href="/call-for-papers"
               className="bg-white/10 border border-white/30 text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-white hover:text-brand-blue transition-all shadow-md hover:-translate-y-0.5 cursor-pointer"

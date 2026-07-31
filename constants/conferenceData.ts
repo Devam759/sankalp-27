@@ -1,3 +1,5 @@
+export const PAPER_SUBMISSION_LINK = 'https://cmt3.research.microsoft.com/';
+
 export const conferenceDates = [
   { label: 'Call for Papers Opens', date: '1 August 2026' },
   { label: 'Full Paper Submission Deadline', date: '31 October 2026' },

@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
 
 // ============================================================================
 // BESPOKE CUSTOM GEOMETRIC SVG ICONS (Gradient-free, Sharp, Clean)
@@ -204,9 +205,9 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/submit-paper" className="hover:text-brand-orange transition-colors text-brand-orange font-semibold">
+              <a href={PAPER_SUBMISSION_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors text-brand-orange font-semibold">
                 Submit Paper ↗
-              </Link>
+              </a>
             </li>
             <li>
               <Link href="/registration" className="hover:text-brand-orange transition-colors font-semibold">

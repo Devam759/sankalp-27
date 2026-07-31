@@ -9,7 +9,7 @@ import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
 
 import TrackAccordion from '@/components/ui/TrackAccordion';
-import { conferenceTracks } from '@/constants/conferenceData';
+import { conferenceTracks, PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
 
 export default function CallForPapersClient() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -70,12 +70,14 @@ export default function CallForPapersClient() {
               >
                 Download Template
               </a>
-              <Link 
-                href="/submit-paper"
+              <a 
+                href={PAPER_SUBMISSION_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 font-bold hover:bg-orange-600 transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer rounded-sm"
               >
                 Submit Paper ↗
-              </Link>
+              </a>
               <Link 
                 href="/sessions"
                 className="flex items-center justify-center gap-2 bg-slate-100 text-brand-blue border border-slate-300 px-6 py-3 font-bold hover:bg-brand-blue hover:text-white transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer rounded-sm"

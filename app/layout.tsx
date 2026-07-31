@@ -115,8 +115,7 @@ export default function RootLayout({
           as="image"
           type="image/webp"
           media="(max-width: 640px)"
-          // @ts-ignore
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <link
           rel="preload"
@@ -124,8 +123,7 @@ export default function RootLayout({
           as="image"
           type="image/webp"
           media="(min-width: 641px)"
-          // @ts-ignore
-          fetchpriority="high"
+          fetchPriority="high"
         />
 
         <Script id="extension-error-handler" strategy="beforeInteractive">

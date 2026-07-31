@@ -220,10 +220,6 @@ export default function RegistrationClient() {
       <section ref={heroRef} className="pt-28 sm:pt-36 pb-20 sm:pb-24 bg-brand-blue text-white relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 relative z-10">
           <motion.div variants={stagger()} initial="hidden" animate="visible" className="max-w-4xl">
-            <motion.div variants={fadeUp} className="flex items-center gap-2 mb-4">
-              <div className="w-2.5 h-6 bg-brand-orange rounded-sm shrink-0" />
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-brand-orange">SANKALP '27 &middot; JKLU</span>
-            </motion.div>
             <motion.h1 variants={fadeUp} className="font-serif font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.1] mb-6">
               Conference Registration
             </motion.h1>
