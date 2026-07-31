@@ -167,7 +167,7 @@ export default function Footer() {
             <p>
               International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction.
             </p>
-            <p className="text-slate-500">
+            <p className="text-slate-400">
               Hosted by the Institute of Engineering & Technology (IET), JK Lakshmipat University, Jaipur.
             </p>
           </div>

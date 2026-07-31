@@ -116,11 +116,8 @@ export default function HomeClient() {
   return (
     <>
       <Navbar />
-      <motion.main
-        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white"
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
+      <main
+        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white animate-[fadeInUp_0.65s_ease-out_both]"
       >
 
       {/* HERO */}
@@ -161,33 +158,30 @@ export default function HomeClient() {
           <div className="absolute inset-0 opacity-[0.04] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')] z-10 pointer-events-none" />
         </div>
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
+        <div
           className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-20 sm:pt-24 pb-12 sm:pb-16"
         >
-          <motion.div variants={itemVariants} className="-mt-3 mb-2">
+          <div className="-mt-3 mb-2 animate-[fadeInUp_0.5s_ease-out_0.15s_both]">
             <div className="w-24 sm:w-28 md:w-32 aspect-[760/600] border border-white/20 rounded flex items-center justify-center" aria-label="SANKALP 2027 Conference Logo placeholder">
-              <span className="text-white/30 text-[10px] font-bold uppercase tracking-wider">SANKALP LOGO</span>
+              <span className="text-white/60 text-[10px] font-bold uppercase tracking-wider">SANKALP LOGO</span>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants} className="mb-3">
+          <div className="mb-3 animate-[fadeInUp_0.5s_ease-out_0.3s_both]">
             <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-sans font-black tracking-[-0.02em] text-white leading-none uppercase">
               SANKALP
               <span className="text-brand-orange"> '27</span>
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants} className="mb-10">
-            <p className="text-white/65 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
+          <div className="mb-10 animate-[fadeInUp_0.5s_ease-out_0.45s_both]">
+            <p className="text-white/80 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
               <span className="text-brand-orange font-bold">S</span>ustainable <span className="text-brand-orange font-bold">A</span>I · <span className="text-brand-orange font-bold">N</span>ext Gen <span className="text-brand-orange font-bold">K</span>nowledge<br className="hidden md:block" />
               <span className="text-brand-orange font-bold">A</span>utomation · <span className="text-brand-orange font-bold">L</span>earning and <span className="text-brand-orange font-bold">P</span>rediction
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants} className="mb-8 flex flex-col items-center">
+          <div className="mb-8 flex flex-col items-center animate-[fadeInUp_0.5s_ease-out_0.6s_both]">
             <div className="flex items-center gap-1 sm:gap-2">
               {[
                 { value: timeLeft.isExpired ? "00" : String(timeLeft.days).padStart(2, '0'), label: "Days" },
@@ -198,20 +192,20 @@ export default function HomeClient() {
                 <React.Fragment key={unit.label}>
                   <div className="flex flex-col items-center justify-center w-[52px] sm:w-[64px] py-2 sm:py-2.5 rounded-sm bg-white/8 border border-white/15 backdrop-blur-sm shadow-md">
                     <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-lg sm:text-2xl">{unit.value}</span>
-                    <span className="text-white/50 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
+                    <span className="text-white/70 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
                   </div>
                   {i < arr.length - 1 && (
-                    <span className="text-white/30 text-base sm:text-lg font-black leading-none -mt-3 select-none">:</span>
+                    <span className="text-white/40 text-base sm:text-lg font-black leading-none -mt-3 select-none">:</span>
                   )}
                 </React.Fragment>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 animate-[fadeInUp_0.5s_ease-out_0.75s_both]">
             <Link
               href="/submit-paper"
-              className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
+              className="bg-brand-orange text-brand-blue px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
             >
               Submit Paper
             </Link>
@@ -227,9 +221,9 @@ export default function HomeClient() {
             >
               Register Now
             </Link>
-          </motion.div>
+          </div>
 
-        </motion.div>
+        </div>
       </section>
 
       {/* THREE COLUMN INFO SECTION */}
@@ -245,7 +239,7 @@ export default function HomeClient() {
             <div className="w-16 h-16 mb-5 rounded-sm border border-white/15 bg-white/10 flex items-center justify-center" aria-label="SANKALP Logo (placeholder)">
               <span className="text-white/30 text-[8px] font-bold uppercase tracking-wider text-center leading-tight">LOGO</span>
             </div>
-            <h3 className="text-2xl font-serif font-bold mb-1">SANKALP '27</h3>
+            <h2 className="text-2xl font-serif font-bold mb-1">SANKALP '27</h2>
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
               A premier JKLU International Conference uniting researchers, academics, industry leaders and students across six frontier domains: Sustainable AI, Next-Gen Knowledge, Automation, Learning, Prediction and emerging technologies.
             </p>
@@ -473,7 +467,7 @@ export default function HomeClient() {
                 </div>
                 <div className="flex-grow w-full">
                   <div className="relative pr-12">
-                    <h4 className="text-2xl font-serif font-bold text-brand-blue transition-colors duration-300 group-hover:text-brand-orange mb-1.5">{speaker.name}</h4>
+                    <h3 className="text-2xl font-serif font-bold text-brand-blue transition-colors duration-300 group-hover:text-brand-orange mb-1.5">{speaker.name}</h3>
                     {speaker.linkedin && (
                       <div className="absolute top-1/2 -translate-y-1/2 right-0 group/tooltip">
                         <a 
@@ -533,7 +527,7 @@ export default function HomeClient() {
                     />
                   </div>
                   <div className="w-full relative">
-                    <h4 className="text-lg font-serif font-bold text-brand-blue mb-1.5 transition-colors duration-300 group-hover:text-brand-orange">{speaker.name}</h4>
+                    <h3 className="text-lg font-serif font-bold text-brand-blue mb-1.5 transition-colors duration-300 group-hover:text-brand-orange">{speaker.name}</h3>
                     <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-3">{speaker.role}</p>
                     <p className="text-slate-600 text-xs font-semibold leading-relaxed">{speaker.university}</p>
                     <p className="text-slate-500 text-[11px] font-medium leading-relaxed mt-1">{speaker.location}</p>
@@ -591,7 +585,7 @@ export default function HomeClient() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest group-hover:text-brand-blue">{member.role}</p>
-                  <h4 className="text-base font-serif font-bold text-brand-blue group-hover:text-white">{member.name}</h4>
+                  <h3 className="text-base font-serif font-bold text-brand-blue group-hover:text-white">{member.name}</h3>
                   {'title' in member && <p className="text-brand-blue/70 group-hover:text-white/80 text-xs font-medium mt-1">{(member as typeof committeeMembers.patron).title}</p>}
                 </div>
               </motion.div>
@@ -619,7 +613,7 @@ export default function HomeClient() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest">{chair.role}</p>
-                  <h4 className="text-lg font-serif font-bold text-white mb-1">{chair.name}</h4>
+                  <h3 className="text-lg font-serif font-bold text-white mb-1">{chair.name}</h3>
                   <p className="text-slate-300 text-xs font-medium">{chair.title}</p>
                 </div>
               </motion.div>
@@ -810,7 +804,7 @@ export default function HomeClient() {
       </Section>
 
       <Footer />
-    </motion.main>
+    </main>
 
     <AnimatePresence>
       {activeAdvisory && (
