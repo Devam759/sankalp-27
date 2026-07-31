@@ -145,7 +145,7 @@ export default function HomeClient() {
                     priority={index === 0}
                     loading={index === 0 ? 'eager' : 'lazy'}
                     sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                    quality={index === 0 ? 65 : 60}
+                    quality={75}
                     className="object-cover object-center"
                   />
                 )}
@@ -189,7 +189,7 @@ export default function HomeClient() {
               ].map((unit, i, arr) => (
                 <React.Fragment key={unit.label}>
                   <div className="flex flex-col items-center justify-center w-[52px] sm:w-[64px] py-2 sm:py-2.5 rounded-sm bg-white/8 border border-white/15 backdrop-blur-sm shadow-md">
-                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-lg sm:text-2xl">{unit.value}</span>
+                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-lg sm:text-2xl" suppressHydrationWarning>{unit.value}</span>
                     <span className="text-white/70 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
                   </div>
                   {i < arr.length - 1 && (

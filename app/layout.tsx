@@ -111,9 +111,19 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="/_next/image?url=%2FImages%2Fhero%2FDJI_0063.webp&w=1200&q=75"
+          href="/_next/image?url=%2FImages%2Fhero%2FDJI_0063.webp&w=640&q=75"
           as="image"
           type="image/webp"
+          media="(max-width: 640px)"
+          // @ts-ignore
+          fetchpriority="high"
+        />
+        <link
+          rel="preload"
+          href="/_next/image?url=%2FImages%2Fhero%2FDJI_0063.webp&w=1080&q=75"
+          as="image"
+          type="image/webp"
+          media="(min-width: 641px)"
           // @ts-ignore
           fetchpriority="high"
         />
