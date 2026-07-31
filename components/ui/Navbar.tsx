@@ -47,11 +47,11 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 w-full z-[200] transition-colors duration-300"
       >
         <div
-          className="max-w-[1440px] w-full mx-auto px-6 md:px-12 flex lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between gap-4"
+          className="max-w-[1440px] w-full mx-auto px-6 md:px-10 flex items-center justify-between gap-6"
           style={{ height: '72px' }}
         >
-          {/* Left: Emblem (SANKALP Home) + Mobile JKLU Logo */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          {/* Left: SANKALP Emblem + Desktop Nav Links (Aside Logo) */}
+          <div className="flex items-center gap-5 xl:gap-7 shrink-0">
             <Link href="/" className="flex items-center shrink-0" aria-label="SANKALP 2027 Home">
               <div className="h-9 w-9 sm:h-10 sm:w-10 border border-white/30 rounded flex items-center justify-center shrink-0 bg-white/10 text-brand-orange hover:bg-white/20 transition-colors">
                 <AtomIcon size={20} />
@@ -72,37 +72,36 @@ export default function Navbar() {
                 width={160}
                 height={48}
                 priority
-                loading="eager"
                 className="h-8 w-auto object-contain"
               />
             </a>
-          </div>
 
-          {/* Centre: Navigation Links (desktop) */}
-          <div className="hidden lg:flex items-center justify-center w-full gap-4 xl:gap-6 text-center">
-            {navLinks.map((link) => {
-              const isActive =
-                pathname === link.href ||
-                (link.href !== '/' && pathname.startsWith(link.href));
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`relative group py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap ${
-                    isActive
-                      ? 'text-brand-orange'
-                      : 'text-white hover:text-brand-orange'
-                  }`}
-                >
-                  {link.name}
-                  <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-brand-orange transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+            {/* Desktop Navigation Links — Positioned Aside SANKALP Logo */}
+            <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+              {navLinks.map((link) => {
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== '/' && pathname.startsWith(link.href));
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative group py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap ${
+                      isActive
+                        ? 'text-brand-orange'
+                        : 'text-white hover:text-brand-orange'
                     }`}
-                  />
-                </Link>
-              );
-            })}
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] bg-brand-orange transition-all duration-300 ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
           {/* Right: CTA buttons + Desktop JKLU Logo + Mobile toggle */}
@@ -137,7 +136,6 @@ export default function Navbar() {
                   width={180}
                   height={54}
                   priority
-                  loading="eager"
                   className="h-10 md:h-[44px] w-auto object-contain"
                 />
               </a>

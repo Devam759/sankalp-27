@@ -26,6 +26,18 @@ const LocationIcon = ({ size = 18, className = '' }: { size?: number; className?
   </svg>
 );
 
+const HeartIcon = ({ size = 12, className = '' }: { size?: number; className?: string }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+  >
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+  </svg>
+);
+
 const EmailIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
   <svg 
     width={size} 
@@ -340,6 +352,17 @@ export default function Footer() {
           </div>
         </div>
 
+      </div>
+
+      {/* THE MINDS BEHIND THE SITE BUTTON (Above Separating Line) */}
+      <div className="max-w-7xl mx-auto relative z-10 flex justify-center items-center pb-6">
+        <Link 
+          href="/tech-team" 
+          className="group flex items-center justify-center gap-2.5 px-6 py-3 rounded-sm bg-white/10 text-white hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-sm font-bold uppercase tracking-wider cursor-pointer"
+        >
+          <span>THE MINDS BEHIND THE SITE</span>
+          <span className="text-base sm:text-lg leading-none group-hover:scale-110 transition-transform">🧠</span>
+        </Link>
       </div>
 
       {/* FOOTER BOTTOM BAR */}
