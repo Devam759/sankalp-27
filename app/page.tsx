@@ -147,9 +147,73 @@ export default function Page() {
     ],
   };
 
+  const navigationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'SANKALP 2027 Site Navigation',
+    itemListElement: [
+      {
+        '@type': 'SiteNavigationElement',
+        position: 1,
+        name: 'Call for Papers',
+        description: 'Submit original research papers for SANKALP 2027.',
+        url: 'https://sankalp.jklu.edu.in/call-for-papers',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 2,
+        name: 'Sessions & Tracks',
+        description: 'Explore conference tracks, keynotes, and presentation sessions.',
+        url: 'https://sankalp.jklu.edu.in/sessions',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 3,
+        name: 'Registration',
+        description: 'Register for SANKALP 2027 conference.',
+        url: 'https://sankalp.jklu.edu.in/registration',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 4,
+        name: 'Committee',
+        description: 'Meet our advisory board and organizing committee.',
+        url: 'https://sankalp.jklu.edu.in/committee',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 5,
+        name: 'Venue & Location',
+        description: 'Location details and travel guide for JKLU Jaipur.',
+        url: 'https://sankalp.jklu.edu.in/venue',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 6,
+        name: 'Contact Us',
+        description: 'Get in touch with SANKALP 2027 organizers.',
+        url: 'https://sankalp.jklu.edu.in/contact',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 7,
+        name: 'Privacy Policy',
+        description: 'SANKALP 2027 privacy policy and data protection terms.',
+        url: 'https://sankalp.jklu.edu.in/privacy-policy',
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 8,
+        name: 'Terms & Conditions',
+        description: 'SANKALP 2027 event terms and conditions.',
+        url: 'https://sankalp.jklu.edu.in/terms-and-conditions',
+      },
+    ],
+  };
+
   return (
     <>
-      <JsonLd data={[websiteSchema, universitySchema, eventSchema]} />
+      <JsonLd data={[websiteSchema, universitySchema, eventSchema, navigationSchema]} />
       <HomeClient />
     </>
   );
