@@ -71,7 +71,8 @@ export default function CommitteeClient() {
                       {member.image ? (
                         <Image
                           src={member.image}
-                          alt={member.name}
+                          alt={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
+                          title={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
                           width={144}
                           height={144}
                           priority={i === 0}
@@ -135,7 +136,8 @@ export default function CommitteeClient() {
                     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-white shadow-sm relative z-10 transition-transform duration-300 group-hover:scale-105">
                       <Image
                         src={member.image}
-                        alt={member.name}
+                        alt={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
+                        title={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
                         width={128}
                         height={128}
                         unoptimized
@@ -171,10 +173,10 @@ export default function CommitteeClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
               {[
-                { name: 'Dr. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
-                { name: 'Dr. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
-                { name: 'Dr. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
-                { name: 'Dr. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
+                { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
+                { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
+                { name: 'Dr. S. Taruna (Dr. Taruna Sunil)', alt: 'Dr. S. Taruna (Dr. Taruna Sunil) - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
+                { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
               ].map((member, i) => (
                 <motion.div
                   key={`prog-${i}`}
@@ -188,7 +190,8 @@ export default function CommitteeClient() {
                     <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-white shadow-sm group-hover:border-brand-orange/60 transition-colors duration-300">
                       <Image
                         src={member.image}
-                        alt={member.name}
+                        alt={member.alt || member.name}
+                        title={member.alt || member.name}
                         width={112}
                         height={112}
                         unoptimized

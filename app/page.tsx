@@ -16,7 +16,14 @@ export const metadata: Metadata = {
     "sankalp 2027 jklu",
     "sankalp jaipur",
     "sankalp international conference",
-    "iet jklu sankalp"
+    "iet jklu sankalp",
+    "Dr. S. Taruna",
+    "Prof. S. Taruna",
+    "S Taruna",
+    "S Taruna JKLU",
+    "Dr. S. Taruna JKLU",
+    "Dr. Taruna Sunil",
+    "Taruna Sunil"
   ],
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in',

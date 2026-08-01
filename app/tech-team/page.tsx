@@ -3,16 +3,27 @@ import TechTeamClient from './TechTeamClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Technical Team Credits | SANKALP '27 | JKLU",
-  description: "Meet the technical engineering team behind the SANKALP '27 International Conference Web Portal at JK Lakshmipat University, Jaipur.",
+  title: "Technical Team Credits | Devam Gupta & Engineering Team | SANKALP '27 JKLU",
+  description: "Meet the technical engineering team behind the SANKALP 2027 Web Portal at JK Lakshmipat University, Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/tech-team',
   },
+  keywords: [
+    "Devam Gupta",
+    "Devam Gupta JKLU",
+    "Devam Gupta Developer",
+    "Devam Gupta SANKALP",
+    "Manant JKLU",
+    "Pratham JKLU",
+    "SANKALP Web Team",
+    "JKLU Web Developers",
+    "IET JKLU Engineering Team"
+  ],
   openGraph: {
-    title: "Technical Team Credits - SANKALP '27 | JKLU Jaipur",
+    title: "Technical Engineering Team - SANKALP '27 | JKLU Jaipur",
     description: "Engineering team credits for the official web portal of SANKALP 2027 International Conference.",
     url: 'https://sankalp.jklu.edu.in/tech-team',
-    siteName: "Sankalp '27 Website",
+    siteName: "SANKALP '27 Website",
     type: 'website',
   },
 };
@@ -37,9 +48,40 @@ export default function TechTeamPage() {
     ],
   };
 
+  const techTeamPersons = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Devam Gupta',
+      alternateName: ['Devam Gupta JKLU', 'Devam Gupta Developer'],
+      jobTitle: 'Team Head & Lead Architect',
+      worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
+      url: 'https://sankalp.jklu.edu.in/tech-team',
+      affiliation: { '@type': 'Organization', name: 'SANKALP 2027 Web Portal', url: 'https://sankalp.jklu.edu.in' }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Manant',
+      alternateName: ['Manant JKLU'],
+      jobTitle: 'Technical Developer',
+      worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
+      url: 'https://sankalp.jklu.edu.in/tech-team'
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Pratham',
+      alternateName: ['Pratham JKLU'],
+      jobTitle: 'Technical Developer',
+      worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
+      url: 'https://sankalp.jklu.edu.in/tech-team'
+    }
+  ];
+
   return (
     <>
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={[breadcrumbSchema, ...techTeamPersons]} />
       <TechTeamClient />
     </>
   );

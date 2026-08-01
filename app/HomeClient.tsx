@@ -517,7 +517,8 @@ export default function HomeClient() {
                   <div className="relative w-24 h-24 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm mb-4 transition-transform duration-500 group-hover:scale-[1.03]">
                     <Image
                       src={speaker.image}
-                      alt={speaker.name}
+                      alt={`${speaker.name} - ${speaker.role} (${speaker.university}) SANKALP 2027 JKLU`}
+                      title={`${speaker.name} - ${speaker.role} (${speaker.university}) SANKALP 2027 JKLU`}
                       fill
                       sizes="96px"
                       priority={i === 0}
@@ -576,7 +577,8 @@ export default function HomeClient() {
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={('image' in member && (member as any).image) || '/Images/footer_image.webp'}
-                    alt={member.name}
+                    alt={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
+                    title={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
                     fill
                     sizes="64px"
                     className="object-cover transition-all duration-500"
@@ -604,7 +606,8 @@ export default function HomeClient() {
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={chair.image || "/Images/footer_image.webp"}
-                    alt={chair.name}
+                    alt={`${chair.name} - ${chair.role} SANKALP 2027 JKLU`}
+                    title={`${chair.name} - ${chair.role} SANKALP 2027 JKLU`}
                     fill
                     sizes="64px"
                     className="object-cover transition-all duration-500"
@@ -621,10 +624,10 @@ export default function HomeClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Dr. Amit Kumar Sinhal', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
-              { name: 'Dr. Devika Kataria', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
-              { name: 'Dr. Taruna Sunil', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
-              { name: 'Dr. Umesh Gupta', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
+              { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
+              { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
+              { name: 'Dr. S. Taruna (Dr. Taruna Sunil)', alt: 'Dr. S. Taruna (Dr. Taruna Sunil) - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
+              { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
             ].map((chair, i) => (
               <motion.div
                 key={i}
@@ -637,7 +640,8 @@ export default function HomeClient() {
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm mb-4">
                   <Image
                     src={chair.image}
-                    alt={chair.name}
+                    alt={chair.alt || chair.name}
+                    title={chair.alt || chair.name}
                     fill
                     sizes="64px"
                     unoptimized
