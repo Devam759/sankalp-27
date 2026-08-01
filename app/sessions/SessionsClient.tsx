@@ -80,7 +80,7 @@ export default function SessionsClient() {
               rel="noopener noreferrer"
               className="bg-brand-orange text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-orange-500 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
             >
-              Submit Paper ↗
+              Submit Paper
             </a>
             <Link
               href="/call-for-papers"

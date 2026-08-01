@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
-import { auth, db, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '../../lib/firebase';
+import { auth, db, getDb, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '../../lib/firebase';
 
 
 interface ScannerSessionContextType {
@@ -35,9 +35,9 @@ export function ScannerSessionProvider({ children }: { children: React.ReactNode
       }
 
       try {
-        const roleDoc = await getDoc(doc(db, 'roles', user.uid));
+        const roleDoc = await getDoc(doc(getDb(), 'roles', user.uid));
         if (roleDoc.exists() && roleDoc.data().role === 'scanner') {
-          const accountDoc = await getDoc(doc(db, 'scannerAccounts', user.uid));
+          const accountDoc = await getDoc(doc(getDb(), 'scannerAccounts', user.uid));
           if (accountDoc.exists()) {
             setScannerAccount(accountDoc.data());
             setLoading(false);

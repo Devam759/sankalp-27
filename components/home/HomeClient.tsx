@@ -155,31 +155,38 @@ export default function HomeClient() {
           <div className="absolute inset-0 opacity-[0.04] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')] z-10 pointer-events-none" />
         </div>
 
-        <div
+        {/* Ambient Glowing Blobs for Hero Visual Depth */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-orange/15 rounded-full blur-[120px] pointer-events-none z-10 animate-pulse duration-[7000ms]" />
+        <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-brand-blue/30 rounded-full blur-[100px] pointer-events-none z-10" />
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-20 sm:pt-24 pb-12 sm:pb-16"
         >
-          <div className="-mt-3 mb-2">
-            <div className="w-24 sm:w-28 md:w-32 aspect-[760/600] border border-white/20 rounded flex items-center justify-center" aria-label="SANKALP 2027 Conference Logo placeholder">
-              <span className="text-white/60 text-[10px] font-bold uppercase tracking-wider">SANKALP LOGO</span>
+          <motion.div variants={itemVariants} className="-mt-1 mb-2">
+            <div className="w-24 sm:w-28 md:w-32 aspect-[760/600] border border-white/25 rounded flex items-center justify-center bg-white/5 backdrop-blur-sm shadow-inner" aria-label="SANKALP 2027 Conference Logo placeholder">
+              <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">SANKALP LOGO</span>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="mb-3">
-            <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-sans font-black tracking-[-0.02em] text-white leading-none uppercase">
+          <motion.div variants={itemVariants} className="mb-3">
+            <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-sans font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm">
               SANKALP
               <span className="text-brand-orange"> '27</span>
             </h1>
-          </div>
+          </motion.div>
 
-          <div className="mb-10">
-            <p className="text-white/80 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
+          <motion.div variants={itemVariants} className="mb-10">
+            <p className="text-white/85 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
               <span className="text-brand-orange font-bold">S</span>ustainable <span className="text-brand-orange font-bold">A</span>I · <span className="text-brand-orange font-bold">N</span>ext Gen <span className="text-brand-orange font-bold">K</span>nowledge<br className="hidden md:block" />
               <span className="text-brand-orange font-bold">A</span>utomation · <span className="text-brand-orange font-bold">L</span>earning and <span className="text-brand-orange font-bold">P</span>rediction
             </p>
-          </div>
+          </motion.div>
 
-          <div className="mb-8 flex flex-col items-center">
-            <div className="flex items-center gap-1 sm:gap-2">
+          <motion.div variants={itemVariants} className="mb-8 flex flex-col items-center">
+            <div className="flex items-center gap-1.5 sm:gap-2.5">
               {[
                 { value: timeLeft.isExpired ? "00" : String(timeLeft.days).padStart(2, '0'), label: "Days" },
                 { value: timeLeft.isExpired ? "00" : String(timeLeft.hours).padStart(2, '0'), label: "Hours" },
@@ -187,42 +194,41 @@ export default function HomeClient() {
                 { value: timeLeft.isExpired ? "00" : String(timeLeft.seconds).padStart(2, '0'), label: "Secs" },
               ].map((unit, i, arr) => (
                 <React.Fragment key={unit.label}>
-                  <div className="flex flex-col items-center justify-center w-[52px] sm:w-[64px] py-2 sm:py-2.5 rounded-sm bg-white/8 border border-white/15 backdrop-blur-sm shadow-md">
-                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-lg sm:text-2xl" suppressHydrationWarning>{unit.value}</span>
-                    <span className="text-white/70 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
+                  <div className="flex flex-col items-center justify-center w-[56px] sm:w-[68px] py-2.5 sm:py-3 rounded-sm bg-white/10 border border-white/20 backdrop-blur-md shadow-xl hover:border-brand-orange/60 hover:scale-105 transition-all duration-300 group cursor-default">
+                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-xl sm:text-2xl group-hover:scale-110 transition-transform" suppressHydrationWarning>{unit.value}</span>
+                    <span className="text-white/80 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
                   </div>
                   {i < arr.length - 1 && (
-                    <span className="text-white/40 text-base sm:text-lg font-black leading-none -mt-3 select-none">:</span>
+                    <span className="text-white/40 text-base sm:text-lg font-black leading-none -mt-3 select-none animate-pulse">:</span>
                   )}
                 </React.Fragment>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4">
             <a
               href={PAPER_SUBMISSION_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
+              className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 tracking-wide flex items-center justify-center cursor-pointer group"
             >
-              Submit Paper ↗
+              <span>Submit Paper</span>
             </a>
             <Link
               href="/sessions"
-              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 tracking-wide flex items-center justify-center cursor-pointer"
+              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0 tracking-wide flex items-center justify-center cursor-pointer"
             >
               Explore Sessions &amp; Tracks
             </Link>
             <Link
               href="/registration"
-              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 tracking-wide flex items-center justify-center btn-shimmer"
+              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0 tracking-wide flex items-center justify-center btn-shimmer"
             >
               Register Now
             </Link>
-          </div>
-
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* THREE COLUMN INFO SECTION */}

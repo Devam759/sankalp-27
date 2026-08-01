@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
-import { auth, db, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '../../lib/firebase';
+import { auth, db, getDb, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '../../lib/firebase';
 import AdminSidebar from './AdminSidebar';
 
 export default function AdminLayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -26,7 +26,7 @@ export default function AdminLayoutWrapper({ children }: { children: React.React
       }
 
       try {
-        const roleDoc = await getDoc(doc(db, 'roles', user.uid));
+        const roleDoc = await getDoc(doc(getDb(), 'roles', user.uid));
         if (roleDoc.exists() && roleDoc.data().role === 'admin') {
           setLoading(false);
         } else {

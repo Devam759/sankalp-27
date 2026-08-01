@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, query, setDoc, doc, deleteDoc, updateDoc, Timestamp } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db, getDb } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
@@ -24,7 +24,7 @@ export default function EventManagement() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const unsub = onSnapshot(query(collection(db, 'events')), (snap) => {
+    const unsub = onSnapshot(query(collection(getDb(), 'events')), (snap) => {
       let evts: any[] = snap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
       evts.sort((a, b) => {
         const dateA = a.date instanceof Timestamp ? a.date.toMillis() : new Date(a.date).getTime();
@@ -62,7 +62,7 @@ export default function EventManagement() {
     setIsSubmitting(true);
     
     try {
-      const docRef = selectedEvent ? doc(db, 'events', selectedEvent.id) : doc(collection(db, 'events'));
+      const docRef = selectedEvent ? doc(getDb(), 'events', selectedEvent.id) : doc(collection(getDb(), 'events'));
       const payload = {
         ...formData,
         date: Timestamp.fromDate(new Date(formData.date))
@@ -80,14 +80,14 @@ export default function EventManagement() {
   };
 
   const handleToggleStatus = async (evt: any) => {
-    await updateDoc(doc(db, 'events', evt.id), { isActive: !evt.isActive });
+    await updateDoc(doc(getDb(), 'events', evt.id), { isActive: !evt.isActive });
     await logAdminAction('TOGGLE_EVENT_STATUS', `events/${evt.id}`, `Changed active status to ${!evt.isActive}`);
   };
 
   const handleDelete = async () => {
     if (!selectedEvent) return;
     try {
-      await deleteDoc(doc(db, 'events', selectedEvent.id));
+      await deleteDoc(doc(getDb(), 'events', selectedEvent.id));
       await logAdminAction('DELETE_EVENT', `events/${selectedEvent.id}`, `Deleted event: ${selectedEvent.title}`);
       setIsDeleteOpen(false);
       setSelectedEvent(null);

@@ -4,7 +4,7 @@ import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { getStudentBatchDetails, sendCheckInEmail } from '@/lib/batchHelper';
 import { verifyAuthRole } from '@/lib/serverAuth';
-import { sanitizeObject } from '@/lib/security';
+import { sanitizeObject, handleApiError } from '@/lib/security';
 
 export async function POST(req: Request) {
   try {
@@ -107,6 +107,6 @@ export async function POST(req: Request) {
 
   } catch (error: any) {
     console.error('Check-in Approve API Error:', error);
-    return NextResponse.json({ error: error.message || 'Failed to process gate check-in' }, { status: 500 });
+    return handleApiError(error, 'Failed to process gate check-in.');
   }
 }

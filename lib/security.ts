@@ -166,4 +166,32 @@ export function maskEmail(email: string): string {
   return `${name[0]}***${name[name.length - 1]}@${domain}`;
 }
 
+/**
+ * Standardized API Error Handler.
+ * Ensures proper HTTP status codes for auth/role failures (401/403)
+ * and masks raw internal server error details in production to prevent information disclosure.
+ */
+export function handleApiError(error: any, defaultMessage: string = 'An unexpected server error occurred.') {
+  const { NextResponse } = require('next/server');
+  const msg = error?.message || '';
+
+  if (
+    msg.includes('Missing or invalid Authorization header') ||
+    msg.includes('Invalid or expired authentication token')
+  ) {
+    return NextResponse.json({ error: msg }, { status: 401 });
+  }
+
+  if (
+    msg.includes('Access denied') ||
+    msg.includes('no assigned role')
+  ) {
+    return NextResponse.json({ error: msg }, { status: 403 });
+  }
+
+  const clientError = process.env.NODE_ENV === 'development' ? (msg || defaultMessage) : defaultMessage;
+  return NextResponse.json({ error: clientError }, { status: 500 });
+}
+
+
 

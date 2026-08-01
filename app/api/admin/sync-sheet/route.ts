@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { verifyAuthRole } from '@/lib/serverAuth';
+import { handleApiError } from '@/lib/security';
 
 const escapeForSheets = (val: string) => {
   if (typeof val === 'string' && val.startsWith('+')) return `'${val}`;
@@ -158,6 +159,6 @@ export async function POST(req: Request) {
     });
   } catch (error: any) {
     console.error('Sync sheet error:', error);
-    return NextResponse.json({ error: error.message || 'Sync failed' }, { status: 500 });
+    return handleApiError(error, 'Failed to sync registrations to Google Sheets.');
   }
 }

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, query, setDoc, doc, deleteDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
-import { db, auth } from '../../../lib/firebase';
+import { db, auth, getDb } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
@@ -40,7 +40,7 @@ export default function Announcements() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const unsub = onSnapshot(query(collection(db, 'announcements')), (snap) => {
+    const unsub = onSnapshot(query(collection(getDb(), 'announcements')), (snap) => {
       let anns: any[] = snap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
       anns.sort((a, b) => {
         const timeA = a.postedAt?.toMillis() || 0;
@@ -59,12 +59,12 @@ export default function Announcements() {
     setIsSubmitting(true);
     
     try {
-      const docRef = doc(collection(db, 'announcements'));
+      const docRef = doc(collection(getDb(), 'announcements'));
       await setDoc(docRef, {
         title: formData.title,
         body: formData.body,
         postedAt: serverTimestamp(),
-        postedBy: auth.currentUser?.uid,
+        postedBy: auth!.currentUser?.uid,
         isPinned: false,
         isVisible: true
       });
@@ -80,14 +80,14 @@ export default function Announcements() {
   };
 
   const handleToggle = async (id: string, field: 'isPinned' | 'isVisible', currentValue: boolean) => {
-    await updateDoc(doc(db, 'announcements', id), { [field]: !currentValue });
+    await updateDoc(doc(getDb(), 'announcements', id), { [field]: !currentValue });
     await logAdminAction(`TOGGLE_ANNOUNCEMENT_${field.toUpperCase()}`, `announcements/${id}`, `Changed to ${!currentValue}`);
   };
 
   const handleDelete = async () => {
     if (!selectedAnnouncement) return;
     try {
-      await deleteDoc(doc(db, 'announcements', selectedAnnouncement.id));
+      await deleteDoc(doc(getDb(), 'announcements', selectedAnnouncement.id));
       await logAdminAction('DELETE_ANNOUNCEMENT', `announcements/${selectedAnnouncement.id}`, `Deleted announcement: ${selectedAnnouncement.title}`);
       setIsDeleteOpen(false);
       setSelectedAnnouncement(null);

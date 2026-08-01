@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
-import { isRateLimited, sanitizeObject } from '@/lib/security';
+import { isRateLimited, sanitizeObject, handleApiError } from '@/lib/security';
 
 export async function POST(req: Request) {
   try {
@@ -52,9 +52,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, message: 'Message sent successfully!' });
   } catch (error: any) {
     console.error('Contact API Error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to send message.' },
-      { status: 500 }
-    );
+    return handleApiError(error, 'Failed to send message.');
   }
 }

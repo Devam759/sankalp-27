@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, query, setDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db, getDb } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
@@ -27,7 +27,7 @@ export default function ScannerAccounts() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const unsub = onSnapshot(query(collection(db, 'scannerAccounts')), (snap) => {
+    const unsub = onSnapshot(query(collection(getDb(), 'scannerAccounts')), (snap) => {
       setScanners(snap.docs.map(d => ({ id: d.id, ...d.data() })));
       setLoading(false);
     });
@@ -72,7 +72,7 @@ export default function ScannerAccounts() {
       
       const newScannerId = generateSecureScannerId();
       
-      await setDoc(doc(db, 'scannerAccounts', uid), {
+      await setDoc(doc(getDb(), 'scannerAccounts', uid), {
         scannerId: newScannerId,
         volunteerName,
         email: generatedEmail,
@@ -81,7 +81,7 @@ export default function ScannerAccounts() {
         status: 'Active'
       });
       
-      await setDoc(doc(db, 'roles', uid), {
+      await setDoc(doc(getDb(), 'roles', uid), {
         role: 'scanner'
       });
 
@@ -103,15 +103,15 @@ export default function ScannerAccounts() {
 
   const handleToggleStatus = async (scanner: any) => {
     const newStatus = scanner.status === 'Active' ? 'Inactive' : 'Active';
-    await updateDoc(doc(db, 'scannerAccounts', scanner.id), { status: newStatus });
+    await updateDoc(doc(getDb(), 'scannerAccounts', scanner.id), { status: newStatus });
     await logAdminAction('TOGGLE_SCANNER_STATUS', `scannerAccounts/${scanner.id}`, `Changed status to ${newStatus}`);
   };
 
   const handleDelete = async () => {
     if (!selectedScanner) return;
     try {
-      await deleteDoc(doc(db, 'scannerAccounts', selectedScanner.id));
-      await deleteDoc(doc(db, 'roles', selectedScanner.id));
+      await deleteDoc(doc(getDb(), 'scannerAccounts', selectedScanner.id));
+      await deleteDoc(doc(getDb(), 'roles', selectedScanner.id));
       await logAdminAction('DELETE_SCANNER', `scannerAccounts/${selectedScanner.id}`, `Deleted scanner account`);
       setIsDeleteOpen(false);
       setSelectedScanner(null);

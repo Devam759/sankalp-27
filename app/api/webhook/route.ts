@@ -89,7 +89,7 @@ export async function POST(req: Request) {
           const pendingSnap = await pendingRef.get();
           
           if (pendingSnap.exists) {
-            const pendingData = pendingSnap.data();
+            const pendingData = pendingSnap.data()!;
             const { finalizeRegistration } = await import('@/lib/registrationHelper');
             
             // Finalize registration and mark pending as completed

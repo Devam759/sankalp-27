@@ -3,7 +3,7 @@ import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { generatePDF, sendEmail } from '@/lib/registrationHelper';
 import { verifyAuthRole } from '@/lib/serverAuth';
-import { sanitizeObject } from '@/lib/security';
+import { sanitizeObject, handleApiError } from '@/lib/security';
 
 export async function POST(req: Request) {
   try {
@@ -105,6 +105,6 @@ export async function POST(req: Request) {
 
   } catch (error: any) {
     console.error("Resend emails endpoint error:", error);
-    return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 });
+    return handleApiError(error, 'Failed to resend confirmation emails.');
   }
 }

@@ -218,7 +218,7 @@ export default function Footer() {
             </li>
             <li>
               <a href={PAPER_SUBMISSION_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors text-brand-orange font-semibold">
-                Submit Paper ↗
+                Submit Paper
               </a>
             </li>
             <li>
@@ -402,12 +402,12 @@ export default function Footer() {
             className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex"
           >
             <Image
-              src="/logos/white_jklu_logo.png"
+              src="/logos/white_jklu_logo.webp"
               alt="JK Lakshmipat University Logo"
-              width={160}
-              height={50}
-              className="h-10 w-auto object-contain"
-              style={{ width: 'auto', height: '40px' }}
+              width={240}
+              height={72}
+              className="h-14 md:h-[58px] w-auto object-contain"
+              style={{ width: 'auto', height: '58px' }}
             />
           </a>
         </div>

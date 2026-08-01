@@ -110,4 +110,15 @@ if (app) {
   }
 }
 
+export function getDb(): import('firebase/firestore').Firestore {
+  if (!db) throw new Error(FIREBASE_SETUP_MESSAGE);
+  return db;
+}
+
+export function getFirebaseAuth(): import('firebase/auth').Auth {
+  if (!auth) throw new Error(FIREBASE_SETUP_MESSAGE);
+  return auth;
+}
+
 export default app;
+

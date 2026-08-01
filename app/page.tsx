@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import HomeClient from './HomeClient';
+import HomeClient from '@/components/home/HomeClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {

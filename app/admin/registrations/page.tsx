@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { collection, onSnapshot, query, orderBy, doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
-import { db, auth } from '../../../lib/firebase';
+import { db, auth, getDb } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
@@ -162,7 +162,7 @@ export default function Registrations() {
   const itemsPerPage = 50;
 
   useEffect(() => {
-    const unsub = onSnapshot(query(collection(db, 'registrations'), orderBy('registeredAt', 'desc')), (snap) => {
+    const unsub = onSnapshot(query(collection(getDb(), 'registrations'), orderBy('registeredAt', 'desc')), (snap) => {
       const allRegs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       // Filter out empty test entries that somehow got created without a name
       const validRegs = allRegs.filter((reg: any) => reg.name && reg.name.trim() !== '');
@@ -351,7 +351,7 @@ export default function Registrations() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const docRef = doc(db, 'settings', 'settlementReconciler');
+        const docRef = doc(getDb(), 'settings', 'settlementReconciler');
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           setServiceEnabled(docSnap.data().enabled !== false);
@@ -370,7 +370,7 @@ export default function Registrations() {
     const newValue = !serviceEnabled;
     setServiceEnabled(newValue);
     try {
-      const docRef = doc(db, 'settings', 'settlementReconciler');
+      const docRef = doc(getDb(), 'settings', 'settlementReconciler');
       await setDoc(docRef, {
         enabled: newValue,
         updatedAt: serverTimestamp(),
@@ -817,7 +817,7 @@ export default function Registrations() {
                       value={selectedReg.hasEntered ? 'approved' : (selectedReg.status === 'declined' ? 'declined' : 'not entered')}
                       onChange={async (e) => {
                         const newStatus = e.target.value;
-                        const regRef = doc(db, 'registrations', selectedReg.id);
+                        const regRef = doc(getDb(), 'registrations', selectedReg.id);
                         
                         try {
                           if (newStatus === 'approved') {
@@ -883,7 +883,7 @@ export default function Registrations() {
                   onClick={async () => {
                     if (confirm(`Resend confirmation email to ${selectedReg.name} (${selectedReg.email})?`)) {
                       try {
-                        const token = await auth.currentUser?.getIdToken();
+                        const token = await auth!.currentUser?.getIdToken();
                         const res = await fetch('/api/admin/resend-emails', {
                           method: 'POST',
                           headers: { 
@@ -913,7 +913,7 @@ export default function Registrations() {
                   type="button"
                   onClick={async () => {
                     try {
-                      const token = await auth.currentUser?.getIdToken();
+                      const token = await auth!.currentUser?.getIdToken();
                       const res = await fetch(`/api/receipt?id=${selectedReg.id}`, {
                         headers: {
                           'Authorization': `Bearer ${token}`

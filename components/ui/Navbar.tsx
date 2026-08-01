@@ -67,12 +67,12 @@ export default function Navbar() {
               aria-label="JK Lakshmipat University Website"
             >
               <Image
-                src="/logos/white_jklu_logo.png"
+                src="/logos/white_jklu_logo.webp"
                 alt="JKLU Logo"
-                width={160}
-                height={48}
+                width={220}
+                height={66}
                 priority
-                className="h-8 w-auto object-contain"
+                className="h-10 sm:h-11 w-auto object-contain"
               />
             </a>
 
@@ -119,7 +119,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 className="h-9 px-4 bg-brand-orange text-white rounded-sm font-bold text-xs uppercase tracking-wider flex items-center justify-center hover:bg-orange-500 transition-colors shadow-sm cursor-pointer relative z-30 pointer-events-auto whitespace-nowrap"
               >
-                Submit Paper ↗
+                Submit Paper
               </a>
 
               {/* Desktop Right JKLU Logo */}
@@ -131,12 +131,12 @@ export default function Navbar() {
                 aria-label="JK Lakshmipat University Website"
               >
                 <Image
-                  src="/logos/white_jklu_logo.png"
+                  src="/logos/white_jklu_logo.webp"
                   alt="JKLU Logo"
-                  width={180}
-                  height={54}
+                  width={240}
+                  height={72}
                   priority
-                  className="h-10 md:h-[44px] w-auto object-contain"
+                  className="h-12 md:h-[52px] lg:h-[56px] w-auto object-contain"
                 />
               </a>
             </div>
@@ -231,7 +231,7 @@ export default function Navbar() {
                   className="bg-brand-orange text-white px-6 py-3 rounded-sm font-bold text-center hover:bg-orange-500 transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Submit Paper ↗
+                  Submit Paper
                 </a>
               </div>
             </nav>

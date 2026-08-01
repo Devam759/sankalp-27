@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { generatePDF } from '@/lib/registrationHelper';
-import { isRateLimited } from '@/lib/security';
+import { isRateLimited, handleApiError } from '@/lib/security';
 import { verifyAuthRole } from '@/lib/serverAuth';
 
 export async function GET(req: Request) {
@@ -56,6 +56,6 @@ export async function GET(req: Request) {
     });
   } catch (error: any) {
     console.error('Receipt generation API error:', error);
-    return NextResponse.json({ error: error.message || 'Failed to generate PDF' }, { status: 500 });
+    return handleApiError(error, 'Failed to generate PDF receipt.');
   }
 }

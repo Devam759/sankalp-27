@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { collection, onSnapshot, query } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db, getDb } from '../../../lib/firebase';
 import { SkeletonCard } from '../../../components/admin/SkeletonLoader';
 
 import Link from 'next/link';
@@ -30,16 +30,16 @@ export default function GlobalSearch() {
   useEffect(() => {
     let unsubs: any[] = [];
     
-    unsubs.push(onSnapshot(query(collection(db, 'registrations')), snap => {
+    unsubs.push(onSnapshot(query(collection(getDb(), 'registrations')), snap => {
       setRegistrations(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     }));
-    unsubs.push(onSnapshot(query(collection(db, 'events')), snap => {
+    unsubs.push(onSnapshot(query(collection(getDb(), 'events')), snap => {
       setEvents(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     }));
-    unsubs.push(onSnapshot(query(collection(db, 'announcements')), snap => {
+    unsubs.push(onSnapshot(query(collection(getDb(), 'announcements')), snap => {
       setAnnouncements(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     }));
-    unsubs.push(onSnapshot(query(collection(db, 'auditLogs')), snap => {
+    unsubs.push(onSnapshot(query(collection(getDb(), 'auditLogs')), snap => {
       setAuditLogs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
       // Consider last fetch complete
       setLoading(false);

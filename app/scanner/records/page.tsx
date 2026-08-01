@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db, getDb } from '../../../lib/firebase';
 
 import { useScannerSession } from '../../../components/scanner/ScannerSessionProvider';
 
@@ -16,7 +16,7 @@ export default function ScanRecordsView() {
     if (!db || !scannerAccount?.scannerId) return;
 
     const q = query(
-      collection(db, 'scanLogs'),
+      collection(getDb(), 'scanLogs'),
       where('scannerId', '==', scannerAccount.scannerId)
     );
 

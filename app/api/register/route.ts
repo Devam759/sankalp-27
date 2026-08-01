@@ -7,7 +7,7 @@ import { finalizeRegistration } from '@/lib/registrationHelper';
 import { validateRegistrationNumber } from '@/lib/utils';
 import { getCategoryById } from '@/constants/fees';
 
-import { isRateLimited, sanitizeObject, isProd, cashfreeAppId, cashfreeSecretKey, formatPhoneNumber } from '@/lib/security';
+import { isRateLimited, sanitizeObject, isProd, cashfreeAppId, cashfreeSecretKey, formatPhoneNumber, handleApiError } from '@/lib/security';
 
 // Initialize Cashfree
 const cashfree = new Cashfree(
@@ -208,7 +208,7 @@ export async function POST(req: Request) {
         });
       } catch (err: any) {
         console.error("CREATE_ORDER error detail:", err.response?.data || err);
-        return NextResponse.json({ error: `CREATE_ORDER failed: ${err.response?.data ? JSON.stringify(err.response.data) : err.message || err}` }, { status: 500 });
+        return handleApiError(err, 'Failed to create payment order. Please try again.');
       }
     }
 
@@ -232,10 +232,9 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: 'Pending registration details not found' }, { status: 404 });
       }
 
-      const pendingData = pendingSnap.data();
+      const pendingData = pendingSnap.data()!;
       const dbFormData = pendingData.formData;
 
-      // If we are in development and don't have keys, or if it's a 100% discount, allow bypass
       if (!cashfreeAppId || pendingData.amount === 0) {
         console.warn("Cashfree App ID missing or amount is 0, bypassing verification.");
         // For free tickets, there is no webhook, so the frontend MUST run the background tasks.
@@ -255,13 +254,13 @@ export async function POST(req: Request) {
       console.log("Payment verified successfully:", successPayment.cf_payment_id);
       // Run ALL background tasks (sheet + email). The backgroundTaskLock inside finalizeRegistration
       // guarantees they will only execute once even if the Cashfree webhook also fires.
-      const regId = await finalizeRegistration(dbFormData, successPayment.cf_payment_id.toString(), sanitizedOrderId, false);
+      const regId = await finalizeRegistration(dbFormData, successPayment.cf_payment_id!.toString(), sanitizedOrderId, false);
       return NextResponse.json({ success: true, id: regId, email: dbFormData.email });
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
   } catch (error: any) {
     console.error('Registration API Error:', error);
-    return NextResponse.json({ error: error.message || 'Failed to process registration' }, { status: 500 });
+    return handleApiError(error, 'Failed to process registration.');
   }
 }

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
+import { db, getDb } from '../../lib/firebase';
 import { SkeletonCard } from '../../components/admin/SkeletonLoader';
 
 // ============================================================================
@@ -19,7 +19,7 @@ export default function AdminDashboard() {
   });
 
   useEffect(() => {
-    const unsubRegs = onSnapshot(collection(db, 'registrations'), (snap) => {
+    const unsubRegs = onSnapshot(collection(getDb(), 'registrations'), (snap) => {
       const allRegs = snap.docs.map(d => d.data());
       const validRegs = allRegs.filter((reg: any) => reg.name && reg.name.trim() !== '');
       setStats(s => ({ ...s, totalRegistrations: validRegs.length, loading: false }));
@@ -31,7 +31,7 @@ export default function AdminDashboard() {
     today.setHours(0, 0, 0, 0);
 
     // Fetch new registrations created today
-    const unsubTodayRegs = onSnapshot(query(collection(db, 'registrations'), where('registeredAt', '>=', today)), (snap) => {
+    const unsubTodayRegs = onSnapshot(query(collection(getDb(), 'registrations'), where('registeredAt', '>=', today)), (snap) => {
       const allRegs = snap.docs.map(d => d.data());
       const validRegs = allRegs.filter((reg: any) => reg.name && reg.name.trim() !== '');
       setStats(s => ({ ...s, todayRegistrations: validRegs.length }));
@@ -40,14 +40,14 @@ export default function AdminDashboard() {
     });
 
     // Fetch entries today
-    const unsubScans = onSnapshot(query(collection(db, 'scanLogs'), where('timestamp', '>=', today), where('result', '==', 'accepted')), (snap) => {
+    const unsubScans = onSnapshot(query(collection(getDb(), 'scanLogs'), where('timestamp', '>=', today), where('result', '==', 'accepted')), (snap) => {
       setStats(s => ({ ...s, totalEntriesToday: snap.size }));
     }, (err) => {
       console.warn("Overview scans snapshot listener error:", err);
     });
 
     // Fetch total entries of all time
-    const unsubTotalEntries = onSnapshot(query(collection(db, 'registrations'), where('hasEntered', '==', true)), (snap) => {
+    const unsubTotalEntries = onSnapshot(query(collection(getDb(), 'registrations'), where('hasEntered', '==', true)), (snap) => {
       setStats(s => ({ ...s, totalEntries: snap.size }));
     }, (err) => {
       console.warn("Overview totalEntries snapshot listener error:", err);

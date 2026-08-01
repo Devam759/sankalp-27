@@ -86,20 +86,30 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-import { Merriweather, Source_Sans_3 } from 'next/font/google'
+import { Plus_Jakarta_Sans, Outfit, Tiro_Devanagari_Hindi } from 'next/font/google'
 
-const merriweather = Merriweather({ 
-  weight: ['300', '400', '700', '900'],
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
   display: 'swap',
-  variable: '--font-playfair', // keep variable name same so tailwind config doesn't need to change
+  variable: '--font-plus-jakarta',
 })
 
-const sourceSans = Source_Sans_3({
+const outfit = Outfit({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-outfit',
 })
+
+const tiroDevanagariHindi = Tiro_Devanagari_Hindi({
+  subsets: ['devanagari', 'latin'],
+  weight: ['400'],
+  display: 'swap',
+  variable: '--font-devanagari-var',
+})
+
 
 export default function RootLayout({
   children,
@@ -150,7 +160,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${merriweather.variable} ${sourceSans.variable} font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen`}>
+      <body className={`${plusJakartaSans.variable} ${outfit.variable} ${tiroDevanagariHindi.variable} font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen`}>
         {children}
         <ScrollToTop />
         <Analytics />

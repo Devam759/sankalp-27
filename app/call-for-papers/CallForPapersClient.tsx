@@ -76,7 +76,7 @@ export default function CallForPapersClient() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 font-bold hover:bg-orange-600 transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer rounded-sm"
               >
-                Submit Paper ↗
+                Submit Paper
               </a>
               <Link 
                 href="/sessions"

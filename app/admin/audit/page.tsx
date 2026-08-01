@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { collection, onSnapshot, query, orderBy, limit } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db, getDb } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 
 // ============================================================================
@@ -61,7 +61,7 @@ export default function AuditLogs() {
 
   useEffect(() => {
     // Fetch last 1000 logs for client side filtering
-    const unsub = onSnapshot(query(collection(db, 'auditLogs'), orderBy('timestamp', 'desc'), limit(1000)), (snap) => {
+    const unsub = onSnapshot(query(collection(getDb(), 'auditLogs'), orderBy('timestamp', 'desc'), limit(1000)), (snap) => {
       setLogs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
       setLoading(false);
     });

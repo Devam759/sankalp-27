@@ -1,8 +1,8 @@
 {
   "name": "sankalp-27",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Sankalp 2027 — International Conference Portal for JK Lakshmipat University, Jaipur. Full-stack Next.js platform covering registration, payments, admin dashboard, and on-site check-in.",
+  "author": "Institute of Engineering & Technology, JKLU",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,8 +10,7 @@
     "lint": "next lint",
     "test": "npx tsx scripts/test-security.ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["conference", "nextjs", "firebase", "cashfree", "jklu", "sankalp"],
   "license": "ISC",
   "type": "module",
   "dependencies": {

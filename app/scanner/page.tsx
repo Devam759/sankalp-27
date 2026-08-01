@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { collection, addDoc, updateDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
-import { db, auth } from '../../lib/firebase';
+import { db, auth, getDb } from '../../lib/firebase';
 import { Html5Qrcode } from 'html5-qrcode';
 
 import { useScannerSession } from '../../components/scanner/ScannerSessionProvider';
@@ -234,7 +234,7 @@ export default function ScannerView() {
 
     try {
       const regID = decodedText.trim();
-      const regDoc = await getDoc(doc(db, 'registrations', regID));
+      const regDoc = await getDoc(doc(getDb(), 'registrations', regID));
 
       if (!regDoc.exists()) {
         setStatus({ type: 'error', message: 'INVALID QR CODE' });
@@ -267,7 +267,7 @@ export default function ScannerView() {
         if (scannedData.hasEntered) {
           setStatus({ type: 'error', message: 'ALREADY ENTERED' });
         } else {
-          const token = await auth.currentUser?.getIdToken();
+          const token = await auth!.currentUser?.getIdToken();
           const res = await fetch('/api/check-in/approve', {
             method: 'POST',
             headers: { 
@@ -289,7 +289,7 @@ export default function ScannerView() {
           }
         }
       } else {
-        await addDoc(collection(db, 'scanLogs'), {
+        await addDoc(collection(getDb(), 'scanLogs'), {
           scannerId: scannerAccount.scannerId,
           volunteerName: scannerAccount.volunteerName,
           registrationID: scannedData.id,

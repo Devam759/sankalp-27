@@ -1,31 +1,22 @@
-# dependencies
+# ─── Dependencies ────────────────────────────────────────────────────────────
 /node_modules
 /.pnp
 /.pnp.js
 
-# testing
+# ─── Testing ──────────────────────────────────────────────────────────────────
 /coverage
 
-# next.js
+# ─── Next.js Build Output ────────────────────────────────────────────────────
 /.next/
 /out/
 /build
-
-# production
 /dist
 
-# misc
-.DS_Store
-*.pem
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-.eslintcache
-.stylelintcache
+# ─── TypeScript ───────────────────────────────────────────────────────────────
+*.tsbuildinfo
+next-env.d.ts
 
-# env files (NEVER COMMIT)
+# ─── Environment Files (NEVER COMMIT) ────────────────────────────────────────
 .env
 .env.*
 !.env.example
@@ -37,7 +28,7 @@ yarn-error.log*
 .env*.local
 *.env
 
-# Secrets and Keys
+# ─── Secrets & Service Account Keys ─────────────────────────────────────────
 *.key
 *.cert
 *.pfx
@@ -49,14 +40,7 @@ credentials.json
 service-account.json
 .cashfree/
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# Firebase
+# ─── Firebase ────────────────────────────────────────────────────────────────
 .firebase/
 *-debug.log
 firebase-debug.log
@@ -65,62 +49,17 @@ pubsub-debug.log
 ui-debug.log
 .runtimeconfig.json
 
-# IDEs
+# ─── Vercel ──────────────────────────────────────────────────────────────────
+.vercel
+
+# ─── IDEs & Editors ──────────────────────────────────────────────────────────
 .vscode/*
 !.vscode/settings.json
 .idea/
 *.swp
 *.swo
 
-# Project specific
-public/old-site/
-public/Aarambh_2026_Tech.pdf
-credentials.txt
-users_test.json
-/scratch/
-/graphify-out/
-tsc-errors.txt
-
-# Antigravity / AI tools
-.gemini/
-.antigravity/
-implementation_plan.md
-task.md
-walkthrough.md
-
-# API Keys & Spreadsheets
-*.csv
-*.xlsx
-*.xls
-
-# PWA files
-**/public/sw.js
-**/public/workbox-*.js
-**/public/fallback-*.html
-**/public/sw.js.map
-
-# Large media files
-/public/teaser.mp4
-/public/file.txt
-
-# Raw photos and processing files
-raw_gallery*.html
-compress.cjs
-/scripts/
-remove-bg.cjs
-remove-bg.js
-page_history.txt
-photos_temp.json
-**/*.JPG
-
-# Generated Credentials File
-/public/credentials.txt
-/volunteer credentials.txt
-/admin, scanner, feedback credentials.txt
-/team login credentials.txt
-/public/Final Team Wise List.xlsx
-
-# System & Temporary Files
+# ─── OS & Temp Files ──────────────────────────────────────────────────────────
 .DS_Store
 .DS_Store?
 ._*
@@ -135,5 +74,56 @@ $RECYCLE.BIN/
 *.temp
 *~
 ~*
-/venv/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.eslintcache
+.stylelintcache
 
+# ─── Generated / Legacy Credential Files ─────────────────────────────────────
+/public/credentials.txt
+/volunteer credentials.txt
+/admin, scanner, feedback credentials.txt
+/team login credentials.txt
+/public/Final Team Wise List.xlsx
+
+# ─── Raw Media & Processing Scripts ──────────────────────────────────────────
+/scripts/
+raw_gallery*.html
+compress.cjs
+remove-bg.cjs
+remove-bg.js
+page_history.txt
+photos_temp.json
+photos_temp.json
+**/*.JPG
+/public/teaser.mp4
+/public/file.txt
+
+# ─── AI Tools ────────────────────────────────────────────────────────────────
+.gemini/
+.antigravity/
+implementation_plan.md
+task.md
+walkthrough.md
+
+# ─── API Keys & Spreadsheets ─────────────────────────────────────────────────
+*.csv
+*.xlsx
+*.xls
+users_test.json
+tsc-errors.txt
+
+# ─── PWA Generated Files ──────────────────────────────────────────────────────
+**/public/sw.js
+**/public/workbox-*.js
+**/public/fallback-*.html
+**/public/sw.js.map
+
+# ─── Scratch / Temp Workspace ────────────────────────────────────────────────
+/scratch/
+/graphify-out/
+/venv/
+/public/old-site/
+/public/Aarambh_2026_Tech.pdf

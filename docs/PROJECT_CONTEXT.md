@@ -61,10 +61,10 @@ This is the **full-stack conference management platform** covering:
 ```
 conference-portal/
 ├── app/                        # Next.js App Router pages + API routes
-│   ├── layout.tsx              # Root layout (fonts, metadata, analytics)
-│   ├── page.tsx                # Homepage (hero, countdown, features)
+│   ├── layout.tsx              # Root layout (fonts via next/font, metadata, analytics)
+│   ├── page.tsx                # Homepage server component (metadata + JSON-LD)
 │   ├── template.tsx            # Page transition wrapper
-│   ├── globals.css             # Global styles, Tailwind theme, custom utilities
+│   ├── globals.css             # Global styles, Tailwind v4 @theme, custom utilities
 │   ├── error.tsx               # Global error boundary
 │   ├── robots.ts               # SEO: robots.txt
 │   ├── sitemap.ts              # SEO: sitemap.xml
@@ -113,6 +113,7 @@ conference-portal/
 │       ├── receipt/route.ts        # PDF receipt download (admin-only)
 │       ├── contact/route.ts        # Contact form submission
 │       ├── log-error/route.ts      # Frontend error logging
+│       ├── indexnow/route.ts       # IndexNow URL submission trigger
 │       ├── check-in/approve/route.ts  # Gate check-in approval
 │       └── admin/
 │           ├── sync-sheet/route.ts     # Manual Google Sheets sync
@@ -128,7 +129,12 @@ conference-portal/
 │   │   ├── Section.tsx
 │   │   ├── ScrollToTop.tsx
 │   │   ├── LoadingScreen.tsx
+│   │   ├── Icons.tsx
+│   │   ├── CircuitChipLoader.tsx
+│   │   ├── GearboxLoader.tsx
 │   │   └── TrackAccordion.tsx
+│   ├── home/                   # Homepage-specific large client component
+│   │   └── HomeClient.tsx      # Homepage interactive client component (47KB)
 │   ├── admin/                  # Admin-specific components
 │   │   ├── AdminLayoutWrapper.tsx
 │   │   ├── AdminSidebar.tsx
@@ -137,8 +143,10 @@ conference-portal/
 │   ├── scanner/                # Scanner-specific components
 │   │   ├── ScannerSidebar.tsx
 │   │   └── ScannerSessionProvider.tsx
-│   └── sections/
-│       └── ConferencePillars.tsx
+│   ├── sections/               # Page section components
+│   │   └── ConferencePillars.tsx
+│   └── seo/
+│       └── JsonLd.tsx          # JSON-LD structured data helper
 │
 ├── lib/                        # Core business logic and utilities
 │   ├── firebase.ts             # Client-side Firebase init (App, Auth, Firestore, Storage, App Check, Analytics)
@@ -156,9 +164,15 @@ conference-portal/
 │   ├── conferenceData.ts       # All conference data (dates, tracks, speakers, committee, fees, advisory board)
 │   └── fees.ts                 # Registration categories with pricing
 │
-├── public/                     # Static assets (images, logos, fonts, docs)
-├── scripts/                    # Build/test scripts
-├── proxy.ts                    # Next.js middleware (HTTPS redirect, rate limiting, security headers)
+├── docs/                       # Project documentation (AI context, requirements, security notes)
+│   ├── PROJECT_CONTEXT.md      # This file — full architecture reference for AI agents
+│   ├── DEMO_DATA_SUMMARY.txt   # Checklist of placeholder/mock data to replace before launch
+│   ├── SITE_REQUIREMENTS.txt   # Production asset requirements checklist
+│   └── SECURITY.md             # Security guidelines and secrets management
+│
+├── scripts/                    # Operational one-off scripts (reconciliation, audit, SMTP tests)
+├── public/                     # Static assets (images, logos, fonts)
+├── proxy.ts                    # Next.js 16 edge proxy/middleware (HTTPS redirect, rate limiting, security headers)
 ├── firestore.rules             # Firestore security rules
 ├── firestore.indexes.json      # Firestore composite indexes
 ├── storage.rules               # Firebase Storage rules
@@ -479,13 +493,13 @@ emailError, registeredAt, assignedBatch, assignedBatchPdf
 
 | File | Purpose |
 |---|---|
-| `SITE_REQUIREMENTS.txt` | Complete inventory of production assets needed before launch |
-| `DEMO_DATA_SUMMARY.txt` | Lists all placeholder/mock data still in the codebase |
-| `SECURITY.md` | Security guidelines and secrets management |
+| `docs/SITE_REQUIREMENTS.txt` | Complete inventory of production assets needed before launch |
+| `docs/DEMO_DATA_SUMMARY.txt` | Lists all placeholder/mock data still in the codebase |
+| `docs/SECURITY.md` | Security guidelines and secrets management |
 | `README.md` | Setup and deployment instructions |
 | `public/llms.txt` | SEO content for AI crawlers |
 | `.env.example` | Environment variable template |
 
 ---
 
-*Last updated: 2026-07-24. This file should be regenerated whenever significant structural changes are made.*
+*Last updated: 2026-08-01. Reflects post-professionalization structure: HomeClient moved to components/home/, proxy.ts renamed to middleware.ts, docs/ directory added, service-account.json removed.*

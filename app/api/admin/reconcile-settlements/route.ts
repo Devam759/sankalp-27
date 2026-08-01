@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { verifyAuthRole } from '@/lib/serverAuth';
+import { handleApiError } from '@/lib/security';
 
 async function performReconciliation(isManual: boolean) {
   const isProd = (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').replace(/['"]/g, '').trim().toUpperCase() === 'PRODUCTION';
@@ -170,7 +171,7 @@ export async function GET(req: Request) {
     return NextResponse.json(result);
   } catch (error: any) {
     console.error('Automated reconcile settlements GET error:', error);
-    return NextResponse.json({ error: error.message || 'Reconciliation failed' }, { status: 500 });
+    return handleApiError(error, 'Automated settlement reconciliation failed.');
   }
 }
 
@@ -186,6 +187,6 @@ export async function POST(req: Request) {
     return NextResponse.json(result);
   } catch (error: any) {
     console.error('Manual reconcile settlements POST error:', error);
-    return NextResponse.json({ error: error.message || 'Reconciliation failed' }, { status: 500 });
+    return handleApiError(error, 'Manual settlement reconciliation failed.');
   }
 }

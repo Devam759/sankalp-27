@@ -330,7 +330,7 @@ export async function sendEmail(to: string, name: string, pdfBytes: Uint8Array) 
         <div class="content">
           <div class="success-badge">✓ Registration Confirmed</div>
           <h2 style="margin-top: 0;">Dear ${name},</h2>
-          <p>Congratulations! 🎉</p>
+          <p>Congratulations!</p>
           <p>Your registration for the <strong>International Conference 2026</strong> has been successfully completed.</p>
           <p>Please find your unique invoice and registration ticket containing a verification QR Code attached to this email. This QR code serves as your entry pass and will be checked at the registration desk upon arrival.</p>
           
@@ -414,11 +414,11 @@ export async function sendSystemErrorEmail(performedBy: string, targetEntity: st
     const mailOptions = {
       from: `"Sankalp System Monitor" <${process.env.SMTP_FROM || ''}>`,
       to: 'devamgupta@jklu.edu.in',
-      subject: `🚨 [Sankalp Error] SYSTEM_ERROR Alert`,
+      subject: `[Sankalp Error] SYSTEM_ERROR Alert`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #ef4444; color: white; padding: 20px; text-align: center;">
-            <h2 style="margin: 0; font-size: 20px; text-transform: uppercase; letter-spacing: 1px;">🚨 System Error Detected</h2>
+            <h2 style="margin: 0; font-size: 20px; text-transform: uppercase; letter-spacing: 1px;">System Error Detected</h2>
           </div>
           <div style="padding: 25px; background-color: #ffffff; color: #333333; line-height: 1.6;">
             <p>An automated system error has been logged in the Sankalp event registration platform.</p>

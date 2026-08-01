@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { collection, addDoc, updateDoc, serverTimestamp, doc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import { auth, db } from '../../../lib/firebase';
+import { auth, db, getDb, getFirebaseAuth } from '../../../lib/firebase';
 import { Html5Qrcode } from 'html5-qrcode';
 
 
@@ -30,14 +30,14 @@ export default function AdminScannerView() {
 
   // 1. Session Guard and Role Authorization Check
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(getFirebaseAuth(), async (user) => {
       if (!user) {
         router.push('/login');
         return;
       }
 
       try {
-        const roleDoc = await getDoc(doc(db, 'roles', user.uid));
+        const roleDoc = await getDoc(doc(getDb(), 'roles', user.uid));
         if (roleDoc.exists() && roleDoc.data().role === 'admin') {
           setAdminEmail(user.email || 'Admin');
           setAuthorized(true);
@@ -270,7 +270,7 @@ export default function AdminScannerView() {
 
     try {
       const regID = decodedText.trim();
-      const regDoc = await getDoc(doc(db, 'registrations', regID));
+      const regDoc = await getDoc(doc(getDb(), 'registrations', regID));
 
       if (!regDoc.exists()) {
         setStatus({ type: 'error', message: 'INVALID QR CODE' });
@@ -303,7 +303,7 @@ export default function AdminScannerView() {
         if (scannedData.hasEntered) {
           setStatus({ type: 'error', message: 'ALREADY ENTERED' });
         } else {
-          const token = await auth.currentUser?.getIdToken();
+          const token = await auth!.currentUser?.getIdToken();
           const res = await fetch('/api/check-in/approve', {
             method: 'POST',
             headers: { 
@@ -325,7 +325,7 @@ export default function AdminScannerView() {
           }
         }
       } else {
-        await addDoc(collection(db, 'scanLogs'), {
+        await addDoc(collection(getDb(), 'scanLogs'), {
           scannerId: 'ADMIN',
           volunteerName: adminEmail,
           registrationID: scannedData.id,

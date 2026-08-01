@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, doc, setDoc, deleteDoc, serverTimestamp, updateDoc } from 'firebase/firestore';
-import { db } from '../../../lib/firebase';
+import { db, getDb } from '../../../lib/firebase';
 import { SkeletonTable } from '../../../components/admin/SkeletonLoader';
 import { Modal } from '../../../components/admin/Modal';
 import { logAdminAction } from '../../../lib/audit';
@@ -41,7 +41,7 @@ export default function CouponsPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const unsub = onSnapshot(collection(db, 'coupons'), (snap) => {
+    const unsub = onSnapshot(collection(getDb(), 'coupons'), (snap) => {
       const fetched: Coupon[] = snap.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
@@ -73,7 +73,7 @@ export default function CouponsPage() {
     
     setIsSubmitting(true);
     try {
-      await setDoc(doc(db, 'coupons', cleanCode), {
+      await setDoc(doc(getDb(), 'coupons', cleanCode), {
         code: cleanCode,
         amount: Number(newAmount),
         active: true,
@@ -97,7 +97,7 @@ export default function CouponsPage() {
     if (!confirm(`Are you sure you want to ${currentStatus ? 'disable' : 'enable'} this coupon?`)) return;
     
     try {
-      await updateDoc(doc(db, 'coupons', id), {
+      await updateDoc(doc(getDb(), 'coupons', id), {
         active: !currentStatus
       });
       await logAdminAction('UPDATE_COUPON', 'coupons', `${!currentStatus ? 'Enabled' : 'Disabled'} coupon: ${id}`);
@@ -111,7 +111,7 @@ export default function CouponsPage() {
     if (!confirm('Are you sure you want to permanently delete this coupon?')) return;
     
     try {
-      await deleteDoc(doc(db, 'coupons', id));
+      await deleteDoc(doc(getDb(), 'coupons', id));
       await logAdminAction('DELETE_COUPON', 'coupons', `Deleted coupon: ${id}`);
     } catch (error) {
       console.error("Error deleting coupon:", error);

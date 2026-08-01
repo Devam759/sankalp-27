@@ -1,8 +1,19 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
+
+    // Generated PDF receipts — Admin SDK only (bypasses rules).
+    // No client-side read/write permitted to protect registrant PII.
+    match /receipts/{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // All other paths: deny by default.
+    // All storage operations in this application go through the Firebase Admin SDK
+    // on the server, which bypasses these rules entirely. Client-side Storage is
+    // not used and must remain locked down.
     match /{allPaths=**} {
-      allow read, write: if true;
+      allow read, write: if false;
     }
   }
 }

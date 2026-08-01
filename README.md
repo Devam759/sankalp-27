@@ -50,16 +50,26 @@ conference-portal/
 │   └── sitemap.ts              # XML sitemap generator
 ├── components/                 # UI components and layout elements
 │   ├── ui/                     # Navigation, Footer, Section, Accordions
-│   └── admin/                  # Administrative tables, charts, and controls
+│   ├── home/                   # Homepage client component (HomeClient.tsx)
+│   ├── admin/                  # Administrative tables, charts, and controls
+│   ├── scanner/                # QR scanner session and sidebar components
+│   ├── sections/               # Page section components
+│   └── seo/                    # JSON-LD structured data helpers
 ├── constants/                  # Application constants and configuration data
 │   ├── conferenceData.ts       # Dates, tracks, speakers, and external links
 │   └── fees.ts                 # Registration categories and pricing structures
 ├── lib/                        # Backend helpers and service initializers
 │   ├── firebaseAdmin.ts        # Firebase Admin SDK configuration
 │   ├── registrationHelper.ts   # Registration, PDF pass generation, and email dispatch
-│   └── sheetSync.ts            # Automated Google Sheets synchronization service
+│   └── batchHelper.ts          # Student batch assignment and check-in emails
+├── docs/                       # Project documentation
+│   ├── PROJECT_CONTEXT.md      # Full architecture reference for AI agents
+│   ├── DEMO_DATA_SUMMARY.txt   # Placeholder data checklist
+│   ├── SITE_REQUIREMENTS.txt   # Production asset requirements
+│   └── SECURITY.md             # Security guidelines and secrets management
+├── scripts/                    # Operational and maintenance scripts
 ├── public/                     # Static media assets, logos, and fonts
-└── scripts/                    # Maintenance and testing utilities
+└── proxy.ts                    # Next.js 16 edge proxy: rate limiting, HTTPS, security headers
 ```
 
 ---
