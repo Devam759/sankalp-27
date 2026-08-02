@@ -13,8 +13,10 @@ export const metadata: Metadata = {
     "Devam Gupta JKLU",
     "Devam Gupta Developer",
     "Devam Gupta SANKALP",
-    "Manant JKLU",
-    "Pratham JKLU",
+    "Manant Srivastava",
+    "Manant Srivastava JKLU",
+    "Pratham Lalwani",
+    "Pratham Lalwani JKLU",
     "SANKALP Web Team",
     "JKLU Web Developers",
     "IET JKLU Engineering Team"
@@ -62,18 +64,18 @@ export default function TechTeamPage() {
     {
       '@context': 'https://schema.org',
       '@type': 'Person',
-      name: 'Manant',
-      alternateName: ['Manant JKLU'],
-      jobTitle: 'Technical Developer',
+      name: 'Manant Srivastava',
+      alternateName: ['Manant Srivastava JKLU', 'Manant JKLU'],
+      jobTitle: 'Web Engineer',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       url: 'https://sankalp.jklu.edu.in/tech-team'
     },
     {
       '@context': 'https://schema.org',
       '@type': 'Person',
-      name: 'Pratham',
-      alternateName: ['Pratham JKLU'],
-      jobTitle: 'Technical Developer',
+      name: 'Pratham Lalwani',
+      alternateName: ['Pratham Lalwani JKLU', 'Pratham JKLU'],
+      jobTitle: 'Web Engineer',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       url: 'https://sankalp.jklu.edu.in/tech-team'
     }
