@@ -12,7 +12,7 @@ export default function AboutClient() {
     { title: "Data Science", desc: "Generative AI & Knowledge Engineering." },
     { title: "HPC & Emerging Tech", desc: "High Performance Computing, Networks & Emerging Tech." },
     { title: "Smart Healthcare", desc: "Bioinformatics & Human-Centric AI." },
-    { title: "AI in Education", desc: "K–12 Learning & Future Workforce Development." },
+    { title: "AI in Education", desc: "K-12 Learning & Future Workforce Development." },
     { title: "Smart Society", desc: "Governance & Sustainable Innovation." },
     { title: "VLSI & Embedded", desc: "Semiconductor Technologies & Intelligent Engineering." }
   ];
@@ -58,7 +58,7 @@ export default function AboutClient() {
                   className="leading-relaxed font-medium mb-12 relative text-justify text-xl"
                 >
                   <span className="float-left text-[120px] font-serif text-brand-blue leading-[0.7] mr-6 mt-2">S</span>
-                  ANKALP 2027 – International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction is a premier international multidisciplinary conference organized by the Institute of Engineering & Technology (IET), JK Lakshmipat University, Jaipur.
+                  ANKALP 2027 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction is a premier international multidisciplinary conference organized by the Institute of Engineering & Technology (IET), JK Lakshmipat University, Jaipur.
                 </motion.p>
                 
                 <div className="w-full h-px bg-gradient-to-r from-brand-orange/50 to-transparent mb-12"></div>

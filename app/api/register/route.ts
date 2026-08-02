@@ -23,7 +23,7 @@ const pincodeCache = new Map<string, any>();
 export async function POST(req: Request) {
   try {
     const rawIp = req.headers.get('x-forwarded-for') || '127.0.0.1';
-    const ip = rawIp.split(',')[0].trim(); // Take only the first (leftmost) IP — prevent x-forwarded-for spoofing
+    const ip = rawIp.split(',')[0].trim(); // Take only the first (leftmost) IP - prevent x-forwarded-for spoofing
     
     // Use unified security rate limiting: max 5 requests per minute
     if (isRateLimited(ip, 5, 60 * 1000)) {

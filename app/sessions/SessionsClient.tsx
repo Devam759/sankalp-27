@@ -98,7 +98,7 @@ export default function SessionsClient() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
             <div>
               <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                Research Tracks (01 – 07)
+                Research Tracks (01 - 07)
               </h2>
               <p className="text-slate-600 text-xs sm:text-sm mt-1">
                 Click on any track below to expand topic details and track chairs.

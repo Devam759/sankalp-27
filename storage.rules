@@ -2,7 +2,7 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
 
-    // Generated PDF receipts — Admin SDK only (bypasses rules).
+    // Generated PDF receipts - Admin SDK only (bypasses rules).
     // No client-side read/write permitted to protect registrant PII.
     match /receipts/{allPaths=**} {
       allow read, write: if false;

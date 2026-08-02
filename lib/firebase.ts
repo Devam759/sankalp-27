@@ -36,7 +36,7 @@ const app: FirebaseApp | null = isFirebaseConfigured()
     : getApps()[0]
   : null;
 
-// Only initialize Auth/Firestore when config is valid — avoids auth/invalid-api-key on load
+// Only initialize Auth/Firestore when config is valid - avoids auth/invalid-api-key on load
 export const auth: Auth | null = app ? getAuth(app) : null;
 export const db: Firestore | null = app
   ? initializeFirestore(app, {
@@ -85,7 +85,7 @@ if (app) {
   } else {
     // Server-side initialization (Node.js environment)
     // Only use the debug token in non-production environments.
-    // In production, the Admin SDK bypasses App Check natively — debug tokens must not be used.
+    // In production, the Admin SDK bypasses App Check natively - debug tokens must not be used.
     const isProductionEnv = process.env.NODE_ENV === 'production' ||
                             (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').trim().toUpperCase() === 'PRODUCTION';
     if (debugToken && !isProductionEnv) {

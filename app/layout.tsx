@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "SANKALP 2027 | International Conference | JKLU Jaipur",
     template: "%s | SANKALP 2027"
   },
-  description: "Join SANKALP 2027 at JKLU Jaipur—the premier International Conference on Sustainable AI, Data Science & Next-Gen Tech. Submit your research papers today!",
+  description: "Join SANKALP 2027 at JKLU Jaipur - the premier International Conference on Sustainable AI, Data Science & Next-Gen Tech. Submit your research papers today!",
   manifest: '/manifest.json',
   keywords: [
     "sankalp",

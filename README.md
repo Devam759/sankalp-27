@@ -1,6 +1,6 @@
-# SANKALP '27 — International Conference Web Portal
+# SANKALP '27 - International Conference Web Portal
 
-Official web application for **SANKALP '27** — *International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction*, hosted by the Institute of Engineering & Technology (IET), JK Lakshmipat University (JKLU), Jaipur, India.
+Official web application for **SANKALP '27** - *International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction*, hosted by the Institute of Engineering & Technology (IET), JK Lakshmipat University (JKLU), Jaipur, India.
 
 - **Production Domain**: [sankalp.jklu.edu.in](https://sankalp.jklu.edu.in)
 - **Institution**: JK Lakshmipat University, Jaipur, Rajasthan, India

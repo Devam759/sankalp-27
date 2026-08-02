@@ -369,7 +369,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-slate-400 border-t border-white/10 pt-8">
         <div className="flex flex-col gap-2 text-center md:text-left">
           <div className="font-medium text-xs sm:text-sm">
-            © 2027 JKLU – SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
+            © 2027 JKLU - SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
           </div>
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-3 gap-y-1.5 text-xs text-slate-400 font-semibold uppercase tracking-wider">
             <Link href="/privacy-policy" className="hover:text-brand-orange transition-colors">

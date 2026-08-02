@@ -109,7 +109,7 @@ export default function CallForPapersClient() {
 
             <div className="bg-brand-blue/5 border border-brand-blue/15 p-6 rounded-lg text-slate-700 text-sm leading-relaxed font-medium">
               <span className="font-bold text-brand-blue block mb-1">Publications</span>
-              Publication Opportunity in Springer Lecture Notes in Computer Science (LNCS) Series (Scopus Indexed – Approval Awaited). Extended versions of selected papers may also be recommended for publication in Scopus/SCI-indexed journals.
+              Publication Opportunity in Springer Lecture Notes in Computer Science (LNCS) Series (Scopus Indexed - Approval Awaited). Extended versions of selected papers may also be recommended for publication in Scopus/SCI-indexed journals.
             </div>
           </motion.div>
 

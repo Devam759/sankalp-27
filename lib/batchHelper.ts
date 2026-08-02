@@ -150,7 +150,7 @@ export async function sendCheckInEmail(
         await fs.writeFile(filePath, pdfBytes);
       }
     } else {
-      // Invalid filename was rejected — use a generated fallback directly
+      // Invalid filename was rejected - use a generated fallback directly
       pdfBytes = await generateFallbackSchedulePDF(batchName);
     }
   } catch (err) {
@@ -163,7 +163,7 @@ export async function sendCheckInEmail(
   let logoAttachment: any = null;
   let jkluAttachment: any = null;
   try {
-    /* SANKALP LOGO SLOT — Replace the path and filename below with the new sankalp logo when added to public/logos/ */
+    /* SANKALP LOGO SLOT - Replace the path and filename below with the new sankalp logo when added to public/logos/ */
     const logoPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.png');
     const logoBytes = await fs.readFile(logoPath);
     logoAttachment = {
@@ -259,7 +259,7 @@ export async function sendCheckInEmail(
   const mailOptions: any = {
     from: `"Sankalp Team" <${process.env.SMTP_FROM || ''}>`,
     to: toEmail,
-    subject: "Check-In Confirmation – Batch Details & Schedule",
+    subject: "Check-In Confirmation - Batch Details & Schedule",
     html: htmlContent,
     attachments: [
       {

@@ -24,7 +24,7 @@ const ROWS = 8;
 const ASSEMBLE_DURATION = 2.2;
 const MAX_DELAY = 2.8;
 
-// Seeded pseudo-random to avoid hydration mismatch — deterministic per fragment
+// Seeded pseudo-random to avoid hydration mismatch - deterministic per fragment
 function seededRand(seed: number): number {
   const x = Math.sin(seed + 1) * 43758.5453123;
   return x - Math.floor(x);
@@ -61,13 +61,13 @@ function buildFragments(): Fragment[] {
   return arr;
 }
 
-// Built once at module level (not inside render) — truly static, no hydration mismatch
+// Built once at module level (not inside render) - truly static, no hydration mismatch
 const FRAGMENTS: Fragment[] = buildFragments();
 
 export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [phase, setPhase] = useState<'idle' | 'assembling' | 'sweep' | 'glow' | 'fadeout'>('idle');
   const [visible, setVisible] = useState(true);
-  // Prevents server/client hydration mismatch — server renders a plain div,
+  // Prevents server/client hydration mismatch - server renders a plain div,
   // client hydrates that same plain div, THEN switches to the full animation.
   const [mounted, setMounted] = useState(false);
 
@@ -250,7 +250,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         }}
       >
         {/* Solid image that fades in on sweep to seal fragment gaps */}
-        {/* SANKALP LOGO SLOT — Replace the placeholder below with backgroundImage pointing to the new logo file when added to public/logos/ */}
+        {/* SANKALP LOGO SLOT - Replace the placeholder below with backgroundImage pointing to the new logo file when added to public/logos/ */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: sweeping ? 1 : 0 }}
@@ -301,7 +301,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
               top: `${(frag.row / ROWS) * 100}%`,
               width: `${100 / COLS}%`,
               height: `${100 / ROWS}%`,
-              /* SANKALP LOGO SLOT — Replace background gradient with backgroundImage pointing to the new logo file when added to public/logos/ */
+              /* SANKALP LOGO SLOT - Replace background gradient with backgroundImage pointing to the new logo file when added to public/logos/ */
               background: 'linear-gradient(135deg, rgba(245,130,30,0.15) 0%, rgba(24,65,118,0.15) 100%)',
               backgroundSize: `${COLS * 100}% ${ROWS * 100}%`,
               backgroundPosition: `${(frag.col / (COLS - 1)) * 100}% ${(frag.row / (ROWS - 1)) * 100}%`,

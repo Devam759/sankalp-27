@@ -76,7 +76,7 @@ export default function Navbar() {
               />
             </a>
 
-            {/* Desktop Navigation Links — Positioned Aside SANKALP Logo */}
+            {/* Desktop Navigation Links - Positioned Aside SANKALP Logo */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-5">
               {navLinks.map((link) => {
                 const isActive =
@@ -169,7 +169,7 @@ export default function Navbar() {
         {solidBg && <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />}
       </motion.nav>
 
-      {/* Mobile fullscreen menu — rendered outside <nav> to avoid z-index conflicts */}
+      {/* Mobile fullscreen menu - rendered outside <nav> to avoid z-index conflicts */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

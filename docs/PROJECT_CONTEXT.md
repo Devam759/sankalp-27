@@ -9,9 +9,9 @@
 
 | Field | Value |
 |---|---|
-| **Name** | Sankalp '27 — International Conference Portal |
+| **Name** | Sankalp '27 - International Conference Portal |
 | **Organizer** | JK Lakshmipat University (JKLU), Jaipur, India |
-| **Event** | Sankalp 2027 International Conference (5–6 March 2027) |
+| **Event** | Sankalp 2027 International Conference (5-6 March 2027) |
 | **Production URL** | `https://sankalp.jklu.edu.in` |
 | **Domain** | `sankalp.jklu.edu.in` |
 | **Repository** | `sankalp-27` (GitHub) |
@@ -22,11 +22,11 @@
 
 This is the **full-stack conference management platform** covering:
 
-1. **Public-facing website** — Home, About, Venue, Sponsors, Call for Papers, Registration, FAQ, Contact, Committee, Terms, Privacy, Refund, Shipping Policy pages.
-2. **Registration + Payment** — Online registration with Cashfree PG integration, PDF receipt generation, automated email dispatch.
-3. **Admin Dashboard** — At `/admin` — manages registrations, check-ins, scanner accounts, coupons, announcements, events, errors, audit logs, entry logs, settlement reconciliation, Google Sheets sync, and email resend.
-4. **Scanner Dashboard** — At `/scanner` — QR-code-based ticket validation for on-site check-in desks.
-5. **Check-in System** — At `/check-in` — gate-level digital check-in with batch assignment and confirmation emails.
+1. **Public-facing website** - Home, About, Venue, Sponsors, Call for Papers, Registration, FAQ, Contact, Committee, Terms, Privacy, Refund, Shipping Policy pages.
+2. **Registration + Payment** - Online registration with Cashfree PG integration, PDF receipt generation, automated email dispatch.
+3. **Admin Dashboard** - At `/admin` - manages registrations, check-ins, scanner accounts, coupons, announcements, events, errors, audit logs, entry logs, settlement reconciliation, Google Sheets sync, and email resend.
+4. **Scanner Dashboard** - At `/scanner` - QR-code-based ticket validation for on-site check-in desks.
+5. **Check-in System** - At `/check-in` - gate-level digital check-in with batch assignment and confirmation emails.
 
 ---
 
@@ -50,9 +50,9 @@ This is the **full-stack conference management platform** covering:
 | Email | Nodemailer (SMTP via Office 365) | ^9.0.3 |
 | Analytics | Vercel Analytics + Speed Insights | ^2.0.1 |
 | Spreadsheet Sync | Google Apps Script Webhook (EXCEL_SYNC_WEBHOOK_URL) | External |
-| Hosting | Vercel (frontend + API routes) | — |
-| Module System | ESM (`"type": "module"`) | — |
-| Node.js | ≥ 18.x | — |
+| Hosting | Vercel (frontend + API routes) | - |
+| Module System | ESM (`"type": "module"`) | - |
+| Node.js | ≥ 18.x | - |
 
 ---
 
@@ -165,7 +165,7 @@ conference-portal/
 │   └── fees.ts                 # Registration categories with pricing
 │
 ├── docs/                       # Project documentation (AI context, requirements, security notes)
-│   ├── PROJECT_CONTEXT.md      # This file — full architecture reference for AI agents
+│   ├── PROJECT_CONTEXT.md      # This file - full architecture reference for AI agents
 │   ├── DEMO_DATA_SUMMARY.txt   # Checklist of placeholder/mock data to replace before launch
 │   ├── SITE_REQUIREMENTS.txt   # Production asset requirements checklist
 │   └── SECURITY.md             # Security guidelines and secrets management
@@ -323,11 +323,11 @@ emailError, registeredAt, assignedBatch, assignedBatchPdf
 | `POST` | `/api/webhook` | Cashfree signature | 60/min/IP | Cashfree webhook (payment.success, settlement.success) |
 | `GET` | `/api/receipt?id=` | Admin | 10/min/IP | Download PDF receipt |
 | `POST` | `/api/contact` | None | 3/min/IP | Contact form submission |
-| `POST` | `/api/log-error` | None | — | Frontend error logging |
-| `POST` | `/api/check-in/approve` | Admin/Scanner | — | Gate check-in approval |
-| `POST` | `/api/admin/sync-sheet` | Admin | — | Sync registrations to Google Sheets |
-| `POST` | `/api/admin/resend-emails` | Admin | — | Resend confirmation emails |
-| `POST/GET` | `/api/admin/reconcile-settlements` | Admin / Cron token | — | Reconcile payment settlements |
+| `POST` | `/api/log-error` | None | - | Frontend error logging |
+| `POST` | `/api/check-in/approve` | Admin/Scanner | - | Gate check-in approval |
+| `POST` | `/api/admin/sync-sheet` | Admin | - | Sync registrations to Google Sheets |
+| `POST` | `/api/admin/resend-emails` | Admin | - | Resend confirmation emails |
+| `POST/GET` | `/api/admin/reconcile-settlements` | Admin / Cron token | - | Reconcile payment settlements |
 
 ---
 
@@ -373,9 +373,9 @@ emailError, registeredAt, assignedBatch, assignedBatchPdf
 - Retry logic: 2 retries with exponential backoff.
 
 ### Emails Sent
-1. **Registration Confirmation** — PDF receipt attached, HTML branded email.
-2. **Check-in Confirmation** — Batch schedule PDF attached, batch assignment details.
-3. **System Error Alerts** — Sent to `devamgupta@jklu.edu.in` on system failures.
+1. **Registration Confirmation** - PDF receipt attached, HTML branded email.
+2. **Check-in Confirmation** - Batch schedule PDF attached, batch assignment details.
+3. **System Error Alerts** - Sent to `devamgupta@jklu.edu.in` on system failures.
 
 ### PDF Generation (`lib/registrationHelper.ts` → `generatePDF()`)
 - A4 format via `pdf-lib`.
@@ -436,13 +436,13 @@ emailError, registeredAt, assignedBatch, assignedBatchPdf
 
 ## 14. KEY BUSINESS RULES
 
-1. **Registrations are server-side only** — client cannot directly create Firestore docs in `registrations`.
-2. **Background tasks run exactly once** — `backgroundTaskLocks` prevents duplicate emails/sheet syncs.
-3. **Atomic registration locks** — `registrationLocks` prevents duplicate registration records for same order.
-4. **Settlement reconciliation** — runs via Cloud Scheduler (cron) or manual admin trigger; processes 12 records max per run; throttles 1.5s between Cashfree API calls.
-5. **Sheet sync** — manual trigger from admin; pushes unsent registrations to Google Sheets via Apps Script webhook.
-6. **Scanner accounts** — Firebase Auth accounts with `scanner` role; managed from admin panel.
-7. **QR code = Firestore registration doc ID** — scanner validates by looking up the scanned ID in `registrations`.
+1. **Registrations are server-side only** - client cannot directly create Firestore docs in `registrations`.
+2. **Background tasks run exactly once** - `backgroundTaskLocks` prevents duplicate emails/sheet syncs.
+3. **Atomic registration locks** - `registrationLocks` prevents duplicate registration records for same order.
+4. **Settlement reconciliation** - runs via Cloud Scheduler (cron) or manual admin trigger; processes 12 records max per run; throttles 1.5s between Cashfree API calls.
+5. **Sheet sync** - manual trigger from admin; pushes unsent registrations to Google Sheets via Apps Script webhook.
+6. **Scanner accounts** - Firebase Auth accounts with `scanner` role; managed from admin panel.
+7. **QR code = Firestore registration doc ID** - scanner validates by looking up the scanned ID in `registrations`.
 
 ---
 
@@ -472,20 +472,20 @@ emailError, registeredAt, assignedBatch, assignedBatchPdf
 - Functional components with hooks.
 - TypeScript with `any` used sparingly (mostly in legacy/external API response handling).
 - Server-side: `adminDb` and `adminAuth` from `lib/firebaseAdmin.ts`.
-- Client-side: `db`, `auth`, `storage` from `lib/firebase.ts` (nullable — check `isFirebaseConfigured()`).
+- Client-side: `db`, `auth`, `storage` from `lib/firebase.ts` (nullable - check `isFirebaseConfigured()`).
 
 ---
 
 ## 16. KNOWN LIMITATIONS & TECHNICAL DEBT
 
 1. **Strict mode is off** in `tsconfig.json` (`"strict": false`).
-2. **Storage rules are fully open** — `allow read, write: if true` in `storage.rules`.
-3. **In-memory rate limiting** is process-local — cold starts on serverless can bypass limits.
+2. **Storage rules are fully open** - `allow read, write: if true` in `storage.rules`.
+3. **In-memory rate limiting** is process-local - cold starts on serverless can bypass limits.
 4. **`validateRegistrationNumber()`** always returns `true` (bypassed for international conference).
-5. **Some demo/placeholder data** remains — see `DEMO_DATA_SUMMARY.txt` for full list.
-6. **Missing production assets** — speaker photos, hotel images, official logos — see `SITE_REQUIREMENTS.txt`.
+5. **Some demo/placeholder data** remains - see `DEMO_DATA_SUMMARY.txt` for full list.
+6. **Missing production assets** - speaker photos, hotel images, official logos - see `SITE_REQUIREMENTS.txt`.
 7. **`check-in/page.tsx`** appears to be a static prototype (hardcoded stats).
-8. **Test coverage** — only `scripts/test-security.ts` exists; no unit/integration tests.
+8. **Test coverage** - only `scripts/test-security.ts` exists; no unit/integration tests.
 
 ---
 

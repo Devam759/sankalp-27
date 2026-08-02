@@ -155,7 +155,7 @@ export async function POST(req: Request) {
       synced: syncedCount,
       failed: failedCount,
       failures,
-      message: `${syncedCount} registration(s) synced to sheet.${failedCount > 0 ? ` ${failedCount} failed — check System Errors.` : ''}`,
+      message: `${syncedCount} registration(s) synced to sheet.${failedCount > 0 ? ` ${failedCount} failed - check System Errors.` : ''}`,
     });
   } catch (error: any) {
     console.error('Sync sheet error:', error);

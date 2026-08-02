@@ -5,7 +5,7 @@ export const conferenceDates = [
   { label: 'Full Paper Submission Deadline', date: '31 October 2026' },
   { label: 'Notification of Acceptance', date: '30 November 2026' },
   { label: 'Camera Ready Submission', date: '15 January 2027' },
-  { label: 'Conference Dates', date: '5–6 March 2027' },
+  { label: 'Conference Dates', date: '5-6 March 2027' },
 ];
 
 export const keyFeatures = [
@@ -67,11 +67,11 @@ export const conferenceTracks = [
   },
   {
     id: 'track-5',
-    title: 'AI in Education, K–12 Learning and Future Workforce Development',
+    title: 'AI in Education, K-12 Learning and Future Workforce Development',
     topics: [
       'AI-driven personalized learning',
       'Intelligent tutoring and assessment systems',
-      'AI applications in K–12 and higher education',
+      'AI applications in K-12 and higher education',
       'Educational data mining and academic intelligence systems',
       'Immersive learning environments, XR, and metaverse in education',
       'Future skills, digital pedagogy, and immersive learning environments',
@@ -136,7 +136,7 @@ export const committeeMembers = {
   patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc.webp' },
   chairs: [
     { role: 'Conference Chair', name: 'Dr. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
-    { role: 'Conference Convener', name: 'Dr. Sonali Vyas', title: 'Head – Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
+    { role: 'Conference Convener', name: 'Dr. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
   ],
   programChairs: 'Professors of IET (Dr. Amit / Dr. Devika / Dr. Taruna, and Dr. Umesh)',
 };
@@ -193,7 +193,7 @@ export const advisoryBoard = {
     { name: 'Dr. Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
     { name: 'Mr. Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
     { name: 'Dr. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
-    { name: 'Dr. Ridoan Karim', title: 'Director, CLARS– Monash University, Malaysia' },
+    { name: 'Dr. Ridoan Karim', title: 'Director, CLARS - Monash University, Malaysia' },
     { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
     { name: 'Prof. Arun Patil', title: 'Director (L&T), Curtin University, Singapore' },
     { name: 'Prof. Celestine Iwendi', title: 'Professor, University of Greater Manchester, United Kingdom' },
@@ -207,7 +207,7 @@ export const advisoryBoard = {
     { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece' }
   ],
   national: [
-    { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India – Gurgaon' },
+    { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon' },
     { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
     { name: 'Prof. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
     { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },

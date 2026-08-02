@@ -53,7 +53,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
       process.cwd(), 
       'public', 
       'logos',
-      /* SANKALP LOGO SLOT — Replace 'jklu_logo.png' with the new sankalp logo filename when added to public/logos/ */
+      /* SANKALP LOGO SLOT - Replace 'jklu_logo.png' with the new sankalp logo filename when added to public/logos/ */
       'jklu_logo.png'
     );
     const sankalpLogoBytes = await fs.readFile(sankalpLogoPath);
@@ -376,7 +376,7 @@ export async function sendEmail(to: string, name: string, pdfBytes: Uint8Array) 
   const mailOptions: any = {
     from: `"Conference Organizing Committee" <${process.env.SMTP_FROM || ''}>`,
     to: to,
-    subject: "International Conference 2026 – Registration Confirmed!",
+    subject: "International Conference 2026 - Registration Confirmed!",
     html: htmlContent,
     attachments: [
       {

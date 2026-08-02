@@ -329,16 +329,16 @@ export default function SponsorsClient() {
                   <tr key={rIdx} className="hover:bg-[#FFFBF9]/50 transition-colors">
                     <td className="p-4 sm:p-5 font-semibold text-brand-ink">{row.benefit}</td>
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.plat === 'string' ? row.plat : (row.plat ? <span className="text-brand-orange font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.plat === 'string' ? row.plat : (row.plat ? <span className="text-brand-orange font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">-</span>)}
                     </td>
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.gold === 'string' ? row.gold : (row.gold ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.gold === 'string' ? row.gold : (row.gold ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">-</span>)}
                     </td>
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.silv === 'string' ? row.silv : (row.silv ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.silv === 'string' ? row.silv : (row.silv ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">-</span>)}
                     </td>
                     <td className="p-4 sm:p-5 text-center font-medium">
-                      {typeof row.bronz === 'string' ? row.bronz : (row.bronz ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">—</span>)}
+                      {typeof row.bronz === 'string' ? row.bronz : (row.bronz ? <span className="text-[#1F4E8C] font-bold text-base select-none">✓</span> : <span className="text-[#8A99AD]">-</span>)}
                     </td>
                   </tr>
                 ))}

@@ -98,7 +98,7 @@ export default function VenueClient() {
     { 
       name: 'Hawa Mahal', 
       distance: '25 km', 
-      duration: '1–2 Hours',
+      duration: '1-2 Hours',
       category: 'Royal Palace',
       desc: 'The iconic Palace of Winds featuring intricate honeycomb sandstone lattice windows.', 
       src: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=600&q=80',
@@ -107,7 +107,7 @@ export default function VenueClient() {
     { 
       name: 'Amer Fort', 
       distance: '34 km', 
-      duration: '2–3 Hours',
+      duration: '2-3 Hours',
       category: 'UNESCO World Heritage',
       desc: 'A majestic UNESCO World Heritage fortress overlooking Maota Lake with spectacular murals.', 
       src: '/Images/jaipur_sightseeing/amer_fort.webp',
@@ -125,7 +125,7 @@ export default function VenueClient() {
     { 
       name: 'City Palace', 
       distance: '24 km', 
-      duration: '2–3 Hours',
+      duration: '2-3 Hours',
       category: 'Royal Palace',
       desc: 'The magnificent royal residence blending traditional Rajasthani and Mughal architectural styles.', 
       src: '/Images/jaipur_sightseeing/city_palace.webp',
@@ -134,7 +134,7 @@ export default function VenueClient() {
     { 
       name: 'Albert Hall Museum', 
       distance: '23 km', 
-      duration: '1.5–2 Hours',
+      duration: '1.5-2 Hours',
       category: 'Museum',
       desc: 'The oldest state museum displaying exceptional industrial art and ancient treasures.', 
       src: '/Images/jaipur_sightseeing/albert_hall.webp',
@@ -143,7 +143,7 @@ export default function VenueClient() {
     { 
       name: 'Nahargarh Fort', 
       distance: '29 km', 
-      duration: '1.5–2 Hours',
+      duration: '1.5-2 Hours',
       category: 'Hill Fort',
       desc: 'A historic hilltop fort offering absolute panoramic sunset views over the Pink City.', 
       src: '/Images/jaipur_sightseeing/nahargarh_fort.webp',
@@ -192,7 +192,7 @@ export default function VenueClient() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-sm sm:text-base opacity-75 max-w-xl mx-auto"
           >
-            Host Venue of SANKALP'27 – International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction
+            Host Venue of SANKALP'27 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction
           </motion.p>
 
           <motion.div
@@ -200,7 +200,7 @@ export default function VenueClient() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <span>5–6 March 2027</span>
+            <span>5-6 March 2027</span>
           </motion.div>
 
           <motion.div
