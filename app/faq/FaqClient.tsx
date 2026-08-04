@@ -44,11 +44,11 @@ export default function FaqClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-20">
+    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-0">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-brand-blue text-white py-24 px-6 overflow-hidden">
+      <section className="relative bg-brand-blue text-white pt-32 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
         <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
           <motion.h1
