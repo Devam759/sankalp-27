@@ -10,6 +10,7 @@ import { PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileHidden, setMobileHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isHomepage = pathname === '/';
@@ -27,22 +28,55 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll(); // set initial state
+    let lastScrollY = window.scrollY;
+    const threshold = 10;
+
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 10);
+
+      // Mobile hide/show-on-scroll logic (< 768px)
+      if (window.innerWidth < 768) {
+        if (currentScrollY > lastScrollY + threshold && currentScrollY > 72) {
+          setMobileHidden(true);
+        } else if (currentScrollY < lastScrollY - threshold) {
+          setMobileHidden(false);
+        }
+      } else {
+        setMobileHidden(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    const onResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileHidden(false);
+      }
+    };
+
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onResize, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   // On homepage: transparent at top, solid when scrolled
   // On other pages: always solid
   const solidBg = scrolled || !isHomepage;
 
+  // Keep visible if mobile menu is open
+  const isMobileHidden = mobileHidden && !mobileOpen;
+
   return (
     <>
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        animate={{ y: isMobileHidden ? '-100%' : 0, opacity: 1 }}
+        transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
         style={{ backgroundColor: solidBg ? '#184176' : 'transparent' }}
         className="fixed top-0 left-0 right-0 w-full z-[200] transition-colors duration-300"
       >

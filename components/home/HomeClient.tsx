@@ -715,12 +715,7 @@ export default function HomeClient() {
                     activeAdvisory === board.id ? 'opacity-10' : 'opacity-[0.03] group-hover/card:opacity-10'
                   }`} style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
 
-                  <div className="absolute inset-0 flex flex-col justify-between p-8 z-10">
-                    <div className="flex justify-between items-start">
-                      <span className={`font-mono font-black text-5xl transition-colors duration-500 ${
-                        activeAdvisory === board.id ? 'text-brand-orange' : 'text-white/20 group-hover/card:text-brand-orange/80'
-                      }`}>{board.number}</span>
-                    </div>
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
                     
                     <div className={`${activeAdvisory === board.id ? '-translate-y-2' : 'group-hover/card:-translate-y-2'} transition-transform duration-500`}>
                       <h3 className="font-serif font-bold text-2xl text-white leading-tight mb-4 uppercase">{board.title}</h3>
