@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://sankalp.jklu.edu.in/Images/jklu.jpg',
+        url: 'https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp',
         width: 1200,
         height: 630,
         alt: 'SANKALP 2027 - JK Lakshmipat University',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "SANKALP 2027 | International Conference | JKLU Jaipur",
     description: "Join premier researchers at JKLU Jaipur for SANKALP 2027 on Sustainable AI & Next-Gen Knowledge.",
-    images: ['https://sankalp.jklu.edu.in/Images/jklu.jpg'],
+    images: ['https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp'],
   },
 };
 
@@ -81,7 +81,7 @@ export default function Page() {
     name: 'JK Lakshmipat University',
     alternateName: ['JKLU', 'JK Lakshmipat University Jaipur'],
     url: 'https://jklu.edu.in',
-    logo: 'https://sankalp.jklu.edu.in/Images/jklu.jpg',
+    logo: 'https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Mahapura Road, Near Mahindra World City, Ajmer Road',
@@ -127,7 +127,7 @@ export default function Page() {
         addressCountry: 'IN',
       },
     },
-    image: ['https://sankalp.jklu.edu.in/Images/jklu.jpg'],
+    image: ['https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp'],
     description: "Premier international multidisciplinary conference organized by the Institute of Engineering & Technology (IET), JK Lakshmipat University, Jaipur.",
     organizer: {
       '@type': 'Organization',

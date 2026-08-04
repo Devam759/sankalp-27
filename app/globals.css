@@ -43,15 +43,15 @@
   --color-dark: #0F172A;
   --color-dark-lighter: #1E293B;
 
-  --font-display: var(--font-plus-jakarta), "Plus Jakarta Sans", var(--font-outfit), "Outfit", system-ui, sans-serif;
-  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", var(--font-outfit), "Outfit", system-ui, sans-serif;
-  --font-adminHeading: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Google Sans Flex", var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-adminHeading: "Google Sans Flex", system-ui, sans-serif;
   --font-adminBody: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-vanilla: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
   --font-bricks: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
   --font-diary: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
   --font-devanagari: var(--font-devanagari-var), "Tiro Devanagari Hindi", serif;
-  --font-serif: var(--font-plus-jakarta), "Plus Jakarta Sans", var(--font-outfit), "Outfit", system-ui, sans-serif;
+  --font-serif: "Google Sans Flex", var(--font-outfit), system-ui, sans-serif;
 
   --shadow-brand-orange: 0 0 40px rgba(217, 119, 6, 0.15);
   --shadow-brand-blue: 0 0 40px rgba(11, 27, 61, 0.15);
@@ -85,6 +85,7 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
   max-width: 100%;
   overflow-x: hidden;
   color: var(--color-brand-ink);
@@ -93,7 +94,15 @@ body {
   font-family: var(--font-sans);
 }
 
-
+.font-serif, .font-display, .font-heading {
+  font-family: "Google Sans Flex", var(--font-outfit), var(--font-plus-jakarta), sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "ROND" 0;
+}
 
 
 

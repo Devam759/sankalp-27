@@ -29,7 +29,7 @@ export default function ContactClient() {
 
   const trackChairs = [
     { track: "Sustainable AI", name: "Dr. Amit Kumar Sinhal" },
-    { track: "Data Science", name: "Dr. Taruna Sunil" },
+    { track: "Data Science", name: "Dr. S. Taruna" },
     { track: "HPC & Edge", name: "Dr. Umesh Gupta" },
     { track: "Smart Healthcare", name: "Dr. Devika Kataria" },
   ];

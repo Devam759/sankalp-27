@@ -173,10 +173,10 @@ export default function CommitteeClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
               {[
-                { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
-                { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
-                { name: 'Dr. S. Taruna (Dr. Taruna Sunil)', alt: 'Dr. S. Taruna (Dr. Taruna Sunil) - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
-                { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
+                { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp' },
+                { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp' },
+                { name: 'Dr. S. Taruna', alt: 'Dr. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp' },
+                { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp' },
               ].map((member, i) => (
                 <motion.div
                   key={`prog-${i}`}
@@ -200,8 +200,7 @@ export default function CommitteeClient() {
                     </div>
                   </div>
                   <h3 className="font-serif font-bold text-brand-blue text-base sm:text-lg leading-snug mb-1 group-hover:text-brand-orange transition-colors duration-300">{member.name}</h3>
-                  <span className="text-brand-orange text-xs font-bold uppercase tracking-wider block mb-1">Program Chair</span>
-                  <p className="text-slate-600 text-xs font-medium leading-relaxed">{member.track}</p>
+                  <span className="text-brand-orange text-xs font-bold uppercase tracking-wider block">Program Chair</span>
                 </motion.div>
               ))}
             </div>

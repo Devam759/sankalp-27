@@ -43,8 +43,12 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Plus Jakarta Sans"', 'Outfit', 'system-ui', 'sans-serif'],
-        sans: ['"Plus Jakarta Sans"', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['"Google Sans Flex"', 'var(--font-outfit)', 'sans-serif'],
+        display: ['"Google Sans Flex"', 'var(--font-outfit)', 'sans-serif'],
+        heading: ['"Google Sans Flex"', 'var(--font-outfit)', 'sans-serif'],
+        googleSans: ['"Google Sans Flex"', 'sans-serif'],
+        sans: ['var(--font-plus-jakarta)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        outfit: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'brand-gradient': 'linear-gradient(135deg, #f5821e 0%, #184176 100%)',

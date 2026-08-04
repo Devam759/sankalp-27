@@ -1,7 +1,7 @@
 export const PAPER_SUBMISSION_LINK = 'https://cmt3.research.microsoft.com/';
 
 export const conferenceDates = [
-  { label: 'Call for Papers Opens', date: '1 August 2026' },
+  { label: 'Call for Papers Opens', date: '15 August 2026' },
   { label: 'Full Paper Submission Deadline', date: '31 October 2026' },
   { label: 'Notification of Acceptance', date: '30 November 2026' },
   { label: 'Camera Ready Submission', date: '15 January 2027' },
@@ -128,12 +128,12 @@ export const submissionSteps = [
 ];
 
 export const committeeMembers = {
-  chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: 'Chancellor, JKLU', image: '/Images/committee/Bharat_Hari_Singhania.webp' },
+  chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: '', image: '/Images/committee/Bharat_Hari_Singhania.webp' },
   chiefCoPatrons: [
-    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/Raghupati_Singhania.webp' },
-    { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: 'Pro Chancellor, JKLU', image: '/Images/committee/Harsh_Pati_Singhania.webp' }
+    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: '', image: '/Images/committee/Raghupati_Singhania.webp' },
+    { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: '', image: '/Images/committee/Harsh_Pati_Singhania.webp' }
   ],
-  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'VC, JKLU', image: '/Images/committee/vc.webp' },
+  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: '', image: '/Images/committee/vc.webp' },
   chairs: [
     { role: 'Conference Chair', name: 'Dr. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
     { role: 'Conference Convener', name: 'Dr. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
@@ -241,7 +241,7 @@ export const technicalProgramCommittee = [
 
 export const trackChairs = [
   { track: 'Sustainable AI', chair: 'Dr. Amit Kumar Sinhal', coChair: 'Dr. Sneha Sharma' },
-  { track: 'Data Science & Generative AI', chair: 'Dr. Taruna Sunil', coChair: 'Dr. Vikram Singh' },
+  { track: 'Data Science & Generative AI', chair: 'Dr. S. Taruna', coChair: 'Dr. Vikram Singh' },
   { track: 'High Performance Computing', chair: 'Dr. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
   { track: 'Smart Healthcare', chair: 'Dr. Devika Kataria', coChair: 'Dr. Suresh Reddy' },
   { track: 'AI in Education', chair: 'Dr. Ramesh Chandra', coChair: 'Dr. Kavita Jain' },

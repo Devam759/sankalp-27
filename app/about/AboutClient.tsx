@@ -239,41 +239,72 @@ export default function AboutClient() {
                  </p>
                </motion.div>
 
-               <motion.div 
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ duration: 0.8, delay: 0.2 }}
-                 className="bg-brand-orange p-10 lg:p-12 shadow-2xl text-white relative"
-               >
-                  <h3 className="text-2xl font-serif font-bold mb-6">Institute of Engineering & Technology (IET)</h3>
-                  <div className="w-16 h-1 bg-brand-blue mb-6"></div>
-                  <p className="text-white/90 leading-relaxed">
-                    The Institute of Engineering & Technology at JKLU promotes interdisciplinary research and innovation across artificial intelligence, computing, engineering systems, and emerging technologies.
-                  </p>
-               </motion.div>
-            </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="bg-brand-orange p-10 lg:p-12 shadow-2xl text-white relative mb-8"
+                >
+                   <h3 className="text-2xl font-serif font-bold mb-6">Institute of Engineering &amp; Technology (IET)</h3>
+                   <div className="w-16 h-1 bg-brand-blue mb-6"></div>
+                   <p className="text-white/90 leading-relaxed mb-6">
+                     The Institute of Engineering &amp; Technology at JKLU promotes interdisciplinary research and innovation across artificial intelligence, computing, engineering systems, and emerging technologies.
+                   </p>
+                </motion.div>
 
-            <div className="lg:col-span-6 relative flex justify-center">
-               <motion.div 
-                 initial={{ opacity: 0, x: 30 }}
-                 whileInView={{ opacity: 1, x: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ duration: 0.9 }}
-                 className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-14 shadow-2xl mx-auto lg:mx-0 border border-slate-200/80 rounded-sm"
-               >
-                 <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
-                    <Image src="/Images/jklu.jpg" alt="JKLU Campus" fill className="object-cover transition-all duration-700 hover:scale-105" />
-                 </div>
-                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-lg tracking-wider text-center w-full">
-                    JK Lakshmipat University Campus
-                 </div>
-               </motion.div>
-            </div>
+                {/* Sub-Centres under IET */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="bg-brand-cloud border-l-4 border-brand-orange p-6 shadow-lg border border-slate-200/80"
+                  >
+                     <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Centre of Excellence</span>
+                     <h4 className="font-serif font-bold text-brand-blue text-base mb-2">Centre for Communication &amp; Critical Thinking (CCCT)</h4>
+                     <p className="text-slate-600 text-xs leading-relaxed">
+                       Dedicated to supporting students' personal and professional growth through liberal arts, critical inquiry, group dynamics, and interpersonal communication skills.
+                     </p>
+                  </motion.div>
 
-          </div>
-        </div>
-      </section>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="bg-brand-cloud border-l-4 border-brand-blue p-6 shadow-lg border border-slate-200/80"
+                  >
+                     <span className="text-[10px] font-bold text-brand-blue uppercase tracking-wider block mb-1">Centre of Excellence</span>
+                     <h4 className="font-serif font-bold text-brand-blue text-base mb-2">Centre for Global Learning, JKLU (CGL)</h4>
+                     <p className="text-slate-600 text-xs leading-relaxed">
+                       Drives global engagement, international student exchange programs, study abroad pathways, and collaborative research alliances with global institutions.
+                     </p>
+                  </motion.div>
+                </div>
+             </div>
+
+             <div className="lg:col-span-6 relative flex justify-center">
+                <motion.div 
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.9 }}
+                  className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-14 shadow-2xl mx-auto lg:mx-0 border border-slate-200/80 rounded-sm"
+                >
+                  <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
+                     <Image src="/Images/campus/jklu_campus.webp" alt="JKLU Campus" fill className="object-cover transition-all duration-700 hover:scale-105" />
+                  </div>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-lg tracking-wider text-center w-full">
+                     JK Lakshmipat University Campus
+                  </div>
+                </motion.div>
+             </div>
+
+           </div>
+         </div>
+       </section>
 
       <Footer />
     </main>

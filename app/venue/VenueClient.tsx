@@ -159,7 +159,7 @@ export default function VenueClient() {
       <section className="relative h-[80vh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink pt-20">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/Images/campus/DJI_0124.webp"
+            src="/Images/campus/jklu_campus.webp"
             alt="JKLU Campus Banner"
             fill
             sizes="100vw"
@@ -224,7 +224,7 @@ export default function VenueClient() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white group">
             <Image
-              src="/Images/campus/DJI_0124.webp"
+              src="/Images/campus/jklu_campus.webp"
               alt="JK Lakshmipat University Campus"
               fill
               priority

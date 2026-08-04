@@ -116,7 +116,7 @@ export default function HomeClient() {
     <>
       <Navbar />
       <main
-        className="min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white"
+        className="w-full min-h-screen text-brand-ink font-sans selection:bg-brand-orange selection:text-white overflow-x-hidden"
       >
 
       {/* HERO */}
@@ -165,14 +165,36 @@ export default function HomeClient() {
           animate="visible"
           className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-20 sm:pt-24 pb-12 sm:pb-16"
         >
-          <motion.div variants={itemVariants} className="-mt-1 mb-2">
-            <div className="w-24 sm:w-28 md:w-32 aspect-[760/600] border border-white/25 rounded flex items-center justify-center bg-white/5 backdrop-blur-sm shadow-inner" aria-label="SANKALP 2027 Conference Logo placeholder">
-              <span className="text-white/70 text-[10px] font-bold uppercase tracking-wider">SANKALP LOGO</span>
+          <motion.div variants={itemVariants} className="flex flex-col items-center mb-4 w-full">
+            <div className="flex items-center justify-center gap-5 sm:gap-8 md:gap-10 mb-2 w-full">
+              <Image
+                src="/logos/white_jklu_logo.webp"
+                alt="JK Lakshmipat University"
+                width={400}
+                height={120}
+                className="h-14 sm:h-18 md:h-22 lg:h-24 w-auto object-contain drop-shadow-md"
+                priority
+              />
+              {/* Translucent-Whitish Vertical Separating Line between Logos */}
+              <div className="h-10 sm:h-14 md:h-18 lg:h-20 w-px bg-white/40 shrink-0" />
+              <Image
+                src="/logos/Asia_University_Logo.webp"
+                alt="Asia University"
+                width={400}
+                height={120}
+                className="h-14 sm:h-18 md:h-22 lg:h-24 w-auto object-contain drop-shadow-md"
+                priority
+              />
             </div>
+            <span className="text-white/80 text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.3em] uppercase">
+              Presents
+            </span>
           </motion.div>
 
           <motion.div variants={itemVariants} className="mb-3">
-            <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-sans font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm">
+            <h1 
+              className="text-[clamp(3rem,8vw,6rem)] font-sans font-extrabold sm:font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm"
+            >
               SANKALP
               <span className="text-brand-orange"> '27</span>
             </h1>
@@ -207,14 +229,6 @@ export default function HomeClient() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href={PAPER_SUBMISSION_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-brand-orange text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-orange-500 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 tracking-wide flex items-center justify-center cursor-pointer group"
-            >
-              <span>Submit Paper</span>
-            </a>
             <Link
               href="/sessions"
               className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0 tracking-wide flex items-center justify-center cursor-pointer"
@@ -266,7 +280,7 @@ export default function HomeClient() {
             </h3>
             <ul className="space-y-5 flex-grow">
               {[
-                'Call for Papers opens on 1 August 2026',
+                'Call for Papers opens on 15 August 2026',
                 'Full paper submission deadline: 31 October 2026',
                 'Conference mode: Hybrid',
                 'Registration details announced'
@@ -331,17 +345,12 @@ export default function HomeClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-12"
+            className="text-center mb-12"
           >
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] tracking-tight">
-                Conference<br />
-                <span className="text-brand-orange">Highlights</span>
-              </h2>
-              <p className="text-white max-w-md text-sm leading-relaxed font-medium md:text-right">
-                A world-class platform uniting researchers, academics, industry leaders and innovators to shape the future of technology.
-              </p>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white relative inline-block">
+              Conference Highlights
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
+            </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -443,10 +452,15 @@ export default function HomeClient() {
       </section>
 
       {/* SPEAKERS */}
-      <Section id="speakers" title="Plenary & Keynote Speakers">
+      <Section id="speakers">
         <div className="max-w-[1200px] mx-auto space-y-16">
           <div className="flex flex-col items-center">
-            <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.25em] mb-6">Plenary Speaker</span>
+            <div className="text-center mb-10 md:mb-12">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                Plenary Speaker
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
+              </h2>
+            </div>
             {[...speakers.plenary].sort((a, b) => {
               const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
               const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
@@ -503,8 +517,11 @@ export default function HomeClient() {
           <div className="w-full h-px bg-slate-200"></div>
 
           <div>
-            <div className="text-center mb-10">
-              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.25em] block">Keynote Speakers</span>
+            <div className="text-center mb-10 md:mb-12">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                Keynote Speakers
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
+              </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[...speakers.keynote].sort((a, b) => {
@@ -622,7 +639,7 @@ export default function HomeClient() {
                 <div>
                   <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest">{chair.role}</p>
                   <h3 className="text-lg font-serif font-bold text-white mb-1">{chair.name}</h3>
-                  <p className="text-slate-300 text-xs font-medium">{chair.title}</p>
+                  {chair.title && <p className="text-slate-300 text-xs font-medium">{chair.title}</p>}
                 </div>
               </motion.div>
             ))}
@@ -630,10 +647,10 @@ export default function HomeClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/amit_sinhal.webp' },
-              { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/devika_kataria.webp' },
-              { name: 'Dr. S. Taruna (Dr. Taruna Sunil)', alt: 'Dr. S. Taruna (Dr. Taruna Sunil) - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/taruna_sunil.webp' },
-              { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', track: 'Institute of Engineering and Technology', image: '/Images/committee/umesh_gupta.webp' },
+              { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp' },
+              { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp' },
+              { name: 'Dr. S. Taruna', alt: 'Dr. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp' },
+              { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp' },
             ].map((chair, i) => (
               <motion.div
                 key={i}
@@ -656,8 +673,7 @@ export default function HomeClient() {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold text-brand-orange group-hover:text-white uppercase mb-1 tracking-widest">Program Chair</p>
-                  <h4 className="text-base font-serif font-bold text-brand-blue group-hover:text-white mb-1">{chair.name}</h4>
-                  <p className="text-slate-500 group-hover:text-white/80 text-xs font-semibold">{chair.track}</p>
+                  <h4 className="text-base font-serif font-bold text-brand-blue group-hover:text-white">{chair.name}</h4>
                 </div>
               </motion.div>
             ))}

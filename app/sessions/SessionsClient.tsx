@@ -101,7 +101,7 @@ export default function SessionsClient() {
                 Research Tracks (01 - 07)
               </h2>
               <p className="text-slate-600 text-xs sm:text-sm mt-1">
-                Click on any track below to expand topic details and track chairs.
+                Click on any track below to expand topic details.
               </p>
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-brand-orange bg-brand-orange/10 px-3 py-1.5 rounded-sm">
@@ -128,31 +128,20 @@ export default function SessionsClient() {
             ))}
           </div>
 
-          {/* TRACK CHAIRS OVERVIEW GRID */}
-          <div className="mt-16 pt-12 border-t border-slate-200 space-y-8">
+          {/* TRACK CHAIRS ANNOUNCEMENT */}
+          <div className="mt-16 pt-12 border-t border-slate-200 space-y-6">
             <div>
-              <h3 className="text-2xl font-serif font-bold text-brand-blue mb-2">
+              <h3 className="text-2xl font-serif font-bold text-brand-blue mb-4">
                 Track Chairs &amp; Co-Chairs
               </h3>
-              <p className="text-slate-600 text-sm">
-                Distinguished academic chairs leading track evaluation and session coordination.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {trackChairs.map((item, idx) => (
-                <div key={idx} className="bg-slate-50 border border-slate-200 p-5 rounded-sm shadow-xs hover:border-brand-orange/40 transition-colors">
-                  <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">
-                    Track {idx + 1}: {item.track}
-                  </span>
-                  <h4 className="font-serif font-bold text-brand-blue text-base mb-1">
-                    {item.chair}
-                  </h4>
-                  <p className="text-slate-500 text-xs font-medium">
-                    Co-Chair: {item.coChair}
-                  </p>
-                </div>
-              ))}
+              <div className="bg-brand-orange/10 border-l-4 border-brand-orange p-6 rounded-sm max-w-2xl shadow-sm">
+                <p className="text-brand-blue font-bold text-base sm:text-lg">
+                  Track Chairs to be announced soon.
+                </p>
+                <p className="text-slate-600 text-xs sm:text-sm mt-1 leading-relaxed font-medium">
+                  The panel of distinguished academic track chairs and co-chairs evaluating session submissions will be announced shortly.
+                </p>
+              </div>
             </div>
           </div>
         </div>

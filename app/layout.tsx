@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/Images/jklu.jpg',
+        url: '/Images/campus/jklu_campus.webp',
         width: 1200,
         height: 630,
         alt: 'SANKALP 2027 Conference - JK Lakshmipat University Jaipur',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "SANKALP 2027 | International Conference | JKLU Jaipur",
     description: "Join premier researchers at JKLU Jaipur for SANKALP 2027 on Sustainable AI & Next-Gen Knowledge.",
-    images: ['/Images/jklu.jpg'],
+    images: ['/Images/campus/jklu_campus.webp'],
   },
   icons: {
     icon: '/favicon.ico',
@@ -119,6 +119,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet" />
         <link
           rel="preload"
           href="/_next/image?url=%2FImages%2Fhero%2FDJI_0063.webp&w=640&q=75"

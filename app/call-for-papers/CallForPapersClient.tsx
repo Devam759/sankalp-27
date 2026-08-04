@@ -97,7 +97,7 @@ export default function CallForPapersClient() {
           >
             <div className="relative aspect-[4/3] border border-slate-200 rounded-lg overflow-hidden shadow-sm group bg-white">
               <Image 
-                src="/Images/campus/DJI_0124.webp" 
+                src="/Images/campus/jklu_campus.webp" 
                 alt="Research Session"
                 fill
                 priority
