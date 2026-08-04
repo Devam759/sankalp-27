@@ -10,7 +10,7 @@ import TrackAccordion from '@/components/ui/TrackAccordion';
 import { conferenceTracks, trackChairs, PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
 
 export default function SessionsClient() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setOpenIndex(prevIndex => (prevIndex === index ? null : index));
@@ -50,21 +50,24 @@ export default function SessionsClient() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="flex flex-wrap items-center justify-center gap-3 pt-2"
+            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2"
           >
-            {[
-              '7 Frontier Tracks',
-              'Springer LNCS Series',
-              'Scopus Indexed',
-              'Hybrid Presentation Mode'
-            ].map((badge, idx) => (
-              <span
-                key={idx}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-xs font-semibold tracking-wide backdrop-blur-sm"
-              >
-                {badge}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+                7 Frontier Tracks
               </span>
-            ))}
+              <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+                Springer LNCS Series
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-2 sm:gap-3">
+              <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+                Scopus Indexed
+              </span>
+              <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+                Hybrid Presentation Mode
+              </span>
+            </div>
           </motion.div>
 
           {/* Action CTAs */}
@@ -97,7 +100,7 @@ export default function SessionsClient() {
         <div className="max-w-5xl mx-auto space-y-10">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue uppercase tracking-wide">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue uppercase tracking-tight sm:tracking-wide whitespace-nowrap">
                 Research Tracks (01 - 07)
               </h2>
               <p className="text-slate-600 text-xs sm:text-sm mt-1">

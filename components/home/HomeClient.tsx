@@ -767,8 +767,8 @@ export default function HomeClient() {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="text-white font-serif font-bold text-2xl md:text-4xl leading-tight"
               >
-                JK Lakshmipat University<br className="hidden md:block" />
-                <span className="text-white/70 text-xl md:text-3xl font-normal">Jaipur, India</span>
+                JK Lakshmipat University
+                <span className="block text-white/70 text-xl md:text-3xl font-normal mt-1">Jaipur, India</span>
               </motion.h3>
             </div>
           </motion.div>

@@ -125,14 +125,30 @@ export default function SponsorsClient() {
       <Navbar />
 
       {/* REVEALING SOON SECTION */}
-      <section className="flex-grow py-20 md:py-32 px-6 md:px-12 flex items-center justify-center text-center">
+      <section className="flex-grow py-16 md:py-28 px-6 md:px-12 flex items-center justify-center text-center relative overflow-hidden bg-brand-cloud">
+        {/* Subtle Background Pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          style={{ 
+            backgroundImage: 'radial-gradient(#173F73 1px, transparent 1px)', 
+            backgroundSize: '24px 24px' 
+          }}
+        />
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-6xl w-full flex flex-col items-center justify-center"
+          className="max-w-6xl w-full flex flex-col items-center justify-center space-y-8 relative z-10"
         >
           <CircuitChipLoader />
+
+          {/* Supporting Text */}
+          <div className="max-w-xl mx-auto">
+            <p className="text-slate-600 font-medium text-sm sm:text-base leading-relaxed">
+              Sponsor partnerships for SANKALP'27 will be announced soon.
+            </p>
+          </div>
         </motion.div>
       </section>
 

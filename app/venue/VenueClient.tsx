@@ -6,16 +6,16 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
-import { 
-  BadgeIcon, 
-  PresentationIcon, 
-  MonitorIcon, 
-  UsersGroupIcon, 
-  RocketIcon, 
-  PosterIcon, 
-  UtensilsIcon, 
-  ParkingIcon, 
-  MedicalIcon, 
+import {
+  BadgeIcon,
+  PresentationIcon,
+  MonitorIcon,
+  UsersGroupIcon,
+  RocketIcon,
+  PosterIcon,
+  UtensilsIcon,
+  ParkingIcon,
+  MedicalIcon,
   AccessibilityIcon,
   CopyIcon,
   AppleIcon
@@ -48,104 +48,104 @@ export default function VenueClient() {
   ];
 
   const hotels = [
-    { 
-      name: 'The Oberoi Rajvilas', 
-      distance: '38 km from JK Lakshmipat University', 
-      time: 'Approx. 55 minutes by road',
-      badgeText: '55 min Drive',
-      category: 'Luxury Hotel',
-      bottomText: 'Preferred by International Guests',
+    {
+      name: 'Navya Residency',
+      distance: 'Near JK Lakshmipat University',
+      time: 'Approx. 5 minutes by road',
+      badgeText: '5 min Drive',
+      category: 'Budget Stay',
+      bottomText: 'Close to Conference Venue',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/oberoi_rajvilas.webp', 
-      link: 'https://www.oberoihotels.com/' 
+      src: '/Images/hotels/navya_residency.jpg',
+      link: 'https://www.google.com/maps/search/Navya+Residency+Jaipur'
     },
-    { 
-      name: 'ITC Rajputana, Jaipur', 
-      distance: '22 km from JK Lakshmipat University', 
-      time: 'Approx. 35 minutes by road',
-      badgeText: '35 min Drive',
-      category: 'Business Hotel',
-      bottomText: 'Ideal for Conference Delegates',
+    {
+      name: 'Hotel Polo Inn Sez',
+      distance: 'Near Mahindra SEZ, Jaipur',
+      time: 'Approx. 10 minutes by road',
+      badgeText: '10 min Drive',
+      category: 'Comfort Stay',
+      bottomText: 'Ideal for Delegates',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/itc_rajputana.webp', 
-      link: 'https://www.itchotels.com/' 
+      src: '/Images/hotels/hotel_polo_inn_sez.jpg',
+      link: 'https://www.google.com/maps/search/Hotel+Polo+Inn+Sez+Jaipur'
     },
-    { 
-      name: 'Radisson Blu Jaipur', 
-      distance: '28 km from JK Lakshmipat University', 
-      time: 'Approx. 45 minutes by road',
-      badgeText: '45 min Drive',
+    {
+      name: 'HOTEL THE SAWAI',
+      distance: 'Near Mahindra SEZ, Jaipur',
+      time: 'Approx. 10 minutes by road',
+      badgeText: '10 min Drive',
+      category: 'Boutique Hotel',
+      bottomText: 'Convenient Location',
+      location: 'Jaipur, Rajasthan',
+      src: '/Images/hotels/hotel_the_sawai.jpg',
+      link: 'https://www.google.com/maps/search/HOTEL+THE+SAWAI+Jaipur'
+    },
+    {
+      name: 'Atulya Green by Meyatri',
+      distance: 'Near JK Lakshmipat University',
+      time: 'Approx. 8 minutes by road',
+      badgeText: '8 min Drive',
       category: 'Premium Stay',
-      bottomText: 'Business Friendly Accommodation',
+      bottomText: 'Recommended for Guests',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/radisson_blu.webp', 
-      link: 'https://www.radissonhotels.com/' 
-    },
-    { 
-      name: 'Four Points by Sheraton', 
-      distance: '26 km from JK Lakshmipat University', 
-      time: 'Approx. 40 minutes by road',
-      badgeText: '40 min Drive',
-      category: 'Delegate Recommended',
-      bottomText: 'Near Conference Venue',
-      location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/four_points.webp', 
-      link: 'https://www.marriott.com/' 
+      src: '/Images/hotels/atulya_green.jpg',
+      link: 'https://www.google.com/maps/search/Atulya+Green+by+Meyatri+Jaipur'
     }
   ];
 
   const attractions = [
-    { 
-      name: 'Hawa Mahal', 
-      distance: '25 km', 
+    {
+      name: 'Hawa Mahal',
+      distance: '25 km',
       duration: '1-2 Hours',
       category: 'Royal Palace',
-      desc: 'The iconic Palace of Winds featuring intricate honeycomb sandstone lattice windows.', 
+      desc: 'The iconic Palace of Winds featuring intricate honeycomb sandstone lattice windows.',
       src: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=600&q=80',
       mapLink: 'https://maps.google.com/?q=Hawa+Mahal+Jaipur'
     },
-    { 
-      name: 'Amer Fort', 
-      distance: '34 km', 
+    {
+      name: 'Amer Fort',
+      distance: '34 km',
       duration: '2-3 Hours',
       category: 'UNESCO World Heritage',
-      desc: 'A majestic UNESCO World Heritage fortress overlooking Maota Lake with spectacular murals.', 
+      desc: 'A majestic UNESCO World Heritage fortress overlooking Maota Lake with spectacular murals.',
       src: '/Images/jaipur_sightseeing/amer_fort.webp',
       mapLink: 'https://maps.google.com/?q=Amer+Fort+Jaipur'
     },
-    { 
-      name: 'Jal Mahal', 
-      distance: '30 km', 
+    {
+      name: 'Jal Mahal',
+      distance: '30 km',
       duration: '1 Hour',
       category: 'Historic Monument',
-      desc: 'A breathtaking palace resting silently in the center of the serene Man Sagar Lake.', 
+      desc: 'A breathtaking palace resting silently in the center of the serene Man Sagar Lake.',
       src: '/Images/jaipur_sightseeing/jal_mahal.webp',
       mapLink: 'https://maps.google.com/?q=Jal+Mahal+Jaipur'
     },
-    { 
-      name: 'City Palace', 
-      distance: '24 km', 
+    {
+      name: 'City Palace',
+      distance: '24 km',
       duration: '2-3 Hours',
       category: 'Royal Palace',
-      desc: 'The magnificent royal residence blending traditional Rajasthani and Mughal architectural styles.', 
+      desc: 'The magnificent royal residence blending traditional Rajasthani and Mughal architectural styles.',
       src: '/Images/jaipur_sightseeing/city_palace.webp',
       mapLink: 'https://maps.google.com/?q=City+Palace+Jaipur'
     },
-    { 
-      name: 'Albert Hall Museum', 
-      distance: '23 km', 
+    {
+      name: 'Albert Hall Museum',
+      distance: '23 km',
       duration: '1.5-2 Hours',
       category: 'Museum',
-      desc: 'The oldest state museum displaying exceptional industrial art and ancient treasures.', 
+      desc: 'The oldest state museum displaying exceptional industrial art and ancient treasures.',
       src: '/Images/jaipur_sightseeing/albert_hall.webp',
       mapLink: 'https://maps.google.com/?q=Albert+Hall+Museum+Jaipur'
     },
-    { 
-      name: 'Nahargarh Fort', 
-      distance: '29 km', 
+    {
+      name: 'Nahargarh Fort',
+      distance: '29 km',
       duration: '1.5-2 Hours',
       category: 'Hill Fort',
-      desc: 'A historic hilltop fort offering absolute panoramic sunset views over the Pink City.', 
+      desc: 'A historic hilltop fort offering absolute panoramic sunset views over the Pink City.',
       src: '/Images/jaipur_sightseeing/nahargarh_fort.webp',
       mapLink: 'https://maps.google.com/?q=Nahargarh+Fort+Jaipur'
     }
@@ -355,13 +355,29 @@ export default function VenueClient() {
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            <div className="lg:col-span-3 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-6 flex flex-col justify-between items-center text-center shadow-sm gap-6">
-              <div className="space-y-4 w-full flex flex-col items-center">
-                <span className="text-[#1A73E8] font-black uppercase tracking-widest text-xs">Google Maps</span>
-                <div className="p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-40 h-40 flex items-center justify-center">
-                  <img 
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.app.goo.gl%2FBr41eEjiNpgZaDjA9%3Fg_st%3Daw" 
+          <div className="grid grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-6 items-stretch">
+            {/* Map Iframe */}
+            <div className="col-span-2 lg:col-span-6 order-1 lg:order-2 border border-[#E6E8EC] shadow-md rounded-[18px] overflow-hidden min-h-[350px] sm:min-h-[420px] h-full bg-white">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1052887370965!2d75.64772927502109!3d26.83660327669258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4af4fe68f403%3A0x3bf05f95df22b8c4!2sJK%20Lakshmipat%20University!5e0!3m2!1sen!2sin!4v1779876968774!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '350px' }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="JK Lakshmipat University Map Location"
+                id="jklu-venue-map-iframe"
+              />
+            </div>
+
+            {/* Google Maps Card */}
+            <div className="col-span-1 lg:col-span-3 order-2 lg:order-1 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-4 sm:p-6 flex flex-col justify-between items-center text-center shadow-sm gap-4 sm:gap-6">
+              <div className="space-y-3 sm:space-y-4 w-full flex flex-col items-center">
+                <span className="text-[#1A73E8] font-black uppercase tracking-widest text-[10px] sm:text-xs">Google Maps</span>
+                <div className="p-2 sm:p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-28 h-28 sm:w-40 sm:h-40 flex items-center justify-center">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.app.goo.gl%2FBr41eEjiNpgZaDjA9%3Fg_st%3Daw"
                     alt="Scan for Google Maps"
                     className="w-full h-full object-contain"
                   />
@@ -372,40 +388,28 @@ export default function VenueClient() {
                 href="https://maps.app.goo.gl/Br41eEjiNpgZaDjA9?g_st=aw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-center bg-white hover:bg-[#F8F9FA] text-[#3C4043] hover:text-[#1A73E8] border border-[#DADCE0] hover:border-[#BDC1C6] font-semibold py-3 px-4 transition-all rounded-xl flex items-center justify-center gap-2.5 cursor-pointer text-xs shadow-xs hover:shadow-md group"
+                className="w-full text-center bg-white hover:bg-[#F8F9FA] text-[#3C4043] hover:text-[#1A73E8] border border-[#DADCE0] hover:border-[#BDC1C6] font-semibold py-2.5 sm:py-3 px-2 sm:px-4 transition-all rounded-xl flex items-center justify-center gap-2 sm:gap-2.5 cursor-pointer text-[11px] sm:text-xs shadow-xs hover:shadow-md group"
               >
                 <Image
                   src="/logos/gmaps logo.webp"
                   alt="Google Maps Logo"
                   width={20}
                   height={20}
-                  className="w-5 h-5 shrink-0 object-contain"
+                  className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 object-contain"
                 />
-                <span>Open in Google Maps</span>
-                <span className="group-hover:translate-x-0.5 transition-transform text-[#1A73E8]">↗</span>
+                <span className="leading-tight text-center">
+                  Open in <br className="sm:hidden" />Google Maps
+                </span>
               </a>
             </div>
 
-            <div className="lg:col-span-6 border border-[#E6E8EC] shadow-md rounded-[18px] overflow-hidden min-h-[420px] h-full bg-white">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1052887370965!2d75.64772927502109!3d26.83660327669258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4af4fe68f403%3A0x3bf05f95df22b8c4!2sJK%20Lakshmipat%20University!5e0!3m2!1sen!2sin!4v1779876968774!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: '420px' }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="JK Lakshmipat University Map Location"
-                id="jklu-venue-map-iframe"
-              />
-            </div>
-
-            <div className="lg:col-span-3 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-6 flex flex-col justify-between items-center text-center shadow-sm gap-6">
-              <div className="space-y-4 w-full flex flex-col items-center">
-                <span className="text-black font-black uppercase tracking-widest text-xs">Apple Maps</span>
-                <div className="p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-40 h-40 flex items-center justify-center">
-                  <img 
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.apple%2Fp%2FV7C2aunFdCLYnJ" 
+            {/* Apple Maps Card */}
+            <div className="col-span-1 lg:col-span-3 order-3 lg:order-3 bg-[#FCFCFC] border border-[#E6E8EC] rounded-[18px] p-4 sm:p-6 flex flex-col justify-between items-center text-center shadow-sm gap-4 sm:gap-6">
+              <div className="space-y-3 sm:space-y-4 w-full flex flex-col items-center">
+                <span className="text-black font-black uppercase tracking-widest text-[10px] sm:text-xs">Apple Maps</span>
+                <div className="p-2 sm:p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-28 h-28 sm:w-40 sm:h-40 flex items-center justify-center">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.apple%2Fp%2FV7C2aunFdCLYnJ"
                     alt="Scan for Apple Maps"
                     className="w-full h-full object-contain"
                   />
@@ -417,11 +421,12 @@ export default function VenueClient() {
                   href="https://maps.apple/p/V7C2aunFdCLYnJ"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center bg-black hover:bg-[#1C1C1E] text-white font-semibold py-3 px-4 transition-all rounded-xl flex items-center justify-center gap-2.5 cursor-pointer text-xs shadow-xs hover:shadow-md border border-white/10 group"
+                  className="w-full text-center bg-black hover:bg-[#1C1C1E] text-white font-semibold py-2.5 sm:py-3 px-2 sm:px-4 transition-all rounded-xl flex items-center justify-center gap-2 sm:gap-2.5 cursor-pointer text-[11px] sm:text-xs shadow-xs hover:shadow-md border border-white/10 group"
                 >
                   <AppleIcon size={16} className="shrink-0 text-white" />
-                  <span>Open in Apple Maps</span>
-                  <span className="group-hover:translate-x-0.5 transition-transform text-white/70">↗</span>
+                  <span className="leading-tight text-center">
+                    Open in <br className="sm:hidden" />Apple Maps
+                  </span>
                 </a>
               </div>
             </div>
@@ -458,13 +463,13 @@ export default function VenueClient() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                
+
                 {/* Content Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/95 via-[#0b1220]/40 to-transparent flex flex-col justify-end p-5 z-10 space-y-3">
                   <h3 className="font-serif font-bold text-white text-lg sm:text-xl leading-snug drop-shadow-sm">
                     {hotel.name}
                   </h3>
-                  
+
                   <div>
                     <a
                       href={hotel.link}

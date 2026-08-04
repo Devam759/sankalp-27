@@ -291,12 +291,12 @@ export default function AboutClient() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.9 }}
-                  className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-14 shadow-2xl mx-auto lg:mx-0 border border-slate-200/80 rounded-sm"
+                  className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-10 md:pb-14 shadow-2xl mx-auto lg:mx-0 border border-slate-200/80 rounded-sm"
                 >
                   <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
                      <Image src="/Images/campus/jklu_campus.webp" alt="JKLU Campus" fill className="object-cover transition-all duration-700 hover:scale-105" />
                   </div>
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-lg tracking-wider text-center w-full">
+                  <div className="absolute bottom-2.5 md:bottom-4 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-sm sm:text-base md:text-lg tracking-wider text-center w-full px-2 leading-tight md:leading-normal">
                      JK Lakshmipat University Campus
                   </div>
                 </motion.div>

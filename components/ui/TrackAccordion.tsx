@@ -2,15 +2,6 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  BrainIcon, 
-  DatabaseIcon, 
-  CpuIcon, 
-  PulseIcon, 
-  GraduationCapIcon, 
-  BuildingIcon, 
-  MicrochipIcon 
-} from '@/components/ui/Icons';
 
 interface TrackProps {
   track: {
@@ -22,16 +13,6 @@ interface TrackProps {
   isOpen?: boolean;
   onToggle?: () => void;
 }
-
-const trackIconComponents = [
-  BrainIcon,
-  DatabaseIcon,
-  CpuIcon,
-  PulseIcon,
-  GraduationCapIcon,
-  BuildingIcon,
-  MicrochipIcon
-];
 
 export default function TrackAccordion({ track, index, isOpen: controlledIsOpen, onToggle }: TrackProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
@@ -46,7 +27,7 @@ export default function TrackAccordion({ track, index, isOpen: controlledIsOpen,
     }
   };
 
-  const IconComponent = trackIconComponents[index % trackIconComponents.length];
+  const trackNumber = String(index + 1).padStart(2, '0');
 
   return (
     <div className="mb-4 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden transition-all hover:shadow-md">
@@ -55,8 +36,8 @@ export default function TrackAccordion({ track, index, isOpen: controlledIsOpen,
         className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
       >
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-lg bg-brand-orange/10 text-brand-orange flex items-center justify-center font-bold shrink-0">
-            <IconComponent size={20} />
+          <div className="w-10 h-10 rounded-lg bg-brand-orange/10 text-brand-orange flex items-center justify-center font-bold text-sm sm:text-base shrink-0">
+            {trackNumber}
           </div>
           <h3 className="text-lg md:text-xl font-bold text-brand-blue pr-4">
             {track.title}
