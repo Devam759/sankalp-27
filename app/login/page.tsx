@@ -2,23 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-
+import { AtomIcon } from '@/components/ui/Icons';
 import { 
   signInWithEmailAndPassword, 
-  sendPasswordResetEmail, 
-  sendEmailVerification, 
-  signOut,
-  User 
+  signOut 
 } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '@/lib/firebase';
 import { logAdminAction } from '@/lib/audit';
 
-type AuthMode = 'login' | 'reset' | 'unverified';
-
 export default function LoginPage() {
   const router = useRouter();
-  const [mode, setMode] = useState<AuthMode>('login');
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,32 +20,13 @@ export default function LoginPage() {
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  
-  const [unverifiedUser, setUnverifiedUser] = useState<User | null>(null);
 
-  // Redirect if already authenticated and verified
+  // Redirect if already authenticated
   useEffect(() => {
     if (isFirebaseConfigured() && auth && auth.currentUser) {
-      if (auth.currentUser.emailVerified) {
-        checkRoleAndRedirect(auth.currentUser.uid);
-      } else {
-        // Enforce strict sign-out if a lingering unverified session exists
-        auth.signOut();
-      }
+      checkRoleAndRedirect(auth.currentUser.uid);
     }
   }, []);
-
-  const clearMessages = () => {
-    setError('');
-    setSuccess('');
-  };
-
-  const switchMode = (newMode: AuthMode) => {
-    setMode(newMode);
-    clearMessages();
-    setPassword('');
-  };
 
   const checkRoleAndRedirect = async (uid: string) => {
     if (!db) return;
@@ -80,7 +55,7 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    clearMessages();
+    setError('');
     setLoading(true);
 
     if (!isFirebaseConfigured() || !auth || !db) {
@@ -94,15 +69,6 @@ export default function LoginPage() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, inputClean, password);
       
-      // SECURITY ENFORCEMENT: Email Verification Required
-      if (!userCredential.user.emailVerified) {
-        setUnverifiedUser(userCredential.user);
-        await signOut(auth); // Immediately terminate the unverified session
-        switchMode('unverified');
-        setLoading(false);
-        return;
-      }
-
       // Log successful login action
       try {
         await logAdminAction('LOGIN', 'sessions', `User ${inputClean} signed in successfully`);
@@ -119,222 +85,125 @@ export default function LoginPage() {
     }
   };
 
-  const handlePasswordReset = async (e: React.FormEvent) => {
-    e.preventDefault();
-    clearMessages();
-    setLoading(true);
-    
-    if (!auth) {
-      setError('Authentication service unavailable.');
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await sendPasswordResetEmail(auth, email.trim());
-      setSuccess('If an account with that email exists, a reset link has been sent.');
-      setTimeout(() => switchMode('login'), 5000);
-    } catch (err: any) {
-      console.error('Password reset error:', err);
-      // Avoid leaking whether an email exists for security reasons
-      setSuccess('If an account with that email exists, a reset link has been sent.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResendVerification = async () => {
-    if (!unverifiedUser) return;
-    clearMessages();
-    setLoading(true);
-    try {
-      await sendEmailVerification(unverifiedUser);
-      setSuccess('Verification email sent! Please check your inbox and spam folder.');
-    } catch (err: any) {
-      console.error('Verification resend error:', err);
-      // Firebase applies rate limits natively to this call.
-      if (err.code === 'auth/too-many-requests') {
-        setError('Too many requests. Please wait a few minutes before trying again.');
-      } else {
-        setError('Failed to send verification email. Please try again later.');
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <main className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
-      <div className="w-full max-w-sm bg-white border border-slate-200 p-8 rounded-lg shadow-md">
+    <main className="min-h-screen bg-[#f7f4ef] text-brand-ink font-sans flex flex-col items-center justify-center p-6 select-none relative">
+      <div className="w-full max-w-lg bg-white border border-slate-200/90 p-8 sm:p-10 rounded-2xl shadow-xl relative z-10">
         
-        {/* Header Branding */}
+        {/* Header Logos & Branding */}
         <div className="text-center mb-8">
-          <div className="flex flex-col select-none items-center mb-6">
-            <span className="font-extrabold text-2xl tracking-widest uppercase text-amber-600 font-sans leading-none">
-              ICATS 2026
-            </span>
-            <span className="font-semibold text-xs tracking-widest uppercase text-slate-500 font-sans leading-none mt-2">
+          {/* Logo Row: JKLU | SANKALP Emblem | ASIA UNIVERSITY */}
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-6">
+            {/* JKLU Logo */}
+            <a href="https://jklu.edu.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity flex items-center">
+              <img
+                src="/logos/jklu_logo.png"
+                alt="JKLU Logo"
+                className="h-14 sm:h-16 w-auto object-contain"
+              />
+            </a>
+
+            <div className="h-10 w-px bg-slate-200" />
+
+            {/* SANKALP Emblem */}
+            <div className="flex items-center gap-2">
+              <div className="h-12 w-12 border border-brand-orange/40 rounded-xl flex items-center justify-center bg-brand-orange/10 text-brand-orange shadow-xs">
+                <AtomIcon size={26} />
+              </div>
+            </div>
+
+            <div className="h-10 w-px bg-slate-200" />
+
+            {/* Asia University Logo */}
+            <div className="hover:opacity-90 transition-opacity flex items-center">
+              <img
+                src="/logos/Asia_University_Logo.webp"
+                alt="Asia University Logo"
+                className="h-14 sm:h-16 w-auto object-contain"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col select-none items-center mb-3">
+            <h1 className="font-serif font-black text-2xl sm:text-3xl tracking-wide uppercase text-brand-blue leading-none">
+              JKLU SANKALP 2027
+            </h1>
+            <span className="font-sans font-bold text-xs tracking-widest uppercase text-brand-orange leading-none mt-2.5">
               Management Platform
             </span>
           </div>
-          <div className="w-12 h-1 bg-amber-600 mx-auto rounded" />
+          <div className="w-14 h-1 bg-brand-orange mx-auto rounded-full mt-3" />
         </div>
 
         {/* Configuration Warning */}
         {!isFirebaseConfigured() && (
-          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded text-xs leading-relaxed">
+          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl text-xs leading-relaxed">
             <div>
-              <strong className="block font-bold uppercase mb-0.5">Firebase Required</strong>
+              <strong className="block font-bold uppercase mb-1 tracking-wider">Firebase Setup Required</strong>
               {FIREBASE_SETUP_MESSAGE}
             </div>
           </div>
         )}
 
-        {/* Messaging Display */}
+        {/* Error Messaging Display */}
         {error && (
-          <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 rounded text-xs font-semibold">
+          <div className="mb-6 p-3.5 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs font-semibold">
             <span>{error}</span>
           </div>
         )}
-        
-        {success && (
-          <div className="mb-6 p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded text-xs font-semibold">
-            <span>{success}</span>
+
+        {/* ─── LOGIN FORM ─── */}
+        <form onSubmit={handleLogin} className="space-y-5">
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+              Email Address
+            </label>
+            <div className="relative">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="admin@sankalp.com"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-sm text-brand-blue placeholder-slate-400 transition-all font-medium"
+              />
+            </div>
           </div>
-        )}
 
-        {/* ─── LOGIN MODE ─── */}
-        {mode === 'login' && (
-          <form onSubmit={handleLogin} className="space-y-5">
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
-                Email Address
-              </label>
-              <div className="relative">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="e.g. admin@jklu.edu.in"
-                  className="w-full border border-slate-300 rounded py-2.5 px-4 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 text-sm text-slate-900"
-                />
-              </div>
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="••••••••"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-4 pr-16 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-orange focus:border-brand-orange text-sm text-brand-blue placeholder-slate-400 transition-all font-medium"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-700 focus:outline-none cursor-pointer uppercase tracking-wider"
+              >
+                {showPassword ? 'Hide' : 'Show'}
+              </button>
             </div>
-
-            <div>
-              <div className="flex justify-between items-center mb-1.5">
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Password
-                </label>
-                <button 
-                  type="button" 
-                  onClick={() => switchMode('reset')}
-                  className="text-xs text-amber-600 hover:text-amber-700 font-semibold focus:outline-none"
-                >
-                  Forgot Password?
-                </button>
-              </div>
-              <div className="relative">
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  placeholder="••••••••"
-                  className="w-full border border-slate-300 rounded py-2.5 pl-4 pr-16 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 text-sm text-slate-900"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-600 focus:outline-none cursor-pointer uppercase tracking-wider"
-                >
-                  {showPassword ? 'Hide' : 'Show'}
-                </button>
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-slate-950 hover:bg-slate-900 text-white font-bold py-3 rounded text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-            >
-              {loading ? (
-                <span>Authenticating...</span>
-              ) : (
-                <span>Secure Sign In</span>
-              )}
-            </button>
-          </form>
-        )}
-
-        {/* ─── RESET PASSWORD MODE ─── */}
-        {mode === 'reset' && (
-          <form onSubmit={handlePasswordReset} className="space-y-5">
-            <div className="text-sm text-slate-600 mb-2">
-              Enter your registered email address and we'll send you a secure link to reset your password.
-            </div>
-            
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
-                Email Address
-              </label>
-              <div className="relative">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="e.g. admin@jklu.edu.in"
-                  className="w-full border border-slate-300 rounded py-2.5 px-4 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 text-sm text-slate-900"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading || !email}
-              className="w-full bg-slate-950 hover:bg-slate-900 text-white font-bold py-3 rounded text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-            >
-              <span>{loading ? 'Sending Link...' : 'Send Reset Link'}</span>
-            </button>
-
-            <button 
-              type="button" 
-              onClick={() => switchMode('login')}
-              className="w-full text-slate-500 hover:text-slate-800 text-sm font-semibold flex items-center justify-center gap-2 mt-4"
-            >
-              ← Back to Sign In
-            </button>
-          </form>
-        )}
-
-        {/* ─── UNVERIFIED EMAIL MODE ─── */}
-        {mode === 'unverified' && (
-          <div className="space-y-5">
-            <div className="text-sm text-slate-600 mb-2 text-center bg-amber-50 p-4 border border-amber-100 rounded">
-              <strong className="block text-amber-900 font-bold mb-2 uppercase text-xs tracking-wider">Email Verification Required</strong>
-              For security reasons, you must verify your email address before accessing the platform.
-            </div>
-            
-            <button
-              type="button"
-              onClick={handleResendVerification}
-              disabled={loading}
-              className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-            >
-              <span>{loading ? 'Resending...' : 'Resend Verification Email'}</span>
-            </button>
-
-            <button 
-              type="button" 
-              onClick={() => switchMode('login')}
-              className="w-full text-slate-500 hover:text-slate-800 text-sm font-semibold flex items-center justify-center gap-2 mt-4"
-            >
-              ← Return to Sign In
-            </button>
           </div>
-        )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-brand-blue hover:bg-[#060b14] text-white font-bold py-3.5 rounded-xl text-sm uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-2"
+          >
+            {loading ? (
+              <span>Authenticating...</span>
+            ) : (
+              <span>Sign In</span>
+            )}
+          </button>
+        </form>
 
       </div>
     </main>

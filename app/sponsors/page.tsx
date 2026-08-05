@@ -3,22 +3,23 @@ import SponsorsClient from './SponsorsClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Sponsors | Sankalp '27 | JKLU",
-  description: "Explore sponsorship packages (Platinum, Gold, Silver, Associate) for Sankalp '27 International Conference at JK Lakshmipat University, Jaipur. Connect with global technology leaders and researchers.",
+  title: "Sponsors | JKLU SANKALP 2027 | JKLU",
+  description: "Explore sponsorship packages (Platinum, Gold, Silver, Associate) for JKLU SANKALP 2027 International Conference at JK Lakshmipat University, Jaipur. Connect with global technology leaders and researchers.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/sponsors',
   },
   keywords: [
+    "JKLU SANKALP 2027 Sponsors",
     "Sankalp Sponsors",
     "Conference Sponsorship Opportunities",
     "JKLU Industry Partnerships",
     "AI Conference Sponsors India"
   ],
   openGraph: {
-    title: "Sponsorship Opportunities - SANKALP '27 | JKLU",
-    description: "Partner with Sankalp 2027 at JK Lakshmipat University to engage with global AI researchers, leaders, and innovators.",
+    title: "Sponsorship Opportunities - JKLU SANKALP 2027 | JKLU",
+    description: "Partner with JKLU SANKALP 2027 at JK Lakshmipat University to engage with global AI researchers, leaders, and innovators.",
     url: 'https://sankalp.jklu.edu.in/sponsors',
-    siteName: "Sankalp '27 Website",
+    siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
   },
 };

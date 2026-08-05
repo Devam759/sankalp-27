@@ -96,22 +96,26 @@ export default function AuditLogs() {
   const totalPages = Math.ceil(filteredLogs.length / itemsPerPage);
 
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-8 select-none font-sans">
       {/* Title Header */}
       <div>
-        <h1 className="font-adminHeading text-3xl font-black uppercase tracking-tight text-brand-ink mb-1.5">Audit Logs</h1>
-        <p className="text-admin-muted font-bold text-xs uppercase tracking-wider">Chronological record of system mutations</p>
+        <h1 className="font-serif text-2xl md:text-3xl font-black uppercase tracking-wide text-brand-blue mb-1">
+          Audit Logs
+        </h1>
+        <p className="text-slate-500 font-bold text-xs uppercase tracking-wider">
+          Chronological record of system mutations
+        </p>
       </div>
 
       {/* Mobile Filter Toggle Button */}
       <div className="md:hidden mt-4">
         <button 
           onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-          className="w-full bg-brand-cloud border-4 border-brand-ink p-4 rounded-md shadow-[4px_4px_0px_0px_#030404] flex items-center justify-between text-brand-ink active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer focus:outline-none"
+          className="w-full bg-white border border-slate-200 p-4 rounded-xl shadow-xs flex items-center justify-between text-slate-800 transition-all cursor-pointer focus:outline-none"
         >
           <div className="flex items-center gap-2">
             <CustomFilterIcon size={16} />
-            <span className="font-adminHeading text-sm font-black uppercase tracking-widest mt-1">Search & Filters</span>
+            <span className="font-bold text-xs uppercase tracking-wider">Search & Filters</span>
           </div>
           <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
             {isMobileFiltersOpen ? 'Hide' : 'Show'}
@@ -120,56 +124,48 @@ export default function AuditLogs() {
       </div>
 
       {/* Structured Filter Card */}
-      <div className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out md:grid-rows-[1fr] md:opacity-100 md:mt-6 ${isMobileFiltersOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
+      <div className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out md:grid-rows-[1fr] md:opacity-100 md:mt-4 ${isMobileFiltersOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
         <div className="overflow-hidden">
-          <div className="bg-white border-4 border-brand-ink p-6 rounded-md shadow-[4px_4px_0px_0px_#030404] flex flex-wrap gap-6 items-end">
-
-            <div className="flex items-center gap-2.5 text-brand-ink mb-2 md:mb-0 w-full lg:w-auto">
-              <div className="p-2 border-2 border-brand-ink bg-brand-cloud text-brand-ink rounded-md shadow-[2px_2px_0px_0px_#030404]">
-                <CustomFilterIcon size={16} />
-              </div>
-              <span className="text-xs font-black uppercase tracking-wider">Filter Registry</span>
-            </div>
-            
+          <div className="bg-white border border-slate-200/90 p-5 rounded-2xl shadow-sm flex flex-wrap gap-4 items-end">
             {/* Action filter */}
             <div className="flex-1 min-w-[150px]">
-              <label className="block text-[10px] font-black uppercase text-brand-ink/65 tracking-wider mb-2">Action Type</label>
+              <label className="block text-[10px] font-bold uppercase text-slate-500 tracking-wider mb-1.5">Action Type</label>
               <select 
                 value={filterAction} 
                 onChange={e => setFilterAction(e.target.value)}
-                className="w-full bg-brand-cloud border-2 border-brand-ink rounded-md py-2.5 px-3 text-xs text-brand-ink font-bold focus:outline-none focus:bg-white cursor-pointer transition-colors shadow-inner"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs text-slate-700 font-semibold focus:outline-none focus:bg-white cursor-pointer transition-colors"
               >
-                <option value="">ALL MUTATIONS</option>
+                <option value="">All Mutations</option>
                 {uniqueActions.map(a => <option key={a} value={a}>{a}</option>)}
               </select>
             </div>
 
             {/* Date From */}
             <div className="flex-grow min-w-[130px]">
-              <label className="block text-[10px] font-black uppercase text-brand-ink/65 tracking-wider mb-2">From Date</label>
+              <label className="block text-[10px] font-bold uppercase text-slate-500 tracking-wider mb-1.5">From Date</label>
               <input 
                 type="date" 
                 value={filterDateFrom} 
                 onChange={e => setFilterDateFrom(e.target.value)}
-                className="w-full bg-brand-cloud border-2 border-brand-ink rounded-md py-2 px-3 text-xs text-brand-ink font-bold focus:outline-none focus:bg-white transition-colors shadow-inner uppercase tracking-wider"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs text-slate-700 font-semibold focus:outline-none focus:bg-white transition-colors"
               />
             </div>
 
             {/* Date To */}
             <div className="flex-grow min-w-[130px]">
-              <label className="block text-[10px] font-black uppercase text-brand-ink/65 tracking-wider mb-2">To Date</label>
+              <label className="block text-[10px] font-bold uppercase text-slate-500 tracking-wider mb-1.5">To Date</label>
               <input 
                 type="date" 
                 value={filterDateTo} 
                 onChange={e => setFilterDateTo(e.target.value)}
-                className="w-full bg-brand-cloud border-2 border-brand-ink rounded-md py-2 px-3 text-xs text-brand-ink font-bold focus:outline-none focus:bg-white transition-colors shadow-inner uppercase tracking-wider"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs text-slate-700 font-semibold focus:outline-none focus:bg-white transition-colors"
               />
             </div>
 
             {/* Clear buttons */}
             <button 
               onClick={() => { setFilterAction(''); setFilterDateFrom(''); setFilterDateTo(''); }}
-              className="px-4 py-2.5 border-2 border-brand-ink bg-white text-xs font-black uppercase text-brand-ink hover:bg-brand-cloud rounded-md transition-colors cursor-pointer focus:outline-none shadow-[2px_2px_0px_0px_#030404]"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-semibold text-slate-700 rounded-xl transition-colors cursor-pointer focus:outline-none"
             >
               Clear
             </button>
@@ -181,11 +177,11 @@ export default function AuditLogs() {
       {loading ? (
         <SkeletonTable rows={10} />
       ) : (
-        <div className="bg-white border-4 border-brand-ink rounded-md shadow-[6px_6px_0px_0px_#030404] overflow-hidden flex flex-col">
+        <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm overflow-hidden flex flex-col">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse whitespace-nowrap">
               <thead>
-                <tr className="bg-brand-cloud border-b-2 border-brand-ink text-brand-ink text-[10px] font-black uppercase tracking-widest">
+                <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 text-[11px] font-bold uppercase tracking-wider">
                   <th className="p-4">Timestamp</th>
                   <th className="p-4">Performed By</th>
                   <th className="p-4">Action</th>
@@ -193,27 +189,27 @@ export default function AuditLogs() {
                   <th className="p-4">Details</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-ink/10">
+              <tbody className="divide-y divide-slate-100 font-medium">
                 {paginatedLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-brand-cloud/45 transition-colors text-xs font-bold text-brand-ink">
-                    <td className="p-4 text-admin-muted font-semibold">
+                  <tr key={log.id} className="hover:bg-slate-50/80 transition-colors text-xs text-slate-800">
+                    <td className="p-4 text-slate-500">
                       {log.timestamp ? log.timestamp.toDate().toLocaleString() : ''}
                     </td>
-                    <td className="p-4 font-black">{log.performedBy}</td>
+                    <td className="p-4 font-bold text-brand-blue">{log.performedBy}</td>
                     <td className="p-4">
-                      <span className="px-2.5 py-1 border-2 border-brand-ink rounded-md text-[9px] font-black uppercase tracking-wider bg-brand-cloud text-brand-ink shadow-[1px_1px_0px_0px_#030404]">
+                      <span className="px-2.5 py-1 border border-slate-200 rounded-lg text-[10px] font-bold uppercase bg-slate-50 text-slate-700">
                         {log.action}
                       </span>
                     </td>
-                    <td className="p-4 text-admin-muted font-semibold font-mono">{log.targetEntity}</td>
-                    <td className="p-4 whitespace-normal min-w-[240px] max-w-sm text-brand-ink font-semibold leading-relaxed">
+                    <td className="p-4 text-slate-500 font-mono text-[11px]">{log.targetEntity}</td>
+                    <td className="p-4 whitespace-normal min-w-[240px] max-w-sm text-slate-700 text-xs">
                       {log.details}
                     </td>
                   </tr>
                 ))}
                 {paginatedLogs.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="p-8 text-center text-admin-muted font-black text-xs uppercase tracking-wider">
+                    <td colSpan={5} className="p-8 text-center text-slate-400 font-medium text-xs">
                       No matching audit logs found.
                     </td>
                   </tr>
@@ -224,8 +220,8 @@ export default function AuditLogs() {
           
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="p-4 border-t-2 border-brand-ink flex justify-between items-center bg-brand-cloud">
-              <span className="text-xs font-black uppercase text-admin-muted">
+            <div className="p-4 border-t border-slate-200 flex justify-between items-center bg-slate-50">
+              <span className="text-xs font-bold text-slate-500">
                 Page {currentPage} of {totalPages}
               </span>
               <div className="flex gap-2">
@@ -235,7 +231,7 @@ export default function AuditLogs() {
                     setCurrentPage(p => p - 1);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="px-4 py-2 border-2 border-brand-ink rounded-md bg-white text-xs font-black uppercase text-brand-ink hover:bg-brand-cloud disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  className="px-3.5 py-1.5 border border-slate-200 rounded-lg bg-white text-xs font-bold text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
                 >
                   Prev
                 </button>
@@ -245,7 +241,7 @@ export default function AuditLogs() {
                     setCurrentPage(p => p + 1);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="px-4 py-2 border-2 border-brand-ink rounded-md bg-white text-xs font-black uppercase text-brand-ink hover:bg-brand-cloud disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  className="px-3.5 py-1.5 border border-slate-200 rounded-lg bg-white text-xs font-bold text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
                 >
                   Next
                 </button>

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Login | SANKALP '27",
-  description: "Secure authentication platform for Sankalp '27 administrators and check-in scanners.",
+  title: "Login | JKLU SANKALP 2027",
+  description: "Secure authentication platform for JKLU SANKALP 2027 administrators and check-in scanners.",
   alternates: {
     canonical: '/login',
   },

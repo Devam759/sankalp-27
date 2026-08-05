@@ -5,8 +5,8 @@ import Footer from '@/components/ui/Footer';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Sankalp '27 | JKLU",
-  description: "Terms and conditions governing registration, paper submission, academic conduct, and website usage for Sankalp '27 International Conference at JK Lakshmipat University.",
+  title: "Terms & Conditions | JKLU SANKALP 2027 | JKLU",
+  description: "Terms and conditions governing registration, paper submission, academic conduct, and website usage for JKLU SANKALP 2027 International Conference at JK Lakshmipat University.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/terms-and-conditions',
   },

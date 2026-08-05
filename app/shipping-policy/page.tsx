@@ -5,8 +5,8 @@ import Footer from '@/components/ui/Footer';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Shipping & Digital Delivery Policy | Sankalp '27 | JKLU",
-  description: "Official Shipping & Digital Delivery Policy for Sankalp '27 International Conference digital passes, receipts, and certificates.",
+  title: "Shipping & Digital Delivery Policy | JKLU SANKALP 2027 | JKLU",
+  description: "Official Shipping & Digital Delivery Policy for JKLU SANKALP 2027 International Conference digital passes, receipts, and certificates.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/shipping-policy',
   },

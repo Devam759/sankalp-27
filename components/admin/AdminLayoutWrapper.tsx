@@ -42,13 +42,13 @@ export default function AdminLayoutWrapper({ children }: { children: React.React
 
   if (configError) {
     return (
-      <div className="min-h-screen bg-admin-bg flex items-center justify-center p-6 text-center font-adminBody">
-        <div className="max-w-md bg-admin-surface border-4 border-brand-ink p-8 rounded-md shadow-[6px_6px_0px_0px_#030404]">
-          <h2 className="text-2xl font-black text-brand-orange mb-4 font-adminHeading uppercase tracking-tight">Firebase Unconfigured</h2>
-          <p className="text-brand-ink/75 text-sm mb-6 leading-relaxed font-bold">
+      <div className="min-h-screen bg-[#f7f4ef] flex items-center justify-center p-6 text-center font-sans">
+        <div className="max-w-md bg-white border border-slate-200 p-8 rounded-2xl shadow-xl">
+          <h2 className="text-2xl font-serif font-black text-brand-orange mb-3 uppercase tracking-tight">Firebase Unconfigured</h2>
+          <p className="text-slate-600 text-sm mb-6 leading-relaxed font-medium">
             {FIREBASE_SETUP_MESSAGE}
           </p>
-          <div className="text-xs bg-brand-cloud border-2 border-brand-ink p-4 rounded-md text-left font-mono overflow-x-auto text-brand-ink font-semibold">
+          <div className="text-xs bg-slate-50 border border-slate-200 p-4 rounded-xl text-left font-mono overflow-x-auto text-slate-800 font-medium">
             1. Copy .env.example to .env.local<br/>
             2. Fill in your Firebase configuration keys
           </div>
@@ -59,23 +59,17 @@ export default function AdminLayoutWrapper({ children }: { children: React.React
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-admin-bg flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-t-admin-accent border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-[#f7f4ef] flex items-center justify-center">
+        <div className="w-10 h-10 border-4 border-brand-orange border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-admin-bg text-admin-text font-adminBody internal-team-portal">
+    <div className="flex min-h-screen bg-[#f7f4ef] text-slate-900 font-sans selection:bg-brand-orange selection:text-white">
       <AdminSidebar />
-      <main className="flex-1 w-full md:w-[calc(100%-16rem)] pt-24 md:pt-0 overflow-y-auto relative">
-        <header className="sticky top-0 z-30 bg-admin-surface px-4 md:px-8 h-16 hidden md:flex items-center justify-end border-b-2 border-brand-ink">
-          <span className="hidden md:inline text-xs font-black text-admin-muted uppercase tracking-widest">
-            Admin Dashboard
-          </span>
-        </header>
-
-        <div className="p-4 md:p-8 max-w-6xl mx-auto">{children}</div>
+      <main className="flex-1 w-full md:w-[calc(100%-16rem)] pt-16 md:pt-0 overflow-y-auto relative">
+        <div className="p-6 md:p-10 max-w-7xl mx-auto">{children}</div>
       </main>
     </div>
   );

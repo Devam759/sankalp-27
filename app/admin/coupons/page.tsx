@@ -120,16 +120,20 @@ export default function CouponsPage() {
   };
 
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-8 select-none font-sans">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-adminHeading text-3xl font-black uppercase tracking-tight text-brand-ink mb-1.5">Coupons</h1>
-          <p className="text-admin-muted font-bold text-xs uppercase tracking-wider">Manage dynamic discount codes</p>
+          <h1 className="font-serif text-2xl md:text-3xl font-black uppercase tracking-wide text-brand-blue mb-1">
+            Coupons
+          </h1>
+          <p className="text-slate-500 font-bold text-xs uppercase tracking-wider">
+            Manage dynamic discount codes
+          </p>
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-brand-ink text-white border-4 border-brand-ink px-6 py-3 rounded-md shadow-[4px_4px_0px_0px_#f97316] font-black uppercase tracking-widest text-xs flex items-center gap-2 hover:translate-y-[-2px] transition-all cursor-pointer"
+          className="bg-brand-orange hover:bg-[#d94e05] text-white font-bold text-xs uppercase px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer"
         >
           <CustomPlusIcon size={16} /> Add Coupon
         </button>
@@ -139,32 +143,32 @@ export default function CouponsPage() {
       {loading ? (
         <SkeletonTable rows={5} />
       ) : (
-        <div className="bg-white border-4 border-brand-ink rounded-md shadow-[6px_6px_0px_0px_#030404] overflow-hidden flex flex-col">
+        <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm overflow-hidden flex flex-col">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse whitespace-nowrap">
               <thead>
-                <tr className="bg-brand-cloud border-b-2 border-brand-ink text-brand-ink text-[10px] font-black uppercase tracking-widest">
+                <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 text-[11px] font-bold uppercase tracking-wider">
                   <th className="p-4">Coupon Code</th>
                   <th className="p-4">Fixed Amount (Rs.)</th>
                   <th className="p-4">Status</th>
                   <th className="p-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-ink/10">
+              <tbody className="divide-y divide-slate-100 font-medium">
                 {coupons.map((coupon) => (
-                  <tr key={coupon.id} className="hover:bg-brand-cloud/45 transition-colors text-xs font-bold text-brand-ink">
+                  <tr key={coupon.id} className="hover:bg-slate-50/80 transition-colors text-xs text-slate-800">
                     <td className="p-4">
                       <div className="flex items-center gap-2">
                         <CustomTagIcon size={14} className="text-brand-orange" />
-                        <span className="font-black text-sm uppercase">{coupon.code}</span>
+                        <span className="font-bold text-sm text-brand-blue uppercase">{coupon.code}</span>
                       </div>
                     </td>
-                    <td className="p-4 font-mono font-bold text-admin-muted">
+                    <td className="p-4 font-mono font-bold text-slate-700">
                       Rs. {Number(coupon.amount).toFixed(2)}
                     </td>
                     <td className="p-4">
-                      <span className={`px-2.5 py-1 border-2 border-brand-ink rounded-md text-[9px] font-black uppercase tracking-wider shadow-[1px_1px_0px_0px_#030404] ${
-                        coupon.active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                      <span className={`inline-block px-2.5 py-1 border rounded-lg text-[10px] font-bold uppercase ${
+                        coupon.active ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-red-50 text-red-700 border-red-200'
                       }`}>
                         {coupon.active ? 'Active' : 'Disabled'}
                       </span>
@@ -172,13 +176,13 @@ export default function CouponsPage() {
                     <td className="p-4 text-right space-x-2">
                       <button 
                         onClick={() => handleToggleActive(coupon.id, coupon.active)}
-                        className="px-3 py-1.5 border-2 border-brand-ink rounded-md text-[10px] font-black uppercase hover:bg-brand-cloud transition-colors shadow-[1px_1px_0px_0px_#030404] cursor-pointer"
+                        className="px-3 py-1.5 border border-slate-200 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
                       >
                         Toggle
                       </button>
                       <button 
                         onClick={() => handleDelete(coupon.id)}
-                        className="px-3 py-1.5 border-2 border-brand-ink rounded-md text-[10px] font-black uppercase bg-red-50 text-red-600 hover:bg-red-100 transition-colors shadow-[1px_1px_0px_0px_#030404] cursor-pointer"
+                        className="px-3 py-1.5 border border-red-200 rounded-lg text-[11px] font-bold text-red-600 bg-red-50 hover:bg-red-100 transition-colors cursor-pointer"
                       >
                         Delete
                       </button>
@@ -187,7 +191,7 @@ export default function CouponsPage() {
                 ))}
                 {coupons.length === 0 && (
                   <tr>
-                    <td colSpan={4} className="p-8 text-center text-admin-muted font-black text-xs uppercase tracking-wider">
+                    <td colSpan={4} className="p-8 text-center text-slate-400 font-medium text-xs">
                       No dynamic coupons found. (Environment variable coupons may still be active).
                     </td>
                   </tr>
@@ -200,20 +204,20 @@ export default function CouponsPage() {
 
       {/* Add Coupon Modal */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Add New Coupon">
-        <form onSubmit={handleAddCoupon} className="space-y-6">
+        <form onSubmit={handleAddCoupon} className="space-y-5">
           <div>
-            <label className="block text-[10px] font-black uppercase text-brand-ink/65 tracking-wider mb-2">Coupon Code</label>
+            <label className="block text-[11px] font-bold uppercase text-slate-500 tracking-wider mb-1.5">Coupon Code</label>
             <input 
               type="text" 
               required
               value={newCode}
               onChange={(e) => setNewCode(e.target.value.toUpperCase())}
               placeholder="e.g. VIP2026"
-              className="w-full bg-brand-cloud border-2 border-brand-ink rounded-md py-3 px-4 text-sm text-brand-ink font-bold focus:outline-none focus:bg-white transition-colors shadow-inner uppercase tracking-wider placeholder:text-brand-ink/30"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-xs text-slate-800 font-bold focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand-orange transition-colors uppercase tracking-wider"
             />
           </div>
           <div>
-            <label className="block text-[10px] font-black uppercase text-brand-ink/65 tracking-wider mb-2">Fixed Payment Amount (Rs.)</label>
+            <label className="block text-[11px] font-bold uppercase text-slate-500 tracking-wider mb-1.5">Fixed Payment Amount (Rs.)</label>
             <input 
               type="number" 
               required
@@ -222,16 +226,16 @@ export default function CouponsPage() {
               value={newAmount}
               onChange={(e) => setNewAmount(e.target.value === '' ? '' : Number(e.target.value))}
               placeholder="e.g. 1 (For testing) or 2000 (For discount)"
-              className="w-full bg-brand-cloud border-2 border-brand-ink rounded-md py-3 px-4 text-sm text-brand-ink font-bold focus:outline-none focus:bg-white transition-colors shadow-inner"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-xs text-slate-800 font-bold focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand-orange transition-colors"
             />
-            <p className="text-[10px] text-admin-muted font-bold mt-2">
+            <p className="text-[11px] text-slate-400 font-medium mt-1.5">
               Note: This is the exact amount the user will pay. The standard price is Rs. 2500. Set to 1 for test coupons.
             </p>
           </div>
           <button 
             type="submit" 
             disabled={isSubmitting}
-            className="w-full bg-brand-orange text-brand-ink border-2 border-brand-ink py-3 rounded-md font-black uppercase tracking-widest text-xs hover:bg-[#e86308] transition-colors shadow-[2px_2px_0px_0px_#030404] disabled:opacity-50 cursor-pointer"
+            className="w-full bg-brand-orange hover:bg-[#d94e05] text-white font-bold text-xs uppercase py-3 rounded-xl shadow-sm transition-all disabled:opacity-50 cursor-pointer"
           >
             {isSubmitting ? 'Creating...' : 'Create Coupon'}
           </button>

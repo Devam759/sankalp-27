@@ -3,12 +3,13 @@ import CommitteeClient from './CommitteeClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Organizing Committee & Leadership | SANKALP '27 JKLU",
-  description: "Meet the leadership, patrons, conference chairs, program chairs, and international/national advisory boards of SANKALP 2027 at JK Lakshmipat University, Jaipur.",
+  title: "Organizing Committee & Leadership | JKLU SANKALP 2027",
+  description: "Meet the leadership, patrons, conference chairs, program chairs, and international/national advisory boards of JKLU SANKALP 2027 at JK Lakshmipat University, Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/committee',
   },
   keywords: [
+    "JKLU SANKALP 2027 Committee",
     "Sankalp Committee",
     "Sankalp Advisory Board",
     "JKLU Conference Leadership",
@@ -41,17 +42,17 @@ export const metadata: Metadata = {
     "Umesh Gupta JKLU"
   ],
   openGraph: {
-    title: "Organizing Committee & Institutional Leadership | SANKALP '27",
-    description: "Distinguished academics and institutional leaders steering SANKALP 2027 at JK Lakshmipat University.",
+    title: "Organizing Committee & Institutional Leadership | JKLU SANKALP 2027",
+    description: "Distinguished academics and institutional leaders steering JKLU SANKALP 2027 at JK Lakshmipat University.",
     url: 'https://sankalp.jklu.edu.in/committee',
-    siteName: "SANKALP '27 Website",
+    siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
     images: [
       {
         url: 'https://sankalp.jklu.edu.in/Images/committee/Bharat_Hari_Singhania.webp',
         width: 600,
         height: 600,
-        alt: 'Mr. Bharat Hari Singhania - Chief Patron SANKALP 2027 JKLU',
+        alt: 'Mr. Bharat Hari Singhania - Chief Patron JKLU SANKALP 2027',
       },
     ],
   },

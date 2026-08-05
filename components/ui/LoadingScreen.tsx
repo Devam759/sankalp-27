@@ -127,7 +127,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
   return (
     <div
-      aria-label="Loading Sankalp '27"
+      aria-label="Loading JKLU SANKALP 2027"
       style={{
         position: 'fixed',
         inset: 0,
@@ -228,7 +228,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           color: 'rgba(24,65,118,0.55)',
           textTransform: 'uppercase',
         }}>
-          SANKALP · 2027 · INITIALIZING
+          JKLU · SANKALP · 2027 · INITIALIZING
         </span>
       </motion.div>
 

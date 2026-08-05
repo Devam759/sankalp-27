@@ -195,8 +195,8 @@ export default function HomeClient() {
             <h1 
               className="text-[clamp(3rem,8vw,6rem)] font-sans font-extrabold sm:font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm"
             >
-              SANKALP
-              <span className="text-brand-orange"> '27</span>
+              JKLU SANKALP
+              <span className="text-brand-orange"> 2027</span>
             </h1>
           </motion.div>
 
@@ -258,7 +258,7 @@ export default function HomeClient() {
             <div className="w-16 h-16 mb-5 rounded-sm border border-white/15 bg-white/10 flex items-center justify-center" aria-label="SANKALP Logo (placeholder)">
               <span className="text-white/30 text-[8px] font-bold uppercase tracking-wider text-center leading-tight">LOGO</span>
             </div>
-            <h2 className="text-2xl font-serif font-bold mb-1">SANKALP '27</h2>
+            <h2 className="text-2xl font-serif font-bold mb-1">JKLU SANKALP 2027</h2>
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
               A premier JKLU International Conference uniting researchers, academics, industry leaders and students across six frontier domains: Sustainable AI, Next-Gen Knowledge, Automation, Learning, Prediction and emerging technologies.
             </p>
@@ -546,7 +546,7 @@ export default function HomeClient() {
                       sizes="96px"
                       priority={i === 0}
                       loading={i === 0 ? 'eager' : 'lazy'}
-                      className="object-cover transition-transform duration-500"
+                      className="object-cover object-top transition-transform duration-500"
                     />
                   </div>
                   <div className="w-full relative">
@@ -604,7 +604,7 @@ export default function HomeClient() {
                     title={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
                     fill
                     sizes="64px"
-                    className="object-cover transition-all duration-500"
+                    className="object-cover object-top transition-all duration-500"
                   />
                 </div>
                 <div>
@@ -633,7 +633,7 @@ export default function HomeClient() {
                     title={`${chair.name} - ${chair.role} SANKALP 2027 JKLU`}
                     fill
                     sizes="64px"
-                    className="object-cover transition-all duration-500"
+                    className="object-cover object-top transition-all duration-500"
                   />
                 </div>
                 <div>
@@ -668,7 +668,7 @@ export default function HomeClient() {
                     fill
                     sizes="64px"
                     unoptimized
-                    className="object-cover transition-all duration-500"
+                    className="object-cover object-top transition-all duration-500"
                   />
                 </div>
                 <div>
@@ -687,48 +687,52 @@ export default function HomeClient() {
               </div>
             </div>
 
-            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 w-full group/gallery" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                {[
-                { id: 'international', title: 'International Advisory Board', subtitle: 'Global research leaders', number: '01' },
-                { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India', number: '02' }
+                { id: 'international', title: 'International Advisory Board', subtitle: 'Global research leaders' },
+                { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India' }
               ].map((board, i) => (
                 <motion.div
                   key={board.id}
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: Math.min(i * 0.1, 1), duration: 0.8, ease: "easeOut" }}
+                  transition={{ delay: i * 0.12, duration: 0.6, ease: "easeOut" }}
                   onClick={() => setActiveAdvisory(activeAdvisory === board.id ? null : board.id)}
-                  className={`shrink-0 w-[85vw] sm:w-[360px] aspect-[4/5] relative group/card snap-center overflow-hidden border cursor-pointer transition-all duration-500 hover:shadow-2xl ${
+                  className={`w-full min-h-[190px] sm:min-h-[210px] relative group/card rounded-xl overflow-hidden border cursor-pointer transition-all duration-300 ${
                     activeAdvisory === board.id 
-                      ? 'border-brand-orange bg-[#0a0a0a]' 
-                      : 'border-brand-blue/10 bg-[#101010]'
+                      ? 'border-brand-orange bg-[#181d28] shadow-lg' 
+                      : 'border-slate-700/60 bg-[#141824] hover:border-slate-600 hover:bg-[#181d28] shadow-sm'
                   }`}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br transition-opacity duration-700 ${
-                    activeAdvisory === board.id
-                      ? 'from-brand-orange/20 to-[#0a0a0a] opacity-100'
-                      : 'from-brand-blue/60 to-[#0a0a0a] opacity-90 group-hover/card:opacity-100'
-                  }`} />
+                  {/* MATTE DARK SOLID SURFACE */}
+                  <div className="absolute inset-0 bg-[#161b26] transition-colors duration-300" />
                   
-                  <div className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${
-                    activeAdvisory === board.id ? 'opacity-10' : 'opacity-[0.03] group-hover/card:opacity-10'
-                  }`} style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+                  {/* ALWAYS VISIBLE SUBTLE MATTE DOTTED PATTERN */}
+                  <div 
+                    className="absolute inset-0 opacity-20 pointer-events-none transition-opacity duration-300 group-hover/card:opacity-30" 
+                    style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.4) 1px, transparent 0)', backgroundSize: '20px 20px' }} 
+                  />
 
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
-                    
-                    <div className={`${activeAdvisory === board.id ? '-translate-y-2' : 'group-hover/card:-translate-y-2'} transition-transform duration-500`}>
-                      <h3 className="font-serif font-bold text-2xl text-white leading-tight mb-4 uppercase">{board.title}</h3>
-                      <div className={`h-[2px] transition-all duration-500 mb-4 ${
-                        activeAdvisory === board.id ? 'bg-brand-orange w-16' : 'bg-white/20 w-8 group-hover/card:bg-brand-orange group-hover/card:w-16'
-                      }`} />
-                      <p className="text-white/60 text-xs font-medium tracking-wide uppercase leading-relaxed">{board.subtitle}</p>
-                      
-                      <div className={`text-[10px] lowercase font-normal opacity-70 mt-6 text-brand-orange transition-opacity ${
-                        activeAdvisory === board.id ? 'opacity-100' : 'opacity-0 group-hover/card:opacity-100'
+                  <div className="relative z-10 p-7 sm:p-8 flex flex-col justify-between h-full min-h-[190px] sm:min-h-[210px]">
+                    <div className="flex items-center justify-end">
+                      <span className={`text-[11px] font-semibold tracking-wider uppercase transition-colors ${
+                        activeAdvisory === board.id ? 'text-brand-orange' : 'text-slate-400 group-hover/card:text-slate-200'
                       }`}>
-                        {activeAdvisory === board.id ? 'Click to close' : 'Click to view members'}
-                      </div>
+                        {activeAdvisory === board.id ? 'Click to close ▲' : 'Click to view members →'}
+                      </span>
+                    </div>
+
+                    <div className="mt-6">
+                      <h3 className="font-serif font-bold text-xl sm:text-2xl text-slate-100 leading-tight mb-2 uppercase tracking-wide">
+                        {board.title}
+                      </h3>
+                      <div className={`h-[2px] transition-all duration-300 mb-3 ${
+                        activeAdvisory === board.id ? 'bg-brand-orange w-16' : 'bg-slate-600 w-10 group-hover/card:bg-brand-orange group-hover/card:w-16'
+                      }`} />
+                      <p className="text-slate-400 text-xs sm:text-sm font-medium tracking-wide uppercase">
+                        {board.subtitle}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -850,7 +854,7 @@ export default function HomeClient() {
                   {activeAdvisory === 'national' && 'National Advisory Board'}
                   {activeAdvisory === 'internal' && 'Organising Committee'}
                 </h4>
-                <p className="text-brand-orange text-xs font-bold uppercase tracking-widest mt-2">SANKALP 2027</p>
+                <p className="text-brand-orange text-xs font-bold uppercase tracking-widest mt-2">JKLU SANKALP 2027</p>
               </div>
               <button onClick={() => setActiveAdvisory(null)} className="text-white/50 hover:text-brand-orange transition-colors p-2 bg-white/5 rounded-md font-bold text-xs tracking-wider uppercase">
                 Close

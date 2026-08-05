@@ -15,7 +15,7 @@ export default function FaqClient() {
   const faqs = [
     { 
       q: 'Where is the conference venue located?', 
-      a: "SANKALP'27 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services." 
+      a: "JKLU SANKALP 2027 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services." 
     },
     { 
       q: 'Is parking available on campus?', 
@@ -65,7 +65,7 @@ export default function FaqClient() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-base sm:text-lg opacity-85 max-w-xl mx-auto"
           >
-            Find quick answers to common questions about SANKALP'27 registrations, venue facilities, travel, and accommodation.
+            Find quick answers to common questions about JKLU SANKALP 2027 registrations, venue facilities, travel, and accommodation.
           </motion.p>
         </div>
       </section>

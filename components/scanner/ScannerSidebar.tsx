@@ -105,21 +105,22 @@ export default function ScannerSidebar() {
   const { scannerAccount, logout } = useScannerSession();
 
   const navItems = [
-    { name: 'Scanner Console', href: '/scanner', icon: CustomConsoleIcon },
-    { name: 'Scan Records', href: '/scanner/records', icon: CustomRecordsIcon }
+    { name: 'Scanner Console', href: '/scanner' },
+    { name: 'Live Registrations', href: '/scanner/registrations' },
+    { name: 'Scan Records', href: '/scanner/records' }
   ];
 
   return (
     <>
       {/* Mobile Hamburger Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b-2 border-brand-ink flex items-center justify-between px-4 z-50">
+      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0b1220] border-b border-white/10 flex items-center justify-between px-4 z-50">
         <Link href="/scanner" className="flex items-center gap-2">
-          <img src="/logos/jklu_logo.png" alt="JKLU Logo" className="h-8 w-auto object-contain" />
-          <span className="font-adminHeading text-md font-black text-brand-ink hidden">Scanner</span>
+          <img src="/logos/jklu_logo.png" alt="JKLU Logo" className="h-10 w-auto object-contain brightness-0 invert" />
+          <span className="font-serif font-black text-sm text-white">Scanner Desk</span>
         </Link>
         <button 
           onClick={() => setIsOpen(!isOpen)} 
-          className="text-brand-ink p-2 cursor-pointer focus:outline-none"
+          className="text-white p-2 cursor-pointer focus:outline-none hover:bg-white/10 rounded-lg transition-colors"
         >
           {isOpen ? <CustomCloseIcon size={24} /> : <CustomMenuIcon size={24} />}
         </button>
@@ -128,59 +129,66 @@ export default function ScannerSidebar() {
       {/* Sidebar Overlay for Mobile */}
       {isOpen && (
         <div 
-          className="md:hidden fixed inset-0 bg-[#030404]/60 z-40"
+          className="md:hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-40"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Sidebar Contents */}
       <aside 
-        className={`fixed md:sticky top-0 left-0 h-screen w-64 bg-white border-r-2 border-brand-ink flex flex-col transition-transform duration-300 z-50 ${
+        className={`fixed md:sticky top-0 left-0 h-screen w-64 bg-[#0b1220] border-r border-white/10 flex flex-col transition-transform duration-300 z-50 text-white select-none ${
           isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
       >
-        {/* Desktop Sidebar Logo */}
-        <div className="h-16 flex items-center px-6 border-b-2 border-brand-ink bg-white hidden md:flex">
-          <Link href="/scanner" className="flex items-center gap-2">
-            <img src="/logos/jklu_logo.png" alt="JKLU Logo" className="h-16 w-auto object-contain" />
-          </Link>
+        {/* Desktop Sidebar Header */}
+        <div className="p-4 border-b border-white/10 bg-[#0b1220] hidden md:flex items-center justify-between gap-3 opacity-95">
+          <a href="https://jklu.edu.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <img src="/logos/white_jklu_logo.webp" alt="JKLU Logo" className="h-11 w-auto object-contain" />
+          </a>
+          <div className="h-7 w-px bg-white/20" />
+          <div className="hover:opacity-80 transition-opacity">
+            <img src="/logos/Asia_University_Logo.webp" alt="Asia University Logo" className="h-11 w-auto object-contain brightness-0 invert opacity-90" />
+          </div>
         </div>
 
         {/* Navigation list */}
-        <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-2 bg-white">
+        <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1 bg-[#0b1220]">
+          <div className="px-3 pt-1 pb-1.5">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-brand-orange">
+              Scanner Desk
+            </span>
+          </div>
+
           {navItems.map((item) => {
             const isActive = pathname === item.href;
-            const Icon = item.icon;
             
             return (
               <Link 
                 key={item.name} 
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 border-2 transition-all duration-100 ${
+                className={`flex items-center px-3.5 py-2.5 rounded-xl transition-all duration-200 ${
                   isActive 
-                    ? 'bg-brand-cloud border-brand-ink text-brand-ink font-black shadow-[3px_3px_0px_0px_#030404] rounded-md translate-x-[-2px] translate-y-[-2px]' 
-                    : 'border-transparent text-admin-muted hover:bg-admin-bg hover:text-brand-ink hover:border-brand-ink hover:rounded-md'
+                    ? 'bg-brand-orange text-white font-bold shadow-md' 
+                    : 'text-slate-300 hover:bg-white/10 hover:text-white font-medium'
                 }`}
               >
-                <Icon size={18} />
-                <span className="text-sm tracking-wide uppercase font-black text-xs">{item.name}</span>
+                <span className="text-sm font-semibold">{item.name}</span>
               </Link>
             );
           })}
         </nav>
 
         {/* Sidebar Footer / Logout */}
-        <div className="p-4 border-t-2 border-brand-ink bg-white">
-          <div className="text-[9px] font-black uppercase text-brand-ink/40 tracking-wider mb-2 text-center truncate">
-            {scannerAccount?.volunteerName || 'Operator'}
+        <div className="p-3 border-t border-white/10 bg-[#0b1220]">
+          <div className="text-[11px] font-semibold text-slate-400 mb-2 text-center truncate">
+            Operator: <span className="text-white font-bold">{scannerAccount?.volunteerName || 'Operator'}</span>
           </div>
           <button 
             onClick={logout}
-            className="flex items-center justify-center gap-3 px-4 py-3 w-full rounded-md border-2 border-transparent text-admin-muted hover:border-brand-ink hover:bg-brand-orange/15 hover:text-brand-orange hover:font-black hover:shadow-[3px_3px_0px_0px_#030404] transition-all duration-100 cursor-pointer"
+            className="flex items-center justify-center px-3.5 py-2.5 w-full rounded-xl text-slate-400 hover:bg-red-500/15 hover:text-red-400 font-semibold text-sm transition-all duration-200 cursor-pointer"
           >
-            <CustomLogoutIcon size={18} />
-            <span className="text-sm tracking-wide uppercase font-black text-xs">Logout</span>
+            <span>Logout</span>
           </button>
         </div>
       </aside>

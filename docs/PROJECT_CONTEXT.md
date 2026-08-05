@@ -9,9 +9,9 @@
 
 | Field | Value |
 |---|---|
-| **Name** | Sankalp '27 - International Conference Portal |
+| **Name** | JKLU SANKALP 2027 - International Conference Portal |
 | **Organizer** | JK Lakshmipat University (JKLU), Jaipur, India |
-| **Event** | Sankalp 2027 International Conference (5-6 March 2027) |
+| **Event** | JKLU SANKALP 2027 International Conference (5-6 March 2027) |
 | **Production URL** | `https://sankalp.jklu.edu.in` |
 | **Domain** | `sankalp.jklu.edu.in` |
 | **Repository** | `sankalp-27` (GitHub) |

@@ -3,12 +3,13 @@ import VenueClient from './VenueClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Conference Venue & Travel Guide | Sankalp '27 | JKLU Jaipur",
-  description: "Explore the conference venue at JK Lakshmipat University, Jaipur. Complete travel guide (air, train, road), recommended delegate hotels, and Pink City heritage attractions.",
+  title: "Conference Venue & Travel Guide | JKLU SANKALP 2027 | JKLU Jaipur",
+  description: "Explore the conference venue for JKLU SANKALP 2027 at JK Lakshmipat University, Jaipur. Complete travel guide (air, train, road), recommended delegate hotels, and Pink City heritage attractions.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/venue',
   },
   keywords: [
+    "JKLU SANKALP 2027 Venue",
     "JKLU Venue",
     "JK Lakshmipat University Address",
     "Sankalp Conference Venue Jaipur",
@@ -16,10 +17,10 @@ export const metadata: Metadata = {
     "Jaipur Travel Guide Conference Delegates"
   ],
   openGraph: {
-    title: "Venue & Travel Guide - SANKALP '27 | JKLU Jaipur",
-    description: "Location, map, navigation, delegate accommodation, and travel tips for Sankalp 2027 at JK Lakshmipat University.",
+    title: "Venue & Travel Guide - JKLU SANKALP 2027 | JKLU Jaipur",
+    description: "Location, map, navigation, delegate accommodation, and travel tips for JKLU SANKALP 2027 at JK Lakshmipat University.",
     url: 'https://sankalp.jklu.edu.in/venue',
-    siteName: "Sankalp '27 Website",
+    siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
   },
 };

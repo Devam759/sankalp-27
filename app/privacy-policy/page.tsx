@@ -5,8 +5,8 @@ import Footer from '@/components/ui/Footer';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Sankalp '27 | JKLU",
-  description: "Official Privacy Policy for Sankalp '27 International Conference at JK Lakshmipat University, Jaipur. Learn how personal and payment data is collected, used, and protected.",
+  title: "Privacy Policy | JKLU SANKALP 2027 | JKLU",
+  description: "Official Privacy Policy for JKLU SANKALP 2027 International Conference at JK Lakshmipat University, Jaipur. Learn how personal and payment data is collected, used, and protected.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/privacy-policy',
   },

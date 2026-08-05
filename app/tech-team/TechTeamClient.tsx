@@ -31,7 +31,7 @@ export default function TechTeamClient() {
       badge: 'ENGINEERING LEAD',
       isHead: true,
       image: '/Images/team/devam-gupta.webp',
-      description: 'Led the end-to-end architecture, engineering, and deployment of the official SANKALP\'27 conference platform, directing backend development, cloud infrastructure, payment integration, security, and system performance while ensuring a scalable, secure, and reliable digital experience.',
+      description: 'Led the end-to-end architecture, engineering, and deployment of the official JKLU SANKALP 2027 conference platform, directing backend development, cloud infrastructure, payment integration, security, and system performance while ensuring a scalable, secure, and reliable digital experience.',
       skillsHeader: 'TECHNICAL LEADERSHIP',
       skills: [
         'System Architecture',
@@ -62,7 +62,7 @@ export default function TechTeamClient() {
       badge: 'Developer',
       isHead: false,
       image: '/Images/team/manant-srivastava.webp',
-      description: 'Contributed to frontend development, backend integration, reusable component architecture, and responsive UI implementation, delivering an accessible, performant, and reliable digital experience across the official SANKALP\'27 conference platform.',
+      description: 'Contributed to frontend development, backend integration, reusable component architecture, and responsive UI implementation, delivering an accessible, performant, and reliable digital experience across the official JKLU SANKALP 2027 conference platform.',
       skills: [
         'Frontend Development',
         'Backend Integration',
@@ -85,7 +85,7 @@ export default function TechTeamClient() {
       badge: 'Developer',
       isHead: false,
       image: '/Images/team/pratham-lalwani.webp',
-      description: 'Contributed to conference content management, backend integration, structured data handling, UI implementation, schema validation, and quality assurance, ensuring accurate information delivery and a seamless user experience across the SANKALP\'27 conference platform.',
+      description: 'Contributed to conference content management, backend integration, structured data handling, UI implementation, schema validation, and quality assurance, ensuring accurate information delivery and a seamless user experience across the JKLU SANKALP 2027 conference platform.',
       skills: [
         'Content Management',
         'Data Integration',
@@ -105,108 +105,49 @@ export default function TechTeamClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f7f4ef] text-brand-ink font-sans flex flex-col selection:bg-brand-orange selection:text-white">
+    <main className="min-h-screen bg-[#f7f4ef] text-brand-ink font-sans flex flex-col selection:bg-brand-orange selection:text-white pt-20">
       <Navbar />
-
-      {/* HERO SECTION */}
-      <section className="relative bg-brand-blue text-white py-24 sm:py-32 md:py-36 lg:py-40 overflow-hidden flex items-center justify-center">
-        {/* Soft Radial Highlight Behind Heading */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.07)_0%,_rgba(255,255,255,0.02)_45%,_transparent_70%)]" />
-
-        {/* Low-Opacity Geometric Tech / Network Pattern (3–5% Opacity) */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.04] overflow-hidden flex items-center justify-center">
-          <svg
-            className="w-full h-full object-cover"
-            xmlns="http://www.w3.org/2000/svg"
-            width="100%"
-            height="100%"
-            fill="none"
-          >
-            <defs>
-              <pattern
-                id="tech-hero-pattern"
-                width="80"
-                height="80"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M 80 0 L 0 0 0 80"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                />
-                <circle cx="80" cy="0" r="2" fill="currentColor" />
-                <circle cx="0" cy="80" r="2" fill="currentColor" />
-                <path
-                  d="M 40 0 L 80 40 M 0 40 L 40 80"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="0.5"
-                  strokeDasharray="4 4"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#tech-hero-pattern)" />
-          </svg>
-        </div>
-
-        {/* HERO CONTENT */}
-        <div className="max-w-[1440px] w-full mx-auto px-6 sm:px-10 md:px-14 lg:px-16 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto flex flex-col items-center"
-          >
-            {/* Main Heading */}
-            <h1 className="font-serif font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.15] mb-6">
-              Development &amp; Design Team
-            </h1>
-
-            {/* Accent Bar */}
-            <div className="w-[75px] h-1 bg-brand-orange rounded-full mb-7" />
-
-            {/* Description */}
-            <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl md:max-w-3xl mx-auto">
-              Meet the engineers who transformed the vision of SANKALP&apos;27 into a secure, reliable, and modern digital conference platform.
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* TEAM CARDS SECTION */}
       <section className="py-16 sm:py-24 bg-white flex-grow border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
-          <div className="text-center mb-14">
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue tracking-tight uppercase">
-              Web Engineering &amp; Development Team
-            </h2>
-            <p className="text-slate-600 text-sm mt-2 font-medium">
-              Institute of Engineering &amp; Technology (IET), JK Lakshmipat University, Jaipur
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-brand-blue tracking-tight uppercase">
+              Website Development Team
+            </h1>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="w-20 h-1 bg-brand-orange mx-auto rounded-full mt-4 mb-3 origin-center"
+            />
+            <p className="text-slate-600 text-sm md:text-base font-medium">
+              {/* Institute of Engineering &amp; Technology (IET), JK Lakshmipat University, Jaipur */}
             </p>
-          </div>
+          </motion.div>
 
           {/* 3-COLUMN ARCH HIERARCHY LAYOUT */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
             {/* LEFT COLUMN: MANANT SRIVASTAVA (Shifted slightly downwards) */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.12 }}
-              className="order-2 lg:order-1 lg:mt-16 w-full flex flex-col"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="order-2 lg:order-1 lg:mt-16 w-full flex flex-col group"
             >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs hover:-translate-y-2 hover:shadow-xl hover:border-slate-300 transition-all duration-300 ease-out h-full">
+              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:border-brand-orange/40 transition-all duration-500 ease-out h-full">
                 <div>
-                  {/* TOP HEADER: BADGE */}
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-blue">
-                      {teamMembers[1].badge}
-                    </span>
-                  </div>
 
                   {/* PROFILE IMAGE SECTION */}
-                  <div className="mb-6 w-full h-52 bg-slate-100/80 border border-slate-200/80 rounded-[20px] shadow-sm overflow-hidden flex flex-col items-center justify-center text-slate-400">
+                  <div className="mb-6 w-full h-64 sm:h-72 bg-slate-100/80 border border-slate-200/80 rounded-[20px] shadow-sm overflow-hidden flex flex-col items-center justify-center text-slate-400 relative">
                     {teamMembers[1].image ? (
                       <img
                         src={teamMembers[1].image}
@@ -216,7 +157,7 @@ export default function TechTeamClient() {
                             e.currentTarget.src = `${teamMembers[1].socials.github}.png`;
                           }
                         }}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center space-y-1.5 p-4 text-center">
@@ -306,46 +247,23 @@ export default function TechTeamClient() {
                       {teamMembers[1].description}
                     </p>
                   </div>
-
-                  {/* SPECIALIZATIONS & SKILL TAGS */}
-                  <div className="pt-5 border-t border-slate-200/80">
-                    <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-3">
-                      {teamMembers[1].skillsHeader || 'CORE EXPERTISE'}
-                    </span>
-                    <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-                      {teamMembers[1].skills.map((skill, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="px-2 sm:px-2.5 py-1.5 text-[10px] sm:text-[10.5px] font-semibold text-slate-700 bg-slate-100/90 border border-slate-200/80 rounded-md whitespace-nowrap flex items-center justify-center text-center leading-none"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
             </motion.div>
 
             {/* CENTER COLUMN: DEVAM GUPTA (Team Lead, Top Center) */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="order-1 lg:order-2 mt-0 w-full flex flex-col"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              className="order-1 lg:order-2 mt-0 w-full flex flex-col group"
             >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border-2 border-brand-orange/35 rounded-2xl shadow-md hover:-translate-y-2 hover:shadow-2xl hover:border-brand-orange/60 transition-all duration-300 ease-out h-full">
+              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border-2 border-brand-orange/40 rounded-2xl shadow-md group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:border-brand-orange transition-all duration-500 ease-out h-full">
                 <div>
-                  {/* TOP HEADER: BADGE */}
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-orange">
-                      {teamMembers[0].badge}
-                    </span>
-                  </div>
 
                   {/* PROFILE IMAGE SECTION */}
-                  <div className="mb-6 w-full h-52 bg-slate-100/80 border border-slate-200/80 rounded-[20px] shadow-sm overflow-hidden flex flex-col items-center justify-center text-slate-400">
+                  <div className="mb-6 w-full h-64 sm:h-72 bg-slate-100/80 border border-slate-200/80 rounded-[20px] shadow-sm overflow-hidden flex flex-col items-center justify-center text-slate-400 relative">
                     {teamMembers[0].image ? (
                       <img
                         src={teamMembers[0].image}
@@ -355,7 +273,7 @@ export default function TechTeamClient() {
                             e.currentTarget.src = `${teamMembers[0].socials.github}.png`;
                           }
                         }}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center space-y-1.5 p-4 text-center">
@@ -445,63 +363,23 @@ export default function TechTeamClient() {
                       {teamMembers[0].description}
                     </p>
                   </div>
-
-                  {/* SPECIALIZATIONS & SKILL TAGS */}
-                  <div className="pt-5 border-t border-slate-200/80">
-                    <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-3">
-                      {teamMembers[0].skillsHeader || 'CORE EXPERTISE'}
-                    </span>
-                    <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-                      {teamMembers[0].skills.map((skill, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="px-2 sm:px-2.5 py-1.5 text-[10px] sm:text-[10.5px] font-semibold text-slate-700 bg-slate-100/90 border border-slate-200/80 rounded-md whitespace-nowrap flex items-center justify-center text-center leading-none"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* PROJECT OVERSIGHT */}
-                  {teamMembers[0].oversight && teamMembers[0].oversight.length > 0 && (
-                    <div className="pt-4 mt-3.5 border-t border-slate-200/80">
-                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2.5">
-                        PROJECT OVERSIGHT
-                      </span>
-                      <ul className="space-y-1.5">
-                        {teamMembers[0].oversight.map((item, oIdx) => (
-                          <li key={oIdx} className="text-xs text-slate-700 font-medium flex items-center gap-2">
-                            <span className="text-brand-orange font-bold text-xs">✓</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                 </div>
               </div>
             </motion.div>
 
             {/* RIGHT COLUMN: PRATHAM LALWANI (Shifted slightly downwards) */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.24 }}
-              className="order-3 lg:order-3 lg:mt-16 w-full flex flex-col"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="order-3 lg:order-3 lg:mt-16 w-full flex flex-col group"
             >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs hover:-translate-y-2 hover:shadow-xl hover:border-slate-300 transition-all duration-300 ease-out h-full">
+              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:border-brand-orange/40 transition-all duration-500 ease-out h-full">
                 <div>
-                  {/* TOP HEADER: BADGE */}
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-blue">
-                      {teamMembers[2].badge}
-                    </span>
-                  </div>
 
                   {/* PROFILE IMAGE SECTION */}
-                  <div className="mb-6 w-full h-52 bg-slate-100/80 border border-slate-200/80 rounded-[20px] shadow-sm overflow-hidden flex flex-col items-center justify-center text-slate-400">
+                  <div className="mb-6 w-full h-64 sm:h-72 bg-slate-100/80 border border-slate-200/80 rounded-[20px] shadow-sm overflow-hidden flex flex-col items-center justify-center text-slate-400 relative">
                     {teamMembers[2].image ? (
                       <img
                         src={teamMembers[2].image}
@@ -511,7 +389,7 @@ export default function TechTeamClient() {
                             e.currentTarget.src = `${teamMembers[2].socials.github}.png`;
                           }
                         }}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center space-y-1.5 p-4 text-center">
@@ -600,23 +478,6 @@ export default function TechTeamClient() {
                     <p className="text-slate-600 text-sm leading-relaxed font-normal">
                       {teamMembers[2].description}
                     </p>
-                  </div>
-
-                  {/* SPECIALIZATIONS & SKILL TAGS */}
-                  <div className="pt-5 border-t border-slate-200/80">
-                    <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-3">
-                      {teamMembers[2].skillsHeader || 'CORE EXPERTISE'}
-                    </span>
-                    <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-                      {teamMembers[2].skills.map((skill, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="px-2 sm:px-2.5 py-1.5 text-[10px] sm:text-[10.5px] font-semibold text-slate-700 bg-slate-100/90 border border-slate-200/80 rounded-md whitespace-nowrap flex items-center justify-center text-center leading-none"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>

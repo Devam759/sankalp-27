@@ -192,7 +192,7 @@ export default function VenueClient() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-sm sm:text-base opacity-75 max-w-xl mx-auto"
           >
-            Host Venue of SANKALP'27 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction
+            Host Venue of JKLU SANKALP 2027 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction
           </motion.p>
 
           <motion.div
@@ -565,7 +565,7 @@ export default function VenueClient() {
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
             <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-              Explore Jaipur's rich cultural heritage and iconic landmarks during your visit to SANKALP'27.
+              Explore Jaipur's rich cultural heritage and iconic landmarks during your visit to JKLU SANKALP 2027.
             </p>
           </div>
 
@@ -605,7 +605,7 @@ export default function VenueClient() {
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
           <div className="space-y-2">
             <h2 className="text-3xl sm:5xl font-serif font-black uppercase tracking-tight">
-              Join Us at SANKALP'27
+              Join Us at JKLU SANKALP 2027
             </h2>
             <div className="w-16 h-1 bg-brand-orange mx-auto rounded-sm" />
           </div>

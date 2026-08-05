@@ -78,7 +78,7 @@ export default function CommitteeClient() {
                           priority={i === 0}
                           loading={i === 0 ? 'eager' : 'lazy'}
                           unoptimized
-                          className="object-cover w-full h-full"
+                          className="object-cover object-top w-full h-full"
                         />
                       ) : (
                         <div className="w-full h-full bg-brand-blue flex items-center justify-center">
@@ -141,7 +141,7 @@ export default function CommitteeClient() {
                         width={128}
                         height={128}
                         unoptimized
-                        className="object-cover w-full h-full"
+                        className="object-cover object-top w-full h-full"
                       />
                     </div>
                   </div>
@@ -195,7 +195,7 @@ export default function CommitteeClient() {
                         width={112}
                         height={112}
                         unoptimized
-                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover object-top w-full h-full group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                   </div>

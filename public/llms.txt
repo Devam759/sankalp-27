@@ -1,19 +1,20 @@
-# Sankalp '27 - JK Lakshmipat University International Conference Website
+# JKLU SANKALP 2027 - JK Lakshmipat University International Conference Website
 
-> Sankalp 2027 is the official International Conference of JK Lakshmipat University (JKLU), Jaipur.
+> JKLU SANKALP 2027 is the official International Conference of JK Lakshmipat University (JKLU), Jaipur.
 
 This platform manages check-in operations, administrative dashboards, and delegate registers for the international conference.
 
 ## Platform Entrypoints
 
-- [Home](https://sankalp.jklu.edu.in/): Hold page for Sankalp 2027.
+- [Home](https://sankalp.jklu.edu.in/): Hold page for JKLU SANKALP 2027.
 - [Sessions & Tracks](https://sankalp.jklu.edu.in/sessions): 7 Multidisciplinary research tracks and session topics.
 - [Admin Panel](https://sankalp.jklu.edu.in/admin): Authorized admin dashboard for registrations, check-in validation, and system logs.
 - [Scanner Dashboard](https://sankalp.jklu.edu.in/scanner): Ticket validator and instant check-in registry validator dashboard for check-in desks.
 
 ## Key Facts
 
-- Event: Sankalp 2027
-- Organizer: JK Lakshmipat University, Jaipur
+- Event: JKLU SANKALP 2027
+- Organizer: Institute of Engineering & Technology, JK Lakshmipat University, Jaipur
 - Location: JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026
-- General contact: info@jklu.edu.in
+- General contact: sankalp@jklu.edu.in
+

@@ -5,8 +5,8 @@ import Footer from '@/components/ui/Footer';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Refund & Cancellation Policy | Sankalp '27 | JKLU",
-  description: "Official Refund & Cancellation Policy for Sankalp '27 International Conference registrations at JK Lakshmipat University, Jaipur.",
+  title: "Refund & Cancellation Policy | JKLU SANKALP 2027 | JKLU",
+  description: "Official Refund & Cancellation Policy for JKLU SANKALP 2027 International Conference registrations at JK Lakshmipat University, Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/refund-policy',
   },

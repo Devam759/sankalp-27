@@ -3,22 +3,22 @@ import ContactClient from './ContactClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Contact Us | Sankalp '27 | JKLU",
-  description: "Official contact directory for Sankalp '27 International Conference. Get in touch with conference chairs, track chairs, registration, publication, and sponsorship committees at JKLU Jaipur.",
+  title: "Contact Us | JKLU SANKALP 2027 | JKLU",
+  description: "Official contact directory for JKLU SANKALP 2027 International Conference. Get in touch with conference chairs, track chairs, registration, publication, and sponsorship committees at JKLU Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/contact',
   },
   keywords: [
-    "Contact Sankalp",
-    "Sankalp 2027 Helpdesk",
+    "Contact JKLU SANKALP 2027",
+    "JKLU SANKALP 2027 Helpdesk",
     "JKLU Conference Email",
     "Registration Committee Contact Sankalp"
   ],
   openGraph: {
-    title: "Contact Us - SANKALP '27 | JKLU Jaipur",
-    description: "Contact organizing heads, track chairs, and sub-committees for Sankalp 2027 at JK Lakshmipat University.",
+    title: "Contact Us - JKLU SANKALP 2027 | JKLU Jaipur",
+    description: "Contact organizing heads, track chairs, and sub-committees for JKLU SANKALP 2027 at JK Lakshmipat University.",
     url: 'https://sankalp.jklu.edu.in/contact',
-    siteName: "Sankalp '27 Website",
+    siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
   },
 };
@@ -27,11 +27,11 @@ export default function ContactPage() {
   const contactPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
-    name: "Sankalp '27 Contact Directory",
+    name: "JKLU SANKALP 2027 Contact Directory",
     url: 'https://sankalp.jklu.edu.in/contact',
     mainEntity: {
       '@type': 'Organization',
-      name: 'JK Lakshmipat University - Sankalp 2027 Secretariat',
+      name: 'JK Lakshmipat University - JKLU SANKALP 2027 Secretariat',
       email: 'sankalp@jklu.edu.in',
       address: {
         '@type': 'PostalAddress',

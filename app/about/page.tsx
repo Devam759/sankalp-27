@@ -3,16 +3,16 @@ import AboutClient from './AboutClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "About SANKALP '27 | Overview & Research Vision | JKLU",
-  description: "Learn about Sankalp '27, organized by the Institute of Engineering & Technology (IET) at JK Lakshmipat University, Jaipur. Explore our multidisciplinary research ecosystem in Sustainable AI and Data Science.",
+  title: "About JKLU SANKALP 2027 | Overview & Research Vision | JKLU",
+  description: "Learn about JKLU SANKALP 2027, organized by the Institute of Engineering & Technology (IET) at JK Lakshmipat University, Jaipur. Explore our multidisciplinary research ecosystem in Sustainable AI and Data Science.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/about',
   },
   openGraph: {
-    title: "About SANKALP '27 | Overview & Research Vision",
-    description: "Discover the research ecosystem, host university, and core focus areas of the Sankalp 2027 International Conference in Jaipur.",
+    title: "About JKLU SANKALP 2027 | Overview & Research Vision",
+    description: "Discover the research ecosystem, host university, and core focus areas of the JKLU SANKALP 2027 International Conference in Jaipur.",
     url: 'https://sankalp.jklu.edu.in/about',
-    siteName: "Sankalp '27 Website",
+    siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
   },
 };

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
+import { BrainIcon, HeartIcon } from '@/components/ui/Icons';
 
 // ============================================================================
 // BESPOKE CUSTOM GEOMETRIC SVG ICONS (Gradient-free, Sharp, Clean)
@@ -26,17 +27,7 @@ const LocationIcon = ({ size = 18, className = '' }: { size?: number; className?
   </svg>
 );
 
-const HeartIcon = ({ size = 12, className = '' }: { size?: number; className?: string }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="currentColor" 
-    className={className}
-  >
-    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-  </svg>
-);
+
 
 const EmailIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
   <svg 
@@ -68,6 +59,12 @@ const FacebookIcon = ({ size = 18, className = '' }: { size?: number; className?
     className={className}
   >
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
+const AppleIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.32c.67-.82 1.13-1.97.99-3.12-1 .04-2.19.67-2.88 1.47-.61.71-1.15 1.87-.99 2.99 1.11.09 2.22-.52 2.88-1.34Z" />
   </svg>
 );
 
@@ -158,8 +155,6 @@ const AppleMapsIcon = ({ size = 16, className = '' }: { size?: number; className
   </svg>
 );
 
-import { AppleIcon } from '@/components/ui/Icons';
-
 export default function Footer() {
   return (
     <footer className="relative bg-[#0b0f19] border-t border-white/10 pt-16 pb-12 px-6 md:px-12 overflow-hidden select-none">
@@ -167,11 +162,11 @@ export default function Footer() {
       {/* 3-Column Main Grid */}
       <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
         
-        {/* COLUMN 1: SANKALP '27 ABOUT */}
+        {/* COLUMN 1: JKLU SANKALP 2027 ABOUT */}
         <div className="space-y-6">
           <div>
             <h4 className="text-white font-serif font-bold text-xl uppercase tracking-wider">
-              SANKALP '27
+              JKLU SANKALP 2027
             </h4>
             <div className="w-12 h-0.5 bg-brand-orange mt-2 rounded-sm" />
           </div>
@@ -355,13 +350,15 @@ export default function Footer() {
       </div>
 
       {/* THE MINDS BEHIND THE SITE BUTTON (Above Separating Line) */}
-      <div className="max-w-7xl mx-auto relative z-10 flex justify-center items-center pb-6">
+      <div className="max-w-7xl mx-auto relative z-10 flex justify-center items-center pb-8 pt-2">
         <Link 
           href="/tech-team" 
-          className="group flex items-center justify-center gap-2.5 px-6 py-3 rounded-sm bg-white/10 text-white hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-sm font-bold uppercase tracking-wider cursor-pointer"
+          className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#0e1626] border border-white/15 text-slate-200 hover:text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-sm font-bold tracking-wide cursor-pointer"
         >
-          <span>THE MINDS BEHIND THE SITE</span>
-          <span className="text-base sm:text-lg leading-none group-hover:scale-110 transition-transform">🧠</span>
+          <span>Designed with</span>
+          <HeartIcon size={16} className="text-red-500 fill-red-500 inline-block transition-transform duration-300 group-hover:scale-110" />
+          <span>&amp; Developed with</span>
+          <BrainIcon size={18} className="text-brand-orange group-hover:text-white inline-block transition-transform duration-300 group-hover:scale-110" />
         </Link>
       </div>
 
@@ -369,7 +366,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-slate-400 border-t border-white/10 pt-8">
         <div className="flex flex-col gap-2 text-center md:text-left">
           <div className="font-medium text-xs sm:text-sm">
-            © 2027 JKLU - SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
+            © 2027 JKLU SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
           </div>
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-3 gap-y-1.5 text-xs text-slate-400 font-semibold uppercase tracking-wider">
             <Link href="/privacy-policy" className="hover:text-brand-orange transition-colors">

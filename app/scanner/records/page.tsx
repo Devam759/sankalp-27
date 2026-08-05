@@ -72,33 +72,33 @@ export default function ScanRecordsView() {
   };
 
   return (
-    <div className="space-y-6 select-none font-adminBody animate-in fade-in duration-200">
+    <div className="space-y-6 select-none font-sans">
       
       {/* Quick Statistics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Total Scans Card */}
-        <div className="bg-white border-4 border-brand-ink p-5 rounded-md shadow-[4px_4px_0px_0px_#030404]">
-          <h3 className="text-[10px] font-black uppercase tracking-wider text-admin-muted mb-2">Total Tickets Scanned</h3>
-          <p className="font-adminHeading text-3xl font-black text-brand-ink">{stats.total}</p>
+        <div className="bg-white border border-slate-200/90 p-5 rounded-2xl shadow-sm">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Total Tickets Scanned</h3>
+          <p className="font-serif text-3xl font-black text-brand-blue">{stats.total}</p>
         </div>
 
         {/* Total Approved Card */}
-        <div className="bg-white border-4 border-brand-ink p-5 rounded-md shadow-[4px_4px_0px_0px_#030404]">
-          <h3 className="text-[10px] font-black uppercase tracking-wider text-green-600 mb-2">Approved Check-ins</h3>
-          <p className="font-adminHeading text-3xl font-black text-green-600">{stats.approved}</p>
+        <div className="bg-white border border-slate-200/90 p-5 rounded-2xl shadow-sm">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1">Approved Check-ins</h3>
+          <p className="font-serif text-3xl font-black text-emerald-600">{stats.approved}</p>
         </div>
 
         {/* Total Declined Card */}
-        <div className="bg-white border-4 border-brand-ink p-5 rounded-md shadow-[4px_4px_0px_0px_#030404]">
-          <h3 className="text-[10px] font-black uppercase tracking-wider text-brand-orange mb-2">Declined Entries</h3>
-          <p className="font-adminHeading text-3xl font-black text-brand-orange">{stats.declined}</p>
+        <div className="bg-white border border-slate-200/90 p-5 rounded-2xl shadow-sm">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-orange mb-1">Declined Entries</h3>
+          <p className="font-serif text-3xl font-black text-brand-orange">{stats.declined}</p>
         </div>
       </div>
 
       {/* Filter and Records Panel */}
-      <div className="bg-white border-4 border-brand-ink p-6 rounded-md shadow-[6px_6px_0px_0px_#030404] space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-brand-ink/10 pb-4">
-          <h2 className="text-xs font-black uppercase tracking-widest text-brand-orange">
+      <div className="bg-white border border-slate-200/90 p-6 rounded-2xl shadow-sm space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <h2 className="font-serif text-lg font-black uppercase text-brand-blue">
             Processed Ticket Records
           </h2>
 
@@ -109,46 +109,46 @@ export default function ScanRecordsView() {
               placeholder="Search by name or ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-brand-cloud/45 border-2 border-brand-ink rounded-md px-3.5 py-1.5 text-xs font-bold text-brand-ink placeholder:text-admin-muted/65 focus:outline-none focus:bg-white transition-all shadow-[2px_2px_0px_0px_#030404]"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand-orange transition-all"
             />
           </div>
         </div>
 
         {/* Records Log Table/List */}
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-left text-xs font-bold">
+          <table className="w-full border-collapse text-left text-xs font-medium">
             <thead>
-              <tr className="border-b-2 border-brand-ink uppercase text-[10px] text-admin-muted tracking-wider">
-                <th className="pb-3 pr-4 font-black">Attendee Info</th>
-                <th className="pb-3 px-4 font-black">Registration ID</th>
-                <th className="pb-3 px-4 font-black">Result</th>
-                <th className="pb-3 px-4 font-black">Verified At</th>
-                <th className="pb-3 pl-4 font-black text-right">Operator</th>
+              <tr className="border-b border-slate-200 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                <th className="pb-3 pr-4 font-bold">Attendee Info</th>
+                <th className="pb-3 px-4 font-bold">Registration ID</th>
+                <th className="pb-3 px-4 font-bold">Result</th>
+                <th className="pb-3 px-4 font-bold">Verified At</th>
+                <th className="pb-3 pl-4 font-bold text-right">Operator</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-ink/5">
+            <tbody className="divide-y divide-slate-100">
               {filteredLogs.map((log) => {
                 const isAccepted = log.result === 'accepted';
                 
                 return (
-                  <tr key={log.id} className="group hover:bg-brand-cloud/20 transition-colors">
+                  <tr key={log.id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="py-3.5 pr-4">
-                      <div className="font-black text-brand-ink text-sm uppercase">{log.attendeeName}</div>
+                      <div className="font-bold text-brand-blue text-sm">{log.attendeeName}</div>
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-brand-ink/75 uppercase font-black">{log.registrationID}</td>
+                    <td className="py-3.5 px-4 font-mono font-bold text-slate-700">{log.registrationID}</td>
                     <td className="py-3.5 px-4">
-                      <span className={`inline-flex items-center gap-1.5 text-[9px] font-black uppercase border px-2 py-0.5 rounded-sm shadow-[1.5px_1.5px_0px_0px_#030404] ${
+                      <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase border px-2.5 py-0.5 rounded-lg ${
                         isAccepted 
-                          ? 'text-green-600 border-green-600/30 bg-green-50 shadow-green-600/40' 
-                          : 'text-brand-orange border-brand-orange/30 bg-brand-orange/5 shadow-brand-orange/40'
+                          ? 'text-emerald-700 border-emerald-200 bg-emerald-50' 
+                          : 'text-brand-orange border-brand-orange/30 bg-brand-orange/5'
                       }`}>
                         {isAccepted ? 'Approved' : 'Declined'}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 text-admin-muted uppercase tracking-wide">{formatTimestamp(log.timestamp)}</td>
-                    <td className="py-3.5 pl-4 text-right text-brand-ink font-mono text-[10px] uppercase">
+                    <td className="py-3.5 px-4 text-slate-500">{formatTimestamp(log.timestamp)}</td>
+                    <td className="py-3.5 pl-4 text-right text-slate-700 font-mono text-[10px]">
                       {log.volunteerName || 'Operator'}
-                      <span className="block text-[8px] text-admin-muted font-bold mt-0.5">ID: {log.scannerId}</span>
+                      <span className="block text-[9px] text-slate-400 font-normal mt-0.5">ID: {log.scannerId}</span>
                     </td>
                   </tr>
                 );
@@ -156,9 +156,9 @@ export default function ScanRecordsView() {
 
               {filteredLogs.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-admin-muted">
-                    <span className="text-[10px] font-black uppercase tracking-wider block text-brand-ink/50">No verification records found</span>
-                    <span className="text-[8px] font-bold uppercase tracking-wider block text-admin-muted/60 mt-1">
+                  <td colSpan={5} className="py-12 text-center text-slate-400">
+                    <span className="text-xs font-bold block text-slate-600">No verification records found</span>
+                    <span className="text-[11px] block text-slate-400 mt-1">
                       {searchQuery ? 'Try refining your search keyword' : 'Check-in scanning logs will show up here'}
                     </span>
                   </td>

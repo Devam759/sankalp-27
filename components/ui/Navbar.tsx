@@ -86,29 +86,42 @@ export default function Navbar() {
         >
           {/* Left: SANKALP Emblem + Desktop Nav Links (Aside Logo) */}
           <div className="flex items-center gap-5 xl:gap-7 shrink-0">
-            <Link href="/" className="flex items-center shrink-0" aria-label="SANKALP 2027 Home">
+            <Link href="/" className="flex items-center shrink-0" aria-label="JKLU SANKALP 2027 Home">
               <div className="h-9 w-9 sm:h-10 sm:w-10 border border-white/30 rounded flex items-center justify-center shrink-0 bg-white/10 text-brand-orange hover:bg-white/20 transition-colors">
                 <AtomIcon size={20} />
               </div>
             </Link>
 
-            {/* Mobile JKLU Logo */}
-            <a
-              href="https://jklu.edu.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95 lg:hidden"
-              aria-label="JK Lakshmipat University Website"
-            >
-              <Image
-                src="/logos/white_jklu_logo.webp"
-                alt="JKLU Logo"
-                width={220}
-                height={66}
-                priority
-                className="h-10 sm:h-11 w-auto object-contain"
-              />
-            </a>
+            {/* Mobile JKLU & Asia University Logos */}
+            <div className="flex items-center gap-2.5 lg:hidden">
+              <a
+                href="https://jklu.edu.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+                aria-label="JK Lakshmipat University Website"
+              >
+                <img
+                  src="/logos/white_jklu_logo.webp"
+                  alt="JKLU Logo"
+                  className="h-9 sm:h-11 w-auto object-contain"
+                />
+              </a>
+              <div className="h-6 w-px bg-white/30" />
+              <a
+                href="https://www.asia.edu.tw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+                aria-label="Asia University Website"
+              >
+                <img
+                  src="/logos/Asia_University_Logo.webp"
+                  alt="Asia University Logo"
+                  className="h-8 sm:h-10 w-auto object-contain rounded-full"
+                />
+              </a>
+            </div>
 
             {/* Desktop Navigation Links - Positioned Aside SANKALP Logo */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-5">
@@ -138,7 +151,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right: CTA buttons + Desktop JKLU Logo + Mobile toggle */}
+          {/* Right: CTA buttons + Desktop JKLU & Asia University Logos + Mobile toggle */}
           <div className="flex items-center gap-3 relative z-30 pointer-events-auto">
             <div className="hidden lg:flex items-center gap-3">
               <Link
@@ -156,23 +169,36 @@ export default function Navbar() {
                 Submit Paper
               </a>
 
-              {/* Desktop Right JKLU Logo */}
-              <a
-                href="https://jklu.edu.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95 ml-1"
-                aria-label="JK Lakshmipat University Website"
-              >
-                <Image
-                  src="/logos/white_jklu_logo.webp"
-                  alt="JKLU Logo"
-                  width={240}
-                  height={72}
-                  priority
-                  className="h-12 md:h-[52px] lg:h-[56px] w-auto object-contain"
-                />
-              </a>
+              {/* Desktop Right Logos: JKLU + Asia University */}
+              <div className="flex items-center gap-3.5 ml-2 shrink-0">
+                <a
+                  href="https://jklu.edu.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+                  aria-label="JK Lakshmipat University Website"
+                >
+                  <img
+                    src="/logos/white_jklu_logo.webp"
+                    alt="JKLU Logo"
+                    className="h-11 md:h-[48px] lg:h-[52px] w-auto object-contain"
+                  />
+                </a>
+                <div className="h-8 w-px bg-white/30" />
+                <a
+                  href="https://www.asia.edu.tw/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+                  aria-label="Asia University Website"
+                >
+                  <img
+                    src="/logos/Asia_University_Logo.webp"
+                    alt="Asia University Logo"
+                    className="h-10 md:h-[42px] lg:h-[46px] w-auto object-contain rounded-full"
+                  />
+                </a>
+              </div>
             </div>
 
             {/* Mobile hamburger */}

@@ -143,7 +143,7 @@ export default function ConferencePillars() {
           >
             <div className="w-10 h-[2px] bg-brand-orange" />
             <span className="text-brand-orange font-bold tracking-[0.22em] uppercase text-[10px]">
-              The Foundation of SANKALP
+              The Foundation of JKLU SANKALP 2027
             </span>
           </motion.div>
 
@@ -162,7 +162,7 @@ export default function ConferencePillars() {
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-slate-600 text-lg leading-relaxed font-medium max-w-2xl"
           >
-            Every world-class conference is built on a set of principles. SANKALP 2027 is driven by
+            Every world-class conference is built on a set of principles. JKLU SANKALP 2027 is driven by
             research excellence, innovation, collaboration, and global impact.
           </motion.p>
         </div>
@@ -234,8 +234,8 @@ export default function ConferencePillars() {
           transition={{ duration: 1, delay: 1.2 }}
           className="mt-20 pt-8 border-t border-brand-blue/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
         >
-          <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-slate-400">
-            SANKALP 2027 - JK Lakshmipat University, Jaipur
+          <span className="text-text-muted text-[10px] font-bold tracking-[0.3em] uppercase">
+            JKLU SANKALP 2027 - JK Lakshmipat University, Jaipur
           </span>
           <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-300">
             International Conference on Sustainable Technologies &amp; AI

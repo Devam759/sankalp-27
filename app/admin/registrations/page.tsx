@@ -422,41 +422,41 @@ export default function Registrations() {
   };
 
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-8 select-none font-sans">
       {/* Live Counter Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-admin-surface border-4 border-brand-ink p-8 rounded-md shadow-[6px_6px_0px_0px_#030404] flex flex-col items-center justify-center text-center">
-          <h2 className="text-xs font-black text-admin-muted uppercase tracking-widest mb-1.5">Total Registrations</h2>
-          <p className="font-adminHeading text-6xl font-black text-brand-ink">
+        <div className="bg-white border border-slate-200/90 p-6 rounded-2xl shadow-sm flex flex-col items-center justify-center text-center">
+          <h2 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Total Registrations</h2>
+          <p className="font-serif text-4xl sm:text-5xl font-black text-brand-blue">
             {loading ? '-' : registrations.length}
           </p>
           {filteredRegistrations.length !== registrations.length && (
-            <p className="text-[10px] uppercase font-black tracking-wide text-brand-orange mt-2 bg-brand-orange/15 px-3 py-1 border-2 border-brand-ink rounded-md">
+            <p className="text-[11px] font-bold text-brand-orange mt-2 bg-brand-orange/10 px-3 py-1 border border-brand-orange/20 rounded-lg">
               Filtered matches: {filteredRegistrations.length}
             </p>
           )}
         </div>
         
-        <div className="bg-brand-orange/10 border-4 border-brand-ink p-8 rounded-md shadow-[6px_6px_0px_0px_#030404] flex flex-col items-center justify-center text-center">
-          <h2 className="text-xs font-black text-brand-orange uppercase tracking-widest mb-1.5">Today&apos;s Registrations</h2>
-          <p className="font-adminHeading text-6xl font-black text-brand-orange">
+        <div className="bg-white border border-slate-200/90 p-6 rounded-2xl shadow-sm flex flex-col items-center justify-center text-center">
+          <h2 className="text-xs font-bold text-brand-orange uppercase tracking-wider mb-1">Today&apos;s Registrations</h2>
+          <p className="font-serif text-4xl sm:text-5xl font-black text-brand-orange">
             {loading ? '-' : todaysRegistrationsCount}
           </p>
         </div>
       </div>
 
       {/* Main Title & Action header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
         <div>
-          <h1 className="font-adminHeading text-3xl font-black uppercase tracking-tight text-brand-ink">Registration Data</h1>
-          <p className="text-admin-muted font-bold text-xs uppercase tracking-wider mt-1">International conference website listings</p>
+          <h1 className="font-serif text-2xl md:text-3xl font-black uppercase text-brand-blue">Registration Data</h1>
+          <p className="text-slate-500 font-bold text-xs uppercase tracking-wider mt-1">International conference attendee listings</p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           {unsentCount > 0 && (
             <button
               onClick={handleSendUnsentEmails}
               disabled={loading || emailSendingState === 'sending'}
-              className={`comic-btn-orange flex items-center gap-2 ${
+              className={`bg-brand-orange hover:bg-[#d94e05] text-white font-bold text-xs uppercase px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer ${
                 emailSendingState === 'sending' ? 'opacity-70 cursor-not-allowed' : ''
               }`}
             >
@@ -472,14 +472,14 @@ export default function Registrations() {
             href="https://docs.google.com/spreadsheets/d/1Pfh7eZaknrvPEqcTjwgK1ludGjsT_OOA-KUnubzYxMc/edit?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="comic-btn-green"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
           >
             <CustomSheetIcon size={16} /> Google Sheet
           </a>
           <button
             onClick={handleSyncSheet}
             disabled={loading || syncState === 'syncing'}
-            className={`comic-btn-blue flex items-center gap-2 ${
+            className={`bg-brand-blue hover:bg-[#060b14] text-white font-bold text-xs uppercase px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer ${
               syncState === 'syncing' ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >
@@ -492,8 +492,10 @@ export default function Registrations() {
           </button>
           <button
             onClick={handleToggleService}
-            className={`flex items-center gap-2 ${
-              serviceEnabled ? 'comic-btn-green' : 'comic-btn-red'
+            className={`font-bold text-xs uppercase px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${
+              serviceEnabled 
+                ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100' 
+                : 'bg-red-50 text-red-700 border-red-200 hover:bg-red-100'
             }`}
           >
             <span>Daily Reconciler: {serviceEnabled ? 'ON' : 'OFF'}</span>
@@ -501,7 +503,7 @@ export default function Registrations() {
           <button 
             onClick={exportCSV}
             disabled={loading || registrations.length === 0}
-            className="comic-btn-orange"
+            className="bg-brand-orange hover:bg-[#d94e05] text-white font-bold text-xs uppercase px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
           >
             <CustomDownloadIcon size={16} /> Export CSV
           </button>
@@ -510,10 +512,10 @@ export default function Registrations() {
 
       {/* Sync status feedback banner */}
       {syncState !== 'idle' && (
-        <div className={`border-4 border-brand-ink rounded-md px-5 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_#030404] ${
-          syncState === 'syncing' ? 'bg-blue-100 text-blue-900' :
-          syncState === 'done' ? 'bg-green-100 text-green-900' :
-          'bg-red-100 text-red-900'
+        <div className={`border rounded-xl px-5 py-3 text-xs font-bold ${
+          syncState === 'syncing' ? 'bg-blue-50 border-blue-200 text-blue-900' :
+          syncState === 'done' ? 'bg-emerald-50 border-emerald-200 text-emerald-900' :
+          'bg-red-50 border-red-200 text-red-900'
         }`}>
           {syncMessage}
         </div>
@@ -521,10 +523,10 @@ export default function Registrations() {
 
       {/* Email sending status feedback banner */}
       {emailSendingState !== 'idle' && (
-        <div className={`border-4 border-brand-ink rounded-md px-5 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_#030404] ${
-          emailSendingState === 'sending' ? 'bg-blue-100 text-blue-900' :
-          emailSendingState === 'done' ? 'bg-green-100 text-green-900' :
-          'bg-red-100 text-red-900'
+        <div className={`border rounded-xl px-5 py-3 text-xs font-bold ${
+          emailSendingState === 'sending' ? 'bg-blue-50 border-blue-200 text-blue-900' :
+          emailSendingState === 'done' ? 'bg-emerald-50 border-emerald-200 text-emerald-900' :
+          'bg-red-50 border-red-200 text-red-900'
         }`}>
           {emailSendingMessage}
         </div>
@@ -534,11 +536,11 @@ export default function Registrations() {
       <div className="md:hidden mt-4">
         <button 
           onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-          className="w-full bg-brand-cloud border-4 border-brand-ink p-4 rounded-md shadow-[4px_4px_0px_0px_#030404] flex items-center justify-between text-brand-ink active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer focus:outline-none"
+          className="w-full bg-white border border-slate-200 p-4 rounded-xl shadow-xs flex items-center justify-between text-slate-800 transition-all cursor-pointer focus:outline-none"
         >
           <div className="flex items-center gap-2">
             <CustomFilterIcon size={16} />
-            <span className="font-adminHeading text-sm font-black uppercase tracking-widest mt-1">Search & Filters</span>
+            <span className="font-bold text-xs uppercase tracking-wider">Search & Filters</span>
           </div>
           <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
             {isMobileFiltersOpen ? 'Hide' : 'Show'}
@@ -547,95 +549,95 @@ export default function Registrations() {
       </div>
 
       {/* Structured Filters Option Bar */}
-      <div className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out md:grid-rows-[1fr] md:opacity-100 md:mt-6 ${isMobileFiltersOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
+      <div className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-in-out md:grid-rows-[1fr] md:opacity-100 md:mt-4 ${isMobileFiltersOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
         <div className="overflow-hidden">
-          <div className="bg-white border-4 border-brand-ink p-6 rounded-md shadow-[4px_4px_0px_0px_#030404] flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
-        <div className="flex-1 relative">
-          <CustomSearchIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-ink/40" size={16} />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-brand-cloud/40 border-2 border-brand-ink rounded-md py-3 pl-11 pr-4 text-sm text-brand-ink font-bold placeholder:text-brand-ink/40 shadow-inner focus:outline-none focus:border-brand-orange focus:bg-white transition-all uppercase tracking-wider"
-            placeholder="Search Name, Application Number, or Email..."
-          />
-        </div>
-        
-        <div className="flex items-center gap-3 min-w-[280px]">
-          <div className="p-2.5 border-2 border-brand-ink bg-brand-cloud text-brand-ink rounded-md hidden xs:block">
-            <CustomFilterIcon size={16} />
-          </div>
-          <select
-            value={statusFilter}
-            onChange={(e: any) => setStatusFilter(e.target.value)}
-            className="w-full bg-white border-2 border-brand-ink rounded-md py-3 px-4 text-xs text-brand-ink font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#030404] focus:outline-none cursor-pointer hover:bg-brand-cloud transition-colors"
-          >
-            <option value="all">Filter: All Status</option>
-            <option value="entered">Checked-In</option>
-            <option value="pending">Pending Check-In</option>
-            <option value="declined">Declined / Blocked</option>
-          </select>
+          <div className="bg-white border border-slate-200/90 p-5 rounded-2xl shadow-sm flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+            <div className="flex-1 relative">
+              <CustomSearchIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pl-10 pr-4 text-xs font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand-orange transition-all"
+                placeholder="Search Name, Application Number, or Email..."
+              />
+            </div>
+            
+            <div className="flex items-center gap-3 min-w-[280px]">
+              <div className="p-2 border border-slate-200 bg-slate-50 text-slate-500 rounded-xl hidden xs:block">
+                <CustomFilterIcon size={16} />
+              </div>
+              <select
+                value={statusFilter}
+                onChange={(e: any) => setStatusFilter(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-xs text-slate-700 font-semibold focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand-orange transition-colors cursor-pointer"
+              >
+                <option value="all">Filter: All Status</option>
+                <option value="entered">Checked-In</option>
+                <option value="pending">Pending Check-In</option>
+                <option value="declined">Declined / Blocked</option>
+              </select>
 
-          <select
-            value={emailFilter}
-            onChange={(e: any) => setEmailFilter(e.target.value)}
-            className="w-full bg-white border-2 border-brand-ink rounded-md py-3 px-4 text-xs text-brand-ink font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#030404] focus:outline-none cursor-pointer hover:bg-brand-cloud transition-colors"
-          >
-            <option value="all">Email: All</option>
-            <option value="sent">Email: Sent</option>
-            <option value="unsent">Email: Unsent</option>
-          </select>
+              <select
+                value={emailFilter}
+                onChange={(e: any) => setEmailFilter(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-xs text-slate-700 font-semibold focus:outline-none focus:bg-white focus:ring-1 focus:ring-brand-orange transition-colors cursor-pointer"
+              >
+                <option value="all">Email: All</option>
+                <option value="sent">Email: Sent</option>
+                <option value="unsent">Email: Unsent</option>
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
       </div>
 
       {/* Main Table Segment */}
       {loading ? (
         <SkeletonTable rows={10} />
       ) : (
-        <div className="bg-white border-4 border-brand-ink rounded-md shadow-[6px_6px_0px_0px_#030404] overflow-hidden flex flex-col">
+        <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm overflow-hidden flex flex-col">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse whitespace-nowrap">
               <thead>
-                <tr className="bg-brand-cloud border-b-2 border-brand-ink text-brand-ink text-[10px] font-black uppercase tracking-widest">
-                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('name')}>
+                <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 text-[11px] font-bold uppercase tracking-wider">
+                  <th className="p-4 cursor-pointer hover:text-brand-orange transition-colors" onClick={() => handleSort('name')}>
                     Name {sortField === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('category')}>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange transition-colors" onClick={() => handleSort('category')}>
                     Category {sortField === 'category' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('paperId')}>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange transition-colors" onClick={() => handleSort('paperId')}>
                     Paper ID {sortField === 'paperId' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('email')}>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange transition-colors" onClick={() => handleSort('email')}>
                     Contact Details {sortField === 'email' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th className="p-4 cursor-pointer hover:text-brand-orange " onClick={() => handleSort('registeredAt')}>
+                  <th className="p-4 cursor-pointer hover:text-brand-orange transition-colors" onClick={() => handleSort('registeredAt')}>
                     Registration Time {sortField === 'registeredAt' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
                   <th className="p-4">Checked-In</th>
                   <th className="p-4 text-right">Details</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-ink/10">
+              <tbody className="divide-y divide-slate-100 font-medium">
                 {paginatedRegistrations.map((reg) => (
-                  <tr key={reg.id} className="hover:bg-brand-cloud/45 transition-colors text-xs font-bold text-brand-ink">
-                    <td className="p-4 font-black">{reg.name}</td>
-                    <td className="p-4 text-brand-ink/90 font-mono text-[10px] uppercase">{reg.category || 'attendee'}</td>
-                    <td className="p-4 text-brand-ink/90 font-mono text-[10px]">{reg.paperId || 'N/A'}</td>
-                    <td className="p-4 text-brand-ink/90">
+                  <tr key={reg.id} className="hover:bg-slate-50/80 transition-colors text-xs text-slate-800">
+                    <td className="p-4 font-bold text-brand-blue">{reg.name}</td>
+                    <td className="p-4 text-slate-600 font-mono text-[11px]">{reg.category || 'attendee'}</td>
+                    <td className="p-4 text-slate-600 font-mono text-[11px]">{reg.paperId || 'N/A'}</td>
+                    <td className="p-4 text-slate-700">
                       <div className="font-semibold text-xs lowercase">{reg.email}</div>
-                      <div className="text-[10px] text-admin-muted font-bold mt-0.5">{reg.phone}</div>
+                      <div className="text-[11px] text-slate-400 font-normal mt-0.5">{reg.phone}</div>
                     </td>
-                    <td className="p-4 text-admin-muted">
+                    <td className="p-4 text-slate-500">
                       {reg.registeredAt ? reg.registeredAt.toDate().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : ''}
                     </td>
                     <td className="p-4">
-                      <span className={`inline-block px-2.5 py-1 border-2 border-brand-ink rounded-md text-[9px] font-black uppercase tracking-wider ${
+                      <span className={`inline-block px-2.5 py-1 border rounded-lg text-[10px] font-bold uppercase ${
                         reg.hasEntered 
-                          ? 'bg-green-100 text-green-700 border-green-700' 
-                          : (reg.status === 'declined' ? 'bg-red-100 text-red-700 border-red-700' : 'bg-yellow-100 text-yellow-700 border-yellow-700')
+                          ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
+                          : (reg.status === 'declined' ? 'bg-red-50 text-red-700 border-red-200' : 'bg-amber-50 text-amber-700 border-amber-200')
                       }`}>
                         {reg.hasEntered ? 'Yes' : (reg.status === 'declined' ? 'Declined' : 'No')}
                       </span>
@@ -643,7 +645,7 @@ export default function Registrations() {
                     <td className="p-4 text-right">
                       <button 
                         onClick={() => setSelectedReg(reg)} 
-                        className="p-2 border-2 border-transparent hover:border-brand-ink hover:bg-brand-cloud text-brand-ink rounded-md transition-all cursor-pointer focus:outline-none"
+                        className="p-2 text-slate-400 hover:text-brand-orange hover:bg-slate-100 rounded-lg transition-all cursor-pointer focus:outline-none"
                       >
                         <CustomEyeIcon size={16} />
                       </button>
@@ -652,7 +654,7 @@ export default function Registrations() {
                 ))}
                 {paginatedRegistrations.length === 0 && (
                   <tr>
-                    <td colSpan={7} className="p-8 text-center text-admin-muted font-black text-xs uppercase tracking-wider">
+                    <td colSpan={7} className="p-8 text-center text-slate-400 font-medium text-xs">
                       No matching registration logs found.
                     </td>
                   </tr>

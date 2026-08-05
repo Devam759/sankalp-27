@@ -3,7 +3,7 @@ import AdminLayoutWrapper from '@/components/admin/AdminLayoutWrapper';
 
 export const metadata: Metadata = {
   title: "Admin Panel",
-  description: "Organizer administration panel for participant registrations, transactions, and logs for Sankalp '27.",
+  description: "Organizer administration panel for participant registrations, transactions, and logs for JKLU SANKALP 2027.",
   alternates: {
     canonical: '/admin',
   },

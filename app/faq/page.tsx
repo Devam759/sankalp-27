@@ -3,12 +3,13 @@ import FaqClient from './FaqClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions (FAQ) | Sankalp '27 | JKLU",
-  description: "Find answers to common questions about Sankalp '27 paper submissions, registration fees, travel to JKLU Jaipur, parking, Wi-Fi, and accommodation.",
+  title: "Frequently Asked Questions (FAQ) | JKLU SANKALP 2027 | JKLU",
+  description: "Find answers to common questions about JKLU SANKALP 2027 paper submissions, registration fees, travel to JKLU Jaipur, parking, Wi-Fi, and accommodation.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/faq',
   },
   keywords: [
+    "JKLU SANKALP 2027 FAQ",
     "Sankalp FAQ",
     "JKLU Conference FAQ",
     "Sankalp Paper Submission Queries",
@@ -16,10 +17,10 @@ export const metadata: Metadata = {
     "JKLU Campus Facilities FAQ"
   ],
   openGraph: {
-    title: "Frequently Asked Questions - SANKALP '27",
-    description: "Answers to key queries about registrations, venue facilities, travel, and accommodation for Sankalp 2027.",
+    title: "Frequently Asked Questions - JKLU SANKALP 2027",
+    description: "Answers to key queries about registrations, venue facilities, travel, and accommodation for JKLU SANKALP 2027.",
     url: 'https://sankalp.jklu.edu.in/faq',
-    siteName: "Sankalp '27 Website",
+    siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
   },
 };
@@ -28,7 +29,7 @@ export default function FAQPage() {
   const faqs = [
     {
       q: 'Where is the conference venue located?',
-      a: "SANKALP'27 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services."
+      a: "JKLU SANKALP 2027 is hosted at JK Lakshmipat University (JKLU), near Mahindra SEZ on Ajmer Road, Jaipur, Rajasthan 302026, India. The campus is well-connected and easily accessible via pre-paid airport taxis and ride-sharing services."
     },
     {
       q: 'Is parking available on campus?',

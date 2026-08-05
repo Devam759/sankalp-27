@@ -509,7 +509,7 @@ export default function RegistrationClient() {
               {/* Modal Header */}
               <div className="bg-gradient-to-r from-brand-blue to-[#0B1B3D] text-white p-6 flex justify-between items-center border-b border-white/10">
                 <div>
-                  <h2 className="font-sans font-extrabold text-xl tracking-tight">SANKALP '27 Checkout</h2>
+                  <h2 className="font-sans font-extrabold text-xl tracking-tight">JKLU SANKALP 2027 Checkout</h2>
                   <p className="text-xs text-brand-orange font-bold uppercase tracking-wider mt-1 flex items-center gap-1.5">
                     <TagIcon className="w-3.5 h-3.5" />
                     {selectedCategoryObj?.name}
