@@ -30,7 +30,7 @@ export default function TechTeamClient() {
       role: 'Team Lead & Lead Architect',
       badge: 'ENGINEERING LEAD',
       isHead: true,
-      image: '/Images/team/devam-gupta.jpg',
+      image: '/Images/team/devam-gupta.webp',
       description: 'Led the end-to-end architecture, engineering, and deployment of the official SANKALP\'27 conference platform, directing backend development, cloud infrastructure, payment integration, security, and system performance while ensuring a scalable, secure, and reliable digital experience.',
       skillsHeader: 'TECHNICAL LEADERSHIP',
       skills: [
@@ -61,7 +61,7 @@ export default function TechTeamClient() {
       role: 'Web Engineer',
       badge: 'Developer',
       isHead: false,
-      image: '/Images/team/manant-srivastava.jpeg',
+      image: '/Images/team/manant-srivastava.webp',
       description: 'Contributed to frontend development, backend integration, reusable component architecture, and responsive UI implementation, delivering an accessible, performant, and reliable digital experience across the official SANKALP\'27 conference platform.',
       skills: [
         'Frontend Development',
@@ -84,7 +84,7 @@ export default function TechTeamClient() {
       role: 'Web Engineer',
       badge: 'Developer',
       isHead: false,
-      image: '/Images/team/pratham-lalwani.jpeg',
+      image: '/Images/team/pratham-lalwani.webp',
       description: 'Contributed to conference content management, backend integration, structured data handling, UI implementation, schema validation, and quality assurance, ensuring accurate information delivery and a seamless user experience across the SANKALP\'27 conference platform.',
       skills: [
         'Content Management',
@@ -200,7 +200,7 @@ export default function TechTeamClient() {
                 <div>
                   {/* TOP HEADER: BADGE */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue">
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-blue">
                       {teamMembers[1].badge}
                     </span>
                   </div>
@@ -339,7 +339,7 @@ export default function TechTeamClient() {
                 <div>
                   {/* TOP HEADER: BADGE */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-brand-orange text-white">
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-orange">
                       {teamMembers[0].badge}
                     </span>
                   </div>
@@ -495,7 +495,7 @@ export default function TechTeamClient() {
                 <div>
                   {/* TOP HEADER: BADGE */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue">
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-blue">
                       {teamMembers[2].badge}
                     </span>
                   </div>
