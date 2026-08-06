@@ -190,43 +190,43 @@ export const speakers = {
 
 export const advisoryBoard = {
   international: [
-    { name: 'Prof. Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
-    { name: 'Mr. Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
-    { name: 'Prof. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
-    { name: 'Prof. Ridoan Karim', title: 'Director, CLARS - Monash University, Malaysia' },
-    { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
+    { name: 'Prof. Wassim Haddad', title: 'Professor, Georgia Institute of Technology, US' },
+    { name: 'Prof. Ravi Vatrapu', title: 'Toronto Metropolitan University, Ontario, Canada' },
     { name: 'Prof. Arun Patil', title: 'Director (L&T), Curtin University, Singapore' },
+    { name: 'Prof. Priyadarsan Patra', title: 'Director, UMMA Board, University of Massachusetts, US' },
+    { name: 'Prof. Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
+    { name: 'Prof. Vinod Kumar Shukla', title: 'Associate Dean, Amity University Dubai, UAE' },
+    { name: 'Prof. Valentina Emilia Balas', title: 'Professor, University of Arad, Romania' },
     { name: 'Prof. Celestine Iwendi', title: 'Professor, University of Greater Manchester, United Kingdom' },
     { name: 'Prof. Fernando Ortiz-Rodríguez', title: 'Professor, Universidad Autónoma de Tamaulipas, México, North America' },
-    { name: 'Prof. Priyadarsan Patra', title: 'Director, UMMA Board, University of Massachusetts, US' },
-    { name: 'Prof. Ravi Vatrapu', title: 'Toronto Metropolitan University, Ontario, Canada' },
-    { name: 'Prof. Valentina Emilia Balas', title: 'Professor, University of Arad, Romania' },
-    { name: 'Prof. Vinod Kumar Shukla', title: 'Associate Dean, Amity University Dubai, UAE' },
-    { name: 'Prof. Wassim Haddad', title: 'Professor, Georgia Institute of Technology, US' },
+    { name: 'Dr. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
+    { name: 'Mr. Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
+    { name: 'Dr. Ridoan Karim', title: 'Director, CLARS – Monash University, Malaysia' },
+    { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
     { name: 'Prof. Sergey Nersesov', title: 'Associate Professor, Villanova University, Pennsylvania, United States' },
     { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece' }
   ],
   national: [
-    { name: 'Prof. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon' },
-    { name: 'Prof. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
-    { name: 'Prof. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
-    { name: 'Prof. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },
-    { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi' },
-    { name: 'Mr. S. Balamurugan', title: 'Intelligent Research Consultancy, India Services (iRCS), Coimbatore, Tamil Nadu' },
-    { name: 'Prof. Deepshikha Bhargava', title: 'Dean, Engineering & Technology, Amity University, Greater Noida' },
-    { name: 'Prof. Gadadhar Sahoo', title: 'Department of Computer Science and Engineering, IIT (ISM) Dhanbad, Jharkhand' },
-    { name: 'Prof. K. K. Biswas', title: 'Prof. Emeritus, IIT Delhi, India' },
-    { name: 'Prof. K. V. Arya', title: 'Department of Computer Science and Engineering, IIITM, Gwalior' },
-    { name: 'Prof. Kusum Deep', title: 'Emeritus Professor, Maths. Dept, Indian Institute of Technology, Roorkee' },
     { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras' },
-    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
-    { name: 'Prof. Nishtha Keshwani', title: 'Professor, Central University of Rajasthan, India' },
-    { name: 'Prof. Rajesh Kumar', title: 'Professor, Biomedical Engineering, IIT Ropar' },
     { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam' },
-    { name: 'Prof. Sunil Kumar Khatri', title: 'Pro Vice Chancellor and Dean (Academics), Amity University, Uttar Pradesh' },
-    { name: 'Prof. Vikram Goyal', title: 'Department of Computer Science and Engineering, IIIT Delhi' },
+    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
+    { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
     { name: 'Prof. Viraj Kumar', title: 'Visiting Professor, Divecha Centre for Climate Change, IISc, Bengaluru' },
-    { name: 'Prof. V.S. Rathore', title: 'Professor-CSE & Dean-International, Apex University, Jaipur' }
+    { name: 'Prof. K. K. Biswas', title: 'Prof. Emeritus, IIT Delhi, India' },
+    { name: 'Prof. Vikram Goyal', title: 'Department of Computer Science and Engineering, IIIT Delhi' },
+    { name: 'Prof. Kusum Deep', title: 'Emeritus Professor, Maths. Dept, Indian Institute of Technology, Roorkee' },
+    { name: 'Dr. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
+    { name: 'Prof. Gadadhar Sahoo', title: 'Department of Computer Science and Engineering, IIT (ISM) Dhanbad, Jharkhand' },
+    { name: 'Prof. K. V. Arya', title: 'Department of Computer Science and Engineering, IIITM, Gwalior' },
+    { name: 'Mr. S. Balamurugan', title: 'Intelligent Research Consultancy, India Services (iRCS), Coimbatore, Tamil Nadu' },
+    { name: 'Prof. Nishtha Keshwani', title: 'Professor, Central University of Rajasthan, India' },
+    { name: 'Prof. Sunil Kumar Khatri', title: 'Pro Vice Chancellor and Dean (Academics), Amity University, Uttar Pradesh' },
+    { name: 'Prof. Rajesh Kumar', title: 'Professor, Biomedical Engineering, IIT Ropar' },
+    { name: 'Prof. Deepshikha Bhargava', title: 'Dean, Engineering & Technology, Amity University, Greater Noida' },
+    { name: 'Prof. V.S. Rathore', title: 'Professor-CSE & Dean-International, Apex University, Jaipur' },
+    { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },
+    { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon' },
+    { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi' }
   ]
 };
 
@@ -249,30 +249,99 @@ export const trackChairs = [
   { track: 'VLSI & Intelligent Engineering', chair: 'Prof. Rajesh Verma', coChair: 'Prof. Prakash Iyer' },
 ];
 
-export const organizingSubCommittees = [
+export interface InternalCommitteeMember {
+  role: 'Chair' | 'Lead' | 'Member';
+  name: string;
+  designation: string;
+  affiliation: string;
+}
+
+export interface InternalCommittee {
+  name: string;
+  members: InternalCommitteeMember[];
+}
+
+export const organizingSubCommittees: InternalCommittee[] = [
+  {
+    name: 'Finance / Treasurer / Purchase Committee',
+    members: [
+      { role: 'Chair', name: 'Prof. Umesh Gupta', designation: 'Professor', affiliation: 'Applied Science' },
+      { role: 'Lead', name: 'Dr. Hanuman Prasad Agrawal', designation: 'Associate Professor', affiliation: 'Electronics and Communication Engg' },
+      { role: 'Member', name: 'Dr. Satveer Singh', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Mr. Divanshu Jain', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
+      { role: 'Member', name: 'Mr. Devendra Bhavsar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
+    ]
+  },
+  {
+    name: 'Digital Content Creation / Publicity / Sponsorship Committee',
+    members: [
+      { role: 'Chair', name: 'Prof. Amit Kumar Sinhal', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Lead', name: 'Dr. Akshat Agarwal', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Santosh Kumar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Surbhi Chhabra', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Abhinav Kumar Khorwal', designation: 'Assistant Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Dr. Renu Bhagwat', designation: 'Assistant Professor', affiliation: 'IET' }
+    ]
+  },
   {
     name: 'Publication Committee',
-    members: ['Prof. Ankur Verma (Chair)', 'Prof. Neha Gupta', 'Mr. Ravi Shankar']
+    members: [
+      { role: 'Chair', name: 'Prof. Tapas Kumar', designation: 'Professor', affiliation: 'IET' },
+      { role: 'Lead', name: 'Prof. Sonali Vyas', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Akshat Agarwal', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Rashmi Kushwaha', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
+      { role: 'Member', name: 'Dr. Sushant Pokhriyal', designation: 'Assistant Professor', affiliation: 'Applied Science' }
+    ]
+  },
+  {
+    name: 'Technical Program Committee',
+    members: [
+      { role: 'Chair', name: 'Prof. Umesh Gupta', designation: 'Professor', affiliation: 'Applied Science' },
+      { role: 'Lead', name: 'Mr. Gaurav Raj', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Rabia Kamra', designation: 'Assistant Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Dr. Megha Sahu', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
+      { role: 'Member', name: 'Dr. Mayank Kumar Kundalwal', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
+    ]
+  },
+  {
+    name: 'Session Management Committee',
+    members: [
+      { role: 'Chair', name: 'Prof. Amit Kumar Sinhal', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Lead', name: 'Dr. Pranab Roy', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', 'name': 'Dr. Ashish Jain', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Manushi Gupta', designation: 'Assistant Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Dr. Rajnish Kumar', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' }
+    ]
   },
   {
     name: 'Registration Committee',
-    members: ['Prof. Priti Sharma (Chair)', 'Ms. Ananya Das', 'Mr. Vikas Singh']
+    members: [
+      { role: 'Chair', name: 'Prof. S. Taruna', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Lead', name: 'Dr. Jaya Gupta', designation: 'Associate Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Dr. Gaurav Mani Khanal', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
+      { role: 'Member', name: 'Dr. Anamika Satrawala', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Ms. Supriya Mishra', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Anshu Yadav', designation: 'Assistant Professor', affiliation: 'Applied Science' }
+    ]
   },
   {
-    name: 'Sponsorship Committee',
-    members: ['Mr. Sanjay Kedia (Chair)', 'Prof. Rakesh Meena', 'Ms. Snehal Patel']
+    name: 'Hospitality / Internal Resource Committee',
+    members: [
+      { role: 'Chair', name: 'Prof. Devika Kataria', designation: 'Professor', affiliation: 'Electronics and Communication Engg' },
+      { role: 'Lead', name: 'Dr. Richa Sharma', designation: 'Associate Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Dr. Shahnawaz Khan', designation: 'Assistant Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Dr. Krishna Chaitanya Solasa', designation: 'Assistant Professor', affiliation: 'Applied Science' }
+    ]
   },
   {
-    name: 'Hospitality Committee',
-    members: ['Prof. Mamta Bhatia (Chair)', 'Mr. Rajesh Kumar', 'Ms. Jyoti Rao']
-  },
-  {
-    name: 'Web & Design Committee',
-    members: ['Mr. Devam (Chair)', 'Mr. Kartik', 'Mr. Yash']
-  },
-  {
-    name: 'Media & Communications Committee',
-    members: ['Ms. Shilpa Sharma (Chair)', 'Mr. Vivek Joshi', 'Ms. Aditi Singh']
+    name: 'Stage Management Committee',
+    members: [
+      { role: 'Chair', name: 'Prof. S. Taruna', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Lead', name: 'Dr. Deepika Prakash', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Ankush Soni', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Devisha Tiwari', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Anant Pratap Singh', designation: 'Assistant Professor', affiliation: 'Applied Science' }
+    ]
   }
 ];
 

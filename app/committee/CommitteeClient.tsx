@@ -8,16 +8,17 @@ import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
 import { fadeUp, staggerContainer } from '@/lib/animations/variants';
-import { committeeMembers, advisoryBoard, technicalProgramCommittee, organizingSubCommittees } from '@/constants/conferenceData';
+import { committeeMembers, advisoryBoard, organizingSubCommittees } from '@/constants/conferenceData';
 
 const institutions = [
   'Georgia Institute of Technology', 'Toronto Metropolitan University', 'Curtin University',
-  'IIT Madras', 'IIT Delhi', 'IIT Roorkee', 'IIT Ropar', 'IIT (ISM) Dhanbad',
-  'IIIT Delhi', 'IIITM Gwalior', 'IISc Bengaluru', 'IIM Visakhapatnam',
-  'University of Cambridge', 'University of Tokyo', 'NUS Singapore', 'Monash University',
-  'Villanova University', 'Goldsmiths, University of London', 'Asia University Taiwan',
-  'Copenhagen Business School', 'University of Thessaly', 'Amity University',
-  'TCS Research', 'NVIDIA', 'Google', 'IBM Research', 'Microsoft Corporation',
+  'University of Massachusetts', 'Copenhagen Business School', 'Amity University Dubai',
+  'University of Arad', 'University of Greater Manchester', 'Universidad Autónoma de Tamaulipas',
+  'Goldsmiths, University of London', 'NVIDIA', 'Monash University', 'Google',
+  'Villanova University', 'University of Thessaly', 'IIT Madras', 'IIM Visakhapatnam',
+  'TCS Research', 'IISc Bengaluru', 'IIT Delhi', 'IIIT Delhi', 'IIT Roorkee',
+  'IIT (ISM) Dhanbad', 'IIITM Gwalior', 'Central University of Rajasthan', 'Amity University',
+  'IIT Ropar', 'Apex University', 'Microsoft Corporation', 'Xebia India', 'IBM Research'
 ];
 
 export default function CommitteeClient() {
@@ -71,8 +72,7 @@ export default function CommitteeClient() {
                           title={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
                           width={144}
                           height={144}
-                          priority={i === 0}
-                          loading={i === 0 ? 'eager' : 'lazy'}
+                          priority
                           unoptimized
                           className="object-cover object-top w-full h-full"
                         />
@@ -202,10 +202,9 @@ export default function CommitteeClient() {
       {/* ADVISORY BOARDS & COMMITTEES */}
       <section className="py-20 sm:py-24 border-t border-slate-200/80 bg-[#f4f0e8]">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
-          <motion.div variants={staggerContainer()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10 text-center flex flex-col items-center">
-            <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-6">
+          <motion.div variants={staggerContainer()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10 text-center flex flex-col items-center">            <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-6">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
-                <WordReveal text="Advisory Boards & Scientific Committees" />
+                <WordReveal text="Advisory Boards" />
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
               </h2>
             </motion.div>
@@ -226,19 +225,15 @@ export default function CommitteeClient() {
                 const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
                 return nameA.localeCompare(nameB);
               }).map((member, i) => {
-                const initials = member.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').split(' ').filter(Boolean).slice(-2).map(w => w[0]).join('').toUpperCase();
                 return (
                   <Reveal
                     key={`intl-${member.name}-${i}`}
                     delay={(i % 3) * 0.06}
-                    className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex items-start gap-4"
+                    className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex flex-col justify-between"
                   >
-                    <div className="w-10 h-10 rounded-full bg-brand-blue text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-sm mt-0.5">
-                      {initials}
-                    </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-serif font-bold text-brand-blue text-sm sm:text-base mb-1 leading-snug truncate">{member.name}</h4>
-                      <p className="text-slate-600 text-xs leading-relaxed font-semibold">{member.title}</p>
+                      <h4 className="font-serif font-bold text-brand-blue text-sm sm:text-base mb-1 leading-snug">{member.name}</h4>
+                      <p className="text-slate-600 text-xs leading-relaxed font-medium">{member.title}</p>
                     </div>
                   </Reveal>
                 );
@@ -258,83 +253,74 @@ export default function CommitteeClient() {
                 const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
                 return nameA.localeCompare(nameB);
               }).map((member, i) => {
-                const initials = member.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').split(' ').filter(Boolean).slice(-2).map(w => w[0]).join('').toUpperCase();
                 return (
                   <Reveal
                     key={`natl-${member.name}-${i}`}
                     delay={(i % 3) * 0.06}
-                    className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex items-start gap-4"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-brand-orange text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-sm mt-0.5">
-                      {initials}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-serif font-bold text-brand-blue text-sm sm:text-base mb-1 leading-snug truncate">{member.name}</h4>
-                      <p className="text-slate-600 text-xs leading-relaxed font-semibold">{member.title}</p>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="mb-14">
-            <div className="flex items-center gap-2.5 mb-6">
-              <div className="w-2.5 h-2.5 bg-brand-orange rounded-sm shrink-0" />
-              <h3 className="font-sans font-black text-base sm:text-lg md:text-xl text-brand-blue tracking-tight uppercase">Technical Program Committee</h3>
-              <div className="flex-1 h-px bg-slate-300" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {technicalProgramCommittee.map((member, i) => {
-                const initials = member.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').split(' ').filter(Boolean).slice(-2).map(w => w[0]).join('').toUpperCase();
-                return (
-                  <Reveal
-                    key={`tpc-${member.name}-${i}`}
-                    delay={(i % 3) * 0.06}
                     className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex flex-col justify-between"
                   >
-                    <div className="flex items-start gap-3.5 mb-3">
-                      <div className="w-9 h-9 rounded-full bg-slate-100 text-brand-blue font-serif font-bold text-xs flex items-center justify-center shrink-0 border border-slate-200 mt-0.5">
-                        {initials}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-serif font-bold text-brand-blue text-sm sm:text-base mb-0.5 leading-snug truncate">{member.name}</h4>
-                        <p className="text-slate-600 text-xs font-medium leading-relaxed">{member.institution}, {member.country}</p>
-                      </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-serif font-bold text-brand-blue text-sm sm:text-base mb-1 leading-snug">{member.name}</h4>
+                      <p className="text-slate-600 text-xs leading-relaxed font-medium">{member.title}</p>
                     </div>
-                    <span className="inline-block text-[10px] font-bold text-brand-orange bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-sm uppercase tracking-wider self-start">
-                      {member.area}
-                    </span>
                   </Reveal>
                 );
               })}
             </div>
           </div>
 
-          <div>
-            <div className="flex items-center gap-2.5 mb-6">
-              <div className="w-2.5 h-2.5 bg-brand-orange rounded-sm shrink-0" />
-              <h3 className="font-sans font-black text-base sm:text-lg md:text-xl text-brand-blue tracking-tight uppercase">Organizing Sub-Committees</h3>
-              <div className="flex-1 h-px bg-slate-300" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <div className="mt-20">
+            <motion.div variants={staggerContainer()} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-12 text-center flex flex-col items-center">
+              <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-6">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                  <WordReveal text="Internal Committees" />
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
+                </h2>
+              </motion.div>
+              <motion.p variants={fadeUp} className="text-slate-700 text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed font-normal mt-6">
+                Faculty leads and committees managing overall conference execution, paper review, registration, and logistics.
+              </motion.p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
               {organizingSubCommittees.map((committee, i) => (
                 <Reveal
                   key={`subcomm-${committee.name}-${i}`}
-                  delay={(i % 3) * 0.06}
-                  className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm"
+                  delay={(i % 2) * 0.06}
+                  className="bg-white p-5 sm:p-6 rounded-sm border border-slate-200 shadow-sm flex flex-col justify-between"
                 >
-                  <h4 className="font-serif font-bold text-brand-blue text-base sm:text-lg mb-3 border-b border-slate-100 pb-2">
-                    {committee.name}
-                  </h4>
-                  <ul className="space-y-2">
-                    {committee.members.map((member, mIdx) => (
-                      <li key={mIdx} className="text-slate-700 text-xs sm:text-sm font-medium flex items-center gap-2.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0" />
-                        <span>{member}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <h4 className="font-serif font-bold text-brand-blue text-base sm:text-lg mb-4 border-b border-slate-100 pb-3 flex items-center justify-between gap-2">
+                      <span>{committee.name}</span>
+                      <span className="text-xs font-sans font-semibold text-slate-400 shrink-0">
+                        {committee.members.length} Members
+                      </span>
+                    </h4>
+                    <ul className="space-y-3.5">
+                      {committee.members.map((member, mIdx) => (
+                        <li key={mIdx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 p-2.5 rounded-sm bg-slate-50/70 border border-slate-100">
+                          <div className="min-w-0 flex-1">
+                            <div className="font-serif font-bold text-slate-900 text-sm leading-snug">
+                              {member.name}
+                            </div>
+                            <div className="text-slate-600 text-xs font-medium mt-0.5">
+                              {member.designation}
+                            </div>
+                          </div>
+                          <span
+                            className={`inline-block text-[10px] font-bold px-2.5 py-0.5 rounded-sm uppercase tracking-wider self-start sm:self-center shrink-0 ${
+                              member.role === 'Chair'
+                                ? 'bg-brand-blue text-white'
+                                : member.role === 'Lead'
+                                ? 'bg-brand-orange text-white'
+                                : 'bg-white text-slate-600 border border-slate-200'
+                            }`}
+                          >
+                            {member.role}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </Reveal>
               ))}
             </div>
