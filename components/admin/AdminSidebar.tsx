@@ -399,7 +399,7 @@ export default function Sidebar() {
       {/* Mobile Hamburger Header */}
       <div className={`md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0b1220] border-b border-white/10 flex items-center justify-between px-4 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <Link href="/admin" className="flex items-center gap-3 select-none text-white">
-          <img src="/logos/jklu_logo.png" alt="JKLU Logo" className="h-10 w-auto object-contain brightness-0 invert" />
+          <img src="/logos/jklu_logo.webp" alt="JKLU Logo" className="h-10 w-auto object-contain brightness-0 invert" />
           <div className="flex flex-col">
             <span className="font-serif font-black text-sm tracking-wide text-white leading-none">
               SANKALP ADMIN

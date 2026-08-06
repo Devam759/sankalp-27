@@ -431,12 +431,22 @@ export default function HomeClient() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-brand-blue p-10 text-white flex flex-col justify-center relative overflow-hidden group"
+            className="bg-brand-blue p-8 sm:p-10 text-white flex flex-col justify-start relative overflow-hidden group"
           >
-            <div className="w-16 h-16 mb-5 rounded-sm border border-white/15 bg-white/10 flex items-center justify-center" aria-label="SANKALP Logo (placeholder)">
-              <span className="text-white/30 text-[8px] font-bold uppercase tracking-wider text-center leading-tight">LOGO</span>
+            <div className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
+              <Image
+                src="/logos/Sankalp logo.webp"
+                alt="SANKALP 2027 Logo"
+                width={400}
+                height={160}
+                className="h-28 sm:h-32 w-auto max-w-[220px] object-contain drop-shadow-lg shrink-0"
+              />
+              <h2 className="text-right font-serif font-bold text-2xl text-white leading-tight">
+                <span className="block">JKLU</span>
+                <span className="block">SANKALP</span>
+                <span className="block">2027</span>
+              </h2>
             </div>
-            <h2 className="text-2xl font-serif font-bold mb-1">JKLU SANKALP 2027</h2>
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
               A premier JKLU International Conference uniting researchers, academics, industry leaders and students across six frontier domains: Sustainable AI, Next-Gen Knowledge, Automation, Learning, Prediction and emerging technologies.
             </p>

@@ -32,7 +32,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
       process.cwd(), 
       'public', 
       'logos',
-      'jklu_logo.png'
+      'jklu_logo.webp'
     );
     const jkluLogoBytes = await fs.readFile(jkluLogoPath);
     jkluLogoImage = await pdfDoc.embedPng(jkluLogoBytes);
@@ -44,7 +44,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
     console.warn('PDF Left Logo (JKLU) load failed:', error);
   }
 
-  // 2. Right Logo: Sankalp Main Logo (Transparent removebg PNG variant)
+  // 2. Right Logo: Sankalp Main Logo (Transparent removebg PNG/WEBP variant)
   let sankalpScaledWidth = 0;
   let sankalpScaledHeight = 0;
   let sankalpLogoImage;
@@ -53,8 +53,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
       process.cwd(), 
       'public', 
       'logos',
-      /* SANKALP LOGO SLOT - Replace 'jklu_logo.png' with the new sankalp logo filename when added to public/logos/ */
-      'jklu_logo.png'
+      'Sankalp logo.webp'
     );
     const sankalpLogoBytes = await fs.readFile(sankalpLogoPath);
     sankalpLogoImage = await pdfDoc.embedPng(sankalpLogoBytes);
@@ -362,11 +361,10 @@ export async function sendEmail(to: string, name: string, pdfBytes: Uint8Array) 
     const fs = await import('fs/promises');
     const path = await import('path');
 
-    const jkluPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.png');
-    const jkluBytes = await fs.readFile(jkluPath);
+    const jkluPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.webp');
     jkluAttachment = {
-      filename: 'jklu_logo.png',
-      content: jkluBytes,
+      filename: 'jklu_logo.webp',
+      content: await fs.readFile(jkluPath),
       cid: 'jklu_logo'
     };
   } catch (err) {

@@ -164,18 +164,18 @@ export async function sendCheckInEmail(
   let jkluAttachment: any = null;
   try {
     /* SANKALP LOGO SLOT - Replace the path and filename below with the new sankalp logo when added to public/logos/ */
-    const logoPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.png');
+    const logoPath = path.join(process.cwd(), 'public', 'logos', 'Sankalp logo.webp');
     const logoBytes = await fs.readFile(logoPath);
     logoAttachment = {
-      filename: 'jklu_logo.png',
+      filename: 'Sankalp logo.webp',
       content: logoBytes,
       cid: 'sankalp_logo'
     };
 
-    const jkluPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.png');
+    const jkluPath = path.join(process.cwd(), 'public', 'logos', 'jklu_logo.webp');
     const jkluBytes = await fs.readFile(jkluPath);
     jkluAttachment = {
-      filename: 'jklu_logo.png',
+      filename: 'jklu_logo.webp',
       content: jkluBytes,
       cid: 'jklu_logo'
     };

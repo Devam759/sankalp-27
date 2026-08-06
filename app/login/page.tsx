@@ -96,7 +96,7 @@ export default function LoginPage() {
             {/* JKLU Logo */}
             <a href="https://jklu.edu.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity flex items-center">
               <img
-                src="/logos/jklu_logo.png"
+                src="/logos/jklu_logo.webp"
                 alt="JKLU Logo"
                 className="h-14 sm:h-16 w-auto object-contain"
               />
@@ -104,11 +104,13 @@ export default function LoginPage() {
 
             <div className="h-10 w-px bg-slate-200" />
 
-            {/* SANKALP Emblem */}
-            <div className="flex items-center gap-2">
-              <div className="h-12 w-12 border border-brand-orange/40 rounded-xl flex items-center justify-center bg-brand-orange/10 text-brand-orange shadow-xs">
-                <AtomIcon size={26} />
-              </div>
+            {/* SANKALP Logo */}
+            <div className="flex items-center">
+              <img
+                src="/logos/Sankalp logo.webp"
+                alt="SANKALP 2027 Logo"
+                className="h-12 w-auto object-contain"
+              />
             </div>
 
             <div className="h-10 w-px bg-slate-200" />

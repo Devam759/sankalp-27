@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
-import { BrainIcon, HeartIcon } from '@/components/ui/Icons';
+import { BrainIcon, HeartIcon, AppleIcon } from '@/components/ui/Icons';
 
 // ============================================================================
 // BESPOKE CUSTOM GEOMETRIC SVG ICONS (Gradient-free, Sharp, Clean)
@@ -63,11 +63,7 @@ const FacebookIcon = ({ size = 18, className = '' }: { size?: number; className?
   </svg>
 );
 
-const AppleIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.32c.67-.82 1.13-1.97.99-3.12-1 .04-2.19.67-2.88 1.47-.61.71-1.15 1.87-.99 2.99 1.11.09 2.22-.52 2.88-1.34Z" />
-  </svg>
-);
+
 
 const XIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
   <svg 
@@ -365,7 +361,7 @@ export default function Footer() {
           <span>Designed with</span>
           <HeartIcon size={16} className="text-red-500 fill-red-500 inline-block transition-transform duration-300 group-hover:scale-110" />
           <span>&amp; Developed with</span>
-          <BrainIcon size={18} className="text-brand-orange group-hover:text-white inline-block transition-transform duration-300 group-hover:scale-110" />
+          <span className="text-base inline-block transition-transform duration-300 group-hover:scale-110">🧠</span>
         </Link>
       </div>
 
@@ -404,7 +400,17 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 md:gap-8 flex-wrap">
+          <Link href="/" className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex">
+            <Image
+              src="/logos/Sankalp logo.webp"
+              alt="SANKALP 2027 Logo"
+              width={240}
+              height={80}
+              className="h-16 md:h-[72px] w-auto object-contain drop-shadow-md"
+            />
+          </Link>
+          <div className="h-12 w-px bg-white/25" />
           <a 
             href="https://jklu.edu.in" 
             target="_blank" 
@@ -414,10 +420,10 @@ export default function Footer() {
             <Image
               src="/logos/white_jklu_logo.webp"
               alt="JK Lakshmipat University Logo"
-              width={240}
-              height={72}
-              className="h-14 md:h-[58px] w-auto object-contain"
-              style={{ width: 'auto', height: '58px' }}
+              width={320}
+              height={96}
+              className="h-20 md:h-[76px] w-auto object-contain"
+              style={{ width: 'auto', height: '76px' }}
             />
           </a>
         </div>

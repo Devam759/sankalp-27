@@ -86,10 +86,15 @@ export default function Navbar() {
         >
           {/* Left: SANKALP Emblem + Desktop Nav Links (Aside Logo) */}
           <div className="flex items-center gap-5 xl:gap-7 shrink-0">
-            <Link href="/" className="flex items-center shrink-0" aria-label="JKLU SANKALP 2027 Home">
-              <div className="h-9 w-9 sm:h-10 sm:w-10 border border-white/30 rounded flex items-center justify-center shrink-0 bg-white/10 text-brand-orange hover:bg-white/20 transition-colors">
-                <AtomIcon size={20} />
-              </div>
+            <Link href="/" className="flex items-center shrink-0 hover:opacity-90 transition-opacity" aria-label="JKLU SANKALP 2027 Home">
+              <Image
+                src="/logos/Sankalp logo.webp"
+                alt="SANKALP 2027 Logo"
+                width={220}
+                height={70}
+                className="h-14 sm:h-16 max-h-[58px] w-auto object-contain py-1"
+                priority
+              />
             </Link>
 
             {/* Mobile JKLU & Asia University Logos */}
