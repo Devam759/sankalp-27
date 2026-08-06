@@ -16,23 +16,23 @@ export default function ContactClient() {
     setTimeout(() => setCopied(false), 2000);
   };
   const organizingHeads = [
-    { name: "Dr. Tapas Kumar", title: "Conference Chair" },
-    { name: "Dr. Sonali Vyas", title: "Conference Convener" },
+    { name: "Prof. Tapas Kumar", title: "Conference Chair" },
+    { name: "Prof. Sonali Vyas", title: "Conference Convener" },
   ];
 
   const subCommittees = [
-    { department: "Registration", name: "Dr. Priti Sharma" },
-    { department: "Publication", name: "Dr. Ankur Verma" },
+    { department: "Registration", name: "Prof. Priti Sharma" },
+    { department: "Publication", name: "Prof. Ankur Verma" },
     { department: "Sponsorship", name: "Mr. Sanjay Kedia" },
-    { department: "Hospitality", name: "Dr. Mamta Bhatia" },
+    { department: "Hospitality", name: "Prof. Mamta Bhatia" },
     { department: "Media & Comms", name: "Ms. Shilpa Sharma" }
   ];
 
   const trackChairs = [
-    { track: "Sustainable AI", name: "Dr. Amit Kumar Sinhal" },
-    { track: "Data Science", name: "Dr. S. Taruna" },
-    { track: "HPC & Edge", name: "Dr. Umesh Gupta" },
-    { track: "Smart Healthcare", name: "Dr. Devika Kataria" },
+    { track: "Sustainable AI", name: "Prof. Amit Kumar Sinhal" },
+    { track: "Data Science", name: "Prof. S. Taruna" },
+    { track: "HPC & Edge", name: "Prof. Umesh Gupta" },
+    { track: "Smart Healthcare", name: "Prof. Devika Kataria" },
   ];
 
   return (

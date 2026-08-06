@@ -217,23 +217,6 @@ export default function HomeClient() {
     return () => ctx.revert();
   }, [reduced]);
 
-  // Conference Highlights bento: cards rise into place with a GSAP stagger.
-  React.useEffect(() => {
-    const section = highlightsRef.current;
-    if (!section || reduced) return;
-    const ctx = gsap.context(() => {
-      gsap.from('.highlight-card', {
-        y: 36,
-        opacity: 0,
-        ease: 'power3.out',
-        duration: 0.7,
-        stagger: 0.08,
-        scrollTrigger: { trigger: section, start: 'top 75%', once: true },
-      });
-    }, section);
-    return () => ctx.revert();
-  }, [reduced]);
-
   // Stats band values — computed from real conference data, never fabricated.
   const heroStats = [
     { value: conferenceTracks.length, suffix: '', label: 'Conference Tracks' },
@@ -548,115 +531,47 @@ export default function HomeClient() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 auto-rows-fr">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {keyFeatures.map((feature, i) => {
-              const Icon = FEATURE_ICONS[feature.icon] ?? RocketIcon;
               const { label, tag } = splitFeatureTag(feature.title);
-              const isFeatured = i === 0; // Keynote Speakers — wide editorial card
-              const isAccent = i === 3; // Startup & Innovation — orange accent card
-              const span = isFeatured || isAccent ? 'md:col-span-2 xl:col-span-2' : '';
 
               return (
-                <div
+                <motion.div
                   key={feature.title}
-                  className={`highlight-card relative overflow-hidden p-8 h-full flex flex-col justify-between border-2 ${span} ${
-                    isAccent
-                      ? 'border-brand-orange bg-brand-orange text-white'
-                      : 'border-white bg-white text-brand-blue'
-                  }`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
+                  className="group relative bg-gradient-to-b from-white to-slate-50/60 p-8 rounded-xl border border-white/20 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                 >
-                  <div className="relative z-10 flex flex-col h-full">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-8">
-                      <div
-                        className={`w-12 h-12 flex items-center justify-center rounded-sm border ${
-                          isAccent
-                            ? 'bg-white/15 border-white/25 text-white'
-                            : 'bg-brand-blue/5 border-brand-blue/10 text-brand-blue'
-                        }`}
-                      >
-                        <Icon size={22} />
-                      </div>
-                      <span
-                        className={`font-mono text-xs font-bold tracking-widest ${
-                          isAccent ? 'text-white/60' : 'text-brand-blue/30'
-                        }`}
-                      >
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-orange to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="font-mono text-xs font-bold text-brand-orange tracking-widest bg-brand-orange/10 px-2.5 py-1 rounded-md">
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                    </div>
-
-                    {/* Featured speaker avatars (real data) */}
-                    {isFeatured && (
-                      <div className="mb-6 flex -space-x-3">
-                        {[...speakers.plenary, ...speakers.keynote].map((s) => (
-                          <Image
-                            key={s.name}
-                            src={s.image}
-                            alt={`${s.name} — ${s.role}, ${s.university}`}
-                            width={56}
-                            height={56}
-                            sizes="56px"
-                            className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover object-top shadow-md"
-                          />
-                        ))}
-                      </div>
-                    )}
-
-                    {tag && (
-                      <div className="mb-4">
-                        <span
-                          className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm ${
-                            isAccent ? 'bg-white/15 text-white' : 'bg-brand-orange/10 text-brand-orange'
-                          }`}
-                        >
+                      {tag && (
+                        <span className="text-[10px] font-bold text-brand-blue/70 uppercase tracking-widest bg-slate-100 px-2.5 py-1 rounded-md">
                           {tag}
                         </span>
-                      </div>
-                    )}
-
-                    <div className="flex-grow">
-                      <h3
-                        className={`font-bold leading-snug mb-3 ${
-                          isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'
-                        }`}
-                      >
-                        {label}
-                      </h3>
-                      <p className={`text-sm leading-relaxed ${isAccent ? 'text-white/90' : 'text-brand-blue/80'}`}>
-                        {featureDescriptions[i]}
-                      </p>
+                      )}
                     </div>
 
-                    {/* Featured card footer — real speaker count */}
-                    {isFeatured && (
-                      <div className="mt-8 pt-6 border-t border-brand-blue/10">
-                        <div className="flex items-baseline gap-2.5">
-                          <AnimatedCounter
-                            to={speakers.plenary.length + speakers.keynote.length}
-                            className="font-serif font-black text-4xl md:text-5xl text-brand-orange leading-none tabular-nums"
-                          />
-                          <span className="text-xs font-bold uppercase tracking-widest text-brand-blue/70">
-                            Plenary &amp; Keynote Speakers
-                          </span>
-                        </div>
-                      </div>
-                    )}
+                    <h3 className="text-xl font-bold text-brand-blue mb-3 group-hover:text-brand-orange transition-colors leading-snug font-serif">
+                      {label}
+                    </h3>
 
-                    {/* Best Paper card footer — Springer LNCS / Scopus */}
-                    {i === 5 && (
-                      <div className="mt-8 pt-6 border-t border-brand-blue/10 flex items-center gap-4">
-                        <div className="w-10 h-10 bg-brand-orange flex items-center justify-center font-mono text-sm font-bold text-white rounded-none">
-                          P
-                        </div>
-                        <div>
-                          <span className="text-brand-blue text-xs font-bold block mb-0.5">Springer LNCS Series</span>
-                          <span className="text-brand-orange text-[9px] font-bold uppercase tracking-widest">Scopus Indexed</span>
-                        </div>
-                      </div>
-                    )}
+                    <p className="text-slate-600 text-sm leading-relaxed font-medium">
+                      {featureDescriptions[i]}
+                    </p>
                   </div>
-                </div>
+
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-orange opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                    <span>Key Highlight</span>
+                    <span>&rarr;</span>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
@@ -859,10 +774,10 @@ export default function HomeClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp' },
-              { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp' },
-              { name: 'Dr. S. Taruna', alt: 'Dr. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp' },
-              { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp' },
+              { name: 'Prof. Amit Kumar Sinhal', alt: 'Prof. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp' },
+              { name: 'Prof. Devika Kataria', alt: 'Prof. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp' },
+              { name: 'Prof. S. Taruna', alt: 'Prof. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp' },
+              { name: 'Prof. Umesh Gupta', alt: 'Prof. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp' },
             ].map((chair, i) => (
               <motion.div
                 key={i}

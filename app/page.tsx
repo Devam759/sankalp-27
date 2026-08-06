@@ -17,12 +17,11 @@ export const metadata: Metadata = {
     "sankalp jaipur",
     "sankalp international conference",
     "iet jklu sankalp",
-    "Dr. S. Taruna",
     "Prof. S. Taruna",
     "S Taruna",
     "S Taruna JKLU",
-    "Dr. S. Taruna JKLU",
-    "Dr. Taruna Sunil",
+    "Prof. S. Taruna JKLU",
+    "Prof. Taruna Sunil",
     "Taruna Sunil"
   ],
   alternates: {

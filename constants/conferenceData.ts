@@ -135,10 +135,10 @@ export const committeeMembers = {
   ],
   patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: '', image: '/Images/committee/vc.webp' },
   chairs: [
-    { role: 'Conference Chair', name: 'Dr. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
-    { role: 'Conference Convener', name: 'Dr. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
+    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
+    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
   ],
-  programChairs: 'Professors of IET (Dr. Amit / Dr. Devika / Dr. Taruna, and Dr. Umesh)',
+  programChairs: 'Professors of IET (Prof. Amit / Prof. Devika / Prof. Taruna, and Prof. Umesh)',
 };
 
 export const registrationFees = [
@@ -178,7 +178,7 @@ export const speakers = {
       linkedin: 'https://www.linkedin.com/in/bbgupta/'
     },
     {
-      name: 'Dr. Naveen Sivadasan',
+      name: 'Prof. Naveen Sivadasan',
       role: 'Principal Scientist',
       university: 'TCS Research',
       location: 'IIT Hyderabad',
@@ -190,10 +190,10 @@ export const speakers = {
 
 export const advisoryBoard = {
   international: [
-    { name: 'Dr. Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
+    { name: 'Prof. Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
     { name: 'Mr. Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
-    { name: 'Dr. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
-    { name: 'Dr. Ridoan Karim', title: 'Director, CLARS - Monash University, Malaysia' },
+    { name: 'Prof. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
+    { name: 'Prof. Ridoan Karim', title: 'Director, CLARS - Monash University, Malaysia' },
     { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
     { name: 'Prof. Arun Patil', title: 'Director (L&T), Curtin University, Singapore' },
     { name: 'Prof. Celestine Iwendi', title: 'Professor, University of Greater Manchester, United Kingdom' },
@@ -207,10 +207,10 @@ export const advisoryBoard = {
     { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece' }
   ],
   national: [
-    { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon' },
-    { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
+    { name: 'Prof. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon' },
+    { name: 'Prof. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
     { name: 'Prof. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
-    { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },
+    { name: 'Prof. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },
     { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi' },
     { name: 'Mr. S. Balamurugan', title: 'Intelligent Research Consultancy, India Services (iRCS), Coimbatore, Tamil Nadu' },
     { name: 'Prof. Deepshikha Bhargava', title: 'Dean, Engineering & Technology, Amity University, Greater Noida' },
@@ -219,7 +219,7 @@ export const advisoryBoard = {
     { name: 'Prof. K. V. Arya', title: 'Department of Computer Science and Engineering, IIITM, Gwalior' },
     { name: 'Prof. Kusum Deep', title: 'Emeritus Professor, Maths. Dept, Indian Institute of Technology, Roorkee' },
     { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras' },
-    { name: 'Dr. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
+    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
     { name: 'Prof. Nishtha Keshwani', title: 'Professor, Central University of Rajasthan, India' },
     { name: 'Prof. Rajesh Kumar', title: 'Professor, Biomedical Engineering, IIT Ropar' },
     { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam' },
@@ -232,39 +232,39 @@ export const advisoryBoard = {
 
 export const technicalProgramCommittee = [
   { name: 'Prof. Ankit Garg', institution: 'Indian Institute of Technology Delhi', country: 'India', area: 'Machine Learning' },
-  { name: 'Dr. Sarah Mitchell', institution: 'University of Cambridge', country: 'United Kingdom', area: 'Sustainable AI' },
-  { name: 'Dr. Hiroshi Tanaka', institution: 'University of Tokyo', country: 'Japan', area: 'Generative AI' },
+  { name: 'Prof. Sarah Mitchell', institution: 'University of Cambridge', country: 'United Kingdom', area: 'Sustainable AI' },
+  { name: 'Prof. Hiroshi Tanaka', institution: 'University of Tokyo', country: 'Japan', area: 'Generative AI' },
   { name: 'Prof. Elena Rodriguez', institution: 'Technical University of Madrid', country: 'Spain', area: 'Smart Health' },
-  { name: 'Dr. James Chen', institution: 'National University of Singapore', country: 'Singapore', area: 'Data Science' },
+  { name: 'Prof. James Chen', institution: 'National University of Singapore', country: 'Singapore', area: 'Data Science' },
   { name: 'Prof. Rajesh Kumar', institution: 'IIT Ropar', country: 'India', area: 'Biomedical Engineering' },
 ];
 
 export const trackChairs = [
-  { track: 'Sustainable AI', chair: 'Dr. Amit Kumar Sinhal', coChair: 'Dr. Sneha Sharma' },
-  { track: 'Data Science & Generative AI', chair: 'Dr. S. Taruna', coChair: 'Dr. Vikram Singh' },
-  { track: 'High Performance Computing', chair: 'Dr. Umesh Gupta', coChair: 'Dr. Anjali Mehta' },
-  { track: 'Smart Healthcare', chair: 'Dr. Devika Kataria', coChair: 'Dr. Suresh Reddy' },
-  { track: 'AI in Education', chair: 'Dr. Ramesh Chandra', coChair: 'Dr. Kavita Jain' },
-  { track: 'Smart Society', chair: 'Prof. Anil Sharma', coChair: 'Dr. Meera Patel' },
-  { track: 'VLSI & Intelligent Engineering', chair: 'Dr. Rajesh Verma', coChair: 'Dr. Prakash Iyer' },
+  { track: 'Sustainable AI', chair: 'Prof. Amit Kumar Sinhal', coChair: 'Prof. Sneha Sharma' },
+  { track: 'Data Science & Generative AI', chair: 'Prof. S. Taruna', coChair: 'Prof. Vikram Singh' },
+  { track: 'High Performance Computing', chair: 'Prof. Umesh Gupta', coChair: 'Prof. Anjali Mehta' },
+  { track: 'Smart Healthcare', chair: 'Prof. Devika Kataria', coChair: 'Prof. Suresh Reddy' },
+  { track: 'AI in Education', chair: 'Prof. Ramesh Chandra', coChair: 'Prof. Kavita Jain' },
+  { track: 'Smart Society', chair: 'Prof. Anil Sharma', coChair: 'Prof. Meera Patel' },
+  { track: 'VLSI & Intelligent Engineering', chair: 'Prof. Rajesh Verma', coChair: 'Prof. Prakash Iyer' },
 ];
 
 export const organizingSubCommittees = [
   {
     name: 'Publication Committee',
-    members: ['Dr. Ankur Verma (Chair)', 'Dr. Neha Gupta', 'Mr. Ravi Shankar']
+    members: ['Prof. Ankur Verma (Chair)', 'Prof. Neha Gupta', 'Mr. Ravi Shankar']
   },
   {
     name: 'Registration Committee',
-    members: ['Dr. Priti Sharma (Chair)', 'Ms. Ananya Das', 'Mr. Vikas Singh']
+    members: ['Prof. Priti Sharma (Chair)', 'Ms. Ananya Das', 'Mr. Vikas Singh']
   },
   {
     name: 'Sponsorship Committee',
-    members: ['Mr. Sanjay Kedia (Chair)', 'Dr. Rakesh Meena', 'Ms. Snehal Patel']
+    members: ['Mr. Sanjay Kedia (Chair)', 'Prof. Rakesh Meena', 'Ms. Snehal Patel']
   },
   {
     name: 'Hospitality Committee',
-    members: ['Dr. Mamta Bhatia (Chair)', 'Mr. Rajesh Kumar', 'Ms. Jyoti Rao']
+    members: ['Prof. Mamta Bhatia (Chair)', 'Mr. Rajesh Kumar', 'Ms. Jyoti Rao']
   },
   {
     name: 'Web & Design Committee',
