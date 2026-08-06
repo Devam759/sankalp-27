@@ -1,15 +1,13 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import Reveal from '@/components/ui/Reveal';
+import WordReveal from '@/components/ui/WordReveal';
 import { load } from '@cashfreepayments/cashfree-js';
 import { REGISTRATION_CATEGORIES, RegistrationCategory } from '@/constants/fees';
-
-const ease = [0.22, 1, 0.36, 1] as const;
-const fadeUp: Variants = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } };
-const stagger = (delay = 0): Variants => ({ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: delay } } });
 
 const timelineSteps = [
   { num: '01', title: 'Paper Acceptance', body: 'Receive your formal acceptance notification from the Technical Programme Committee via email.' },
@@ -315,15 +313,17 @@ export default function RegistrationClient() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 relative z-10">
-          <motion.div variants={stagger()} initial="hidden" animate="visible" className="max-w-3xl">
-            <motion.h1 variants={fadeUp} className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.15] mb-6">
-              Conference Registration
-            </motion.h1>
+          <div className="max-w-3xl">
+            <h1 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.15] mb-6">
+              <WordReveal text="Conference Registration" className="text-white" />
+            </h1>
 
-            <motion.p variants={fadeUp} className="text-slate-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl">
-              Join distinguished researchers, academicians, and industry leaders at JK Lakshmipat University, Jaipur. Select your tier below to initiate instant registration and ticket pass dispatch.
-            </motion.p>
-          </motion.div>
+            <Reveal variant="in" delay={0.25}>
+              <p className="text-slate-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl">
+                Join distinguished researchers, academicians, and industry leaders at JK Lakshmipat University, Jaipur. Select your tier below to initiate instant registration and ticket pass dispatch.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -332,14 +332,16 @@ export default function RegistrationClient() {
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-            <div>
-              <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-brand-blue tracking-tight">
-                Select Your Category
-              </h2>
-              <p className="text-slate-600 text-sm font-medium mt-1">
-                Choose your registration tier to initiate your online registration.
-              </p>
-            </div>
+            <Reveal variant="in">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
+                  <WordReveal text="Select Your Category" className="text-brand-blue" />
+                </h2>
+                <p className="text-slate-600 text-sm font-medium mt-1">
+                  Choose your registration tier to initiate your online registration.
+                </p>
+              </div>
+            </Reveal>
 
             {/* Filter Tabs */}
             <div className="flex items-center bg-slate-100/90 p-1.5 rounded-md border border-slate-200 self-start md:self-auto">
@@ -372,19 +374,17 @@ export default function RegistrationClient() {
 
           {/* Pricing Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredCategories.map((cat) => (
-              <motion.div
-                  key={cat.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="group relative border border-slate-200 hover:border-brand-blue bg-white p-7 flex flex-col justify-between transition-all duration-300 rounded-lg hover:shadow-lg"
-                >
+            {filteredCategories.map((cat, i) => (
+              <Reveal
+                key={cat.id}
+                delay={i * 0.05}
+                className="relative border border-slate-200 bg-white p-7 flex flex-col justify-between rounded-lg"
+              >
                   <div>
-                    <h3 className="font-sans font-bold text-lg text-brand-blue mb-2.5 leading-snug group-hover:text-brand-orange transition-colors">
+                    <h3 className="font-sans font-bold text-lg text-brand-blue mb-2.5 leading-snug">
                       {cat.name}
                     </h3>
-                    
+
                     <p className="text-slate-600 text-xs font-medium leading-relaxed mb-6">
                       {cat.description}
                     </p>
@@ -404,12 +404,12 @@ export default function RegistrationClient() {
 
                   <button
                     onClick={() => handleCategorySelect(cat.id)}
-                    className="w-full py-3 px-4 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all rounded-md bg-brand-blue text-white hover:bg-blue-900 group-hover:shadow-md flex items-center justify-center gap-2"
+                    className="w-full py-3 px-4 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all rounded-md bg-brand-blue text-white hover:bg-blue-900 flex items-center justify-center gap-2"
                   >
                     <span>Register Now</span>
                     <ArrowRightIcon className="w-3.5 h-3.5" />
                   </button>
-                </motion.div>
+              </Reveal>
             ))}
           </div>
 
@@ -433,26 +433,30 @@ export default function RegistrationClient() {
           
           {/* Workflow Timeline */}
           <div className="lg:col-span-7">
-            <div className="mb-8">
-              <h2 className="font-sans font-extrabold text-2xl text-brand-blue tracking-tight">
-                Registration Workflow
-              </h2>
-              <p className="text-slate-600 text-sm font-medium mt-1">
-                Follow these five simple steps to complete your conference registration.
-              </p>
-            </div>
+            <Reveal variant="in">
+              <div className="mb-8">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
+                  <WordReveal text="Registration Workflow" className="text-brand-blue" />
+                </h2>
+                <p className="text-slate-600 text-sm font-medium mt-1">
+                  Follow these five simple steps to complete your conference registration.
+                </p>
+              </div>
+            </Reveal>
 
             <div className="space-y-4">
               {timelineSteps.map((stepItem, i) => (
-                <div key={i} className="flex gap-5 bg-white p-5 sm:p-6 border border-slate-200/90 rounded-lg shadow-xs hover:border-brand-blue/40 transition-colors">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-md bg-brand-orange/10 text-brand-orange font-mono font-bold text-base shrink-0">
-                    {stepItem.num}
+                <Reveal key={i} delay={i * 0.05}>
+                  <div className="flex gap-5 bg-white p-5 sm:p-6 border border-slate-200/90 rounded-lg shadow-xs">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-md bg-brand-orange/10 text-brand-orange font-mono font-bold text-base shrink-0">
+                      {stepItem.num}
+                    </div>
+                    <div>
+                      <h3 className="font-sans font-bold text-brand-blue text-base mb-1">{stepItem.title}</h3>
+                      <p className="text-slate-600 text-xs font-medium leading-relaxed">{stepItem.body}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-sans font-bold text-brand-blue text-base mb-1">{stepItem.title}</h3>
-                    <p className="text-slate-600 text-xs font-medium leading-relaxed">{stepItem.body}</p>
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -460,10 +464,12 @@ export default function RegistrationClient() {
           {/* Inclusions & Guidelines Sidebar */}
           <div className="lg:col-span-5 space-y-8">
             {/* Inclusions Card */}
-            <div className="bg-gradient-to-br from-brand-blue to-[#0D2447] text-white p-7 sm:p-8 rounded-lg shadow-md border border-white/10">
+            <Reveal variant="right" className="bg-gradient-to-br from-brand-blue to-[#0D2447] text-white p-7 sm:p-8 rounded-lg shadow-md border border-white/10">
               <div className="flex items-center gap-2.5 mb-6">
                 <SparklesIcon className="w-5 h-5 text-brand-orange" />
-                <h2 className="font-sans font-extrabold text-xl tracking-tight">Delegate Inclusions</h2>
+                <h2 className="font-sans font-extrabold text-xl tracking-tight">
+                  <WordReveal text="Delegate Inclusions" className="text-white" />
+                </h2>
               </div>
               <ul className="space-y-3">
                 {inclusions.map((item, i) => (
@@ -473,13 +479,15 @@ export default function RegistrationClient() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
 
             {/* Guidelines Card */}
-            <div className="bg-white p-7 sm:p-8 border border-slate-200/90 rounded-lg shadow-xs">
+            <Reveal variant="right" delay={0.15} className="bg-white p-7 sm:p-8 border border-slate-200/90 rounded-lg shadow-xs">
               <div className="flex items-center gap-2.5 mb-5">
                 <ShieldCheckIcon className="w-5 h-5 text-brand-blue" />
-                <h2 className="font-sans font-extrabold text-xl text-brand-blue tracking-tight">Registration Guidelines</h2>
+                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-brand-blue uppercase tracking-wide">
+                  <WordReveal text="Registration Guidelines" className="text-brand-blue" />
+                </h2>
               </div>
               <ul className="space-y-3">
                 {policies.map((pol, i) => (
@@ -489,7 +497,7 @@ export default function RegistrationClient() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           </div>
 
         </div>

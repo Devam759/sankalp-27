@@ -3,6 +3,8 @@ import React from 'react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import JsonLd from '@/components/seo/JsonLd';
+import Reveal from '@/components/ui/Reveal';
+import WordReveal from '@/components/ui/WordReveal';
 
 export const metadata: Metadata = {
   title: "Privacy Policy | JKLU SANKALP 2027 | JKLU",
@@ -45,24 +47,28 @@ export default function PrivacyPolicy() {
         {/* Header Section */}
         <section className="py-12 md:py-16 px-6 bg-brand-cloud border-b border-slate-300">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-[2px] bg-brand-orange"></div>
-              <span className="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs">
-                Legal & Policies
-              </span>
-            </div>
+            <Reveal variant="in">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-[2px] bg-brand-orange"></div>
+                <span className="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs">
+                  Legal & Policies
+                </span>
+              </div>
+            </Reveal>
             <h1 className="text-3xl md:text-4xl font-serif font-bold text-brand-blue mb-4">
-              Privacy Policy
+              <WordReveal text="Privacy Policy" className="text-brand-blue" />
             </h1>
-            <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">
-              Last Updated: July 9, 2026
-            </p>
+            <Reveal variant="in" delay={0.2}>
+              <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">
+                Last Updated: July 9, 2026
+              </p>
+            </Reveal>
           </div>
         </section>
 
         {/* Content Section */}
         <section className="py-16 px-6 flex-grow bg-brand-cloud">
-          <div className="max-w-4xl mx-auto text-slate-700 font-sans leading-relaxed space-y-8">
+          <Reveal variant="in" delay={0.1} className="max-w-4xl mx-auto text-slate-700 font-sans leading-relaxed space-y-8">
             <div>
               <h2 className="text-xl font-serif font-bold text-brand-blue mb-3">1. Introduction</h2>
               <p className="text-sm md:text-base">
@@ -152,7 +158,7 @@ export default function PrivacyPolicy() {
                 <p><strong>Email:</strong> <a href="mailto:sankalp@jklu.edu.in" className="text-brand-orange hover:underline">sankalp@jklu.edu.in</a></p>
               </div>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <Footer />

@@ -4,6 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import Reveal from '@/components/ui/Reveal';
+import WordReveal from '@/components/ui/WordReveal';
 
 interface TeamMember {
   name: string;
@@ -111,15 +113,9 @@ export default function TechTeamClient() {
       {/* TEAM CARDS SECTION */}
       <section className="py-16 sm:py-24 bg-white flex-grow border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-16"
-          >
+          <Reveal className="text-center mb-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-brand-blue tracking-tight uppercase">
-              Website Development Team
+              <WordReveal text="Website Development Team" className="text-brand-blue" />
             </h1>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -131,19 +127,16 @@ export default function TechTeamClient() {
             <p className="text-slate-600 text-sm md:text-base font-medium">
               {/* Institute of Engineering &amp; Technology (IET), JK Lakshmipat University, Jaipur */}
             </p>
-          </motion.div>
+          </Reveal>
 
           {/* 3-COLUMN ARCH HIERARCHY LAYOUT */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
             {/* LEFT COLUMN: MANANT SRIVASTAVA (Shifted slightly downwards) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="order-2 lg:order-1 lg:mt-16 w-full flex flex-col group"
+            <Reveal
+              delay={0.15}
+              className="order-2 lg:order-1 lg:mt-16 w-full flex flex-col"
             >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:border-brand-orange/40 transition-all duration-500 ease-out h-full">
+              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs h-full">
                 <div>
 
                   {/* PROFILE IMAGE SECTION */}
@@ -157,7 +150,7 @@ export default function TechTeamClient() {
                             e.currentTarget.src = `${teamMembers[1].socials.github}.png`;
                           }
                         }}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover object-top"
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center space-y-1.5 p-4 text-center">
@@ -249,17 +242,11 @@ export default function TechTeamClient() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* CENTER COLUMN: DEVAM GUPTA (Team Lead, Top Center) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className="order-1 lg:order-2 mt-0 w-full flex flex-col group"
-            >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border-2 border-brand-orange/40 rounded-2xl shadow-md group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:border-brand-orange transition-all duration-500 ease-out h-full">
+            <Reveal className="order-1 lg:order-2 mt-0 w-full flex flex-col">
+              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border-2 border-brand-orange/40 rounded-2xl shadow-md h-full">
                 <div>
 
                   {/* PROFILE IMAGE SECTION */}
@@ -273,7 +260,7 @@ export default function TechTeamClient() {
                             e.currentTarget.src = `${teamMembers[0].socials.github}.png`;
                           }
                         }}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover object-top"
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center space-y-1.5 p-4 text-center">
@@ -365,17 +352,14 @@ export default function TechTeamClient() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* RIGHT COLUMN: PRATHAM LALWANI (Shifted slightly downwards) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="order-3 lg:order-3 lg:mt-16 w-full flex flex-col group"
+            <Reveal
+              delay={0.3}
+              className="order-3 lg:order-3 lg:mt-16 w-full flex flex-col"
             >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:border-brand-orange/40 transition-all duration-500 ease-out h-full">
+              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs h-full">
                 <div>
 
                   {/* PROFILE IMAGE SECTION */}
@@ -389,7 +373,7 @@ export default function TechTeamClient() {
                             e.currentTarget.src = `${teamMembers[2].socials.github}.png`;
                           }
                         }}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover object-top"
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center space-y-1.5 p-4 text-center">
@@ -481,7 +465,7 @@ export default function TechTeamClient() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>

@@ -1,11 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import Reveal from '@/components/ui/Reveal';
+import WordReveal from '@/components/ui/WordReveal';
+import { gsap, usePrefersReducedMotion } from '@/lib/animations/gsap';
 import {
   BadgeIcon,
   PresentationIcon,
@@ -32,7 +35,35 @@ export default function VenueClient() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const heroRef = useRef<HTMLElement>(null);
+  const heroImageRef = useRef<HTMLDivElement>(null);
+  const reduced = usePrefersReducedMotion();
 
+  // Subtle GSAP parallax on the hero campus image as the page scrolls.
+  useEffect(() => {
+    const hero = heroRef.current;
+    const img = heroImageRef.current;
+    if (!hero || !img || reduced) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        img,
+        { yPercent: -6 },
+        {
+          yPercent: 6,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    }, hero);
+
+    return () => ctx.revert();
+  }, [reduced]);
 
   const facilities = [
     { icon: BadgeIcon, name: 'Registration Area', desc: 'Dedicated desk in the main lobby for badges, kits, and queries.' },
@@ -49,48 +80,48 @@ export default function VenueClient() {
 
   const hotels = [
     {
-      name: 'Navya Residency',
-      distance: 'Near JK Lakshmipat University',
+      name: 'Four Points by Sheraton Jaipur',
+      distance: 'Near Mahindra SEZ, Jaipur',
       time: 'Approx. 5 minutes by road',
       badgeText: '5 min Drive',
-      category: 'Budget Stay',
-      bottomText: 'Close to Conference Venue',
+      category: 'Business Hotel',
+      bottomText: 'Closest to Conference Venue',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/navya_residency.jpg',
-      link: 'https://www.google.com/maps/search/Navya+Residency+Jaipur'
+      src: '/Images/hotels/four_points.webp',
+      link: 'https://www.google.com/maps/search/Four+Points+by+Sheraton+Jaipur'
     },
     {
-      name: 'Hotel Polo Inn Sez',
-      distance: 'Near Mahindra SEZ, Jaipur',
-      time: 'Approx. 10 minutes by road',
-      badgeText: '10 min Drive',
-      category: 'Comfort Stay',
-      bottomText: 'Ideal for Delegates',
+      name: 'ITC Rajputana, Jaipur',
+      distance: 'Gopal Bari, Jaipur City',
+      time: 'Approx. 25 minutes by road',
+      badgeText: '25 min Drive',
+      category: 'Heritage Luxury',
+      bottomText: 'Iconic Heritage Hotel',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/hotel_polo_inn_sez.jpg',
-      link: 'https://www.google.com/maps/search/Hotel+Polo+Inn+Sez+Jaipur'
+      src: '/Images/hotels/itc_rajputana.webp',
+      link: 'https://www.google.com/maps/search/ITC+Rajputana+Jaipur'
     },
     {
-      name: 'HOTEL THE SAWAI',
-      distance: 'Near Mahindra SEZ, Jaipur',
-      time: 'Approx. 10 minutes by road',
-      badgeText: '10 min Drive',
-      category: 'Boutique Hotel',
-      bottomText: 'Convenient Location',
+      name: 'The Oberoi Rajvilas, Jaipur',
+      distance: 'Goner Road, Jaipur',
+      time: 'Approx. 40 minutes by road',
+      badgeText: '40 min Drive',
+      category: 'Luxury Resort',
+      bottomText: 'World-Class Resort',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/hotel_the_sawai.jpg',
-      link: 'https://www.google.com/maps/search/HOTEL+THE+SAWAI+Jaipur'
+      src: '/Images/hotels/oberoi_rajvilas.webp',
+      link: 'https://www.google.com/maps/search/The+Oberoi+Rajvilas+Jaipur'
     },
     {
-      name: 'Atulya Green by Meyatri',
-      distance: 'Near JK Lakshmipat University',
-      time: 'Approx. 8 minutes by road',
-      badgeText: '8 min Drive',
+      name: 'Radisson Blu Jaipur',
+      distance: 'Jaipur, Rajasthan',
+      time: 'Approx. 20 minutes by road',
+      badgeText: '20 min Drive',
       category: 'Premium Stay',
-      bottomText: 'Recommended for Guests',
+      bottomText: 'Premium Comfort',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/atulya_green.jpg',
-      link: 'https://www.google.com/maps/search/Atulya+Green+by+Meyatri+Jaipur'
+      src: '/Images/hotels/radisson_blu.webp',
+      link: 'https://www.google.com/maps/search/Radisson+Blu+Jaipur'
     }
   ];
 
@@ -156,8 +187,8 @@ export default function VenueClient() {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="relative h-[80vh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink pt-20">
-        <div className="absolute inset-0 z-0">
+      <section ref={heroRef} className="relative h-[80vh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink pt-20">
+        <div ref={heroImageRef} className="absolute -inset-y-10 inset-x-0 z-0 will-change-transform">
           <Image
             src="/Images/campus/jklu_campus.webp"
             alt="JKLU Campus Banner"
@@ -170,14 +201,9 @@ export default function VenueClient() {
         </div>
 
         <div className="relative z-10 max-w-4xl px-6 space-y-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase"
-          >
-            JK Lakshmipat University
-          </motion.h1>
+          <h1 className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase">
+            <WordReveal text="JK Lakshmipat University" className="text-white" />
+          </h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -222,22 +248,22 @@ export default function VenueClient() {
       {/* ABOUT THE VENUE */}
       <section id="about-section" className="relative py-24 px-6 md:px-12 overflow-hidden bg-gradient-to-br from-amber-50/15 via-brand-cloud to-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white group">
+          <Reveal variant="left" className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white">
             <Image
               src="/Images/campus/jklu_campus.webp"
               alt="JK Lakshmipat University Campus"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 600px"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-cover"
             />
-          </div>
+          </Reveal>
 
           <div className="space-y-8">
             <div className="space-y-4">
               <div className="space-y-2">
                 <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight leading-tight">
-                  JK Lakshmipat University
+                  <WordReveal text="JK Lakshmipat University" className="text-brand-ink" />
                 </h2>
                 <p className="text-lg sm:text-xl font-medium text-brand-blue tracking-wide">
                   Where Innovation Meets Research
@@ -287,8 +313,8 @@ export default function VenueClient() {
       <section className="py-28 bg-[#FAFAFB] border-y border-[#E6E8EC]/60 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-2">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
-              Conference Facilities
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
+              <WordReveal text="Conference Facilities" className="text-brand-blue" />
             </h2>
             <div className="w-8 h-[2px] bg-brand-orange mx-auto rounded-sm mt-2" />
           </div>
@@ -297,13 +323,10 @@ export default function VenueClient() {
             {facilities.map((fac, index) => {
               const IconComp = fac.icon;
               return (
-                <motion.div
+                <Reveal
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.45, delay: (index % 5) * 0.08 }}
-                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between hover:border-brand-orange hover:shadow-md transition-all duration-300 group"
+                  delay={(index % 5) * 0.08}
+                  className="relative bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-7 flex flex-col justify-between"
                 >
                   <div className="space-y-4 flex-1 flex flex-col justify-between">
                     <div>
@@ -321,7 +344,7 @@ export default function VenueClient() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </Reveal>
               );
             })}
           </div>
@@ -333,7 +356,7 @@ export default function VenueClient() {
         <div className="max-w-7xl mx-auto space-y-10">
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Location &amp; Navigation
+              <WordReveal text="Location & Navigation" className="text-brand-ink" />
             </h2>
             <div className="flex items-center justify-center gap-2 max-w-2xl mx-auto">
               <p className="text-slate-600 text-sm sm:text-base font-sans leading-relaxed">
@@ -441,26 +464,23 @@ export default function VenueClient() {
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-2">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Recommended Hotels
+              <WordReveal text="Recommended Hotels" className="text-brand-ink" />
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {hotels.map((hotel, index) => (
-              <motion.div
+              <Reveal
                 key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: (index % 4) * 0.1 }}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 group bg-[#0b1220] flex flex-col justify-end"
+                delay={(index % 4) * 0.1}
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-[#0b1220] flex flex-col justify-end"
               >
                 <Image
                   src={hotel.src}
                   alt={hotel.name}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  className="object-cover opacity-90"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
 
@@ -475,13 +495,13 @@ export default function VenueClient() {
                       href={hotel.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-white transition-colors gap-1 group-hover:translate-x-0.5 transition-transform"
+                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-white hover:translate-x-0.5 transition-all gap-1"
                     >
                       Get Directions →
                     </a>
                   </div>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -490,8 +510,8 @@ export default function VenueClient() {
       {/* WEATHER */}
       <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
-            Weather During the Conference
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
+            <WordReveal text="Weather During the Conference" className="text-brand-blue" />
           </h2>
           <p className="text-[#5F6B7A] text-sm sm:text-base font-sans leading-relaxed">
             March offers pleasant weather in Jaipur, providing comfortable conditions for conference sessions, networking events, and campus activities.
@@ -561,7 +581,7 @@ export default function VenueClient() {
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
-              Discover Jaipur
+              <WordReveal text="Discover Jaipur" className="text-brand-ink" />
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
             <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
@@ -571,19 +591,16 @@ export default function VenueClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {attractions.map((att, index) => (
-              <motion.div
+              <Reveal
                 key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: (index % 3) * 0.1 }}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 group bg-[#0b1220] flex flex-col justify-end"
+                delay={(index % 3) * 0.1}
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-[#0b1220] flex flex-col justify-end"
               >
                 <Image
                   src={att.src}
                   alt={att.name}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  className="object-cover opacity-90"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
 
@@ -593,7 +610,7 @@ export default function VenueClient() {
                     {att.name}
                   </h3>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -604,8 +621,8 @@ export default function VenueClient() {
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
           <div className="space-y-2">
-            <h2 className="text-3xl sm:5xl font-serif font-black uppercase tracking-tight">
-              Join Us at JKLU SANKALP 2027
+            <h2 className="text-3xl sm:text-5xl font-serif font-black uppercase tracking-tight">
+              <WordReveal text="Join Us at JKLU SANKALP 2027" className="text-white" />
             </h2>
             <div className="w-16 h-1 bg-brand-orange mx-auto rounded-sm" />
           </div>

@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import Reveal from '@/components/ui/Reveal';
 import CircuitChipLoader from '@/components/ui/CircuitChipLoader';
 
 export default function SponsorsClient() {
@@ -135,12 +135,7 @@ export default function SponsorsClient() {
           }}
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-6xl w-full flex flex-col items-center justify-center space-y-8 relative z-10"
-        >
+        <Reveal className="max-w-6xl w-full flex flex-col items-center justify-center space-y-8 relative z-10">
           <CircuitChipLoader />
 
           {/* Supporting Text */}
@@ -149,7 +144,7 @@ export default function SponsorsClient() {
               Sponsor partnerships for SANKALP'27 will be announced soon.
             </p>
           </div>
-        </motion.div>
+        </Reveal>
       </section>
 
       {/* 
@@ -202,7 +197,7 @@ export default function SponsorsClient() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl space-y-4"
           >
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
               Why Sponsor SANKALP 2027?
             </h2>
             <div className="w-16 h-[2px] bg-brand-orange" />
@@ -247,7 +242,7 @@ export default function SponsorsClient() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl space-y-4"
           >
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
               Sponsorship Categories
             </h2>
             <div className="w-16 h-[2px] bg-brand-orange" />
@@ -320,7 +315,7 @@ export default function SponsorsClient() {
       {/* <section className="py-24 bg-white border-b border-slate-100 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="max-w-3xl space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
               Sponsorship Benefits at a Glance
             </h2>
             <div className="w-16 h-[2px] bg-brand-orange" />
@@ -368,7 +363,7 @@ export default function SponsorsClient() {
       {/* <section className="py-24 bg-brand-cloud border-b border-slate-100 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="max-w-3xl space-y-4 text-center mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
               Sponsors &amp; Partners
             </h2>
             <div className="w-16 h-[2px] bg-brand-orange mx-auto" />
@@ -426,7 +421,7 @@ export default function SponsorsClient() {
       {/* <section id="contact" className="py-24 bg-white px-6">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="max-w-3xl space-y-4 text-center mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
               Sponsorship Contact
             </h2>
             <div className="w-16 h-[2px] bg-brand-orange mx-auto" />

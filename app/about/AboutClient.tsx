@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import WordReveal from '@/components/ui/WordReveal';
 
 export default function AboutClient() {
   const focusAreas = [
@@ -36,11 +37,12 @@ export default function AboutClient() {
         <div className="max-w-[1440px] w-full mx-auto relative z-10 px-6 md:px-12">
           
           <div className="flex justify-between items-end border-b border-brand-blue/10 pb-8 mb-16">
-             <div className="flex gap-4 items-end">
-               <h2 className="text-3xl lg:text-4xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                 Overview
-               </h2>
-             </div>
+              <div className="flex gap-4 items-end">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                  <WordReveal text="Overview" />
+                  <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
+                </h2>
+              </div>
              <span className="hidden md:block text-xs font-bold tracking-[0.3em] uppercase text-slate-400">
                 Research / Collaboration / Innovation
              </span>
@@ -139,8 +141,9 @@ export default function AboutClient() {
              transition={{ duration: 0.8 }}
            >
              <div className="flex items-center gap-4 mb-8">
-               <h2 className="text-3xl lg:text-4xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                 Ecosystem
+               <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                 <WordReveal text="Ecosystem" />
+                 <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
                </h2>
              </div>
              
@@ -218,8 +221,9 @@ export default function AboutClient() {
             
             <div className="lg:col-span-6">
                <div className="flex items-center gap-4 mb-12">
-                 <h2 className="text-3xl lg:text-4xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                   Host Institute
+                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                   <WordReveal text="Host Institute" />
+                   <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
                  </h2>
                </div>
                

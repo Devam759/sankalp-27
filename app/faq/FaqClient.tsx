@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import Reveal from '@/components/ui/Reveal';
+import WordReveal from '@/components/ui/WordReveal';
 
 export default function FaqClient() {
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
@@ -51,22 +53,14 @@ export default function FaqClient() {
       <section className="relative bg-brand-blue text-white pt-32 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
         <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase"
-          >
-            Frequently Asked Questions
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-base sm:text-lg opacity-85 max-w-xl mx-auto"
-          >
-            Find quick answers to common questions about JKLU SANKALP 2027 registrations, venue facilities, travel, and accommodation.
-          </motion.p>
+          <h1 className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase">
+            <WordReveal text="Frequently Asked Questions" className="text-white" />
+          </h1>
+          <Reveal variant="in" delay={0.25}>
+            <p className="text-base sm:text-lg opacity-85 max-w-xl mx-auto">
+              Find quick answers to common questions about JKLU SANKALP 2027 registrations, venue facilities, travel, and accommodation.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -76,12 +70,9 @@ export default function FaqClient() {
           {faqs.map((faq, index) => {
             const isOpen = activeFAQ === index;
             return (
-              <motion.div
+              <Reveal
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: (index % 6) * 0.08 }}
+                delay={(index % 6) * 0.08}
                 className={`bg-white border transition-all duration-300 rounded-[16px] overflow-hidden shadow-sm ${
                   isOpen 
                     ? 'border-[#E6E8EC] border-l-4 border-l-brand-orange shadow-md' 
@@ -115,7 +106,7 @@ export default function FaqClient() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>
@@ -123,7 +114,7 @@ export default function FaqClient() {
 
       {/* Support & Contact Section */}
       <section className="py-16 bg-[#FAFAFB] border-t border-[#E6E8EC]/60 px-6">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <Reveal className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               Still Have Questions?
@@ -142,7 +133,7 @@ export default function FaqClient() {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <Footer />

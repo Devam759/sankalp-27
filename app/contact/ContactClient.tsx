@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
+import Reveal from '@/components/ui/Reveal';
+import WordReveal from '@/components/ui/WordReveal';
 import { EnvelopeIcon, CopyIcon } from '@/components/ui/Icons';
 
 export default function ContactClient() {
@@ -39,27 +40,19 @@ export default function ContactClient() {
       <Navbar />
 
       <div className="pt-32 pb-28 px-6 md:px-12 max-w-4xl mx-auto relative z-10 flex-grow space-y-12">
-        <motion.header 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center space-y-3"
-        >
+        <header className="text-center space-y-3">
           <h1 className="text-4xl sm:text-5xl font-serif font-bold text-brand-blue uppercase tracking-tight">
-            Contact Us
+            <WordReveal text="Contact Us" className="text-brand-blue" />
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base font-sans leading-relaxed max-w-xl mx-auto">
-            SANKALP 2027 International Conference &middot; Institute of Engineering &amp; Technology, JKLU
-          </p>
+          <Reveal variant="in" delay={0.25}>
+            <p className="text-slate-600 text-sm sm:text-base font-sans leading-relaxed max-w-xl mx-auto">
+              SANKALP 2027 International Conference &middot; Institute of Engineering &amp; Technology, JKLU
+            </p>
+          </Reveal>
           <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
-        </motion.header>
+        </header>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-white border border-[#E6E8EC] p-8 sm:p-12 shadow-sm rounded-[18px] space-y-10"
-        >
+        <Reveal delay={0.1} className="bg-white border border-[#E6E8EC] p-8 sm:p-12 shadow-sm rounded-[18px] space-y-10">
           {/* Email Section */}
           <div className="space-y-4 text-center border-b border-[#E6E8EC]/80 pb-8">
             <span className="text-[11px] font-bold text-brand-orange uppercase tracking-widest block font-sans">
@@ -127,9 +120,9 @@ export default function ContactClient() {
               View Venue &amp; Map
             </a>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
-      
+
       <Footer />
     </div>
   );

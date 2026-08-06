@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
@@ -160,7 +161,13 @@ export default function Footer() {
     <footer className="relative bg-[#0b0f19] border-t border-white/10 pt-16 pb-12 px-6 md:px-12 overflow-hidden select-none">
       
       {/* 3-Column Main Grid */}
-      <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12"
+      >
         
         {/* COLUMN 1: JKLU SANKALP 2027 ABOUT */}
         <div className="space-y-6">
@@ -347,7 +354,7 @@ export default function Footer() {
           </div>
         </div>
 
-      </div>
+      </motion.div>
 
       {/* THE MINDS BEHIND THE SITE BUTTON (Above Separating Line) */}
       <div className="max-w-7xl mx-auto relative z-10 flex justify-center items-center pb-8 pt-2">
@@ -363,7 +370,13 @@ export default function Footer() {
       </div>
 
       {/* FOOTER BOTTOM BAR */}
-      <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-slate-400 border-t border-white/10 pt-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+        className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-slate-400 border-t border-white/10 pt-8"
+      >
         <div className="flex flex-col gap-2 text-center md:text-left">
           <div className="font-medium text-xs sm:text-sm">
             © 2027 JKLU SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
@@ -408,7 +421,7 @@ export default function Footer() {
             />
           </a>
         </div>
-      </div>
+      </motion.div>
 
     </footer>
   );

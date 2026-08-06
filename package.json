@@ -4,7 +4,7 @@
   "description": "Sankalp 2027 - International Conference Portal for JK Lakshmipat University, Jaipur. Full-stack Next.js platform covering registration, payments, admin dashboard, and on-site check-in.",
   "author": "Institute of Engineering & Technology, JKLU",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

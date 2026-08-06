@@ -8,13 +8,53 @@ import { motion, Variants, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
-import { 
-  conferenceDates, 
-  committeeMembers, 
+import Reveal from '@/components/ui/Reveal';
+import AnimatedCounter from '@/components/ui/AnimatedCounter';
+import WordReveal from '@/components/ui/WordReveal';
+import { gsap, ScrollTrigger, usePrefersReducedMotion } from '@/lib/animations/gsap';
+import {
+  conferenceDates,
+  conferenceTracks,
+  committeeMembers,
   speakers,
   advisoryBoard,
+  keyFeatures,
   PAPER_SUBMISSION_LINK
 } from '@/constants/conferenceData';
+import {
+  AtomIcon,
+  UsersGroupIcon,
+  PresentationIcon,
+  RocketIcon,
+  CpuIcon,
+  BadgeIcon,
+} from '@/components/ui/Icons';
+
+// Editorial copy for each conference highlight, keyed by keyFeatures order.
+const featureDescriptions = [
+  'World-renowned researchers and practitioners delivering visionary talks on AI, sustainability, and emerging technologies.',
+  'Deep-dive panel sessions bridging academia and industry on the most pressing technology challenges.',
+  'Present your original research to a global audience of peers, reviewers, and industry professionals.',
+  'Pitch your startup ideas, demos and innovations to investors, mentors and a global innovation community.',
+  'Build lasting academic and industry connections through curated networking sessions and collaboration opportunities.',
+  'Outstanding research recognized with awards across all tracks, celebrating excellence and impact.',
+];
+
+// Maps the icon name on each keyFeatures entry to a shared icon component.
+const FEATURE_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  Globe: AtomIcon,
+  Users: UsersGroupIcon,
+  FileText: PresentationIcon,
+  Lightbulb: RocketIcon,
+  Network: CpuIcon,
+  Award: BadgeIcon,
+};
+
+// Splits "[ATAL INCUBATION]"-style bracket annotations off a feature title.
+function splitFeatureTag(title: string): { label: string; tag: string | null } {
+  const match = title.match(/^(.*?)\s*\[(.*?)\]$/);
+  return match ? { label: match[1].trim(), tag: match[2].trim() } : { label: title, tag: null };
+}
 
 const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?: string }) => (
   <svg 
@@ -73,12 +113,134 @@ export default function HomeClient() {
 
   const [currentHeroIndex, setCurrentHeroIndex] = React.useState(0);
 
+  // ─── GSAP scroll-story state ───────────────────────────────────────────
+  const reduced = usePrefersReducedMotion();
+
+  const heroSectionRef = React.useRef<HTMLElement>(null);
+  const heroBgRef = React.useRef<HTMLDivElement>(null);
+  const heroContentRef = React.useRef<HTMLDivElement>(null);
+  const heroTitleRef = React.useRef<HTMLHeadingElement>(null);
+  const venueImageRef = React.useRef<HTMLDivElement>(null);
+  const highlightsRef = React.useRef<HTMLElement>(null);
+
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       window.history.scrollRestoration = 'manual';
       window.scrollTo(0, 0);
     }
   }, []);
+
+  // Recalculate ScrollTrigger positions after layout settles (lazy images, fonts).
+  React.useEffect(() => {
+    const t = window.setTimeout(() => ScrollTrigger.refresh(), 300);
+    const onLoad = () => ScrollTrigger.refresh();
+    window.addEventListener('load', onLoad);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener('load', onLoad);
+    };
+  }, []);
+
+  // Hero title: masked word-by-word rise (GSAP).
+  React.useEffect(() => {
+    const ctx = gsap.context(() => {
+      const words = heroTitleRef.current?.querySelectorAll('.hero-word');
+      if (!words || words.length === 0) return;
+      if (reduced) {
+        gsap.set(words, { yPercent: 0 });
+        return;
+      }
+      gsap.set(words, { yPercent: 110 });
+      gsap.to(words, {
+        yPercent: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.35,
+      });
+    }, heroTitleRef);
+    return () => ctx.revert();
+  }, [reduced]);
+
+  // Hero background parallax + content fade as the user scrolls away.
+  React.useEffect(() => {
+    if (reduced) return;
+    const ctx = gsap.context(() => {
+      gsap.to(heroBgRef.current, {
+        yPercent: 16,
+        scale: 1.06,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+      gsap.to(heroContentRef.current, {
+        opacity: 0,
+        yPercent: -24,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSectionRef.current,
+          start: 'top top',
+          end: '70% top',
+          scrub: true,
+        },
+      });
+    }, heroSectionRef);
+    return () => ctx.revert();
+  }, [reduced]);
+
+  // Venue campus image: Ken Burns parallax scrubbed to scroll.
+  React.useEffect(() => {
+    if (reduced) return;
+    const ctx = gsap.context(() => {
+      const img = venueImageRef.current?.querySelector('img');
+      if (!img) return;
+      gsap.fromTo(
+        img,
+        { yPercent: -8, scale: 1.12 },
+        {
+          yPercent: 8,
+          scale: 1.0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: venueImageRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      );
+    }, venueImageRef);
+    return () => ctx.revert();
+  }, [reduced]);
+
+  // Conference Highlights bento: cards rise into place with a GSAP stagger.
+  React.useEffect(() => {
+    const section = highlightsRef.current;
+    if (!section || reduced) return;
+    const ctx = gsap.context(() => {
+      gsap.from('.highlight-card', {
+        y: 36,
+        opacity: 0,
+        ease: 'power3.out',
+        duration: 0.7,
+        stagger: 0.08,
+        scrollTrigger: { trigger: section, start: 'top 75%', once: true },
+      });
+    }, section);
+    return () => ctx.revert();
+  }, [reduced]);
+
+  // Stats band values — computed from real conference data, never fabricated.
+  const heroStats = [
+    { value: conferenceTracks.length, suffix: '', label: 'Conference Tracks' },
+    { value: speakers.plenary.length, suffix: '', label: 'Plenary Speakers' },
+    { value: speakers.keynote.length, suffix: '', label: 'Keynote Speakers' },
+    { value: conferenceDates.length, suffix: '', label: 'Key Milestones' },
+  ];
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -122,9 +284,10 @@ export default function HomeClient() {
       {/* HERO */}
       <section
         id="home"
+        ref={heroSectionRef}
         className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
       >
-        <div className="absolute inset-0 z-0 bg-brand-blue">
+        <div ref={heroBgRef} className="absolute inset-0 z-0 bg-brand-blue">
           {heroImages.map((img, index) => {
             const isActive = index === currentHeroIndex;
             return (
@@ -159,11 +322,12 @@ export default function HomeClient() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-orange/15 rounded-full blur-[120px] pointer-events-none z-10 animate-pulse duration-[7000ms]" />
         <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-brand-blue/30 rounded-full blur-[100px] pointer-events-none z-10" />
 
+        <div ref={heroContentRef} className="relative z-10 w-full">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-20 sm:pt-24 pb-12 sm:pb-16"
+          className="flex flex-col items-center text-center px-6 max-w-5xl mx-auto w-full pt-20 sm:pt-24 pb-12 sm:pb-16"
         >
           <motion.div variants={itemVariants} className="flex flex-col items-center mb-4 w-full">
             <div className="flex items-center justify-center gap-5 sm:gap-8 md:gap-10 mb-2 w-full">
@@ -192,11 +356,19 @@ export default function HomeClient() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="mb-3">
-            <h1 
+            <h1
+              ref={heroTitleRef}
               className="text-[clamp(3rem,8vw,6rem)] font-sans font-extrabold sm:font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm"
             >
-              JKLU SANKALP
-              <span className="text-brand-orange"> 2027</span>
+              <span className="inline-block overflow-hidden align-bottom">
+                <span className="hero-word inline-block">JKLU&nbsp;</span>
+              </span>
+              <span className="inline-block overflow-hidden align-bottom">
+                <span className="hero-word inline-block">SANKALP&nbsp;</span>
+              </span>
+              <span className="inline-block overflow-hidden align-bottom">
+                <span className="hero-word inline-block text-brand-orange">2027</span>
+              </span>
             </h1>
           </motion.div>
 
@@ -216,8 +388,8 @@ export default function HomeClient() {
                 { value: timeLeft.isExpired ? "00" : String(timeLeft.seconds).padStart(2, '0'), label: "Secs" },
               ].map((unit, i, arr) => (
                 <React.Fragment key={unit.label}>
-                  <div className="flex flex-col items-center justify-center w-[56px] sm:w-[68px] py-2.5 sm:py-3 rounded-sm bg-white/10 border border-white/20 backdrop-blur-md shadow-xl hover:border-brand-orange/60 hover:scale-105 transition-all duration-300 group cursor-default">
-                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-xl sm:text-2xl group-hover:scale-110 transition-transform" suppressHydrationWarning>{unit.value}</span>
+                  <div className="flex flex-col items-center justify-center w-[56px] sm:w-[68px] py-2.5 sm:py-3 rounded-sm bg-white/10 border border-white/20 backdrop-blur-md shadow-xl">
+                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-xl sm:text-2xl" suppressHydrationWarning>{unit.value}</span>
                     <span className="text-white/80 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
                   </div>
                   {i < arr.length - 1 && (
@@ -243,6 +415,29 @@ export default function HomeClient() {
             </Link>
           </motion.div>
         </motion.div>
+        </div>
+      </section>
+
+      {/* STATS BAND — values computed from real conference data */}
+      <section className="relative bg-brand-blue border-t border-white/10">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+            {heroStats.map((stat, i) => (
+              <Reveal key={stat.label} variant={(['left', 'up', 'up', 'right'] as const)[i] ?? 'up'} delay={i * 0.08} className="text-center">
+                <div className="flex flex-col items-center gap-1.5">
+                  <AnimatedCounter
+                    to={stat.value}
+                    suffix={stat.suffix}
+                    className="font-serif font-black text-4xl md:text-5xl text-brand-orange leading-none tabular-nums"
+                  />
+                  <span className="text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">
+                    {stat.label}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* THREE COLUMN INFO SECTION */}
@@ -333,7 +528,7 @@ export default function HomeClient() {
       </Section>
 
       {/* HIGHLIGHTS */}
-      <section className="relative overflow-hidden bg-brand-blue">
+      <section ref={highlightsRef} className="relative overflow-hidden bg-brand-blue">
         <div className="absolute inset-0 pointer-events-none opacity-20"
           style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}
         />
@@ -348,105 +543,122 @@ export default function HomeClient() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white relative inline-block">
-              Conference Highlights
+              <WordReveal text="Conference Highlights" />
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.0 }}
-              className="md:col-span-2 xl:col-span-1 relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-brand-blue mb-3 leading-snug">Distinguished International Keynote Speakers</h3>
-                <p className="text-brand-blue text-sm leading-relaxed">World-renowned researchers and practitioners delivering visionary talks on AI, sustainability, and emerging technologies.</p>
-              </div>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 auto-rows-fr">
+            {keyFeatures.map((feature, i) => {
+              const Icon = FEATURE_ICONS[feature.icon] ?? RocketIcon;
+              const { label, tag } = splitFeatureTag(feature.title);
+              const isFeatured = i === 0; // Keynote Speakers — wide editorial card
+              const isAccent = i === 3; // Startup & Innovation — orange accent card
+              const span = isFeatured || isAccent ? 'md:col-span-2 xl:col-span-2' : '';
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.08 }}
-              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Industry Panels & Expert Roundtables</h3>
-                <p className="text-brand-blue text-sm leading-relaxed">Deep-dive panel sessions bridging academia and industry on the most pressing technology challenges.</p>
-              </div>
-            </motion.div>
+              return (
+                <div
+                  key={feature.title}
+                  className={`highlight-card relative overflow-hidden p-8 h-full flex flex-col justify-between border-2 ${span} ${
+                    isAccent
+                      ? 'border-brand-orange bg-brand-orange text-white'
+                      : 'border-white bg-white text-brand-blue'
+                  }`}
+                >
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-8">
+                      <div
+                        className={`w-12 h-12 flex items-center justify-center rounded-sm border ${
+                          isAccent
+                            ? 'bg-white/15 border-white/25 text-white'
+                            : 'bg-brand-blue/5 border-brand-blue/10 text-brand-blue'
+                        }`}
+                      >
+                        <Icon size={22} />
+                      </div>
+                      <span
+                        className={`font-mono text-xs font-bold tracking-widest ${
+                          isAccent ? 'text-white/60' : 'text-brand-blue/30'
+                        }`}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.14 }}
-              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Research Paper Presentations</h3>
-                <p className="text-brand-blue text-sm leading-relaxed">Present your original research to a global audience of peers, reviewers, and industry professionals.</p>
-              </div>
-            </motion.div>
+                    {/* Featured speaker avatars (real data) */}
+                    {isFeatured && (
+                      <div className="mb-6 flex -space-x-3">
+                        {[...speakers.plenary, ...speakers.keynote].map((s) => (
+                          <Image
+                            key={s.name}
+                            src={s.image}
+                            alt={`${s.name} — ${s.role}, ${s.university}`}
+                            width={56}
+                            height={56}
+                            sizes="56px"
+                            className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover object-top shadow-md"
+                          />
+                        ))}
+                      </div>
+                    )}
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.20 }}
-              className="relative group bg-brand-orange border-2 border-brand-orange hover:border-white rounded-none p-8 overflow-hidden cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <div className="relative z-10">
-                <div className="flex justify-end mb-6">
-                  <span className="text-[10px] font-bold text-white uppercase tracking-widest bg-white/15 px-3.5 py-1.5 rounded-sm">Atal Incubation</span>
+                    {tag && (
+                      <div className="mb-4">
+                        <span
+                          className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm ${
+                            isAccent ? 'bg-white/15 text-white' : 'bg-brand-orange/10 text-brand-orange'
+                          }`}
+                        >
+                          {tag}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="flex-grow">
+                      <h3
+                        className={`font-bold leading-snug mb-3 ${
+                          isFeatured ? 'text-2xl md:text-3xl' : 'text-xl'
+                        }`}
+                      >
+                        {label}
+                      </h3>
+                      <p className={`text-sm leading-relaxed ${isAccent ? 'text-white/90' : 'text-brand-blue/80'}`}>
+                        {featureDescriptions[i]}
+                      </p>
+                    </div>
+
+                    {/* Featured card footer — real speaker count */}
+                    {isFeatured && (
+                      <div className="mt-8 pt-6 border-t border-brand-blue/10">
+                        <div className="flex items-baseline gap-2.5">
+                          <AnimatedCounter
+                            to={speakers.plenary.length + speakers.keynote.length}
+                            className="font-serif font-black text-4xl md:text-5xl text-brand-orange leading-none tabular-nums"
+                          />
+                          <span className="text-xs font-bold uppercase tracking-widest text-brand-blue/70">
+                            Plenary &amp; Keynote Speakers
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Best Paper card footer — Springer LNCS / Scopus */}
+                    {i === 5 && (
+                      <div className="mt-8 pt-6 border-t border-brand-blue/10 flex items-center gap-4">
+                        <div className="w-10 h-10 bg-brand-orange flex items-center justify-center font-mono text-sm font-bold text-white rounded-none">
+                          P
+                        </div>
+                        <div>
+                          <span className="text-brand-blue text-xs font-bold block mb-0.5">Springer LNCS Series</span>
+                          <span className="text-brand-orange text-[9px] font-bold uppercase tracking-widest">Scopus Indexed</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 leading-snug">Startup & Innovation Showcase</h3>
-                <p className="text-white text-sm leading-relaxed">Pitch your startup ideas, demos and innovations to investors, mentors and a global innovation community.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.26 }}
-              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <div className="relative z-10">
-                <div className="flex justify-end mb-6">
-                  <span className="text-[10px] font-bold text-brand-orange uppercase tracking-widest bg-brand-orange/10 px-3.5 py-1.5 rounded-sm">CGLP</span>
-                </div>
-                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Networking & Collaboration</h3>
-                <p className="text-brand-blue text-sm leading-relaxed">Build lasting academic and industry connections through curated networking sessions and collaboration opportunities.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.32 }}
-              className="relative group bg-white border-2 border-white hover:border-brand-orange rounded-none p-8 overflow-hidden transition-all duration-300 cursor-default flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-brand-blue mb-3 leading-snug">Best Paper Awards</h3>
-                <p className="text-brand-blue text-sm leading-relaxed">Outstanding research recognized with awards across all tracks, celebrating excellence and impact.</p>
-              </div>
-              <div className="mt-8 border-t border-brand-blue/10 pt-6 flex items-center gap-4 relative z-10">
-                <div className="w-10 h-10 bg-brand-orange flex items-center justify-center font-mono text-sm font-bold text-white rounded-none">
-                  P
-                </div>
-                <div>
-                  <span className="text-brand-blue text-xs font-bold block mb-0.5">Springer LNCS Series</span>
-                  <span className="text-brand-orange text-[9px] font-bold uppercase tracking-widest">Scopus Indexed</span>
-                </div>
-              </div>
-            </motion.div>
-
+              );
+            })}
           </div>
         </div>
       </section>
@@ -457,7 +669,7 @@ export default function HomeClient() {
           <div className="flex flex-col items-center">
             <div className="text-center mb-10 md:mb-12">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
-                Plenary Speaker
+                <WordReveal text="Plenary Speaker" />
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
               </h2>
             </div>
@@ -468,12 +680,12 @@ export default function HomeClient() {
             }).map((speaker, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="max-w-2xl bg-white border border-slate-200 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 text-center md:text-left w-full group relative"
+                className="max-w-2xl bg-white border border-slate-200 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm text-center md:text-left w-full relative"
               >
-                <div className="relative w-36 h-36 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm transition-transform duration-500 group-hover:scale-[1.03]">
+                <div className="relative w-36 h-36 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={speaker.image}
                     alt={speaker.name}
@@ -486,7 +698,7 @@ export default function HomeClient() {
                 </div>
                 <div className="flex-grow w-full">
                   <div className="relative pr-12">
-                    <h3 className="text-2xl font-serif font-bold text-brand-blue transition-colors duration-300 group-hover:text-brand-orange mb-1.5">{speaker.name}</h3>
+                    <h3 className="text-2xl font-serif font-bold text-brand-blue mb-1.5">{speaker.name}</h3>
                     {speaker.linkedin && (
                       <div className="absolute top-1/2 -translate-y-1/2 right-0 group/tooltip">
                         <a 
@@ -519,7 +731,7 @@ export default function HomeClient() {
           <div>
             <div className="text-center mb-10 md:mb-12">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
-                Keynote Speakers
+                <WordReveal text="Keynote Speakers" />
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
               </h2>
             </div>
@@ -531,13 +743,13 @@ export default function HomeClient() {
               }).map((speaker, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white border border-slate-200 p-6 pt-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 relative group h-full justify-start"
+                  className="bg-white border border-slate-200 p-6 pt-8 flex flex-col items-center text-center shadow-sm relative h-full justify-start"
                 >
-                  <div className="relative w-24 h-24 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm mb-4 transition-transform duration-500 group-hover:scale-[1.03]">
+                  <div className="relative w-24 h-24 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm mb-4">
                     <Image
                       src={speaker.image}
                       alt={`${speaker.name} - ${speaker.role} (${speaker.university}) SANKALP 2027 JKLU`}
@@ -550,7 +762,7 @@ export default function HomeClient() {
                     />
                   </div>
                   <div className="w-full relative">
-                    <h3 className="text-lg font-serif font-bold text-brand-blue mb-1.5 transition-colors duration-300 group-hover:text-brand-orange">{speaker.name}</h3>
+                    <h3 className="text-lg font-serif font-bold text-brand-blue mb-1.5">{speaker.name}</h3>
                     <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-3">{speaker.role}</p>
                     <p className="text-slate-600 text-xs font-semibold leading-relaxed">{speaker.university}</p>
                     <p className="text-slate-500 text-[11px] font-medium leading-relaxed mt-1">{speaker.location}</p>
@@ -587,14 +799,14 @@ export default function HomeClient() {
             {[committeeMembers.chiefPatron, ...committeeMembers.chiefCoPatrons, committeeMembers.patron].map((member, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }}
-                className={`p-6 border flex items-start gap-4 group transition-colors ${
+                className={`p-6 border flex items-start gap-4 ${
                   i === 3
-                    ? 'bg-brand-orange/10 border-brand-orange/20 hover:bg-brand-orange hover:text-white'
-                    : 'bg-brand-blue/5 border-brand-blue/20 hover:bg-brand-blue hover:text-white'
+                    ? 'bg-brand-orange/10 border-brand-orange/20'
+                    : 'bg-brand-blue/5 border-brand-blue/20'
                 }`}
               >
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
@@ -608,9 +820,9 @@ export default function HomeClient() {
                   />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest group-hover:text-brand-blue">{member.role}</p>
-                  <h3 className="text-base font-serif font-bold text-brand-blue group-hover:text-white">{member.name}</h3>
-                  {'title' in member && <p className="text-brand-blue/70 group-hover:text-white/80 text-xs font-medium mt-1">{(member as typeof committeeMembers.patron).title}</p>}
+                  <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest">{member.role}</p>
+                  <h3 className="text-base font-serif font-bold text-brand-blue">{member.name}</h3>
+                  {'title' in member && <p className="text-brand-blue/70 text-xs font-medium mt-1">{(member as typeof committeeMembers.patron).title}</p>}
                 </div>
               </motion.div>
             ))}
@@ -624,7 +836,7 @@ export default function HomeClient() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                className="bg-brand-blue text-white p-6 border border-brand-blue hover:bg-brand-blue/90 transition-shadow flex items-center gap-4 text-left group"
+                className="bg-brand-blue text-white p-6 border border-brand-blue flex items-center gap-4 text-left"
               >
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
@@ -654,11 +866,11 @@ export default function HomeClient() {
             ].map((chair, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                className="bg-brand-orange/10 border border-brand-orange/20 p-6 flex flex-col items-center text-center group rounded-sm shadow-sm hover:bg-brand-orange hover:text-white transition-all duration-300"
+                className="bg-brand-orange/10 border border-brand-orange/20 p-6 flex flex-col items-center text-center rounded-sm shadow-sm"
               >
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm mb-4">
                   <Image
@@ -672,8 +884,8 @@ export default function HomeClient() {
                   />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-brand-orange group-hover:text-white uppercase mb-1 tracking-widest">Program Chair</p>
-                  <h4 className="text-base font-serif font-bold text-brand-blue group-hover:text-white">{chair.name}</h4>
+                  <p className="text-[10px] font-bold text-brand-orange uppercase mb-1 tracking-widest">Program Chair</p>
+                  <h4 className="text-base font-serif font-bold text-brand-blue">{chair.name}</h4>
                 </div>
               </motion.div>
             ))}
@@ -694,8 +906,8 @@ export default function HomeClient() {
               ].map((board, i) => (
                 <motion.div
                   key={board.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.12, duration: 0.6, ease: "easeOut" }}
                   onClick={() => setActiveAdvisory(activeAdvisory === board.id ? null : board.id)}
@@ -746,8 +958,9 @@ export default function HomeClient() {
       <Section id="venue" title="Conference Venue">
         <div className="max-w-[1200px] mx-auto space-y-10">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            ref={venueImageRef}
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="relative h-[340px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl group"
@@ -757,7 +970,7 @@ export default function HomeClient() {
               alt="JK Lakshmipat University Campus, Jaipur"
               fill
               sizes="100vw"
-              className="object-cover scale-[1.04] group-hover:scale-100 transition-transform duration-[2000ms] ease-out"
+              className="object-cover"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/85 via-[#0b1220]/30 to-transparent" />
@@ -804,7 +1017,7 @@ export default function HomeClient() {
                 {[...jaipurAttractions, ...jaipurAttractions].map((att, i) => (
                   <div
                     key={i}
-                    className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 group bg-white"
+                    className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white"
                   >
                     <Image
                       src={att.src}
@@ -812,7 +1025,7 @@ export default function HomeClient() {
                       fill
                       loading="lazy"
                       sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/25 to-transparent flex items-end p-5">
                       <h4 className="font-serif font-bold text-white text-lg sm:text-xl leading-snug drop-shadow-sm">
@@ -870,7 +1083,7 @@ export default function HomeClient() {
                     return nameA.localeCompare(nameB);
                   })
                   .map((member, idx) => (
-                    <div key={idx} className="bg-white p-5 border border-slate-100 hover:border-brand-orange/30 hover:shadow-md transition-all">
+                    <div key={idx} className="bg-white p-5 border border-slate-100">
                       <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
                       <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
                     </div>

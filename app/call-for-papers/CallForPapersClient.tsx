@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Reveal from '@/components/ui/Reveal';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
@@ -26,13 +26,7 @@ export default function CallForPapersClient() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Guidelines */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-7 bg-white p-8 md:p-12 border border-slate-200 shadow-sm"
-          >
+          <Reveal variant="left" className="lg:col-span-7 bg-white p-8 md:p-12 border border-slate-200 shadow-sm">
             <p className="text-slate-700 text-lg leading-relaxed mb-10 font-medium">
               Researchers, academicians, industry professionals, and scholars are invited to submit original and unpublished research papers aligned with the conference themes. All submissions will undergo a rigorous peer-review process by the Technical Program Committee.
             </p>
@@ -85,33 +79,26 @@ export default function CallForPapersClient() {
                 View Tracks &amp; Sessions →
               </Link>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* Right Column: Image Showcase */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            className="lg:col-span-5 space-y-6"
-          >
-            <div className="relative aspect-[4/3] border border-slate-200 rounded-lg overflow-hidden shadow-sm group bg-white">
-              <Image 
-                src="/Images/campus/jklu_campus.webp" 
+          <Reveal variant="right" delay={0.15} className="lg:col-span-5 space-y-6">
+            <div className="relative aspect-[4/3] border border-slate-200 rounded-lg overflow-hidden shadow-sm bg-white">
+              <Image
+                src="/Images/campus/jklu_campus.webp"
                 alt="Research Session"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-brand-blue/5 group-hover:opacity-0 transition-opacity duration-500" />
             </div>
 
             <div className="bg-brand-blue/5 border border-brand-blue/15 p-6 rounded-lg text-slate-700 text-sm leading-relaxed font-medium">
               <span className="font-bold text-brand-blue block mb-1">Publications</span>
               Publication Opportunity in Springer Lecture Notes in Computer Science (LNCS) Series (Scopus Indexed - Approval Awaited). Extended versions of selected papers may also be recommended for publication in Scopus/SCI-indexed journals.
             </div>
-          </motion.div>
+          </Reveal>
 
         </div>
       </Section>
