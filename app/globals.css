@@ -430,3 +430,21 @@ body {
   100% { left: 140%; }
 }
 
+/* ── Conference Highlights Section ───────────────────────── */
+@keyframes chDrift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 38px 38px; }
+}
+
+@keyframes chOrangePulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.ch-dot-grid {
+  animation: chDrift 32s linear infinite;
+}
+
+.ch-orange-pulse {
+  animation: chOrangePulse 2.5s ease-in-out infinite;
+}
