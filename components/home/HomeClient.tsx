@@ -12,6 +12,7 @@ import Reveal from '@/components/ui/Reveal';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import WordReveal from '@/components/ui/WordReveal';
 import { gsap, ScrollTrigger, usePrefersReducedMotion } from '@/lib/animations/gsap';
+import ConferenceHighlights from '@/components/sections/ConferenceHighlights';
 import {
   conferenceDates,
   conferenceTracks,
@@ -217,13 +218,7 @@ export default function HomeClient() {
     return () => ctx.revert();
   }, [reduced]);
 
-  // Stats band values — computed from real conference data, never fabricated.
-  const heroStats = [
-    { value: conferenceTracks.length, suffix: '', label: 'Conference Tracks' },
-    { value: speakers.plenary.length, suffix: '', label: 'Plenary Speakers' },
-    { value: speakers.keynote.length, suffix: '', label: 'Keynote Speakers' },
-    { value: conferenceDates.length, suffix: '', label: 'Key Milestones' },
-  ];
+
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -401,27 +396,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* STATS BAND — values computed from real conference data */}
-      <section className="relative bg-brand-blue border-t border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-            {heroStats.map((stat, i) => (
-              <Reveal key={stat.label} variant={(['left', 'up', 'up', 'right'] as const)[i] ?? 'up'} delay={i * 0.08} className="text-center">
-                <div className="flex flex-col items-center gap-1.5">
-                  <AnimatedCounter
-                    to={stat.value}
-                    suffix={stat.suffix}
-                    className="font-serif font-black text-4xl md:text-5xl text-brand-orange leading-none tabular-nums"
-                  />
-                  <span className="text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">
-                    {stat.label}
-                  </span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* THREE COLUMN INFO SECTION */}
       <Section>
@@ -521,72 +496,7 @@ export default function HomeClient() {
       </Section>
 
       {/* HIGHLIGHTS */}
-      <section ref={highlightsRef} className="relative overflow-hidden bg-brand-blue">
-        <div className="absolute inset-0 pointer-events-none opacity-20"
-          style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        />
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-orange" />
-
-        <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 py-14 md:py-20 z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white relative inline-block">
-              <WordReveal text="Conference Highlights" />
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {keyFeatures.map((feature, i) => {
-              const { label, tag } = splitFeatureTag(feature.title);
-
-              return (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
-                  className="group relative bg-gradient-to-b from-white to-slate-50/60 p-8 rounded-xl border border-white/20 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
-                >
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-orange to-amber-400 opacity-80 group-hover:opacity-100 transition-opacity" />
-                  
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="font-mono text-xs font-bold text-brand-orange tracking-widest bg-brand-orange/10 px-2.5 py-1 rounded-md">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      {tag && (
-                        <span className="text-[10px] font-bold text-brand-blue/70 uppercase tracking-widest bg-slate-100 px-2.5 py-1 rounded-md">
-                          {tag}
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-xl font-bold text-brand-blue mb-3 group-hover:text-brand-orange transition-colors leading-snug font-serif">
-                      {label}
-                    </h3>
-
-                    <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                      {featureDescriptions[i]}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-orange opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
-                    <span>Key Highlight</span>
-                    <span>&rarr;</span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <ConferenceHighlights />
 
       {/* SPEAKERS */}
       <Section id="speakers">
