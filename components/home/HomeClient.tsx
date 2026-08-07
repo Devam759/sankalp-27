@@ -519,8 +519,26 @@ export default function HomeClient() {
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="max-w-2xl bg-white border border-slate-200 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm text-center md:text-left w-full relative"
+                className="max-w-2xl bg-white border border-slate-200 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm text-center md:text-left w-full relative"
               >
+                {speaker.linkedin && (
+                  <div className="absolute top-4 right-4 sm:top-6 sm:right-6 group/tooltip z-10">
+                    <a 
+                      href={speaker.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0a66c2] shadow-sm transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
+                      aria-label={`View ${speaker.name}'s LinkedIn Profile`}
+                    >
+                      <LinkedInIcon size={16} />
+                    </a>
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1.5 px-3 rounded-sm shadow-md z-30 whitespace-nowrap">
+                      View LinkedIn Profile
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b0f19]" />
+                    </div>
+                  </div>
+                )}
+
                 <div className="relative w-36 h-36 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={speaker.image}
@@ -533,27 +551,7 @@ export default function HomeClient() {
                   />
                 </div>
                 <div className="flex-grow w-full">
-                  <div className="relative pr-12">
-                    <h3 className="text-2xl font-serif font-bold text-brand-blue mb-1.5">{speaker.name}</h3>
-                    {speaker.linkedin && (
-                      <div className="absolute top-1/2 -translate-y-1/2 right-0 group/tooltip">
-                        <a 
-                          href={speaker.linkedin} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0a66c2] shadow-sm transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
-                          aria-label={`View ${speaker.name}'s LinkedIn Profile`}
-                        >
-                          <LinkedInIcon size={16} />
-                        </a>
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1.5 px-3 rounded-sm shadow-md z-30 whitespace-nowrap">
-                          View LinkedIn Profile
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b0f19]" />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  
+                  <h3 className="text-2xl font-serif font-bold text-brand-blue mb-1.5">{speaker.name}</h3>
                   <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-4">{speaker.role}</p>
                   <p className="text-slate-600 text-sm font-semibold leading-relaxed">{speaker.university}</p>
                   <p className="text-slate-500 text-xs font-medium leading-relaxed mt-1">{speaker.location}</p>
@@ -585,6 +583,24 @@ export default function HomeClient() {
                   transition={{ delay: i * 0.1 }}
                   className="bg-white border border-slate-200 p-6 pt-8 flex flex-col items-center text-center shadow-sm relative h-full justify-start"
                 >
+                  {speaker.linkedin && (
+                    <div className="absolute top-4 right-4 sm:top-5 sm:right-5 group/tooltip z-10">
+                      <a 
+                        href={speaker.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0a66c2] shadow-sm transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
+                        aria-label={`View ${speaker.name}'s LinkedIn Profile`}
+                      >
+                        <LinkedInIcon size={16} />
+                      </a>
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1.5 px-3 rounded-sm shadow-md z-30 whitespace-nowrap">
+                        View LinkedIn Profile
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b0f19]" />
+                      </div>
+                    </div>
+                  )}
+
                   <div className="relative w-24 h-24 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm mb-4">
                     <Image
                       src={speaker.image}
@@ -603,24 +619,6 @@ export default function HomeClient() {
                     <p className="text-slate-600 text-xs font-semibold leading-relaxed">{speaker.university}</p>
                     <p className="text-slate-500 text-[11px] font-medium leading-relaxed mt-1">{speaker.location}</p>
                   </div>
-
-                  {speaker.linkedin && (
-                    <div className="absolute top-6 right-6 group/tooltip">
-                      <a 
-                        href={speaker.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0a66c2] shadow-sm transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
-                        aria-label={`View ${speaker.name}'s LinkedIn Profile`}
-                      >
-                        <LinkedInIcon size={16} />
-                      </a>
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1.5 px-3 rounded-sm shadow-md z-30 whitespace-nowrap">
-                        View LinkedIn Profile
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b0f19]" />
-                      </div>
-                    </div>
-                  )}
                 </motion.div>
               ))}
             </div>
