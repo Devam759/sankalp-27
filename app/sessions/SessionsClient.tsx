@@ -24,7 +24,7 @@ export default function SessionsClient() {
       <Navbar />
 
       {/* HEADER SECTION - Redesigned Seamless Hero */}
-      <section className="bg-brand-blue text-white pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-12 relative overflow-hidden">
+      <section className="bg-brand-blue text-white pt-24 sm:pt-28 md:pt-36 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-12 relative overflow-hidden">
         {/* Subtle geometric dot pattern background */}
         <div 
           className="absolute inset-0 opacity-15 pointer-events-none"
@@ -37,14 +37,14 @@ export default function SessionsClient() {
             initial="hidden"
             animate="visible"
             variants={staggerContainer(0.15, 0.05)}
-            className="space-y-6"
+            className="space-y-5 sm:space-y-6"
           >
-            <motion.div variants={fadeUp} className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white leading-tight">
+            <motion.div variants={fadeUp} className="space-y-3 sm:space-y-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white leading-tight">
                 <WordReveal text="Conference Tracks & Sessions" className="text-white" />
               </h1>
               <div className="w-16 h-1 bg-brand-orange mx-auto rounded-sm" />
-              <p className="text-slate-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed font-medium pt-2">
+              <p className="text-slate-300 text-xs sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed font-medium pt-1 sm:pt-2 px-2 sm:px-0">
                 Explore our 7 interdisciplinary research tracks spanning Sustainable AI, Data Science, High-Performance Computing, Smart Healthcare, AI in Education, Smart Society, and Semiconductor Systems.
               </p>
             </motion.div>
@@ -52,21 +52,21 @@ export default function SessionsClient() {
             {/* Highlights & Badges */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2"
+              className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 pt-1 sm:pt-2"
             >
-              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+              <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3">
+                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm">
                   7 Frontier Tracks
                 </span>
-                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm">
                   Springer LNCS Series
                 </span>
               </div>
-              <div className="flex items-center justify-center gap-2 sm:gap-3">
-                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+              <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3">
+                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm">
                   Scopus Indexed
                 </span>
-                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[11px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm whitespace-nowrap">
+                <span className="inline-flex items-center px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-sm bg-white/10 border border-white/20 text-white/90 text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-sm">
                   Hybrid Presentation Mode
                 </span>
               </div>
@@ -75,19 +75,19 @@ export default function SessionsClient() {
             {/* Action CTAs */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap items-center justify-center gap-4 pt-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-3 sm:pt-4 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto"
             >
               <a
                 href={PAPER_SUBMISSION_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-brand-orange text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-orange-500 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
+                className="w-full sm:w-auto text-center bg-brand-orange text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-orange-500 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
               >
                 Submit Paper
               </a>
               <Link
                 href="/call-for-papers"
-                className="bg-white/10 border border-white/30 text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-white hover:text-brand-blue transition-all shadow-md hover:-translate-y-0.5 cursor-pointer"
+                className="w-full sm:w-auto text-center bg-white/10 border border-white/30 text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-white hover:text-brand-blue transition-all shadow-md hover:-translate-y-0.5 cursor-pointer"
               >
                 Submission Guidelines
               </Link>
@@ -98,17 +98,17 @@ export default function SessionsClient() {
 
       {/* TRACKS ACCORDION SECTION */}
       <Section id="sessions-tracks" className="flex-grow bg-white">
-        <div className="max-w-5xl mx-auto space-y-10">
-          <Reveal className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+        <div className="max-w-5xl mx-auto space-y-8 sm:space-y-10">
+          <Reveal className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 border-b border-slate-200 pb-5 sm:pb-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide whitespace-nowrap">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
                 Research Tracks (01 - 07)
               </h2>
               <p className="text-slate-600 text-xs sm:text-sm mt-1">
                 Click on any track below to expand topic details.
               </p>
             </div>
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-orange bg-brand-orange/10 px-3 py-1.5 rounded-sm">
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-orange bg-brand-orange/10 px-3 py-1.5 rounded-sm shrink-0">
               7 Tracks
             </span>
           </Reveal>

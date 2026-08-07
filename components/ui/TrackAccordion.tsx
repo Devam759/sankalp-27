@@ -30,20 +30,20 @@ export default function TrackAccordion({ track, index, isOpen: controlledIsOpen,
   const trackNumber = String(index + 1).padStart(2, '0');
 
   return (
-    <div className="mb-4 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden transition-all hover:shadow-md">
+    <div className="mb-3 sm:mb-4 bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden transition-all hover:shadow-md">
       <button
         onClick={handleToggle}
-        className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+        className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer"
       >
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-lg bg-brand-orange/10 text-brand-orange flex items-center justify-center font-bold text-sm sm:text-base shrink-0">
+        <div className="flex items-center gap-3 sm:gap-4 min-w-0 pr-2">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-brand-orange/10 text-brand-orange flex items-center justify-center font-bold text-xs sm:text-base shrink-0">
             {trackNumber}
           </div>
-          <h3 className="text-lg md:text-xl font-bold text-brand-blue pr-4">
+          <h3 className="text-base sm:text-lg md:text-xl font-bold text-brand-blue leading-snug">
             {track.title}
           </h3>
         </div>
-        <div className="text-slate-400 shrink-0 font-bold text-xl select-none">
+        <div className="text-slate-400 shrink-0 font-bold text-lg sm:text-xl select-none pl-2">
           {isOpen ? '−' : '+'}
         </div>
       </button>
@@ -57,11 +57,11 @@ export default function TrackAccordion({ track, index, isOpen: controlledIsOpen,
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 pt-2 pl-20 border-t border-slate-50">
+            <div className="px-4 sm:px-6 pb-5 pt-2 sm:pl-20 sm:pt-2 border-t border-slate-50">
               <ul className="space-y-2">
                 {track.topics.map((topic, i) => (
-                  <li key={i} className="flex items-start gap-2 text-slate-600">
-                    <span className="text-brand-orange mt-1.5">•</span>
+                  <li key={i} className="flex items-start gap-2 text-slate-600 text-xs sm:text-sm">
+                    <span className="text-brand-orange mt-0.5 sm:mt-1.5 font-bold">•</span>
                     <span className="leading-relaxed">{topic}</span>
                   </li>
                 ))}
