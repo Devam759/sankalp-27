@@ -76,9 +76,9 @@ Recommended specs: High-res square headshots (1:1 ratio, min 400x400px).
 
 Current Configured Dates (`constants/conferenceData.ts` & `app/page.tsx`):
 • Call for Papers Opens: 1 August 2026
-• Full Paper Submission Deadline: 31 October 2026
-• Notification of Acceptance: 30 November 2026
-• Camera Ready Submission: 15 January 2027
+• Full Paper Submission Deadline: 30 November 2026
+• Notification of Acceptance: 20 December 2026
+• Camera Ready Submission: 31 January 2027
 • Conference Inauguration & Event Dates: 5-6 March 2027
 • Hero Countdown Timer: Target date set to "March 5, 2027 09:00:00".
 

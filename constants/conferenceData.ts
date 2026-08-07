@@ -2,9 +2,9 @@ export const PAPER_SUBMISSION_LINK = 'https://cmt3.research.microsoft.com/';
 
 export const conferenceDates = [
   { label: 'Call for Papers Opens', date: '15 August 2026' },
-  { label: 'Full Paper Submission Deadline', date: '31 October 2026' },
-  { label: 'Notification of Acceptance', date: '30 November 2026' },
-  { label: 'Camera Ready Submission', date: '15 January 2027' },
+  { label: 'Full Paper Submission Deadline', date: '30 November 2026' },
+  { label: 'Notification of Acceptance', date: '20 December 2026' },
+  { label: 'Camera Ready Submission', date: '31 January 2027' },
   { label: 'Conference Dates', date: '5-6 March 2027' },
 ];
 

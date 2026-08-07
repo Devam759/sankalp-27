@@ -8,6 +8,7 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
 
+import { EnvelopeIcon } from '@/components/ui/Icons';
 import TrackAccordion from '@/components/ui/TrackAccordion';
 import { conferenceTracks, PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
 
@@ -100,6 +101,36 @@ export default function CallForPapersClient() {
             </div>
           </Reveal>
 
+        </div>
+
+        {/* Thin Divider & For Further Queries Section */}
+        <div className="w-full max-w-6xl mx-auto border-t border-slate-200 mt-16 pt-12">
+          <Reveal variant="up" className="max-w-3xl mx-auto text-center space-y-5">
+            <h2 className="text-xl md:text-2xl font-serif font-bold text-brand-blue uppercase tracking-wider">
+              For Further Queries
+            </h2>
+            
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed font-medium max-w-2xl mx-auto">
+              For any questions regarding paper submission, formatting, review process, or publication, please contact the CFP Coordination Team.
+            </p>
+
+            <div className="pt-2">
+              <div className="inline-flex items-center justify-center gap-3.5 bg-white border border-slate-200 px-6 py-4 sm:px-8 sm:py-5 shadow-xs rounded-xl text-center">
+                <EnvelopeIcon size={22} className="text-brand-orange shrink-0" />
+                <div className="text-center sm:text-left">
+                  <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider font-sans">
+                    CFP Coordination
+                  </span>
+                  <a 
+                    href="mailto:cfp_sankalp@jklu.edu.in" 
+                    className="text-base sm:text-lg font-serif font-bold text-brand-blue hover:text-brand-orange transition-colors tracking-tight"
+                  >
+                    cfp_sankalp@jklu.edu.in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </Section>
 

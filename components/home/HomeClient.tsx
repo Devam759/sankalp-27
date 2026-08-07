@@ -444,7 +444,8 @@ export default function HomeClient() {
             <ul className="space-y-5 flex-grow">
               {[
                 'Call for Papers opens on 15 August 2026',
-                'Full paper submission deadline: 31 October 2026',
+                'Scopus-Indexed Proceedings Publication',
+                'Full paper submission deadline: 30 November 2026',
                 'Conference mode: Hybrid',
                 'Registration details announced'
               ].map((info, i) => (
