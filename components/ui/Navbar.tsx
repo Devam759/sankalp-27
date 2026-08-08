@@ -64,6 +64,18 @@ export default function Navbar() {
     };
   }, []);
 
+  // Lock body scroll when mobile menu is open to prevent background page scrolling
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   // On homepage: transparent at top, solid when scrolled
   // On other pages: always solid
   const solidBg = scrolled || !isHomepage;
@@ -243,7 +255,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="fixed inset-0 z-[199] bg-[#184176] flex flex-col pt-24 px-6 overflow-y-auto lg:hidden"
+            className="fixed inset-0 z-[199] bg-[#184176] flex flex-col pt-24 px-6 overflow-y-auto overscroll-contain lg:hidden"
           >
             {/* Subtle decorative top line */}
             <motion.div
