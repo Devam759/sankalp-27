@@ -637,12 +637,20 @@ export default function HomeClient() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }}
-                className={`p-6 border flex items-start gap-4 ${
-                  i === 3
-                    ? 'bg-brand-orange/10 border-brand-orange/20'
-                    : 'bg-brand-blue/5 border-brand-blue/20'
-                }`}
+                className="p-6 border flex items-start gap-4 relative group bg-brand-blue/5 border-brand-blue/20"
               >
+                {'linkedin' in member && (member as any).linkedin && (
+                  <a
+                    href={(member as any).linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${member.name} LinkedIn Profile`}
+                    aria-label={`${member.name} LinkedIn Profile`}
+                    className="absolute top-3 right-3 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                  >
+                    <LinkedInIcon size={15} />
+                  </a>
+                )}
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={('image' in member && (member as any).image) || '/Images/footer_image.webp'}
@@ -653,7 +661,7 @@ export default function HomeClient() {
                     className="object-cover object-top transition-all duration-500"
                   />
                 </div>
-                <div>
+                <div className="pr-4">
                   <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest">{member.role}</p>
                   <h3 className="text-base font-serif font-bold text-brand-blue">{member.name}</h3>
                   {'title' in member && <p className="text-brand-blue/70 text-xs font-medium mt-1">{(member as typeof committeeMembers.patron).title}</p>}
@@ -670,8 +678,20 @@ export default function HomeClient() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                className="bg-brand-blue text-white p-6 border border-brand-blue flex items-center gap-4 text-left"
+                className="bg-brand-blue text-white p-6 border border-brand-blue flex items-center gap-4 text-left relative group"
               >
+                {chair.linkedin && (
+                  <a
+                    href={chair.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${chair.name} LinkedIn Profile`}
+                    aria-label={`${chair.name} LinkedIn Profile`}
+                    className="absolute top-4 right-4 text-brand-orange hover:text-white transition-colors p-1"
+                  >
+                    <LinkedInIcon size={16} />
+                  </a>
+                )}
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={chair.image || "/Images/footer_image.webp"}
@@ -682,7 +702,7 @@ export default function HomeClient() {
                     className="object-cover object-top transition-all duration-500"
                   />
                 </div>
-                <div>
+                <div className="pr-4">
                   <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest">{chair.role}</p>
                   <h3 className="text-lg font-serif font-bold text-white mb-1">{chair.name}</h3>
                   {chair.title && <p className="text-slate-300 text-xs font-medium">{chair.title}</p>}
@@ -692,20 +712,27 @@ export default function HomeClient() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'Prof. Amit Kumar Sinhal', alt: 'Prof. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp' },
-              { name: 'Prof. Devika Kataria', alt: 'Prof. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp' },
-              { name: 'Prof. S. Taruna', alt: 'Prof. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp' },
-              { name: 'Prof. Umesh Gupta', alt: 'Prof. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp' },
-            ].map((chair, i) => (
+            {committeeMembers.programChairs.map((chair, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                className="bg-brand-orange/10 border border-brand-orange/20 p-6 flex flex-col items-center text-center rounded-sm shadow-sm"
+                className="bg-brand-orange/10 border border-brand-orange/20 p-6 flex flex-col items-center text-center rounded-sm shadow-sm relative group"
               >
+                {chair.linkedin && (
+                  <a
+                    href={chair.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${chair.name} LinkedIn Profile`}
+                    aria-label={`${chair.name} LinkedIn Profile`}
+                    className="absolute top-3 right-3 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                  >
+                    <LinkedInIcon size={15} />
+                  </a>
+                )}
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm mb-4">
                   <Image
                     src={chair.image}
@@ -917,9 +944,23 @@ export default function HomeClient() {
                     return nameA.localeCompare(nameB);
                   })
                   .map((member, idx) => (
-                    <div key={idx} className="bg-white p-5 border border-slate-100">
-                      <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
-                      <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
+                    <div key={idx} className="bg-white p-5 border border-slate-100 flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h5 className="font-bold text-brand-blue text-sm mb-1">{member.name}</h5>
+                        <p className="text-slate-500 text-xs leading-relaxed font-medium">{member.title}</p>
+                      </div>
+                      {('linkedin' in member) && (member as any).linkedin && (
+                        <a
+                          href={(member as any).linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={`${member.name} LinkedIn Profile`}
+                          aria-label={`${member.name} LinkedIn Profile`}
+                          className="shrink-0 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                        >
+                          <LinkedInIcon size={15} />
+                        </a>
+                      )}
                     </div>
                   ))}
               </div>

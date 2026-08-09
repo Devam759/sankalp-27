@@ -97,6 +97,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/Raghupati_Singhania.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/raghavpat-singhania/'],
     },
     {
       '@context': 'https://schema.org',
@@ -117,6 +118,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/vc.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/vchellaboina/'],
     },
     {
       '@context': 'https://schema.org',
@@ -127,6 +129,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/tapas_kumar.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/dr-tapas-kumar-37a36b307/'],
     },
     {
       '@context': 'https://schema.org',
@@ -137,6 +140,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/sonali_vyas.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/sonali-vyas-ph-d-49414649/'],
     },
     {
       '@context': 'https://schema.org',
@@ -147,6 +151,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/taruna_sunil.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/staruna/'],
     },
     {
       '@context': 'https://schema.org',
@@ -157,6 +162,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/amit_sinhal.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/dramitsinhal/'],
     },
     {
       '@context': 'https://schema.org',
@@ -167,6 +173,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/devika_kataria.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/devikakataria/'],
     },
     {
       '@context': 'https://schema.org',
@@ -177,6 +184,7 @@ export default function CommitteePage() {
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
       image: 'https://sankalp.jklu.edu.in/Images/committee/umesh_gupta.webp',
       url: 'https://sankalp.jklu.edu.in/committee',
+      sameAs: ['https://www.linkedin.com/in/umesh-gupta-70886895/'],
     },
   ];
 

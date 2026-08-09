@@ -8,7 +8,8 @@ import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
 import { fadeUp, staggerContainer } from '@/lib/animations/variants';
-import { committeeMembers, advisoryBoard, organizingSubCommittees } from '@/constants/conferenceData';
+import { committeeMembers, advisoryBoard, organizingSubCommittees, MEMBER_LINKEDIN_MAP } from '@/constants/conferenceData';
+import { LinkedInIcon } from '@/components/ui/Icons';
 
 const institutions = [
   'Georgia Institute of Technology', 'Toronto Metropolitan University', 'Curtin University',
@@ -52,16 +53,29 @@ export default function CommitteeClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {[
-                { role: 'Chief Patron', name: committeeMembers.chiefPatron.name, institution: committeeMembers.chiefPatron.title, image: committeeMembers.chiefPatron.image },
-                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[0].name, institution: committeeMembers.chiefCoPatrons[0].title, image: committeeMembers.chiefCoPatrons[0].image },
-                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[1].name, institution: committeeMembers.chiefCoPatrons[1].title, image: committeeMembers.chiefCoPatrons[1].image },
-                { role: 'Patron', name: committeeMembers.patron.name, institution: committeeMembers.patron.title, image: committeeMembers.patron.image },
+                { role: 'Chief Patron', name: committeeMembers.chiefPatron.name, institution: committeeMembers.chiefPatron.title, image: committeeMembers.chiefPatron.image, linkedin: (committeeMembers.chiefPatron as any).linkedin },
+                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[0].name, institution: committeeMembers.chiefCoPatrons[0].title, image: committeeMembers.chiefCoPatrons[0].image, linkedin: (committeeMembers.chiefCoPatrons[0] as any).linkedin },
+                { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[1].name, institution: committeeMembers.chiefCoPatrons[1].title, image: committeeMembers.chiefCoPatrons[1].image, linkedin: (committeeMembers.chiefCoPatrons[1] as any).linkedin },
+                { role: 'Patron', name: committeeMembers.patron.name, institution: committeeMembers.patron.title, image: committeeMembers.patron.image, linkedin: (committeeMembers.patron as any).linkedin },
               ].map((member, i) => (
                 <Reveal
                   key={`patron-${i}`}
                   delay={i * 0.08}
-                  className="bg-white rounded-sm p-6 sm:p-7 flex flex-col items-center text-center shadow-sm border border-slate-200"
+                  className="bg-white rounded-sm p-6 sm:p-7 flex flex-col items-center text-center shadow-sm border border-slate-200 relative group"
                 >
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${member.name} LinkedIn Profile`}
+                      aria-label={`${member.name} LinkedIn Profile`}
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full border border-slate-200 bg-white text-[#0a66c2] flex items-center justify-center shadow-2xs transition-all duration-200 hover:bg-[#0a66c2] hover:border-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-xs z-20"
+                    >
+                      <LinkedInIcon size={15} />
+                    </a>
+                  )}
+
                   <div className="relative mb-5">
                     <div className="absolute -inset-[6px] rounded-full border border-slate-200" />
                     <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-white shadow-sm relative z-10 bg-slate-100 flex items-center justify-center">
@@ -116,14 +130,27 @@ export default function CommitteeClient() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto w-full">
               {[
-                { role: committeeMembers.chairs[0].role, name: committeeMembers.chairs[0].name, institution: committeeMembers.chairs[0].title, image: committeeMembers.chairs[0].image },
-                { role: committeeMembers.chairs[1].role, name: committeeMembers.chairs[1].name, institution: committeeMembers.chairs[1].title, image: committeeMembers.chairs[1].image },
+                { role: committeeMembers.chairs[0].role, name: committeeMembers.chairs[0].name, institution: committeeMembers.chairs[0].title, image: committeeMembers.chairs[0].image, linkedin: (committeeMembers.chairs[0] as any).linkedin },
+                { role: committeeMembers.chairs[1].role, name: committeeMembers.chairs[1].name, institution: committeeMembers.chairs[1].title, image: committeeMembers.chairs[1].image, linkedin: (committeeMembers.chairs[1] as any).linkedin },
               ].map((member, i) => (
                 <Reveal
                   key={`chair-${i}`}
                   delay={i * 0.08}
-                  className="bg-white rounded-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm border border-slate-200"
+                  className="bg-white rounded-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm border border-slate-200 relative group"
                 >
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${member.name} LinkedIn Profile`}
+                      aria-label={`${member.name} LinkedIn Profile`}
+                      className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full border border-slate-200 bg-white text-[#0a66c2] flex items-center justify-center shadow-2xs transition-all duration-200 hover:bg-[#0a66c2] hover:border-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-xs z-20"
+                    >
+                      <LinkedInIcon size={15} />
+                    </a>
+                  )}
+
                   <div className="relative shrink-0">
                     <div className="absolute -inset-[6px] rounded-full border border-brand-orange/30" />
                     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-white shadow-sm relative z-10">
@@ -165,17 +192,25 @@ export default function CommitteeClient() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-              {[
-                { name: 'Dr. Amit Kumar Sinhal', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp' },
-                { name: 'Dr. Devika Kataria', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp' },
-                { name: 'Dr. S. Taruna', alt: 'Dr. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp' },
-                { name: 'Dr. Umesh Gupta', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp' },
-              ].map((member, i) => (
+              {committeeMembers.programChairs.map((member, i) => (
                 <Reveal
                   key={`prog-${i}`}
                   delay={i * 0.08}
-                  className="bg-white border border-slate-200 rounded-sm p-6 flex flex-col items-center text-center shadow-sm"
+                  className="bg-white border border-slate-200 rounded-sm p-6 flex flex-col items-center text-center shadow-sm relative group"
                 >
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${member.name} LinkedIn Profile`}
+                      aria-label={`${member.name} LinkedIn Profile`}
+                      className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full border border-slate-200 bg-white text-[#0a66c2] flex items-center justify-center shadow-2xs transition-all duration-200 hover:bg-[#0a66c2] hover:border-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-xs z-20"
+                    >
+                      <LinkedInIcon size={14} />
+                    </a>
+                  )}
+
                   <div className="relative mb-4">
                     <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-white shadow-sm">
                       <Image
@@ -229,12 +264,24 @@ export default function CommitteeClient() {
                   <Reveal
                     key={`intl-${member.name}-${i}`}
                     delay={(i % 3) * 0.06}
-                    className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex flex-col justify-between"
+                    className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex items-start justify-between gap-3 relative group"
                   >
                     <div className="flex-1 min-w-0">
                       <h4 className="font-serif font-bold text-brand-blue text-sm sm:text-base mb-1 leading-snug">{member.name}</h4>
                       <p className="text-slate-600 text-xs leading-relaxed font-medium">{member.title}</p>
                     </div>
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`${member.name} LinkedIn Profile`}
+                        aria-label={`${member.name} LinkedIn Profile`}
+                        className="shrink-0 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                      >
+                        <LinkedInIcon size={15} />
+                      </a>
+                    )}
                   </Reveal>
                 );
               })}
@@ -296,29 +343,46 @@ export default function CommitteeClient() {
                       </span>
                     </h4>
                     <ul className="space-y-3.5">
-                      {committee.members.map((member, mIdx) => (
-                        <li key={mIdx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 p-2.5 rounded-sm bg-slate-50/70 border border-slate-100">
-                          <div className="min-w-0 flex-1">
-                            <div className="font-serif font-bold text-slate-900 text-sm leading-snug">
-                              {member.name}
+                      {committee.members.map((member, mIdx) => {
+                        const linkedinUrl = MEMBER_LINKEDIN_MAP[member.name];
+                        return (
+                          <li key={mIdx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 p-2.5 rounded-sm bg-slate-50/70 border border-slate-100">
+                            <div className="min-w-0 flex-1 flex items-center justify-between gap-2">
+                              <div>
+                                <div className="font-serif font-bold text-slate-900 text-sm leading-snug flex items-center gap-1.5">
+                                  <span>{member.name}</span>
+                                  {linkedinUrl && (
+                                    <a
+                                      href={linkedinUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      title={`${member.name} LinkedIn Profile`}
+                                      aria-label={`${member.name} LinkedIn Profile`}
+                                      className="inline-flex items-center justify-center text-[#0a66c2] hover:text-[#004182] transition-colors p-0.5"
+                                    >
+                                      <LinkedInIcon size={14} />
+                                    </a>
+                                  )}
+                                </div>
+                                <div className="text-slate-600 text-xs font-medium mt-0.5">
+                                  {member.designation}
+                                </div>
+                              </div>
                             </div>
-                            <div className="text-slate-600 text-xs font-medium mt-0.5">
-                              {member.designation}
-                            </div>
-                          </div>
-                          <span
-                            className={`inline-block text-[10px] font-bold px-2.5 py-0.5 rounded-sm uppercase tracking-wider self-start sm:self-center shrink-0 ${
-                              member.role === 'Chair'
-                                ? 'bg-brand-blue text-white'
-                                : member.role === 'Lead'
-                                ? 'bg-brand-orange text-white'
-                                : 'bg-white text-slate-600 border border-slate-200'
-                            }`}
-                          >
-                            {member.role}
-                          </span>
-                        </li>
-                      ))}
+                            <span
+                              className={`inline-block text-[10px] font-bold px-2.5 py-0.5 rounded-sm uppercase tracking-wider self-start sm:self-center shrink-0 ${
+                                member.role === 'Chair'
+                                  ? 'bg-brand-blue text-white'
+                                  : member.role === 'Lead'
+                                  ? 'bg-brand-orange text-white'
+                                  : 'bg-white text-slate-600 border border-slate-200'
+                              }`}
+                            >
+                              {member.role}
+                            </span>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </Reveal>

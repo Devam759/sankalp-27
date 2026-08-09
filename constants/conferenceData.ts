@@ -127,18 +127,38 @@ export const submissionSteps = [
   }
 ];
 
+export const MEMBER_LINKEDIN_MAP: Record<string, string> = {
+  'Dr. Raghupati Singhania': 'https://www.linkedin.com/in/raghavpat-singhania/',
+  'Prof. Vijaysekhar Chellaboina': 'https://www.linkedin.com/in/vchellaboina/',
+  'Prof. Tapas Kumar': 'https://www.linkedin.com/in/dr-tapas-kumar-37a36b307/',
+  'Prof. Sonali Vyas': 'https://www.linkedin.com/in/sonali-vyas-ph-d-49414649/',
+  'Prof. Amit Kumar Sinhal': 'https://www.linkedin.com/in/dramitsinhal/',
+  'Dr. Amit Kumar Sinhal': 'https://www.linkedin.com/in/dramitsinhal/',
+  'Prof. Devika Kataria': 'https://www.linkedin.com/in/devikakataria/',
+  'Dr. Devika Kataria': 'https://www.linkedin.com/in/devikakataria/',
+  'Prof. S. Taruna': 'https://www.linkedin.com/in/staruna/',
+  'Dr. S. Taruna': 'https://www.linkedin.com/in/staruna/',
+  'Prof. Umesh Gupta': 'https://www.linkedin.com/in/umesh-gupta-70886895/',
+  'Dr. Umesh Gupta': 'https://www.linkedin.com/in/umesh-gupta-70886895/',
+};
+
 export const committeeMembers = {
   chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: '', image: '/Images/committee/Bharat_Hari_Singhania.webp' },
   chiefCoPatrons: [
-    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: '', image: '/Images/committee/Raghupati_Singhania.webp' },
+    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: '', image: '/Images/committee/Raghupati_Singhania.webp', linkedin: 'https://www.linkedin.com/in/raghavpat-singhania/' },
     { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: '', image: '/Images/committee/Harsh_Pati_Singhania.webp' }
   ],
-  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: '', image: '/Images/committee/vc.webp' },
+  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: '', image: '/Images/committee/vc.webp', linkedin: 'https://www.linkedin.com/in/vchellaboina/' },
   chairs: [
-    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp' },
-    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp' },
+    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp', linkedin: 'https://www.linkedin.com/in/dr-tapas-kumar-37a36b307/' },
+    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp', linkedin: 'https://www.linkedin.com/in/sonali-vyas-ph-d-49414649/' },
   ],
-  programChairs: 'Professors of IET (Prof. Amit / Prof. Devika / Prof. Taruna, and Prof. Umesh)',
+  programChairs: [
+    { name: 'Dr. Amit Kumar Sinhal', title: 'Program Chair', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp', linkedin: 'https://www.linkedin.com/in/dramitsinhal/' },
+    { name: 'Dr. Devika Kataria', title: 'Program Chair', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp', linkedin: 'https://www.linkedin.com/in/devikakataria/' },
+    { name: 'Dr. S. Taruna', title: 'Program Chair', alt: 'Dr. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp', linkedin: 'https://www.linkedin.com/in/staruna/' },
+    { name: 'Dr. Umesh Gupta', title: 'Program Chair', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp', linkedin: 'https://www.linkedin.com/in/umesh-gupta-70886895/' },
+  ],
 };
 
 export const registrationFees = [
@@ -191,20 +211,20 @@ export const speakers = {
 export const advisoryBoard = {
   international: [
     { name: 'Prof. Wassim Haddad', title: 'Professor, Georgia Institute of Technology, US' },
-    { name: 'Prof. Ravi Vatrapu', title: 'Toronto Metropolitan University, Ontario, Canada' },
-    { name: 'Prof. Arun Patil', title: 'Director (L&T), Curtin University, Singapore' },
-    { name: 'Prof. Priyadarsan Patra', title: 'Director, UMMA Board, University of Massachusetts, US' },
+    { name: 'Prof. Ravi Vatrapu', title: 'Toronto Metropolitan University, Ontario, Canada', linkedin: 'https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/' },
+    { name: 'Prof. Arun Patil', title: 'Director (L&T), Curtin University, Singapore', linkedin: 'https://www.linkedin.com/in/professor-dr-arun-patil-83660a/' },
+    { name: 'Prof. Priyadarsan Patra', title: 'Director, UMMA Board, University of Massachusetts, US', linkedin: 'https://www.linkedin.com/in/darshanpatra/' },
     { name: 'Prof. Abid Hussain', title: 'Department of Digitalization, Copenhagen Business School, Denmark' },
-    { name: 'Prof. Vinod Kumar Shukla', title: 'Associate Dean, Amity University Dubai, UAE' },
-    { name: 'Prof. Valentina Emilia Balas', title: 'Professor, University of Arad, Romania' },
-    { name: 'Prof. Celestine Iwendi', title: 'Professor, University of Greater Manchester, United Kingdom' },
-    { name: 'Prof. Fernando Ortiz-Rodríguez', title: 'Professor, Universidad Autónoma de Tamaulipas, México, North America' },
-    { name: 'Dr. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK' },
-    { name: 'Mr. Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco' },
-    { name: 'Dr. Ridoan Karim', title: 'Director, CLARS – Monash University, Malaysia' },
-    { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK' },
-    { name: 'Prof. Sergey Nersesov', title: 'Associate Professor, Villanova University, Pennsylvania, United States' },
-    { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece' }
+    { name: 'Prof. Vinod Kumar Shukla', title: 'Associate Dean, Amity University Dubai, UAE', linkedin: 'https://www.linkedin.com/in/vinodshukla/' },
+    { name: 'Prof. Valentina Emilia Balas', title: 'Professor, University of Arad, Romania', linkedin: 'https://www.linkedin.com/in/vabalas/' },
+    { name: 'Prof. Celestine Iwendi', title: 'Professor, University of Greater Manchester, United Kingdom', linkedin: 'https://www.linkedin.com/in/celestine-iwendi/' },
+    { name: 'Prof. Fernando Ortiz-Rodríguez', title: 'Professor, Universidad Autónoma de Tamaulipas, México, North America', linkedin: 'https://www.linkedin.com/in/fernando-ortiz-rodriguez/' },
+    { name: 'Dr. Akshi Kumar', title: 'Director-PG Research, Goldsmiths, University of London, UK', linkedin: 'https://www.linkedin.com/in/akshi-kumar-4688b37/' },
+    { name: 'Mr. Babu Turumella', title: 'Sr. Director, NVIDIA, San Francisco', linkedin: 'https://www.linkedin.com/in/bturumella/' },
+    { name: 'Dr. Ridoan Karim', title: 'Director, CLARS – Monash University, Malaysia', linkedin: 'https://www.linkedin.com/in/ridoan-karim-55997999/' },
+    { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK', linkedin: 'https://www.linkedin.com/in/mithun-kumar1308/' },
+    { name: 'Prof. Sergey Nersesov', title: 'Associate Professor, Villanova University, Pennsylvania, United States', linkedin: 'https://www.linkedin.com/in/sergey-nersesov-428a7194/' },
+    { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece', linkedin: 'https://www.linkedin.com/in/vassilis-gerogiannis-194159156/' }
   ],
   national: [
     { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras' },
