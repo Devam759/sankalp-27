@@ -30,23 +30,31 @@ export default function Navbar() {
   useEffect(() => {
     let lastScrollY = window.scrollY;
     const threshold = 10;
+    let ticking = false;
 
     const onScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 10);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const isScrolled = currentScrollY > 10;
 
-      // Mobile hide/show-on-scroll logic (< 768px)
-      if (window.innerWidth < 768) {
-        if (currentScrollY > lastScrollY + threshold && currentScrollY > 72) {
-          setMobileHidden(true);
-        } else if (currentScrollY < lastScrollY - threshold) {
-          setMobileHidden(false);
-        }
-      } else {
-        setMobileHidden(false);
+          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+
+          if (window.innerWidth < 768) {
+            if (currentScrollY > lastScrollY + threshold && currentScrollY > 72) {
+              setMobileHidden((prev) => (prev !== true ? true : prev));
+            } else if (currentScrollY < lastScrollY - threshold) {
+              setMobileHidden((prev) => (prev !== false ? false : prev));
+            }
+          } else {
+            setMobileHidden((prev) => (prev !== false ? false : prev));
+          }
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      lastScrollY = currentScrollY;
     };
 
     const onResize = () => {

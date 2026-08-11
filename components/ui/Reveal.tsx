@@ -65,6 +65,7 @@ export default function Reveal({
       whileInView="visible"
       viewport={{ ...VIEWPORT, once }}
       variants={variants}
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>

@@ -411,10 +411,6 @@ export default function CommitteeClient() {
                 </motion.span>
               ))}
             </motion.div>
-            <div className="mt-12 pt-8 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <span className="text-white/60 text-xs font-mono tracking-widest uppercase font-semibold">International &middot; National &middot; Industry Partners</span>
-              <span className="text-brand-orange font-bold text-xs sm:text-sm tracking-wider uppercase">15+ Countries &middot; 30+ Universities &amp; Labs</span>
-            </div>
           </div>
         </div>
       </section>

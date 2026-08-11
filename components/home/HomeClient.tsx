@@ -168,25 +168,31 @@ export default function HomeClient() {
     if (reduced) return;
     const ctx = gsap.context(() => {
       gsap.to(heroBgRef.current, {
-        yPercent: 16,
-        scale: 1.06,
+        yPercent: 12,
+        scale: 1.03,
         ease: 'none',
+        force3D: true,
         scrollTrigger: {
           trigger: heroSectionRef.current,
           start: 'top top',
           end: 'bottom top',
-          scrub: true,
+          scrub: 0.5,
+          fastScrollEnd: true,
+          preventOverlaps: true,
         },
       });
       gsap.to(heroContentRef.current, {
         opacity: 0,
-        yPercent: -24,
+        yPercent: -16,
         ease: 'none',
+        force3D: true,
         scrollTrigger: {
           trigger: heroSectionRef.current,
           start: 'top top',
           end: '70% top',
-          scrub: true,
+          scrub: 0.5,
+          fastScrollEnd: true,
+          preventOverlaps: true,
         },
       });
     }, heroSectionRef);
@@ -206,11 +212,12 @@ export default function HomeClient() {
           yPercent: 8,
           scale: 1.0,
           ease: 'none',
+          force3D: true,
           scrollTrigger: {
             trigger: venueImageRef.current,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: true,
+            scrub: 0.8,
           },
         }
       );
@@ -265,40 +272,45 @@ export default function HomeClient() {
         ref={heroSectionRef}
         className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
       >
-        <div ref={heroBgRef} className="absolute inset-0 z-0 bg-brand-blue">
-          {heroImages.map((img, index) => {
-            const isActive = index === currentHeroIndex;
-            return (
-              <motion.div
-                key={img}
-                initial={false}
-                animate={{ 
-                  opacity: isActive ? 1 : 0,
-                  scale: isActive ? 1.03 : 1.0
-                }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={img}
-                  alt="JK Lakshmipat University Campus"
-                  fill
-                  priority={index === 0}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                  quality={75}
-                  className="object-cover object-center"
-                />
-              </motion.div>
-            );
-          })}
+        <div ref={heroBgRef} className="absolute inset-0 z-0 bg-brand-blue will-change-transform transform-gpu">
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={heroImages[currentHeroIndex]}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={heroImages[currentHeroIndex]}
+                alt="JK Lakshmipat University Campus"
+                fill
+                priority={currentHeroIndex === 0}
+                loading={currentHeroIndex === 0 ? 'eager' : 'lazy'}
+                sizes="100vw"
+                quality={75}
+                className="object-cover object-center"
+              />
+            </motion.div>
+          </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/55 via-brand-blue/45 to-brand-blue/75 z-10 pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.04] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')] z-10 pointer-events-none" />
         </div>
 
-        {/* Ambient Glowing Blobs for Hero Visual Depth */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-orange/15 rounded-full blur-[120px] pointer-events-none z-10 animate-pulse duration-[7000ms]" />
-        <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-brand-blue/30 rounded-full blur-[100px] pointer-events-none z-10" />
+        {/* Ambient Glowing Radial Overlays for Hero Visual Depth */}
+        <div 
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none z-10 opacity-70 transition-opacity duration-1000"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(245,130,30,0.2) 0%, rgba(245,130,30,0.05) 45%, transparent 70%)',
+            willChange: 'opacity'
+          }} 
+        />
+        <div 
+          className="absolute bottom-10 left-10 w-[400px] h-[400px] rounded-full pointer-events-none z-10 opacity-60"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(24,65,118,0.4) 0%, transparent 70%)'
+          }} 
+        />
 
         <div ref={heroContentRef} className="relative z-10 w-full">
         <motion.div
@@ -450,7 +462,7 @@ export default function HomeClient() {
                 'Registration details announced'
               ].map((info, i) => (
                 <motion.li
-                  key={i}
+                  key={`info-${i}-${info.slice(0, 12)}`}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -479,7 +491,7 @@ export default function HomeClient() {
             <div className="relative border-l border-brand-orange/40 ml-2 space-y-6 flex-grow">
               {conferenceDates.map((dateItem, i) => (
                 <motion.div
-                  key={i}
+                  key={`key-date-${dateItem.label}-${i}`}
                   initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -515,7 +527,7 @@ export default function HomeClient() {
               return nameA.localeCompare(nameB);
             }).map((speaker, i) => (
               <motion.div
-                key={i}
+                key={`plenary-${speaker.name}`}
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -576,7 +588,7 @@ export default function HomeClient() {
                 return nameA.localeCompare(nameB);
               }).map((speaker, i) => (
                 <motion.div
-                  key={i}
+                  key={`keynote-${speaker.name}`}
                   initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -589,35 +601,33 @@ export default function HomeClient() {
                         href={speaker.linkedin} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0a66c2] shadow-sm transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:border-[#0a66c2] hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
+                        className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-[#0a66c2] shadow-xs transition-all duration-300 hover:bg-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-sm cursor-pointer"
                         aria-label={`View ${speaker.name}'s LinkedIn Profile`}
                       >
-                        <LinkedInIcon size={16} />
+                        <LinkedInIcon size={14} />
                       </a>
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1.5 px-3 rounded-sm shadow-md z-30 whitespace-nowrap">
-                        View LinkedIn Profile
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-95 opacity-0 pointer-events-none group-hover/tooltip:scale-100 group-hover/tooltip:opacity-100 transition-all duration-200 bg-[#0b0f19] text-white text-[10px] font-sans font-bold tracking-wider uppercase py-1 px-2.5 rounded-sm shadow-md z-30 whitespace-nowrap">
+                        LinkedIn
                         <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b0f19]" />
                       </div>
                     </div>
                   )}
 
-                  <div className="relative w-24 h-24 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm mb-4">
+                  <div className="relative w-28 h-28 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-slate-50 shadow-sm mb-5">
                     <Image
                       src={speaker.image}
-                      alt={`${speaker.name} - ${speaker.role} (${speaker.university}) SANKALP 2027 JKLU`}
-                      title={`${speaker.name} - ${speaker.role} (${speaker.university}) SANKALP 2027 JKLU`}
+                      alt={speaker.name}
                       fill
-                      sizes="96px"
-                      priority={i === 0}
-                      loading={i === 0 ? 'eager' : 'lazy'}
+                      sizes="112px"
+                      loading="lazy"
                       className="object-cover object-top transition-transform duration-500"
                     />
                   </div>
-                  <div className="w-full relative">
-                    <h3 className="text-lg font-serif font-bold text-brand-blue mb-1.5">{speaker.name}</h3>
-                    <p className="text-brand-orange text-xs font-bold uppercase tracking-wider mb-3">{speaker.role}</p>
-                    <p className="text-slate-600 text-xs font-semibold leading-relaxed">{speaker.university}</p>
-                    <p className="text-slate-500 text-[11px] font-medium leading-relaxed mt-1">{speaker.location}</p>
+                  <div className="flex flex-col flex-grow items-center">
+                    <h3 className="text-xl font-serif font-bold text-brand-blue mb-1">{speaker.name}</h3>
+                    <p className="text-brand-orange text-[10px] font-bold uppercase tracking-wider mb-3">{speaker.role}</p>
+                    <p className="text-slate-600 text-xs font-semibold leading-relaxed mt-auto">{speaker.university}</p>
+                    <p className="text-slate-500 text-[11px] font-medium leading-relaxed mt-0.5">{speaker.location}</p>
                   </div>
                 </motion.div>
               ))}
@@ -632,7 +642,7 @@ export default function HomeClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[committeeMembers.chiefPatron, ...committeeMembers.chiefCoPatrons, committeeMembers.patron].map((member, i) => (
               <motion.div
-                key={i}
+                key={`patron-${member.name}-${i}`}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -646,23 +656,23 @@ export default function HomeClient() {
                     rel="noopener noreferrer"
                     title={`${member.name} LinkedIn Profile`}
                     aria-label={`${member.name} LinkedIn Profile`}
-                    className="absolute top-3 right-3 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                    className="absolute top-4 right-4 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
                   >
-                    <LinkedInIcon size={15} />
+                    <LinkedInIcon size={16} />
                   </a>
                 )}
-                <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
+                <div className="relative w-16 h-16 rounded-xl border border-brand-blue/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
-                    src={('image' in member && (member as any).image) || '/Images/footer_image.webp'}
-                    alt={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
-                    title={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
+                    src={member.image}
+                    alt={`${member.name} - ${member.role}`}
+                    title={`${member.name} - ${member.role}`}
                     fill
                     sizes="64px"
                     className="object-cover object-top transition-all duration-500"
                   />
                 </div>
                 <div className="pr-4">
-                  <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest">{member.role}</p>
+                  <p className="text-[10px] font-bold text-brand-orange uppercase mb-1 tracking-widest">{member.role}</p>
                   <h3 className="text-base font-serif font-bold text-brand-blue">{member.name}</h3>
                   {'title' in member && <p className="text-brand-blue/70 text-xs font-medium mt-1">{(member as typeof committeeMembers.patron).title}</p>}
                 </div>
@@ -673,7 +683,7 @@ export default function HomeClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {committeeMembers.chairs.map((chair, i) => (
               <motion.div
-                key={i}
+                key={`chair-${chair.name}-${i}`}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -714,7 +724,7 @@ export default function HomeClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {committeeMembers.programChairs.map((chair, i) => (
               <motion.div
-                key={i}
+                key={`prog-chair-${chair.name}-${i}`}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -766,7 +776,7 @@ export default function HomeClient() {
                 { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India' }
               ].map((board, i) => (
                 <motion.div
-                  key={board.id}
+                  key={`advisory-board-${board.id}`}
                   initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -877,7 +887,7 @@ export default function HomeClient() {
               >
                 {[...jaipurAttractions, ...jaipurAttractions].map((att, i) => (
                   <div
-                    key={i}
+                    key={`attraction-${att.name}-${i}`}
                     className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white"
                   >
                     <Image

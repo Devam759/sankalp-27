@@ -142,6 +142,7 @@ export default function RootLayout({
         />
 
         <Script 
+          id="google-recaptcha-v3"
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LcnfYAtAAAAANwsn9-4TPzCpIPHLfQ2Mq-C5LQk'}`}
           strategy="afterInteractive"
         />

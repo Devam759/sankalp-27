@@ -105,6 +105,8 @@ export default function GearboxLoader() {
           background: #255899;
           border-radius: 30px;
           border: 1px solid rgba(255, 255, 255, 0.2);
+          will-change: transform;
+          backface-visibility: hidden;
         }
 
         .large .gear-inner {

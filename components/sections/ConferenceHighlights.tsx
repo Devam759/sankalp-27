@@ -178,17 +178,9 @@ export default function ConferenceHighlights() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-center mb-12 md:mb-16"
         >
-          <div className="flex items-center justify-center gap-4 mb-3">
-            <div className="h-px w-12 bg-brand-orange" />
-            <span className="text-brand-orange text-[10px] font-black uppercase tracking-[0.45em]">
-              Sankalp '27
-            </span>
-            <div className="h-px w-12 bg-brand-orange" />
-          </div>
-
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-white relative inline-block">
             Conference Highlights
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-brand-orange rounded-full" />
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-brand-orange rounded-none" />
           </h2>
         </motion.div>
 
@@ -204,9 +196,9 @@ export default function ConferenceHighlights() {
                   key={item.id}
                   onClick={() => setActiveIdx(idx)}
                   onMouseEnter={() => setActiveIdx(idx)}
-                  className={`w-full text-left p-4 md:p-5 transition-all duration-300 relative border cursor-pointer rounded-2xl overflow-hidden ${
+                  className={`w-full text-left p-4 md:p-5 transition-all duration-300 relative border cursor-pointer rounded-lg overflow-hidden ${
                     isActive
-                      ? 'bg-white text-brand-blue border-white shadow-2xl scale-[1.02] z-10'
+                      ? 'bg-white text-brand-blue border-white shadow-2xl scale-[1.01] z-10'
                       : 'bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/40'
                   }`}
                 >
@@ -214,32 +206,13 @@ export default function ConferenceHighlights() {
                   {isActive && (
                     <motion.div
                       layoutId="activeTrackBar"
-                      className="absolute left-0 top-0 bottom-0 w-[4px] bg-brand-orange rounded-l-2xl"
+                      className="absolute left-0 top-0 bottom-0 w-[4px] bg-brand-orange rounded-l-md"
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
 
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`text-[10px] font-black uppercase tracking-[0.25em] px-2.5 py-0.5 border rounded-full ${
-                          isActive
-                            ? 'border-brand-orange text-brand-orange bg-brand-orange/10'
-                            : 'border-white/30 text-white/90 bg-black/20'
-                        }`}
-                      >
-                        {item.category}
-                      </span>
-                      {item.badge && (
-                        <span className="text-[8px] font-black uppercase tracking-wider bg-brand-orange text-white px-2.5 py-0.5 rounded-full shadow-sm">
-                          {item.badge}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
                   <h3
-                    className={`mt-2 text-base md:text-lg font-serif font-bold transition-colors ${
+                    className={`text-base md:text-lg font-serif font-bold transition-colors ${
                       isActive ? 'text-brand-blue' : 'text-white'
                     }`}
                   >
@@ -251,7 +224,7 @@ export default function ConferenceHighlights() {
           </div>
 
           {/* ── Right Column: High-Contrast Dynamic Spotlight Stage (7 cols) ──────────── */}
-          <div className="lg:col-span-7 bg-white text-brand-blue border-2 border-white p-6 md:p-10 relative flex flex-col justify-between min-h-[400px] shadow-2xl rounded-3xl overflow-hidden">
+          <div className="lg:col-span-7 bg-white text-brand-blue border-2 border-white p-6 md:p-10 relative flex flex-col justify-between min-h-[400px] shadow-2xl rounded-xl overflow-hidden">
             {/* Top Solid Orange Bar */}
             <div className="absolute top-0 left-0 right-0 h-[5px] bg-brand-orange" />
 
@@ -265,17 +238,11 @@ export default function ConferenceHighlights() {
                 className="space-y-5 flex-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-4 mb-4 border-b border-slate-100 pb-3">
-                    <span className="text-white bg-brand-orange text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 rounded-full shadow-sm">
-                      {activeItem.accentTag}
-                    </span>
-                  </div>
-
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-brand-blue leading-snug mb-2">
                     {activeItem.headline}
                   </h3>
 
-                  <div className="h-[3px] w-12 bg-brand-orange rounded-full mb-3" />
+                  <div className="h-[3px] w-12 bg-brand-orange rounded-none mb-3" />
 
                   <p className="text-slate-600 text-sm md:text-base leading-relaxed">
                     {activeItem.description}
@@ -286,7 +253,7 @@ export default function ConferenceHighlights() {
                 <div className="space-y-2 py-3 border-y border-slate-100">
                   {activeItem.highlights.map((point, i) => (
                     <div key={i} className="flex items-center gap-2.5">
-                      <span className="w-1.5 h-1.5 bg-brand-orange rounded-full shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-brand-orange rounded-none shrink-0" />
                       <span className="text-slate-800 text-xs md:text-sm font-semibold">
                         {point}
                       </span>
@@ -297,7 +264,7 @@ export default function ConferenceHighlights() {
                 {/* Metrics Footer Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
                   {activeItem.metrics.map((m) => (
-                    <div key={m.label} className="bg-slate-50 border border-slate-200 p-3 rounded-xl">
+                    <div key={m.label} className="bg-slate-50 border border-slate-200 p-3 rounded-md">
                       <span className="text-[9px] text-brand-orange uppercase tracking-widest font-black block mb-0.5">
                         {m.label}
                       </span>
@@ -312,39 +279,6 @@ export default function ConferenceHighlights() {
           </div>
 
         </div>
-
-        {/* ── Bottom Accreditation Strip ────────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-12 pt-6 border-t border-white/20 flex flex-wrap items-center justify-between gap-4"
-        >
-          <span className="text-white/60 text-[11px] font-bold uppercase tracking-[0.3em]">
-            JKLU International Conference · Jaipur, India
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {[
-              { label: 'Springer LNCS', orange: true },
-              { label: 'Scopus Indexed', orange: false },
-              { label: 'Hybrid Mode', orange: true },
-              { label: 'Atal Incubation', orange: false },
-            ].map(({ label, orange }) => (
-              <span
-                key={label}
-                className={`text-[10px] font-black uppercase tracking-[0.15em] px-3.5 py-1 rounded-full ${
-                  orange
-                    ? 'bg-brand-orange text-white border border-brand-orange shadow-sm'
-                    : 'bg-white text-brand-blue border border-white font-bold'
-                }`}
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

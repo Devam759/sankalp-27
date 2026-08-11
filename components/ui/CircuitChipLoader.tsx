@@ -22,8 +22,9 @@ export default function CircuitChipLoader() {
           stroke-dashoffset: 570;
           stroke-linecap: round;
           stroke-linejoin: round;
-          filter: drop-shadow(0 0 6px currentColor);
+          filter: drop-shadow(0 0 4px currentColor);
           animation: circuitFlow 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          will-change: stroke-dashoffset;
         }
 
         .pulse-orange {
@@ -39,6 +40,7 @@ export default function CircuitChipLoader() {
         .node-glow {
           animation: breathingGlow 3s ease-in-out infinite;
           transform-origin: center;
+          will-change: opacity;
         }
 
         @keyframes circuitFlow {

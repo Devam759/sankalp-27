@@ -96,8 +96,8 @@ export default function CallForPapersClient() {
           <Reveal variant="right" delay={0.15} className="lg:col-span-5 space-y-6">
             <div className="relative aspect-[4/3] border border-slate-200 rounded-lg overflow-hidden shadow-sm bg-white">
               <Image
-                src="/Images/campus/jklu_campus.webp"
-                alt="Research Session"
+                src="/Images/call_for_papers.png"
+                alt="SANKALP 2027 Academic Research & Presentation Session"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 500px"

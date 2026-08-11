@@ -8,16 +8,6 @@ import Footer from '@/components/ui/Footer';
 import WordReveal from '@/components/ui/WordReveal';
 
 export default function AboutClient() {
-  const focusAreas = [
-    { title: "Sustainable AI", desc: "Intelligent Systems & Responsible Digital Transformation." },
-    { title: "Data Science", desc: "Generative AI & Knowledge Engineering." },
-    { title: "HPC & Emerging Tech", desc: "High Performance Computing, Networks & Emerging Tech." },
-    { title: "Smart Healthcare", desc: "Bioinformatics & Human-Centric AI." },
-    { title: "AI in Education", desc: "K-12 Learning & Future Workforce Development." },
-    { title: "Smart Society", desc: "Governance & Sustainable Innovation." },
-    { title: "VLSI & Embedded", desc: "Semiconductor Technologies & Intelligent Engineering." }
-  ];
-
   return (
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-20 md:pt-24 flex flex-col selection:bg-brand-orange selection:text-white">
       <Navbar />
@@ -43,9 +33,6 @@ export default function AboutClient() {
                   <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
                 </h2>
               </div>
-             <span className="hidden md:block text-xs font-bold tracking-[0.3em] uppercase text-slate-400">
-                Research / Collaboration / Innovation
-             </span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
@@ -128,87 +115,6 @@ export default function AboutClient() {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: RESEARCH ECOSYSTEM */}
-      <section className="relative py-0 bg-brand-cloud overflow-hidden flex flex-col lg:flex-row min-h-[800px]">
-        <div className="w-full lg:w-[45%] p-12 lg:p-24 flex flex-col justify-center relative z-10 border-r border-brand-blue/10">
-           <motion.div
-             initial={{ opacity: 0, y: 30 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.8 }}
-           >
-             <div className="flex items-center gap-4 mb-8">
-               <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
-                 <WordReveal text="Ecosystem" />
-                 <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
-               </h2>
-             </div>
-             
-             <p className="text-lg text-slate-700 leading-relaxed mb-10 font-medium">
-               Our multidisciplinary focus areas intersect to form a comprehensive research ecosystem driving the next generation of intelligent technologies.
-             </p>
-
-             <div className="space-y-6">
-                {focusAreas.slice(0, 4).map((area, i) => (
-                  <div key={i} className="flex flex-col border-l-2 border-brand-orange/30 pl-6 hover:border-brand-orange transition-colors">
-                    <h4 className="text-brand-blue font-bold text-lg mb-1">{area.title}</h4>
-                    <p className="text-slate-600 text-sm">{area.desc}</p>
-                  </div>
-                ))}
-             </div>
-           </motion.div>
-        </div>
-
-        <div className="w-full lg:w-[55%] bg-brand-blue relative flex items-center justify-center p-6 sm:p-12 overflow-hidden shadow-inner min-h-[420px] lg:min-h-0">
-           <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
-             <div className="w-[800px] h-[800px] rounded-full border-[1px] border-white/20 absolute"></div>
-             <div className="w-[600px] h-[600px] rounded-full border-[1px] border-brand-orange/40 absolute"></div>
-             <div className="w-[400px] h-[400px] rounded-full border-[1px] border-white/20 absolute bg-white/5"></div>
-           </div>
-
-           <motion.div 
-             initial={{ opacity: 0, scale: 0.9 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             viewport={{ once: true }}
-             transition={{ duration: 1.2, ease: "easeOut" }}
-             className="relative z-10 flex items-center justify-center"
-             style={{ width: 'min(420px, 80vw)', height: 'min(420px, 80vw)' }}
-           >
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-brand-orange flex items-center justify-center z-20 shadow-[0_0_40px_rgba(245,130,30,0.5)] border-4 border-brand-blue absolute">
-                <span className="text-brand-blue font-bold text-center text-xs sm:text-sm leading-tight tracking-widest uppercase">Research<br/>Core</span>
-              </div>
-
-              {focusAreas.map((area, i) => {
-                const angle = (i * 360) / focusAreas.length - 90;
-                const angleRad = (angle * Math.PI) / 180;
-                const radius = 42;
-                const x = radius * Math.cos(angleRad);
-                const y = radius * Math.sin(angleRad);
-                return (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + (i * 0.1), duration: 0.8 }}
-                    className="absolute flex flex-col items-center gap-1.5 group"
-                    style={{
-                      left: `calc(50% + ${x}%)`,
-                      top: `calc(50% + ${y}%)`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                  >
-                    <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-sm bg-white border-2 border-brand-orange relative z-10 group-hover:scale-150 transition-transform cursor-pointer shrink-0"></div>
-                    <div className="bg-brand-blue border border-white/10 px-2 py-1 opacity-80 group-hover:opacity-100 group-hover:border-brand-orange transition-all shadow-xl max-w-[80px] sm:max-w-[100px] text-center">
-                      <span className="text-white text-[9px] sm:text-[10px] font-bold tracking-wide uppercase leading-tight">{area.title}</span>
-                    </div>
-                  </motion.div>
-                );
-              })}
-           </motion.div>
         </div>
       </section>
 

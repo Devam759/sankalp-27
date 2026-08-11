@@ -23,56 +23,55 @@ export default function WordReveal({ text, className = '' }: WordRevealProps) {
     if (!el) return;
 
     if (reduced) {
+      const words = el.querySelectorAll<HTMLElement>('.word-reveal-word');
+      words.forEach((w) => (w.style.transform = 'none'));
       return;
     }
 
     let ctx: gsap.Context | null = null;
 
-    const timer = setTimeout(() => {
-      ctx = gsap.context(() => {
-        const words = el.querySelectorAll<HTMLElement>('.word-reveal-word');
-        if (!words.length) return;
+    ctx = gsap.context(() => {
+      const words = el.querySelectorAll<HTMLElement>('.word-reveal-word');
+      if (!words.length) return;
 
-        const rect = el.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight * 0.95 && rect.bottom > 0;
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.95 && rect.bottom > 0;
 
-        if (inView) {
-          gsap.fromTo(
-            words,
-            { yPercent: 100 },
-            {
-              yPercent: 0,
-              duration: 0.75,
-              ease: 'power3.out',
-              stagger: 0.07,
-              clearProps: 'transform',
-            }
-          );
-        } else {
-          gsap.fromTo(
-            words,
-            { yPercent: 100 },
-            {
-              yPercent: 0,
-              duration: 0.75,
-              ease: 'power3.out',
-              stagger: 0.07,
-              clearProps: 'transform',
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 92%',
-                once: true,
-              },
-            }
-          );
-        }
-      }, el);
-
-      ScrollTrigger.refresh();
-    }, 80);
+      if (inView) {
+        gsap.fromTo(
+          words,
+          { yPercent: 100 },
+          {
+            yPercent: 0,
+            duration: 0.65,
+            ease: 'power3.out',
+            stagger: 0.05,
+            force3D: true,
+            clearProps: 'transform',
+          }
+        );
+      } else {
+        gsap.fromTo(
+          words,
+          { yPercent: 100 },
+          {
+            yPercent: 0,
+            duration: 0.65,
+            ease: 'power3.out',
+            stagger: 0.05,
+            force3D: true,
+            clearProps: 'transform',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 92%',
+              once: true,
+            },
+          }
+        );
+      }
+    }, el);
 
     return () => {
-      clearTimeout(timer);
       if (ctx) ctx.revert();
     };
   }, [reduced]);
@@ -83,7 +82,10 @@ export default function WordReveal({ text, className = '' }: WordRevealProps) {
     <span ref={ref} className={`inline-block ${className}`} aria-label={text}>
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden align-bottom">
-          <span className="word-reveal-word inline-block">
+          <span
+            className="word-reveal-word inline-block"
+            style={{ willChange: 'transform' }}
+          >
             {word}
             {i < words.length - 1 ? '\u00A0' : ''}
           </span>
