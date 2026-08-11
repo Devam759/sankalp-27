@@ -7,7 +7,7 @@ import { finalizeRegistration } from '@/lib/registrationHelper';
 import { validateRegistrationNumber } from '@/lib/utils';
 import { getCategoryById } from '@/constants/fees';
 
-import { isRateLimited, sanitizeObject, isProd, cashfreeAppId, cashfreeSecretKey, formatPhoneNumber, handleApiError } from '@/lib/security';
+import { isRateLimited, sanitizeObject, isProd, cashfreeAppId, cashfreeSecretKey, formatPhoneNumber, handleApiError, verifyRecaptchaToken } from '@/lib/security';
 
 // Initialize Cashfree
 const cashfree = new Cashfree(
@@ -120,6 +120,13 @@ export async function POST(req: Request) {
 
     if (action === 'CREATE_ORDER') {
       try {
+        if (data.recaptchaToken) {
+          const recaptchaVal = await verifyRecaptchaToken(data.recaptchaToken, 'REGISTER');
+          if (!recaptchaVal.success) {
+            return NextResponse.json({ error: recaptchaVal.error || 'reCAPTCHA verification failed.' }, { status: 403 });
+          }
+        }
+
         const categoryId = (data.category || '').trim();
         const category = getCategoryById(categoryId);
         if (!category) {

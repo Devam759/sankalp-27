@@ -55,6 +55,16 @@ export default function CallForPapersClient() {
                 </li>
               </ul>
             </div>
+
+            {/* Microsoft CMT Acknowledgment */}
+            <div className="bg-slate-50 border border-slate-200 p-6 rounded-lg mb-10 text-slate-700 text-sm leading-relaxed font-medium">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                Peer Review Acknowledgment
+              </h4>
+              <p>
+                The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.
+              </p>
+            </div>
             
             <div className="flex flex-wrap gap-4">
               <a 

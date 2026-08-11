@@ -10,6 +10,7 @@ import {
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db, isFirebaseConfigured, FIREBASE_SETUP_MESSAGE } from '@/lib/firebase';
 import { logAdminAction } from '@/lib/audit';
+import { executeRecaptcha } from '@/lib/recaptcha';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -67,6 +68,22 @@ export default function LoginPage() {
     const inputClean = email.trim();
 
     try {
+      // 1. Execute reCAPTCHA for LOGIN action
+      const recaptchaToken = await executeRecaptcha('LOGIN');
+      if (recaptchaToken) {
+        const recaptchaRes = await fetch('/api/recaptcha/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: recaptchaToken, action: 'LOGIN' }),
+        });
+        const recaptchaResult = await recaptchaRes.json();
+        if (!recaptchaRes.ok || !recaptchaResult.success) {
+          setError(recaptchaResult.error || 'reCAPTCHA verification failed. Please try again.');
+          setLoading(false);
+          return;
+        }
+      }
+
       const userCredential = await signInWithEmailAndPassword(auth, inputClean, password);
       
       // Log successful login action

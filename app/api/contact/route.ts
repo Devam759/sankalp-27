@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebaseAdmin';
 import { FieldValue } from 'firebase-admin/firestore';
-import { isRateLimited, sanitizeObject, handleApiError } from '@/lib/security';
+import { isRateLimited, sanitizeObject, handleApiError, verifyRecaptchaToken } from '@/lib/security';
 
 export async function POST(req: Request) {
   try {
@@ -17,11 +17,19 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { name, email, subject, message, honeypot } = body;
+    const { name, email, subject, message, honeypot, recaptchaToken } = body;
 
     if (honeypot) {
       console.warn("Honeypot triggered by IP:", ip);
       return NextResponse.json({ error: 'Bot detected' }, { status: 400 });
+    }
+
+    // Verify reCAPTCHA token if provided or required
+    if (recaptchaToken) {
+      const recaptchaVal = await verifyRecaptchaToken(recaptchaToken, 'CONTACT_SUBMIT');
+      if (!recaptchaVal.success) {
+        return NextResponse.json({ error: recaptchaVal.error || 'reCAPTCHA validation failed.' }, { status: 403 });
+      }
     }
 
     if (!name || !email || !subject || !message) {

@@ -193,5 +193,81 @@ export function handleApiError(error: any, defaultMessage: string = 'An unexpect
   return NextResponse.json({ error: clientError }, { status: 500 });
 }
 
+/**
+ * Verifies a Google reCAPTCHA v3 response token against the Google siteverify API.
+ * 
+ * @param token Response token received from grecaptcha.execute() call
+ * @param expectedAction Expected user-initiated action (e.g., 'LOGIN', 'CONTACT_SUBMIT')
+ * @returns Promise<{ success: boolean; score?: number; error?: string }>
+ */
+export async function verifyRecaptchaToken(
+  token: string,
+  expectedAction?: string
+): Promise<{ success: boolean; score?: number; error?: string }> {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+
+  if (!secretKey) {
+    console.warn("[reCAPTCHA] RECAPTCHA_SECRET_KEY missing in environment variables.");
+    if (process.env.NODE_ENV === 'production') {
+      return { success: false, error: 'reCAPTCHA secret key is not configured on the server.' };
+    }
+    // In dev mode without secret key, allow bypass
+    console.warn("[reCAPTCHA] Bypassing reCAPTCHA verification in non-production mode due to missing secret key.");
+    return { success: true, score: 1.0 };
+  }
+
+  if (!token) {
+    return { success: false, error: 'reCAPTCHA verification token is missing.' };
+  }
+
+  try {
+    const params = new URLSearchParams();
+    params.append('secret', secretKey);
+    params.append('response', token);
+
+    const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: params.toString(),
+    });
+
+    if (!res.ok) {
+      console.error(`[reCAPTCHA] siteverify returned HTTP ${res.status}`);
+      return { success: false, error: `Google reCAPTCHA verification service returned status ${res.status}` };
+    }
+
+    const data = await res.json();
+
+    if (!data.success) {
+      console.warn("[reCAPTCHA] Token verification failed:", data['error-codes']);
+      return { 
+        success: false, 
+        error: `reCAPTCHA verification failed: ${(data['error-codes'] || []).join(', ') || 'Invalid token'}` 
+      };
+    }
+
+    // Check action if specified
+    if (expectedAction && data.action && data.action !== expectedAction) {
+      console.warn(`[reCAPTCHA] Action mismatch. Expected: ${expectedAction}, Received: ${data.action}`);
+      return { success: false, error: 'reCAPTCHA action mismatch.' };
+    }
+
+    // Check risk score (v3 returns score between 0.0 and 1.0)
+    const score = typeof data.score === 'number' ? data.score : 1.0;
+    if (score < 0.3) {
+      console.warn(`[reCAPTCHA] Low risk score detected: ${score}`);
+      return { success: false, score, error: 'High risk interaction detected by reCAPTCHA.' };
+    }
+
+    return { success: true, score };
+  } catch (err: any) {
+    console.error("[reCAPTCHA] Verification error:", err);
+    return { success: false, error: 'Failed to communicate with reCAPTCHA verification server.' };
+  }
+}
+
+
 
 

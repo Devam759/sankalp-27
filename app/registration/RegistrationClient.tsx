@@ -8,6 +8,7 @@ import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
 import { load } from '@cashfreepayments/cashfree-js';
 import { REGISTRATION_CATEGORIES, RegistrationCategory } from '@/constants/fees';
+import { executeRecaptcha } from '@/lib/recaptcha';
 
 const timelineSteps = [
   { num: '01', title: 'Paper Acceptance', body: 'Receive your formal acceptance notification from the Technical Programme Committee via email.' },
@@ -258,8 +259,15 @@ export default function RegistrationClient() {
     setLoading(true);
 
     try {
-      const payload = { ...formData, baseAmount, amount: currentPrice };
-      const response = await fetch('/api/create-order', {
+      const recaptchaToken = await executeRecaptcha('REGISTER');
+      const payload = { 
+        ...formData, 
+        baseAmount, 
+        amount: currentPrice, 
+        action: 'CREATE_ORDER',
+        recaptchaToken 
+      };
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

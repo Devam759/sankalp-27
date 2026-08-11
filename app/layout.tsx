@@ -141,6 +141,10 @@ export default function RootLayout({
           fetchPriority="high"
         />
 
+        <Script 
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LcnfYAtAAAAANwsn9-4TPzCpIPHLfQ2Mq-C5LQk'}`}
+          strategy="afterInteractive"
+        />
         <Script id="extension-error-handler" strategy="beforeInteractive">
           {`
             (function() {
