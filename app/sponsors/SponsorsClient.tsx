@@ -5,6 +5,7 @@ import React from 'react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/Reveal';
+import WordReveal from '@/components/ui/WordReveal';
 import CircuitChipLoader from '@/components/ui/CircuitChipLoader';
 
 export default function SponsorsClient() {
@@ -124,8 +125,21 @@ export default function SponsorsClient() {
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-24 flex flex-col selection:bg-brand-orange selection:text-white">
       <Navbar />
 
+      {/* HEADER SECTION */}
+      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 bg-white border-b border-slate-200/80 overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 text-center flex flex-col items-center">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
+            <WordReveal text="Sponsors & Partnerships" />
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
+          </h1>
+          <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto text-center leading-relaxed font-normal mt-6">
+            Partner with SANKALP 2027 to engage with global technology leaders, researchers, and academic pioneers shaping the future of Sustainable AI.
+          </p>
+        </div>
+      </section>
+
       {/* REVEALING SOON SECTION */}
-      <section className="flex-grow py-16 md:py-28 px-6 md:px-12 flex items-center justify-center text-center relative overflow-hidden bg-brand-cloud">
+      <section className="flex-grow py-16 md:py-24 px-6 md:px-12 flex items-center justify-center text-center relative overflow-hidden bg-brand-cloud">
         {/* Subtle Background Pattern */}
         <div 
           className="absolute inset-0 opacity-[0.035] pointer-events-none"

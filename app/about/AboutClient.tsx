@@ -26,13 +26,14 @@ export default function AboutClient() {
 
         <div className="max-w-[1440px] w-full mx-auto relative z-10 px-6 md:px-12">
           
-          <div className="flex justify-between items-end border-b border-brand-blue/10 pb-8 mb-16">
-              <div className="flex gap-4 items-end">
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
-                  <WordReveal text="Overview" />
-                  <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
-                </h2>
-              </div>
+          <div className="mb-14 text-center flex flex-col items-center">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+              <WordReveal text="About SANKALP" />
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
+            </h1>
+            <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto text-center leading-relaxed font-normal mt-8">
+              International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning &amp; Prediction at JK Lakshmipat University, Jaipur.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">

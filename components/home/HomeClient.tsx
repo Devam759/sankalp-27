@@ -326,17 +326,17 @@ export default function HomeClient() {
                 alt="JK Lakshmipat University"
                 width={400}
                 height={120}
-                className="h-14 sm:h-18 md:h-22 lg:h-24 w-auto object-contain drop-shadow-md"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-md"
                 priority
               />
               {/* Translucent-Whitish Vertical Separating Line between Logos */}
-              <div className="h-10 sm:h-14 md:h-18 lg:h-20 w-px bg-white/40 shrink-0" />
+              <div className="h-7 sm:h-9 md:h-10 lg:h-12 w-px bg-white/40 shrink-0" />
               <Image
                 src="/logos/Asia_University_Logo.webp"
                 alt="Asia University"
                 width={400}
                 height={120}
-                className="h-14 sm:h-18 md:h-22 lg:h-24 w-auto object-contain drop-shadow-md"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-md"
                 priority
               />
             </div>
@@ -348,7 +348,7 @@ export default function HomeClient() {
           <motion.div variants={itemVariants} className="mb-3">
             <h1
               ref={heroTitleRef}
-              className="text-[clamp(3rem,8vw,6rem)] font-sans font-extrabold sm:font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm"
+              className="text-[clamp(2.5rem,6.5vw,5rem)] font-sans font-extrabold sm:font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm"
             >
               <span className="inline-block overflow-hidden align-bottom">
                 <span className="hero-word inline-block">JKLU&nbsp;</span>
@@ -357,7 +357,7 @@ export default function HomeClient() {
                 <span className="hero-word inline-block">SANKALP&nbsp;</span>
               </span>
               <span className="inline-block overflow-hidden align-bottom">
-                <span className="hero-word inline-block text-brand-orange">2027</span>
+                <span className="hero-word inline-block text-white">2027</span>
               </span>
             </h1>
           </motion.div>
@@ -378,12 +378,12 @@ export default function HomeClient() {
                 { value: timeLeft.isExpired ? "00" : String(timeLeft.seconds).padStart(2, '0'), label: "Secs" },
               ].map((unit, i, arr) => (
                 <React.Fragment key={unit.label}>
-                  <div className="flex flex-col items-center justify-center w-[56px] sm:w-[68px] py-2.5 sm:py-3 rounded-sm bg-white/10 border border-white/20 backdrop-blur-md shadow-xl">
-                    <span className="text-brand-orange font-black font-sans leading-none tracking-tight tabular-nums text-xl sm:text-2xl" suppressHydrationWarning>{unit.value}</span>
-                    <span className="text-white/80 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
+                  <div className="flex flex-col items-center justify-center w-[56px] sm:w-[68px] py-2.5 sm:py-3 rounded-sm bg-slate-900/40 border border-slate-300/20 backdrop-blur-md shadow-md">
+                    <span className="text-slate-100 font-extrabold font-sans leading-none tracking-tight tabular-nums text-xl sm:text-2xl" suppressHydrationWarning>{unit.value}</span>
+                    <span className="text-slate-300/80 text-[8px] sm:text-[9px] font-bold tracking-[0.14em] uppercase mt-1">{unit.label}</span>
                   </div>
                   {i < arr.length - 1 && (
-                    <span className="text-white/40 text-base sm:text-lg font-black leading-none -mt-3 select-none animate-pulse">:</span>
+                    <span className="text-slate-400/40 text-base sm:text-lg font-black leading-none -mt-3 select-none animate-pulse">:</span>
                   )}
                 </React.Fragment>
               ))}
@@ -393,13 +393,13 @@ export default function HomeClient() {
           <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/sessions"
-              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0 tracking-wide flex items-center justify-center cursor-pointer"
+              className="relative group overflow-hidden bg-brand-orange hover:bg-orange-500 text-white px-8 py-3.5 rounded-sm font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 active:scale-100 tracking-wide flex items-center justify-center cursor-pointer border border-orange-400/40 btn-shimmer"
             >
               Explore Sessions &amp; Tracks
             </Link>
             <Link
               href="/registration"
-              className="bg-white/10 backdrop-blur-md border border-white/40 text-white px-8 py-3.5 rounded-sm font-bold text-sm hover:bg-white hover:text-brand-blue transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0 tracking-wide flex items-center justify-center btn-shimmer"
+              className="relative group overflow-hidden bg-brand-blue/85 hover:bg-brand-blue border border-sky-300/40 hover:border-sky-300/80 text-white px-8 py-3.5 rounded-sm font-bold text-sm transition-all duration-300 shadow-md hover:shadow-brand-blue/50 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 active:scale-100 tracking-wide flex items-center justify-center backdrop-blur-md"
             >
               Register Now
             </Link>
@@ -426,6 +426,8 @@ export default function HomeClient() {
                 alt="SANKALP 2027 Logo"
                 width={400}
                 height={160}
+                priority
+                loading="eager"
                 className="h-28 sm:h-32 w-auto max-w-[220px] object-contain drop-shadow-lg shrink-0"
               />
               <h2 className="text-right font-serif font-bold text-2xl text-white leading-tight">
@@ -488,21 +490,31 @@ export default function HomeClient() {
               <span className="w-1.5 h-6 bg-brand-orange"></span>
               Key Dates
             </h3>
-            <div className="relative border-l border-brand-orange/40 ml-2 space-y-6 flex-grow">
-              {conferenceDates.map((dateItem, i) => (
-                <motion.div
-                  key={`key-date-${dateItem.label}-${i}`}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + i * 0.08, ease: "easeOut" }}
-                  className="relative pl-6"
-                >
-                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-brand-orange rounded-none"></div>
-                  <span className="block text-xs font-bold text-brand-orange/90 uppercase tracking-wider mb-1">{dateItem.label}</span>
-                  <span className="block text-white font-semibold text-sm">{dateItem.date}</span>
-                </motion.div>
-              ))}
+            <div className="relative ml-2 space-y-6 flex-grow">
+              {conferenceDates.map((dateItem, i) => {
+                const isLast = i === conferenceDates.length - 1;
+                return (
+                  <motion.div
+                    key={`key-date-${dateItem.label}-${i}`}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.3 + i * 0.08, ease: "easeOut" }}
+                    className="relative pl-6"
+                  >
+                    {/* Node Dot */}
+                    <div className="absolute -left-[5px] top-1 w-2.5 h-2.5 bg-brand-orange rounded-none z-10" />
+
+                    {/* Connecting Line Segment to Next Node (all items except last) */}
+                    {!isLast && (
+                      <div className="absolute left-0 top-1 h-[calc(100%+24px)] w-px bg-brand-orange/40 pointer-events-none" />
+                    )}
+
+                    <span className="block text-xs font-bold text-brand-orange/90 uppercase tracking-wider mb-1">{dateItem.label}</span>
+                    <span className="block text-white font-semibold text-sm">{dateItem.date}</span>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>

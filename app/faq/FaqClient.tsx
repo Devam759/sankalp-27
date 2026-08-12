@@ -50,14 +50,14 @@ export default function FaqClient() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-brand-blue text-white pt-32 pb-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:16px_16px]"></div>
-        <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
-          <h1 className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase">
-            <WordReveal text="Frequently Asked Questions" className="text-white" />
+      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 bg-white border-b border-slate-200/80 overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 text-center flex flex-col items-center">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
+            <WordReveal text="Frequently Asked Questions" />
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
           </h1>
           <Reveal variant="in" delay={0.25}>
-            <p className="text-base sm:text-lg opacity-85 max-w-xl mx-auto">
+            <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-2xl mx-auto text-center leading-relaxed font-normal mt-6">
               Find quick answers to common questions about JKLU SANKALP 2027 registrations, venue facilities, travel, and accommodation.
             </p>
           </Reveal>

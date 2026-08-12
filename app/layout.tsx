@@ -124,20 +124,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet" />
+        {/* Preload Sankalp logo as it is always the LCP element in the Navbar */}
         <link
           rel="preload"
-          href="/_next/image?url=%2FImages%2Fhero%2FDJI_0063.webp&w=640&q=75"
+          href="/logos/Sankalp logo.webp"
           as="image"
           type="image/webp"
-          media="(max-width: 640px)"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          href="/_next/image?url=%2FImages%2Fhero%2FDJI_0063.webp&w=1080&q=75"
-          as="image"
-          type="image/webp"
-          media="(min-width: 641px)"
           fetchPriority="high"
         />
 

@@ -58,11 +58,11 @@ export default function TrackAccordion({ track, index, isOpen: controlledIsOpen,
             className="overflow-hidden"
           >
             <div className="px-4 sm:px-6 pb-5 pt-2 sm:pl-20 sm:pt-2 border-t border-slate-50">
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {track.topics.map((topic, i) => (
-                  <li key={i} className="flex items-start gap-2 text-slate-600 text-xs sm:text-sm">
-                    <span className="text-brand-orange mt-0.5 sm:mt-1.5 font-bold">•</span>
-                    <span className="leading-relaxed">{topic}</span>
+                  <li key={i} className="flex items-start gap-3 text-slate-700 text-xs sm:text-sm font-medium leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0 mt-2" />
+                    <span>{topic}</span>
                   </li>
                 ))}
               </ul>

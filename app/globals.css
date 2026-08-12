@@ -430,3 +430,10 @@ body {
   100% { left: 140%; }
 }
 
+/* Hide Google reCAPTCHA v3 floating badge */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+

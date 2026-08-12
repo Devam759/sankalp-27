@@ -113,19 +113,13 @@ export default function TechTeamClient() {
       {/* TEAM CARDS SECTION */}
       <section className="py-16 sm:py-24 bg-white flex-grow border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
-          <Reveal className="text-center mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black text-brand-blue tracking-tight uppercase">
+          <Reveal className="text-center mb-16 flex flex-col items-center">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
               <WordReveal text="Website Development Team" className="text-brand-blue" />
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
             </h1>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="w-20 h-1 bg-brand-orange mx-auto rounded-full mt-4 mb-3 origin-center"
-            />
-            <p className="text-slate-600 text-sm md:text-base font-medium">
-              {/* Institute of Engineering &amp; Technology (IET), JK Lakshmipat University, Jaipur */}
+            <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-2xl mx-auto text-center leading-relaxed font-normal mt-6">
+              Institute of Engineering &amp; Technology (IET), JK Lakshmipat University, Jaipur
             </p>
           </Reveal>
 

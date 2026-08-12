@@ -315,23 +315,18 @@ export default function RegistrationClient() {
       <Navbar />
 
       {/* HERO BANNER SECTION */}
-      <section ref={heroRef} className="pt-28 sm:pt-36 pb-20 sm:pb-28 bg-gradient-to-b from-[#0B1B3D] via-[#184176] to-[#0D2447] text-white relative overflow-hidden">
-        {/* Subtle mesh background accent */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-orange/20 via-transparent to-transparent pointer-events-none opacity-60" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+      <section ref={heroRef} className="pt-28 sm:pt-36 pb-12 sm:pb-16 bg-white border-b border-slate-200/80 overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 text-center flex flex-col items-center">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
+            <WordReveal text="Conference Registration" />
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
+          </h1>
 
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.15] mb-6">
-              <WordReveal text="Conference Registration" className="text-white" />
-            </h1>
-
-            <Reveal variant="in" delay={0.25}>
-              <p className="text-slate-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl">
-                Join distinguished researchers, academicians, and industry leaders at JK Lakshmipat University, Jaipur. Select your tier below to initiate instant registration and ticket pass dispatch.
-              </p>
-            </Reveal>
-          </div>
+          <Reveal variant="in" delay={0.25}>
+            <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto text-center leading-relaxed font-normal mt-6">
+              Join distinguished researchers, academicians, and industry leaders at JK Lakshmipat University, Jaipur. Select your tier below to initiate instant registration and ticket pass dispatch.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -340,16 +335,14 @@ export default function RegistrationClient() {
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-            <Reveal variant="in">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
-                  <WordReveal text="Select Your Category" className="text-brand-blue" />
-                </h2>
-                <p className="text-slate-600 text-sm font-medium mt-1">
-                  Choose your registration tier to initiate your online registration.
-                </p>
-              </div>
-            </Reveal>
+            <div>
+              <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block">
+                Registration Tiers
+              </span>
+              <p className="text-slate-600 text-sm font-medium mt-1">
+                Choose your registration tier to initiate your online registration.
+              </p>
+            </div>
 
             {/* Filter Tabs */}
             <div className="flex items-center bg-slate-100/90 p-1.5 rounded-md border border-slate-200 self-start md:self-auto">

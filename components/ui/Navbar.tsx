@@ -36,7 +36,7 @@ export default function Navbar() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          const isScrolled = currentScrollY > 10;
+          const isScrolled = currentScrollY > 60;
 
           setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
 
@@ -87,6 +87,7 @@ export default function Navbar() {
   // On homepage: transparent at top, solid when scrolled
   // On other pages: always solid
   const solidBg = scrolled || !isHomepage;
+  const showRightItems = scrolled || !isHomepage;
 
   // Keep visible if mobile menu is open
   const isMobileHidden = mobileHidden && !mobileOpen;
@@ -114,11 +115,19 @@ export default function Navbar() {
                 height={70}
                 className="h-14 sm:h-16 max-h-[58px] w-auto object-contain py-1"
                 priority
+                loading="eager"
+                fetchPriority="high"
               />
             </Link>
 
             {/* Mobile JKLU & Asia University Logos */}
-            <div className="flex items-center gap-2.5 lg:hidden">
+            <div
+              className={`flex items-center gap-2.5 lg:hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                showRightItems
+                  ? 'opacity-100 translate-y-0 pointer-events-auto'
+                  : 'opacity-0 -translate-y-4 pointer-events-none'
+              }`}
+            >
               <a
                 href="https://jklu.edu.in"
                 target="_blank"
@@ -179,50 +188,58 @@ export default function Navbar() {
           {/* Right: CTA buttons + Desktop JKLU & Asia University Logos + Mobile toggle */}
           <div className="flex items-center gap-3 relative z-30 pointer-events-auto">
             <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href="/registration"
-                className="h-9 px-4 border border-white/70 text-white rounded-sm font-bold text-xs uppercase tracking-wider flex items-center justify-center hover:bg-white hover:text-brand-blue transition-colors cursor-pointer relative z-30 pointer-events-auto whitespace-nowrap"
+              <div
+                className={`flex items-center gap-3.5 shrink-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  showRightItems
+                    ? 'opacity-100 translate-y-0 pointer-events-auto'
+                    : 'opacity-0 -translate-y-4 pointer-events-none'
+                }`}
               >
-                Register
-              </Link>
-              <a
-                href={PAPER_SUBMISSION_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-9 px-4 bg-brand-orange text-white rounded-sm font-bold text-xs uppercase tracking-wider flex items-center justify-center hover:bg-orange-500 transition-colors shadow-sm cursor-pointer relative z-30 pointer-events-auto whitespace-nowrap"
-              >
-                Submit Paper
-              </a>
+                <Link
+                  href="/registration"
+                  className="h-9 px-4 border border-white/70 text-white rounded-sm font-bold text-xs uppercase tracking-wider flex items-center justify-center hover:bg-white hover:text-brand-blue hover:scale-105 hover:shadow-md transition-all duration-300 cursor-pointer relative z-30 pointer-events-auto whitespace-nowrap"
+                >
+                  Register
+                </Link>
+                <a
+                  href={PAPER_SUBMISSION_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-9 px-4 bg-brand-orange text-white rounded-sm font-bold text-xs uppercase tracking-wider flex items-center justify-center hover:bg-orange-500 hover:scale-105 hover:shadow-md hover:shadow-orange-500/30 transition-all duration-300 shadow-sm cursor-pointer relative z-30 pointer-events-auto whitespace-nowrap"
+                >
+                  Submit Paper
+                </a>
 
-              {/* Desktop Right Logos: JKLU + Asia University */}
-              <div className="flex items-center gap-3.5 ml-2 shrink-0">
-                <a
-                  href="https://jklu.edu.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
-                  aria-label="JK Lakshmipat University Website"
-                >
-                  <img
-                    src="/logos/white_jklu_logo.webp"
-                    alt="JKLU Logo"
-                    className="h-11 md:h-[48px] lg:h-[52px] w-auto object-contain"
-                  />
-                </a>
-                <div className="h-8 w-px bg-white/30" />
-                <a
-                  href="https://www.asia.edu.tw/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
-                  aria-label="Asia University Website"
-                >
-                  <img
-                    src="/logos/Asia_University_Logo.webp"
-                    alt="Asia University Logo"
-                    className="h-10 md:h-[42px] lg:h-[46px] w-auto object-contain rounded-full"
-                  />
-                </a>
+                {/* Desktop Right Logos: JKLU + Asia University */}
+                <div className="flex items-center gap-3.5 ml-1 shrink-0">
+                  <a
+                    href="https://jklu.edu.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+                    aria-label="JK Lakshmipat University Website"
+                  >
+                    <img
+                      src="/logos/white_jklu_logo.webp"
+                      alt="JKLU Logo"
+                      className="h-11 md:h-[48px] lg:h-[52px] w-auto object-contain"
+                    />
+                  </a>
+                  <div className="h-8 w-px bg-white/30" />
+                  <a
+                    href="https://www.asia.edu.tw/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
+                    aria-label="Asia University Website"
+                  >
+                    <img
+                      src="/logos/Asia_University_Logo.webp"
+                      alt="Asia University Logo"
+                      className="h-10 md:h-[42px] lg:h-[46px] w-auto object-contain rounded-full"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
 
