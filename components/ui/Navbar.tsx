@@ -113,10 +113,8 @@ export default function Navbar() {
                 alt="SANKALP 2027 Logo"
                 width={220}
                 height={70}
-                className="h-14 sm:h-16 max-h-[58px] w-auto object-contain py-1"
                 priority
-                loading="eager"
-                fetchPriority="high"
+                className="h-14 sm:h-16 max-h-[58px] w-auto object-contain py-1"
               />
             </Link>
 

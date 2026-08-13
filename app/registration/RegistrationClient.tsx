@@ -174,16 +174,21 @@ export default function RegistrationClient() {
 
   const getDesignationForCategory = (catId: string) => {
     switch (catId) {
+      case 'speaker_student':
       case 'student_presenter':
         return 'Student';
+      case 'speaker_academic':
       case 'academic_presenter':
         return 'Academician / Faculty';
+      case 'speaker_industry':
       case 'industry_presenter':
         return 'Industry Professional';
+      case 'delegate_offline':
+      case 'delegate_online':
       case 'attendee':
-        return 'Conference Attendee / Observer';
+        return 'Conference Delegate';
       default:
-        return 'Student';
+        return 'Participant';
     }
   };
 
@@ -305,8 +310,8 @@ export default function RegistrationClient() {
   };
 
   const filteredCategories = REGISTRATION_CATEGORIES.filter((cat) => {
-    if (activeTab === 'presenters') return cat.id.includes('presenter');
-    if (activeTab === 'global') return cat.id === 'foreign_delegate';
+    if (activeTab === 'presenters') return cat.id.includes('speaker') || cat.id.includes('presenter');
+    if (activeTab === 'global') return cat.id.includes('delegate') || cat.id === 'foreign_delegate';
     return true;
   });
 

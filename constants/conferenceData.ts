@@ -162,11 +162,11 @@ export const committeeMembers = {
 };
 
 export const registrationFees = [
-  { category: 'UG/PG Student and Research Scholar', national: '₹7500 + 18% GST', international: 'USD 110 + 18% GST' },
-  { category: 'Academicians', national: '₹9500 + 18% GST', international: 'USD 250 + 18% GST' },
-  { category: 'Industry Participant', national: '₹12500 + 18% GST', international: 'USD 350 + 18% GST' },
-  { category: 'Delegates (Offline)', national: '₹6500 + 18% GST', international: 'USD 150 + 18% GST' },
-  { category: 'Delegates (Online)', national: '₹3500 + 18% GST', international: 'USD 100 + 18% GST' },
+  { category: 'Speaker: Academic', national: '₹9,500.00 + 18% GST', international: 'USD 250 + 18% GST' },
+  { category: 'Speaker: Student', national: '₹7,500.00 + 18% GST', international: 'USD 110 + 18% GST' },
+  { category: 'Speaker: Industry', national: '₹12,500.00 + 18% GST', international: 'USD 350 + 18% GST' },
+  { category: 'Delegate (Offline)', national: '₹6,500.00 + 18% GST', international: 'USD 150 + 18% GST' },
+  { category: 'Delegate (Online)', national: '₹3,500.00 + 18% GST', international: 'USD 100 + 18% GST' },
 ];
 
 export const speakers = {

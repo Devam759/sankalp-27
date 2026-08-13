@@ -134,7 +134,7 @@ export async function POST(req: Request) {
         }
         
         // Validate presenter information
-        const isPresenter = categoryId.includes('presenter') || categoryId === 'foreign_delegate';
+        const isPresenter = categoryId.includes('speaker') || categoryId.includes('presenter') || categoryId === 'foreign_delegate';
         if (isPresenter && (!data.paperId || !data.paperId.trim())) {
           return NextResponse.json({ error: 'Paper ID is required for paper presenters' }, { status: 400 });
         }

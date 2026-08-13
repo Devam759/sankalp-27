@@ -427,7 +427,6 @@ export default function HomeClient() {
                 width={400}
                 height={160}
                 priority
-                loading="eager"
                 className="h-28 sm:h-32 w-auto max-w-[220px] object-contain drop-shadow-lg shrink-0"
               />
               <h2 className="text-right font-serif font-bold text-2xl text-white leading-tight">
