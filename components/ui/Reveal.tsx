@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { fadeUp, fadeIn, fadeLeft, fadeRight, scaleIn, VIEWPORT } from '@/lib/animations/variants';
+import { fadeUp, fadeIn, fadeLeft, fadeRight, scaleIn, clipUp, blurFadeIn, VIEWPORT } from '@/lib/animations/variants';
 import { usePrefersReducedMotion } from '@/lib/animations/gsap';
 
 const VARIANT_MAP: Record<NonNullable<RevealProps['variant']>, Variants> = {
@@ -11,12 +11,14 @@ const VARIANT_MAP: Record<NonNullable<RevealProps['variant']>, Variants> = {
   left: fadeLeft,
   right: fadeRight,
   scale: scaleIn,
+  clip: clipUp,
+  blur: blurFadeIn,
 };
 
 interface RevealProps {
   children: React.ReactNode;
   /** Direction/style of the entrance reveal. */
-  variant?: 'up' | 'in' | 'left' | 'right' | 'scale';
+  variant?: 'up' | 'in' | 'left' | 'right' | 'scale' | 'clip' | 'blur';
   /** Seconds to wait before animating. */
   delay?: number;
   /** Override the default 0.6s duration. */
@@ -24,6 +26,7 @@ interface RevealProps {
   className?: string;
   once?: boolean;
 }
+
 
 /**
  * Scroll-reveal wrapper around the shared variants. Under `prefers-reduced-motion`

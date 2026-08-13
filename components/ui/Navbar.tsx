@@ -12,8 +12,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileHidden, setMobileHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const pathname = usePathname();
   const isHomepage = pathname === '/';
+
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -114,6 +116,7 @@ export default function Navbar() {
                 width={220}
                 height={70}
                 priority
+                loading="eager"
                 className="h-14 sm:h-16 max-h-[58px] w-auto object-contain py-1"
               />
             </Link>
@@ -156,31 +159,40 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Navigation Links - Positioned Aside SANKALP Logo */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+            <div 
+              className="hidden lg:flex items-center gap-4 xl:gap-5"
+              onMouseLeave={() => setHoveredLink(null)}
+            >
               {navLinks.map((link) => {
                 const isActive =
                   pathname === link.href ||
                   (link.href !== '/' && pathname.startsWith(link.href));
+                const isHovered = hoveredLink === link.name;
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`relative group py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap ${
+                    onMouseEnter={() => setHoveredLink(link.name)}
+                    className={`relative py-2 text-sm font-semibold tracking-wide transition-colors whitespace-nowrap z-10 ${
                       isActive
                         ? 'text-brand-orange'
                         : 'text-white hover:text-brand-orange'
                     }`}
                   >
                     {link.name}
-                    <span
-                      className={`absolute bottom-0 left-0 h-[2px] bg-brand-orange transition-all duration-300 ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    />
+                    {(isHovered || (isActive && hoveredLink === null)) && (
+                      <motion.span
+                        layoutId="nav-indicator"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-brand-orange rounded-full"
+                        style={{ originY: '0.5' }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
                   </Link>
                 );
               })}
             </div>
+
           </div>
 
           {/* Right: CTA buttons + Desktop JKLU & Asia University Logos + Mobile toggle */}
@@ -274,17 +286,17 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ clipPath: 'inset(0% 0% 100% 0%)', opacity: 0.9 }}
+            animate={{ clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
+            exit={{ clipPath: 'inset(0% 0% 100% 0%)', opacity: 0.9 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[199] bg-[#184176] flex flex-col pt-24 px-6 overflow-y-auto overscroll-contain lg:hidden"
           >
             {/* Subtle decorative top line */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className="absolute top-[72px] left-0 right-0 h-px bg-white/10 origin-left"
             />
 
@@ -296,10 +308,11 @@ export default function Navbar() {
                 return (
                   <motion.div
                     key={link.name}
-                    initial={{ opacity: 0, x: -18 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.32, ease: [0.4, 0, 0.2, 1], delay: 0.08 + i * 0.055 }}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.06 + i * 0.045 }}
                   >
+
                     <Link
                       href={link.href}
                       className={`flex items-center justify-between border-b py-4 font-semibold tracking-wide transition-colors ${

@@ -96,7 +96,7 @@ export default function HomeClient() {
   const [activeAdvisory, setActiveAdvisory] = React.useState<string | null>(null);
 
   const jaipurAttractions = [
-    { name: 'Hawa Mahal', src: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&w=600&q=80' },
+    { name: 'Hawa Mahal', src: '/Images/jaipur_sightseeing/hawa_mahal.webp' },
     { name: 'Amer Fort', src: '/Images/jaipur_sightseeing/amer_fort.webp' },
     { name: 'Jal Mahal', src: '/Images/jaipur_sightseeing/jal_mahal.webp' },
     { name: 'City Palace', src: '/Images/jaipur_sightseeing/city_palace.webp' },
@@ -250,14 +250,15 @@ export default function HomeClient() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 }
+      transition: { staggerChildren: 0.1, delayChildren: 0.15 }
     }
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 12, filter: 'blur(4px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
+
 
   return (
     <>
@@ -411,113 +412,137 @@ export default function HomeClient() {
 
 
       {/* THREE COLUMN INFO SECTION */}
+      {/* THREE COLUMN INFO SECTION */}
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 border border-slate-200">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-brand-blue p-8 sm:p-10 text-white flex flex-col justify-start relative overflow-hidden group"
-          >
-            <div className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
-              <Image
-                src="/logos/Sankalp logo.webp"
-                alt="SANKALP 2027 Logo"
-                width={400}
-                height={160}
-                priority
-                className="h-28 sm:h-32 w-auto max-w-[220px] object-contain drop-shadow-lg shrink-0"
-              />
-              <h2 className="text-right font-serif font-bold text-2xl text-white leading-tight">
-                <span className="block">JKLU</span>
-                <span className="block">SANKALP</span>
-                <span className="block">2027</span>
-              </h2>
-            </div>
-            <p className="text-slate-300 text-sm leading-relaxed mb-4">
-              A premier JKLU International Conference uniting researchers, academics, industry leaders and students across six frontier domains: Sustainable AI, Next-Gen Knowledge, Automation, Learning, Prediction and emerging technologies.
-            </p>
-            <p className="text-slate-300 text-sm leading-relaxed">
-              Driving the resolve, the <em>sankalp</em>, to shape a future of intelligent, ethical, and impactful innovation.
-            </p>
-          </motion.div>
+          
+          {/* Card 1: About */}
+          <div className="bg-brand-blue p-8 sm:p-10 text-white flex flex-col justify-start relative overflow-hidden group">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.08 }
+                }
+              }}
+              className="flex flex-col h-full justify-start"
+            >
+              <motion.div variants={itemVariants} className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
+                <Image
+                  src="/logos/Sankalp logo.webp"
+                  alt="SANKALP 2027 Logo"
+                  width={400}
+                  height={160}
+                  priority
+                  className="h-28 sm:h-32 w-auto max-w-[220px] object-contain drop-shadow-lg shrink-0"
+                />
+                <h2 className="text-right font-serif font-bold text-2xl text-white leading-tight">
+                  <span className="block">JKLU</span>
+                  <span className="block">SANKALP</span>
+                  <span className="block">2027</span>
+                </h2>
+              </motion.div>
+              <motion.p variants={itemVariants} className="text-slate-300 text-sm leading-relaxed mb-4">
+                A premier JKLU International Conference uniting researchers, academics, industry leaders and students across six frontier domains: Sustainable AI, Next-Gen Knowledge, Automation, Learning, Prediction and emerging technologies.
+              </motion.p>
+              <motion.p variants={itemVariants} className="text-slate-300 text-sm leading-relaxed">
+                Driving the resolve, the <em>sankalp</em>, to shape a future of intelligent, ethical, and impactful innovation.
+              </motion.p>
+            </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="bg-brand-orange p-10 flex flex-col border-r border-b lg:border-b-0 border-brand-orange/80 group"
-          >
-            <h3 className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-1.5 h-6 bg-brand-blue"></span>
-              Latest Updates
-            </h3>
-            <ul className="space-y-5 flex-grow">
-              {[
-                'Call for Papers opens on 15 August 2026',
-                'Scopus-Indexed Proceedings Publication',
-                'Full paper submission deadline: 30 November 2026',
-                'Conference mode: Hybrid',
-                'Registration details announced'
-              ].map((info, i) => (
-                <motion.li
-                  key={`info-${i}-${info.slice(0, 12)}`}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: "easeOut" }}
-                  className="flex items-start gap-3"
-                >
-                  <span className="mt-[5px] w-1.5 h-1.5 rounded-sm bg-brand-blue shrink-0" />
-                  <span className="text-white text-sm leading-relaxed font-semibold">{info}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            id="important-dates"
-            className="bg-brand-blue/95 p-10 flex flex-col"
-          >
-            <h3 className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-1.5 h-6 bg-brand-orange"></span>
-              Key Dates
-            </h3>
-            <div className="relative ml-2 space-y-6 flex-grow">
-              {conferenceDates.map((dateItem, i) => {
-                const isLast = i === conferenceDates.length - 1;
-                return (
-                  <motion.div
-                    key={`key-date-${dateItem.label}-${i}`}
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 + i * 0.08, ease: "easeOut" }}
-                    className="relative pl-6"
+          {/* Card 2: Latest Updates */}
+          <div className="bg-brand-orange p-10 flex flex-col border-r border-b lg:border-b-0 border-brand-orange/80 group">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.06 }
+                }
+              }}
+              className="flex flex-col h-full justify-start"
+            >
+              <motion.h3 variants={itemVariants} className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
+                <span className="w-1.5 h-6 bg-brand-blue"></span>
+                Latest Updates
+              </motion.h3>
+              <ul className="space-y-5 flex-grow">
+                {[
+                  'Call for Papers opens on 15 August 2026',
+                  'Scopus-Indexed Proceedings Publication',
+                  'Full paper submission deadline: 30 November 2026',
+                  'Conference mode: Hybrid',
+                  'Registration details announced'
+                ].map((info, i) => (
+                  <motion.li
+                    key={`info-${i}-${info.slice(0, 12)}`}
+                    variants={itemVariants}
+                    className="flex items-start gap-3"
                   >
-                    {/* Node Dot */}
-                    <div className="absolute -left-[5px] top-1 w-2.5 h-2.5 bg-brand-orange rounded-none z-10" />
+                    <span className="mt-[5px] w-1.5 h-1.5 rounded-sm bg-brand-blue shrink-0" />
+                    <span className="text-white text-sm leading-relaxed font-semibold">{info}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
 
-                    {/* Connecting Line Segment to Next Node (all items except last) */}
-                    {!isLast && (
-                      <div className="absolute left-0 top-1 h-[calc(100%+24px)] w-px bg-brand-orange/40 pointer-events-none" />
-                    )}
+          {/* Card 3: Key Dates */}
+          <div id="important-dates" className="bg-brand-blue/95 p-10 flex flex-col">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.06 }
+                }
+              }}
+              className="flex flex-col h-full justify-start"
+            >
+              <motion.h3 variants={itemVariants} className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
+                <span className="w-1.5 h-6 bg-brand-orange"></span>
+                Key Dates
+              </motion.h3>
+              <div className="relative ml-2 space-y-6 flex-grow">
+                {conferenceDates.map((dateItem, i) => {
+                  const isLast = i === conferenceDates.length - 1;
+                  return (
+                    <motion.div
+                      key={`key-date-${dateItem.label}-${i}`}
+                      variants={itemVariants}
+                      className="relative pl-6"
+                    >
+                      {/* Node Dot */}
+                      <div className="absolute -left-[5px] top-1 w-2.5 h-2.5 bg-brand-orange rounded-none z-10" />
 
-                    <span className="block text-xs font-bold text-brand-orange/90 uppercase tracking-wider mb-1">{dateItem.label}</span>
-                    <span className="block text-white font-semibold text-sm">{dateItem.date}</span>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
+                      {/* Connecting Line Segment to Next Node (all items except last) */}
+                      {!isLast && (
+                        <div className="absolute left-0 top-1 h-[calc(100%+24px)] w-px bg-brand-orange/40 pointer-events-none" />
+                      )}
+
+                      <span className="block text-xs font-bold text-brand-orange/90 uppercase tracking-wider mb-1">{dateItem.label}</span>
+                      <span className="block text-white font-semibold text-sm">{dateItem.date}</span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+
         </div>
       </Section>
+
+
+
+
 
       {/* HIGHLIGHTS */}
       <ConferenceHighlights />
@@ -539,11 +564,14 @@ export default function HomeClient() {
             }).map((speaker, i) => (
               <motion.div
                 key={`plenary-${speaker.name}`}
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: 'transform, opacity' }}
                 className="max-w-2xl bg-white border border-slate-200 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-sm text-center md:text-left w-full relative"
               >
+
                 {speaker.linkedin && (
                   <div className="absolute top-4 right-4 sm:top-6 sm:right-6 group/tooltip z-10">
                     <a 
@@ -592,7 +620,18 @@ export default function HomeClient() {
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.08 }
+                }
+              }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
               {[...speakers.keynote].sort((a, b) => {
                 const nameA = a.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
                 const nameB = b.name.replace(/^(Dr\.|Prof\.|Mr\.|Ms\.)\s+/i, '').trim();
@@ -600,12 +639,14 @@ export default function HomeClient() {
               }).map((speaker, i) => (
                 <motion.div
                   key={`keynote-${speaker.name}`}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 16 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  style={{ willChange: 'transform, opacity' }}
                   className="bg-white border border-slate-200 p-6 pt-8 flex flex-col items-center text-center shadow-sm relative h-full justify-start"
                 >
+
                   {speaker.linkedin && (
                     <div className="absolute top-4 right-4 sm:top-5 sm:right-5 group/tooltip z-10">
                       <a 
@@ -642,7 +683,7 @@ export default function HomeClient() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </Section>
@@ -650,14 +691,26 @@ export default function HomeClient() {
       {/* COMMITTEE */}
       <Section id="committee" title="Conference Committee">
         <div className="max-w-[1200px] mx-auto space-y-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.08 }
+              }
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {[committeeMembers.chiefPatron, ...committeeMembers.chiefCoPatrons, committeeMembers.patron].map((member, i) => (
               <motion.div
                 key={`patron-${member.name}-${i}`}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }}
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                style={{ willChange: 'transform, opacity' }}
                 className="p-6 border flex items-start gap-4 relative group bg-brand-blue/5 border-brand-blue/20"
               >
                 {'linkedin' in member && (member as any).linkedin && (
@@ -689,16 +742,29 @@ export default function HomeClient() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.08 }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
             {committeeMembers.chairs.map((chair, i) => (
               <motion.div
                 key={`chair-${chair.name}-${i}`}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                style={{ willChange: 'transform, opacity' }}
                 className="bg-brand-blue text-white p-6 border border-brand-blue flex items-center gap-4 text-left relative group"
               >
                 {chair.linkedin && (
@@ -715,7 +781,7 @@ export default function HomeClient() {
                 )}
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
-                    src={chair.image || "/Images/footer_image.webp"}
+                    src={chair.image || "/Images/campus/jklu_campus.webp"}
                     alt={`${chair.name} - ${chair.role} SANKALP 2027 JKLU`}
                     title={`${chair.name} - ${chair.role} SANKALP 2027 JKLU`}
                     fill
@@ -730,16 +796,28 @@ export default function HomeClient() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.08 }
+              }
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {committeeMembers.programChairs.map((chair, i) => (
               <motion.div
                 key={`prog-chair-${chair.name}-${i}`}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                style={{ willChange: 'transform, opacity' }}
                 className="bg-brand-orange/10 border border-brand-orange/20 p-6 flex flex-col items-center text-center rounded-sm shadow-sm relative group"
               >
                 {chair.linkedin && (
@@ -771,7 +849,8 @@ export default function HomeClient() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+
 
           <div className="mt-12 border-t border-brand-blue/10 pt-10 -mx-8 px-8 sm:mx-0 sm:px-0">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
@@ -781,17 +860,29 @@ export default function HomeClient() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+             <motion.div 
+               initial="hidden"
+               whileInView="visible"
+               viewport={{ once: true, margin: "-60px" }}
+               variants={{
+                 hidden: {},
+                 visible: {
+                   transition: { staggerChildren: 0.1 }
+                 }
+               }}
+               className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full"
+             >
                {[
                 { id: 'international', title: 'International Advisory Board', subtitle: 'Global research leaders' },
                 { id: 'national', title: 'National Advisory Board', subtitle: 'Eminent professors across India' }
               ].map((board, i) => (
                 <motion.div
                   key={`advisory-board-${board.id}`}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.12, duration: 0.6, ease: "easeOut" }}
+                  variants={{
+                    hidden: { opacity: 0, y: 16 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  style={{ willChange: 'transform, opacity' }}
                   onClick={() => setActiveAdvisory(activeAdvisory === board.id ? null : board.id)}
                   className={`w-full min-h-[190px] sm:min-h-[210px] relative group/card rounded-xl overflow-hidden border cursor-pointer transition-all duration-300 ${
                     activeAdvisory === board.id 
@@ -831,7 +922,7 @@ export default function HomeClient() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+             </motion.div>
           </div>
         </div>
       </Section>
@@ -841,10 +932,11 @@ export default function HomeClient() {
         <div className="max-w-[1200px] mx-auto space-y-10">
           <motion.div
             ref={venueImageRef}
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            initial={{ opacity: 0, scale: 1.02 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            style={{ willChange: 'transform, opacity' }}
             className="relative h-[340px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl group"
           >
             <Image
@@ -859,18 +951,13 @@ export default function HomeClient() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#0b1220]/40 to-transparent" />
 
             <div className="absolute bottom-0 inset-x-0 p-8 md:p-12 z-10">
-              <motion.h3
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-white font-serif font-bold text-2xl md:text-4xl leading-tight"
-              >
+              <h3 className="text-white font-serif font-bold text-2xl md:text-4xl leading-tight">
                 JK Lakshmipat University
                 <span className="block text-white/70 text-xl md:text-3xl font-normal mt-1">Jaipur, India</span>
-              </motion.h3>
+              </h3>
             </div>
           </motion.div>
+
 
           {/* AUTOMATIC INFINITE SIGHTSEEING SLIDER */}
           <div className="pt-6 space-y-6 overflow-hidden">
@@ -922,7 +1009,56 @@ export default function HomeClient() {
         </div>
       </Section>
 
+      {/* INTERNAL NAVIGATION HUB — Boosts internal link count for SEO */}
+      <Section>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-brand-blue">
+              Explore the Conference
+            </h2>
+            <div className="mx-auto mt-3 w-12 h-[2px] bg-brand-orange" />
+            <p className="text-slate-500 text-sm font-medium mt-3">
+              Everything you need to know about JKLU SANKALP 2027 — all in one place.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {[
+              { href: '/', label: 'Home', desc: 'Conference overview' },
+              { href: '/about', label: 'About', desc: 'About SANKALP 2027' },
+              { href: '/call-for-papers', label: 'Call for Papers', desc: 'Submit your research' },
+              { href: '/sessions', label: 'Sessions & Tracks', desc: 'Conference program' },
+              { href: '/registration', label: 'Registration', desc: 'Register now' },
+              { href: '/committee', label: 'Committee', desc: 'Meet the team' },
+              { href: '/venue', label: 'Venue', desc: 'JKLU Jaipur campus' },
+              { href: '/sponsors', label: 'Sponsors', desc: 'Our supporters' },
+              { href: '/faq', label: 'FAQ', desc: 'Common questions' },
+              { href: '/contact', label: 'Contact', desc: 'Get in touch' },
+              { href: '/tech-team', label: 'Tech Team', desc: 'Meet the developers' },
+              { href: '/privacy-policy', label: 'Privacy Policy', desc: 'Data protection' },
+              { href: '/terms-and-conditions', label: 'Terms & Conditions', desc: 'Event terms' },
+              { href: '/refund-policy', label: 'Refund Policy', desc: 'Cancellation info' },
+              { href: '/shipping-policy', label: 'Shipping Policy', desc: 'Certificate delivery' },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex flex-col p-4 border border-slate-200 bg-white hover:border-brand-orange hover:bg-brand-orange/5 transition-all duration-200 rounded-sm text-left"
+              >
+                <span className="text-sm font-bold text-brand-blue group-hover:text-brand-orange transition-colors leading-snug">
+                  {item.label}
+                </span>
+                <span className="text-xs text-slate-500 font-medium mt-1 leading-snug">
+                  {item.desc}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </Section>
+
       <Footer />
+
     </main>
 
     <AnimatePresence>
@@ -935,10 +1071,10 @@ export default function HomeClient() {
           onClick={() => setActiveAdvisory(null)}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, scale: 0.98, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, scale: 0.98, filter: 'blur(4px)' }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
             className="bg-[#f7f4ef] w-full max-w-5xl max-h-[85vh] rounded shadow-2xl flex flex-col overflow-hidden relative"
           >

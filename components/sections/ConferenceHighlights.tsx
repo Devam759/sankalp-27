@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Reveal from '@/components/ui/Reveal';
+
 
 // ─── Highlight Data ───────────────────────────────────────────────────────────
 
@@ -171,18 +173,14 @@ export default function ConferenceHighlights() {
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24">
 
         {/* ── Section Header ────────────────────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white relative inline-block">
-            Conference Highlights
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-brand-orange rounded-none" />
-          </h2>
-        </motion.div>
+        <div className="text-center mb-12 md:mb-16">
+          <Reveal variant="up">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white relative inline-block">
+              Conference Highlights
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-brand-orange rounded-none" />
+            </h2>
+          </Reveal>
+        </div>
 
         {/* ── Interactive Split Stage ───────────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
@@ -231,12 +229,13 @@ export default function ConferenceHighlights() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.id}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
+                initial={{ opacity: 0, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, filter: 'blur(4px)' }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-5 flex-1 flex flex-col justify-between"
               >
+
                 <div>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-brand-blue leading-snug mb-2">
                     {activeItem.headline}
