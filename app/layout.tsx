@@ -124,14 +124,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet" />
-        {/* Preload Sankalp logo as it is always the LCP element in the Navbar */}
-        <link
-          rel="preload"
-          href="/logos/Sankalp logo.webp"
-          as="image"
-          type="image/webp"
-          fetchPriority="high"
-        />
+        {/* Logo preload handled by Next.js <Image priority> in Navbar */}
 
         <Script 
           id="google-recaptcha-v3"
