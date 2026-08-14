@@ -277,7 +277,7 @@ export default function CommitteeClient() {
                         rel="noopener noreferrer"
                         title={`${member.name} LinkedIn Profile`}
                         aria-label={`${member.name} LinkedIn Profile`}
-                        className="shrink-0 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-200 bg-white text-[#0a66c2] flex items-center justify-center shadow-2xs transition-all duration-200 hover:bg-[#0a66c2] hover:border-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-xs shrink-0"
                       >
                         <LinkedInIcon size={15} />
                       </a>
@@ -304,12 +304,24 @@ export default function CommitteeClient() {
                   <Reveal
                     key={`natl-${member.name}-${i}`}
                     delay={(i % 3) * 0.06}
-                    className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex flex-col justify-between"
+                    className="bg-white p-4 sm:p-5 rounded-sm border border-slate-200 shadow-sm flex items-start justify-between gap-3 relative group"
                   >
                     <div className="flex-1 min-w-0">
                       <h4 className="font-serif font-bold text-brand-blue text-sm sm:text-base mb-1 leading-snug">{member.name}</h4>
                       <p className="text-slate-600 text-xs leading-relaxed font-medium">{member.title}</p>
                     </div>
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`${member.name} LinkedIn Profile`}
+                        aria-label={`${member.name} LinkedIn Profile`}
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-200 bg-white text-[#0a66c2] flex items-center justify-center shadow-2xs transition-all duration-200 hover:bg-[#0a66c2] hover:border-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-xs shrink-0"
+                      >
+                        <LinkedInIcon size={15} />
+                      </a>
+                    )}
                   </Reveal>
                 );
               })}

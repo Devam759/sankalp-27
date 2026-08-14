@@ -1067,9 +1067,9 @@ export default function HomeClient() {
                           rel="noopener noreferrer"
                           title={`${member.name} LinkedIn Profile`}
                           aria-label={`${member.name} LinkedIn Profile`}
-                          className="shrink-0 text-[#0a66c2] hover:text-[#004182] transition-colors p-1"
+                          className="w-7 h-7 rounded-full border border-slate-200 bg-white text-[#0a66c2] flex items-center justify-center shadow-2xs transition-all duration-200 hover:bg-[#0a66c2] hover:border-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-xs shrink-0"
                         >
-                          <LinkedInIcon size={15} />
+                          <LinkedInIcon size={14} />
                         </a>
                       )}
                     </div>

@@ -21,7 +21,12 @@ import {
   MedicalIcon,
   AccessibilityIcon,
   CopyIcon,
-  AppleIcon
+  AppleIcon,
+  PlaneIcon,
+  BusIcon,
+  TrainIcon,
+  CarIcon,
+  BuildingIcon
 } from '@/components/ui/Icons';
 
 export default function VenueClient() {
@@ -80,12 +85,56 @@ export default function VenueClient() {
 
   const hotels = [
     {
-      name: 'Four Points by Sheraton Jaipur',
-      distance: 'Near Mahindra SEZ, Jaipur',
-      time: 'Approx. 5 minutes by road',
+      name: 'Hotel Polo Inn SEZ',
+      distance: '175, SEZ Road, Mahindra World City',
+      time: 'Approx. 3 minutes from JKLU',
+      badgeText: '3 min Drive',
+      category: 'Boutique Hotel',
+      bottomText: 'Closest to JKLU Campus',
+      location: 'Mahindra SEZ, Jaipur',
+      src: '/Images/hotels/polo_inn_sez.webp',
+      link: 'https://www.google.com/maps/search/Hotel+Polo+Inn+SEZ+Jaipur'
+    },
+    {
+      name: 'Atulya Green by Meyatri',
+      distance: 'Omaxe City, Ajmer Road',
+      time: 'Approx. 5 minutes from JKLU',
       badgeText: '5 min Drive',
+      category: '3-Star Hotel',
+      bottomText: 'Near Omaxe City',
+      location: 'Ajmer Road, Jaipur',
+      src: '/Images/hotels/atulya_green.webp',
+      link: 'https://www.google.com/maps/search/Atulya+Green+by+Meyatri+Jaipur'
+    },
+    {
+      name: 'Hotel The Sawai',
+      distance: 'Opp. Pink Pearl, Ajmer Highway',
+      time: 'Approx. 8 minutes from JKLU',
+      badgeText: '8 min Drive',
       category: 'Business Hotel',
-      bottomText: 'Closest to Conference Venue',
+      bottomText: 'Mahapura, Jaipur',
+      location: 'Ajmer Road, Jaipur',
+      src: '/Images/hotels/hotel_sawai.webp',
+      link: 'https://www.google.com/maps/search/Hotel+The+Sawai+Jaipur'
+    },
+    {
+      name: 'Navya Residency',
+      distance: 'Near Malot Hospital, Mahindra SEZ',
+      time: 'Approx. 7 minutes from JKLU',
+      badgeText: '7 min Drive',
+      category: 'Comfort Stay',
+      bottomText: 'SEZ Corridor, Jaipur',
+      location: 'Mahindra SEZ, Jaipur',
+      src: '/Images/hotels/navya_residency.webp',
+      link: 'https://www.google.com/maps/search/Navya+Residency+Mahindra+SEZ+Jaipur'
+    },
+    {
+      name: 'Four Points by Sheraton Jaipur',
+      distance: 'Tonk Road, Jaipur',
+      time: 'Approx. 20 minutes by road',
+      badgeText: '20 min Drive',
+      category: 'Business Hotel',
+      bottomText: 'Near Airport / City Center',
       location: 'Jaipur, Rajasthan',
       src: '/Images/hotels/four_points.webp',
       link: 'https://www.google.com/maps/search/Four+Points+by+Sheraton+Jaipur'
@@ -102,26 +151,26 @@ export default function VenueClient() {
       link: 'https://www.google.com/maps/search/ITC+Rajputana+Jaipur'
     },
     {
+      name: 'Radisson Blu Jaipur',
+      distance: 'Durgapura, Jaipur',
+      time: 'Approx. 20 minutes by road',
+      badgeText: '20 min Drive',
+      category: 'Premium Stay',
+      bottomText: 'Airport Corridor',
+      location: 'Jaipur, Rajasthan',
+      src: '/Images/hotels/radisson_blu.webp',
+      link: 'https://www.google.com/maps/search/Radisson+Blu+Jaipur'
+    },
+    {
       name: 'The Oberoi Rajvilas, Jaipur',
       distance: 'Goner Road, Jaipur',
       time: 'Approx. 40 minutes by road',
       badgeText: '40 min Drive',
       category: 'Luxury Resort',
-      bottomText: 'World-Class Resort',
+      bottomText: 'World-Class Luxury',
       location: 'Jaipur, Rajasthan',
       src: '/Images/hotels/oberoi_rajvilas.webp',
       link: 'https://www.google.com/maps/search/The+Oberoi+Rajvilas+Jaipur'
-    },
-    {
-      name: 'Radisson Blu Jaipur',
-      distance: 'Jaipur, Rajasthan',
-      time: 'Approx. 20 minutes by road',
-      badgeText: '20 min Drive',
-      category: 'Premium Stay',
-      bottomText: 'Premium Comfort',
-      location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/radisson_blu.webp',
-      link: 'https://www.google.com/maps/search/Radisson+Blu+Jaipur'
     }
   ];
 
@@ -186,62 +235,116 @@ export default function VenueClient() {
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-0">
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section ref={heroRef} className="relative h-[80vh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink pt-20">
-        <div ref={heroImageRef} className="absolute -inset-y-10 inset-x-0 z-0 will-change-transform">
-          <Image
-            src="/Images/campus/jklu_campus.webp"
-            alt="JKLU Campus Banner"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-45 scale-105"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-transparent to-brand-ink/30" />
-        </div>
+      {/* HERO SECTION — TWO INSTITUTIONS */}
+      <section ref={heroRef} className="relative min-h-[580px] lg:h-[82vh] lg:min-h-[560px] w-full text-white bg-brand-ink pt-20 overflow-hidden">
+        {/* Subtle Vertical Divider on Desktop */}
+        <div className="hidden md:block absolute left-1/2 top-24 bottom-12 w-px bg-brand-orange/60 z-30 -translate-x-1/2 pointer-events-none" />
 
-        <div className="relative z-10 max-w-4xl px-6 space-y-6">
-          <h1 className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase">
-            <WordReveal text="JK Lakshmipat University" className="text-white" />
-          </h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl font-medium tracking-wide max-w-2xl mx-auto text-white/90"
-          >
-            Jaipur, Rajasthan, India
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-sm sm:text-base opacity-75 max-w-xl mx-auto"
-          >
-            Host Venue of JKLU SANKALP 2027 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction
-          </motion.p>
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full min-h-[500px] lg:min-h-[540px] relative z-10">
+          
+          {/* LEFT HALF — JK LAKSHMIPAT UNIVERSITY */}
+          <div className="relative flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden group border-b md:border-b-0 border-brand-orange/30">
+            <div ref={heroImageRef} className="absolute inset-0 z-0 will-change-transform">
+              <Image
+                src="/Images/campus/jklu_campus.webp"
+                alt="JK Lakshmipat University Campus"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080d19] via-[#080d19]/65 to-[#080d19]/40" />
+            </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <span>5-6 March 2027</span>
-          </motion.div>
+            <div className="relative z-10 space-y-4 max-w-xl">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/logos/white_jklu_logo.webp"
+                  alt="JKLU Logo"
+                  width={200}
+                  height={60}
+                  className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+                  priority
+                />
+              </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-4"
-          >
-            <a
-              href="#map-section"
-              className="bg-brand-orange text-white font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center gap-2 cursor-pointer text-sm"
-            >
-              Get Directions
-            </a>
-          </motion.div>
+              <div>
+                <span className="inline-block bg-brand-orange text-white text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] px-3 py-1 rounded-sm shadow-xs mb-2">
+                  HOST INSTITUTION
+                </span>
+                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-black tracking-tight uppercase text-white leading-tight">
+                  JK Lakshmipat University
+                </h1>
+                <p className="text-amber-200/90 text-sm sm:text-base font-semibold tracking-wide mt-1">
+                  Jaipur, Rajasthan, India
+                </p>
+              </div>
+
+              <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed max-w-md">
+                Official Host Venue of SANKALP'27 &mdash; International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction.
+              </p>
+
+              <div className="pt-2">
+                <a
+                  href="#map-section"
+                  className="inline-flex items-center gap-2 bg-brand-orange text-white font-bold py-2.5 px-6 border border-orange-400 shadow-md hover:bg-orange-600 transition-all rounded-md text-xs sm:text-sm cursor-pointer"
+                >
+                  Get Directions →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT HALF — ASIA UNIVERSITY */}
+          <div className="relative flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden group">
+            <div className="absolute inset-0 z-0">
+              <Image
+                src="/Images/venue/asia_university_campus.webp"
+                alt="Asia University Campus"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080d19] via-[#080d19]/65 to-[#080d19]/40" />
+            </div>
+
+            <div className="relative z-10 space-y-4 max-w-xl">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/logos/Asia_University_Logo.webp"
+                  alt="Asia University Logo"
+                  width={200}
+                  height={60}
+                  className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+                  priority
+                />
+              </div>
+
+              <div>
+                <span className="inline-block bg-sky-600/90 border border-sky-400/40 text-white text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] px-3 py-1 rounded-sm shadow-xs mb-2">
+                  INTERNATIONAL ACADEMIC PARTNER
+                </span>
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-black tracking-tight uppercase text-white leading-tight">
+                  Asia University
+                </h2>
+                <p className="text-sky-200/90 text-sm sm:text-base font-semibold tracking-wide mt-1">
+                  Taichung, Taiwan
+                </p>
+              </div>
+
+              <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed max-w-md">
+                International Academic Partner supporting global research collaboration, innovation, and academic excellence for SANKALP'27.
+              </p>
+
+              <div className="pt-2">
+                <span className="inline-flex items-center gap-2 bg-slate-800/80 border border-white/20 text-white/90 font-semibold py-2.5 px-6 rounded-md text-xs sm:text-sm">
+                  Global Co-Host Partner
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -457,6 +560,288 @@ export default function VenueClient() {
         </div>
       </section>
 
+      {/* HOW TO REACH */}
+      <section id="how-to-reach" className="py-24 bg-white border-t border-[#E6E8EC]/80 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto space-y-12">
+          
+          <div className="text-center space-y-3 max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+              <WordReveal text="Getting to SANKALP'27" className="text-brand-blue" />
+            </h2>
+            <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* BY AIR */}
+            <Reveal delay={0.1} className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between border-b border-[#E6E8EC] pb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-xl bg-brand-orange/10 border border-brand-orange/20 text-brand-orange flex items-center justify-center shrink-0">
+                      <PlaneIcon size={22} />
+                    </span>
+                    <div>
+                      <h3 className="font-serif font-bold text-2xl text-brand-blue">By Air</h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3-POINT DOTTED CONNECTED TIMELINE */}
+                <div className="space-y-4">
+                  
+                  {/* Desktop: Smooth Horizontal Wavy Dotted Route */}
+                  <div className="hidden sm:block relative pt-2 pb-2">
+                    {/* Orange Wavy Dotted Connecting Line */}
+                    <svg className="absolute inset-x-0 top-3 h-10 w-full pointer-events-none z-0 overflow-visible" viewBox="0 0 400 40" preserveAspectRatio="none">
+                      <path
+                        d="M 66,20 C 115,6 150,34 200,20 C 250,6 285,34 334,20"
+                        fill="none"
+                        stroke="#f5821e"
+                        strokeWidth="2.5"
+                        strokeDasharray="4 4"
+                        strokeOpacity="0.8"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+
+                    <div className="grid grid-cols-3 gap-2 relative z-10 text-center">
+                      {/* Node 1: AIRPORT */}
+                      <div className="flex flex-col items-center space-y-1.5">
+                        <div className="w-9 h-9 rounded-full bg-white border-2 border-brand-orange text-brand-orange flex items-center justify-center shadow-xs">
+                          <PlaneIcon size={20} />
+                        </div>
+                        <div>
+                          <span className="text-[9px] font-black uppercase tracking-wider text-brand-orange block">AIRPORT</span>
+                          <h4 className="font-bold text-brand-blue text-xs leading-snug">Jaipur International<br />Airport</h4>
+                          <span className="text-[10px] text-slate-400 font-medium block mt-0.5">Approx. 24 km</span>
+                        </div>
+                      </div>
+
+                      {/* Node 2: CAB / TAXI */}
+                      <div className="flex flex-col items-center space-y-1.5">
+                        <div className="w-9 h-9 rounded-full bg-white border-2 border-brand-blue text-brand-blue flex items-center justify-center shadow-xs">
+                          <CarIcon size={21} />
+                        </div>
+                        <div>
+                          <span className="text-[9px] font-black uppercase tracking-wider text-brand-orange block">CAB / TAXI</span>
+                          <h4 className="font-bold text-brand-blue text-xs leading-snug">Recommended<br />Transport</h4>
+                        </div>
+                      </div>
+
+                      {/* Node 3: VENUE */}
+                      <div className="flex flex-col items-center space-y-1.5">
+                        <div className="w-9 h-9 rounded-full bg-white border-2 border-brand-orange text-brand-orange flex items-center justify-center shadow-xs">
+                          <BuildingIcon size={20} />
+                        </div>
+                        <div>
+                          <span className="text-[9px] font-black uppercase tracking-wider text-brand-orange block">VENUE</span>
+                          <h4 className="font-bold text-brand-blue text-xs leading-snug">JK Lakshmipat<br />University</h4>
+                          <span className="text-[10px] text-slate-400 font-medium block mt-0.5">Mahapura, Ajmer Rd</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mobile: Smooth Vertical Wavy Dotted Route */}
+                  <div className="sm:hidden relative pl-6 space-y-5 py-1">
+                    {/* Vertical Orange Wavy Dotted Line */}
+                    <svg className="absolute left-[15px] top-4 bottom-6 w-8 -translate-x-1/2 pointer-events-none z-0 overflow-visible" viewBox="0 0 32 180" preserveAspectRatio="none">
+                      <path
+                        d="M 16,10 C 28,45 4,75 16,90 C 28,105 4,135 16,170"
+                        fill="none"
+                        stroke="#f5821e"
+                        strokeWidth="2.5"
+                        strokeDasharray="4 4"
+                        strokeOpacity="0.8"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+
+                    {/* Node 1 */}
+                    <div className="relative flex items-start gap-3">
+                      <div className="absolute -left-[24px] top-0 w-8 h-8 rounded-full bg-white border-2 border-brand-orange text-brand-orange flex items-center justify-center shadow-xs z-10">
+                        <PlaneIcon size={16} />
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-[9px] font-black uppercase tracking-wider text-brand-orange block">AIRPORT</span>
+                        <h4 className="font-bold text-brand-blue text-xs">Jaipur International Airport</h4>
+                        <span className="text-[10px] text-slate-400 font-medium">Approx. 24 km to venue</span>
+                      </div>
+                    </div>
+
+                    {/* Node 2 */}
+                    <div className="relative flex items-start gap-3">
+                      <div className="absolute -left-[24px] top-0 w-8 h-8 rounded-full bg-white border-2 border-brand-blue text-brand-blue flex items-center justify-center shadow-xs z-10">
+                        <CarIcon size={17} />
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-[9px] font-black uppercase tracking-wider text-brand-orange block">CAB / TAXI</span>
+                        <h4 className="font-bold text-brand-blue text-xs">Recommended Transport</h4>
+                      </div>
+                    </div>
+
+                    {/* Node 3 */}
+                    <div className="relative flex items-start gap-3">
+                      <div className="absolute -left-[24px] top-0 w-8 h-8 rounded-full bg-white border-2 border-brand-orange text-brand-orange flex items-center justify-center shadow-xs z-10">
+                        <BuildingIcon size={16} />
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-[9px] font-black uppercase tracking-wider text-brand-orange block">VENUE</span>
+                        <h4 className="font-bold text-brand-blue text-xs">JK Lakshmipat University</h4>
+                        <span className="text-[10px] text-slate-400 font-medium">Mahapura, Ajmer Road</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Inline Muted Recommendation Note */}
+                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium leading-relaxed pt-3 border-t border-[#E6E8EC]/80">
+                    For a faster and more convenient journey, a cab or taxi is recommended, as other public transport options may require significantly more travel time.
+                  </p>
+
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-[#E6E8EC] mt-6">
+                <a
+                  href="https://www.google.com/maps/dir/Jaipur+International+Airport,+Jaipur,+Rajasthan/JK+Lakshmipat+University,+Jaipur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-xs shadow-xs hover:shadow-md cursor-pointer group"
+                >
+                  <span>Get Directions →</span>
+                </a>
+              </div>
+            </Reveal>
+
+            {/* BY BUS */}
+            <Reveal delay={0.2} className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between border-b border-[#E6E8EC] pb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-xl bg-brand-orange/10 border border-brand-orange/20 text-brand-orange flex items-center justify-center shrink-0">
+                      <BusIcon size={22} />
+                    </span>
+                    <div>
+                      <h3 className="font-serif font-bold text-2xl text-brand-blue">By Bus</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <span className="text-xs font-bold text-brand-blue uppercase tracking-wider block">Major Bus Drop-Off Points</span>
+                  
+                  <div className="grid grid-cols-1 gap-2">
+                    {[
+                      { point: '200 Feet Bypass', map: 'https://www.google.com/maps/dir/200+Feet+Bypass+Jaipur/JK+Lakshmipat+University+Jaipur' },
+                      { point: 'Durgapura', map: 'https://www.google.com/maps/dir/Durgapura+Jaipur/JK+Lakshmipat+University+Jaipur' },
+                      { point: 'Sindhi Camp', map: 'https://www.google.com/maps/dir/Sindhi+Camp+Jaipur/JK+Lakshmipat+University+Jaipur' },
+                      { point: 'Chomu Puliya', map: 'https://www.google.com/maps/dir/Chomu+Puliya+Jaipur/JK+Lakshmipat+University+Jaipur' },
+                    ].map((loc, i) => (
+                      <div key={i} className="bg-white p-2.5 rounded-lg border border-[#E6E8EC] flex items-center justify-between text-xs">
+                        <div>
+                          <span className="font-bold text-slate-900 block">{loc.point}</span>
+                          <span className="text-[10px] text-slate-400 font-medium">Distance varies by route &middot; Cab / Auto</span>
+                        </div>
+                        <a
+                          href={loc.map}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-bold text-brand-orange hover:text-brand-blue transition-colors shrink-0 pl-2"
+                        >
+                          Directions →
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* VISUAL ROUTE */}
+                  <div className="py-2.5 px-4 bg-slate-50 rounded-xl border border-slate-200/70 text-center space-y-1.5">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Travel Route Visualization</span>
+                    <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-brand-blue">
+                      <span>Bus Drop-Off</span>
+                      <span className="text-brand-orange">→</span>
+                      <span className="bg-brand-orange/10 text-brand-orange px-2 py-0.5 rounded text-[11px]">Cab / Auto</span>
+                      <span className="text-brand-orange">→</span>
+                      <span>JKLU Campus</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-[#E6E8EC] mt-6">
+                <a
+                  href="https://www.google.com/maps/dir/Sindhi+Camp+Bus+Stand+Jaipur/JK+Lakshmipat+University+Jaipur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-xs shadow-xs hover:shadow-md cursor-pointer group"
+                >
+                  <span>Get Directions →</span>
+                </a>
+              </div>
+            </Reveal>
+
+            {/* BY TRAIN */}
+            <Reveal delay={0.3} className="bg-[#FCFCFC] border border-[#E6E8EC] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between border-b border-[#E6E8EC] pb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-xl bg-brand-orange/10 border border-brand-orange/20 text-brand-orange flex items-center justify-center shrink-0">
+                      <TrainIcon size={22} />
+                    </span>
+                    <div>
+                      <h3 className="font-serif font-bold text-2xl text-brand-blue">By Train</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="bg-white p-4 rounded-xl border border-[#E6E8EC] space-y-1">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Starting Point</span>
+                    <h4 className="font-bold text-slate-900 text-sm">Jaipur Junction / Railway Station</h4>
+                    <p className="text-xs text-slate-500 font-medium">Destination: JK Lakshmipat University, Mahapura, Ajmer Road</p>
+                    <p className="text-xs text-brand-orange font-bold pt-1">Recommended: Cab / Taxi &middot; Approx. 20 km</p>
+                  </div>
+
+                  <div className="bg-white p-3.5 rounded-xl border border-[#E6E8EC] space-y-1">
+                    <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block">Alternative Route</span>
+                    <h5 className="font-bold text-slate-900 text-xs">METRO + LAST-MILE CAB</h5>
+                    <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                      "Jaipur Metro can be used for the city portion of the journey, followed by a cab or auto for the final leg to JK Lakshmipat University."
+                    </p>
+                  </div>
+
+                  {/* VISUAL ROUTE */}
+                  <div className="py-2.5 px-4 bg-slate-50 rounded-xl border border-slate-200/70 text-center space-y-1.5">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">Travel Route Visualization</span>
+                    <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-brand-blue">
+                      <span>Jaipur Jn</span>
+                      <span className="text-brand-orange">→</span>
+                      <span className="bg-brand-orange/10 text-brand-orange px-2 py-0.5 rounded text-[11px]">Cab / Metro+Cab</span>
+                      <span className="text-brand-orange">→</span>
+                      <span>JKLU Campus</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-[#E6E8EC] mt-6">
+                <a
+                  href="https://www.google.com/maps/dir/Jaipur+Junction+Railway+Station/JK+Lakshmipat+University+Jaipur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-xs shadow-xs hover:shadow-md cursor-pointer group"
+                >
+                  <span>Get Directions →</span>
+                </a>
+              </div>
+            </Reveal>
+
+          </div>
+
+        </div>
+      </section>
+
 
 
       {/* RECOMMENDED HOTELS */}
@@ -473,29 +858,42 @@ export default function VenueClient() {
             {hotels.map((hotel, index) => (
               <Reveal
                 key={index}
-                delay={(index % 4) * 0.1}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-[#0b1220] flex flex-col justify-end"
+                delay={(index % 4) * 0.08}
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-[#0b1220] flex flex-col justify-between group hover:shadow-xl transition-all duration-300"
               >
                 <Image
                   src={hotel.src}
                   alt={hotel.name}
                   fill
-                  className="object-cover opacity-90"
+                  className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
 
+                {/* Top Badges */}
+                <div className="relative z-10 p-4 flex items-center justify-between gap-2">
+                  <span className="bg-brand-orange text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-sm">
+                    {hotel.badgeText}
+                  </span>
+                  <span className="bg-slate-900/75 backdrop-blur-md border border-white/15 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-sm">
+                    {hotel.category}
+                  </span>
+                </div>
+
                 {/* Content Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/95 via-[#0b1220]/40 to-transparent flex flex-col justify-end p-5 z-10 space-y-3">
-                  <h3 className="font-serif font-bold text-white text-lg sm:text-xl leading-snug drop-shadow-sm">
+                <div className="relative inset-x-0 bottom-0 bg-gradient-to-t from-[#0b1220]/95 via-[#0b1220]/70 to-transparent flex flex-col justify-end p-5 z-10 space-y-2">
+                  <h3 className="font-serif font-bold text-white text-base sm:text-lg leading-snug drop-shadow-sm group-hover:text-amber-200 transition-colors">
                     {hotel.name}
                   </h3>
+                  <p className="text-slate-300 text-xs font-medium leading-relaxed">
+                    {hotel.distance}
+                  </p>
 
-                  <div>
+                  <div className="pt-1">
                     <a
                       href={hotel.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-white hover:translate-x-0.5 transition-all gap-1"
+                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-white hover:translate-x-1 transition-all gap-1 cursor-pointer"
                     >
                       Get Directions →
                     </a>

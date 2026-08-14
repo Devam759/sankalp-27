@@ -140,6 +140,20 @@ export const MEMBER_LINKEDIN_MAP: Record<string, string> = {
   'Dr. S. Taruna': 'https://www.linkedin.com/in/staruna/',
   'Prof. Umesh Gupta': 'https://www.linkedin.com/in/umesh-gupta-70886895/',
   'Dr. Umesh Gupta': 'https://www.linkedin.com/in/umesh-gupta-70886895/',
+  'Prof. Madhu Muthyam': 'https://www.linkedin.com/in/madhu-mutyam-63361518/',
+  'Prof. Shiv Shanker Singh Patel': 'https://www.linkedin.com/in/shivshanker-singh-patel-2785921a/',
+  'Prof. Naveen Sivadasan': 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2/',
+  'Dr. Easwar Subramanian': 'https://www.linkedin.com/in/easwar-subramanian/',
+  'Prof. Vikram Goyal': 'https://www.linkedin.com/in/vikram-goyal-7a684213/',
+  'Prof. Kusum Deep': 'https://www.linkedin.com/in/kusum-deep-18927463/',
+  'Dr. Manav Bhatnagar': 'https://www.linkedin.com/in/manav-bhatnagar-6848b666/',
+  'Mr. S. Balamurugan': 'https://www.linkedin.com/in/dr-s-balamurugan-008a7512/',
+  'Prof. Sunil Kumar Khatri': 'https://www.linkedin.com/in/prof-dr-sunil-kumar-khatri-bbb43319/',
+  'Prof. Deepshikha Bhargava': 'https://www.linkedin.com/in/deepshikhabhargava/',
+  'Prof. V.S. Rathore': 'https://www.linkedin.com/in/prof-dr-vijay-singh-rathore-3215b045/',
+  'Dr. Vinnie Jauhari': 'https://www.linkedin.com/in/vinniejauhari/',
+  'Dr. Brijesh Kohli': 'https://www.linkedin.com/in/brijesh-kohli/',
+  'Mr. Himanshu Gupta': 'https://www.linkedin.com/in/himanshu-gupta-777b863/',
 };
 
 export const committeeMembers = {
@@ -227,26 +241,26 @@ export const advisoryBoard = {
     { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece', linkedin: 'https://www.linkedin.com/in/vassilis-gerogiannis-194159156/' }
   ],
   national: [
-    { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras' },
-    { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam' },
-    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad' },
-    { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad' },
+    { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras', linkedin: 'https://www.linkedin.com/in/madhu-mutyam-63361518/' },
+    { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam', linkedin: 'https://www.linkedin.com/in/shivshanker-singh-patel-2785921a/' },
+    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad', linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2/' },
+    { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad', linkedin: 'https://www.linkedin.com/in/easwar-subramanian/' },
     { name: 'Prof. Viraj Kumar', title: 'Visiting Professor, Divecha Centre for Climate Change, IISc, Bengaluru' },
     { name: 'Prof. K. K. Biswas', title: 'Prof. Emeritus, IIT Delhi, India' },
-    { name: 'Prof. Vikram Goyal', title: 'Department of Computer Science and Engineering, IIIT Delhi' },
-    { name: 'Prof. Kusum Deep', title: 'Emeritus Professor, Maths. Dept, Indian Institute of Technology, Roorkee' },
-    { name: 'Dr. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi' },
+    { name: 'Prof. Vikram Goyal', title: 'Department of Computer Science and Engineering, IIIT Delhi', linkedin: 'https://www.linkedin.com/in/vikram-goyal-7a684213/' },
+    { name: 'Prof. Kusum Deep', title: 'Emeritus Professor, Maths. Dept, Indian Institute of Technology, Roorkee', linkedin: 'https://www.linkedin.com/in/kusum-deep-18927463/' },
+    { name: 'Dr. Manav Bhatnagar', title: 'Professor, Department of Electrical Engineering, IIT Delhi', linkedin: 'https://www.linkedin.com/in/manav-bhatnagar-6848b666/' },
     { name: 'Prof. Gadadhar Sahoo', title: 'Department of Computer Science and Engineering, IIT (ISM) Dhanbad, Jharkhand' },
     { name: 'Prof. K. V. Arya', title: 'Department of Computer Science and Engineering, IIITM, Gwalior' },
-    { name: 'Mr. S. Balamurugan', title: 'Intelligent Research Consultancy, India Services (iRCS), Coimbatore, Tamil Nadu' },
+    { name: 'Mr. S. Balamurugan', title: 'Intelligent Research Consultancy, India Services (iRCS), Coimbatore, Tamil Nadu', linkedin: 'https://www.linkedin.com/in/dr-s-balamurugan-008a7512/' },
     { name: 'Prof. Nishtha Keshwani', title: 'Professor, Central University of Rajasthan, India' },
-    { name: 'Prof. Sunil Kumar Khatri', title: 'Pro Vice Chancellor and Dean (Academics), Amity University, Uttar Pradesh' },
+    { name: 'Prof. Sunil Kumar Khatri', title: 'Pro Vice Chancellor and Dean (Academics), Amity University, Uttar Pradesh', linkedin: 'https://www.linkedin.com/in/prof-dr-sunil-kumar-khatri-bbb43319/' },
     { name: 'Prof. Rajesh Kumar', title: 'Professor, Biomedical Engineering, IIT Ropar' },
-    { name: 'Prof. Deepshikha Bhargava', title: 'Dean, Engineering & Technology, Amity University, Greater Noida' },
-    { name: 'Prof. V.S. Rathore', title: 'Professor-CSE & Dean-International, Apex University, Jaipur' },
-    { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon' },
-    { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon' },
-    { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi' }
+    { name: 'Prof. Deepshikha Bhargava', title: 'Dean, Engineering & Technology, Amity University, Greater Noida', linkedin: 'https://www.linkedin.com/in/deepshikhabhargava/' },
+    { name: 'Prof. V.S. Rathore', title: 'Professor-CSE & Dean-International, Apex University, Jaipur', linkedin: 'https://www.linkedin.com/in/prof-dr-vijay-singh-rathore-3215b045/' },
+    { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon', linkedin: 'https://www.linkedin.com/in/vinniejauhari/' },
+    { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon', linkedin: 'https://www.linkedin.com/in/brijesh-kohli/' },
+    { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi', linkedin: 'https://www.linkedin.com/in/himanshu-gupta-777b863/' }
   ]
 };
 
