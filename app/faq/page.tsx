@@ -3,8 +3,8 @@ import FaqClient from './FaqClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions (FAQ) | JKLU SANKALP 2027 | JKLU",
-  description: "Find answers to common questions about JKLU SANKALP 2027 paper submissions, registration fees, travel to JKLU Jaipur, parking, Wi-Fi, and accommodation.",
+  title: { absolute: "FAQ | JKLU SANKALP 2027" },
+  description: "Frequently asked questions about JKLU SANKALP 2027 — paper submissions, registration fees, travel to JKLU Jaipur, parking, Wi-Fi, and accommodation.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/faq',
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-snippet': -1 },
   },
   openGraph: {
-    title: "Frequently Asked Questions - JKLU SANKALP 2027",
+    title: "FAQ | JKLU SANKALP 2027",
     description: "Answers to key queries about registrations, venue facilities, travel, and accommodation for JKLU SANKALP 2027.",
     url: 'https://sankalp.jklu.edu.in/faq',
     siteName: "JKLU SANKALP 2027 Website",

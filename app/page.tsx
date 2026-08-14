@@ -3,8 +3,8 @@ import HomeClient from '@/components/home/HomeClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "SANKALP 2027 | JKLU SANKALP | International Conference | JKLU Jaipur",
-  description: "SANKALP 2027 – Official website of JKLU SANKALP, the International Conference on Sustainable AI and Next-Gen Knowledge at JK Lakshmipat University, Jaipur. Submit papers and register now.",
+  title: { absolute: "JKLU SANKALP 2027 | International Conference | JK Lakshmipat University, Jaipur" },
+  description: "JKLU SANKALP 2027 - the premier International Conference on Sustainable AI, Data Science & Next-Gen Tech at JK Lakshmipat University, Jaipur. Submit papers and register now.",
   keywords: [
     "sankalp",
     "sankalp 2027",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "SANKALP 2027 | JKLU SANKALP | International Conference",
+    title: "JKLU SANKALP 2027 | International Conference | JK Lakshmipat University",
     description: "SANKALP 2027 – The official JKLU SANKALP International Conference on Sustainable AI, Data Science & Next-Gen Tech at JK Lakshmipat University, Jaipur.",
     url: 'https://sankalp.jklu.edu.in',
     siteName: "JKLU SANKALP 2027 International Conference",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "SANKALP 2027 | JKLU SANKALP International Conference",
+    title: "JKLU SANKALP 2027 | International Conference | JK Lakshmipat University",
     description: "JKLU SANKALP 2027 – Premier international conference on Sustainable AI & Next-Gen Knowledge at JKLU Jaipur.",
     images: ['https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp'],
   },

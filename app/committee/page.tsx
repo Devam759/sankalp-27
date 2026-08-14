@@ -3,8 +3,8 @@ import CommitteeClient from './CommitteeClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Organizing Committee & Leadership | JKLU SANKALP 2027",
-  description: "Meet the leadership, patrons, conference chairs, program chairs, and international/national advisory boards of JKLU SANKALP 2027 at JK Lakshmipat University, Jaipur.",
+  title: { absolute: "Organizing Committee | JKLU SANKALP 2027" },
+  description: "Meet the organizing committee, program chairs, advisory board, and institutional leadership of JKLU SANKALP 2027 at JK Lakshmipat University, Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/committee',
   },
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-snippet': -1 },
   },
   openGraph: {
-    title: "Organizing Committee & Institutional Leadership | JKLU SANKALP 2027",
-    description: "Distinguished academics and institutional leaders steering JKLU SANKALP 2027 at JK Lakshmipat University.",
+    title: "Organizing Committee | JKLU SANKALP 2027",
+    description: "Distinguished academics and institutional leaders steering JKLU SANKALP 2027 at JK Lakshmipat University, Jaipur.",
     url: 'https://sankalp.jklu.edu.in/committee',
     siteName: "JKLU SANKALP 2027 Website",
     type: 'website',

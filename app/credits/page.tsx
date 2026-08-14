@@ -3,7 +3,7 @@ import CreditsClient from './CreditsClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Website Development Team | Devam Gupta & Team | JKLU SANKALP 2027",
+  title: { absolute: "Website Development Team | JKLU SANKALP 2027" },
   description: "Meet the website development team behind the JKLU SANKALP 2027 Web Portal at JK Lakshmipat University, Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/credits',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "JKLU Website Development Team"
   ],
   openGraph: {
-    title: "Website Development Team - JKLU SANKALP 2027 | JKLU Jaipur",
+    title: "Website Development Team | JKLU SANKALP 2027",
     description: "Website development team credits for the official web portal of JKLU SANKALP 2027 International Conference.",
     url: 'https://sankalp.jklu.edu.in/credits',
     siteName: "JKLU SANKALP 2027 Website",

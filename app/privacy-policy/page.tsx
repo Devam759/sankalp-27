@@ -7,7 +7,7 @@ import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | JKLU SANKALP 2027 | JKLU",
+  title: { absolute: "Privacy Policy | JKLU SANKALP 2027" },
   description: "Official Privacy Policy for JKLU SANKALP 2027 International Conference at JK Lakshmipat University, Jaipur. Learn how personal and payment data is collected, used, and protected.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/privacy-policy',

@@ -7,7 +7,7 @@ import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | JKLU SANKALP 2027 | JKLU",
+  title: { absolute: "Terms & Conditions | JKLU SANKALP 2027" },
   description: "Terms and conditions governing registration, paper submission, academic conduct, and website usage for JKLU SANKALP 2027 International Conference at JK Lakshmipat University.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/terms-and-conditions',

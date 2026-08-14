@@ -3,8 +3,8 @@ import RegistrationClient from './RegistrationClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Registration & Fees | JKLU SANKALP 2027 | JKLU",
-  description: "Register online for JKLU SANKALP 2027 International Conference at JK Lakshmipat University, Jaipur. Transparent pricing tiers for student authors, academicians, industry delegates, and international participants.",
+  title: { absolute: "Registration & Fees | JKLU SANKALP 2027" },
+  description: "Register for JKLU SANKALP 2027 International Conference at JK Lakshmipat University, Jaipur. View pricing for student, academic, industry, and international participants.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/registration',
   },
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-snippet': -1 },
   },
   openGraph: {
-    title: "Registration & Fee Structure - JKLU SANKALP 2027 | JKLU Jaipur",
-    description: "Complete your online registration for the JKLU SANKALP 2027 International Conference at JK Lakshmipat University.",
+    title: "Registration & Fees | JKLU SANKALP 2027",
+    description: "Complete your online registration for JKLU SANKALP 2027 International Conference at JK Lakshmipat University, Jaipur.",
     url: 'https://sankalp.jklu.edu.in/registration',
     siteName: "JKLU SANKALP 2027 Website",
     type: 'website',

@@ -7,7 +7,7 @@ import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
 
 export const metadata: Metadata = {
-  title: "Refund & Cancellation Policy | JKLU SANKALP 2027 | JKLU",
+  title: { absolute: "Refund & Cancellation Policy | JKLU SANKALP 2027" },
   description: "Official Refund & Cancellation Policy for JKLU SANKALP 2027 International Conference registrations at JK Lakshmipat University, Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/refund-policy',

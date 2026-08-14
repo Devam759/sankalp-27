@@ -3,7 +3,7 @@ import ContactClient from './ContactClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: "Contact Us | JKLU SANKALP 2027 | JKLU",
+  title: { absolute: "Contact Us | JKLU SANKALP 2027" },
   description: "Official contact directory for JKLU SANKALP 2027 International Conference. Get in touch with conference chairs, track chairs, registration, publication, and sponsorship committees at JKLU Jaipur.",
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/contact',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Registration Committee Contact Sankalp"
   ],
   openGraph: {
-    title: "Contact Us - JKLU SANKALP 2027 | JKLU Jaipur",
+    title: "Contact Us | JKLU SANKALP 2027",
     description: "Contact organizing heads, track chairs, and sub-committees for JKLU SANKALP 2027 at JK Lakshmipat University.",
     url: 'https://sankalp.jklu.edu.in/contact',
     siteName: "JKLU SANKALP 2027 Website",
