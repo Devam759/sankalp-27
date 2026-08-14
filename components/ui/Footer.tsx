@@ -355,13 +355,11 @@ export default function Footer() {
       {/* THE MINDS BEHIND THE SITE BUTTON (Above Separating Line) */}
       <div className="max-w-7xl mx-auto relative z-10 flex justify-center items-center pb-8 pt-2">
         <Link 
-          href="/tech-team" 
-          className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#0e1626] border border-white/15 text-slate-200 hover:text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-xs sm:text-sm font-bold tracking-wide cursor-pointer"
+          href="/credits" 
+          className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-400 hover:text-brand-orange hover:underline transition-all duration-200 cursor-pointer"
         >
-          <span>Designed with</span>
-          <HeartIcon size={16} className="text-red-500 fill-red-500 inline-block transition-transform duration-300 group-hover:scale-110" />
-          <span>&amp; Developed with</span>
-          <span className="text-base inline-block transition-transform duration-300 group-hover:scale-110">🧠</span>
+          <span>Designed and developed with</span>
+          <HeartIcon size={14} className="text-slate-400 fill-slate-400 group-hover:text-brand-orange group-hover:fill-brand-orange transition-colors duration-200 inline-block" />
         </Link>
       </div>
 

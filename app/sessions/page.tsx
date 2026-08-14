@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/sessions',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1 },
+  },
   openGraph: {
     title: 'Conference Tracks & Sessions | JKLU SANKALP 2027',
     description: 'Explore the 7 multidisciplinary tracks and session themes for JKLU SANKALP 2027 at JK Lakshmipat University, Jaipur.',

@@ -15,7 +15,7 @@ const PUBLIC_ROUTES = [
   '/sponsors',
   '/faq',
   '/contact',
-  '/tech-team',
+  '/credits',
   '/privacy-policy',
   '/terms-and-conditions',
   '/refund-policy',

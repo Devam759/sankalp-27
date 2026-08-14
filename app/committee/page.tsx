@@ -40,6 +40,11 @@ export const metadata: Metadata = {
     "Prof. Umesh Gupta",
     "Umesh Gupta JKLU"
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1 },
+  },
   openGraph: {
     title: "Organizing Committee & Institutional Leadership | JKLU SANKALP 2027",
     description: "Distinguished academics and institutional leaders steering JKLU SANKALP 2027 at JK Lakshmipat University.",

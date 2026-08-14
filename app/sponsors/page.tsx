@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     "JKLU Industry Partnerships",
     "AI Conference Sponsors India"
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1 },
+  },
   openGraph: {
     title: "Sponsorship Opportunities - JKLU SANKALP 2027 | JKLU",
     description: "Partner with JKLU SANKALP 2027 at JK Lakshmipat University to engage with global AI researchers, leaders, and innovators.",

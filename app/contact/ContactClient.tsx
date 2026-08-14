@@ -26,11 +26,7 @@ export default function ContactClient() {
             <WordReveal text="Contact Us" className="text-brand-blue" />
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
           </h1>
-          <Reveal variant="in" delay={0.25}>
-            <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-2xl mx-auto text-center leading-relaxed font-normal mt-6">
-              SANKALP 2027 International Conference &middot; Institute of Engineering &amp; Technology, JKLU
-            </p>
-          </Reveal>
+
         </header>
 
         <Reveal delay={0.1} className="bg-white border border-[#E6E8EC] p-8 sm:p-12 shadow-sm rounded-[18px] space-y-10">

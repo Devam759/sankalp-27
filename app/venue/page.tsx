@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "Hotels near JKLU Jaipur",
     "Jaipur Travel Guide Conference Delegates"
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1 },
+  },
   openGraph: {
     title: "Venue & Travel Guide - JKLU SANKALP 2027 | JKLU Jaipur",
     description: "Location, map, navigation, delegate accommodation, and travel tips for JKLU SANKALP 2027 at JK Lakshmipat University.",

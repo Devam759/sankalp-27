@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "Sankalp Registration Questions",
     "JKLU Campus Facilities FAQ"
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1 },
+  },
   openGraph: {
     title: "Frequently Asked Questions - JKLU SANKALP 2027",
     description: "Answers to key queries about registrations, venue facilities, travel, and accommodation for JKLU SANKALP 2027.",

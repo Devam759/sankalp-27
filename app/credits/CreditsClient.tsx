@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/Reveal';
@@ -25,7 +24,7 @@ interface TeamMember {
   };
 }
 
-export default function TechTeamClient() {
+export default function CreditsClient() {
   const teamMembers: TeamMember[] = [
     {
       name: 'Devam Gupta',
@@ -118,9 +117,6 @@ export default function TechTeamClient() {
               <WordReveal text="Website Development Team" className="text-brand-blue" />
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
             </h1>
-            <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-2xl mx-auto text-center leading-relaxed font-normal mt-6">
-              Institute of Engineering &amp; Technology (IET), JK Lakshmipat University, Jaipur
-            </p>
           </Reveal>
 
           {/* 3-COLUMN ARCH HIERARCHY LAYOUT */}

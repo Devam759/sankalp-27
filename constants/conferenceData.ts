@@ -1,4 +1,4 @@
-export const PAPER_SUBMISSION_LINK = 'https://cmt3.research.microsoft.com/';
+export const PAPER_SUBMISSION_LINK = 'https://cmt3.research.microsoft.com/JKLUSANKALP2027';
 
 export const conferenceDates = [
   { label: 'Call for Papers Opens', date: '15 August 2026' },
@@ -155,9 +155,9 @@ export const committeeMembers = {
   ],
   programChairs: [
     { name: 'Dr. Amit Kumar Sinhal', title: 'Program Chair', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp', linkedin: 'https://www.linkedin.com/in/dramitsinhal/' },
+    { name: 'Dr. Umesh Gupta', title: 'Program Chair', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp', linkedin: 'https://www.linkedin.com/in/umesh-gupta-70886895/' },
     { name: 'Dr. Devika Kataria', title: 'Program Chair', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp', linkedin: 'https://www.linkedin.com/in/devikakataria/' },
     { name: 'Dr. S. Taruna', title: 'Program Chair', alt: 'Dr. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp', linkedin: 'https://www.linkedin.com/in/staruna/' },
-    { name: 'Dr. Umesh Gupta', title: 'Program Chair', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp', linkedin: 'https://www.linkedin.com/in/umesh-gupta-70886895/' },
   ],
 };
 

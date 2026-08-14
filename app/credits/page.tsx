@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import TechTeamClient from './TechTeamClient';
+import CreditsClient from './CreditsClient';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
   title: "Website Development Team | Devam Gupta & Team | JKLU SANKALP 2027",
   description: "Meet the website development team behind the JKLU SANKALP 2027 Web Portal at JK Lakshmipat University, Jaipur.",
   alternates: {
-    canonical: 'https://sankalp.jklu.edu.in/tech-team',
+    canonical: 'https://sankalp.jklu.edu.in/credits',
   },
   keywords: [
     "Devam Gupta",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Manant Srivastava JKLU",
     "Pratham Lalwani",
     "Pratham Lalwani JKLU",
-    "JKLU SANKALP 2027 Website Development Team",
+    "JKLU SANKALP 2027 Credits",
     "Website Development Team",
     "SANKALP Web Development Team",
     "JKLU Web Developers",
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Website Development Team - JKLU SANKALP 2027 | JKLU Jaipur",
     description: "Website development team credits for the official web portal of JKLU SANKALP 2027 International Conference.",
-    url: 'https://sankalp.jklu.edu.in/tech-team',
+    url: 'https://sankalp.jklu.edu.in/credits',
     siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
   },
 };
 
-export default function TechTeamPage() {
+export default function CreditsPage() {
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -47,12 +47,12 @@ export default function TechTeamPage() {
         '@type': 'ListItem',
         position: 2,
         name: 'Website Development Team',
-        item: 'https://sankalp.jklu.edu.in/tech-team',
+        item: 'https://sankalp.jklu.edu.in/credits',
       },
     ],
   };
 
-  const techTeamPersons = [
+  const creditsPersons = [
     {
       '@context': 'https://schema.org',
       '@type': 'Person',
@@ -60,7 +60,7 @@ export default function TechTeamPage() {
       alternateName: ['Devam Gupta JKLU', 'Devam Gupta Developer'],
       jobTitle: 'Team Head & Lead Architect',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
-      url: 'https://sankalp.jklu.edu.in/tech-team',
+      url: 'https://sankalp.jklu.edu.in/credits',
       affiliation: { '@type': 'Organization', name: 'JKLU SANKALP 2027 Web Portal', url: 'https://sankalp.jklu.edu.in' }
     },
     {
@@ -70,7 +70,7 @@ export default function TechTeamPage() {
       alternateName: ['Manant Srivastava JKLU', 'Manant JKLU'],
       jobTitle: 'Web Engineer',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
-      url: 'https://sankalp.jklu.edu.in/tech-team'
+      url: 'https://sankalp.jklu.edu.in/credits'
     },
     {
       '@context': 'https://schema.org',
@@ -79,14 +79,14 @@ export default function TechTeamPage() {
       alternateName: ['Pratham Lalwani JKLU', 'Pratham JKLU'],
       jobTitle: 'Web Engineer',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
-      url: 'https://sankalp.jklu.edu.in/tech-team'
+      url: 'https://sankalp.jklu.edu.in/credits'
     }
   ];
 
   return (
     <>
-      <JsonLd data={[breadcrumbSchema, ...techTeamPersons]} />
-      <TechTeamClient />
+      <JsonLd data={[breadcrumbSchema, ...creditsPersons]} />
+      <CreditsClient />
     </>
   );
 }

@@ -1009,53 +1009,7 @@ export default function HomeClient() {
         </div>
       </Section>
 
-      {/* INTERNAL NAVIGATION HUB — Boosts internal link count for SEO */}
-      <Section>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-brand-blue">
-              Explore the Conference
-            </h2>
-            <div className="mx-auto mt-3 w-12 h-[2px] bg-brand-orange" />
-            <p className="text-slate-500 text-sm font-medium mt-3">
-              Everything you need to know about JKLU SANKALP 2027 — all in one place.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {[
-              { href: '/', label: 'Home', desc: 'Conference overview' },
-              { href: '/about', label: 'About', desc: 'About SANKALP 2027' },
-              { href: '/call-for-papers', label: 'Call for Papers', desc: 'Submit your research' },
-              { href: '/sessions', label: 'Sessions & Tracks', desc: 'Conference program' },
-              { href: '/registration', label: 'Registration', desc: 'Register now' },
-              { href: '/committee', label: 'Committee', desc: 'Meet the team' },
-              { href: '/venue', label: 'Venue', desc: 'JKLU Jaipur campus' },
-              { href: '/sponsors', label: 'Sponsors', desc: 'Our supporters' },
-              { href: '/faq', label: 'FAQ', desc: 'Common questions' },
-              { href: '/contact', label: 'Contact', desc: 'Get in touch' },
-              { href: '/tech-team', label: 'Tech Team', desc: 'Meet the developers' },
-              { href: '/privacy-policy', label: 'Privacy Policy', desc: 'Data protection' },
-              { href: '/terms-and-conditions', label: 'Terms & Conditions', desc: 'Event terms' },
-              { href: '/refund-policy', label: 'Refund Policy', desc: 'Cancellation info' },
-              { href: '/shipping-policy', label: 'Shipping Policy', desc: 'Certificate delivery' },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="group flex flex-col p-4 border border-slate-200 bg-white hover:border-brand-orange hover:bg-brand-orange/5 transition-all duration-200 rounded-sm text-left"
-              >
-                <span className="text-sm font-bold text-brand-blue group-hover:text-brand-orange transition-colors leading-snug">
-                  {item.label}
-                </span>
-                <span className="text-xs text-slate-500 font-medium mt-1 leading-snug">
-                  {item.desc}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </Section>
 
       <Footer />
 

@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "Academic Conference Fees Jaipur",
     "Sankalp Cashfree Registration"
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1 },
+  },
   openGraph: {
     title: "Registration & Fee Structure - JKLU SANKALP 2027 | JKLU Jaipur",
     description: "Complete your online registration for the JKLU SANKALP 2027 International Conference at JK Lakshmipat University.",

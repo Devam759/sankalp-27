@@ -28,7 +28,7 @@ export default function AboutClient() {
           
           <div className="mb-14 text-center flex flex-col items-center">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
-              <WordReveal text="About SANKALP" />
+              <WordReveal text="About JKLU SANKALP" />
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
             </h1>
             <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto text-center leading-relaxed font-normal mt-8">
@@ -216,6 +216,94 @@ export default function AboutClient() {
            </div>
          </div>
        </section>
+
+
+      {/* SECTION 4: ATAL INCUBATION CENTRE (AIC-JKLU) */}
+      <section className="relative py-32 bg-white overflow-hidden border-t border-brand-blue/10">
+        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <div className="lg:col-span-6 order-2 lg:order-1 relative flex justify-center">
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9 }}
+                className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-10 md:pb-14 shadow-2xl mx-auto lg:mx-0 border border-slate-200/80 rounded-sm"
+              >
+                <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
+                  <Image 
+                    src="/Images/campus/aic_jklu.jpg" 
+                    alt="Atal Incubation Centre - JKLU" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px" 
+                    className="object-cover transition-all duration-700 hover:scale-105" 
+                  />
+                </div>
+                <div className="absolute bottom-2.5 md:bottom-4 left-1/2 -translate-x-1/2 font-serif text-brand-blue font-bold text-sm sm:text-base md:text-lg tracking-wider text-center w-full px-2 leading-tight md:leading-normal">
+                  Atal Incubation Centre - JKLU
+                </div>
+              </motion.div>
+            </div>
+
+            <div className="lg:col-span-6 order-1 lg:order-2">
+              <div className="flex items-center gap-4 mb-12">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                  <WordReveal text="Atal Incubation Centre" />
+                  <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
+                </h2>
+              </div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="bg-brand-cloud p-10 lg:p-12 relative shadow-2xl border-l-4 border-brand-orange mb-8"
+              >
+                <span className="absolute top-0 right-0 bg-brand-blue text-white text-xs font-bold px-4 py-2 uppercase tracking-widest">AIC-JKLU</span>
+                <p className="text-slate-700 leading-relaxed font-medium text-lg mt-4 mb-6">
+                  Established in 2019 under the Atal Innovation Mission (AIM), NITI Aayog, AIC-JKLU is a premier startup incubator fostering purposeful innovation and entrepreneurship.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  Located within the JKLU campus, AIC-JKLU offers state-of-the-art infrastructure, access to 33+ specialized labs, mentorship from industry experts, and a global network of partners to help startups scale. Over the years, the center has nurtured more than 70 startups in areas ranging from Fintech and Agritech to Electric Vehicles and Longevity Economy.
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="bg-brand-cloud border-l-4 border-brand-orange p-6 shadow-lg border border-slate-200/80"
+                >
+                  <span className="text-[10px] font-bold text-brand-orange uppercase tracking-wider block mb-1">Impact & Reach</span>
+                  <h4 className="font-serif font-bold text-brand-blue text-base mb-2">70+ Startups Incubated</h4>
+                  <p className="text-slate-600 text-xs leading-relaxed">
+                    Supporting early-stage startups across diverse sectors like EV, Clean Energy, Fintech, and Agritech with dedicated programs and resources.
+                  </p>
+                </motion.div>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="bg-brand-cloud border-l-4 border-brand-blue p-6 shadow-lg border border-slate-200/80"
+                >
+                  <span className="text-[10px] font-bold text-brand-blue uppercase tracking-wider block mb-1">Resources</span>
+                  <h4 className="font-serif font-bold text-brand-blue text-base mb-2">Mentorship & Lab Access</h4>
+                  <p className="text-slate-600 text-xs leading-relaxed">
+                    Providing access to 45+ expert mentors, corporate tie-ups, capital networks, and 33+ engineering, design, and computing labs.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </main>
