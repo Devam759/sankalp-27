@@ -235,116 +235,74 @@ export default function VenueClient() {
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-0">
       <Navbar />
 
-      {/* HERO SECTION — TWO INSTITUTIONS */}
-      <section ref={heroRef} className="relative min-h-[580px] lg:h-[82vh] lg:min-h-[560px] w-full text-white bg-brand-ink pt-20 overflow-hidden">
-        {/* Subtle Vertical Divider on Desktop */}
-        <div className="hidden md:block absolute left-1/2 top-24 bottom-12 w-px bg-brand-orange/60 z-30 -translate-x-1/2 pointer-events-none" />
+      {/* HERO SECTION */}
+      <section ref={heroRef} className="relative h-[80vh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink pt-20">
+        <div ref={heroImageRef} className="absolute -inset-y-10 inset-x-0 z-0 will-change-transform">
+          <Image
+            src="/Images/campus/jklu_campus.webp"
+            alt="JKLU Campus Banner"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-45 scale-105"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-transparent to-brand-ink/30" />
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full min-h-[500px] lg:min-h-[540px] relative z-10">
-          
-          {/* LEFT HALF — JK LAKSHMIPAT UNIVERSITY */}
-          <div className="relative flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden group border-b md:border-b-0 border-brand-orange/30">
-            <div ref={heroImageRef} className="absolute inset-0 z-0 will-change-transform">
-              <Image
-                src="/Images/campus/jklu_campus.webp"
-                alt="JK Lakshmipat University Campus"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080d19] via-[#080d19]/65 to-[#080d19]/40" />
-            </div>
-
-            <div className="relative z-10 space-y-4 max-w-xl">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/logos/white_jklu_logo.webp"
-                  alt="JKLU Logo"
-                  width={200}
-                  height={60}
-                  className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
-                  priority
-                />
-              </div>
-
-              <div>
-                <span className="inline-block bg-brand-orange text-white text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] px-3 py-1 rounded-sm shadow-xs mb-2">
-                  HOST INSTITUTION
-                </span>
-                <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-black tracking-tight uppercase text-white leading-tight">
-                  JK Lakshmipat University
-                </h1>
-                <p className="text-amber-200/90 text-sm sm:text-base font-semibold tracking-wide mt-1">
-                  Jaipur, Rajasthan, India
-                </p>
-              </div>
-
-              <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed max-w-md">
-                Official Host Venue of SANKALP'27 &mdash; International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction.
-              </p>
-
-              <div className="pt-2">
-                <a
-                  href="#map-section"
-                  className="inline-flex items-center gap-2 bg-brand-orange text-white font-bold py-2.5 px-6 border border-orange-400 shadow-md hover:bg-orange-600 transition-all rounded-md text-xs sm:text-sm cursor-pointer"
-                >
-                  Get Directions →
-                </a>
-              </div>
-            </div>
+        <div className="relative z-10 max-w-4xl px-6 space-y-6">
+          <div className="flex justify-center">
+            <Image
+              src="/logos/white_jklu_logo.webp"
+              alt="JKLU Logo"
+              width={220}
+              height={70}
+              className="h-12 sm:h-16 w-auto object-contain drop-shadow-md"
+              priority
+            />
           </div>
 
-          {/* RIGHT HALF — ASIA UNIVERSITY */}
-          <div className="relative flex flex-col justify-end p-8 sm:p-12 lg:p-16 overflow-hidden group">
-            <div className="absolute inset-0 z-0">
-              <Image
-                src="/Images/venue/asia_university_campus.webp"
-                alt="Asia University Campus"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080d19] via-[#080d19]/65 to-[#080d19]/40" />
-            </div>
+          <h1 className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase">
+            <WordReveal text="JK Lakshmipat University" className="text-white" />
+          </h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg sm:text-xl font-medium tracking-wide max-w-2xl mx-auto text-white/90"
+          >
+            Jaipur, Rajasthan, India
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-sm sm:text-base opacity-75 max-w-xl mx-auto"
+          >
+            Host Venue of SANKALP 2027 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction
+          </motion.p>
 
-            <div className="relative z-10 space-y-4 max-w-xl">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/logos/Asia_University_Logo.webp"
-                  alt="Asia University Logo"
-                  width={200}
-                  height={60}
-                  className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
-                  priority
-                />
-              </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-sm sm:text-base font-semibold text-amber-200/90 tracking-wider uppercase"
+          >
+            <span>5-6 March 2027</span>
+          </motion.div>
 
-              <div>
-                <span className="inline-block bg-sky-600/90 border border-sky-400/40 text-white text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] px-3 py-1 rounded-sm shadow-xs mb-2">
-                  INTERNATIONAL ACADEMIC PARTNER
-                </span>
-                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-black tracking-tight uppercase text-white leading-tight">
-                  Asia University
-                </h2>
-                <p className="text-sky-200/90 text-sm sm:text-base font-semibold tracking-wide mt-1">
-                  Taichung, Taiwan
-                </p>
-              </div>
-
-              <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed max-w-md">
-                International Academic Partner supporting global research collaboration, innovation, and academic excellence for SANKALP'27.
-              </p>
-
-              <div className="pt-2">
-                <span className="inline-flex items-center gap-2 bg-slate-800/80 border border-white/20 text-white/90 font-semibold py-2.5 px-6 rounded-md text-xs sm:text-sm">
-                  Global Co-Host Partner
-                </span>
-              </div>
-            </div>
-          </div>
-
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-wrap items-center justify-center gap-4 pt-4"
+          >
+            <a
+              href="#map-section"
+              className="bg-brand-orange text-white font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center gap-2 cursor-pointer text-sm"
+            >
+              Get Directions →
+            </a>
+          </motion.div>
         </div>
       </section>
 
