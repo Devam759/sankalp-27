@@ -105,12 +105,37 @@ export default function CreditsClient() {
     },
   ];
 
+  const manantCardRef = React.useRef<HTMLDivElement>(null);
+  const [manantHeight, setManantHeight] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    if (!manantCardRef.current) return;
+
+    const updateHeight = () => {
+      if (manantCardRef.current && window.innerWidth >= 1024) {
+        setManantHeight(manantCardRef.current.offsetHeight);
+      } else {
+        setManantHeight(null);
+      }
+    };
+
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(manantCardRef.current);
+    window.addEventListener('resize', updateHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#f7f4ef] text-brand-ink font-sans flex flex-col selection:bg-brand-orange selection:text-white pt-20">
       <Navbar />
 
       {/* TEAM CARDS SECTION */}
-      <section className="py-16 sm:py-24 bg-white flex-grow border-b border-slate-200">
+      <section className="pt-8 sm:pt-12 pb-16 sm:pb-24 bg-white flex-grow border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
           <Reveal className="text-center mb-16 flex flex-col items-center">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
@@ -126,7 +151,7 @@ export default function CreditsClient() {
               delay={0.15}
               className="order-2 lg:order-1 lg:mt-16 w-full flex flex-col"
             >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs h-full">
+              <div ref={manantCardRef} className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border-2 border-brand-blue/40 rounded-2xl shadow-md h-full">
                 <div>
 
                   {/* PROFILE IMAGE SECTION */}
@@ -349,7 +374,10 @@ export default function CreditsClient() {
               delay={0.3}
               className="order-3 lg:order-3 lg:mt-16 w-full flex flex-col"
             >
-              <div className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border border-slate-200/90 rounded-2xl shadow-xs h-full">
+              <div
+                style={manantHeight ? { height: `${manantHeight}px` } : undefined}
+                className="flex flex-col justify-between p-7 sm:p-8 bg-[#FCFCFD] border-2 border-brand-blue/40 rounded-2xl shadow-md overflow-hidden"
+              >
                 <div>
 
                   {/* PROFILE IMAGE SECTION */}
