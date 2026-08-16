@@ -88,6 +88,30 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+import { Plus_Jakarta_Sans, Outfit, Tiro_Devanagari_Hindi } from 'next/font/google'
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-plus-jakarta',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-outfit',
+})
+
+const tiroDevanagariHindi = Tiro_Devanagari_Hindi({
+  subsets: ['devanagari', 'latin'],
+  weight: ['400'],
+  display: 'swap',
+  variable: '--font-devanagari-var',
+})
+
 export default function RootLayout({
   children,
 }: {
@@ -98,10 +122,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" 
-          rel="stylesheet" 
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet" />
         <Script 
           src="https://www.googletagmanager.com/gtag/js?id=G-6DBYPV3SRL" 
           strategy="afterInteractive" 
@@ -145,7 +166,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen">
+      <body className={`${plusJakartaSans.variable} ${outfit.variable} ${tiroDevanagariHindi.variable} font-sans antialiased bg-brand-cloud text-brand-ink min-h-screen`}>
         {children}
         <ScrollToTop />
         <Analytics />

@@ -43,15 +43,15 @@
   --color-dark: #0F172A;
   --color-dark-lighter: #1E293B;
 
-  --font-display: "Google Sans Flex", "Outfit", system-ui, sans-serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Google Sans Flex", var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-adminHeading: "Google Sans Flex", system-ui, sans-serif;
-  --font-adminBody: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-vanilla: "Plus Jakarta Sans", sans-serif;
-  --font-bricks: "Plus Jakarta Sans", sans-serif;
-  --font-diary: "Plus Jakarta Sans", sans-serif;
-  --font-devanagari: "Tiro Devanagari Hindi", serif;
-  --font-serif: "Google Sans Flex", "Outfit", system-ui, sans-serif;
+  --font-adminBody: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-vanilla: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-bricks: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-diary: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-devanagari: var(--font-devanagari-var), "Tiro Devanagari Hindi", serif;
+  --font-serif: "Google Sans Flex", var(--font-outfit), system-ui, sans-serif;
 
   --shadow-brand-orange: 0 0 40px rgba(217, 119, 6, 0.15);
   --shadow-brand-blue: 0 0 40px rgba(11, 27, 61, 0.15);
