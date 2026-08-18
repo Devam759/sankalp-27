@@ -401,7 +401,7 @@ export default function Footer() {
         <div className="flex items-center gap-6 md:gap-8 flex-wrap">
           <Link href="/" className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex">
             <Image
-              src="/logos/Sankalp logo.webp"
+              src="/logos/sankalp_logo.webp"
               alt="SANKALP 2027 Logo"
               width={240}
               height={80}

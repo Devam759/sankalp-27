@@ -124,7 +124,7 @@ export default function LoginPage() {
             {/* SANKALP Logo */}
             <div className="flex items-center">
               <img
-                src="/logos/Sankalp logo.webp"
+                src="/logos/sankalp_logo.webp"
                 alt="SANKALP 2027 Logo"
                 className="h-12 w-auto object-contain"
               />

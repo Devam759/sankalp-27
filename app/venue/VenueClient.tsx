@@ -85,15 +85,15 @@ export default function VenueClient() {
 
   const hotels = [
     {
-      name: 'Hotel Polo Inn SEZ',
-      distance: '175, SEZ Road, Mahindra World City',
-      time: 'Approx. 3 minutes from JKLU',
-      badgeText: '3 min Drive',
-      category: 'Boutique Hotel',
-      bottomText: 'Closest to JKLU Campus',
-      location: 'Mahindra SEZ, Jaipur',
-      src: '/Images/hotels/polo_inn_sez.webp',
-      link: 'https://www.google.com/maps/search/Hotel+Polo+Inn+SEZ+Jaipur'
+      name: 'Ginger Hotel Jaipur',
+      distance: 'Geejgarh House, Civil Lines / Hawa Sadak',
+      time: 'Approx. 20 minutes from JKLU',
+      badgeText: '20 min Drive',
+      category: '3-Star Business Hotel',
+      bottomText: 'IHCL (Tata) Hotel',
+      location: 'Civil Lines, Jaipur',
+      src: '/Images/hotels/ginger_hotel.webp',
+      link: 'https://www.google.com/maps/search/Ginger+Hotel+Jaipur'
     },
     {
       name: 'Atulya Green by Meyatri',
@@ -287,7 +287,7 @@ export default function VenueClient() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-sm sm:text-base font-semibold text-amber-200/90 tracking-wider uppercase"
           >
-            <span>5-6 March 2027</span>
+            <span>12-13 March 2027</span>
           </motion.div>
 
           <motion.div
@@ -322,14 +322,9 @@ export default function VenueClient() {
 
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight leading-tight">
-                  <WordReveal text="JK Lakshmipat University" className="text-brand-ink" />
-                </h2>
-                <p className="text-lg sm:text-xl font-medium text-brand-blue tracking-wide">
-                  Where Innovation Meets Research
-                </p>
-              </div>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue tracking-tight leading-tight">
+                <WordReveal text="Where Innovation Meets Research" className="text-brand-blue" />
+              </h2>
               <div className="w-16 h-1 bg-brand-orange rounded-sm" />
             </div>
 

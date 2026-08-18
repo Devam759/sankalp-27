@@ -76,7 +76,7 @@ const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?
 );
 
 function getTimeLeft() {
-  const targetDate = new Date("March 5, 2027 09:00:00").getTime();
+  const targetDate = new Date("March 12, 2027 09:00:00").getTime();
   const now = new Date().getTime();
   const difference = targetDate - now;
 
@@ -432,7 +432,7 @@ export default function HomeClient() {
             >
               <motion.div variants={itemVariants} className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
                 <Image
-                  src="/logos/Sankalp logo.webp"
+                  src="/logos/sankalp_logo.webp"
                   alt="SANKALP 2027 Logo"
                   width={400}
                   height={160}
@@ -474,7 +474,7 @@ export default function HomeClient() {
               </motion.h3>
               <ul className="space-y-5 flex-grow">
                 {[
-                  'Call for Papers opens on 15 August 2026',
+                  'Call for Papers opens on 19 August 2026',
                   'Scopus-Indexed Proceedings Publication',
                   'Full paper submission deadline: 30 November 2026',
                   'Conference mode: Hybrid',

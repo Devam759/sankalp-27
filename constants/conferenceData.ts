@@ -1,11 +1,11 @@
 export const PAPER_SUBMISSION_LINK = 'https://cmt3.research.microsoft.com/JKLUSANKALP2027';
 
 export const conferenceDates = [
-  { label: 'Call for Papers Opens', date: '15 August 2026' },
+  { label: 'Call for Papers Opens', date: '19 August 2026' },
   { label: 'Full Paper Submission Deadline', date: '30 November 2026' },
   { label: 'Notification of Acceptance', date: '20 December 2026' },
   { label: 'Camera Ready Submission', date: '31 January 2027' },
-  { label: 'Conference Dates', date: '5-6 March 2027' },
+  { label: 'Conference Dates', date: '12-13 March 2027' },
 ];
 
 export const keyFeatures = [
@@ -142,6 +142,7 @@ export const MEMBER_LINKEDIN_MAP: Record<string, string> = {
   'Dr. Umesh Gupta': 'https://www.linkedin.com/in/umesh-gupta-70886895/',
   'Prof. Madhu Muthyam': 'https://www.linkedin.com/in/madhu-mutyam-63361518/',
   'Prof. Shiv Shanker Singh Patel': 'https://www.linkedin.com/in/shivshanker-singh-patel-2785921a/',
+  'Mr. Naveen Sivadasan': 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2/',
   'Prof. Naveen Sivadasan': 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2/',
   'Dr. Easwar Subramanian': 'https://www.linkedin.com/in/easwar-subramanian/',
   'Prof. Vikram Goyal': 'https://www.linkedin.com/in/vikram-goyal-7a684213/',
@@ -168,10 +169,10 @@ export const committeeMembers = {
     { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp', linkedin: 'https://www.linkedin.com/in/sonali-vyas-ph-d-49414649/' },
   ],
   programChairs: [
-    { name: 'Dr. Amit Kumar Sinhal', title: 'Program Chair', alt: 'Dr. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp', linkedin: 'https://www.linkedin.com/in/dramitsinhal/' },
-    { name: 'Dr. Umesh Gupta', title: 'Program Chair', alt: 'Dr. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp', linkedin: 'https://www.linkedin.com/in/umesh-gupta-70886895/' },
-    { name: 'Dr. Devika Kataria', title: 'Program Chair', alt: 'Dr. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp', linkedin: 'https://www.linkedin.com/in/devikakataria/' },
-    { name: 'Dr. S. Taruna', title: 'Program Chair', alt: 'Dr. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp', linkedin: 'https://www.linkedin.com/in/staruna/' },
+    { name: 'Prof. Amit Kumar Sinhal', title: 'Program Chair', alt: 'Prof. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp', linkedin: 'https://www.linkedin.com/in/dramitsinhal/' },
+    { name: 'Prof. Umesh Gupta', title: 'Program Chair', alt: 'Prof. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp', linkedin: 'https://www.linkedin.com/in/umesh-gupta-70886895/' },
+    { name: 'Prof. Devika Kataria', title: 'Program Chair', alt: 'Prof. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp', linkedin: 'https://www.linkedin.com/in/devikakataria/' },
+    { name: 'Prof. S. Taruna', title: 'Program Chair', alt: 'Prof. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp', linkedin: 'https://www.linkedin.com/in/staruna/' },
   ],
 };
 
@@ -212,7 +213,7 @@ export const speakers = {
       linkedin: 'https://www.linkedin.com/in/bbgupta/'
     },
     {
-      name: 'Prof. Naveen Sivadasan',
+      name: 'Mr. Naveen Sivadasan',
       role: 'Principal Scientist',
       university: 'TCS Research',
       location: 'IIT Hyderabad',
@@ -243,7 +244,7 @@ export const advisoryBoard = {
   national: [
     { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras', linkedin: 'https://www.linkedin.com/in/madhu-mutyam-63361518/' },
     { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam', linkedin: 'https://www.linkedin.com/in/shivshanker-singh-patel-2785921a/' },
-    { name: 'Prof. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad', linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2/' },
+    { name: 'Mr. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad', linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2/' },
     { name: 'Dr. Easwar Subramanian', title: 'Senior Scientist, TCS Research, Hyderabad', linkedin: 'https://www.linkedin.com/in/easwar-subramanian/' },
     { name: 'Prof. Viraj Kumar', title: 'Visiting Professor, Divecha Centre for Climate Change, IISc, Bengaluru' },
     { name: 'Prof. K. K. Biswas', title: 'Prof. Emeritus, IIT Delhi, India' },
@@ -303,7 +304,8 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Lead', name: 'Dr. Hanuman Prasad Agrawal', designation: 'Associate Professor', affiliation: 'Electronics and Communication Engg' },
       { role: 'Member', name: 'Dr. Satveer Singh', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Mr. Divanshu Jain', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
-      { role: 'Member', name: 'Mr. Devendra Bhavsar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
+      { role: 'Member', name: 'Mr. Devendra Bhavsar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Mr. Arvind Sharma', designation: 'Assistant Professor', affiliation: 'Finance & Accounts' }
     ]
   },
   {
@@ -314,7 +316,8 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Member', name: 'Dr. Santosh Kumar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Surbhi Chhabra', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Abhinav Kumar Khorwal', designation: 'Assistant Professor', affiliation: 'Applied Science' },
-      { role: 'Member', name: 'Dr. Renu Bhagwat', designation: 'Assistant Professor', affiliation: 'IET' }
+      { role: 'Member', name: 'Dr. Renu Bhagwat', designation: 'Assistant Professor', affiliation: 'IET' },
+      { role: 'Member', name: 'Mr. Somesh Bang', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
     ]
   },
   {
@@ -342,9 +345,10 @@ export const organizingSubCommittees: InternalCommittee[] = [
     members: [
       { role: 'Chair', name: 'Prof. Amit Kumar Sinhal', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Lead', name: 'Dr. Pranab Roy', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
-      { role: 'Member', 'name': 'Dr. Ashish Jain', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Ashish Jain', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Manushi Gupta', designation: 'Assistant Professor', affiliation: 'Applied Science' },
-      { role: 'Member', name: 'Dr. Rajnish Kumar', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' }
+      { role: 'Member', name: 'Dr. Rajnish Kumar', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
+      { role: 'Member', name: 'Dr. Shobha Mangal', designation: 'Assistant Professor', affiliation: 'Applied Science' }
     ]
   },
   {
@@ -364,7 +368,8 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Chair', name: 'Prof. Devika Kataria', designation: 'Professor', affiliation: 'Electronics and Communication Engg' },
       { role: 'Lead', name: 'Dr. Richa Sharma', designation: 'Associate Professor', affiliation: 'Applied Science' },
       { role: 'Member', name: 'Dr. Shahnawaz Khan', designation: 'Assistant Professor', affiliation: 'Applied Science' },
-      { role: 'Member', name: 'Dr. Krishna Chaitanya Solasa', designation: 'Assistant Professor', affiliation: 'Applied Science' }
+      { role: 'Member', name: 'Dr. Krishna Chaitanya Solasa', designation: 'Assistant Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Mr. Ashutosh Kumar', designation: 'Assistant Professor', affiliation: 'Hospitality & Logistics' }
     ]
   },
   {

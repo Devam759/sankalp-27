@@ -123,8 +123,8 @@ export default function Page() {
       "sankalp conference",
       "Sankalp 2027 JKLU"
     ],
-    startDate: '2027-02-19T09:00:00+05:30',
-    endDate: '2027-02-20T17:00:00+05:30',
+    startDate: '2027-03-12T09:00:00+05:30',
+    endDate: '2027-03-13T17:00:00+05:30',
     eventAttendanceMode: 'https://schema.org/MixedEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
     location: {

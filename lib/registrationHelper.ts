@@ -9,6 +9,8 @@ import { getCategoryById } from '../constants/fees';
 
 
 
+import sharp from 'sharp';
+
 // ============================================================================
 // PDF RECEIPT GENERATOR helper (A4 Layout with dynamic aspect scaling)
 // ============================================================================
@@ -23,7 +25,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
   const lightGray = rgb(0.961, 0.945, 0.898);  // #F5F1E5 Cloud White
   const greyColor = rgb(0.4, 0.4, 0.4);
 
-  // 1. Left Logo: JKLU Logo (Colored PNG variant)
+  // 1. Left Logo: JKLU Logo
   let jkluScaledWidth = 0;
   let jkluScaledHeight = 0;
   let jkluLogoImage;
@@ -35,7 +37,8 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
       'jklu_logo.webp'
     );
     const jkluLogoBytes = await fs.readFile(jkluLogoPath);
-    jkluLogoImage = await pdfDoc.embedPng(jkluLogoBytes);
+    const jkluPngBytes = await sharp(jkluLogoBytes).png().toBuffer();
+    jkluLogoImage = await pdfDoc.embedPng(jkluPngBytes);
     const targetHeight = 46;
     const scaleFactor = targetHeight / jkluLogoImage.height;
     jkluScaledWidth = jkluLogoImage.width * scaleFactor;
@@ -44,7 +47,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
     console.warn('PDF Left Logo (JKLU) load failed:', error);
   }
 
-  // 2. Right Logo: Sankalp Main Logo (Transparent removebg PNG/WEBP variant)
+  // 2. Right Logo: Sankalp Main Logo
   let sankalpScaledWidth = 0;
   let sankalpScaledHeight = 0;
   let sankalpLogoImage;
@@ -53,10 +56,11 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
       process.cwd(), 
       'public', 
       'logos',
-      'Sankalp logo.webp'
+      'sankalp_logo.webp'
     );
     const sankalpLogoBytes = await fs.readFile(sankalpLogoPath);
-    sankalpLogoImage = await pdfDoc.embedPng(sankalpLogoBytes);
+    const sankalpPngBytes = await sharp(sankalpLogoBytes).png().toBuffer();
+    sankalpLogoImage = await pdfDoc.embedPng(sankalpPngBytes);
     const targetHeight = 35;
     const scaleFactor = targetHeight / sankalpLogoImage.height;
     sankalpScaledWidth = sankalpLogoImage.width * scaleFactor;
