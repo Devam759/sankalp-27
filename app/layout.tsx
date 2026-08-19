@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/Images/campus/jklu_campus.webp',
+        url: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp',
         width: 1200,
         height: 630,
         alt: 'JKLU SANKALP 2027 Conference - JK Lakshmipat University Jaipur',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "JKLU SANKALP 2027 | International Conference | JKLU Jaipur",
     description: "Join premier researchers at JKLU Jaipur for JKLU SANKALP 2027 on Sustainable AI & Next-Gen Knowledge.",
-    images: ['/Images/campus/jklu_campus.webp'],
+    images: ['https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp'],
   },
   icons: {
     icon: '/favicon.ico',

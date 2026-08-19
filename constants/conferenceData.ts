@@ -158,21 +158,21 @@ export const MEMBER_LINKEDIN_MAP: Record<string, string> = {
 };
 
 export const committeeMembers = {
-  chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: '', image: '/Images/committee/Bharat_Hari_Singhania.webp' },
+  chiefPatron: { role: 'Chief Patron', name: 'Mr. Bharat Hari Singhania', title: '', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147497/sankalp/Images/committee/Bharat_Hari_Singhania.webp' },
   chiefCoPatrons: [
-    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: '', image: '/Images/committee/Raghupati_Singhania.webp', linkedin: 'https://www.linkedin.com/in/raghavpat-singhania/' },
-    { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: '', image: '/Images/committee/Harsh_Pati_Singhania.webp' }
+    { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: '', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147500/sankalp/Images/committee/Raghupati_Singhania.webp', linkedin: 'https://www.linkedin.com/in/raghavpat-singhania/' },
+    { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: '', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147499/sankalp/Images/committee/Harsh_Pati_Singhania.webp' }
   ],
-  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: '', image: '/Images/committee/vc.webp', linkedin: 'https://www.linkedin.com/in/vchellaboina/' },
+  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: '', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147505/sankalp/Images/committee/vc.webp', linkedin: 'https://www.linkedin.com/in/vchellaboina/' },
   chairs: [
-    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: '/Images/committee/tapas_kumar.webp', linkedin: 'https://www.linkedin.com/in/dr-tapas-kumar-37a36b307/' },
-    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: '/Images/committee/sonali_vyas.webp', linkedin: 'https://www.linkedin.com/in/sonali-vyas-ph-d-49414649/' },
+    { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147502/sankalp/Images/committee/tapas_kumar.webp', linkedin: 'https://www.linkedin.com/in/dr-tapas-kumar-37a36b307/' },
+    { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147501/sankalp/Images/committee/sonali_vyas.webp', linkedin: 'https://www.linkedin.com/in/sonali-vyas-ph-d-49414649/' },
   ],
   programChairs: [
-    { name: 'Prof. Amit Kumar Sinhal', title: 'Program Chair', alt: 'Prof. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/amit_sinhal.webp', linkedin: 'https://www.linkedin.com/in/dramitsinhal/' },
-    { name: 'Prof. Umesh Gupta', title: 'Program Chair', alt: 'Prof. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/umesh_gupta.webp', linkedin: 'https://www.linkedin.com/in/umesh-gupta-70886895/' },
-    { name: 'Prof. Devika Kataria', title: 'Program Chair', alt: 'Prof. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/devika_kataria.webp', linkedin: 'https://www.linkedin.com/in/devikakataria/' },
-    { name: 'Prof. S. Taruna', title: 'Program Chair', alt: 'Prof. S. Taruna - Program Chair SANKALP 2027 JKLU', image: '/Images/committee/taruna_sunil.webp', linkedin: 'https://www.linkedin.com/in/staruna/' },
+    { name: 'Prof. Amit Kumar Sinhal', title: 'Program Chair', alt: 'Prof. Amit Kumar Sinhal - Program Chair SANKALP 2027 JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147496/sankalp/Images/committee/amit_sinhal.webp', linkedin: 'https://www.linkedin.com/in/dramitsinhal/' },
+    { name: 'Prof. Umesh Gupta', title: 'Program Chair', alt: 'Prof. Umesh Gupta - Program Chair SANKALP 2027 JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147504/sankalp/Images/committee/umesh_gupta.webp', linkedin: 'https://www.linkedin.com/in/umesh-gupta-70886895/' },
+    { name: 'Prof. Devika Kataria', title: 'Program Chair', alt: 'Prof. Devika Kataria - Program Chair SANKALP 2027 JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147498/sankalp/Images/committee/devika_kataria.webp', linkedin: 'https://www.linkedin.com/in/devikakataria/' },
+    { name: 'Prof. S. Taruna', title: 'Program Chair', alt: 'Prof. S. Taruna - Program Chair SANKALP 2027 JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147503/sankalp/Images/committee/taruna_sunil.webp', linkedin: 'https://www.linkedin.com/in/staruna/' },
   ],
 };
 
@@ -191,7 +191,7 @@ export const speakers = {
       role: 'Professor',
       university: 'Toronto Metropolitan University',
       location: 'Toronto, Canada',
-      image: '/Images/speakers/ravi_vatrapu.webp',
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147540/sankalp/Images/speakers/ravi_vatrapu.webp',
       linkedin: 'https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'
     }
   ],
@@ -201,7 +201,7 @@ export const speakers = {
       role: 'Director (L&T)',
       university: 'Curtin University',
       location: 'Singapore',
-      image: '/Images/speakers/arun_patil.webp',
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147537/sankalp/Images/speakers/arun_patil.webp',
       linkedin: 'https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'
     },
     {
@@ -209,7 +209,7 @@ export const speakers = {
       role: 'Director, Centre for AI and Cyber Security',
       university: 'Asia University',
       location: 'Taiwan',
-      image: '/Images/speakers/brij_gupta.webp',
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147537/sankalp/Images/speakers/brij_gupta.webp',
       linkedin: 'https://www.linkedin.com/in/bbgupta/'
     },
     {
@@ -217,7 +217,7 @@ export const speakers = {
       role: 'Principal Scientist',
       university: 'TCS Research',
       location: 'IIT Hyderabad',
-      image: '/Images/speakers/naveen_sivadasan.webp',
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147538/sankalp/Images/speakers/naveen_sivadasan.webp',
       linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2'
     }
   ]

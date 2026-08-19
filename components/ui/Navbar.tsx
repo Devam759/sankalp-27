@@ -111,7 +111,7 @@ export default function Navbar() {
           <div className="flex items-center gap-5 xl:gap-7 shrink-0">
             <Link href="/" className="flex items-center shrink-0 hover:opacity-90 transition-opacity" aria-label="JKLU SANKALP 2027 Home">
               <Image
-                src="/logos/sankalp_logo.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp"
                 alt="SANKALP 2027 Logo"
                 width={220}
                 height={70}
@@ -136,9 +136,13 @@ export default function Navbar() {
                 className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
                 aria-label="JK Lakshmipat University Website"
               >
-                <img
-                  src="/logos/white_jklu_logo.webp"
+                <Image
+                  src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
                   alt="JKLU Logo"
+                  width={160}
+                  height={50}
+                  priority
+                  loading="eager"
                   className="h-9 sm:h-11 w-auto object-contain"
                 />
               </a>
@@ -150,9 +154,13 @@ export default function Navbar() {
                 className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
                 aria-label="Asia University Website"
               >
-                <img
-                  src="/logos/Asia_University_Logo.webp"
+                <Image
+                  src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
                   alt="Asia University Logo"
+                  width={50}
+                  height={50}
+                  priority
+                  loading="eager"
                   className="h-8 sm:h-10 w-auto object-contain rounded-full"
                 />
               </a>
@@ -229,9 +237,13 @@ export default function Navbar() {
                     className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
                     aria-label="JK Lakshmipat University Website"
                   >
-                    <img
-                      src="/logos/white_jklu_logo.webp"
+                    <Image
+                      src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
                       alt="JKLU Logo"
+                      width={180}
+                      height={60}
+                      priority
+                      loading="eager"
                       className="h-11 md:h-[48px] lg:h-[52px] w-auto object-contain"
                     />
                   </a>
@@ -243,9 +255,13 @@ export default function Navbar() {
                     className="flex items-center cursor-pointer transition-opacity hover:opacity-90 active:scale-95"
                     aria-label="Asia University Website"
                   >
-                    <img
-                      src="/logos/Asia_University_Logo.webp"
+                    <Image
+                      src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
                       alt="Asia University Logo"
+                      width={60}
+                      height={60}
+                      priority
+                      loading="eager"
                       className="h-10 md:h-[42px] lg:h-[46px] w-auto object-contain rounded-full"
                     />
                   </a>

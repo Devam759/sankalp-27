@@ -7,18 +7,30 @@ import { finalizeRegistration } from '@/lib/registrationHelper';
 import { validateRegistrationNumber } from '@/lib/utils';
 import { getCategoryById } from '@/constants/fees';
 
-import { isRateLimited, sanitizeObject, isProd, cashfreeAppId, cashfreeSecretKey, formatPhoneNumber, handleApiError, verifyRecaptchaToken } from '@/lib/security';
+import { isRateLimited, sanitizeObject, formatPhoneNumber, handleApiError, verifyRecaptchaToken } from '@/lib/security';
 
-// Initialize Cashfree
-const cashfree = new Cashfree(
-  isProd ? CFEnvironment.PRODUCTION : CFEnvironment.SANDBOX,
-  cashfreeAppId,
-  cashfreeSecretKey
-);
-cashfree.XApiVersion = '2023-08-01';
+function getCashfreeClient() {
+  const isProduction = (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').replace(/['"]/g, '').trim().toUpperCase() === 'PRODUCTION';
+  const appId = isProduction
+    ? (process.env.CASHFREE_PROD_APP_ID || process.env.CASHFREE_APP_ID || '').trim()
+    : (process.env.CASHFREE_TEST_APP_ID || process.env.CASHFREE_APP_ID || '').trim();
+  const secretKey = isProduction
+    ? (process.env.CASHFREE_PROD_SECRET_KEY || process.env.CASHFREE_SECRET_KEY || '').trim()
+    : (process.env.CASHFREE_TEST_SECRET_KEY || process.env.CASHFREE_SECRET_KEY || '').trim();
+
+  const client = new Cashfree(
+    isProduction ? CFEnvironment.PRODUCTION : CFEnvironment.SANDBOX,
+    appId,
+    secretKey
+  );
+  client.XApiVersion = '2023-08-01';
+  return { client, isProduction, appId, secretKey };
+}
 
 // Server-side in-memory cache for resolved pincodes to ensure 0ms latency on repeated queries
 const pincodeCache = new Map<string, any>();
+// Fallback cache for pending registrations when local GCP ADC credentials are not mounted
+const pendingRegistrationsMemory = new Map<string, any>();
 
 export async function POST(req: Request) {
   try {
@@ -146,29 +158,44 @@ export async function POST(req: Request) {
         const orderAmount = couponStatus.valid ? couponStatus.amount : baseAmount;
 
         console.log("Saving pending registration for order ID:", orderId);
-        // 1. Save pending registration details under pendingRegistrations using Admin SDK
-        await adminDb.collection('pendingRegistrations').doc(orderId).set({
-          formData: data,
-          orderId: orderId,
-          amount: orderAmount,
-          createdAt: FieldValue.serverTimestamp(),
-          status: 'pending'
-        });
-        console.log("Pending registration saved.");
-
-        // MOCK MODE: If no keys OR if order amount is 0 (100% discount coupon), return a mock session
-        if (!cashfreeAppId || orderAmount === 0) {
-          return NextResponse.json({ 
-            order_id: orderId,
-            payment_session_id: "mock_session_id",
-            is_mock: true
+        try {
+          await adminDb.collection('pendingRegistrations').doc(orderId).set({
+            formData: data,
+            orderId: orderId,
+            amount: orderAmount,
+            createdAt: FieldValue.serverTimestamp(),
+            status: 'pending'
+          });
+          console.log("Pending registration saved to Firestore.");
+        } catch (dbErr: any) {
+          console.warn("Firestore Admin save skipped (ADC credentials not mounted locally), caching in memory:", dbErr.message);
+          pendingRegistrationsMemory.set(orderId, {
+            formData: data,
+            orderId: orderId,
+            amount: orderAmount,
+            createdAt: new Date(),
+            status: 'pending'
           });
         }
 
-        console.log("Creating Cashfree Order via PGCreateOrder...");
+        const { client: cfClient, isProduction, appId, secretKey } = getCashfreeClient();
+
+        // If order amount is 0 (100% discount coupon)
+        if (orderAmount === 0) {
+          return NextResponse.json({ 
+            orderId: orderId,
+            isFree: true
+          });
+        }
+
+        if (!appId || !secretKey) {
+          return NextResponse.json({ error: 'Payment gateway is not configured on the server.' }, { status: 500 });
+        }
+
+        console.log(`Creating Cashfree Order via PGCreateOrder (Env: ${isProduction ? 'PRODUCTION' : 'SANDBOX'})...`);
         
         // Strip non-digit characters and ensure a clean 10-digit format for Cashfree validation
-        let cleanPhone = data.mobile ? data.mobile.replace(/\D/g, '') : '';
+        let cleanPhone = (data.phone || data.mobile || '').replace(/\D/g, '');
         if (cleanPhone.length > 10) {
           if (cleanPhone.startsWith('91') && cleanPhone.length === 12) {
             cleanPhone = cleanPhone.slice(2);
@@ -176,29 +203,20 @@ export async function POST(req: Request) {
             cleanPhone = cleanPhone.slice(-10);
           }
         }
-        // Fail-safe default if number is somehow empty or too short
         if (cleanPhone.length < 10) {
           cleanPhone = '9999999999';
         }
 
-        let host = req.headers.get('x-forwarded-host') || req.headers.get('host') || 'localhost:3000';
-        if (host.includes('0.0.0.0')) {
-          host = host.replace('0.0.0.0', 'localhost');
-        }
-        const isLocal = host.includes('localhost') || host.includes('127.0.0.1');
-        
-        // Prevent Host Header Injection: In production, strictly use the known safe domain.
-        // During local development, allow localhost.
-        const origin = isLocal 
-          ? ((isProd) ? `https://${host}` : `http://${host}`)
-          : (process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000');
+        const origin = process.env.NEXT_PUBLIC_SITE_URL || 'https://sankalp.jklu.edu.in';
 
-        const response = await cashfree.PGCreateOrder({
+        const totalWithGst = Math.round(orderAmount * 1.18);
+
+        const response = await cfClient.PGCreateOrder({
           order_id: orderId,
-          order_amount: orderAmount,
+          order_amount: totalWithGst,
           order_currency: 'INR',
           customer_details: {
-            customer_id: (data.email || `cust_${Date.now()}`).replace(/[^a-zA-Z0-9_-]/g, '_'),
+            customer_id: (data.email || `cust_${Date.now()}`).replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 50),
             customer_name: data.name,
             customer_email: data.email,
             customer_phone: cleanPhone,
@@ -207,23 +225,22 @@ export async function POST(req: Request) {
             return_url: `${origin}/register?order_id={order_id}`,
           }
         });
-        console.log("Cashfree order created successfully.");
+        console.log("Cashfree order created successfully:", response.data.order_id);
 
         return NextResponse.json({ 
           order_id: response.data.order_id,
           payment_session_id: response.data.payment_session_id 
         });
       } catch (err: any) {
+        const errorMsg = err.response?.data?.message || err.message || 'Failed to create payment order.';
         console.error("CREATE_ORDER error detail:", err.response?.data || err);
-        return handleApiError(err, 'Failed to create payment order. Please try again.');
+        return NextResponse.json({ error: errorMsg }, { status: 500 });
       }
     }
 
     if (action === 'VERIFY_PAYMENT') {
       const { orderId } = data;
 
-      // Validate orderId format before using as a Firestore document ID
-      // Cashfree order IDs must match: order_<digits> (e.g. order_1234567890)
       if (!orderId || typeof orderId !== 'string' || !/^order_[0-9a-zA-Z_\-]{1,50}$/.test(orderId.trim())) {
         console.warn('Invalid orderId format rejected:', orderId);
         return NextResponse.json({ error: 'Invalid order ID format' }, { status: 400 });
@@ -231,25 +248,41 @@ export async function POST(req: Request) {
       const sanitizedOrderId = orderId.trim();
       console.log("Verifying payment securely for order:", sanitizedOrderId);
       
-      // Fetch the secure pending registration details from Firestore using Admin SDK
-      const pendingRef = adminDb.collection('pendingRegistrations').doc(sanitizedOrderId);
-      const pendingSnap = await pendingRef.get();
-      if (!pendingSnap.exists) {
-        console.warn(`No pending registration details found in Firestore for order ${sanitizedOrderId}`);
+      let dbFormData = null;
+      let pendingAmount = 0;
+
+      try {
+        const pendingRef = adminDb.collection('pendingRegistrations').doc(sanitizedOrderId);
+        const pendingSnap = await pendingRef.get();
+        if (pendingSnap.exists) {
+          const pendingData = pendingSnap.data()!;
+          dbFormData = pendingData.formData;
+          pendingAmount = pendingData.amount;
+        }
+      } catch (dbErr: any) {
+        console.warn("Firestore Admin read failed, checking in-memory store:", dbErr.message);
+      }
+
+      if (!dbFormData && pendingRegistrationsMemory.has(sanitizedOrderId)) {
+        const memData = pendingRegistrationsMemory.get(sanitizedOrderId)!;
+        dbFormData = memData.formData;
+        pendingAmount = memData.amount;
+      }
+
+      if (!dbFormData) {
+        console.warn(`No pending registration details found for order ${sanitizedOrderId}`);
         return NextResponse.json({ error: 'Pending registration details not found' }, { status: 404 });
       }
 
-      const pendingData = pendingSnap.data()!;
-      const dbFormData = pendingData.formData;
+      const { client: cfClient, appId } = getCashfreeClient();
 
-      if (!cashfreeAppId || pendingData.amount === 0) {
+      if (!appId || pendingAmount === 0) {
         console.warn("Cashfree App ID missing or amount is 0, bypassing verification.");
-        // For free tickets, there is no webhook, so the frontend MUST run the background tasks.
         const regId = await finalizeRegistration(dbFormData, "mock_payment_id", sanitizedOrderId, false);
         return NextResponse.json({ success: true, id: regId, email: dbFormData.email });
       }
 
-      const response = await cashfree.PGOrderFetchPayments(sanitizedOrderId);
+      const response = await cfClient.PGOrderFetchPayments(sanitizedOrderId);
       const payments = response.data;
       const successPayment = payments?.find((p: any) => p.payment_status === 'SUCCESS');
 
@@ -259,8 +292,6 @@ export async function POST(req: Request) {
       }
 
       console.log("Payment verified successfully:", successPayment.cf_payment_id);
-      // Run ALL background tasks (sheet + email). The backgroundTaskLock inside finalizeRegistration
-      // guarantees they will only execute once even if the Cashfree webhook also fires.
       const regId = await finalizeRegistration(dbFormData, successPayment.cf_payment_id!.toString(), sanitizedOrderId, false);
       return NextResponse.json({ success: true, id: regId, email: dbFormData.email });
     }

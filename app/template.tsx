@@ -3,7 +3,13 @@
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
   const orig = console.error;
   console.error = (...args: any[]) => {
-    if (typeof args[0] === 'string' && args[0].includes('Encountered a script tag')) {
+    const msg = typeof args[0] === 'string' ? args[0] : '';
+    if (
+      msg.includes('Encountered a script tag') ||
+      msg.includes('data-temp-mail') ||
+      msg.includes('A tree hydrated but some attributes') ||
+      msg.includes('hydration-mismatch')
+    ) {
       return;
     }
     orig.apply(console, args);

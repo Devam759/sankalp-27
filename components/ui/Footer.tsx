@@ -284,7 +284,7 @@ export default function Footer() {
                 className="bg-white hover:bg-[#F8F9FA] text-[#3C4043] hover:text-[#1A73E8] border border-[#DADCE0] hover:border-[#BDC1C6] transition-all duration-200 rounded-lg px-3.5 py-2 text-xs font-semibold flex items-center gap-2.5 shadow-xs hover:shadow-md group"
               >
                 <Image
-                  src="/logos/gmaps logo.webp"
+                  src="https://res.cloudinary.com/flufexsc/image/upload/v1787147486/sankalp/logos/gmaps%20logo.webp"
                   alt="Google Maps Logo"
                   width={16}
                   height={16}
@@ -401,7 +401,7 @@ export default function Footer() {
         <div className="flex items-center gap-6 md:gap-8 flex-wrap">
           <Link href="/" className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex">
             <Image
-              src="/logos/sankalp_logo.webp"
+              src="https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp"
               alt="SANKALP 2027 Logo"
               width={240}
               height={80}
@@ -416,7 +416,7 @@ export default function Footer() {
             className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex"
           >
             <Image
-              src="/logos/white_jklu_logo.webp"
+              src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
               alt="JK Lakshmipat University Logo"
               width={320}
               height={96}

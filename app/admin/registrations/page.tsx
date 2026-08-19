@@ -149,8 +149,6 @@ export default function Registrations() {
   const [statusFilter, setStatusFilter] = useState<'all' | 'entered' | 'pending' | 'declined'>('all');
   const [emailFilter, setEmailFilter] = useState<'all' | 'sent' | 'unsent'>('all');
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
-  const [syncState, setSyncState] = useState<'idle' | 'syncing' | 'done' | 'error'>('idle');
-  const [syncMessage, setSyncMessage] = useState('');
   const [emailSendingState, setEmailSendingState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [emailSendingMessage, setEmailSendingMessage] = useState('');
   const [serviceEnabled, setServiceEnabled] = useState(true);
@@ -327,27 +325,6 @@ export default function Registrations() {
     await logAdminAction('EXPORT_REGISTRATIONS', 'registrations', `Exported ${registrations.length} registrations to CSV`);
   };
 
-  const handleSyncSheet = async () => {
-    setSyncState('syncing');
-    setSyncMessage('Syncing to Google Sheet...');
-    try {
-      const res = await fetch('/api/admin/sync-sheet', { method: 'POST' });
-      const result = await res.json();
-      if (!res.ok) {
-        setSyncState('error');
-        setSyncMessage(result.error || 'Sync failed');
-      } else {
-        setSyncState('done');
-        setSyncMessage(result.message);
-      }
-    } catch (err: any) {
-      setSyncState('error');
-      setSyncMessage(err.message || 'Network error');
-    } finally {
-      setTimeout(() => { setSyncState('idle'); setSyncMessage(''); }, 6000);
-    }
-  };
-
   useEffect(() => {
     const fetchSettings = async () => {
       try {
@@ -468,28 +445,6 @@ export default function Registrations() {
               {emailSendingState === 'sending' ? 'Sending...' : `Send Unsent Emails (${unsentCount})`}
             </button>
           )}
-          <a 
-            href="https://docs.google.com/spreadsheets/d/1Pfh7eZaknrvPEqcTjwgK1ludGjsT_OOA-KUnubzYxMc/edit?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
-          >
-            <CustomSheetIcon size={16} /> Google Sheet
-          </a>
-          <button
-            onClick={handleSyncSheet}
-            disabled={loading || syncState === 'syncing'}
-            className={`bg-brand-blue hover:bg-[#060b14] text-white font-bold text-xs uppercase px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer ${
-              syncState === 'syncing' ? 'opacity-70 cursor-not-allowed' : ''
-            }`}
-          >
-            {syncState === 'syncing' ? (
-              <svg className="animate-spin" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-            ) : (
-              <CustomSheetIcon size={16} />
-            )}
-            {syncState === 'syncing' ? 'Syncing...' : 'Sync to Sheet'}
-          </button>
           <button
             onClick={handleToggleService}
             className={`font-bold text-xs uppercase px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${
@@ -509,17 +464,6 @@ export default function Registrations() {
           </button>
         </div>
       </div>
-
-      {/* Sync status feedback banner */}
-      {syncState !== 'idle' && (
-        <div className={`border rounded-xl px-5 py-3 text-xs font-bold ${
-          syncState === 'syncing' ? 'bg-blue-50 border-blue-200 text-blue-900' :
-          syncState === 'done' ? 'bg-emerald-50 border-emerald-200 text-emerald-900' :
-          'bg-red-50 border-red-200 text-red-900'
-        }`}>
-          {syncMessage}
-        </div>
-      )}
 
       {/* Email sending status feedback banner */}
       {emailSendingState !== 'idle' && (

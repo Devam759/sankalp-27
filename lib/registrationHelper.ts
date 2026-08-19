@@ -30,19 +30,16 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
   let jkluScaledHeight = 0;
   let jkluLogoImage;
   try {
-    const jkluLogoPath = path.join(
-      process.cwd(), 
-      'public', 
-      'logos',
-      'jklu_logo.webp'
-    );
-    const jkluLogoBytes = await fs.readFile(jkluLogoPath);
-    const jkluPngBytes = await sharp(jkluLogoBytes).png().toBuffer();
-    jkluLogoImage = await pdfDoc.embedPng(jkluPngBytes);
-    const targetHeight = 46;
-    const scaleFactor = targetHeight / jkluLogoImage.height;
-    jkluScaledWidth = jkluLogoImage.width * scaleFactor;
-    jkluScaledHeight = jkluLogoImage.height * scaleFactor;
+    const res = await fetch('https://res.cloudinary.com/flufexsc/image/upload/v1787147488/sankalp/logos/jklu_logo.webp');
+    if (res.ok) {
+      const arrayBuf = await res.arrayBuffer();
+      const jkluPngBytes = await sharp(Buffer.from(arrayBuf)).png().toBuffer();
+      jkluLogoImage = await pdfDoc.embedPng(jkluPngBytes);
+      const targetHeight = 46;
+      const scaleFactor = targetHeight / jkluLogoImage.height;
+      jkluScaledWidth = jkluLogoImage.width * scaleFactor;
+      jkluScaledHeight = jkluLogoImage.height * scaleFactor;
+    }
   } catch (error) {
     console.warn('PDF Left Logo (JKLU) load failed:', error);
   }
@@ -52,19 +49,16 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
   let sankalpScaledHeight = 0;
   let sankalpLogoImage;
   try {
-    const sankalpLogoPath = path.join(
-      process.cwd(), 
-      'public', 
-      'logos',
-      'sankalp_logo.webp'
-    );
-    const sankalpLogoBytes = await fs.readFile(sankalpLogoPath);
-    const sankalpPngBytes = await sharp(sankalpLogoBytes).png().toBuffer();
-    sankalpLogoImage = await pdfDoc.embedPng(sankalpPngBytes);
-    const targetHeight = 35;
-    const scaleFactor = targetHeight / sankalpLogoImage.height;
-    sankalpScaledWidth = sankalpLogoImage.width * scaleFactor;
-    sankalpScaledHeight = sankalpLogoImage.height * scaleFactor;
+    const res = await fetch('https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp');
+    if (res.ok) {
+      const arrayBuf = await res.arrayBuffer();
+      const sankalpPngBytes = await sharp(Buffer.from(arrayBuf)).png().toBuffer();
+      sankalpLogoImage = await pdfDoc.embedPng(sankalpPngBytes);
+      const targetHeight = 35;
+      const scaleFactor = targetHeight / sankalpLogoImage.height;
+      sankalpScaledWidth = sankalpLogoImage.width * scaleFactor;
+      sankalpScaledHeight = sankalpLogoImage.height * scaleFactor;
+    }
   } catch (error) {
     console.warn('PDF Right Logo (Sankalp) load failed:', error);
   }

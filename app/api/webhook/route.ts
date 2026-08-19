@@ -5,6 +5,14 @@ import { FieldValue } from 'firebase-admin/firestore';
 
 import { verifyCashfreeSignature, cashfreeAppId, cashfreeSecretKey, isProd, isRateLimited } from '@/lib/security';
 
+export async function GET() {
+  return NextResponse.json({ status: 'ok', endpoint: 'Cashfree Webhook Listener' }, { status: 200 });
+}
+
+export async function HEAD() {
+  return new Response(null, { status: 200 });
+}
+
 export async function POST(req: Request) {
   try {
     // Rate limit webhook endpoint - legitimate Cashfree traffic is low volume;
@@ -162,8 +170,6 @@ export async function POST(req: Request) {
         throw reconError;
       }
       
-      const excelWebhook = process.env.EXCEL_SYNC_WEBHOOK_URL;
-      
       for (const tx of transactions) {
         const orderId = tx.order_id || tx.orderId;
         const paymentId = tx.cf_payment_id || tx.cfPaymentId || tx.payment_id || tx.paymentId || "";
@@ -172,15 +178,13 @@ export async function POST(req: Request) {
         
         console.log("Reconciling payment for Order:", orderId, "Payment ID:", paymentId);
         
-        // 1. Update Firestore registration document using Admin SDK
-        let docId = "";
+        // Update Firestore registration document using Admin SDK
         try {
           const querySnapshot = await adminDb.collection('registrations')
             .where('orderId', '==', orderId)
             .get();
           if (!querySnapshot.empty) {
             const docRef = querySnapshot.docs[0].ref;
-            docId = querySnapshot.docs[0].id;
             await docRef.update({
               settlementId: String(settlementId)
             });
@@ -190,26 +194,6 @@ export async function POST(req: Request) {
           }
         } catch (dbError) {
           console.error("Failed to update Firestore settlement for order:", orderId, dbError);
-        }
-        
-        // 2. Forward reconciliation command to Google Sheets Web App
-        if (excelWebhook) {
-          try {
-            const sheetRes = await fetch(excelWebhook, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                action: 'UPDATE_SETTLEMENT',
-                orderId: orderId,
-                paymentId: String(paymentId),
-                settlementId: String(settlementId)
-              })
-            });
-            const sheetResult = await sheetRes.json();
-            console.log("Google Sheets reconciliation outcome for order:", orderId, sheetResult);
-          } catch (sheetError) {
-            console.error("Failed to reconcile Google Sheets for order:", orderId, sheetError);
-          }
         }
       }
       

@@ -92,7 +92,7 @@ export default function VenueClient() {
       category: '3-Star Business Hotel',
       bottomText: 'IHCL (Tata) Hotel',
       location: 'Civil Lines, Jaipur',
-      src: '/Images/hotels/ginger_hotel.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147522/sankalp/Images/hotels/ginger_hotel.webp',
       link: 'https://www.google.com/maps/search/Ginger+Hotel+Jaipur'
     },
     {
@@ -103,7 +103,7 @@ export default function VenueClient() {
       category: '3-Star Hotel',
       bottomText: 'Near Omaxe City',
       location: 'Ajmer Road, Jaipur',
-      src: '/Images/hotels/atulya_green.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147520/sankalp/Images/hotels/atulya_green.webp',
       link: 'https://www.google.com/maps/search/Atulya+Green+by+Meyatri+Jaipur'
     },
     {
@@ -114,7 +114,7 @@ export default function VenueClient() {
       category: 'Business Hotel',
       bottomText: 'Mahapura, Jaipur',
       location: 'Ajmer Road, Jaipur',
-      src: '/Images/hotels/hotel_sawai.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147523/sankalp/Images/hotels/hotel_sawai.webp',
       link: 'https://www.google.com/maps/search/Hotel+The+Sawai+Jaipur'
     },
     {
@@ -125,7 +125,7 @@ export default function VenueClient() {
       category: 'Comfort Stay',
       bottomText: 'SEZ Corridor, Jaipur',
       location: 'Mahindra SEZ, Jaipur',
-      src: '/Images/hotels/navya_residency.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147525/sankalp/Images/hotels/navya_residency.webp',
       link: 'https://www.google.com/maps/search/Navya+Residency+Mahindra+SEZ+Jaipur'
     },
     {
@@ -136,7 +136,7 @@ export default function VenueClient() {
       category: 'Business Hotel',
       bottomText: 'Near Airport / City Center',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/four_points.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147521/sankalp/Images/hotels/four_points.webp',
       link: 'https://www.google.com/maps/search/Four+Points+by+Sheraton+Jaipur'
     },
     {
@@ -147,7 +147,7 @@ export default function VenueClient() {
       category: 'Heritage Luxury',
       bottomText: 'Iconic Heritage Hotel',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/itc_rajputana.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147524/sankalp/Images/hotels/itc_rajputana.webp',
       link: 'https://www.google.com/maps/search/ITC+Rajputana+Jaipur'
     },
     {
@@ -158,7 +158,7 @@ export default function VenueClient() {
       category: 'Premium Stay',
       bottomText: 'Airport Corridor',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/radisson_blu.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147528/sankalp/Images/hotels/radisson_blu.webp',
       link: 'https://www.google.com/maps/search/Radisson+Blu+Jaipur'
     },
     {
@@ -169,7 +169,7 @@ export default function VenueClient() {
       category: 'Luxury Resort',
       bottomText: 'World-Class Luxury',
       location: 'Jaipur, Rajasthan',
-      src: '/Images/hotels/oberoi_rajvilas.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147527/sankalp/Images/hotels/oberoi_rajvilas.webp',
       link: 'https://www.google.com/maps/search/The+Oberoi+Rajvilas+Jaipur'
     }
   ];
@@ -190,7 +190,7 @@ export default function VenueClient() {
       duration: '2-3 Hours',
       category: 'UNESCO World Heritage',
       desc: 'A majestic UNESCO World Heritage fortress overlooking Maota Lake with spectacular murals.',
-      src: '/Images/jaipur_sightseeing/amer_fort.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147530/sankalp/Images/jaipur_sightseeing/amer_fort.webp',
       mapLink: 'https://maps.google.com/?q=Amer+Fort+Jaipur'
     },
     {
@@ -199,7 +199,7 @@ export default function VenueClient() {
       duration: '1 Hour',
       category: 'Historic Monument',
       desc: 'A breathtaking palace resting silently in the center of the serene Man Sagar Lake.',
-      src: '/Images/jaipur_sightseeing/jal_mahal.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147533/sankalp/Images/jaipur_sightseeing/jal_mahal.webp',
       mapLink: 'https://maps.google.com/?q=Jal+Mahal+Jaipur'
     },
     {
@@ -208,7 +208,7 @@ export default function VenueClient() {
       duration: '2-3 Hours',
       category: 'Royal Palace',
       desc: 'The magnificent royal residence blending traditional Rajasthani and Mughal architectural styles.',
-      src: '/Images/jaipur_sightseeing/city_palace.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147531/sankalp/Images/jaipur_sightseeing/city_palace.webp',
       mapLink: 'https://maps.google.com/?q=City+Palace+Jaipur'
     },
     {
@@ -217,7 +217,7 @@ export default function VenueClient() {
       duration: '1.5-2 Hours',
       category: 'Museum',
       desc: 'The oldest state museum displaying exceptional industrial art and ancient treasures.',
-      src: '/Images/jaipur_sightseeing/albert_hall.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147529/sankalp/Images/jaipur_sightseeing/albert_hall.webp',
       mapLink: 'https://maps.google.com/?q=Albert+Hall+Museum+Jaipur'
     },
     {
@@ -226,7 +226,7 @@ export default function VenueClient() {
       duration: '1.5-2 Hours',
       category: 'Hill Fort',
       desc: 'A historic hilltop fort offering absolute panoramic sunset views over the Pink City.',
-      src: '/Images/jaipur_sightseeing/nahargarh_fort.webp',
+      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147536/sankalp/Images/jaipur_sightseeing/nahargarh_fort.webp',
       mapLink: 'https://maps.google.com/?q=Nahargarh+Fort+Jaipur'
     }
   ];
@@ -239,12 +239,13 @@ export default function VenueClient() {
       <section ref={heroRef} className="relative h-[80vh] min-h-[550px] flex items-center justify-center text-center text-white overflow-hidden bg-brand-ink pt-20">
         <div ref={heroImageRef} className="absolute -inset-y-10 inset-x-0 z-0 will-change-transform">
           <Image
-            src="/Images/campus/jklu_campus.webp"
+            src="https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp"
             alt="JKLU Campus Banner"
             fill
             sizes="100vw"
             className="object-cover opacity-45 scale-105"
             priority
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-transparent to-brand-ink/30" />
         </div>
@@ -252,55 +253,40 @@ export default function VenueClient() {
         <div className="relative z-10 max-w-4xl px-6 space-y-6">
           <div className="flex justify-center">
             <Image
-              src="/logos/white_jklu_logo.webp"
+              src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
               alt="JKLU Logo"
               width={220}
               height={70}
               className="h-12 sm:h-16 w-auto object-contain drop-shadow-md"
               priority
+              loading="eager"
             />
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-serif font-black tracking-tight uppercase">
             <WordReveal text="JK Lakshmipat University" className="text-white" />
           </h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl font-medium tracking-wide max-w-2xl mx-auto text-white/90"
-          >
-            Jaipur, Rajasthan, India
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-sm sm:text-base opacity-75 max-w-xl mx-auto"
-          >
-            Host Venue of SANKALP 2027 - International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-sm sm:text-base font-semibold text-amber-200/90 tracking-wider uppercase"
-          >
-            <span>12-13 March 2027</span>
-          </motion.div>
+          <p className="text-lg sm:text-xl text-slate-200 font-medium max-w-2xl mx-auto leading-relaxed">
+            Near Mahindra World City, P.O. Mahapura, Ajmer Road, Jaipur, Rajasthan 302026, India
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-4"
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="pt-4 flex flex-wrap items-center justify-center gap-4"
           >
             <a
-              href="#map-section"
-              className="bg-brand-orange text-white font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-orange-600 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md flex items-center gap-2 cursor-pointer text-sm"
+              href="#about-section"
+              className="bg-brand-blue hover:bg-brand-blue/90 text-white font-bold py-3.5 px-8 rounded-sm shadow-md transition-all uppercase tracking-wider text-xs border border-white/20"
             >
-              Get Directions →
+              Explore Venue
+            </a>
+            <a
+              href="#travel-section"
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold py-3.5 px-8 rounded-sm shadow-md transition-all uppercase tracking-wider text-xs"
+            >
+              Travel &amp; Stay
             </a>
           </motion.div>
         </div>
@@ -311,10 +297,9 @@ export default function VenueClient() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <Reveal variant="left" className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white">
             <Image
-              src="/Images/campus/jklu_campus.webp"
+              src="https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp"
               alt="JK Lakshmipat University Campus"
               fill
-              priority
               sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover"
             />
@@ -470,7 +455,7 @@ export default function VenueClient() {
                 className="w-full text-center bg-white hover:bg-[#F8F9FA] text-[#3C4043] hover:text-[#1A73E8] border border-[#DADCE0] hover:border-[#BDC1C6] font-semibold py-2.5 sm:py-3 px-2 sm:px-4 transition-all rounded-xl flex items-center justify-center gap-2 sm:gap-2.5 cursor-pointer text-[11px] sm:text-xs shadow-xs hover:shadow-md group"
               >
                 <Image
-                  src="/logos/gmaps logo.webp"
+                  src="https://res.cloudinary.com/flufexsc/image/upload/v1787147486/sankalp/logos/gmaps%20logo.webp"
                   alt="Google Maps Logo"
                   width={20}
                   height={20}

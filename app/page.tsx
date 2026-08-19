@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp',
+        url: 'https://sankalp.jklu.edu.inhttps://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp',
         width: 1200,
         height: 630,
         alt: 'JKLU SANKALP 2027 Conference - JK Lakshmipat University Jaipur',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "JKLU SANKALP 2027 | International Conference | JK Lakshmipat University",
     description: "JKLU SANKALP 2027 – Premier international conference on Sustainable AI & Next-Gen Knowledge at JKLU Jaipur.",
-    images: ['https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp'],
+    images: ['https://sankalp.jklu.edu.inhttps://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp'],
   },
 };
 
@@ -93,7 +93,7 @@ export default function Page() {
     name: 'JK Lakshmipat University',
     alternateName: ['JKLU', 'JK Lakshmipat University Jaipur'],
     url: 'https://jklu.edu.in',
-    logo: 'https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp',
+    logo: 'https://sankalp.jklu.edu.inhttps://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Mahapura Road, Near Mahindra World City, Ajmer Road',
@@ -139,7 +139,7 @@ export default function Page() {
         addressCountry: 'IN',
       },
     },
-    image: ['https://sankalp.jklu.edu.in/Images/campus/jklu_campus.webp'],
+    image: ['https://sankalp.jklu.edu.inhttps://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp'],
     description: "Premier international multidisciplinary conference organized by the Institute of Engineering & Technology (IET), JK Lakshmipat University, Jaipur.",
     organizer: {
       '@type': 'Organization',

@@ -13,7 +13,6 @@ async function performReconciliation(isManual: boolean) {
     ? (process.env.CASHFREE_PROD_SECRET_KEY || process.env.CASHFREE_SECRET_KEY || '')
     : (process.env.CASHFREE_TEST_SECRET_KEY || process.env.CASHFREE_SECRET_KEY || '');
   
-  const excelWebhook = process.env.EXCEL_SYNC_WEBHOOK_URL;
   const baseUrl = isProd ? 'https://api.cashfree.com/pg' : 'https://sandbox.cashfree.com/pg';
 
   // 1. Check if the daily service is enabled (only applicable for automated cron runs)
@@ -105,24 +104,6 @@ async function performReconciliation(isManual: boolean) {
           await adminDb.collection('registrations').doc(reg.docId).update({
             settlementId: String(settlementId)
           });
-
-          // 2. Sync to Sheets
-          if (excelWebhook) {
-            try {
-              await fetch(excelWebhook, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  action: 'UPDATE_SETTLEMENT',
-                  orderId: reg.orderId,
-                  paymentId: String(reg.paymentId),
-                  settlementId: String(settlementId)
-                })
-              });
-            } catch (sheetError) {
-              console.error(`Failed to update Google Sheets for order ${reg.orderId}:`, sheetError);
-            }
-          }
 
           updatedCount++;
         }

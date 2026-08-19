@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/call-for-papers', priority: 0.9, changeFrequency: 'weekly', lastModified: new Date('2026-08-14') },
     { path: '/sessions', priority: 0.9, changeFrequency: 'weekly', lastModified: new Date('2026-08-14') },
     { path: '/registration', priority: 0.9, changeFrequency: 'weekly', lastModified: new Date('2026-08-14') },
+    { path: '/register', priority: 0.9, changeFrequency: 'weekly', lastModified: new Date('2026-08-19') },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },
     { path: '/committee', priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },
     { path: '/venue', priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },

@@ -176,7 +176,7 @@ export default function AboutClient() {
                 >
                   <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
                       <Image 
-                        src="/Images/campus/jklu_campus.webp" 
+                        src="https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp" 
                         alt="JKLU Campus" 
                         fill 
                         priority

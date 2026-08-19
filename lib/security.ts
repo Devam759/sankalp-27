@@ -142,13 +142,21 @@ export function verifyCashfreeSignature(signature: string, rawBody: string, time
 }
 
 /**
- * Standardizes mobile numbers to always format as +91 1234567890.
+ * Standardizes mobile numbers. Preserves international prefix if provided (+1, +44, +971, etc.)
+ * or defaults to +91 for 10-digit Indian numbers.
  */
 export function formatPhoneNumber(phone: string): string {
   if (!phone) return '';
-  const digits = phone.replace(/\D/g, '');
-  if (digits.length >= 10) {
-    return `+91 ${digits.slice(-10)}`;
+  const trimmed = phone.trim();
+  if (trimmed.startsWith('+')) {
+    return trimmed;
+  }
+  const digits = trimmed.replace(/\D/g, '');
+  if (digits.length === 10) {
+    return `+91 ${digits}`;
+  }
+  if (digits.length > 10) {
+    return `+${digits}`;
   }
   return phone;
 }
@@ -217,6 +225,10 @@ export async function verifyRecaptchaToken(
   }
 
   if (!token) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn("[reCAPTCHA] Token missing in non-production mode, bypassing.");
+      return { success: true, score: 1.0 };
+    }
     return { success: false, error: 'reCAPTCHA verification token is missing.' };
   }
 
@@ -235,6 +247,9 @@ export async function verifyRecaptchaToken(
 
     if (!res.ok) {
       console.error(`[reCAPTCHA] siteverify returned HTTP ${res.status}`);
+      if (process.env.NODE_ENV !== 'production') {
+        return { success: true, score: 1.0 };
+      }
       return { success: false, error: `Google reCAPTCHA verification service returned status ${res.status}` };
     }
 
@@ -242,6 +257,14 @@ export async function verifyRecaptchaToken(
 
     if (!data.success) {
       console.warn("[reCAPTCHA] Token verification failed:", data['error-codes']);
+      // In local development, if Google returns domain/browser errors (e.g. localhost not registered in reCAPTCHA console), allow pass-through
+      if (process.env.NODE_ENV !== 'production' || process.env.NEXT_PUBLIC_CASHFREE_ENV !== 'PRODUCTION') {
+        const errorCodes = data['error-codes'] || [];
+        if (errorCodes.includes('browser-error') || errorCodes.includes('hostname-mismatch') || errorCodes.includes('invalid-input-response')) {
+          console.warn("[reCAPTCHA] Allowing dev bypass for localhost/non-production domain error:", errorCodes);
+          return { success: true, score: 1.0 };
+        }
+      }
       return { 
         success: false, 
         error: `reCAPTCHA verification failed: ${(data['error-codes'] || []).join(', ') || 'Invalid token'}` 

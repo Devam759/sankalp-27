@@ -38,6 +38,8 @@ serviceAccount*.json
 service-account.json
 service-account*.json
 *-adminsdk-*.json
+APIKey*.csv
+*.csv.secret
 firebase-adminsdk.json
 credentials.json
 .cashfree/

@@ -192,7 +192,7 @@ export default function CouponsPage() {
                 {coupons.length === 0 && (
                   <tr>
                     <td colSpan={4} className="p-8 text-center text-slate-400 font-medium text-xs">
-                      No dynamic coupons found. (Environment variable coupons may still be active).
+                      No coupons found. Click "Add Coupon" above to create one.
                     </td>
                   </tr>
                 )}

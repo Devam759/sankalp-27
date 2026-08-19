@@ -24,6 +24,17 @@ const CustomCloseIcon = ({ className = '', size = 20 }: { className?: string; si
 );
 
 export function Modal({ isOpen, onClose, title, children }: ModalProps) {
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (

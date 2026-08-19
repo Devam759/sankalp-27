@@ -96,20 +96,20 @@ export default function HomeClient() {
   const [activeAdvisory, setActiveAdvisory] = React.useState<string | null>(null);
 
   const jaipurAttractions = [
-    { name: 'Hawa Mahal', src: '/Images/jaipur_sightseeing/hawa_mahal.webp' },
-    { name: 'Amer Fort', src: '/Images/jaipur_sightseeing/amer_fort.webp' },
-    { name: 'Jal Mahal', src: '/Images/jaipur_sightseeing/jal_mahal.webp' },
-    { name: 'City Palace', src: '/Images/jaipur_sightseeing/city_palace.webp' },
-    { name: 'Albert Hall Museum', src: '/Images/jaipur_sightseeing/albert_hall.webp' },
-    { name: 'Nahargarh Fort', src: '/Images/jaipur_sightseeing/nahargarh_fort.webp' }
+    { name: 'Hawa Mahal', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147533/sankalp/Images/jaipur_sightseeing/hawa_mahal.jpg' },
+    { name: 'Amer Fort', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147530/sankalp/Images/jaipur_sightseeing/amer_fort.webp' },
+    { name: 'Jal Mahal', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147533/sankalp/Images/jaipur_sightseeing/jal_mahal.webp' },
+    { name: 'City Palace', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147531/sankalp/Images/jaipur_sightseeing/city_palace.webp' },
+    { name: 'Albert Hall Museum', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147529/sankalp/Images/jaipur_sightseeing/albert_hall.webp' },
+    { name: 'Nahargarh Fort', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147536/sankalp/Images/jaipur_sightseeing/nahargarh_fort.webp' }
   ];
 
   const heroImages = [
-    '/Images/hero/DJI_0063.webp',
-    '/Images/hero/DJI_0075.webp',
-    '/Images/hero/DJI_0078.webp',
-    '/Images/hero/DJI_0119.webp',
-    '/Images/hero/DJI_0124.webp'
+    'https://res.cloudinary.com/flufexsc/image/upload/v1787147513/sankalp/Images/hero/DJI_0063.webp',
+    'https://res.cloudinary.com/flufexsc/image/upload/v1787147515/sankalp/Images/hero/DJI_0075.webp',
+    'https://res.cloudinary.com/flufexsc/image/upload/v1787147516/sankalp/Images/hero/DJI_0078.webp',
+    'https://res.cloudinary.com/flufexsc/image/upload/v1787147517/sankalp/Images/hero/DJI_0119.webp',
+    'https://res.cloudinary.com/flufexsc/image/upload/v1787147519/sankalp/Images/hero/DJI_0124.webp'
   ];
 
   const [currentHeroIndex, setCurrentHeroIndex] = React.useState(0);
@@ -130,6 +130,18 @@ export default function HomeClient() {
       window.scrollTo(0, 0);
     }
   }, []);
+
+  // Lock background scroll when advisory committee modal is open
+  React.useEffect(() => {
+    if (activeAdvisory) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeAdvisory]);
 
   // Recalculate ScrollTrigger positions after layout settles (lazy images, fonts).
   React.useEffect(() => {
@@ -287,8 +299,8 @@ export default function HomeClient() {
                 src={heroImages[currentHeroIndex]}
                 alt="JK Lakshmipat University Campus"
                 fill
-                priority={currentHeroIndex === 0}
-                loading={currentHeroIndex === 0 ? 'eager' : 'lazy'}
+                priority
+                loading="eager"
                 sizes="100vw"
                 quality={75}
                 className="object-cover object-center"
@@ -323,22 +335,24 @@ export default function HomeClient() {
           <motion.div variants={itemVariants} className="flex flex-col items-center mb-4 w-full">
             <div className="flex items-center justify-center gap-5 sm:gap-8 md:gap-10 mb-2 w-full">
               <Image
-                src="/logos/white_jklu_logo.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
                 alt="JK Lakshmipat University"
                 width={400}
                 height={120}
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-md"
                 priority
+                loading="eager"
               />
               {/* Translucent-Whitish Vertical Separating Line between Logos */}
               <div className="h-7 sm:h-9 md:h-10 lg:h-12 w-px bg-white/40 shrink-0" />
               <Image
-                src="/logos/Asia_University_Logo.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
                 alt="Asia University"
                 width={400}
                 height={120}
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-md"
                 priority
+                loading="eager"
               />
             </div>
             <span className="text-white/80 text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.3em] uppercase">
@@ -432,11 +446,12 @@ export default function HomeClient() {
             >
               <motion.div variants={itemVariants} className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
                 <Image
-                  src="/logos/sankalp_logo.webp"
+                  src="https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp"
                   alt="SANKALP 2027 Logo"
                   width={400}
                   height={160}
                   priority
+                  loading="eager"
                   className="h-28 sm:h-32 w-auto max-w-[220px] object-contain drop-shadow-lg shrink-0"
                 />
                 <h2 className="text-right font-serif font-bold text-2xl text-white leading-tight">
@@ -781,7 +796,7 @@ export default function HomeClient() {
                 )}
                 <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
-                    src={chair.image || "/Images/campus/jklu_campus.webp"}
+                    src={chair.image || "https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp"}
                     alt={`${chair.name} - ${chair.role} SANKALP 2027 JKLU`}
                     title={`${chair.name} - ${chair.role} SANKALP 2027 JKLU`}
                     fill
@@ -940,7 +955,7 @@ export default function HomeClient() {
             className="relative h-[340px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl group"
           >
             <Image
-              src="/Images/hero/DJI_0063.webp"
+              src="https://res.cloudinary.com/flufexsc/image/upload/v1787147513/sankalp/Images/hero/DJI_0063.webp"
               alt="JK Lakshmipat University Campus, Jaipur"
               fill
               sizes="100vw"

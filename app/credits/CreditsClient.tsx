@@ -31,7 +31,7 @@ export default function CreditsClient() {
       role: 'Team Lead & Lead Architect',
       badge: 'ENGINEERING LEAD',
       isHead: true,
-      image: '/Images/team/devam-gupta.webp',
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147541/sankalp/Images/team/devam-gupta.webp',
       description: 'Led the end-to-end architecture, engineering, and deployment of the official JKLU SANKALP 2027 conference platform, directing backend development, cloud infrastructure, payment integration, security, and system performance while ensuring a scalable, secure, and reliable digital experience.',
       skillsHeader: 'TECHNICAL LEADERSHIP',
       skills: [
@@ -62,7 +62,7 @@ export default function CreditsClient() {
       role: 'Web Engineer',
       badge: 'Developer',
       isHead: false,
-      image: '/Images/team/manant-srivastava.webp',
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147542/sankalp/Images/team/manant-srivastava.webp',
       description: 'Contributed to frontend development, backend integration, reusable component architecture, and responsive UI implementation, delivering an accessible, performant, and reliable digital experience across the official JKLU SANKALP 2027 conference platform.',
       skills: [
         'Frontend Development',
@@ -85,7 +85,7 @@ export default function CreditsClient() {
       role: 'Web Engineer',
       badge: 'Developer',
       isHead: false,
-      image: '/Images/team/pratham-lalwani.webp',
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147543/sankalp/Images/team/pratham-lalwani.webp',
       description: 'Contributed to conference content management, backend integration, structured data handling, UI implementation, schema validation, and quality assurance, ensuring accurate information delivery and a seamless user experience across the JKLU SANKALP 2027 conference platform.',
       skills: [
         'Content Management',

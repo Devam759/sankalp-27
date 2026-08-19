@@ -1,14 +1,12 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
-import { load } from '@cashfreepayments/cashfree-js';
-import { REGISTRATION_CATEGORIES, RegistrationCategory } from '@/constants/fees';
-import { executeRecaptcha } from '@/lib/recaptcha';
+import { REGISTRATION_CATEGORIES } from '@/constants/fees';
 
 const timelineSteps = [
   { num: '01', title: 'Paper Acceptance', body: 'Receive your formal acceptance notification from the Technical Programme Committee via email.' },
@@ -63,55 +61,6 @@ function ShieldCheckIcon({ className = 'w-5 h-5' }: { className?: string }) {
   );
 }
 
-function CloseIcon({ className = 'w-5 h-5' }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  );
-}
-
-function UserIcon({ className = 'w-4 h-4' }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-    </svg>
-  );
-}
-
-function MailIcon({ className = 'w-4 h-4' }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-    </svg>
-  );
-}
-
-function PhoneIcon({ className = 'w-4 h-4' }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.826-1.47-5.114-3.758-6.584-6.584l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-    </svg>
-  );
-}
-
-function BuildingIcon({ className = 'w-4 h-4' }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21" />
-    </svg>
-  );
-}
-
-function TagIcon({ className = 'w-4 h-4' }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
-    </svg>
-  );
-}
-
 function InfoIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -128,186 +77,9 @@ function SparklesIcon({ className = 'w-4 h-4' }: { className?: string }) {
   );
 }
 
-function FormField({ label, icon, children }: { label: string; icon?: React.ReactNode; children: React.ReactNode }) {
-  return (
-    <div>
-      <label className="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
-        {icon && <span className="text-brand-orange">{icon}</span>}
-        {label}
-      </label>
-      {children}
-    </div>
-  );
-}
-
-const inputCls = "w-full border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 font-medium placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15 transition-all rounded-md shadow-xs";
-
 export default function RegistrationClient() {
   const heroRef = useRef(null);
-
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [step, setStep] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'presenters' | 'global'>('all');
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    countryCode: '+91',
-    phone: '',
-    affiliation: '',
-    designation: 'Student',
-    category: '',
-    country: 'India',
-    pincode: '',
-    city: '',
-    region: '',
-    needAccommodation: 'No',
-    coupon: '',
-  });
-
-  const [couponValid, setCouponValid] = useState<boolean | null>(null);
-  const [couponLoading, setCouponLoading] = useState(false);
-  const [couponMessage, setCouponMessage] = useState('');
-  const [finalAmount, setFinalAmount] = useState<number | null>(null);
-  const [successData, setSuccessData] = useState<any>(null);
-
-  const getDesignationForCategory = (catId: string) => {
-    switch (catId) {
-      case 'speaker_student':
-      case 'student_presenter':
-        return 'Student';
-      case 'speaker_academic':
-      case 'academic_presenter':
-        return 'Academician / Faculty';
-      case 'speaker_industry':
-      case 'industry_presenter':
-        return 'Industry Professional';
-      case 'delegate_offline':
-      case 'delegate_online':
-      case 'attendee':
-        return 'Conference Delegate';
-      default:
-        return 'Participant';
-    }
-  };
-
-  const selectedCategoryObj = REGISTRATION_CATEGORIES.find((c) => c.id === formData.category);
-  const baseAmount = selectedCategoryObj ? selectedCategoryObj.amount : 0;
-  const currentPrice = finalAmount !== null ? finalAmount : baseAmount;
-
-  const handleCategorySelect = (catId: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      category: catId,
-      designation: getDesignationForCategory(catId),
-    }));
-    setCouponValid(null);
-    setCouponMessage('');
-    setFinalAmount(null);
-    setIsFormOpen(true);
-    setStep(1);
-  };
-
-  const validateStep1 = () => {
-    if (!formData.name.trim()) return 'Please enter your full name.';
-    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) return 'Please enter a valid email address.';
-    if (!formData.phone.trim()) return 'Please enter your contact number.';
-    if (!formData.affiliation.trim()) return 'Please enter your organization / institution.';
-    if (!formData.category) return 'Please select a registration category.';
-    return null;
-  };
-
-  const handleNextStep = () => {
-    const err = validateStep1();
-    if (err) {
-      alert(err);
-      return;
-    }
-    setStep(2);
-  };
-
-  const applyCoupon = async () => {
-    if (!formData.coupon.trim()) return;
-    setCouponLoading(true);
-    setCouponMessage('');
-    try {
-      const res = await fetch('/api/verify-coupon', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          code: formData.coupon,
-          categoryId: formData.category,
-          amount: baseAmount,
-        }),
-      });
-      const data = await res.json();
-      if (data.valid) {
-        setCouponValid(true);
-        setFinalAmount(data.discountedAmount);
-        setCouponMessage(data.message || `Coupon applied! New Total Base Amount: ₹${data.discountedAmount}`);
-      } else {
-        setCouponValid(false);
-        setFinalAmount(null);
-        setCouponMessage(data.message || 'Invalid or expired promo code.');
-      }
-    } catch {
-      setCouponValid(false);
-      setCouponMessage('Error validating coupon. Try again.');
-    } finally {
-      setCouponLoading(false);
-    }
-  };
-
-  const handlePayment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const recaptchaToken = await executeRecaptcha('REGISTER');
-      const payload = { 
-        ...formData, 
-        baseAmount, 
-        amount: currentPrice, 
-        action: 'CREATE_ORDER',
-        recaptchaToken 
-      };
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Payment initialization failed.');
-      }
-
-      if (data.isFree) {
-        setSuccessData({
-          orderId: data.orderId,
-          name: formData.name,
-          email: formData.email,
-          category: selectedCategoryObj?.name,
-          amount: 0,
-        });
-        setStep(3);
-        setLoading(false);
-        return;
-      }
-
-      const cashfree = await load({ mode: 'production' });
-
-      cashfree.checkout({
-        paymentSessionId: data.payment_session_id,
-        redirectTarget: '_self',
-      });
-    } catch (err: any) {
-      alert(err.message || 'An unexpected error occurred. Please try again.');
-      setLoading(false);
-    }
-  };
 
   const filteredCategories = REGISTRATION_CATEGORIES.filter((cat) => {
     if (activeTab === 'presenters') return cat.id.includes('speaker') || cat.id.includes('presenter');
@@ -323,7 +95,7 @@ export default function RegistrationClient() {
       <section ref={heroRef} className="pt-28 sm:pt-36 pb-12 sm:pb-16 bg-white border-b border-slate-200/80 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 text-center flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
-            <WordReveal text="Conference Registration" />
+            <WordReveal text="Registration &amp; Fees" />
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
           </h1>
 
@@ -341,16 +113,16 @@ export default function RegistrationClient() {
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
             <div>
-              <span className="text-xs font-bold text-brand-orange uppercase tracking-widest block">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue tracking-tight">
                 Registration Tiers
-              </span>
+              </h2>
               <p className="text-slate-600 text-sm font-medium mt-1">
-                Choose your registration tier to initiate your online registration.
+                Choose your registration tier to navigate to the online checkout.
               </p>
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex items-center bg-slate-100/90 p-1.5 rounded-md border border-slate-200 self-start md:self-auto">
+            <div className="inline-flex p-1 bg-slate-100 border border-slate-200/90 rounded-md self-start md:self-auto">
               <button
                 onClick={() => setActiveTab('all')}
                 className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all rounded-sm cursor-pointer ${
@@ -373,7 +145,7 @@ export default function RegistrationClient() {
                   activeTab === 'global' ? 'bg-brand-blue text-white shadow-xs' : 'text-slate-600 hover:text-brand-blue'
                 }`}
               >
-                International (USD)
+                Delegates
               </button>
             </div>
           </div>
@@ -384,37 +156,37 @@ export default function RegistrationClient() {
               <Reveal
                 key={cat.id}
                 delay={i * 0.05}
-                className="relative border border-slate-200 bg-white p-7 flex flex-col justify-between rounded-lg"
+                className="relative border border-slate-200 bg-white p-7 flex flex-col justify-between rounded-lg shadow-xs hover:shadow-md transition-shadow"
               >
-                  <div>
-                    <h3 className="font-sans font-bold text-lg text-brand-blue mb-2.5 leading-snug">
-                      {cat.name}
-                    </h3>
+                <div>
+                  <h3 className="font-sans font-bold text-lg text-brand-blue mb-2.5 leading-snug">
+                    {cat.name}
+                  </h3>
 
-                    <p className="text-slate-600 text-xs font-medium leading-relaxed mb-6">
-                      {cat.description}
-                    </p>
+                  <p className="text-slate-600 text-xs font-medium leading-relaxed mb-6">
+                    {cat.description}
+                  </p>
 
-                    {/* Price Header */}
-                    <div className="mb-6 p-4 rounded-md bg-slate-50 border border-slate-100">
-                      <div className="flex items-baseline gap-2 flex-wrap">
-                        <span className="text-3xl font-extrabold text-brand-blue font-sans tracking-tight">
-                          ₹{cat.amount.toLocaleString()}
-                        </span>
-                        <span className="text-xs font-bold text-brand-orange uppercase tracking-wider">
-                          + 18% GST
-                        </span>
-                      </div>
+                  {/* Price Header */}
+                  <div className="mb-6 p-4 rounded-md bg-slate-50 border border-slate-100">
+                    <div className="flex items-baseline gap-2 flex-wrap">
+                      <span className="text-3xl font-extrabold text-brand-blue font-sans tracking-tight">
+                        ₹{cat.amount.toLocaleString()}
+                      </span>
+                      <span className="text-xs font-bold text-brand-orange uppercase tracking-wider">
+                        + 18% GST
+                      </span>
                     </div>
                   </div>
+                </div>
 
-                  <button
-                    onClick={() => handleCategorySelect(cat.id)}
-                    className="w-full py-3 px-4 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all rounded-md bg-brand-blue text-white hover:bg-blue-900 flex items-center justify-center gap-2"
-                  >
-                    <span>Register Now</span>
-                    <ArrowRightIcon className="w-3.5 h-3.5" />
-                  </button>
+                <Link
+                  href={`/register?category=${cat.id}`}
+                  className="w-full py-3.5 px-4 text-xs font-bold uppercase tracking-wider cursor-pointer transition-all rounded-md bg-brand-blue text-white hover:bg-blue-900 flex items-center justify-center gap-2 shadow-xs"
+                >
+                  <span>Register Now</span>
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -508,209 +280,6 @@ export default function RegistrationClient() {
 
         </div>
       </section>
-
-      {/* REGISTRATION MODAL DIALOG */}
-      <AnimatePresence>
-        {isFormOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md overflow-y-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 10 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white w-full max-w-2xl rounded-lg shadow-2xl border border-slate-200 overflow-hidden my-8"
-            >
-              {/* Modal Header */}
-              <div className="bg-gradient-to-r from-brand-blue to-[#0B1B3D] text-white p-6 flex justify-between items-center border-b border-white/10">
-                <div>
-                  <h2 className="font-sans font-extrabold text-xl tracking-tight">JKLU SANKALP 2027 Checkout</h2>
-                  <p className="text-xs text-brand-orange font-bold uppercase tracking-wider mt-1 flex items-center gap-1.5">
-                    <TagIcon className="w-3.5 h-3.5" />
-                    {selectedCategoryObj?.name}
-                  </p>
-                </div>
-                <button
-                  onClick={() => setIsFormOpen(false)}
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-300 hover:text-white transition-colors cursor-pointer"
-                >
-                  <CloseIcon className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Progress Indicator */}
-              <div className="bg-slate-100 px-6 py-2.5 border-b border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-600">
-                <span className={step === 1 ? 'text-brand-blue font-bold' : ''}>1. Participant Details</span>
-                <span>&rarr;</span>
-                <span className={step === 2 ? 'text-brand-blue font-bold' : ''}>2. Review &amp; Payment</span>
-                <span>&rarr;</span>
-                <span className={step === 3 ? 'text-brand-blue font-bold' : ''}>3. Confirmation</span>
-              </div>
-
-              {/* Step 1 Form */}
-              {step === 1 && (
-                <div className="p-6 sm:p-8 space-y-4">
-                  <FormField label="Full Name" icon={<UserIcon />}>
-                    <input
-                      type="text"
-                      className={inputCls}
-                      placeholder="Dr. John Doe"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </FormField>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <FormField label="Email Address" icon={<MailIcon />}>
-                      <input
-                        type="email"
-                        className={inputCls}
-                        placeholder="john.doe@university.edu"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      />
-                    </FormField>
-
-                    <FormField label="Phone Number" icon={<PhoneIcon />}>
-                      <input
-                        type="tel"
-                        className={inputCls}
-                        placeholder="+91 9876543210"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      />
-                    </FormField>
-                  </div>
-
-                  <FormField label="Organization / University" icon={<BuildingIcon />}>
-                    <input
-                      type="text"
-                      className={inputCls}
-                      placeholder="JK Lakshmipat University, Jaipur"
-                      value={formData.affiliation}
-                      onChange={(e) => setFormData({ ...formData, affiliation: e.target.value })}
-                    />
-                  </FormField>
-
-                  <div className="pt-4 flex justify-end">
-                    <button
-                      onClick={handleNextStep}
-                      className="bg-brand-orange text-white px-8 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-orange-600 transition-colors cursor-pointer rounded-md shadow-xs flex items-center gap-2"
-                    >
-                      <span>Proceed to Payment</span>
-                      <ArrowRightIcon className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Step 2 Form */}
-              {step === 2 && (
-                <div className="p-6 sm:p-8 space-y-6">
-                  {/* Category Summary Box */}
-                  <div className="bg-slate-50 p-5 border border-slate-200 rounded-md space-y-2.5">
-                    <div className="flex justify-between items-center text-xs font-semibold">
-                      <span className="text-slate-600">Selected Tier:</span>
-                      <span className="text-brand-blue font-bold">{selectedCategoryObj?.name}</span>
-                    </div>
-                    <div className="flex justify-between items-center text-xs font-semibold">
-                      <span className="text-slate-600">Base Registration Fee:</span>
-                      <span className="text-brand-blue font-extrabold text-sm">₹{baseAmount.toLocaleString()} <span className="text-brand-orange text-xs font-bold">+ 18% GST</span></span>
-                    </div>
-                  </div>
-
-                  {/* Coupon Code Input */}
-                  <div>
-                    <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
-                      Promo / Author Discount Code
-                    </label>
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        className={inputCls}
-                        placeholder="ENTER CODE"
-                        value={formData.coupon}
-                        onChange={(e) => setFormData({ ...formData, coupon: e.target.value.toUpperCase() })}
-                      />
-                      <button
-                        type="button"
-                        onClick={applyCoupon}
-                        disabled={couponLoading || !formData.coupon.trim()}
-                        className="bg-brand-blue text-white px-6 py-3 font-bold text-xs uppercase tracking-wider hover:bg-blue-900 transition-colors disabled:opacity-50 cursor-pointer rounded-md shrink-0"
-                      >
-                        {couponLoading ? 'Checking...' : 'Apply'}
-                      </button>
-                    </div>
-                    {couponMessage && (
-                      <p className={`text-xs mt-2 font-semibold flex items-center gap-1 ${couponValid ? 'text-emerald-600' : 'text-rose-600'}`}>
-                        {couponValid ? <CheckIcon className="w-3.5 h-3.5" /> : <InfoIcon className="w-3.5 h-3.5" />}
-                        {couponMessage}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Payment Total Breakdown & Action */}
-                  <div className="border-t border-slate-200 pt-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <div>
-                      <span className="text-xs text-slate-500 font-bold block uppercase tracking-wider">Total Base Amount:</span>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-2xl font-extrabold text-brand-orange font-sans">
-                          ₹{currentPrice.toLocaleString()}
-                        </span>
-                        <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">+ 18% GST</span>
-                      </div>
-                      <p className="text-[11px] text-slate-500 font-medium mt-1">
-                        * A 2% Cashfree payment gateway transaction fee will also be added at checkout.
-                      </p>
-                    </div>
-
-                    <div className="flex gap-3 w-full sm:w-auto">
-                      <button
-                        type="button"
-                        onClick={() => setStep(1)}
-                        className="px-5 py-3 border border-slate-300 text-slate-600 font-bold text-xs uppercase tracking-wider hover:bg-slate-100 cursor-pointer rounded-md flex-1 sm:flex-none text-center"
-                      >
-                        Back
-                      </button>
-                      <button
-                        onClick={handlePayment}
-                        disabled={loading}
-                        className="bg-brand-orange text-white px-7 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-orange-600 transition-colors disabled:opacity-50 cursor-pointer rounded-md flex-1 sm:flex-none shadow-xs text-center"
-                      >
-                        {loading ? 'Processing...' : 'Pay & Confirm'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Step 3 Success */}
-              {step === 3 && (
-                <div className="p-8 sm:p-10 text-center space-y-5">
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                    <CheckIcon className="w-8 h-8" />
-                  </div>
-                  <h2 className="font-sans font-extrabold text-2xl text-brand-blue tracking-tight">Registration Confirmed!</h2>
-                  <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong>{successData?.name}</strong>. Your registration for <strong>{successData?.category}</strong> has been processed successfully. An official PDF receipt and QR ticket pass have been dispatched to your email.
-                  </p>
-                  <div className="inline-block bg-slate-100 px-4 py-2 rounded-md text-xs font-mono text-slate-600">
-                    Order ID: {successData?.orderId}
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => setIsFormOpen(false)}
-                      className="bg-brand-blue text-white px-8 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-blue-900 transition-colors cursor-pointer rounded-md shadow-xs mt-2"
-                    >
-                      Done
-                    </button>
-                  </div>
-                </div>
-              )}
-
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
       <Footer />
     </main>

@@ -96,7 +96,7 @@ export default function CallForPapersClient() {
           <Reveal variant="right" delay={0.15} className="lg:col-span-5 space-y-6">
             <div className="relative aspect-[4/3] border border-slate-200 rounded-lg overflow-hidden shadow-sm bg-white">
               <Image
-                src="/Images/call_for_papers.png"
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147492/sankalp/Images/call_for_papers.jpg"
                 alt="SANKALP 2027 Academic Research & Presentation Session"
                 fill
                 priority

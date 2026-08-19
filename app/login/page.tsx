@@ -113,7 +113,7 @@ export default function LoginPage() {
             {/* JKLU Logo */}
             <a href="https://jklu.edu.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity flex items-center">
               <img
-                src="/logos/jklu_logo.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147488/sankalp/logos/jklu_logo.webp"
                 alt="JKLU Logo"
                 className="h-14 sm:h-16 w-auto object-contain"
               />
@@ -124,7 +124,7 @@ export default function LoginPage() {
             {/* SANKALP Logo */}
             <div className="flex items-center">
               <img
-                src="/logos/sankalp_logo.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp"
                 alt="SANKALP 2027 Logo"
                 className="h-12 w-auto object-contain"
               />
@@ -135,7 +135,7 @@ export default function LoginPage() {
             {/* Asia University Logo */}
             <div className="hover:opacity-90 transition-opacity flex items-center">
               <img
-                src="/logos/Asia_University_Logo.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
                 alt="Asia University Logo"
                 className="h-14 sm:h-16 w-auto object-contain"
               />
