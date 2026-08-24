@@ -128,8 +128,8 @@ export default function FaqClient() {
             <div className="p-6 bg-white border border-[#E6E8EC] rounded-2xl flex flex-col items-center text-center space-y-3">
               <h3 className="font-bold text-brand-ink text-sm sm:text-base">Email Queries</h3>
               <p className="text-xs text-slate-500 max-w-[200px]">For registrations, paper submissions, and official letters.</p>
-              <a href="mailto:sankalp@jklu.edu.in" className="text-sm font-bold text-brand-orange hover:underline">
-                sankalp@jklu.edu.in
+              <a href="mailto:cfp_sankalp@jklu.edu.in" className="text-sm font-bold text-brand-orange hover:underline">
+                cfp_sankalp@jklu.edu.in
               </a>
             </div>
           </div>

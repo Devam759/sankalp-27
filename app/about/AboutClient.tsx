@@ -6,6 +6,7 @@ import { motion, Variants } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import WordReveal from '@/components/ui/WordReveal';
+import { BuildingIcon } from '@/components/ui/Icons';
 
 export default function AboutClient() {
   return (
@@ -124,38 +125,108 @@ export default function AboutClient() {
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')] pointer-events-none"></div>
         
         <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
             
-            <div className="lg:col-span-6">
-               <div className="flex items-center gap-4 mb-12">
+            <div className="lg:col-span-12 flex flex-col items-center mb-10">
                  <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
-                   <WordReveal text="Host Institute" />
-                   <div className="absolute -bottom-4 left-0 w-12 h-[2px] bg-brand-orange"></div>
+                   <WordReveal text="Host Institutes" />
+                   <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange"></div>
                  </h2>
-               </div>
-               
+             </div>
+             
+             <div className="lg:col-span-6 h-full">
                <motion.div 
                  initial={{ opacity: 0, y: 20 }}
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ duration: 0.8 }}
-                 className="bg-brand-cloud p-10 lg:p-12 relative shadow-2xl border-l-4 border-brand-orange mb-8"
+                 className="bg-white p-8 lg:p-10 relative shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 flex flex-col h-full overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-500 min-h-[340px]"
                >
-                 <span className="absolute top-0 right-0 bg-brand-blue text-white text-xs font-bold px-4 py-2 uppercase tracking-widest">About JKLU</span>
-                 <p className="text-slate-700 leading-relaxed font-medium text-lg mt-4 mb-6">
-                   JK Lakshmipat University is a leading multidisciplinary university established by the prestigious JK Organisation, committed to academic excellence, innovation, research, and global engagement.
-                 </p>
-                 <p className="text-slate-600 leading-relaxed">
-                   Located in Jaipur, Rajasthan, JKLU provides a dynamic learning ecosystem that combines experiential education, interdisciplinary research, industry collaboration, and technological advancement.
-                 </p>
+                 <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-orange"></div>
+                 
+                 <div className="flex items-center gap-5 mb-8">
+                   <div className="h-20 shrink-0 flex items-center justify-start group-hover:scale-105 transition-all duration-500">
+                     <Image 
+                        src="/logos/jklu_logo_light.png" 
+                        alt="JKLU" 
+                        width={100} height={100} 
+                        className="object-contain drop-shadow-sm"
+                        style={{ width: 'auto', height: '100%' }}
+                        priority
+                     />
+                   </div>
+                   <div>
+                     <h3 className="font-serif text-2xl font-bold text-brand-ink leading-tight group-hover:text-brand-orange transition-colors duration-300">
+                       JK Lakshmipat University
+                     </h3>
+                   </div>
+                 </div>
+                 
+                 <div className="space-y-4 text-slate-600 leading-relaxed relative z-10 text-[15px]">
+                   <p className="font-medium text-brand-ink/80">
+                     A leading multidisciplinary university established by the prestigious JK Organisation, committed to academic excellence, innovation, research, and global engagement.
+                   </p>
+                   <p>
+                     Located in Jaipur, Rajasthan, JKLU provides a dynamic learning ecosystem that combines experiential education, interdisciplinary research, industry collaboration, and technological advancement.
+                   </p>
+                 </div>
+                 
+                 <div className="absolute -bottom-8 -right-8 text-brand-orange/5 group-hover:text-brand-orange/10 transition-colors duration-500 pointer-events-none transform -rotate-12 group-hover:rotate-0 group-hover:scale-110">
+                   <BuildingIcon size={160} />
+                 </div>
                </motion.div>
+             </div>
 
+             <div className="lg:col-span-6 h-full">
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ duration: 0.8, delay: 0.2 }}
+                 className="bg-white p-8 lg:p-10 relative shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 flex flex-col h-full overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-500 min-h-[340px]"
+               >
+                 <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-blue"></div>
+                 
+                 <div className="flex items-center gap-5 mb-8">
+                   <div className="h-20 shrink-0 flex items-center justify-start group-hover:scale-105 transition-all duration-500">
+                     <Image 
+                        src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" 
+                        alt="SAU" 
+                        width={100} height={100} 
+                        className="object-contain drop-shadow-sm"
+                        style={{ width: 'auto', height: '100%' }}
+                        priority
+                     />
+                   </div>
+                   <div>
+                     <h3 className="font-serif text-2xl font-bold text-brand-ink leading-tight group-hover:text-brand-blue transition-colors duration-300">
+                       South Asian University
+                     </h3>
+                   </div>
+                 </div>
+                 
+                 <div className="space-y-4 text-slate-600 leading-relaxed relative z-10 text-[15px]">
+                   <p className="font-medium text-brand-ink/80">
+                     An international university established by the eight member nations of South Asian Association for Regional Co-operation (SAARC).
+                   </p>
+                   <p>
+                     SAU is dedicated to building a culture of understanding and regional consciousness, offering world-class education and research opportunities.
+                   </p>
+                 </div>
+                 
+                 <div className="absolute -bottom-8 -right-8 text-brand-blue/5 group-hover:text-brand-blue/10 transition-colors duration-500 pointer-events-none transform -rotate-12 group-hover:rotate-0 group-hover:scale-110">
+                   <BuildingIcon size={160} />
+                 </div>
+               </motion.div>
+             </div>
+
+             <div className="lg:col-span-6">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="bg-brand-orange p-10 lg:p-12 shadow-2xl text-white relative mb-8"
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="bg-brand-orange p-10 lg:p-12 shadow-2xl text-white relative mb-8 h-full min-h-[250px]"
                 >
                    <h3 className="text-2xl font-serif font-bold mb-6">Institute of Engineering &amp; Technology (IET)</h3>
                    <div className="w-16 h-1 bg-brand-blue mb-6"></div>
@@ -163,16 +234,15 @@ export default function AboutClient() {
                      The Institute of Engineering &amp; Technology at JKLU promotes interdisciplinary research and innovation across artificial intelligence, computing, engineering systems, and emerging technologies.
                    </p>
                 </motion.div>
-
              </div>
 
-             <div className="lg:col-span-6 relative flex justify-center">
+             <div className="lg:col-span-6 relative flex justify-center h-full min-h-[250px]">
                 <motion.div 
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.9 }}
-                  className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-10 md:pb-14 shadow-2xl mx-auto lg:mx-0 border border-slate-200/80 rounded-sm"
+                  transition={{ duration: 0.9, delay: 0.4 }}
+                  className="relative aspect-[4/3] w-full max-w-lg bg-brand-cloud p-4 pb-10 md:pb-14 shadow-2xl mx-auto border border-slate-200/80 rounded-sm"
                 >
                   <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
                       <Image 
@@ -200,13 +270,13 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-brand-cloud border-l-4 border-brand-orange p-6 md:p-7 shadow-lg border border-slate-200/80 rounded-sm flex flex-col justify-between"
+                className="bg-brand-cloud border-l-4 border-brand-blue p-6 md:p-7 shadow-lg border border-slate-200/80 rounded-sm flex flex-col justify-between"
               >
                  <div>
-                   <span className="text-[11px] font-bold text-brand-orange uppercase tracking-wider block mb-2">Centre of Excellence</span>
-                   <h4 className="font-serif font-bold text-brand-blue text-lg mb-3">Centre for Communication &amp; Critical Thinking (CCCT)</h4>
+                   <span className="text-[11px] font-bold text-brand-blue uppercase tracking-wider block mb-2">Global Network</span>
+                   <h4 className="font-serif font-bold text-brand-blue text-lg mb-3">Centre for Global Learning &amp; Program (CGLP)</h4>
                    <p className="text-slate-600 text-sm leading-relaxed">
-                     Dedicated to supporting students&apos; personal and professional growth through liberal arts, critical inquiry, group dynamics, and interpersonal communication skills.
+                     Drives international academic collaborations, student exchange programs, study abroad pathways, and collaborative research alliances with global institutions.
                    </p>
                  </div>
               </motion.div>
@@ -216,13 +286,13 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-brand-cloud border-l-4 border-brand-blue p-6 md:p-7 shadow-lg border border-slate-200/80 rounded-sm flex flex-col justify-between"
+                className="bg-brand-cloud border-l-4 border-brand-orange p-6 md:p-7 shadow-lg border border-slate-200/80 rounded-sm flex flex-col justify-between"
               >
                  <div>
-                   <span className="text-[11px] font-bold text-brand-blue uppercase tracking-wider block mb-2">Global Network</span>
-                   <h4 className="font-serif font-bold text-brand-blue text-lg mb-3">Centre for Global Learning &amp; Partnerships (CGLP)</h4>
+                   <span className="text-[11px] font-bold text-brand-orange uppercase tracking-wider block mb-2">Centre of Excellence</span>
+                   <h4 className="font-serif font-bold text-brand-blue text-lg mb-3">Centre for Communication &amp; Critical Thinking (CCCT)</h4>
                    <p className="text-slate-600 text-sm leading-relaxed">
-                     Drives international academic collaborations, student exchange programs, study abroad pathways, and collaborative research alliances with global institutions.
+                     Dedicated to supporting students&apos; personal and professional growth through liberal arts, critical inquiry, group dynamics, and interpersonal communication skills.
                    </p>
                  </div>
               </motion.div>

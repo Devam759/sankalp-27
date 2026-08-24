@@ -68,6 +68,14 @@ export default function CallForPapersClient() {
             
             <div className="flex flex-wrap gap-4">
               <a 
+                href="/JKLU%20Sankalp%20Brochure.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-brand-blue text-white border border-brand-blue px-6 py-3 font-bold hover:bg-blue-900 transition-colors shadow-sm text-xs uppercase tracking-wide cursor-pointer rounded-sm"
+              >
+                Download Brochure
+              </a>
+              <a 
                 href="https://google.com"
                 target="_blank"
                 rel="noopener noreferrer"

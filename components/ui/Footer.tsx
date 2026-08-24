@@ -405,6 +405,7 @@ export default function Footer() {
               alt="SANKALP 2027 Logo"
               width={240}
               height={80}
+              priority
               className="h-16 md:h-[72px] w-auto object-contain drop-shadow-md"
             />
           </Link>
@@ -420,6 +421,7 @@ export default function Footer() {
               alt="JK Lakshmipat University Logo"
               width={320}
               height={96}
+              priority
               className="h-20 md:h-[76px] w-auto object-contain"
               style={{ width: 'auto', height: '76px' }}
             />

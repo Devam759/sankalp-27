@@ -239,7 +239,9 @@ export const advisoryBoard = {
     { name: 'Dr. Ridoan Karim', title: 'Director, CLARS – Monash University, Malaysia', linkedin: 'https://www.linkedin.com/in/ridoan-karim-55997999/' },
     { name: 'Mr. Mithun Kumar', title: 'Engineering Manager, Google, London, UK', linkedin: 'https://www.linkedin.com/in/mithun-kumar1308/' },
     { name: 'Prof. Sergey Nersesov', title: 'Associate Professor, Villanova University, Pennsylvania, United States', linkedin: 'https://www.linkedin.com/in/sergey-nersesov-428a7194/' },
-    { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece', linkedin: 'https://www.linkedin.com/in/vassilis-gerogiannis-194159156/' }
+    { name: 'Prof. Vassilis Gerogiannis', title: 'Professor, Department of Digital Systems, University of Thessaly, Greece', linkedin: 'https://www.linkedin.com/in/vassilis-gerogiannis-194159156/' },
+    { name: 'Dr. Yash Chawla', title: '' },
+    { name: 'Dr. Nik Zulkarnaen Khidzir', title: 'Chairman, ACTIM & Associate Professor, Universiti Malaysia Kelantan (UMK)' }
   ],
   national: [
     { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras', linkedin: 'https://www.linkedin.com/in/madhu-mutyam-63361518/' },
@@ -261,7 +263,8 @@ export const advisoryBoard = {
     { name: 'Prof. V.S. Rathore', title: 'Professor-CSE & Dean-International, Apex University, Jaipur', linkedin: 'https://www.linkedin.com/in/prof-dr-vijay-singh-rathore-3215b045/' },
     { name: 'Dr. Vinnie Jauhari', title: 'Director, Education Industry, Microsoft Corporation India Pvt. Ltd., Gurgaon', linkedin: 'https://www.linkedin.com/in/vinniejauhari/' },
     { name: 'Dr. Brijesh Kohli', title: 'Vice President & Head of Education | Business Growth, Strategic Partnerships, Xebia India - Gurgaon', linkedin: 'https://www.linkedin.com/in/brijesh-kohli/' },
-    { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi', linkedin: 'https://www.linkedin.com/in/himanshu-gupta-777b863/' }
+    { name: 'Mr. Himanshu Gupta', title: 'Senior Research Scientist, IBM India Research Lab, New Delhi', linkedin: 'https://www.linkedin.com/in/himanshu-gupta-777b863/' },
+    { name: 'Prof. K. K. Aggarwal', title: 'President, South Asia University' }
   ]
 };
 
@@ -313,10 +316,8 @@ export const organizingSubCommittees: InternalCommittee[] = [
     members: [
       { role: 'Chair', name: 'Prof. Amit Kumar Sinhal', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Lead', name: 'Dr. Akshat Agarwal', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
-      { role: 'Member', name: 'Dr. Santosh Kumar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Surbhi Chhabra', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Abhinav Kumar Khorwal', designation: 'Assistant Professor', affiliation: 'Applied Science' },
-      { role: 'Member', name: 'Dr. Renu Bhagwat', designation: 'Assistant Professor', affiliation: 'IET' },
       { role: 'Member', name: 'Mr. Somesh Bang', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
     ]
   },
@@ -327,7 +328,8 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Lead', name: 'Prof. Sonali Vyas', designation: 'Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Akshat Agarwal', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Rashmi Kushwaha', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
-      { role: 'Member', name: 'Dr. Sushant Pokhriyal', designation: 'Assistant Professor', affiliation: 'Applied Science' }
+      { role: 'Member', name: 'Dr. Sushant Pokhriyal', designation: 'Assistant Professor', affiliation: 'Applied Science' },
+      { role: 'Member', name: 'Dr. Manju Rana', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
     ]
   },
   {
@@ -337,7 +339,8 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Lead', name: 'Mr. Gaurav Raj', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Rabia Kamra', designation: 'Assistant Professor', affiliation: 'Applied Science' },
       { role: 'Member', name: 'Dr. Megha Sahu', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
-      { role: 'Member', name: 'Dr. Mayank Kumar Kundalwal', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
+      { role: 'Member', name: 'Dr. Mayank Kumar Kundalwal', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Mr. Ashutosh Kumar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
     ]
   },
   {
@@ -369,7 +372,7 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Lead', name: 'Dr. Richa Sharma', designation: 'Associate Professor', affiliation: 'Applied Science' },
       { role: 'Member', name: 'Dr. Shahnawaz Khan', designation: 'Assistant Professor', affiliation: 'Applied Science' },
       { role: 'Member', name: 'Dr. Krishna Chaitanya Solasa', designation: 'Assistant Professor', affiliation: 'Applied Science' },
-      { role: 'Member', name: 'Mr. Ashutosh Kumar', designation: 'Assistant Professor', affiliation: 'Hospitality & Logistics' }
+      { role: 'Member', name: 'Mr. Sonjay Dahiyaa', designation: '', affiliation: 'Hospitality & Logistics' }
     ]
   },
   {

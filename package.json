@@ -29,6 +29,7 @@
     "cashfree-pg": "^6.0.4",
     "cloudinary": "^2.10.0",
     "clsx": "^2.1.1",
+    "dotenv": "^17.4.2",
     "exceljs": "^4.4.0",
     "firebase": "^12.15.0",
     "firebase-admin": "^14.1.0",
