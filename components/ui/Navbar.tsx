@@ -105,19 +105,19 @@ export default function Navbar() {
       >
         <div
           className="max-w-[1440px] w-full mx-auto px-6 md:px-10 flex items-center justify-between gap-6"
-          style={{ height: '72px' }}
+          style={{ height: '80px' }}
         >
           {/* Left: SANKALP Emblem + Desktop Nav Links (Aside Logo) */}
           <div className="flex items-center gap-5 xl:gap-7 shrink-0">
             <Link href="/" className="flex items-center shrink-0 hover:opacity-90 transition-opacity" aria-label="JKLU SANKALP 2027 Home">
               <Image
-                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp"
+                src="/logos/ics_logo_white.webp"
                 alt="SANKALP 2027 Logo"
-                width={220}
-                height={70}
+                width={280}
+                height={90}
                 priority
                 loading="eager"
-                className="h-14 sm:h-16 max-h-[58px] w-auto object-contain py-1"
+                className="h-16 sm:h-20 md:h-[74px] w-auto object-contain py-0.5 drop-shadow-md"
               />
             </Link>
 

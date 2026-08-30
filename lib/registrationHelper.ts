@@ -49,16 +49,13 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
   let sankalpScaledHeight = 0;
   let sankalpLogoImage;
   try {
-    const res = await fetch('https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp');
-    if (res.ok) {
-      const arrayBuf = await res.arrayBuffer();
-      const sankalpPngBytes = await sharp(Buffer.from(arrayBuf)).png().toBuffer();
-      sankalpLogoImage = await pdfDoc.embedPng(sankalpPngBytes);
-      const targetHeight = 35;
-      const scaleFactor = targetHeight / sankalpLogoImage.height;
-      sankalpScaledWidth = sankalpLogoImage.width * scaleFactor;
-      sankalpScaledHeight = sankalpLogoImage.height * scaleFactor;
-    }
+    const logoPath = path.join(process.cwd(), 'public', 'logos', 'ics_logo.png');
+    const logoBuffer = await fs.readFile(logoPath);
+    sankalpLogoImage = await pdfDoc.embedPng(logoBuffer);
+    const targetHeight = 35;
+    const scaleFactor = targetHeight / sankalpLogoImage.height;
+    sankalpScaledWidth = sankalpLogoImage.width * scaleFactor;
+    sankalpScaledHeight = sankalpLogoImage.height * scaleFactor;
   } catch (error) {
     console.warn('PDF Right Logo (Sankalp) load failed:', error);
   }

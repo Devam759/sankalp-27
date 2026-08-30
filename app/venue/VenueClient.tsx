@@ -83,94 +83,93 @@ export default function VenueClient() {
     { icon: AccessibilityIcon, name: 'Accessibility Support', desc: 'Wheelchair access ramps, elevators, and dedicated seating layout.' }
   ];
 
-  const hotels = [
+  const hotelCategories = [
     {
-      name: 'Ginger Hotel Jaipur',
-      distance: 'Geejgarh House, Civil Lines / Hawa Sadak',
-      time: 'Approx. 20 minutes from JKLU',
-      badgeText: '20 min Drive',
-      category: '3-Star Business Hotel',
-      bottomText: 'IHCL (Tata) Hotel',
-      location: 'Civil Lines, Jaipur',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147522/sankalp/Images/hotels/ginger_hotel.webp',
-      link: 'https://www.google.com/maps/search/Ginger+Hotel+Jaipur'
+      categoryTitle: 'Budget Stays',
+      hotels: [
+        {
+          name: 'Navya Residency',
+          distance: 'Near Malot Hospital, Mahindra SEZ',
+          badgeText: '7 min Drive',
+          category: 'Comfort Stay',
+          src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147525/sankalp/Images/hotels/navya_residency.webp',
+          link: 'https://www.google.com/maps/search/Navya+Residency+Mahindra+SEZ+Jaipur'
+        },
+        {
+          name: 'Atulya Green by Meyatri',
+          distance: 'Omaxe City, Ajmer Road',
+          badgeText: '5 min Drive',
+          category: '3-Star Hotel',
+          src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147520/sankalp/Images/hotels/atulya_green.webp',
+          link: 'https://www.google.com/maps/search/Atulya+Green+by+Meyatri+Jaipur'
+        },
+        {
+          name: 'Ginger Jaipur, Ajmer Road',
+          distance: 'Geejgarh House, Civil Lines / Hawa Sadak',
+          badgeText: '20 min Drive',
+          category: '3-Star Business Hotel',
+          src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147522/sankalp/Images/hotels/ginger_hotel.webp',
+          link: 'https://www.google.com/maps/search/Ginger+Hotel+Jaipur'
+        }
+      ]
     },
     {
-      name: 'Atulya Green by Meyatri',
-      distance: 'Omaxe City, Ajmer Road',
-      time: 'Approx. 5 minutes from JKLU',
-      badgeText: '5 min Drive',
-      category: '3-Star Hotel',
-      bottomText: 'Near Omaxe City',
-      location: 'Ajmer Road, Jaipur',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147520/sankalp/Images/hotels/atulya_green.webp',
-      link: 'https://www.google.com/maps/search/Atulya+Green+by+Meyatri+Jaipur'
+      categoryTitle: 'Mid-Range Stays',
+      hotels: [
+        {
+          name: 'Ramada by Wyndham Jaipur Jaisinghpura',
+          distance: 'Ajmer Road, Jaisinghpura',
+          badgeText: '10 min Drive',
+          category: '4-Star Hotel',
+          src: '', // Image placeholder
+          link: 'https://www.google.com/maps/search/Ramada+by+Wyndham+Jaipur+Jaisinghpura'
+        },
+        {
+          name: 'Pink Pearl Hotel & Fun City',
+          distance: 'NH-8, Ajmer Expressway',
+          badgeText: '8 min Drive',
+          category: 'Resort & Stay',
+          src: '', // Image placeholder
+          link: 'https://www.google.com/maps/search/Pink+Pearl+Hotel+Jaipur'
+        },
+        {
+          name: 'Four Points by Sheraton Jaipur',
+          distance: 'Tonk Road, Jaipur',
+          badgeText: '20 min Drive',
+          category: '4-Star Business Hotel',
+          src: '', // Image placeholder
+          link: 'https://www.google.com/maps/search/Four+Points+by+Sheraton+Jaipur'
+        }
+      ]
     },
     {
-      name: 'Hotel The Sawai',
-      distance: 'Opp. Pink Pearl, Ajmer Highway',
-      time: 'Approx. 8 minutes from JKLU',
-      badgeText: '8 min Drive',
-      category: 'Business Hotel',
-      bottomText: 'Mahapura, Jaipur',
-      location: 'Ajmer Road, Jaipur',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147523/sankalp/Images/hotels/hotel_sawai.webp',
-      link: 'https://www.google.com/maps/search/Hotel+The+Sawai+Jaipur'
-    },
-    {
-      name: 'Navya Residency',
-      distance: 'Near Malot Hospital, Mahindra SEZ',
-      time: 'Approx. 7 minutes from JKLU',
-      badgeText: '7 min Drive',
-      category: 'Comfort Stay',
-      bottomText: 'SEZ Corridor, Jaipur',
-      location: 'Mahindra SEZ, Jaipur',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147525/sankalp/Images/hotels/navya_residency.webp',
-      link: 'https://www.google.com/maps/search/Navya+Residency+Mahindra+SEZ+Jaipur'
-    },
-    {
-      name: 'Four Points by Sheraton Jaipur',
-      distance: 'Tonk Road, Jaipur',
-      time: 'Approx. 20 minutes by road',
-      badgeText: '20 min Drive',
-      category: 'Business Hotel',
-      bottomText: 'Near Airport / City Center',
-      location: 'Jaipur, Rajasthan',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147521/sankalp/Images/hotels/four_points.webp',
-      link: 'https://www.google.com/maps/search/Four+Points+by+Sheraton+Jaipur'
-    },
-    {
-      name: 'ITC Rajputana, Jaipur',
-      distance: 'Gopal Bari, Jaipur City',
-      time: 'Approx. 25 minutes by road',
-      badgeText: '25 min Drive',
-      category: 'Heritage Luxury',
-      bottomText: 'Iconic Heritage Hotel',
-      location: 'Jaipur, Rajasthan',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147524/sankalp/Images/hotels/itc_rajputana.webp',
-      link: 'https://www.google.com/maps/search/ITC+Rajputana+Jaipur'
-    },
-    {
-      name: 'Radisson Blu Jaipur',
-      distance: 'Durgapura, Jaipur',
-      time: 'Approx. 20 minutes by road',
-      badgeText: '20 min Drive',
-      category: 'Premium Stay',
-      bottomText: 'Airport Corridor',
-      location: 'Jaipur, Rajasthan',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147528/sankalp/Images/hotels/radisson_blu.webp',
-      link: 'https://www.google.com/maps/search/Radisson+Blu+Jaipur'
-    },
-    {
-      name: 'The Oberoi Rajvilas, Jaipur',
-      distance: 'Goner Road, Jaipur',
-      time: 'Approx. 40 minutes by road',
-      badgeText: '40 min Drive',
-      category: 'Luxury Resort',
-      bottomText: 'World-Class Luxury',
-      location: 'Jaipur, Rajasthan',
-      src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147527/sankalp/Images/hotels/oberoi_rajvilas.webp',
-      link: 'https://www.google.com/maps/search/The+Oberoi+Rajvilas+Jaipur'
+      categoryTitle: 'Premium & Luxury Stays',
+      hotels: [
+        {
+          name: 'ITC Rajputana, Jaipur',
+          distance: 'Gopal Bari, Jaipur City',
+          badgeText: '25 min Drive',
+          category: 'Heritage Luxury',
+          src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147524/sankalp/Images/hotels/itc_rajputana.webp',
+          link: 'https://www.google.com/maps/search/ITC+Rajputana+Jaipur'
+        },
+        {
+          name: 'Radisson Blu Jaipur',
+          distance: 'Durgapura, Jaipur',
+          badgeText: '20 min Drive',
+          category: 'Premium Stay',
+          src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147528/sankalp/Images/hotels/radisson_blu.webp',
+          link: 'https://www.google.com/maps/search/Radisson+Blu+Jaipur'
+        },
+        {
+          name: 'The Oberoi Rajvilas, Jaipur',
+          distance: 'Goner Road, Jaipur',
+          badgeText: '40 min Drive',
+          category: 'Luxury Resort',
+          src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147527/sankalp/Images/hotels/oberoi_rajvilas.webp',
+          link: 'https://www.google.com/maps/search/The+Oberoi+Rajvilas+Jaipur'
+        }
+      ]
     }
   ];
 
@@ -783,8 +782,8 @@ export default function VenueClient() {
 
 
       {/* RECOMMENDED HOTELS */}
-      <section className="py-24 bg-white border-t border-[#E6E8EC]/60 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
+      <section className="py-24 bg-white border-t border-[#E6E8EC]/60 px-6 md:px-12 select-none">
+        <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-2">
             <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
               <WordReveal text="Recommended Hotels" className="text-brand-ink" />
@@ -792,52 +791,80 @@ export default function VenueClient() {
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {hotels.map((hotel, index) => (
-              <Reveal
-                key={index}
-                delay={(index % 4) * 0.08}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-[#0b1220] flex flex-col justify-between group hover:shadow-xl transition-all duration-300"
-              >
-                <Image
-                  src={hotel.src}
-                  alt={hotel.name}
-                  fill
-                  className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-
-                {/* Top Badges */}
-                <div className="relative z-10 p-4 flex items-center justify-between gap-2">
-                  <span className="bg-brand-orange text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-sm">
-                    {hotel.badgeText}
-                  </span>
-                  <span className="bg-slate-900/75 backdrop-blur-md border border-white/15 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-sm">
-                    {hotel.category}
-                  </span>
-                </div>
-
-                {/* Content Gradient Overlay */}
-                <div className="relative inset-x-0 bottom-0 bg-gradient-to-t from-[#0b1220]/95 via-[#0b1220]/70 to-transparent flex flex-col justify-end p-5 z-10 space-y-2">
-                  <h3 className="font-serif font-bold text-white text-base sm:text-lg leading-snug drop-shadow-sm group-hover:text-amber-200 transition-colors">
-                    {hotel.name}
+          <div className="space-y-16">
+            {hotelCategories.map((cat, catIdx) => (
+              <div key={catIdx} className="space-y-6">
+                {/* Category Subheading - Clean title without eyebrow overlay */}
+                <div className="flex items-center gap-3 border-b border-slate-200/80 pb-3">
+                  <div className="w-2.5 h-2.5 rounded-full bg-brand-orange shrink-0" />
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-brand-ink uppercase tracking-wide">
+                    {cat.categoryTitle}
                   </h3>
-                  <p className="text-slate-300 text-xs font-medium leading-relaxed">
-                    {hotel.distance}
-                  </p>
-
-                  <div className="pt-1">
-                    <a
-                      href={hotel.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-white hover:translate-x-1 transition-all gap-1 cursor-pointer"
-                    >
-                      Get Directions →
-                    </a>
-                  </div>
                 </div>
-              </Reveal>
+
+                {/* 3-Card Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {cat.hotels.map((hotel, index) => (
+                    <Reveal
+                      key={index}
+                      delay={(index % 3) * 0.08}
+                      className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-[#0b1220] flex flex-col justify-between group hover:shadow-xl transition-all duration-300"
+                    >
+                      {hotel.src ? (
+                        <Image
+                          src={hotel.src}
+                          alt={hotel.name}
+                          fill
+                          className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      ) : (
+                        /* Empty Image Placeholder Container */
+                        <div className="absolute inset-0 bg-[#121929] flex flex-col items-center justify-center p-4 border border-dashed border-white/20 transition-colors group-hover:border-brand-orange/50">
+                          <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-2 group-hover:bg-brand-orange/10 group-hover:border-brand-orange/30 transition-colors">
+                            <svg className="w-6 h-6 text-slate-400 group-hover:text-brand-orange transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                          <span className="text-[11px] font-bold tracking-widest text-slate-300 uppercase">IMAGE PLACEHOLDER</span>
+                          <span className="text-[10px] text-slate-500 font-medium mt-0.5">Photo Coming Soon</span>
+                        </div>
+                      )}
+
+                      {/* Top Badges */}
+                      <div className="relative z-10 p-4 flex items-center justify-between gap-2">
+                        <span className="bg-brand-orange text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-sm">
+                          {hotel.badgeText}
+                        </span>
+                        <span className="bg-slate-900/75 backdrop-blur-md border border-white/15 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-sm">
+                          {hotel.category}
+                        </span>
+                      </div>
+
+                      {/* Content Gradient Overlay */}
+                      <div className="relative inset-x-0 bottom-0 bg-gradient-to-t from-[#0b1220]/95 via-[#0b1220]/75 to-transparent flex flex-col justify-end p-5 z-10 space-y-2">
+                        <h3 className="font-serif font-bold text-white text-base sm:text-lg leading-snug drop-shadow-sm group-hover:text-amber-200 transition-colors">
+                          {hotel.name}
+                        </h3>
+                        <p className="text-slate-300 text-xs font-medium leading-relaxed">
+                          {hotel.distance}
+                        </p>
+
+                        <div className="pt-1">
+                          <a
+                            href={hotel.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-xs font-bold text-brand-orange hover:text-white hover:translate-x-1 transition-all gap-1 cursor-pointer"
+                          >
+                            Get Directions →
+                          </a>
+                        </div>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

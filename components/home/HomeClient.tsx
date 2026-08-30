@@ -446,13 +446,13 @@ export default function HomeClient() {
             >
               <motion.div variants={itemVariants} className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
                 <Image
-                  src="https://res.cloudinary.com/flufexsc/image/upload/v1787147490/sankalp/logos/sankalp_logo.webp"
+                  src="/logos/ics_logo_white.webp"
                   alt="SANKALP 2027 Logo"
-                  width={400}
-                  height={160}
+                  width={500}
+                  height={200}
                   priority
                   loading="eager"
-                  className="h-28 sm:h-32 w-auto max-w-[220px] object-contain drop-shadow-lg shrink-0"
+                  className="h-36 sm:h-44 md:h-48 w-auto max-w-[280px] sm:max-w-[340px] object-contain drop-shadow-xl shrink-0"
                 />
                 <h2 className="text-right font-serif font-bold text-2xl text-white leading-tight">
                   <span className="block">JKLU</span>
@@ -973,6 +973,37 @@ export default function HomeClient() {
             </div>
           </motion.div>
 
+          {/* JAIPUR HERITAGE & INNOVATION BANNER SECTION */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="relative h-[360px] sm:h-[400px] md:h-[440px] w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl group border border-slate-200/80 my-8 select-none"
+          >
+            <Image
+              src="/images/jaipur_banner.webp"
+              alt="Discover Jaipur - Where Heritage Meets Innovation"
+              fill
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+              priority
+            />
+            {/* Subtle dark navy gradient overlay at lower-left for text legibility while preserving full artwork clarity */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/25 to-transparent" />
+            <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#0b1220]/60 to-transparent" />
+
+            {/* Lower-left heading content */}
+            <div className="absolute bottom-0 left-0 p-6 sm:p-8 md:p-12 z-10 space-y-1.5 max-w-lg">
+              <h3 className="text-white font-serif font-bold text-2xl sm:text-3xl md:text-4xl leading-tight drop-shadow-md">
+                Discover Jaipur
+              </h3>
+              <div className="w-12 h-1 bg-brand-orange rounded-full my-2" />
+              <p className="text-slate-200 text-xs sm:text-sm font-medium tracking-wide drop-shadow">
+                Where heritage meets innovation.
+              </p>
+            </div>
+          </motion.div>
 
           {/* AUTOMATIC INFINITE SIGHTSEEING SLIDER */}
           <div className="pt-6 space-y-6 overflow-hidden">
