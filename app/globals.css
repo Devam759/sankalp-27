@@ -310,7 +310,8 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -319,7 +320,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-brand-orange);
-  border: 3px solid var(--color-brand-ink);
+  border: 1px solid var(--color-brand-ink);
   box-shadow: inset 1px 1px 0px var(--color-brand-cloud);
 }
 

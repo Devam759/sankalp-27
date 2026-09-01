@@ -28,8 +28,6 @@ const LocationIcon = ({ size = 18, className = '' }: { size?: number; className?
   </svg>
 );
 
-
-
 const EmailIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
   <svg 
     width={size} 
@@ -62,8 +60,6 @@ const FacebookIcon = ({ size = 18, className = '' }: { size?: number; className?
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
-
-
 
 const XIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
   <svg 
@@ -118,54 +114,20 @@ const LinkedInIcon = ({ size = 18, className = '' }: { size?: number; className?
   </svg>
 );
 
-const GoogleMapsIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2.2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-    <circle cx="12" cy="9" r="2.5" />
-  </svg>
-);
-
-const AppleMapsIcon = ({ size = 16, className = '' }: { size?: number; className?: string }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2.2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <circle cx="12" cy="12" r="10" />
-    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
-  </svg>
-);
-
 export default function Footer() {
   return (
     <footer className="relative bg-[#0b0f19] border-t border-white/10 pt-16 pb-12 px-6 md:px-12 overflow-hidden select-none">
       
-      {/* MAIN FOOTER UPPER CONTAINER (Relative bounds for baseline alignment) */}
-      <div className="relative max-w-7xl mx-auto">
-
-        {/* 3-Column Main Grid */}
+      {/* MAIN FOOTER CONTAINER */}
+      <div className="relative max-w-7xl mx-auto space-y-8">
+        
+        {/* 1. 3-COLUMN MAIN GRID */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-12"
         >
           
           {/* COLUMN 1: JKLU SANKALP 2027 ABOUT */}
@@ -355,84 +317,105 @@ export default function Footer() {
 
         </motion.div>
 
-        {/* THE MINDS BEHIND THE SITE BUTTON (Above Separating Line) */}
-        <div className="relative z-10 flex justify-center items-center pb-8 pt-2">
+        {/* 2. THE MINDS BEHIND THE SITE BUTTON (Centered Horizontally Above Dividing Line) */}
+        <div className="flex justify-center items-center pt-0 pb-1 -mt-5">
           <Link 
             href="/credits" 
-            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-400 hover:text-brand-orange hover:underline transition-all duration-200 cursor-pointer"
+            className="group inline-flex items-center gap-1.5 text-xs sm:text-sm md:text-base font-semibold text-slate-300 hover:text-brand-orange hover:underline transition-all duration-200 cursor-pointer"
           >
             <span>Designed and developed with</span>
-            <HeartIcon size={14} className="text-slate-400 fill-slate-400 group-hover:text-brand-orange group-hover:fill-brand-orange transition-colors duration-200 inline-block" />
+            <HeartIcon size={14} className="text-slate-300 fill-slate-300 group-hover:text-brand-orange group-hover:fill-brand-orange transition-colors duration-200 inline-block" />
           </Link>
         </div>
+
+        {/* 3. FOOTER BOTTOM BAR (Separated by horizontal dividing line) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+          className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-slate-400 border-t border-white/10 pt-8"
+        >
+          <div className="flex flex-col gap-2 text-center md:text-left">
+            <div className="font-medium text-xs sm:text-sm">
+              © 2027 JKLU SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
+            </div>
+            <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-3 gap-y-1.5 text-xs text-slate-400 font-semibold uppercase tracking-wider">
+              <Link href="/privacy-policy" className="hover:text-brand-orange transition-colors">
+                Privacy Policy
+              </Link>
+              <span>•</span>
+              <Link href="/terms-and-conditions" className="hover:text-brand-orange transition-colors">
+                Terms &amp; Conditions
+              </Link>
+              <span>•</span>
+              <Link href="/refund-policy" className="hover:text-brand-orange transition-colors">
+                Refund Policy
+              </Link>
+              <span>•</span>
+              <Link href="/shipping-policy" className="hover:text-brand-orange transition-colors">
+                Shipping Policy
+              </Link>
+              <span>•</span>
+              <Link href="/contact" className="hover:text-brand-orange transition-colors">
+                Contact Us
+              </Link>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-6 md:gap-8 flex-wrap">
+            <Link href="/" className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex">
+              <Image
+                src="/logos/ics_logo_white.webp"
+                alt="SANKALP 2027 Logo"
+                width={320}
+                height={120}
+                priority
+                className="h-24 md:h-[104px] w-auto object-contain drop-shadow-md"
+              />
+            </Link>
+            <div className="h-20 w-px bg-white/25" />
+            <a 
+              href="https://jklu.edu.in" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex"
+            >
+              <Image
+                src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
+                alt="JK Lakshmipat University Logo"
+                width={320}
+                height={96}
+                priority
+                className="h-20 md:h-[76px] w-auto object-contain"
+                style={{ width: 'auto', height: '76px' }}
+              />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* 4. ARCHITECTURAL CAMPUS SKYLINE IMAGE (Placed below all content) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
+          className="w-full -mt-6 sm:-mt-10 md:-mt-12 lg:-mt-14 pt-0 flex justify-center items-center"
+        >
+          <div className="relative w-full max-w-[1600px] h-[240px] sm:h-[340px] md:h-[440px] lg:h-[500px] -translate-y-2 sm:-translate-y-3">
+            <Image
+              src="/logos/footer_transparent.png"
+              alt="JKLU Campus Architecture Skyline"
+              fill
+              sizes="100vw"
+              quality={100}
+              className="object-contain object-center"
+              priority
+            />
+          </div>
+        </motion.div>
 
       </div>
-
-      {/* FOOTER BOTTOM BAR */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-        className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-slate-400 border-t border-white/10 pt-8"
-      >
-        <div className="flex flex-col gap-2 text-center md:text-left">
-          <div className="font-medium text-xs sm:text-sm">
-            © 2027 JKLU SANKALP Conference | JK Lakshmipat University. All Rights Reserved.
-          </div>
-          <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-3 gap-y-1.5 text-xs text-slate-400 font-semibold uppercase tracking-wider">
-            <Link href="/privacy-policy" className="hover:text-brand-orange transition-colors">
-              Privacy Policy
-            </Link>
-            <span>•</span>
-            <Link href="/terms-and-conditions" className="hover:text-brand-orange transition-colors">
-              Terms &amp; Conditions
-            </Link>
-            <span>•</span>
-            <Link href="/refund-policy" className="hover:text-brand-orange transition-colors">
-              Refund Policy
-            </Link>
-            <span>•</span>
-            <Link href="/shipping-policy" className="hover:text-brand-orange transition-colors">
-              Shipping Policy
-            </Link>
-            <span>•</span>
-            <Link href="/contact" className="hover:text-brand-orange transition-colors">
-              Contact Us
-            </Link>
-          </div>
-        </div>
-        
-        <div className="flex items-center gap-6 md:gap-8 flex-wrap">
-          <Link href="/" className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex">
-            <Image
-              src="/logos/ics_logo_white.webp"
-              alt="SANKALP 2027 Logo"
-              width={320}
-              height={120}
-              priority
-              className="h-24 md:h-[104px] w-auto object-contain drop-shadow-md"
-            />
-          </Link>
-          <div className="h-20 w-px bg-white/25" />
-          <a 
-            href="https://jklu.edu.in" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex"
-          >
-            <Image
-              src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
-              alt="JK Lakshmipat University Logo"
-              width={320}
-              height={96}
-              priority
-              className="h-20 md:h-[76px] w-auto object-contain"
-              style={{ width: 'auto', height: '76px' }}
-            />
-          </a>
-        </div>
-      </motion.div>
 
     </footer>
   );

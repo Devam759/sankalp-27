@@ -96,12 +96,12 @@ export default function HomeClient() {
   const [activeAdvisory, setActiveAdvisory] = React.useState<string | null>(null);
 
   const jaipurAttractions = [
-    { name: 'Hawa Mahal', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147533/sankalp/Images/jaipur_sightseeing/hawa_mahal.jpg' },
     { name: 'Amer Fort', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147530/sankalp/Images/jaipur_sightseeing/amer_fort.webp' },
     { name: 'Jal Mahal', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147533/sankalp/Images/jaipur_sightseeing/jal_mahal.webp' },
     { name: 'City Palace', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147531/sankalp/Images/jaipur_sightseeing/city_palace.webp' },
     { name: 'Albert Hall Museum', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147529/sankalp/Images/jaipur_sightseeing/albert_hall.webp' },
-    { name: 'Nahargarh Fort', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147536/sankalp/Images/jaipur_sightseeing/nahargarh_fort.webp' }
+    { name: 'Nahargarh Fort', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147536/sankalp/Images/jaipur_sightseeing/nahargarh_fort.webp' },
+    { name: 'Hawa Mahal', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147533/sankalp/Images/jaipur_sightseeing/hawa_mahal.jpg' }
   ];
 
   const heroImages = [
@@ -286,27 +286,16 @@ export default function HomeClient() {
         className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
       >
         <div ref={heroBgRef} className="absolute inset-0 z-0 bg-brand-blue will-change-transform transform-gpu">
-          <AnimatePresence mode="popLayout">
-            <motion.div
-              key={heroImages[currentHeroIndex]}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={heroImages[currentHeroIndex]}
-                alt="JK Lakshmipat University Campus"
-                fill
-                priority
-                loading="eager"
-                sizes="100vw"
-                quality={75}
-                className="object-cover object-center"
-              />
-            </motion.div>
-          </AnimatePresence>
+          <Image
+            src="/images/jaipur_banner.webp"
+            alt="Jaipur Skyline &amp; Heritage - JKLU SANKALP 2027"
+            fill
+            priority
+            loading="eager"
+            sizes="100vw"
+            quality={90}
+            className="object-cover object-center"
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/55 via-brand-blue/45 to-brand-blue/75 z-10 pointer-events-none" />
         </div>
 
@@ -339,18 +328,18 @@ export default function HomeClient() {
                 alt="JK Lakshmipat University"
                 width={400}
                 height={120}
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-md"
+                className="h-18 sm:h-18 md:h-20 lg:h-24 w-auto object-contain drop-shadow-md"
                 priority
                 loading="eager"
               />
               {/* Translucent-Whitish Vertical Separating Line between Logos */}
-              <div className="h-7 sm:h-9 md:h-10 lg:h-12 w-px bg-white/40 shrink-0" />
+              <div className="h-12 sm:h-12 md:h-14 lg:h-16 w-px bg-white/40 shrink-0" />
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
                 alt="Asia University"
                 width={400}
                 height={120}
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-md"
+                className="h-18 sm:h-18 md:h-20 lg:h-24 w-auto object-contain drop-shadow-md"
                 priority
                 loading="eager"
               />
@@ -973,52 +962,23 @@ export default function HomeClient() {
             </div>
           </motion.div>
 
-          {/* JAIPUR HERITAGE & INNOVATION BANNER SECTION */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="relative h-[360px] sm:h-[400px] md:h-[440px] w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl group border border-slate-200/80 my-8 select-none"
-          >
-            <Image
-              src="/images/jaipur_banner.webp"
-              alt="Discover Jaipur - Where Heritage Meets Innovation"
-              fill
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
-              priority
-            />
-            {/* Subtle dark navy gradient overlay at lower-left for text legibility while preserving full artwork clarity */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/25 to-transparent" />
-            <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#0b1220]/60 to-transparent" />
 
-            {/* Lower-left heading content */}
-            <div className="absolute bottom-0 left-0 p-6 sm:p-8 md:p-12 z-10 space-y-1.5 max-w-lg">
-              <h3 className="text-white font-serif font-bold text-2xl sm:text-3xl md:text-4xl leading-tight drop-shadow-md">
-                Discover Jaipur
-              </h3>
-              <div className="w-12 h-1 bg-brand-orange rounded-full my-2" />
-              <p className="text-slate-200 text-xs sm:text-sm font-medium tracking-wide drop-shadow">
-                Where heritage meets innovation.
-              </p>
-            </div>
-          </motion.div>
 
-          {/* AUTOMATIC INFINITE SIGHTSEEING SLIDER */}
-          <div className="pt-6 space-y-6 overflow-hidden">
-            <div className="text-center sm:text-left">
+          {/* DISCOVER JAIPUR & SIGHTSEEING SLIDER */}
+          <div className="pt-10 sm:pt-14 space-y-6 overflow-hidden border-t border-slate-200/60 mt-12 select-none">
+            <div className="text-center sm:text-left space-y-1">
               <h3 className="font-serif font-bold text-2xl md:text-3xl text-brand-blue">
                 Discover Jaipur &amp; Sightseeing
               </h3>
-              <p className="text-slate-500 text-xs sm:text-sm font-medium mt-1">
+              <p className="text-slate-500 text-xs sm:text-sm font-medium">
                 Iconic heritage landmarks and cultural attractions around the Pink City.
               </p>
             </div>
 
+            {/* SEAMLESS INFINITE SLIDER */}
             <div className="relative w-full overflow-hidden py-2">
               <motion.div
-                className="flex gap-6 w-max"
+                className="flex gap-5 sm:gap-6 w-max"
                 animate={{ x: ['0%', '-50%'] }}
                 transition={{
                   x: {
@@ -1032,7 +992,7 @@ export default function HomeClient() {
                 {[...jaipurAttractions, ...jaipurAttractions].map((att, i) => (
                   <div
                     key={`attraction-${att.name}-${i}`}
-                    className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80 bg-white"
+                    className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[320px] aspect-[4/3] rounded-[18px] overflow-hidden shadow-md border border-slate-200/80 bg-white"
                   >
                     <Image
                       src={att.src}
@@ -1043,7 +1003,7 @@ export default function HomeClient() {
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/25 to-transparent flex items-end p-5">
-                      <h4 className="font-serif font-bold text-white text-lg sm:text-xl leading-snug drop-shadow-sm">
+                      <h4 className="font-serif font-bold text-white text-base sm:text-lg md:text-xl leading-snug drop-shadow-sm">
                         {att.name}
                       </h4>
                     </div>

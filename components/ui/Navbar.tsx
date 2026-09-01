@@ -25,6 +25,7 @@ export default function Navbar() {
     { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Sponsors', href: '/sponsors' },
+    { name: 'Why Sponsor Us', href: '/why-sponsor-us' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -105,7 +106,7 @@ export default function Navbar() {
       >
         <div
           className="max-w-[1440px] w-full mx-auto px-6 md:px-10 flex items-center justify-between gap-6"
-          style={{ height: '80px' }}
+          style={{ height: '84px' }}
         >
           {/* Left: SANKALP Emblem + Desktop Nav Links (Aside Logo) */}
           <div className="flex items-center gap-5 xl:gap-7 shrink-0">
@@ -113,11 +114,11 @@ export default function Navbar() {
               <Image
                 src="/logos/ics_logo_white.webp"
                 alt="SANKALP 2027 Logo"
-                width={280}
-                height={90}
+                width={320}
+                height={100}
                 priority
                 loading="eager"
-                className="h-16 sm:h-20 md:h-[74px] w-auto object-contain py-0.5 drop-shadow-md"
+                className="h-[68px] sm:h-[76px] md:h-[82px] w-auto object-contain py-0.5 drop-shadow-md"
               />
             </Link>
 

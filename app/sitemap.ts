@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/committee', priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },
     { path: '/venue', priority: 0.8, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },
     { path: '/sponsors', priority: 0.7, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },
+    { path: '/why-sponsor-us', priority: 0.9, changeFrequency: 'weekly', lastModified: new Date('2026-09-01') },
     { path: '/faq', priority: 0.7, changeFrequency: 'weekly', lastModified: new Date('2026-08-14') },
     { path: '/contact', priority: 0.7, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },
     { path: '/credits', priority: 0.6, changeFrequency: 'monthly', lastModified: new Date('2026-08-14') },
