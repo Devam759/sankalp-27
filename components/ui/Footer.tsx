@@ -394,7 +394,7 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* 4. ARCHITECTURAL CAMPUS SKYLINE IMAGE (Placed below all content) */}
+        {/* 4. ARCHITECTURAL CAMPUS SKYLINE IMAGE (Darker & Subtler Display) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -409,7 +409,7 @@ export default function Footer() {
               fill
               sizes="100vw"
               quality={100}
-              className="object-contain object-center"
+              className="object-contain object-center brightness-[0.65] opacity-80 hover:brightness-90 hover:opacity-100 transition-all duration-500"
               priority
             />
           </div>
