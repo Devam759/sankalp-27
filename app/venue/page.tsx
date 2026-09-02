@@ -14,7 +14,19 @@ export const metadata: Metadata = {
     "JK Lakshmipat University Address",
     "Sankalp Conference Venue Jaipur",
     "Hotels near JKLU Jaipur",
-    "Jaipur Travel Guide Conference Delegates"
+    "Jaipur Travel Guide Conference Delegates",
+    "conference venue jaipur",
+    "JKLU campus address",
+    "JKLU location map",
+    "how to reach JKLU Jaipur",
+    "hotels near JK Lakshmipat University",
+    "jaipur conference venue rajasthan",
+    "conference accommodation jaipur",
+    "jaipur airport to JKLU",
+    "jaipur junction to JKLU",
+    "conference travel guide jaipur",
+    "places to visit jaipur conference",
+    "JKLU Mahindra World City Jaipur"
   ],
   robots: {
     index: true,

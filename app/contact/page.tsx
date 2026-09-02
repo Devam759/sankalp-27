@@ -12,7 +12,13 @@ export const metadata: Metadata = {
     "Contact JKLU SANKALP 2027",
     "JKLU SANKALP 2027 Helpdesk",
     "JKLU Conference Email",
-    "Registration Committee Contact Sankalp"
+    "Registration Committee Contact Sankalp",
+    "contact conference jaipur",
+    "sankalp conference email",
+    "sankalp conference phone number",
+    "JKLU conference helpdesk",
+    "conference inquiry jaipur 2027",
+    "sankalp@jklu.edu.in"
   ],
   openGraph: {
     title: "Contact Us | JKLU SANKALP 2027",

@@ -38,7 +38,13 @@ export const metadata: Metadata = {
     "Prof. Devika Kataria",
     "Devika Kataria JKLU",
     "Prof. Umesh Gupta",
-    "Umesh Gupta JKLU"
+    "Umesh Gupta JKLU",
+    "conference committee jaipur",
+    "organizing committee international conference india",
+    "conference advisory board jaipur",
+    "JKLU faculty members",
+    "JK Lakshmipat University professors",
+    "conference program chairs india"
   ],
   robots: {
     index: true,

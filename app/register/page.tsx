@@ -14,7 +14,12 @@ export const metadata: Metadata = {
     "Register SANKALP 2027",
     "Conference Registration Checkout",
     "Author Registration Online",
-    "Sankalp Cashfree Checkout"
+    "Sankalp Cashfree Checkout",
+    "register for conference jaipur",
+    "conference registration form india",
+    "online registration international conference",
+    "register paper presentation 2027",
+    "conference payment checkout india"
   ],
   robots: {
     index: true,

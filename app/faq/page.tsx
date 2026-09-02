@@ -14,7 +14,13 @@ export const metadata: Metadata = {
     "JKLU Conference FAQ",
     "Sankalp Paper Submission Queries",
     "Sankalp Registration Questions",
-    "JKLU Campus Facilities FAQ"
+    "JKLU Campus Facilities FAQ",
+    "conference FAQ jaipur",
+    "how to submit paper sankalp",
+    "sankalp conference dates 2027",
+    "conference registration help",
+    "accommodation FAQ conference jaipur",
+    "parking WiFi conference JKLU"
   ],
   robots: {
     index: true,

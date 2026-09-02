@@ -14,7 +14,21 @@ export const metadata: Metadata = {
     'High Performance Computing tracks',
     'Smart Healthcare AI',
     'VLSI semiconductor sessions',
-    'JKLU conference tracks'
+    'JKLU conference tracks',
+    'conference tracks jaipur',
+    'AI conference sessions india',
+    'data science sessions 2027',
+    'machine learning conference tracks',
+    'deep learning conference sessions',
+    'IoT conference tracks jaipur',
+    'cybersecurity sessions conference',
+    'VLSI design conference india',
+    'semiconductor conference sessions',
+    'HPC parallel computing conference',
+    'smart healthcare IoT sessions',
+    'generative AI conference tracks india',
+    'sustainable computing tracks 2027',
+    'research tracks international conference jaipur'
   ],
   alternates: {
     canonical: 'https://sankalp.jklu.edu.in/sessions',

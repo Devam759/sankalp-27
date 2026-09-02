@@ -13,7 +13,14 @@ export const metadata: Metadata = {
     "Sankalp Sponsors",
     "Conference Sponsorship Opportunities",
     "JKLU Industry Partnerships",
-    "AI Conference Sponsors India"
+    "AI Conference Sponsors India",
+    "sponsor conference jaipur",
+    "sponsor international conference india",
+    "conference sponsorship packages india",
+    "sponsor academic conference 2027",
+    "conference branding opportunities jaipur",
+    "technology conference sponsor india",
+    "exhibition stalls conference jaipur"
   ],
   robots: {
     index: true,

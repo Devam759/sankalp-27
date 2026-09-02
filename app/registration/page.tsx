@@ -14,7 +14,15 @@ export const metadata: Metadata = {
     "Conference Registration Fees",
     "Author Registration JKLU",
     "Academic Conference Fees Jaipur",
-    "Sankalp Cashfree Registration"
+    "Sankalp Cashfree Registration",
+    "conference registration jaipur",
+    "conference registration fees india 2027",
+    "international conference registration jaipur",
+    "student conference registration india",
+    "academic conference registration fees",
+    "early bird registration conference india",
+    "paper presenter registration conference",
+    "industry participant conference jaipur"
   ],
   robots: {
     index: true,
