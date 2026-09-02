@@ -272,18 +272,20 @@ export default function HomeClient() {
         <div ref={heroBgRef} className="absolute inset-0 z-0 bg-[#061224] will-change-transform transform-gpu">
           <div className="absolute inset-0">
             <Image
-              src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342915/sankalp/Firefly.jpg"
+              src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto,w_1920,c_limit/v1788342915/sankalp/Firefly.jpg"
               alt="JKLU SANKALP 2027 - Sustainable AI & Next-Gen Knowledge, Jaipur"
               fill
               priority
-              loading="eager"
+              unoptimized
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAlgCWAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAAPAB4DASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAL/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AIAAAB//2Q=="
               sizes="100vw"
-              quality={95}
               className="object-cover object-center brightness-105 contrast-105"
             />
           </div>
-          {/* Subtle vignette overlay to keep text readable without darkening the artwork */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 z-10 pointer-events-none" />
+          {/* Dark blue linear gradient overlay (navy to deep midnight blue) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e2a5c] via-[#0b1c3d] to-[#061224] opacity-50 z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35 z-10 pointer-events-none" />
         </div>
 
         <div ref={heroContentRef} className="relative z-10 w-full">
