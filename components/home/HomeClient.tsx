@@ -269,24 +269,10 @@ export default function HomeClient() {
         ref={heroSectionRef}
         className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
       >
-<<<<<<< Updated upstream
-        <div ref={heroBgRef} className="absolute inset-0 z-0 bg-brand-blue will-change-transform transform-gpu">
-          <Image
-            src="/images/jaipur_banner.webp"
-            alt="Jaipur Skyline &amp; Heritage - JKLU SANKALP 2027"
-            fill
-            priority
-            loading="eager"
-            sizes="100vw"
-            quality={90}
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/55 via-brand-blue/45 to-brand-blue/75 z-10 pointer-events-none" />
-=======
         <div ref={heroBgRef} className="absolute inset-0 z-0 bg-[#061224] will-change-transform transform-gpu">
           <div className="absolute inset-0">
             <Image
-              src="/Firefly.jpg"
+              src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342915/sankalp/Firefly.jpg"
               alt="JKLU SANKALP 2027 - Sustainable AI & Next-Gen Knowledge, Jaipur"
               fill
               priority
@@ -298,7 +284,6 @@ export default function HomeClient() {
           </div>
           {/* Subtle vignette overlay to keep text readable without darkening the artwork */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 z-10 pointer-events-none" />
->>>>>>> Stashed changes
         </div>
 
         <div ref={heroContentRef} className="relative z-10 w-full">
@@ -315,30 +300,18 @@ export default function HomeClient() {
                 alt="JK Lakshmipat University"
                 width={400}
                 height={120}
-<<<<<<< Updated upstream
-                className="h-18 sm:h-18 md:h-20 lg:h-24 w-auto object-contain drop-shadow-md"
-=======
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
->>>>>>> Stashed changes
                 priority
                 loading="eager"
               />
               {/* Translucent-Whitish Vertical Separating Line between Logos */}
-<<<<<<< Updated upstream
-              <div className="h-12 sm:h-12 md:h-14 lg:h-16 w-px bg-white/40 shrink-0" />
-=======
               <div className="h-7 sm:h-9 md:h-10 lg:h-12 w-px bg-white/50 shrink-0" />
->>>>>>> Stashed changes
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
                 alt="Asia University"
                 width={400}
                 height={120}
-<<<<<<< Updated upstream
-                className="h-18 sm:h-18 md:h-20 lg:h-24 w-auto object-contain drop-shadow-md"
-=======
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
->>>>>>> Stashed changes
                 priority
                 loading="eager"
               />
@@ -434,7 +407,7 @@ export default function HomeClient() {
             >
               <motion.div variants={itemVariants} className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
                 <Image
-                  src="/logos/ics_logo_white.webp"
+                  src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342918/sankalp/logos/Sankalp_Logo_Darkbg.png"
                   alt="SANKALP 2027 Logo"
                   width={500}
                   height={200}

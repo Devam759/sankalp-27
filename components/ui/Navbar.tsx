@@ -112,7 +112,7 @@ export default function Navbar() {
           <div className="flex items-center gap-5 xl:gap-7 shrink-0">
             <Link href="/" className="flex items-center shrink-0 hover:opacity-90 transition-opacity" aria-label="JKLU SANKALP 2027 Home">
               <Image
-                src="/logos/ics_logo_white.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342918/sankalp/logos/Sankalp_Logo_Darkbg.png"
                 alt="SANKALP 2027 Logo"
                 width={320}
                 height={100}

@@ -366,7 +366,7 @@ export default function Footer() {
           <div className="flex items-center gap-6 md:gap-8 flex-wrap">
             <Link href="/" className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex">
               <Image
-                src="/logos/ics_logo_white.webp"
+                src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342918/sankalp/logos/Sankalp_Logo_Darkbg.png"
                 alt="SANKALP 2027 Logo"
                 width={320}
                 height={120}
@@ -391,27 +391,6 @@ export default function Footer() {
                 style={{ width: 'auto', height: '76px' }}
               />
             </a>
-          </div>
-        </motion.div>
-
-        {/* 4. ARCHITECTURAL CAMPUS SKYLINE IMAGE (Darker & Subtler Display) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
-          className="w-full -mt-6 sm:-mt-10 md:-mt-12 lg:-mt-14 pt-0 flex justify-center items-center"
-        >
-          <div className="relative w-full max-w-[1600px] h-[240px] sm:h-[340px] md:h-[440px] lg:h-[500px] -translate-y-2 sm:-translate-y-3">
-            <Image
-              src="/logos/footer_transparent.png"
-              alt="JKLU Campus Architecture Skyline"
-              fill
-              sizes="100vw"
-              quality={100}
-              className="object-contain object-center brightness-[0.65] opacity-80 hover:brightness-90 hover:opacity-100 transition-all duration-500"
-              priority
-            />
           </div>
         </motion.div>
 

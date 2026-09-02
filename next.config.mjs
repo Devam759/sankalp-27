@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  allowedDevOrigins: ['172.16.62.133'],
   compress: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
@@ -9,6 +10,7 @@ const nextConfig = {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
   },
   images: {
+    qualities: [75, 85, 90, 95, 100],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],

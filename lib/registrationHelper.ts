@@ -49,7 +49,7 @@ export async function generatePDF(data: any, id: string, paymentId: string, orde
   let sankalpScaledHeight = 0;
   let sankalpLogoImage;
   try {
-    const logoPath = path.join(process.cwd(), 'public', 'logos', 'ics_logo.png');
+    const logoPath = path.join(process.cwd(), 'public', 'logos', 'Sankalp_Logo_Lightbg.png');
     const logoBuffer = await fs.readFile(logoPath);
     sankalpLogoImage = await pdfDoc.embedPng(logoBuffer);
     const targetHeight = 35;

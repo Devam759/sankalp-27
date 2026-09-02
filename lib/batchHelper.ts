@@ -163,11 +163,10 @@ export async function sendCheckInEmail(
   let logoAttachment: any = null;
   let jkluAttachment: any = null;
   try {
-    /* SANKALP LOGO SLOT - Replace the path and filename below with the new sankalp logo when added to public/logos/ */
-    const logoPath = path.join(process.cwd(), 'public', 'logos', 'ics_logo.webp');
+    const logoPath = path.join(process.cwd(), 'public', 'logos', 'Sankalp_Logo_Lightbg.png');
     const logoBytes = await fs.readFile(logoPath);
     logoAttachment = {
-      filename: 'ics_logo.webp',
+      filename: 'Sankalp_Logo_Lightbg.png',
       content: logoBytes,
       cid: 'sankalp_logo'
     };

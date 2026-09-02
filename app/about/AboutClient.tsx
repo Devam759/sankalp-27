@@ -147,7 +147,7 @@ export default function AboutClient() {
                  <div className="flex items-center gap-5 mb-8">
                    <div className="h-20 shrink-0 flex items-center justify-start group-hover:scale-105 transition-all duration-500">
                      <Image 
-                        src="/logos/jklu_logo_light.png" 
+                        src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342917/sankalp/logos/jklu_logo_light.png" 
                         alt="JKLU" 
                         width={100} height={100} 
                         className="object-contain drop-shadow-sm"
