@@ -104,15 +104,6 @@ export default function HomeClient() {
     { name: 'Hawa Mahal', src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147533/sankalp/Images/jaipur_sightseeing/hawa_mahal.jpg' }
   ];
 
-  const heroImages = [
-    'https://res.cloudinary.com/flufexsc/image/upload/v1787147513/sankalp/Images/hero/DJI_0063.webp',
-    'https://res.cloudinary.com/flufexsc/image/upload/v1787147515/sankalp/Images/hero/DJI_0075.webp',
-    'https://res.cloudinary.com/flufexsc/image/upload/v1787147516/sankalp/Images/hero/DJI_0078.webp',
-    'https://res.cloudinary.com/flufexsc/image/upload/v1787147517/sankalp/Images/hero/DJI_0119.webp',
-    'https://res.cloudinary.com/flufexsc/image/upload/v1787147519/sankalp/Images/hero/DJI_0124.webp'
-  ];
-
-  const [currentHeroIndex, setCurrentHeroIndex] = React.useState(0);
 
   // ─── GSAP scroll-story state ───────────────────────────────────────────
   const reduced = usePrefersReducedMotion();
@@ -239,13 +230,6 @@ export default function HomeClient() {
 
 
 
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length);
-    }, 6000); // 6 seconds per slide
-    return () => clearInterval(timer);
-  }, [heroImages.length]);
-
   const [timeLeft, setTimeLeft] = React.useState(getTimeLeft);
 
   React.useEffect(() => {
@@ -285,6 +269,7 @@ export default function HomeClient() {
         ref={heroSectionRef}
         className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
       >
+<<<<<<< Updated upstream
         <div ref={heroBgRef} className="absolute inset-0 z-0 bg-brand-blue will-change-transform transform-gpu">
           <Image
             src="/images/jaipur_banner.webp"
@@ -297,22 +282,24 @@ export default function HomeClient() {
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/55 via-brand-blue/45 to-brand-blue/75 z-10 pointer-events-none" />
+=======
+        <div ref={heroBgRef} className="absolute inset-0 z-0 bg-[#061224] will-change-transform transform-gpu">
+          <div className="absolute inset-0">
+            <Image
+              src="/Firefly.jpg"
+              alt="JKLU SANKALP 2027 - Sustainable AI & Next-Gen Knowledge, Jaipur"
+              fill
+              priority
+              loading="eager"
+              sizes="100vw"
+              quality={95}
+              className="object-cover object-center brightness-105 contrast-105"
+            />
+          </div>
+          {/* Subtle vignette overlay to keep text readable without darkening the artwork */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 z-10 pointer-events-none" />
+>>>>>>> Stashed changes
         </div>
-
-        {/* Ambient Glowing Radial Overlays for Hero Visual Depth */}
-        <div 
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none z-10 opacity-70 transition-opacity duration-1000"
-          style={{ 
-            background: 'radial-gradient(circle, rgba(245,130,30,0.2) 0%, rgba(245,130,30,0.05) 45%, transparent 70%)',
-            willChange: 'opacity'
-          }} 
-        />
-        <div 
-          className="absolute bottom-10 left-10 w-[400px] h-[400px] rounded-full pointer-events-none z-10 opacity-60"
-          style={{ 
-            background: 'radial-gradient(circle, rgba(24,65,118,0.4) 0%, transparent 70%)'
-          }} 
-        />
 
         <div ref={heroContentRef} className="relative z-10 w-full">
         <motion.div
@@ -328,23 +315,35 @@ export default function HomeClient() {
                 alt="JK Lakshmipat University"
                 width={400}
                 height={120}
+<<<<<<< Updated upstream
                 className="h-18 sm:h-18 md:h-20 lg:h-24 w-auto object-contain drop-shadow-md"
+=======
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+>>>>>>> Stashed changes
                 priority
                 loading="eager"
               />
               {/* Translucent-Whitish Vertical Separating Line between Logos */}
+<<<<<<< Updated upstream
               <div className="h-12 sm:h-12 md:h-14 lg:h-16 w-px bg-white/40 shrink-0" />
+=======
+              <div className="h-7 sm:h-9 md:h-10 lg:h-12 w-px bg-white/50 shrink-0" />
+>>>>>>> Stashed changes
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
                 alt="Asia University"
                 width={400}
                 height={120}
+<<<<<<< Updated upstream
                 className="h-18 sm:h-18 md:h-20 lg:h-24 w-auto object-contain drop-shadow-md"
+=======
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+>>>>>>> Stashed changes
                 priority
                 loading="eager"
               />
             </div>
-            <span className="text-white/80 text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.3em] uppercase">
+            <span className="text-white text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
               Presents
             </span>
           </motion.div>
@@ -352,7 +351,7 @@ export default function HomeClient() {
           <motion.div variants={itemVariants} className="mb-3">
             <h1
               ref={heroTitleRef}
-              className="text-[clamp(2.5rem,6.5vw,5rem)] font-sans font-extrabold sm:font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-sm"
+              className="text-[clamp(2.5rem,6.5vw,5rem)] font-sans font-extrabold sm:font-black tracking-[-0.02em] text-white leading-none uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]"
             >
               <span className="inline-block overflow-hidden align-bottom">
                 <span className="hero-word inline-block">JKLU&nbsp;</span>
@@ -367,7 +366,7 @@ export default function HomeClient() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="mb-10">
-            <p className="text-white/85 text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose">
+            <p className="text-white text-xs md:text-sm font-semibold tracking-[0.14em] uppercase max-w-2xl leading-loose drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
               <span className="text-brand-orange font-bold">S</span>ustainable <span className="text-brand-orange font-bold">A</span>I · <span className="text-brand-orange font-bold">N</span>ext Gen <span className="text-brand-orange font-bold">K</span>nowledge<br className="hidden md:block" />
               <span className="text-brand-orange font-bold">A</span>utomation · <span className="text-brand-orange font-bold">L</span>earning and <span className="text-brand-orange font-bold">P</span>rediction
             </p>
