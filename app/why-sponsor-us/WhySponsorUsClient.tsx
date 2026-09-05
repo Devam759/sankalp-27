@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
@@ -18,38 +19,38 @@ export default function WhySponsorUsClient() {
   const attendeeDemographics = [
     {
       title: "Global Researchers & Academicians",
-      desc: "Pioneering scholars and research faculty from leading universities and research institutes worldwide.",
+      desc: "Researchers and faculty working across AI, technology and related disciplines.",
       icon: GraduationCapIcon
     },
     {
-      title: "Senior Industry Leaders & Executives",
-      desc: "Decision-makers, CTOs, VPs, and founders driving innovation across AI, technology, and engineering sectors.",
+      title: "Industry Leaders & Executives",
+      desc: "Technology leaders and professionals sharing industry experience, challenges and perspectives.",
       icon: BuildingIcon
     },
     {
       title: "Policymakers & Government Representatives",
-      desc: "Key regulatory figures and public sector advisors shaping the future of technology governance and ethics.",
+      desc: "Voices from public institutions involved in technology, policy and responsible innovation.",
       icon: BadgeIcon
     },
     {
       title: "University Leadership",
-      desc: "Vice Chancellor, deans, department heads, and distinguished academic leaders from premier global institutions.",
+      desc: "Academic leaders contributing to research, education and institutional collaboration.",
       icon: UsersGroupIcon
     },
     {
       title: "Emerging Talent & Future Leaders",
-      desc: "Top-tier student innovators and scholars from JKLU's interdisciplinary engineering, management, and design programs.",
+      desc: "Students and young researchers bringing fresh ideas to the conference.",
       icon: RocketIcon
     }
   ];
 
   const strategicAdvantages = [
     {
-      title: "Global Brand Visibility",
-      desc: "Exposure to an international audience of researchers, industry leaders, and policymakers shaping the global technology landscape.",
-      badge: "Visibility",
+      title: "GLOBAL BRAND VISIBILITY",
+      desc: "Exposure to an international audience of researchers, industry leaders and policymakers.",
+      badge: "VISIBILITY",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10" />
           <line x1="2" y1="12" x2="22" y2="12" />
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -57,11 +58,11 @@ export default function WhySponsorUsClient() {
       )
     },
     {
-      title: "Thought Leadership Positioning",
-      desc: "Associate your brand with cutting-edge discourse on Sustainable AI and emerging technologies through keynotes and panel participation.",
-      badge: "Leadership",
+      title: "THOUGHT LEADERSHIP POSITIONING",
+      desc: "Associate your organisation with discussions on Sustainable AI and emerging technologies.",
+      badge: "LEADERSHIP",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           <path d="M9 9h6" />
           <path d="M9 13h4" />
@@ -69,11 +70,11 @@ export default function WhySponsorUsClient() {
       )
     },
     {
-      title: "Strategic Networking",
-      desc: "Direct access to key decision-makers, potential partners, and global experts across industry, academia, and government sectors.",
-      badge: "Networking",
+      title: "STRATEGIC NETWORKING",
+      desc: "Connect with decision-makers, potential partners and experts from different sectors.",
+      badge: "NETWORKING",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
           <circle cx="9" cy="7" r="4" />
           <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -82,32 +83,32 @@ export default function WhySponsorUsClient() {
       )
     },
     {
-      title: "Talent Pipeline Access",
-      desc: "Connect with top-tier talent across engineering, AI, data science, and design disciplines for recruitment and research collaboration.",
-      badge: "Recruitment",
+      title: "TALENT PIPELINE ACCESS",
+      desc: "Engage with talent across engineering, AI, data science and design disciplines.",
+      badge: "RECRUITMENT",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
           <path d="M6 12v5c3 3 9 3 12 0v-5" />
         </svg>
       )
     },
     {
-      title: "Innovation Ecosystem Engagement",
-      desc: "Position your organization at the heart of India's growing AI and technology innovation landscape alongside top research institutions.",
-      badge: "Innovation",
+      title: "INNOVATION ECOSYSTEM ENGAGEMENT",
+      desc: "Engage with organisations and institutions working across AI and technology.",
+      badge: "INNOVATION",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
         </svg>
       )
     },
     {
-      title: "CSR & Community Engagement",
-      desc: "Demonstrate organizational commitment to education, sustainable technological development, and responsible AI practices.",
-      badge: "Impact",
+      title: "CSR & COMMUNITY ENGAGEMENT",
+      desc: "Support education, research and sustainable technological development.",
+      badge: "IMPACT",
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
         </svg>
       )
@@ -210,67 +211,146 @@ export default function WhySponsorUsClient() {
     { benefit: "Post-Event Delegate List Access", plat: true, gold: false, silv: false, bronz: false }
   ];
 
+  const sponsorshipBenefits = [
+    {
+      title: "01 — RESEARCH & INDUSTRY",
+      desc: "Meet researchers, faculty and technology professionals working across AI, engineering, management and related disciplines."
+    },
+    {
+      title: "02 — BRAND PRESENCE",
+      desc: "Present your organisation to an audience engaged with research, technology and emerging ideas."
+    },
+    {
+      title: "03 — TALENT & IDEAS",
+      desc: "Interact with students, researchers and early-career professionals working across AI and related fields."
+    },
+    {
+      title: "04 — COLLABORATION",
+      desc: "Create opportunities for discussion with academic institutions, industry participants and research communities."
+    }
+  ];
+
   return (
     <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-20 flex flex-col selection:bg-brand-orange selection:text-white">
       <Navbar />
 
-      {/* 1. HERO SECTION */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 bg-white border-b border-slate-200/80 overflow-hidden relative">
+      {/* 1. INTRODUCTORY SECTION */}
+      <section className="pt-12 sm:pt-16 pb-16 sm:pb-20 bg-white border-b border-slate-200/80 overflow-hidden relative">
         <div 
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          className="absolute inset-0 opacity-[0.02] pointer-events-none"
           style={{ 
             backgroundImage: 'radial-gradient(#184176 1px, transparent 1px)', 
             backgroundSize: '24px 24px' 
           }}
         />
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 text-center flex flex-col items-center relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-blue relative inline-block mb-6 leading-tight">
-            <WordReveal text="Why Sponsor JKLU SANKALP 2027?" />
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-brand-orange rounded-full"></div>
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 text-center relative z-10">
+          {/* Eyebrow */}
+          <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-brand-orange block mb-2.5">
+            PARTNERSHIP OPPORTUNITIES
+          </span>
+
+          {/* Main Heading */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-blue tracking-tight leading-tight">
+            Why Sponsor SANKALP’27?
           </h1>
-          <p className="text-slate-700 text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-center leading-relaxed font-medium mt-6">
-            Partner with us to shape the future of Sustainable AI and next-generation technologies.
+
+          {/* Short Orange Accent Line */}
+          <div className="w-12 h-[2.5px] bg-brand-orange mx-auto mt-3.5 mb-4 rounded-full" />
+
+          {/* Introductory Sentence */}
+          <p className="text-slate-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
+            Engage with researchers, academics, industry professionals, policymakers and students working across sustainable AI and related fields.
           </p>
+
+          {/* Sponsorship Benefits (4-Column) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mt-10 text-left">
+            {sponsorshipBenefits.map((item, idx) => (
+              <div 
+                key={idx}
+                className="bg-[#FAFAFC] border border-slate-200/90 rounded-[10px] p-6 flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200 ease-out h-full"
+              >
+                <div>
+                  <h2 className="font-serif font-bold text-xs sm:text-sm uppercase tracking-wider text-brand-blue mb-2 leading-snug">
+                    {item.title}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Download Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-9">
+            <a
+              href="/docs/sponsorship-proposal.pdf"
+              download="SANKALP_2027_Sponsorship_Proposal.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto text-center bg-brand-orange text-white font-medium py-3 px-6 rounded shadow-sm hover:bg-orange-600 transition-colors text-sm flex items-center justify-center gap-2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>Download Sponsorship Proposal</span>
+            </a>
+
+            <a
+              href="/JKLU%20Sankalp%20Brochure.pdf"
+              download="JKLU_Sankalp_Brochure.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto text-center border border-brand-blue text-brand-blue font-medium py-3 px-6 rounded hover:bg-brand-blue/5 transition-colors text-sm flex items-center justify-center gap-2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>Download Conference Brochure</span>
+            </a>
+          </div>
         </div>
       </section>
 
       {/* 2. WHY SPONSOR SECTION */}
-      <section className="py-20 bg-white border-b border-slate-200/60 px-6 sm:px-10 md:px-12">
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200/60 px-6 sm:px-10 md:px-12">
         <div className="max-w-7xl mx-auto space-y-12">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue relative inline-block">
+          <div className="max-w-2xl mx-auto text-center space-y-3.5">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-brand-blue tracking-tight relative inline-block">
               An International Multi-Disciplinary Platform
-              <div className="w-12 h-[2px] bg-brand-orange mt-3 mx-auto"></div>
+              <div className="w-12 h-[2px] bg-brand-orange mt-3.5 mx-auto rounded-full"></div>
             </h2>
-            <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-normal pt-2">
-              JKLU SANKALP 2027 is an international conference bringing together global researchers, academicians, industry leaders, scientists, policymakers, and emerging talent to pioneer sustainable AI solutions.
+            <p className="text-slate-600 text-base leading-relaxed font-normal pt-1">
+              JKLU SANKALP 2027 brings together researchers, academics, industry professionals, policymakers and students to exchange ideas and discuss practical directions for sustainable AI.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
             {attendeeDemographics.map((item, idx) => {
               const IconComp = item.icon;
               return (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="bg-[#FAFAFC] border border-slate-200/80 rounded-xl p-6 flex flex-col justify-between hover:border-brand-orange/40 hover:shadow-md transition-all duration-300 group"
+                  className="bg-[#FAFAFC] border border-slate-200/90 rounded-[14px] p-6 sm:p-7 flex flex-col justify-between shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:border-slate-300 hover:shadow-md transition-all duration-200 ease-out h-full"
                 >
-                  <div className="space-y-3">
-                    <div className="w-12 h-12 rounded-lg bg-brand-blue/5 text-brand-blue flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
-                      <IconComp size={24} />
+                  <div className="space-y-4">
+                    <div className="w-10 h-10 rounded-lg bg-brand-blue/5 text-brand-blue flex items-center justify-center">
+                      <IconComp size={20} />
                     </div>
-                    <h3 className="font-serif font-bold text-lg text-brand-blue leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
+                    <div className="space-y-2">
+                      <h3 className="font-serif font-bold text-base sm:text-lg text-brand-blue leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -278,45 +358,43 @@ export default function WhySponsorUsClient() {
       </section>
 
       {/* 3. STRATEGIC ADVANTAGES FOR SPONSORS */}
-      <section className="py-20 bg-brand-cloud border-b border-slate-200/60 px-6 sm:px-10 md:px-12">
-        <div className="max-w-7xl mx-auto space-y-14">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue relative inline-block">
+      <section className="py-14 sm:py-16 bg-[#F8FAFC] border-b border-slate-200/80 px-6 sm:px-10 md:px-12">
+        <div className="max-w-7xl mx-auto space-y-8 sm:space-y-10">
+          <div className="max-w-2xl mx-auto text-center space-y-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-brand-blue tracking-tight relative inline-block">
               Strategic Advantages for Sponsors
-              <div className="w-12 h-[2px] bg-brand-orange mt-3 mx-auto"></div>
+              <div className="w-12 h-[2px] bg-brand-orange mt-3 mx-auto rounded-full"></div>
             </h2>
-            <p className="text-slate-600 text-base leading-relaxed">
-              Maximize your organizational reach, thought leadership, and talent acquisition through high-value conference integration.
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal pt-1">
+              Sponsorship provides opportunities for visibility, professional engagement, talent interaction and collaboration across the conference.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {strategicAdvantages.map((adv, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.08 }}
-                className="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col justify-between shadow-sm hover:shadow-lg hover:border-brand-orange/40 transition-all duration-300 relative overflow-hidden group"
+                className="bg-white border border-slate-200/90 rounded-[14px] p-6 sm:p-7 flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:-translate-y-[3px] hover:border-slate-300 hover:shadow-md transition-all duration-200 ease-out group h-full"
               >
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-9 h-9 rounded-lg bg-brand-blue/5 text-brand-blue flex items-center justify-center group-hover:bg-orange-50/80 group-hover:text-brand-orange transition-colors duration-200">
                       {adv.icon}
                     </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-600 bg-slate-100/90 border border-slate-200/60 px-2.5 py-1 rounded-[6px]">
                       {adv.badge}
                     </span>
                   </div>
-                  <h3 className="font-serif font-bold text-xl text-brand-blue leading-snug">
-                    {adv.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed font-normal">
-                    {adv.desc}
-                  </p>
+                  <div className="space-y-2">
+                    <h3 className="font-serif font-bold text-lg sm:text-xl text-brand-blue leading-snug">
+                      {adv.title}
+                    </h3>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                      {adv.desc}
+                    </p>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -338,37 +416,35 @@ export default function WhySponsorUsClient() {
           {/* Tier Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tiers.map((tier, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-brand-orange/40 transition-all duration-300"
+                className="bg-white border border-slate-200/90 rounded-xl overflow-hidden flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200 ease-out h-full"
               >
-                <div>
-                  <div className={`p-6 ${tier.headerBg}`}>
-                    <span className="text-[10px] font-bold uppercase tracking-widest opacity-80 block mb-1">
-                      {tier.badge}
-                    </span>
-                    <h3 className="font-serif font-bold text-xl leading-tight">
-                      {tier.name}
-                    </h3>
-                    <div className="mt-4 pt-3 border-t border-current/15">
-                      <span className="text-xs font-medium uppercase tracking-wider block opacity-75">Investment</span>
+                <div className="flex flex-col h-full justify-between">
+                  <div className={`p-6 ${tier.headerBg} min-h-[160px] flex flex-col justify-between`}>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest opacity-80 block mb-1">
+                        {tier.badge}
+                      </span>
+                      <h3 className="font-serif font-bold text-xl leading-tight">
+                        {tier.name}
+                      </h3>
+                    </div>
+                    <div className="pt-3 border-t border-current/15">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider block opacity-75">INVESTMENT</span>
                       <span className="text-lg font-bold tracking-tight block mt-0.5">
                         {tier.investment}
                       </span>
                     </div>
                   </div>
 
-                  <div className="p-6 space-y-4">
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                  <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
                       {tier.desc}
                     </p>
-                    <div className="space-y-2 pt-2 border-t border-slate-100">
+                    <div className="space-y-2 pt-3 border-t border-slate-100 mt-auto">
                       <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 block">Key Highlights:</span>
-                      <ul className="space-y-1.5 text-xs text-slate-700">
+                      <ul className="space-y-2 text-xs text-slate-700 font-normal">
                         {tier.features.map((feat, fIdx) => (
                           <li key={fIdx} className="flex items-start gap-2">
                             <span className="text-brand-orange font-bold text-sm leading-none mt-0.5">✓</span>
@@ -379,7 +455,7 @@ export default function WhySponsorUsClient() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -394,7 +470,7 @@ export default function WhySponsorUsClient() {
               </p>
             </div>
 
-            <div className="overflow-x-auto border border-slate-200 rounded-xl shadow-sm bg-white">
+            <div className="overflow-x-auto border border-slate-200/90 rounded-xl shadow-[0_1px_3px_rgba(15,23,42,0.03)] bg-white">
               <table className="w-full border-collapse text-left text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-[#184176] text-white font-serif">
@@ -418,7 +494,7 @@ export default function WhySponsorUsClient() {
                         {typeof row.plat === 'string' ? (
                           <span className="text-brand-orange font-bold">{row.plat}</span>
                         ) : row.plat ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">✓</span>
+                          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-brand-blue text-xs font-bold">✓</span>
                         ) : (
                           <span className="text-slate-300 font-bold">—</span>
                         )}
@@ -427,7 +503,7 @@ export default function WhySponsorUsClient() {
                         {typeof row.gold === 'string' ? (
                           <span className="text-brand-blue font-bold">{row.gold}</span>
                         ) : row.gold ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">✓</span>
+                          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-brand-blue text-xs font-bold">✓</span>
                         ) : (
                           <span className="text-slate-300 font-bold">—</span>
                         )}
@@ -436,7 +512,7 @@ export default function WhySponsorUsClient() {
                         {typeof row.silv === 'string' ? (
                           <span className="text-brand-blue font-bold">{row.silv}</span>
                         ) : row.silv ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">✓</span>
+                          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-brand-blue text-xs font-bold">✓</span>
                         ) : (
                           <span className="text-slate-300 font-bold">—</span>
                         )}
@@ -445,7 +521,7 @@ export default function WhySponsorUsClient() {
                         {typeof row.bronz === 'string' ? (
                           <span className="text-brand-blue font-bold">{row.bronz}</span>
                         ) : row.bronz ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">✓</span>
+                          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-brand-blue text-xs font-bold">✓</span>
                         ) : (
                           <span className="text-slate-300 font-bold">—</span>
                         )}
@@ -486,7 +562,7 @@ export default function WhySponsorUsClient() {
               download="SANKALP_2027_Sponsorship_Proposal.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center bg-brand-orange text-white font-bold py-3.5 px-8 rounded-lg shadow-lg hover:bg-orange-600 hover:scale-105 active:scale-95 transition-all duration-300 text-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto text-center bg-brand-orange text-white font-semibold py-3.5 px-8 rounded-md shadow-md hover:bg-orange-600 transition-colors text-sm flex items-center justify-center gap-2.5"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -501,14 +577,14 @@ export default function WhySponsorUsClient() {
               download="JKLU_Sankalp_Brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center bg-white text-brand-blue font-bold py-3.5 px-8 rounded-lg border border-white/20 shadow-lg hover:bg-slate-100 hover:scale-105 active:scale-95 transition-all duration-300 text-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto text-center bg-white text-brand-blue font-semibold py-3.5 px-8 rounded-md border border-white/20 shadow-md hover:bg-slate-100 transition-colors text-sm flex items-center justify-center gap-2.5"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <polyline points="7 10 12 15 17 10" />
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
-              <span>Download Brochure</span>
+              <span>Download Conference Brochure</span>
             </a>
           </div>
         </div>
@@ -527,17 +603,12 @@ export default function WhySponsorUsClient() {
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto bg-[#FAFAFC] border border-slate-200 rounded-2xl p-8 sm:p-10 shadow-sm space-y-6">
-            <div className="space-y-1">
-              <h3 className="font-serif font-bold text-xl sm:text-2xl text-brand-blue">
-                Sankalp Organizing Committee
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                JK Lakshmipat University, Near Mahindra SEZ, Jaipur, Rajasthan
-              </p>
-            </div>
+          <div className="max-w-2xl mx-auto bg-[#FAFAFC] border border-slate-200/90 rounded-xl p-6 sm:p-8 shadow-[0_1px_3px_rgba(15,23,42,0.03)] space-y-5">
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-medium">
+              JK Lakshmipat University, Near Mahindra SEZ, Jaipur, Rajasthan
+            </p>
 
-            <div className="w-full h-px bg-slate-200" />
+            <div className="w-full h-px bg-slate-200/80" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm font-medium">
               <div className="flex items-center gap-3">

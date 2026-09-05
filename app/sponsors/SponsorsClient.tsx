@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
@@ -84,7 +85,7 @@ export default function SponsorsClient() {
     {
       name: "Bronze / Associate Sponsor",
       badge: "Supporting Partner",
-      desc: "A key tier designed for organizations seeking supporting alignment, program representation, and delegate passes.",
+      desc: "A key tier designed for organizations seeking supporting alignment, program representation, and delegate access.",
       bullets: [
         "Acknowledgment as 'Associate Sponsor' in conference materials",
         "Logo on website sponsor page and event banners/signage",
@@ -126,7 +127,7 @@ export default function SponsorsClient() {
       <Navbar />
 
       {/* HEADER SECTION */}
-      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 bg-white border-b border-slate-200/80 overflow-hidden">
+      <section className="pt-20 sm:pt-24 pb-10 sm:pb-12 bg-white border-b border-slate-200/80 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 text-center flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
             <WordReveal text="Sponsors & Partnerships" />
@@ -135,11 +136,27 @@ export default function SponsorsClient() {
           <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto text-center leading-relaxed font-normal mt-6">
             Partner with SANKALP 2027 to engage with global technology leaders, researchers, and academic pioneers shaping the future of Sustainable AI.
           </p>
+
+          <div className="mt-7">
+            <Link
+              href="/why-sponsor-us"
+              className="inline-flex items-center justify-center gap-3 bg-brand-orange text-white font-bold py-3.5 px-8 rounded-xl text-xs sm:text-sm tracking-wider uppercase shadow-sm hover:bg-orange-600 transition-colors group text-center"
+            >
+              <div className="flex flex-col items-center leading-tight">
+                <span>WHY SPONSOR</span>
+                <span>SANKALP’27</span>
+              </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-0.5 transition-transform">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* REVEALING SOON SECTION */}
-      <section className="flex-grow py-16 md:py-24 px-6 md:px-12 flex items-center justify-center text-center relative overflow-hidden bg-brand-cloud">
+      <section className="flex-grow pt-12 md:pt-16 pb-16 md:pb-20 px-6 md:px-12 flex items-center justify-center text-center relative overflow-hidden bg-brand-cloud">
         {/* Subtle Background Pattern */}
         <div 
           className="absolute inset-0 opacity-[0.035] pointer-events-none"
