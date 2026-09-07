@@ -645,6 +645,51 @@ export default function RegisterClient() {
 
       </div>
 
+      {/* Registration Guidelines & Support Section */}
+      <section className="bg-white border-t border-slate-200/80 py-16 px-6 sm:px-10 md:px-12">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 tracking-tight">
+              Registration Guidelines &amp; FAQs
+            </h2>
+            <div className="w-12 h-1 bg-brand-orange mt-2.5 rounded-sm" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600">
+            <div className="bg-slate-50 border border-slate-200/70 p-5 rounded-lg space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">Author Registration</h3>
+              <p className="leading-relaxed text-xs">
+                At least one author per accepted paper must complete registration by the author registration deadline for the paper to be included in the official conference proceedings and presentation schedule.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200/70 p-5 rounded-lg space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">Delegate Inclusions</h3>
+              <p className="leading-relaxed text-xs">
+                Registration includes access to all technical sessions, keynote addresses, conference kit, high tea, buffet lunches on conference days, and the formal networking dinner.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200/70 p-5 rounded-lg space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">Instant Pass &amp; Tax Receipt</h3>
+              <p className="leading-relaxed text-xs">
+                Following successful transaction completion via Cashfree PG, a digitally verified GST invoice along with a QR-encoded attendee pass will be instantly delivered to your registered email address.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200/70 p-5 rounded-lg space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">Inquiries &amp; Assistance</h3>
+              <p className="leading-relaxed text-xs">
+                Need invoice customization, institutional wire transfers, or assistance with bulk registrations? Reach out to our registration helpdesk at{' '}
+                <a href="mailto:sankalp@jklu.edu.in" className="text-brand-blue font-semibold hover:text-brand-orange transition-colors">
+                  sankalp@jklu.edu.in
+                </a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

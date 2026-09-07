@@ -110,11 +110,6 @@ export default function Page() {
       'sankalp 2027 jklu'
     ],
     url: 'https://sankalp.jklu.edu.in',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://sankalp.jklu.edu.in/search?q={search_term_string}',
-      'query-input': 'required name=search_term_string'
-    }
   };
 
   const universitySchema = {

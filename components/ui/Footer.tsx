@@ -190,6 +190,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/register" className="hover:text-brand-orange transition-colors">
+                  Register Online
+                </Link>
+              </li>
+              <li>
                 <Link href="/committee" className="hover:text-brand-orange transition-colors">
                   Committee
                 </Link>
@@ -197,6 +202,11 @@ export default function Footer() {
               <li>
                 <Link href="/sponsors" className="hover:text-brand-orange transition-colors">
                   Sponsors
+                </Link>
+              </li>
+              <li>
+                <Link href="/why-sponsor-us" className="hover:text-brand-orange transition-colors">
+                  Why Sponsor Us
                 </Link>
               </li>
               <li>
@@ -212,6 +222,11 @@ export default function Footer() {
               <li>
                 <Link href="/contact" className="hover:text-brand-orange transition-colors">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/credits" className="hover:text-brand-orange transition-colors">
+                  Credits
                 </Link>
               </li>
             </ul>

@@ -97,7 +97,7 @@ export function proxy(req: NextRequest) {
     }
 
     // Advanced Logging for sensitive API endpoints
-    if (isApi && (pathname.includes('check-in') || pathname.includes('admin'))) {
+    if (isApi && pathname.includes('admin')) {
       console.log(`[API TRAFFIC] SENSITIVE ENDPOINT | Method: ${req.method} | Path: ${pathname} | IP: ${ip} | User-Agent: ${req.headers.get('user-agent')}`);
     }
 

@@ -54,9 +54,67 @@ export default function WhySponsorUsPage() {
     ],
   };
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Why should our company sponsor JKLU SANKALP 2027?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sponsoring SANKALP 2027 offers direct visibility to over 1,000 international delegates, academic leaders, engineers, and researchers in Sustainable AI and Next-Gen Computing. Benefits include keynote speaking slots, dedicated booth space, brand placement across publications, and access to top research talent.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What sponsorship tiers are available for SANKALP 2027?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'SANKALP 2027 offers four primary sponsorship tiers: Platinum Sponsor (INR 300,000 + GST), Gold Sponsor (INR 200,000 + GST), Silver Sponsor (INR 100,000 + GST), and Bronze / Associate Sponsor (INR 50,000 + GST), along with custom partnership packages.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do organizations apply for sponsorship?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Organizations can download the official Sponsorship Proposal PDF from the portal or contact the conference secretariat directly at sankalp@jklu.edu.in for customized agreements.',
+        },
+      },
+    ],
+  };
+
+  const eventSponsorshipSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AcademicEvent',
+    name: 'JKLU SANKALP 2027 Sponsorship Program',
+    url: 'https://sankalp.jklu.edu.in/why-sponsor-us',
+    description: 'Corporate and institutional partnership program for the International Conference on Sustainable AI and Next-Gen Knowledge, Automation, Learning & Prediction.',
+    organizer: {
+      '@type': 'EducationalOrganization',
+      name: 'JK Lakshmipat University, Jaipur',
+      url: 'https://jklu.edu.in',
+    },
+    location: {
+      '@type': 'Place',
+      name: 'JK Lakshmipat University',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Near Mahindra SEZ, Ajmer Road',
+        addressLocality: 'Jaipur',
+        addressRegion: 'Rajasthan',
+        postalCode: '302026',
+        addressCountry: 'IN',
+      },
+    },
+  };
+
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
+      <JsonLd data={eventSponsorshipSchema} />
       <WhySponsorUsClient />
     </>
   );

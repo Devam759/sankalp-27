@@ -1,20 +1,29 @@
-# JKLU SANKALP 2027 - JK Lakshmipat University International Conference Website
+# JKLU SANKALP 2027 - JK Lakshmipat University International Conference
 
-> JKLU SANKALP 2027 is the official International Conference of JK Lakshmipat University (JKLU), Jaipur.
+> JKLU SANKALP 2027 is the premier International Conference organized by JK Lakshmipat University (JKLU), Jaipur.
 
-This platform manages check-in operations, administrative dashboards, and delegate registers for the international conference.
+This portal provides comprehensive information regarding research tracks, paper submissions, conference registration, sponsorship opportunities, keynote sessions, and committee details.
 
-## Platform Entrypoints
+## Public Conference Resources
 
-- [Home](https://sankalp.jklu.edu.in/): Hold page for JKLU SANKALP 2027.
-- [Sessions & Tracks](https://sankalp.jklu.edu.in/sessions): 7 Multidisciplinary research tracks and session topics.
-- [Admin Panel](https://sankalp.jklu.edu.in/admin): Authorized admin dashboard for registrations, check-in validation, and system logs.
-- [Scanner Dashboard](https://sankalp.jklu.edu.in/scanner): Ticket validator and instant check-in registry validator dashboard for check-in desks.
+- [Home](https://sankalp.jklu.edu.in): Official conference homepage, themes, keynote speakers, and conference highlights.
+- [Call for Papers](https://sankalp.jklu.edu.in/call-for-papers): Submission guidelines, research topics, publication venues, and important deadlines.
+- [Sessions & Tracks](https://sankalp.jklu.edu.in/sessions): Detailed overview of research tracks, session themes, and conference schedules.
+- [Registration Information](https://sankalp.jklu.edu.in/registration): Registration categories, pricing tiers for authors and attendees, and inclusions.
+- [Register Now](https://sankalp.jklu.edu.in/register): Direct online conference registration and payment gateway for authors and delegates.
+- [Why Sponsor Us](https://sankalp.jklu.edu.in/why-sponsor-us): Corporate sponsorship tiers, industry brand visibility, networking benefits, and prospectus.
+- [Sponsors](https://sankalp.jklu.edu.in/sponsors): Official partners, patrons, and institutional sponsors of SANKALP 2027.
+- [About JKLU](https://sankalp.jklu.edu.in/about): Institutional background, vision, leadership, and conference legacy.
+- [Organizing Committee](https://sankalp.jklu.edu.in/committee): Patrons, advisory boards, steering committee, and technical program chairs.
+- [Venue & Travel](https://sankalp.jklu.edu.in/venue): Campus location, travel directions, accommodation options, and Jaipur city guide.
+- [FAQ](https://sankalp.jklu.edu.in/faq): Frequently asked questions about paper submissions, travel, accommodation, and registration.
+- [Contact Us](https://sankalp.jklu.edu.in/contact): Official conference desk, support contacts, and inquiries.
+- [Credits](https://sankalp.jklu.edu.in/credits): Portal engineering, design, and student developer credits.
 
 ## Key Facts
 
 - Event: JKLU SANKALP 2027
 - Organizer: Institute of Engineering & Technology, JK Lakshmipat University, Jaipur
-- Location: JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026
-- General contact: sankalp@jklu.edu.in
-
+- Location: JK Lakshmipat University, Near Mahindra SEZ, Ajmer Road, Jaipur, Rajasthan 302026, India
+- General Inquiries: sankalp@jklu.edu.in
+- Canonical Domain: https://sankalp.jklu.edu.in

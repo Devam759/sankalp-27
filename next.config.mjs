@@ -50,6 +50,71 @@ const nextConfig = {
         destination: 'https://sankalp.jklu.edu.in/:path*',
         permanent: true,
       },
+      {
+        source: '/submission',
+        destination: '/call-for-papers',
+        permanent: true,
+      },
+      {
+        source: '/submit-paper',
+        destination: '/call-for-papers',
+        permanent: true,
+      },
+      {
+        source: '/submissions',
+        destination: '/call-for-papers',
+        permanent: true,
+      },
+      {
+        source: '/schedule',
+        destination: '/sessions',
+        permanent: true,
+      },
+      {
+        source: '/speakers',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/gallery',
+        destination: '/venue',
+        permanent: true,
+      },
+      {
+        source: '/privacy',
+        destination: '/privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/terms',
+        destination: '/terms-and-conditions',
+        permanent: true,
+      },
+      {
+        source: '/refund',
+        destination: '/refund-policy',
+        permanent: true,
+      },
+      {
+        source: '/shipping',
+        destination: '/shipping-policy',
+        permanent: true,
+      },
+      {
+        source: '/check-in',
+        destination: '/scanner',
+        permanent: true,
+      },
+      {
+        source: '/docs/SANKALP_2027_Sponsorship_Brochure.pdf',
+        destination: '/docs/sponsorship-proposal.pdf',
+        permanent: true,
+      },
+      {
+        source: '/search',
+        destination: '/sessions',
+        permanent: true,
+      },
     ];
   },
 

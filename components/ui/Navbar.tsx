@@ -25,6 +25,7 @@ export default function Navbar() {
     { name: 'Committee', href: '/committee' },
     { name: 'Venue', href: '/venue' },
     { name: 'Sponsors', href: '/sponsors' },
+    { name: 'Why Sponsor', href: '/why-sponsor-us' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -168,7 +169,7 @@ export default function Navbar() {
 
             {/* Desktop Navigation Links - Positioned Aside SANKALP Logo */}
             <div 
-              className="hidden lg:flex items-center gap-4 xl:gap-5"
+              className="hidden lg:flex items-center gap-2.5 xl:gap-4 2xl:gap-5"
               onMouseLeave={() => setHoveredLink(null)}
             >
               {navLinks.map((link) => {
