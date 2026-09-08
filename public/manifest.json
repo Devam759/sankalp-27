@@ -1,16 +1,44 @@
 {
-  "name": "JKLU SANKALP 2027",
-  "short_name": "JKLU SANKALP 2027",
-  "description": "The official website of the JKLU SANKALP 2027 International Conference at JK Lakshmipat University.",
+  "id": "/",
+  "name": "JKLU SANKALP 2027 | International Conference",
+  "short_name": "SANKALP '27",
+  "description": "Official portal for JKLU SANKALP 2027 - International Conference on Sustainable AI, Data Science & Next-Gen Tech at JK Lakshmipat University, Jaipur.",
   "start_url": "/",
-  "display": "browser",
-  "background_color": "#030404",
-  "theme_color": "#FF9A00",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#061224",
+  "theme_color": "#0B1B3D",
+  "categories": [
+    "education",
+    "conferences",
+    "technology",
+    "research"
+  ],
   "icons": [
     {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/Sankalp_Logo_Darkbg.png",
+      "sizes": "1408x1408",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "/logos/jklu_logo.png",
-      "sizes": "any",
-      "type": "image/png"
+      "sizes": "819x916",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

@@ -111,6 +111,26 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/JKLU%20Sankalp%20Brochure.pdf',
+        destination: '/docs/conference-brochure.pdf',
+        permanent: true,
+      },
+      {
+        source: '/docs/Guidelines.pdf',
+        destination: '/docs/author-guidelines.pdf',
+        permanent: true,
+      },
+      {
+        source: '/docs/guidelines.pdf',
+        destination: '/docs/author-guidelines.pdf',
+        permanent: true,
+      },
+      {
+        source: '/Firefly.jpg',
+        destination: '/images/firefly.jpg',
+        permanent: true,
+      },
+      {
         source: '/search',
         destination: '/sessions',
         permanent: true,
@@ -120,8 +140,17 @@ const nextConfig = {
 
   async headers() {
     return [
-      // ── Cache public images & fonts for 1 year ──
+      // ── Cache public assets for production ──
       // Note: /_next/static/ is handled automatically by Next.js in production
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400',
+          },
+        ],
+      },
       {
         source: '/Images/(.*)',
         headers: [
@@ -141,11 +170,29 @@ const nextConfig = {
         ],
       },
       {
+        source: '/icons/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
         source: '/fonts/(.*)',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/docs/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
           },
         ],
       },

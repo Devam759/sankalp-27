@@ -222,8 +222,8 @@ export default function WhySponsorUsClient() {
             </a>
 
             <a
-              href="/JKLU%20Sankalp%20Brochure.pdf"
-              download="JKLU_Sankalp_Brochure.pdf"
+              href="/docs/conference-brochure.pdf"
+              download="SANKALP_2027_Conference_Brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto text-center border border-brand-blue text-brand-blue font-medium py-3 px-6 rounded hover:bg-brand-blue/5 transition-colors text-sm flex items-center justify-center gap-2"
@@ -445,8 +445,8 @@ export default function WhySponsorUsClient() {
             </a>
 
             <a
-              href="/JKLU%20Sankalp%20Brochure.pdf"
-              download="JKLU_Sankalp_Brochure.pdf"
+              href="/docs/conference-brochure.pdf"
+              download="SANKALP_2027_Conference_Brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto text-center bg-white text-brand-blue font-semibold py-3.5 px-8 rounded-md border border-white/20 shadow-md hover:bg-slate-100 transition-colors text-sm flex items-center justify-center gap-2.5"
