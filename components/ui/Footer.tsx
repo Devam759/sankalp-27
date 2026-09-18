@@ -201,12 +201,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/sponsors" className="hover:text-brand-orange transition-colors">
-                  Sponsors
-                </Link>
-              </li>
-              <li>
-                <Link href="/why-sponsor-us" className="hover:text-brand-orange transition-colors">
-                  Why Sponsor Us
+                  Sponsors &amp; Partnerships
                 </Link>
               </li>
               <li>

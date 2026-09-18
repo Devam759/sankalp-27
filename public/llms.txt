@@ -11,8 +11,7 @@ This portal provides comprehensive information regarding research tracks, paper 
 - [Sessions & Tracks](https://sankalp.jklu.edu.in/sessions): Detailed overview of research tracks, session themes, and conference schedules.
 - [Registration Information](https://sankalp.jklu.edu.in/registration): Registration categories, pricing tiers for authors and attendees, and inclusions.
 - [Register Now](https://sankalp.jklu.edu.in/register): Direct online conference registration and payment gateway for authors and delegates.
-- [Why Sponsor Us](https://sankalp.jklu.edu.in/why-sponsor-us): Corporate sponsorship tiers, industry brand visibility, networking benefits, and prospectus.
-- [Sponsors](https://sankalp.jklu.edu.in/sponsors): Official partners, patrons, and institutional sponsors of SANKALP 2027.
+- [Sponsors & Partnerships](https://sankalp.jklu.edu.in/sponsors): Official partners, corporate sponsorship tiers, brand visibility benefits, and sponsorship prospectus.
 - [About JKLU](https://sankalp.jklu.edu.in/about): Institutional background, vision, leadership, and conference legacy.
 - [Organizing Committee](https://sankalp.jklu.edu.in/committee): Patrons, advisory boards, steering committee, and technical program chairs.
 - [Venue & Travel](https://sankalp.jklu.edu.in/venue): Campus location, travel directions, accommodation options, and Jaipur city guide.
