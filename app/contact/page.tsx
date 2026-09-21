@@ -26,6 +26,14 @@ export const metadata: Metadata = {
     url: 'https://sankalp.jklu.edu.in/contact',
     siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Contact Secretariat - JKLU SANKALP 2027 Conference Jaipur',
+      },
+    ],
   },
 };
 

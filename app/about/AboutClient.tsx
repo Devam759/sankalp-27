@@ -10,11 +10,11 @@ import { BuildingIcon } from '@/components/ui/Icons';
 
 export default function AboutClient() {
   return (
-    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans pt-20 md:pt-24 flex flex-col selection:bg-brand-orange selection:text-white">
+    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans flex flex-col selection:bg-brand-orange selection:text-white">
       <Navbar />
 
       {/* SECTION 1: CONFERENCE OVERVIEW */}
-      <section className="relative py-16 md:py-20 overflow-hidden bg-brand-cloud border-b border-brand-blue/10">
+      <section className="pt-28 sm:pt-36 pb-14 sm:pb-16 bg-white border-b border-slate-200/80 overflow-hidden relative">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 0.03, x: 0 }}
@@ -148,7 +148,8 @@ export default function AboutClient() {
                    <div className="h-20 shrink-0 flex items-center justify-start group-hover:scale-105 transition-all duration-500">
                      <Image 
                         src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342917/sankalp/logos/jklu_logo_light.png" 
-                        alt="JKLU" 
+                        alt="JK Lakshmipat University (JKLU) Logo - Host Institution | SANKALP 2027" 
+                        title="JK Lakshmipat University (JKLU) Logo - Host Institution | SANKALP 2027"
                         width={100} height={100} 
                         className="object-contain drop-shadow-sm"
                         style={{ width: 'auto', height: '100%' }}
@@ -191,7 +192,8 @@ export default function AboutClient() {
                    <div className="h-20 shrink-0 flex items-center justify-start group-hover:scale-105 transition-all duration-500">
                      <Image 
                         src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" 
-                        alt="SAU" 
+                        alt="South Asian University (SAU) Logo - Academic Partner | JKLU SANKALP 2027" 
+                        title="South Asian University (SAU) Logo - Academic Partner | JKLU SANKALP 2027"
                         width={100} height={100} 
                         className="object-contain drop-shadow-sm"
                         style={{ width: 'auto', height: '100%' }}
@@ -247,7 +249,8 @@ export default function AboutClient() {
                   <div className="w-full h-full relative border border-slate-300 overflow-hidden bg-slate-200 rounded-sm">
                       <Image 
                         src="https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp" 
-                        alt="JKLU Campus" 
+                        alt="JK Lakshmipat University Campus - Host Institution of SANKALP 2027 Jaipur" 
+                        title="JK Lakshmipat University Campus - Host Institution of SANKALP 2027 Jaipur"
                         fill 
                         priority
                         loading="eager"

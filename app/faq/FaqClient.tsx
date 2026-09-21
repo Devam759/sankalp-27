@@ -116,7 +116,7 @@ export default function FaqClient() {
       <section className="py-16 bg-[#FAFAFB] border-t border-[#E6E8EC]/60 px-6">
         <Reveal className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue uppercase tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue tracking-tight">
               Still Have Questions?
             </h2>
             <p className="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">
@@ -126,7 +126,7 @@ export default function FaqClient() {
 
           <div className="max-w-md mx-auto pt-4">
             <div className="p-6 bg-white border border-[#E6E8EC] rounded-2xl flex flex-col items-center text-center space-y-3">
-              <h3 className="font-bold text-brand-ink text-sm sm:text-base">Email Queries</h3>
+              <h3 className="font-serif font-bold text-brand-blue text-sm sm:text-base">Email Queries</h3>
               <p className="text-xs text-slate-500 max-w-[200px]">For registrations, paper submissions, and official letters.</p>
               <a href="mailto:cfp_sankalp@jklu.edu.in" className="text-sm font-bold text-brand-orange hover:underline">
                 cfp_sankalp@jklu.edu.in

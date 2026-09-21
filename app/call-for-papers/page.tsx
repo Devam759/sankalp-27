@@ -41,6 +41,14 @@ export const metadata: Metadata = {
     url: 'https://sankalp.jklu.edu.in/call-for-papers',
     siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147492/sankalp/Images/call_for_papers.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'JKLU SANKALP 2027 Call for Papers - Academic Research Presentation & Springer LNCS Session',
+      },
+    ],
   },
 };
 

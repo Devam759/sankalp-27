@@ -28,7 +28,14 @@ export const metadata: Metadata = {
     description: "Website development team credits for the official web portal of JKLU SANKALP 2027 International Conference.",
     url: 'https://sankalp.jklu.edu.in/credits',
     siteName: "JKLU SANKALP 2027 Website",
-    type: 'website',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147541/sankalp/Images/team/devam-gupta.webp',
+        width: 600,
+        height: 600,
+        alt: 'Devam Gupta - Team Lead & Lead Architect JKLU SANKALP 2027',
+      },
+    ],
   },
 };
 
@@ -60,7 +67,13 @@ export default function CreditsPage() {
       alternateName: ['Devam Gupta JKLU', 'Devam Gupta Developer'],
       jobTitle: 'Team Head & Lead Architect',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147541/sankalp/Images/team/devam-gupta.webp',
       url: 'https://sankalp.jklu.edu.in/credits',
+      sameAs: [
+        'https://www.linkedin.com/in/devam-gupta/',
+        'https://github.com/Devam759',
+        'https://www.instagram.com/who.is.devam/'
+      ],
       affiliation: { '@type': 'Organization', name: 'JKLU SANKALP 2027 Web Portal', url: 'https://sankalp.jklu.edu.in' }
     },
     {
@@ -70,7 +83,12 @@ export default function CreditsPage() {
       alternateName: ['Manant Srivastava JKLU', 'Manant JKLU'],
       jobTitle: 'Web Engineer',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
-      url: 'https://sankalp.jklu.edu.in/credits'
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147542/sankalp/Images/team/manant-srivastava.webp',
+      url: 'https://sankalp.jklu.edu.in/credits',
+      sameAs: [
+        'https://www.linkedin.com/in/manant-srivastava-64140b365/',
+        'https://github.com/ManantSrivastava'
+      ]
     },
     {
       '@context': 'https://schema.org',
@@ -79,7 +97,12 @@ export default function CreditsPage() {
       alternateName: ['Pratham Lalwani JKLU', 'Pratham JKLU'],
       jobTitle: 'Web Engineer',
       worksFor: { '@type': 'EducationalOrganization', name: 'JK Lakshmipat University', url: 'https://jklu.edu.in' },
-      url: 'https://sankalp.jklu.edu.in/credits'
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147543/sankalp/Images/team/pratham-lalwani.webp',
+      url: 'https://sankalp.jklu.edu.in/credits',
+      sameAs: [
+        'https://www.linkedin.com/in/pratham2k07/',
+        'https://github.com/Pratham2k07'
+      ]
     }
   ];
 

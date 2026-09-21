@@ -37,6 +37,14 @@ export const metadata: Metadata = {
     url: 'https://sankalp.jklu.edu.in/sponsors',
     siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Sponsorship & Partnerships - JKLU SANKALP 2027 International Conference Jaipur',
+      },
+    ],
   },
 };
 

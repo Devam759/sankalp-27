@@ -126,7 +126,7 @@ export default function ScannerSidebar() {
       {/* Mobile Hamburger Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0b1220] border-b border-white/10 flex items-center justify-between px-4 z-50">
         <Link href="/scanner" className="flex items-center gap-2">
-          <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147488/sankalp/logos/jklu_logo.webp" alt="JKLU Logo" className="h-10 w-auto object-contain brightness-0 invert" />
+          <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147488/sankalp/logos/jklu_logo.webp" alt="JK Lakshmipat University Logo" className="h-10 w-auto object-contain brightness-0 invert" />
           <span className="font-serif font-black text-sm text-white">Scanner Desk</span>
         </Link>
         <button 
@@ -154,11 +154,11 @@ export default function ScannerSidebar() {
         {/* Desktop Sidebar Header */}
         <div className="p-4 border-b border-white/10 bg-[#0b1220] hidden md:flex items-center justify-between gap-3 opacity-95">
           <a href="https://jklu.edu.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-            <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp" alt="JKLU Logo" className="h-11 w-auto object-contain" />
+            <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp" alt="JK Lakshmipat University Logo" className="h-11 w-auto object-contain" />
           </a>
           <div className="h-7 w-px bg-white/20" />
           <div className="hover:opacity-80 transition-opacity">
-            <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" alt="Asia University Logo" className="h-11 w-auto object-contain brightness-0 invert opacity-90" />
+            <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" alt="Asia University Taiwan Logo" className="h-11 w-auto object-contain brightness-0 invert opacity-90" />
           </div>
         </div>
 

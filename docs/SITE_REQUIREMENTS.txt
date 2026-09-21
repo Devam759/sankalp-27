@@ -92,7 +92,7 @@ Action Required: Verify and confirm all final dates with the Conference Chair.
 [A] COMMITTEE MEMBERS (`constants/conferenceData.ts`):
 • Chief Patron: Mr. Bharat Hari Singhania (Chancellor, JKLU)
 • Chief Co-Patrons: Dr. Raghupati Singhania & Mr. Harsh Pati Singhania (Pro Chancellors, JKLU)
-• Patron: Prof. Vijaysekhar Chellaboina (VC, JKLU)
+• Patrons: Prof. Vijaysekhar Chellaboina (VC, JKLU) & Mr. Prem Singh (President - Group HR, JK Organisation)
 • Conference Chair: Prof. Tapas Kumar (Dean IET, JKLU)
 • Conference Convener: Prof. Sonali Vyas (Head - CGL, JKLU)
 • Program Chairs: Prof. Amit Sinhal, Prof. Devika Kataria, Prof. Taruna Sunil, Prof. Umesh Gupta

@@ -160,13 +160,12 @@ export default function SponsorsClient() {
           }}
         />
         <div className="max-w-6xl mx-auto px-6 sm:px-10 text-center relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-blue tracking-tight leading-tight">
-            <WordReveal text="Sponsors & Partnerships" />
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+            <WordReveal text="Sponsors &amp; Partnerships" />
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange" />
           </h1>
 
-          <div className="w-12 h-[2.5px] bg-brand-orange mx-auto mt-3.5 mb-4 rounded-full" />
-
-          <p className="text-slate-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="text-slate-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal mt-6">
             Partner with JKLU SANKALP 2027 to engage with global technology leaders, researchers, and academic pioneers shaping the future of Sustainable AI.
           </p>
 
@@ -178,9 +177,9 @@ export default function SponsorsClient() {
                 className="bg-[#FAFAFC] border border-slate-200/90 rounded-[10px] p-6 flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200 ease-out h-full"
               >
                 <div>
-                  <h2 className="font-serif font-bold text-xs sm:text-sm uppercase tracking-wider text-brand-blue mb-2 leading-snug">
+                  <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-blue mb-2 leading-snug font-sans">
                     {item.title}
-                  </h2>
+                  </p>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                     {item.desc}
                   </p>
@@ -196,7 +195,7 @@ export default function SponsorsClient() {
               download="SANKALP_2027_Sponsorship_Proposal.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center bg-brand-orange text-white font-medium py-3 px-6 rounded shadow-sm hover:bg-orange-600 transition-colors text-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto text-center bg-brand-orange text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-orange-500 transition-all shadow-md hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -211,7 +210,7 @@ export default function SponsorsClient() {
               download="SANKALP_2027_Conference_Brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center border border-brand-blue text-brand-blue font-medium py-3 px-6 rounded hover:bg-brand-blue/5 transition-colors text-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto text-center bg-brand-blue text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-brand-lightBlue transition-all shadow-md hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />

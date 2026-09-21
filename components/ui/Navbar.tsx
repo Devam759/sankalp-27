@@ -112,7 +112,8 @@ export default function Navbar() {
             <Link href="/" className="flex items-center shrink-0 hover:opacity-90 transition-opacity" aria-label="JKLU SANKALP 2027 Home">
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342918/sankalp/logos/Sankalp_Logo_Darkbg.png"
-                alt="SANKALP 2027 Logo"
+                alt="SANKALP 2027 Official Logo - JK Lakshmipat University"
+                title="SANKALP 2027 Official Logo - JK Lakshmipat University"
                 width={320}
                 height={100}
                 priority
@@ -138,7 +139,8 @@ export default function Navbar() {
               >
                 <Image
                   src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
-                  alt="JKLU Logo"
+                  alt="JK Lakshmipat University (JKLU) Official Logo"
+                  title="JK Lakshmipat University (JKLU) Official Logo"
                   width={160}
                   height={50}
                   priority
@@ -156,7 +158,8 @@ export default function Navbar() {
               >
                 <Image
                   src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                  alt="Asia University Logo"
+                  alt="Asia University Taiwan Official Logo"
+                  title="Asia University Taiwan Official Logo"
                   width={50}
                   height={50}
                   priority
@@ -239,7 +242,8 @@ export default function Navbar() {
                   >
                     <Image
                       src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
-                      alt="JKLU Logo"
+                      alt="JK Lakshmipat University (JKLU) Official Logo"
+                      title="JK Lakshmipat University (JKLU) Official Logo"
                       width={180}
                       height={60}
                       priority
@@ -257,7 +261,8 @@ export default function Navbar() {
                   >
                     <Image
                       src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                      alt="Asia University Logo"
+                      alt="Asia University Taiwan Official Logo"
+                      title="Asia University Taiwan Official Logo"
                       width={60}
                       height={60}
                       priority

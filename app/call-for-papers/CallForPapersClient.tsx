@@ -3,72 +3,101 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Reveal from '@/components/ui/Reveal';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
+import WordReveal from '@/components/ui/WordReveal';
 import { EnvelopeIcon } from '@/components/ui/Icons';
 import { PAPER_SUBMISSION_LINK } from '@/constants/conferenceData';
+import { fadeUp, staggerContainer } from '@/lib/animations/variants';
 
 export default function CallForPapersClient() {
   return (
-    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white pt-24 flex flex-col">
+    <main className="min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white flex flex-col">
       <Navbar />
 
-      <Section id="call-for-papers" title="Call for Papers" className="flex-grow">
-        <div className="max-w-6xl mx-auto space-y-12">
-          
-          {/* Top Intro & Action Bar */}
-          <Reveal variant="up" className="max-w-3xl mx-auto text-center space-y-6">
-            <p className="text-slate-700 text-base md:text-lg leading-relaxed font-medium">
-              Researchers, academicians, industry professionals, and scholars are invited to submit original and unpublished research papers aligned with the conference themes. All submissions undergo a rigorous peer-review process by the Technical Program Committee.
-            </p>
+      {/* PAGE HEADER — standard pattern: pt-28 sm:pt-36, white bg, border-b */}
+      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 bg-white border-b border-slate-200/80 overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 text-center flex flex-col items-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer(0.15, 0.05)}
+            className="flex flex-col items-center"
+          >
+            <motion.div variants={fadeUp} className="mb-6">
+              <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block">
+                <WordReveal text="Call for Papers" />
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-brand-orange" />
+              </h1>
+            </motion.div>
 
-            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
-              <a 
+            <motion.p
+              variants={fadeUp}
+              className="text-slate-700 text-sm sm:text-base md:text-lg max-w-3xl mx-auto text-center leading-relaxed font-normal mt-6"
+            >
+              Researchers, academicians, industry professionals, and scholars are invited to submit
+              original and unpublished research papers aligned with the conference themes. All
+              submissions undergo a rigorous peer-review process by the Technical Program Committee.
+            </motion.p>
+
+            {/* Action CTAs — standard header button pattern */}
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-6 w-full sm:w-auto max-w-sm sm:max-w-none mx-auto"
+            >
+              <a
                 href={PAPER_SUBMISSION_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 font-bold hover:bg-orange-600 transition-colors shadow-xs text-xs uppercase tracking-wide cursor-pointer rounded-sm"
+                className="w-full sm:w-auto text-center bg-brand-orange text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-orange-500 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>Submit Paper via CMT</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                   <polyline points="15 3 21 3 21 9" />
                   <line x1="10" y1="14" x2="21" y2="3" />
                 </svg>
+                Submit Paper via CMT
               </a>
 
-              <a 
+              <a
                 href="/docs/conference-brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="JKLU_SANKALP_2027_Brochure.pdf"
-                className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white border border-brand-blue px-6 py-3 font-bold hover:bg-blue-900 transition-colors shadow-xs text-xs uppercase tracking-wide cursor-pointer rounded-sm"
+                className="w-full sm:w-auto text-center bg-brand-blue text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-brand-lightBlue transition-all shadow-md hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-                <span>Download Brochure</span>
+                Download Brochure
               </a>
 
-              <Link 
+              <Link
                 href="/sessions"
-                className="inline-flex items-center justify-center gap-2 bg-white text-brand-blue border border-slate-300 px-6 py-3 font-bold hover:bg-slate-50 transition-colors shadow-xs text-xs uppercase tracking-wide cursor-pointer rounded-sm"
+                className="w-full sm:w-auto text-center border border-slate-300 text-brand-blue bg-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-slate-50 hover:border-brand-blue transition-all cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>View Tracks &amp; Sessions →</span>
+                View Tracks &amp; Sessions
               </Link>
-            </div>
-          </Reveal>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* MAIN CONTENT */}
+      <Section id="call-for-papers" className="flex-grow">
+        <div className="max-w-6xl mx-auto space-y-12">
 
           {/* Core 2-Column Section */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
+
             {/* Left Column: Guidelines & Peer Review */}
             <div className="lg:col-span-7 space-y-6">
-              
+
               {/* Submission Guidelines Card */}
               <Reveal variant="left" className="bg-white border border-slate-200 p-6 md:p-8 rounded-lg shadow-2xs space-y-6">
                 <div>
@@ -120,12 +149,12 @@ export default function CallForPapersClient() {
                       Detailed section components, referencing models, equations, and ethics policies.
                     </p>
                   </div>
-                  <a 
+                  <a
                     href="/docs/author-guidelines.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     download="JKLU_SANKALP_2027_Author_Guidelines.pdf"
-                    className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white px-5 py-2.5 font-bold hover:bg-blue-900 transition-colors shadow-2xs text-xs uppercase tracking-wide cursor-pointer rounded-sm shrink-0"
+                    className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white px-5 py-2.5 font-bold hover:bg-blue-900 transition-colors text-xs uppercase tracking-wide cursor-pointer rounded-sm shrink-0"
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -150,12 +179,13 @@ export default function CallForPapersClient() {
 
             {/* Right Column: Visual Showcase & Publications */}
             <div className="lg:col-span-5 space-y-6">
-              
+
               {/* Visual Showcase Card */}
               <Reveal variant="right" className="relative aspect-[16/10] border border-slate-200 rounded-lg overflow-hidden shadow-2xs bg-white">
                 <Image
                   src="https://res.cloudinary.com/flufexsc/image/upload/v1787147492/sankalp/Images/call_for_papers.jpg"
-                  alt="SANKALP 2027 Academic Research & Presentation Session"
+                  alt="JKLU SANKALP 2027 Call for Papers - Academic Research Presentation & Springer LNCS Session"
+                  title="JKLU SANKALP 2027 Call for Papers - Academic Research Presentation & Springer LNCS Session"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 480px"
@@ -183,7 +213,7 @@ export default function CallForPapersClient() {
               <h3 className="text-xl md:text-2xl font-serif font-bold text-brand-blue tracking-tight">
                 For Further Queries
               </h3>
-              
+
               <p className="text-slate-600 text-sm md:text-base leading-relaxed font-medium max-w-2xl mx-auto">
                 For any questions regarding paper submission, formatting, review process, or publication, please contact the CFP Coordination Team.
               </p>
@@ -195,8 +225,8 @@ export default function CallForPapersClient() {
                     <span className="text-[11px] font-bold text-slate-500 block uppercase tracking-wider font-sans">
                       CFP Coordination
                     </span>
-                    <a 
-                      href="mailto:cfp_sankalp@jklu.edu.in" 
+                    <a
+                      href="mailto:cfp_sankalp@jklu.edu.in"
                       className="text-base sm:text-lg font-serif font-bold text-brand-blue hover:text-brand-orange transition-colors tracking-tight"
                     >
                       cfp_sankalp@jklu.edu.in

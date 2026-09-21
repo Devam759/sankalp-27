@@ -51,15 +51,15 @@ export default function CommitteeClient() {
               <div className="flex-1 h-px bg-slate-300" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {/* Row 1: Chief Patron & Chief Co-Patrons (3 members) */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto w-full mb-8 sm:mb-10">
               {[
                 { role: 'Chief Patron', name: committeeMembers.chiefPatron.name, institution: committeeMembers.chiefPatron.title, image: committeeMembers.chiefPatron.image, linkedin: (committeeMembers.chiefPatron as any).linkedin },
                 { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[0].name, institution: committeeMembers.chiefCoPatrons[0].title, image: committeeMembers.chiefCoPatrons[0].image, linkedin: (committeeMembers.chiefCoPatrons[0] as any).linkedin },
                 { role: 'Chief Co-Patron', name: committeeMembers.chiefCoPatrons[1].name, institution: committeeMembers.chiefCoPatrons[1].title, image: committeeMembers.chiefCoPatrons[1].image, linkedin: (committeeMembers.chiefCoPatrons[1] as any).linkedin },
-                { role: 'Patron', name: committeeMembers.patron.name, institution: committeeMembers.patron.title, image: committeeMembers.patron.image, linkedin: (committeeMembers.patron as any).linkedin },
               ].map((member, i) => (
                 <Reveal
-                  key={`patron-${i}`}
+                  key={`chief-patron-${i}`}
                   delay={i * 0.08}
                   className="bg-white rounded-sm p-6 sm:p-7 flex flex-col items-center text-center shadow-sm border border-slate-200 relative group"
                 >
@@ -113,6 +113,56 @@ export default function CommitteeClient() {
                   </div>
 
                   <div className="mt-5 w-10 h-[2px] bg-slate-200" />
+                </Reveal>
+              ))}
+            </div>
+
+            {/* Row 2: Patrons (2 members, Conference Chair horizontal layout) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto w-full">
+              {committeeMembers.patrons.map((member, i) => (
+                <Reveal
+                  key={`patron-${i}`}
+                  delay={0.24 + i * 0.08}
+                  className="bg-white rounded-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm border border-slate-200 relative group"
+                >
+                  {(member as any).linkedin && (
+                    <a
+                      href={(member as any).linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${member.name} LinkedIn Profile`}
+                      aria-label={`${member.name} LinkedIn Profile`}
+                      className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full border border-slate-200 bg-white text-[#0a66c2] flex items-center justify-center shadow-2xs transition-all duration-200 hover:bg-[#0a66c2] hover:border-[#0a66c2] hover:text-white hover:-translate-y-0.5 hover:shadow-xs z-20"
+                    >
+                      <LinkedInIcon size={15} />
+                    </a>
+                  )}
+
+                  <div className="relative shrink-0">
+                    <div className="absolute -inset-[6px] rounded-full border border-brand-orange/30" />
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-white shadow-sm relative z-10 bg-slate-100 flex items-center justify-center">
+                      <Image
+                        src={member.image}
+                        alt={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
+                        title={`${member.name} - ${member.role} SANKALP 2027 JKLU`}
+                        width={128}
+                        height={128}
+                        unoptimized
+                        className="object-cover object-top w-full h-full"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="text-center sm:text-left flex-1">
+                    <span className="text-brand-orange text-xs font-bold uppercase tracking-wider block mb-1.5">{member.role}</span>
+                    <h3 className="font-serif font-bold text-brand-blue text-lg sm:text-xl md:text-2xl leading-tight mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-slate-600 text-xs sm:text-sm font-semibold leading-relaxed font-sans">
+                      {member.title}
+                    </p>
+                    <div className="mt-5 w-10 h-[2px] bg-slate-200 mx-auto sm:mx-0" />
+                  </div>
                 </Reveal>
               ))}
             </div>
@@ -251,7 +301,7 @@ export default function CommitteeClient() {
           <div className="mb-14">
             <div className="flex items-center gap-2.5 mb-6">
               <div className="w-2.5 h-2.5 bg-brand-orange rounded-sm shrink-0" />
-              <h3 className="font-sans font-black text-base sm:text-lg md:text-xl text-brand-blue tracking-tight uppercase">International Advisory Board</h3>
+              <h3 className="font-serif font-bold text-base sm:text-lg md:text-xl text-brand-blue tracking-tight uppercase">International Advisory Board</h3>
               <div className="flex-1 h-px bg-slate-300" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
@@ -291,7 +341,7 @@ export default function CommitteeClient() {
           <div className="mb-14">
             <div className="flex items-center gap-2.5 mb-6">
               <div className="w-2.5 h-2.5 bg-brand-orange rounded-sm shrink-0" />
-              <h3 className="font-sans font-black text-base sm:text-lg md:text-xl text-brand-blue tracking-tight uppercase">National Advisory Board</h3>
+              <h3 className="font-serif font-bold text-base sm:text-lg md:text-xl text-brand-blue tracking-tight uppercase">National Advisory Board</h3>
               <div className="flex-1 h-px bg-slate-300" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">

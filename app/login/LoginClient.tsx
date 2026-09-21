@@ -113,7 +113,8 @@ export default function LoginClient() {
             <a href="https://jklu.edu.in" target="_blank" rel="noopener noreferrer" className="hover:opacity-90 transition-opacity flex items-center">
               <img
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147488/sankalp/logos/jklu_logo.webp"
-                alt="JKLU Logo"
+                alt="JK Lakshmipat University (JKLU) Jaipur Official Logo"
+                title="JK Lakshmipat University (JKLU) Jaipur Official Logo"
                 className="h-14 sm:h-16 w-auto object-contain"
               />
             </a>
@@ -124,7 +125,8 @@ export default function LoginClient() {
             <div className="flex items-center">
               <img
                 src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342919/sankalp/logos/Sankalp_Logo_Lightbg.png"
-                alt="SANKALP 2027 Logo"
+                alt="SANKALP 2027 Official Logo - JK Lakshmipat University"
+                title="SANKALP 2027 Official Logo - JK Lakshmipat University"
                 className="h-14 sm:h-16 w-auto object-contain"
               />
             </div>
@@ -135,7 +137,8 @@ export default function LoginClient() {
             <div className="hover:opacity-90 transition-opacity flex items-center">
               <img
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                alt="Asia University Logo"
+                alt="Asia University Taiwan Official Logo"
+                title="Asia University Taiwan Official Logo"
                 className="h-14 sm:h-16 w-auto object-contain"
               />
             </div>

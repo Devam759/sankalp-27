@@ -155,6 +155,8 @@ export const MEMBER_LINKEDIN_MAP: Record<string, string> = {
   'Dr. Vinnie Jauhari': 'https://www.linkedin.com/in/vinniejauhari/',
   'Dr. Brijesh Kohli': 'https://www.linkedin.com/in/brijesh-kohli/',
   'Mr. Himanshu Gupta': 'https://www.linkedin.com/in/himanshu-gupta-777b863/',
+  'Mr. Prem Singh': 'https://www.linkedin.com/in/prem-singh-7140bb8/',
+  'Prem Singh': 'https://www.linkedin.com/in/prem-singh-7140bb8/',
 };
 
 export const committeeMembers = {
@@ -163,7 +165,11 @@ export const committeeMembers = {
     { role: 'Chief Co-Patron', name: 'Dr. Raghupati Singhania', title: '', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147500/sankalp/Images/committee/Raghupati_Singhania.webp', linkedin: 'https://www.linkedin.com/in/raghavpat-singhania/' },
     { role: 'Chief Co-Patron', name: 'Mr. Harsh Pati Singhania', title: '', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147499/sankalp/Images/committee/Harsh_Pati_Singhania.webp' }
   ],
-  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: '', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147505/sankalp/Images/committee/vc.webp', linkedin: 'https://www.linkedin.com/in/vchellaboina/' },
+  patron: { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'Vice Chancellor, JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147505/sankalp/Images/committee/vc.webp', linkedin: 'https://www.linkedin.com/in/vchellaboina/' },
+  patrons: [
+    { role: 'Patron', name: 'Prof. Vijaysekhar Chellaboina', title: 'Vice Chancellor, JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147505/sankalp/Images/committee/vc.webp', linkedin: 'https://www.linkedin.com/in/vchellaboina/' },
+    { role: 'Patron', name: 'Mr. Prem Singh', title: 'President (Group HR), JK Organisation', image: '/prem-singh.webp', linkedin: 'https://www.linkedin.com/in/prem-singh-7140bb8/' },
+  ],
   chairs: [
     { role: 'Conference Chair', name: 'Prof. Tapas Kumar', title: 'Dean IET, JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147502/sankalp/Images/committee/tapas_kumar.webp', linkedin: 'https://www.linkedin.com/in/dr-tapas-kumar-37a36b307/' },
     { role: 'Conference Convener', name: 'Prof. Sonali Vyas', title: 'Head - Centre for Global Learning, JKLU', image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147501/sankalp/Images/committee/sonali_vyas.webp', linkedin: 'https://www.linkedin.com/in/sonali-vyas-ph-d-49414649/' },
@@ -244,6 +250,7 @@ export const advisoryBoard = {
     { name: 'Dr. Nik Zulkarnaen Khidzir', title: 'Chairman, ACTIM & Associate Professor, Universiti Malaysia Kelantan (UMK)' }
   ],
   national: [
+    { name: 'Mr. Prem Singh', title: 'President (Group HR), JK Organisation', linkedin: 'https://www.linkedin.com/in/prem-singh-7140bb8/' },
     { name: 'Prof. Madhu Muthyam', title: 'Professor & Head, Department of Computer Science and Engineering, IIT Madras', linkedin: 'https://www.linkedin.com/in/madhu-mutyam-63361518/' },
     { name: 'Prof. Shiv Shanker Singh Patel', title: 'Head of Inter-Disciplinary Decision Sciences & Analytics Lab, IIM Visakhapatnam', linkedin: 'https://www.linkedin.com/in/shivshanker-singh-patel-2785921a/' },
     { name: 'Mr. Naveen Sivadasan', title: 'Principal Scientist, TCS Research, Hyderabad', linkedin: 'https://www.linkedin.com/in/naveen-sivadasan-b71027b2/' },

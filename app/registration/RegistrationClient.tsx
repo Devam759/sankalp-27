@@ -159,7 +159,7 @@ export default function RegistrationClient() {
                 className="relative border border-slate-200 bg-white p-7 flex flex-col justify-between rounded-lg shadow-xs hover:shadow-md transition-shadow"
               >
                 <div>
-                  <h3 className="font-sans font-bold text-lg text-brand-blue mb-2.5 leading-snug">
+                  <h3 className="font-serif font-bold text-lg text-brand-blue mb-2.5 leading-snug">
                     {cat.name}
                   </h3>
 
@@ -213,7 +213,7 @@ export default function RegistrationClient() {
           <div className="lg:col-span-7">
             <Reveal variant="in">
               <div className="mb-8">
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue uppercase tracking-wide">
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brand-blue tracking-tight">
                   <WordReveal text="Registration Workflow" className="text-brand-blue" />
                 </h2>
                 <p className="text-slate-600 text-sm font-medium mt-1">
@@ -230,7 +230,7 @@ export default function RegistrationClient() {
                       {stepItem.num}
                     </div>
                     <div>
-                      <h3 className="font-sans font-bold text-brand-blue text-base mb-1">{stepItem.title}</h3>
+                      <h3 className="font-serif font-bold text-brand-blue text-base mb-1">{stepItem.title}</h3>
                       <p className="text-slate-600 text-xs font-medium leading-relaxed">{stepItem.body}</p>
                     </div>
                   </div>
@@ -245,7 +245,7 @@ export default function RegistrationClient() {
             <Reveal variant="right" className="bg-gradient-to-br from-brand-blue to-[#0D2447] text-white p-7 sm:p-8 rounded-lg shadow-md border border-white/10">
               <div className="flex items-center gap-2.5 mb-6">
                 <SparklesIcon className="w-5 h-5 text-brand-orange" />
-                <h2 className="font-sans font-extrabold text-xl tracking-tight">
+                <h2 className="font-serif font-bold text-xl tracking-tight">
                   <WordReveal text="Delegate Inclusions" className="text-white" />
                 </h2>
               </div>
@@ -263,7 +263,7 @@ export default function RegistrationClient() {
             <Reveal variant="right" delay={0.15} className="bg-white p-7 sm:p-8 border border-slate-200/90 rounded-lg shadow-xs">
               <div className="flex items-center gap-2.5 mb-5">
                 <ShieldCheckIcon className="w-5 h-5 text-brand-blue" />
-                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-brand-blue uppercase tracking-wide">
+                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-brand-blue tracking-tight">
                   <WordReveal text="Registration Guidelines" className="text-brand-blue" />
                 </h2>
               </div>

@@ -159,7 +159,9 @@ export default function CreditsClient() {
                     {teamMembers[1].image ? (
                       <img
                         src={teamMembers[1].image}
-                        alt={teamMembers[1].name}
+                        alt={`${teamMembers[1].name} - ${teamMembers[1].role} | JKLU SANKALP 2027`}
+                        title={`${teamMembers[1].name} - ${teamMembers[1].role} | JKLU SANKALP 2027`}
+                        loading="lazy"
                         onError={(e) => {
                           if (teamMembers[1].socials?.github) {
                             e.currentTarget.src = `${teamMembers[1].socials.github}.png`;
@@ -269,7 +271,9 @@ export default function CreditsClient() {
                     {teamMembers[0].image ? (
                       <img
                         src={teamMembers[0].image}
-                        alt={teamMembers[0].name}
+                        alt={`${teamMembers[0].name} - ${teamMembers[0].role} | JKLU SANKALP 2027`}
+                        title={`${teamMembers[0].name} - ${teamMembers[0].role} | JKLU SANKALP 2027`}
+                        loading="eager"
                         onError={(e) => {
                           if (teamMembers[0].socials?.github) {
                             e.currentTarget.src = `${teamMembers[0].socials.github}.png`;
@@ -385,7 +389,9 @@ export default function CreditsClient() {
                     {teamMembers[2].image ? (
                       <img
                         src={teamMembers[2].image}
-                        alt={teamMembers[2].name}
+                        alt={`${teamMembers[2].name} - ${teamMembers[2].role} | JKLU SANKALP 2027`}
+                        title={`${teamMembers[2].name} - ${teamMembers[2].role} | JKLU SANKALP 2027`}
+                        loading="lazy"
                         onError={(e) => {
                           if (teamMembers[2].socials?.github) {
                             e.currentTarget.src = `${teamMembers[2].socials.github}.png`;

@@ -299,7 +299,8 @@ export default function HomeClient() {
             <div className="flex items-center justify-center gap-5 sm:gap-8 md:gap-10 mb-2 w-full">
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
-                alt="JK Lakshmipat University"
+                alt="JK Lakshmipat University (JKLU) Jaipur - SANKALP 2027 Host Institution"
+                title="JK Lakshmipat University (JKLU) Jaipur - SANKALP 2027 Host Institution"
                 width={400}
                 height={120}
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
@@ -310,7 +311,8 @@ export default function HomeClient() {
               <div className="h-7 sm:h-9 md:h-10 lg:h-12 w-px bg-white/50 shrink-0" />
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                alt="Asia University"
+                alt="Asia University Taiwan - SANKALP 2027 Co-Host Partner"
+                title="Asia University Taiwan - SANKALP 2027 Co-Host Partner"
                 width={400}
                 height={120}
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
@@ -410,7 +412,8 @@ export default function HomeClient() {
               <motion.div variants={itemVariants} className="mb-6 -mt-2 flex items-center justify-between gap-4 w-full">
                 <Image
                   src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342918/sankalp/logos/Sankalp_Logo_Darkbg.png"
-                  alt="SANKALP 2027 Logo"
+                  alt="SANKALP 2027 Official Conference Logo - JK Lakshmipat University Jaipur"
+                  title="SANKALP 2027 Official Conference Logo - JK Lakshmipat University Jaipur"
                   width={500}
                   height={200}
                   priority
@@ -571,7 +574,8 @@ export default function HomeClient() {
                 <div className="relative w-36 h-36 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={speaker.image}
-                    alt={speaker.name}
+                    alt={`${speaker.name} - Plenary Speaker, ${speaker.role} ${speaker.university} | JKLU SANKALP 2027`}
+                    title={`${speaker.name} - Plenary Speaker, ${speaker.role} ${speaker.university} | JKLU SANKALP 2027`}
                     fill
                     sizes="144px"
                     priority
@@ -646,7 +650,8 @@ export default function HomeClient() {
                   <div className="relative w-28 h-28 rounded-full border border-slate-200 overflow-hidden shrink-0 bg-slate-50 shadow-sm mb-5">
                     <Image
                       src={speaker.image}
-                      alt={speaker.name}
+                      alt={`${speaker.name} - Keynote Speaker, ${speaker.role} ${speaker.university} | JKLU SANKALP 2027`}
+                      title={`${speaker.name} - Keynote Speaker, ${speaker.role} ${speaker.university} | JKLU SANKALP 2027`}
                       fill
                       sizes="112px"
                       loading="lazy"
@@ -669,6 +674,7 @@ export default function HomeClient() {
       {/* COMMITTEE */}
       <Section id="committee" title="Conference Committee">
         <div className="max-w-[1200px] mx-auto space-y-12">
+          {/* Chief Patron & Chief Co-Patrons */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -679,17 +685,17 @@ export default function HomeClient() {
                 transition: { staggerChildren: 0.08 }
               }
             }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
-            {[committeeMembers.chiefPatron, ...committeeMembers.chiefCoPatrons, committeeMembers.patron].map((member, i) => (
+            {[committeeMembers.chiefPatron, ...committeeMembers.chiefCoPatrons].map((member, i) => (
               <motion.div
-                key={`patron-${member.name}-${i}`}
+                key={`chief-patron-${member.name}-${i}`}
                 variants={{
                   hidden: { opacity: 0, y: 16 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
                 }}
                 style={{ willChange: 'transform, opacity' }}
-                className="p-6 border flex items-start gap-4 relative group bg-brand-blue/5 border-brand-blue/20"
+                className="p-6 border flex items-center gap-4 relative group bg-brand-blue/5 border-brand-blue/20"
               >
                 {'linkedin' in member && (member as any).linkedin && (
                   <a
@@ -706,8 +712,8 @@ export default function HomeClient() {
                 <div className="relative w-16 h-16 rounded-xl border border-brand-blue/20 overflow-hidden shrink-0 bg-white shadow-sm">
                   <Image
                     src={member.image}
-                    alt={`${member.name} - ${member.role}`}
-                    title={`${member.name} - ${member.role}`}
+                    alt={`${member.name} - ${member.role} | JKLU SANKALP 2027`}
+                    title={`${member.name} - ${member.role} | JKLU SANKALP 2027`}
                     fill
                     sizes="64px"
                     className="object-cover object-top transition-all duration-500"
@@ -716,7 +722,65 @@ export default function HomeClient() {
                 <div className="pr-4">
                   <p className="text-[10px] font-bold text-brand-orange uppercase mb-1 tracking-widest">{member.role}</p>
                   <h3 className="text-base font-serif font-bold text-brand-blue">{member.name}</h3>
-                  {'title' in member && <p className="text-brand-blue/70 text-xs font-medium mt-1">{(member as typeof committeeMembers.patron).title}</p>}
+                  {'title' in member && Boolean((member as any).title) && (
+                    <p className="text-brand-blue/70 text-xs font-medium mt-1">{(member as any).title}</p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Patrons */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.08 }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {committeeMembers.patrons.map((member, i) => (
+              <motion.div
+                key={`patron-${member.name}-${i}`}
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                }}
+                style={{ willChange: 'transform, opacity' }}
+                className="bg-brand-orange/15 border border-brand-orange/30 p-6 flex items-center gap-4 text-left relative group"
+              >
+                {'linkedin' in member && (member as any).linkedin && (
+                  <a
+                    href={(member as any).linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${member.name} LinkedIn Profile`}
+                    aria-label={`${member.name} LinkedIn Profile`}
+                    className="absolute top-4 right-4 text-brand-orange hover:text-brand-blue transition-colors p-1"
+                  >
+                    <LinkedInIcon size={16} />
+                  </a>
+                )}
+                <div className="relative w-16 h-16 rounded-xl border-2 border-brand-orange/30 overflow-hidden shrink-0 bg-white shadow-sm">
+                  <Image
+                    src={member.image}
+                    alt={`${member.name} - ${member.role} | JKLU SANKALP 2027`}
+                    title={`${member.name} - ${member.role} | JKLU SANKALP 2027`}
+                    fill
+                    sizes="64px"
+                    className="object-cover object-top transition-all duration-500"
+                  />
+                </div>
+                <div className="pr-4">
+                  <p className="text-xs font-bold text-brand-orange uppercase mb-1 tracking-widest">{member.role}</p>
+                  <h3 className="text-lg font-serif font-bold text-brand-blue mb-1">{member.name}</h3>
+                  {'title' in member && Boolean((member as any).title) && (
+                    <p className="text-slate-600 text-xs font-medium">{ (member as any).title }</p>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -919,7 +983,8 @@ export default function HomeClient() {
           >
             <Image
               src="https://res.cloudinary.com/flufexsc/image/upload/v1787147513/sankalp/Images/hero/DJI_0063.webp"
-              alt="JK Lakshmipat University Campus, Jaipur"
+              alt="JK Lakshmipat University Campus - Official Venue for SANKALP 2027 Conference Jaipur"
+              title="JK Lakshmipat University Campus - Official Venue for SANKALP 2027 Conference Jaipur"
               fill
               sizes="100vw"
               className="object-cover"
@@ -970,7 +1035,8 @@ export default function HomeClient() {
                   >
                     <Image
                       src={att.src}
-                      alt={att.name}
+                      alt={`${att.name} - Jaipur Heritage & Tourist Landmark | SANKALP 2027 JKLU`}
+                      title={`${att.name} - Jaipur Heritage & Tourist Landmark | SANKALP 2027 JKLU`}
                       fill
                       loading="lazy"
                       sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px"

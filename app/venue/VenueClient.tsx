@@ -239,7 +239,8 @@ export default function VenueClient() {
         <div ref={heroImageRef} className="absolute -inset-y-10 inset-x-0 z-0 will-change-transform">
           <Image
             src="https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp"
-            alt="JKLU Campus Banner"
+            alt="JK Lakshmipat University Campus - Official Venue for SANKALP 2027 Conference Jaipur"
+            title="JK Lakshmipat University Campus - Official Venue for SANKALP 2027 Conference Jaipur"
             fill
             sizes="100vw"
             className="object-cover opacity-45 scale-105"
@@ -253,7 +254,8 @@ export default function VenueClient() {
           <div className="flex justify-center">
             <Image
               src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
-              alt="JKLU Logo"
+              alt="JK Lakshmipat University Official Logo - SANKALP 2027 Host Institution"
+              title="JK Lakshmipat University Official Logo - SANKALP 2027 Host Institution"
               width={220}
               height={70}
               className="h-12 sm:h-16 w-auto object-contain drop-shadow-md"
@@ -297,7 +299,8 @@ export default function VenueClient() {
           <Reveal variant="left" className="relative border border-brand-ink/10 shadow-lg rounded-2xl overflow-hidden aspect-[4/3] bg-white">
             <Image
               src="https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp"
-              alt="JK Lakshmipat University Campus"
+              alt="JK Lakshmipat University Campus - State-of-the-art Academic Facility for SANKALP 2027"
+              title="JK Lakshmipat University Campus - State-of-the-art Academic Facility for SANKALP 2027"
               fill
               sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover"
@@ -374,7 +377,7 @@ export default function VenueClient() {
                         <span className="text-brand-orange shrink-0 flex items-center justify-center">
                           <IconComp size={18} />
                         </span>
-                        <h3 className="font-serif font-bold text-base text-[#1F4E8C] leading-snug">
+                        <h3 className="font-serif font-bold text-base text-brand-blue leading-snug">
                           {fac.name}
                         </h3>
                       </div>
@@ -395,7 +398,7 @@ export default function VenueClient() {
       <section id="map-section" className="py-24 bg-[#FAFAFB] px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-10">
           <div className="text-center space-y-3">
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               <WordReveal text="Location & Navigation" className="text-brand-ink" />
             </h2>
             <div className="flex items-center justify-center gap-2 max-w-2xl mx-auto">
@@ -441,7 +444,8 @@ export default function VenueClient() {
                 <div className="p-2 sm:p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-28 h-28 sm:w-40 sm:h-40 flex items-center justify-center">
                   <img
                     src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.app.goo.gl%2FBr41eEjiNpgZaDjA9%3Fg_st%3Daw"
-                    alt="Scan for Google Maps"
+                    alt="Scan QR Code for Google Maps Navigation to JK Lakshmipat University SANKALP 2027"
+                    title="Scan QR Code for Google Maps Navigation to JK Lakshmipat University SANKALP 2027"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -455,7 +459,8 @@ export default function VenueClient() {
               >
                 <Image
                   src="https://res.cloudinary.com/flufexsc/image/upload/v1787147486/sankalp/logos/gmaps%20logo.webp"
-                  alt="Google Maps Logo"
+                  alt="Google Maps Navigation to JKLU SANKALP 2027"
+                  title="Google Maps Navigation to JKLU SANKALP 2027"
                   width={20}
                   height={20}
                   className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 object-contain"
@@ -473,7 +478,8 @@ export default function VenueClient() {
                 <div className="p-2 sm:p-3 bg-white border border-[#E6E8EC] rounded-xl shadow-sm w-28 h-28 sm:w-40 sm:h-40 flex items-center justify-center">
                   <img
                     src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fmaps.apple%2Fp%2FV7C2aunFdCLYnJ"
-                    alt="Scan for Apple Maps"
+                    alt="Scan QR Code for Apple Maps Navigation to JK Lakshmipat University SANKALP 2027"
+                    title="Scan QR Code for Apple Maps Navigation to JK Lakshmipat University SANKALP 2027"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -785,7 +791,7 @@ export default function VenueClient() {
       <section className="py-24 bg-white border-t border-[#E6E8EC]/60 px-6 md:px-12 select-none">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-2">
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               <WordReveal text="Recommended Hotels" className="text-brand-ink" />
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
@@ -813,7 +819,8 @@ export default function VenueClient() {
                       {hotel.src ? (
                         <Image
                           src={hotel.src}
-                          alt={hotel.name}
+                          alt={`${hotel.name} - Recommended Delegate Accommodation for SANKALP 2027 JKLU Jaipur`}
+                          title={`${hotel.name} - Recommended Delegate Accommodation for SANKALP 2027 JKLU Jaipur`}
                           fill
                           className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -943,7 +950,7 @@ export default function VenueClient() {
       <section className="py-24 bg-white border-y border-[#E6E8EC]/60 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center space-y-3">
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-brand-ink uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-brand-blue uppercase tracking-tight">
               <WordReveal text="Discover Jaipur" className="text-brand-ink" />
             </h2>
             <div className="w-16 h-1.5 bg-brand-orange mx-auto rounded-sm" />
@@ -961,7 +968,8 @@ export default function VenueClient() {
               >
                 <Image
                   src={att.src}
-                  alt={att.name}
+                  alt={`${att.name} - Jaipur Heritage & Sightseeing for SANKALP 2027 Attendees`}
+                  title={`${att.name} - Jaipur Heritage & Sightseeing for SANKALP 2027 Attendees`}
                   fill
                   className="object-cover opacity-90"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

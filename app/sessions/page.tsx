@@ -45,11 +45,20 @@ export const metadata: Metadata = {
     siteName: 'JKLU SANKALP 2027',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Conference Tracks & Sessions - JKLU SANKALP 2027 International Conference Jaipur',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Conference Tracks & Sessions | JKLU SANKALP 2027',
     description: 'Explore the 7 multidisciplinary tracks and session themes for JKLU SANKALP 2027 at JK Lakshmipat University, Jaipur.',
+    images: ['https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp'],
   },
 };
 

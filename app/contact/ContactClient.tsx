@@ -17,10 +17,10 @@ export default function ContactClient() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#f7f4ef] text-[#184176] font-sans selection:bg-[#f5821e] selection:text-white">
+    <main className="w-full min-h-screen bg-brand-cloud text-brand-ink font-sans selection:bg-brand-orange selection:text-white flex flex-col">
       <Navbar />
 
-      <div className="pt-32 pb-28 px-6 md:px-12 max-w-4xl mx-auto relative z-10 flex-grow space-y-12">
+      <div className="pt-28 sm:pt-36 pb-28 px-6 md:px-12 max-w-4xl mx-auto relative z-10 flex-grow space-y-12">
         <header className="text-center flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-blue relative inline-block mb-6">
             <WordReveal text="Contact Us" className="text-brand-blue" />
@@ -101,7 +101,7 @@ export default function ContactClient() {
       </div>
 
       <Footer />
-    </div>
+    </main>
   );
 }
 

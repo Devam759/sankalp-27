@@ -39,6 +39,14 @@ export const metadata: Metadata = {
     url: 'https://sankalp.jklu.edu.in/venue',
     siteName: "JKLU SANKALP 2027 Website",
     type: 'website',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp',
+        width: 1200,
+        height: 630,
+        alt: 'JK Lakshmipat University Campus - Official Venue for SANKALP 2027 Conference Jaipur',
+      },
+    ],
   },
 };
 
@@ -66,6 +74,10 @@ export default function VenuePage() {
     '@context': 'https://schema.org',
     '@type': 'Place',
     name: 'JK Lakshmipat University',
+    alternateName: ['JKLU', 'JK Lakshmipat University Jaipur'],
+    url: 'https://sankalp.jklu.edu.in/venue',
+    telephone: '+91-141-7107500',
+    image: ['https://res.cloudinary.com/flufexsc/image/upload/v1787147495/sankalp/Images/campus/jklu_campus.webp'],
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Mahapura Road, Near Mahindra SEZ, Ajmer Road',

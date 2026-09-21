@@ -171,6 +171,40 @@ export default function Page() {
       name: 'Institute of Engineering & Technology (IET), JK Lakshmipat University',
       url: 'https://jklu.edu.in',
     },
+    performer: [
+      {
+        '@type': 'Person',
+        name: 'Prof. Ravi Vatrapu',
+        jobTitle: 'Plenary Speaker & Professor',
+        worksFor: { '@type': 'EducationalOrganization', name: 'Toronto Metropolitan University, Canada' },
+        image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147540/sankalp/Images/speakers/ravi_vatrapu.webp',
+        sameAs: ['https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'],
+      },
+      {
+        '@type': 'Person',
+        name: 'Prof. Arun Patil',
+        jobTitle: 'Keynote Speaker & Director (L&T)',
+        worksFor: { '@type': 'EducationalOrganization', name: 'Curtin University, Singapore' },
+        image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147537/sankalp/Images/speakers/arun_patil.webp',
+        sameAs: ['https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'],
+      },
+      {
+        '@type': 'Person',
+        name: 'Prof. Brij Gupta',
+        jobTitle: 'Keynote Speaker & Director, Centre for AI and Cyber Security',
+        worksFor: { '@type': 'EducationalOrganization', name: 'Asia University, Taiwan' },
+        image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147537/sankalp/Images/speakers/brij_gupta.webp',
+        sameAs: ['https://www.linkedin.com/in/bbgupta/'],
+      },
+      {
+        '@type': 'Person',
+        name: 'Mr. Naveen Sivadasan',
+        jobTitle: 'Keynote Speaker & Principal Scientist',
+        worksFor: { '@type': 'Organization', name: 'TCS Research, Hyderabad' },
+        image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147538/sankalp/Images/speakers/naveen_sivadasan.webp',
+        sameAs: ['https://www.linkedin.com/in/naveen-sivadasan-b71027b2/'],
+      },
+    ],
     offers: [
       {
         '@type': 'Offer',
@@ -190,6 +224,53 @@ export default function Page() {
       },
     ],
   };
+
+  const speakerSchemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Prof. Ravi Vatrapu',
+      alternateName: ['Ravi Vatrapu', 'Prof. Ravi Vatrapu Toronto Metropolitan University'],
+      jobTitle: 'Plenary Speaker & Professor',
+      worksFor: { '@type': 'EducationalOrganization', name: 'Toronto Metropolitan University', url: 'https://www.torontomu.ca' },
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147540/sankalp/Images/speakers/ravi_vatrapu.webp',
+      url: 'https://sankalp.jklu.edu.in',
+      sameAs: ['https://www.linkedin.com/in/ravi-vatrapu-a86a0b5/'],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Prof. Arun Patil',
+      alternateName: ['Arun Patil', 'Prof. Arun Patil Curtin University'],
+      jobTitle: 'Keynote Speaker & Director (L&T)',
+      worksFor: { '@type': 'EducationalOrganization', name: 'Curtin University', url: 'https://curtin.edu.sg' },
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147537/sankalp/Images/speakers/arun_patil.webp',
+      url: 'https://sankalp.jklu.edu.in',
+      sameAs: ['https://www.linkedin.com/in/professor-dr-arun-patil-83660a/'],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Prof. Brij Gupta',
+      alternateName: ['Brij Gupta', 'Prof. Brij Gupta Asia University'],
+      jobTitle: 'Keynote Speaker & Director, Centre for AI and Cyber Security',
+      worksFor: { '@type': 'EducationalOrganization', name: 'Asia University', url: 'https://asia.edu.tw' },
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147537/sankalp/Images/speakers/brij_gupta.webp',
+      url: 'https://sankalp.jklu.edu.in',
+      sameAs: ['https://www.linkedin.com/in/bbgupta/'],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Mr. Naveen Sivadasan',
+      alternateName: ['Naveen Sivadasan', 'Naveen Sivadasan TCS Research'],
+      jobTitle: 'Keynote Speaker & Principal Scientist',
+      worksFor: { '@type': 'Organization', name: 'TCS Research', url: 'https://tcs.com' },
+      image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147538/sankalp/Images/speakers/naveen_sivadasan.webp',
+      url: 'https://sankalp.jklu.edu.in',
+      sameAs: ['https://www.linkedin.com/in/naveen-sivadasan-b71027b2/'],
+    },
+  ];
 
   const navigationSchema = {
     '@context': 'https://schema.org',
@@ -257,7 +338,7 @@ export default function Page() {
 
   return (
     <>
-      <JsonLd data={[websiteSchema, universitySchema, eventSchema, navigationSchema]} />
+      <JsonLd data={[websiteSchema, universitySchema, eventSchema, navigationSchema, ...speakerSchemas]} />
       <HomeClient />
     </>
   );

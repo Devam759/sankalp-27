@@ -31,17 +31,18 @@
   --color-admin-muted: #64748b;
   --color-admin-border: #e2e8f0;
 
-  --color-primary: #0B1B3D;
-  --color-primary-dark: #071126;
+  --color-primary: #f5821e;
+  --color-primary-dark: #d16e18;
 
-  --color-secondary: #475569;
-  --color-secondary-dark: #334155;
+  --color-secondary: #184176;
+  --color-secondary-dark: #112f55;
+  --color-secondary-light: #215798;
 
-  --color-accent: #D97706;
-  --color-accent-dark: #B45309;
+  --color-accent: #f5821e;
+  --color-accent-dark: #d16e18;
 
-  --color-dark: #0F172A;
-  --color-dark-lighter: #1E293B;
+  --color-dark: #030404;
+  --color-dark-lighter: #1a1a1a;
 
   --font-display: "Google Sans Flex", var(--font-outfit), system-ui, sans-serif;
   --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
@@ -106,16 +107,42 @@ body {
 
 
 
+/* ─── Canonical Button Styles ──────────────────────────────────────────────
+   Standard extracted from Sessions / Sponsors / FAQ pages.
+   • btn-primary  — orange fill, for page header CTAs and primary actions
+   • btn-secondary — blue fill, for secondary header CTAs
+   • btn-outline  — blue border/text, ghost tertiary action
+   • btn-primary-dark — orange fill on dark section backgrounds
+   • btn-white-dark — white fill on dark section backgrounds
+   ────────────────────────────────────────────────────────────────────────── */
+
 .btn-primary {
-  @apply bg-brand-orange hover:bg-accent-dark text-brand-ink font-bold py-2.5 px-6 rounded-md transition-all duration-300 shadow-brand-orange hover:shadow-lg hover:scale-[1.02] active:scale-[0.98];
+  @apply w-auto text-center bg-brand-orange text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-orange-500 transition-all shadow-md hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2;
 }
 
+.btn-secondary {
+  @apply w-auto text-center bg-brand-blue text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-[#215798] transition-all shadow-md hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2;
+}
+
+.btn-outline {
+  @apply w-auto text-center border border-slate-300 text-brand-blue bg-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-slate-50 hover:border-brand-blue transition-all cursor-pointer flex items-center justify-center gap-2;
+}
+
+.btn-primary-dark {
+  @apply w-auto text-center bg-brand-orange text-white font-semibold py-3.5 px-8 rounded-md shadow-md hover:bg-orange-600 transition-colors text-sm flex items-center justify-center gap-2.5;
+}
+
+.btn-white-dark {
+  @apply w-auto text-center bg-white text-brand-blue font-semibold py-3.5 px-8 rounded-md border border-white/20 shadow-md hover:bg-slate-100 transition-colors text-sm flex items-center justify-center gap-2.5;
+}
+
+/* Legacy — kept for backward compatibility */
 .btn-accent {
-  @apply bg-brand-orange hover:bg-accent-dark text-brand-ink font-bold py-2.5 px-6 rounded-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+  @apply bg-brand-orange hover:bg-orange-500 text-white font-bold py-2.5 px-6 rounded-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
 }
 
 .btn-blue {
-  @apply bg-brand-blue hover:bg-secondary-dark text-brand-cloud font-bold py-2.5 px-6 rounded-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+  @apply bg-brand-blue hover:bg-[#215798] text-brand-cloud font-bold py-2.5 px-6 rounded-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
 }
 
 /* Comic / Neo-Brutalist Action Buttons - used across feedback, admin, eventsfeedback pages */

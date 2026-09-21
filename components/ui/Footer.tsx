@@ -260,7 +260,8 @@ export default function Footer() {
                 >
                   <Image
                     src="https://res.cloudinary.com/flufexsc/image/upload/v1787147486/sankalp/logos/gmaps%20logo.webp"
-                    alt="Google Maps Logo"
+                    alt="Google Maps Navigation - JK Lakshmipat University Jaipur"
+                    title="Google Maps Navigation - JK Lakshmipat University Jaipur"
                     width={16}
                     height={16}
                     className="w-4 h-4 shrink-0 object-contain"
@@ -377,7 +378,8 @@ export default function Footer() {
             <Link href="/" className="cursor-pointer transition-transform hover:scale-[1.03] active:scale-95 flex">
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/f_auto,q_auto/v1788342918/sankalp/logos/Sankalp_Logo_Darkbg.png"
-                alt="SANKALP 2027 Logo"
+                alt="SANKALP 2027 Official Logo - JK Lakshmipat University"
+                title="SANKALP 2027 Official Logo - JK Lakshmipat University"
                 width={320}
                 height={120}
                 priority
@@ -393,7 +395,8 @@ export default function Footer() {
             >
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147491/sankalp/logos/white_jklu_logo.webp"
-                alt="JK Lakshmipat University Logo"
+                alt="JK Lakshmipat University (JKLU) Jaipur Official Logo"
+                title="JK Lakshmipat University (JKLU) Jaipur Official Logo"
                 width={320}
                 height={96}
                 priority
