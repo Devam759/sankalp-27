@@ -108,7 +108,7 @@ export default function VenueClient() {
           distance: 'Geejgarh House, Civil Lines / Hawa Sadak',
           badgeText: '20 min Drive',
           category: '3-Star Business Hotel',
-          src: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147522/sankalp/Images/hotels/ginger_hotel.webp',
+          src: '/images/hotels/ginger_hotel.webp',
           link: 'https://www.google.com/maps/search/Ginger+Hotel+Jaipur'
         }
       ]
@@ -121,7 +121,7 @@ export default function VenueClient() {
           distance: 'Ajmer Road, Jaisinghpura',
           badgeText: '10 min Drive',
           category: '4-Star Hotel',
-          src: '', // Image placeholder
+          src: '/images/hotels/ramada_hotel.webp',
           link: 'https://www.google.com/maps/search/Ramada+by+Wyndham+Jaipur+Jaisinghpura'
         },
         {
@@ -129,7 +129,7 @@ export default function VenueClient() {
           distance: 'NH-8, Ajmer Expressway',
           badgeText: '8 min Drive',
           category: 'Resort & Stay',
-          src: '', // Image placeholder
+          src: '/images/hotels/pink_pearl.webp',
           link: 'https://www.google.com/maps/search/Pink+Pearl+Hotel+Jaipur'
         },
         {
@@ -137,7 +137,7 @@ export default function VenueClient() {
           distance: 'Tonk Road, Jaipur',
           badgeText: '20 min Drive',
           category: '4-Star Business Hotel',
-          src: '', // Image placeholder
+          src: '/images/hotels/four_points.webp',
           link: 'https://www.google.com/maps/search/Four+Points+by+Sheraton+Jaipur'
         }
       ]
