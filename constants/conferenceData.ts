@@ -213,7 +213,7 @@ export const speakers = {
     {
       name: 'Prof. Brij Gupta',
       role: 'Director, Centre for AI and Cyber Security',
-      university: 'Asia University',
+      university: 'Asia University, Taiwan',
       location: 'Taiwan',
       image: 'https://res.cloudinary.com/flufexsc/image/upload/v1787147537/sankalp/Images/speakers/brij_gupta.webp',
       linkedin: 'https://www.linkedin.com/in/bbgupta/'

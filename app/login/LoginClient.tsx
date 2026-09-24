@@ -137,8 +137,8 @@ export default function LoginClient() {
             <div className="hover:opacity-90 transition-opacity flex items-center">
               <img
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                alt="Asia University Taiwan Official Logo"
-                title="Asia University Taiwan Official Logo"
+                alt="Asia University, Taiwan Official Logo | JKLU SANKALP 2027"
+                title="Asia University, Taiwan Official Logo | JKLU SANKALP 2027"
                 className="h-14 sm:h-16 w-auto object-contain"
               />
             </div>

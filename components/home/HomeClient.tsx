@@ -311,8 +311,8 @@ export default function HomeClient() {
               <div className="h-7 sm:h-9 md:h-10 lg:h-12 w-px bg-white/50 shrink-0" />
               <Image
                 src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                alt="Asia University Taiwan - SANKALP 2027 Co-Host Partner"
-                title="Asia University Taiwan - SANKALP 2027 Co-Host Partner"
+                alt="Asia University, Taiwan - Co-Host Partner | JKLU SANKALP 2027"
+                title="Asia University, Taiwan - Co-Host Partner | JKLU SANKALP 2027"
                 width={400}
                 height={120}
                 className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"

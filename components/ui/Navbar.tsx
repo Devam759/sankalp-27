@@ -158,8 +158,8 @@ export default function Navbar() {
               >
                 <Image
                   src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                  alt="Asia University Taiwan Official Logo"
-                  title="Asia University Taiwan Official Logo"
+                  alt="Asia University, Taiwan Official Logo | JKLU SANKALP 2027"
+                  title="Asia University, Taiwan Official Logo | JKLU SANKALP 2027"
                   width={50}
                   height={50}
                   priority
@@ -261,8 +261,8 @@ export default function Navbar() {
                   >
                     <Image
                       src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp"
-                      alt="Asia University Taiwan Official Logo"
-                      title="Asia University Taiwan Official Logo"
+                      alt="Asia University, Taiwan Official Logo | JKLU SANKALP 2027"
+                      title="Asia University, Taiwan Official Logo | JKLU SANKALP 2027"
                       width={60}
                       height={60}
                       priority

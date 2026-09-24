@@ -157,7 +157,7 @@ export default function AboutClient() {
                      />
                    </div>
                    <div>
-                     <h3 className="font-serif text-2xl font-bold text-brand-ink leading-tight group-hover:text-brand-orange transition-colors duration-300">
+                     <h3 className="font-serif text-2xl font-bold text-brand-ink leading-tight ">
                        JK Lakshmipat University
                      </h3>
                    </div>
@@ -170,10 +170,6 @@ export default function AboutClient() {
                    <p>
                      Located in Jaipur, Rajasthan, JKLU provides a dynamic learning ecosystem that combines experiential education, interdisciplinary research, industry collaboration, and technological advancement.
                    </p>
-                 </div>
-                 
-                 <div className="absolute -bottom-8 -right-8 text-brand-orange/5 group-hover:text-brand-orange/10 transition-colors duration-500 pointer-events-none transform -rotate-12 group-hover:rotate-0 group-hover:scale-110">
-                   <BuildingIcon size={160} />
                  </div>
                </motion.div>
              </div>
@@ -192,8 +188,8 @@ export default function AboutClient() {
                    <div className="h-20 shrink-0 flex items-center justify-start group-hover:scale-105 transition-all duration-500">
                      <Image 
                         src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" 
-                        alt="South Asia University (SAU) Logo - Academic Partner | JKLU SANKALP 2027" 
-                        title="South Asia University (SAU) Logo - Academic Partner | JKLU SANKALP 2027"
+                        alt="Asia University, Taiwan Logo - Co-Host Partner | JKLU SANKALP 2027" 
+                        title="Asia University, Taiwan Logo - Co-Host Partner | JKLU SANKALP 2027"
                         width={100} height={100} 
                         className="object-contain drop-shadow-sm"
                         style={{ width: 'auto', height: '100%' }}
@@ -201,23 +197,19 @@ export default function AboutClient() {
                      />
                    </div>
                    <div>
-                     <h3 className="font-serif text-2xl font-bold text-brand-ink leading-tight group-hover:text-brand-blue transition-colors duration-300">
-                       South Asia University
+                     <h3 className="font-serif text-2xl font-bold text-brand-ink leading-tight ">
+                        Asia University, Taiwan
                      </h3>
                    </div>
                  </div>
                  
                  <div className="space-y-4 text-slate-600 leading-relaxed relative z-10 text-[15px]">
                    <p className="font-medium text-brand-ink/80">
-                     An international university established by the eight member nations of South Asian Association for Regional Co-operation (SAARC).
+                     A private comprehensive university located in Wufeng, Taichung, Taiwan, founded in 2001 with the motto &quot;Health, Care, Innovation, and Excellence.&quot;
                    </p>
                    <p>
-                     SAU is dedicated to building a culture of understanding and regional consciousness, offering world-class education and research opportunities.
+                     Internationally recognized in QS, THE, and ARWU rankings, Asia University is home to a world-class Museum of Modern Art designed by renowned architect Tadao Ando.
                    </p>
-                 </div>
-                 
-                 <div className="absolute -bottom-8 -right-8 text-brand-blue/5 group-hover:text-brand-blue/10 transition-colors duration-500 pointer-events-none transform -rotate-12 group-hover:rotate-0 group-hover:scale-110">
-                   <BuildingIcon size={160} />
                  </div>
                </motion.div>
              </div>
@@ -234,6 +226,9 @@ export default function AboutClient() {
                    <div className="w-16 h-1 bg-brand-blue mb-6"></div>
                    <p className="text-white/90 leading-relaxed mb-6">
                      The Institute of Engineering &amp; Technology at JKLU promotes interdisciplinary research and innovation across artificial intelligence, computing, engineering systems, and emerging technologies.
+                    </p>
+                    <p className="text-white/80 leading-relaxed">
+                      With a strong focus on industry-academia collaboration, IET nurtures future-ready engineers and researchers through cutting-edge curricula, state-of-the-art labs, and a vibrant research culture.
                    </p>
                 </motion.div>
              </div>

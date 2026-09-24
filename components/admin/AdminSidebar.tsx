@@ -449,7 +449,7 @@ export default function Sidebar() {
           </a>
           <div className="h-7 w-px bg-white/20" />
           <div className="hover:opacity-80 transition-opacity">
-            <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" alt="Asia University Taiwan Logo" className="h-11 w-auto object-contain brightness-0 invert opacity-90" />
+            <img src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" alt="Asia University, Taiwan - Co-Host Partner | JKLU SANKALP 2027" className="h-11 w-auto object-contain brightness-0 invert opacity-90" />
           </div>
         </div>
 
