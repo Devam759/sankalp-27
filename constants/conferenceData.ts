@@ -315,7 +315,7 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Member', name: 'Dr. Satveer Singh', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Mr. Divanshu Jain', designation: 'Assistant Professor', affiliation: 'Electronics and Communication Engg' },
       { role: 'Member', name: 'Mr. Devendra Bhavsar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
-      { role: 'Member', name: 'Mr. Arvind Sharma', designation: 'Assistant Professor', affiliation: 'Finance & Accounts' }
+      { role: 'Member', name: 'Mr. Arvind Sharma', designation: 'Accounts Head', affiliation: 'Finance & Accounts' }
     ]
   },
   {
@@ -325,7 +325,9 @@ export const organizingSubCommittees: InternalCommittee[] = [
       { role: 'Lead', name: 'Dr. Akshat Agarwal', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Surbhi Chhabra', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
       { role: 'Member', name: 'Dr. Abhinav Kumar Khorwal', designation: 'Assistant Professor', affiliation: 'Applied Science' },
-      { role: 'Member', name: 'Mr. Somesh Bang', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' }
+      { role: 'Member', name: 'Mr. Somesh Bang', designation: 'Marketing Head', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Suprita Talnikar', designation: 'Assistant Professor', affiliation: 'Computer Science & Engineering' },
+      { role: 'Member', name: 'Dr. Amar Nath Patra', designation: 'Associate Professor', affiliation: 'Computer Science & Engineering' }
     ]
   },
   {

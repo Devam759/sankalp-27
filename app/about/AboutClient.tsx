@@ -192,8 +192,8 @@ export default function AboutClient() {
                    <div className="h-20 shrink-0 flex items-center justify-start group-hover:scale-105 transition-all duration-500">
                      <Image 
                         src="https://res.cloudinary.com/flufexsc/image/upload/v1787147485/sankalp/logos/Asia_University_Logo.webp" 
-                        alt="South Asian University (SAU) Logo - Academic Partner | JKLU SANKALP 2027" 
-                        title="South Asian University (SAU) Logo - Academic Partner | JKLU SANKALP 2027"
+                        alt="South Asia University (SAU) Logo - Academic Partner | JKLU SANKALP 2027" 
+                        title="South Asia University (SAU) Logo - Academic Partner | JKLU SANKALP 2027"
                         width={100} height={100} 
                         className="object-contain drop-shadow-sm"
                         style={{ width: 'auto', height: '100%' }}
@@ -202,7 +202,7 @@ export default function AboutClient() {
                    </div>
                    <div>
                      <h3 className="font-serif text-2xl font-bold text-brand-ink leading-tight group-hover:text-brand-blue transition-colors duration-300">
-                       South Asian University
+                       South Asia University
                      </h3>
                    </div>
                  </div>
