@@ -448,7 +448,7 @@ export default function VenueClient() {
                 href="https://maps.app.goo.gl/Br41eEjiNpgZaDjA9?g_st=aw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-center bg-white hover:bg-slate-50 text-[#1A73E8] border border-slate-300 font-bold py-3 px-3 transition-all rounded-sm flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer group"
+                className="w-full text-center bg-white hover:bg-slate-50 text-[#1A73E8] border border-slate-300 font-bold py-3 px-3 transition-all rounded-full flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer group"
               >
                 <Image
                   src="https://res.cloudinary.com/flufexsc/image/upload/v1787147486/sankalp/logos/gmaps%20logo.webp"
@@ -483,7 +483,7 @@ export default function VenueClient() {
                   href="https://maps.apple/p/V7C2aunFdCLYnJ"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center bg-brand-blue hover:bg-brand-ink text-white font-bold py-3 px-3 transition-all rounded-sm flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer group"
+                  className="w-full text-center bg-black hover:bg-slate-900 text-white font-bold py-3 px-3 transition-all rounded-full flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-sm hover:shadow hover:-translate-y-0.5 cursor-pointer group"
                 >
                   <AppleIcon size={16} className="shrink-0 text-white" />
                   <span className="leading-tight text-center">

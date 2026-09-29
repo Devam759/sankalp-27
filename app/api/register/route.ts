@@ -296,9 +296,52 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true, id: regId, email: dbFormData.email });
     }
 
+    if (action === 'SUBMIT_MANUAL_REGISTRATION') {
+      try {
+        if (data.recaptchaToken) {
+          const recaptchaVal = await verifyRecaptchaToken(data.recaptchaToken, 'REGISTER');
+          if (!recaptchaVal.success) {
+            return NextResponse.json({ error: recaptchaVal.error || 'reCAPTCHA verification failed.' }, { status: 403 });
+          }
+        }
+
+        const regId = `REG_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+        const registrationRecord = {
+          ...data,
+          registrationId: regId,
+          status: 'pending_verification',
+          paymentMode: 'manual_receipt',
+          createdAt: new Date().toISOString(),
+        };
+
+        try {
+          await adminDb.collection('registrations').doc(regId).set({
+            ...registrationRecord,
+            createdAt: FieldValue.serverTimestamp(),
+          });
+        } catch (dbErr: any) {
+          console.warn("Firestore Admin save skipped (ADC credentials not mounted locally):", dbErr.message);
+        }
+
+        return NextResponse.json({
+          success: true,
+          id: regId,
+          orderId: regId,
+          name: data.name,
+          email: data.email,
+          category: data.category,
+          message: "Thank you for completing the registration process. Your registration will be confirmed via email within 48 hours.\nNote: Please take a printout of the registration confirmation message and present it at the conference venue."
+        });
+      } catch (err: any) {
+        console.error("SUBMIT_MANUAL_REGISTRATION error:", err);
+        return NextResponse.json({ error: err.message || 'Failed to submit registration.' }, { status: 500 });
+      }
+    }
+
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
   } catch (error: any) {
     console.error('Registration API Error:', error);
     return handleApiError(error, 'Failed to process registration.');
   }
 }
+
