@@ -171,13 +171,22 @@ export default function RegisterClient() {
   const [paperFetchLoading, setPaperFetchLoading] = useState(false);
   const [paperFetchMessage, setPaperFetchMessage] = useState<string | null>(null);
 
+  async function safeParseJsonResponse(res: Response) {
+    try {
+      const text = await res.text();
+      return text ? JSON.parse(text) : {};
+    } catch {
+      return {};
+    }
+  }
+
   const fetchPaperDetails = async (id: string) => {
     if (!id || !id.trim()) return;
     setPaperFetchLoading(true);
     setPaperFetchMessage(null);
     try {
       const res = await fetch(`/api/paper?id=${encodeURIComponent(id.trim())}`);
-      const data = await res.json();
+      const data = await safeParseJsonResponse(res);
       if (data.success && data.paper) {
         setFormData(prev => ({
           ...prev,
@@ -331,7 +340,7 @@ export default function RegisterClient() {
           category: formData.category,
         }),
       });
-      const data = await res.json();
+      const data = await safeParseJsonResponse(res);
       if (data.valid) {
         setCouponValid(true);
         setFinalAmount(data.amount);
@@ -393,8 +402,8 @@ export default function RegisterClient() {
             action: 'SUBMIT_MANUAL_REGISTRATION',
           }),
         });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Failed to submit registration.');
+        const data = await safeParseJsonResponse(res);
+        if (!res.ok) throw new Error(data.error || data.message || 'Failed to submit registration.');
 
         setSuccessData({
           orderId: data.id || `REG-${Date.now()}`,
@@ -418,10 +427,10 @@ export default function RegisterClient() {
           action: 'CREATE_ORDER',
         }),
       });
-      const data = await response.json();
+      const data = await safeParseJsonResponse(response);
 
       if (!response.ok) {
-        throw new Error(data.error || 'Payment initialization failed.');
+        throw new Error(data.error || data.message || `Payment initialization failed (Server Status ${response.status}). Please try again.`);
       }
 
       if (data.isFree) {
