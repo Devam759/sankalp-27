@@ -135,10 +135,10 @@ export default function RegisterClient() {
     phone: '',
 
     // Section 2: Category & Participation
-    participantType: 'National participant', // National participant | International participant
+    participantType: '', // National participant | International participant
     category: initialCategory,
-    modeOfParticipation: 'In person', // In person | Online
-    isPresentingPaper: 'Yes', // Yes | No
+    modeOfParticipation: '', // In person | Online
+    isPresentingPaper: '', // Yes | No
 
     // Section 3: Paper / Presentation Details (Conditional)
     paperId: '',
@@ -220,6 +220,7 @@ export default function RegisterClient() {
   const baseAmount = selectedCategoryObj ? selectedCategoryObj.amount : 0;
   const currentPrice = finalAmount !== null ? finalAmount : baseAmount;
 
+  const isSpeakerCategory = Boolean(formData.category && (formData.category.includes('speaker') || formData.category.includes('presenter') || formData.category === 'foreign_delegate'));
   const isPaperYes = formData.isPresentingPaper === 'Yes';
   const totalSteps = isPaperYes ? 4 : 3;
   const isFinalStep = isPaperYes ? step === 4 : step === 3;
@@ -243,6 +244,9 @@ export default function RegisterClient() {
     if (!formData.modeOfParticipation) return 'Please select Mode of Participation.';
     if (!formData.category) return 'Please select Registration Category.';
     if (!formData.isPresentingPaper) return 'Please select if you are Presenting a Paper.';
+    if (isSpeakerCategory && formData.isPresentingPaper === 'No') {
+      return 'Speaker categories require paper presentation. If you are attending without presenting a paper, please select a Delegate category (Offline or Online), or select "Yes" for "Presenting a Paper?".';
+    }
     return null;
   };
 
@@ -817,7 +821,10 @@ export default function RegisterClient() {
                       <select
                         value={formData.category}
                         onChange={(e) => {
-                          setFormData({ ...formData, category: e.target.value });
+                          setFormData(prev => ({
+                            ...prev,
+                            category: e.target.value,
+                          }));
                           setCouponValid(null);
                           setFinalAmount(null);
                         }}
