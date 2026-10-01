@@ -60,7 +60,7 @@ function SearchableCountrySelect({
           setIsOpen(!isOpen);
           setSearch('');
         }}
-        className="w-32 px-3 py-2.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 font-medium flex items-center justify-between hover:border-slate-400 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue cursor-pointer"
+        className="w-28 sm:w-32 px-2.5 py-2.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 font-medium flex items-center justify-between hover:border-slate-400 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue cursor-pointer shrink-0"
       >
         <span className="truncate">{selectedCountry.dialCode} ({selectedCountry.code})</span>
         <span className="text-[10px] text-slate-400 ml-1">▼</span>
@@ -122,7 +122,7 @@ export default function RegisterClient() {
   // Form State matching SANKALP_Registration_Form_Updated.docx
   const [formData, setFormData] = useState({
     // Section 1: Participant Details
-    title: 'Dr.',
+    title: '',
     titleOther: '',
     name: '',
     affiliation: '',
@@ -236,6 +236,7 @@ export default function RegisterClient() {
   const isAllConsentsChecked = Boolean(formData.consentPhotography && formData.declarationAccuracy && formData.consentRefundPolicy);
 
   const validateStep1 = () => {
+    if (!formData.title) return 'Please select your Title.';
     if (formData.title === 'Other' && !formData.titleOther.trim()) return 'Please specify your title.';
     if (!formData.name.trim()) return 'Please enter your full name.';
     if (!formData.affiliation.trim()) return 'Please enter your Institution / Organization.';
@@ -583,14 +584,15 @@ export default function RegisterClient() {
                         <select
                           value={formData.title}
                           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                          className={`${inputCls} font-medium`}
+                          className={`${inputCls} font-medium ${!formData.title ? '!text-slate-400' : 'text-slate-900'}`}
                         >
-                          <option value="Prof.">Prof.</option>
-                          <option value="Dr.">Dr.</option>
-                          <option value="Mr.">Mr.</option>
-                          <option value="Ms.">Ms.</option>
-                          <option value="Mrs.">Mrs.</option>
-                          <option value="Other">Other</option>
+                          <option value="" disabled className="text-slate-400">Select Title</option>
+                          <option value="Prof." className="text-slate-900">Prof.</option>
+                          <option value="Dr." className="text-slate-900">Dr.</option>
+                          <option value="Mr." className="text-slate-900">Mr.</option>
+                          <option value="Ms." className="text-slate-900">Ms.</option>
+                          <option value="Mrs." className="text-slate-900">Mrs.</option>
+                          <option value="Other" className="text-slate-900">Other</option>
                         </select>
                       </div>
 
@@ -679,9 +681,9 @@ export default function RegisterClient() {
                       </div>
                     </div>
 
-                    {/* Nationality, Email, Phone */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <div>
+                    {/* Nationality, Phone, Email */}
+                    <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
+                      <div className="sm:col-span-4">
                         <label className={labelCls}>
                           Nationality <span className="text-rose-500">*</span>
                         </label>
@@ -694,24 +696,11 @@ export default function RegisterClient() {
                         />
                       </div>
 
-                      <div>
-                        <label className={labelCls}>
-                          (Organisation) Email Address <span className="text-rose-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          className={inputCls}
-                          placeholder="name@domain.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        />
-                      </div>
-
-                      <div>
+                      <div className="sm:col-span-8">
                         <label className={labelCls}>
                           Mobile Number <span className="text-rose-500">*</span>
                         </label>
-                        <div className="flex gap-2">
+                        <div className="flex gap-2.5">
                           <SearchableCountrySelect
                             value={formData.countryCode}
                             onChange={(dialCode, countryName) => {
@@ -724,12 +713,25 @@ export default function RegisterClient() {
                           />
                           <input
                             type="tel"
-                            className={inputCls}
-                            placeholder="Contact number"
+                            className={`${inputCls} flex-1 min-w-0`}
+                            placeholder="Enter contact / mobile number"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           />
                         </div>
+                      </div>
+
+                      <div className="sm:col-span-12">
+                        <label className={labelCls}>
+                          (Organisation) Email Address <span className="text-rose-500">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          className={inputCls}
+                          placeholder="name@domain.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
                       </div>
                     </div>
 

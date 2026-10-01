@@ -307,8 +307,8 @@ export default function VenueClient() {
 
               <div className="space-y-6 pt-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 bg-brand-orange rounded-sm shrink-0" />
-                  <span className="text-xs sm:text-sm font-black tracking-[0.25em] uppercase text-brand-blue">Campus Highlights</span>
+                  <div className="w-1 h-5 bg-brand-orange rounded-full shrink-0" />
+                  <span className="font-serif font-bold text-base sm:text-lg text-brand-blue tracking-wide">Campus Highlights</span>
                   <div className="flex-1 h-px bg-slate-200" />
                 </div>
 
@@ -792,8 +792,8 @@ export default function VenueClient() {
               <div key={catIdx} className="space-y-6">
                 {/* Category Subheading - Clean title divider matching Committee page */}
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-3 h-3 bg-brand-orange rounded-sm shrink-0" />
-                  <span className="text-xs sm:text-sm font-black tracking-[0.25em] uppercase text-brand-blue">{cat.categoryTitle}</span>
+                  <div className="w-1 h-5 bg-brand-orange rounded-full shrink-0" />
+                  <span className="font-serif font-bold text-base sm:text-lg text-brand-blue tracking-wide">{cat.categoryTitle}</span>
                   <div className="flex-1 h-px bg-slate-300" />
                 </div>
 

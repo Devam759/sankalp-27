@@ -5,7 +5,7 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Reveal from '@/components/ui/Reveal';
 import WordReveal from '@/components/ui/WordReveal';
-import { EnvelopeIcon, CopyIcon } from '@/components/ui/Icons';
+import { EnvelopeIcon, CopyIcon, MapPinIcon } from '@/components/ui/Icons';
 
 export default function ContactClient() {
   const [copied, setCopied] = useState(false);
@@ -92,9 +92,10 @@ export default function ContactClient() {
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <a
               href="/venue#map-section"
-              className="bg-white text-brand-ink font-bold py-3 px-8 border-2 border-brand-ink shadow-[3px_3px_0px_0px_#030404] hover:bg-slate-100 active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_#030404] transition-all rounded-md cursor-pointer text-xs uppercase tracking-wider"
+              className="inline-flex items-center gap-2.5 bg-brand-orange hover:bg-orange-500 text-white font-bold py-3.5 px-8 rounded-xl shadow-md hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-xs sm:text-sm uppercase tracking-wider cursor-pointer group"
             >
-              View Venue &amp; Map
+              <MapPinIcon size={18} className="text-white group-hover:scale-110 transition-transform duration-200" />
+              <span>View Venue &amp; Map</span>
             </a>
           </div>
         </Reveal>
