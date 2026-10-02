@@ -94,7 +94,7 @@ export default function LoginClient() {
 
       await checkRoleAndRedirect(userCredential.user.uid);
     } catch (authErr: any) {
-      console.error('Authentication error:', authErr);
+      console.warn('Authentication error (handled):', authErr?.code || authErr);
       setError('Invalid email address or password.');
     } finally {
       setLoading(false);

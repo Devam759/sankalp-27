@@ -116,9 +116,10 @@ export default function ScannerSidebar() {
   }, [isOpen]);
 
   const navItems = [
-    { name: 'Scanner Console', href: '/scanner' },
-    { name: 'Live Registrations', href: '/scanner/registrations' },
-    { name: 'Scan Records', href: '/scanner/records' }
+    { name: 'Overview', href: '/scanner/overview' },
+    { name: 'Registration', href: '/scanner/registrations' },
+    { name: 'Ticket Scanner', href: '/scanner' },
+    { name: 'Entry Logs', href: '/scanner/records' }
   ];
 
   return (

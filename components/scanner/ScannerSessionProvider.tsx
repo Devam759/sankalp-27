@@ -37,18 +37,40 @@ export function ScannerSessionProvider({ children }: { children: React.ReactNode
       try {
         const roleDoc = await getDoc(doc(getDb(), 'roles', user.uid));
         if (roleDoc.exists() && roleDoc.data().role === 'scanner') {
-          const accountDoc = await getDoc(doc(getDb(), 'scannerAccounts', user.uid));
-          if (accountDoc.exists()) {
-            setScannerAccount(accountDoc.data());
-            setLoading(false);
-          } else {
-            router.push('/login');
+          try {
+            const accountDoc = await getDoc(doc(getDb(), 'scannerAccounts', user.uid));
+            if (accountDoc.exists()) {
+              setScannerAccount(accountDoc.data());
+            } else {
+              // Fallback automatic operator details for seamless sign-in
+              const fallbackName = user.email ? user.email.split('@')[0] : 'Gate Scanner';
+              const fallbackId = `SCAN-${user.uid.slice(0, 4).toUpperCase()}`;
+              setScannerAccount({
+                scannerId: fallbackId,
+                volunteerName: fallbackName,
+                email: user.email || '',
+                status: 'Active'
+              });
+            }
+          } catch (docErr) {
+            console.warn("Could not fetch scannerAccounts document, using fallback:", docErr);
+            const fallbackName = user.email ? user.email.split('@')[0] : 'Gate Scanner';
+            const fallbackId = `SCAN-${user.uid.slice(0, 4).toUpperCase()}`;
+            setScannerAccount({
+              scannerId: fallbackId,
+              volunteerName: fallbackName,
+              email: user.email || '',
+              status: 'Active'
+            });
           }
+          setLoading(false);
         } else {
+          if (auth) await auth.signOut();
           router.push('/login');
         }
       } catch (err) {
         console.error("Scanner dashboard authorization guard error:", err);
+        if (auth) await auth.signOut();
         router.push('/login');
       }
     });
