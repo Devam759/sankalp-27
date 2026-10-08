@@ -7,10 +7,10 @@ import { finalizeRegistration } from '@/lib/registrationHelper';
 import { validateRegistrationNumber } from '@/lib/utils';
 import { getCategoryById } from '@/constants/fees';
 
-import { isRateLimited, sanitizeObject, formatPhoneNumber, handleApiError, verifyRecaptchaToken } from '@/lib/security';
+import { isRateLimited, sanitizeObject, formatPhoneNumber, handleApiError, verifyRecaptchaToken, isProd } from '@/lib/security';
 
 function getCashfreeClient() {
-  const isProduction = (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').replace(/['"]/g, '').trim().toUpperCase() === 'PRODUCTION';
+  const isProduction = isProd;
   const appId = isProduction
     ? (process.env.CASHFREE_PROD_APP_ID || process.env.CASHFREE_APP_ID || '').trim()
     : (process.env.CASHFREE_TEST_APP_ID || process.env.CASHFREE_APP_ID || '').trim();

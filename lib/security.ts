@@ -98,7 +98,12 @@ export function sanitizeObject(obj: any): any {
   return sanitized;
 }
 
-export const isProd = (process.env.NEXT_PUBLIC_CASHFREE_ENV || '').replace(/['"]/g, '').trim().toUpperCase() === 'PRODUCTION';
+export const isProd =
+  (process.env.NEXT_PUBLIC_CASHFREE_ENV || process.env.CASHFREE_ENV || '')
+    .replace(/['"]/g, '')
+    .trim()
+    .toUpperCase() === 'PRODUCTION'
+  || process.env.VERCEL_ENV === 'production';
 
 export const cashfreeAppId = isProd
   ? (process.env.CASHFREE_PROD_APP_ID || process.env.CASHFREE_APP_ID || '')
@@ -258,7 +263,7 @@ export async function verifyRecaptchaToken(
     if (!data.success) {
       console.warn("[reCAPTCHA] Token verification failed:", data['error-codes']);
       // In local development, if Google returns domain/browser errors (e.g. localhost not registered in reCAPTCHA console), allow pass-through
-      if (process.env.NODE_ENV !== 'production' || process.env.NEXT_PUBLIC_CASHFREE_ENV !== 'PRODUCTION') {
+      if (!isProd) {
         const errorCodes = data['error-codes'] || [];
         if (errorCodes.includes('browser-error') || errorCodes.includes('hostname-mismatch') || errorCodes.includes('invalid-input-response')) {
           console.warn("[reCAPTCHA] Allowing dev bypass for localhost/non-production domain error:", errorCodes);
