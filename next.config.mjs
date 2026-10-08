@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: ['firebase-admin'],
   allowedDevOrigins: ['172.16.62.133'],
   compress: true,
   compiler: {

@@ -20,6 +20,10 @@ function initFirebaseAdmin() {
       } catch {
         serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
       }
+
+      if (serviceAccount && typeof serviceAccount.private_key === 'string') {
+        serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
+      }
       
       const app = initializeApp({
         credential: cert(serviceAccount)
@@ -32,6 +36,9 @@ function initFirebaseAdmin() {
       
       if (fs.existsSync(serviceAccountPath)) {
         const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf8'));
+        if (serviceAccount && typeof serviceAccount.private_key === 'string') {
+          serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
+        }
         const app = initializeApp({
           credential: cert(serviceAccount)
         });
